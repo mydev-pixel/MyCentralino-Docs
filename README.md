@@ -1,43 +1,88 @@
-# Mintlify Starter Kit
+# MyCentralino API Documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+Documentazione ufficiale delle API di MyCentralino realizzata con Mintlify.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## 🚀 Come usare questa documentazione
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+### Sviluppo locale
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+Per vedere la documentazione in locale:
 
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
+```bash
+npx mintlify dev
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+La documentazione sarà disponibile su `http://localhost:3000`
+
+### Deploy su Mintlify
+
+1. Connetti il tuo repository GitHub a Mintlify
+2. Mintlify farà il deploy automatico ad ogni push
+
+Oppure usa la CLI di Mintlify:
+
+```bash
+mintlify deploy
+```
+
+## 📁 Struttura del progetto
 
 ```
-mint dev
+mycentralino-docs/
+├── docs.json           # Configurazione principale
+├── index.mdx          # Homepage/Introduzione
+├── favicon.svg        # Favicon del sito
+├── logo/              # Logo del brand
+│   ├── light.svg      # Logo per tema chiaro
+│   └── dark.svg       # Logo per tema scuro
+├── images/            # Immagini per la documentazione
+└── api-reference/     # Documentazione delle API (da creare)
 ```
 
-View your local preview at `http://localhost:3000`.
+## ✏️ Prossime pagine da creare
 
-## Publishing changes
+- [ ] Guida Quick Start (quickstart.mdx)
+- [ ] Autenticazione (authentication.mdx)
+- [ ] API Reference
+  - [ ] Gestione PBX
+  - [ ] Chiamate VoIP
+  - [ ] WhatsApp Integration
+  - [ ] Webhook
+- [ ] Esempi di codice
+- [ ] SDK e librerie
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+## 🎨 Personalizzazione
 
-## Need help?
+### Colori del tema
 
-### Troubleshooting
+I colori sono definiti in `docs.json`:
+- Primary: `#16A34A` (verde)
+- Light: `#07C983` (verde chiaro)
+- Dark: `#15803D` (verde scuro)
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+### Logo
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+Sostituisci i file in `/logo/` con i tuoi logo aziendali:
+- `light.svg` - per tema chiaro
+- `dark.svg` - per tema scuro
+
+### Favicon
+
+Sostituisci `favicon.svg` con la tua favicon.
+
+## 📖 Documentazione Mintlify
+
+Per maggiori informazioni su come personalizzare la documentazione:
+- [Mintlify Documentation](https://mintlify.com/docs)
+- [Mintlify Components](https://mintlify.com/docs/components)
+
+## 🔗 Link utili
+
+- [MyCentralino](https://mycentralino.it)
+- [Dashboard](https://mycentralino.it/dashboard)
+- [Supporto](https://mycentralino.it/contatti)
+
+---
+
+**Nota:** Questa è la versione iniziale pulita della documentazione. 
+Le pagine verranno aggiunte progressivamente.

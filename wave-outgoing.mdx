@@ -1,0 +1,257 @@
+---
+title: "Wave API - Chiamate in Uscita"
+description: "API RESTful per effettuare chiamate telefoniche automatizzate tramite agenti AI"
+icon: "phone"
+---
+
+# Wave Outgoing Calls API
+
+L'API Wave permette di integrare chiamate telefoniche in uscita automatizzate nel tuo sistema utilizzando agenti AI.
+
+## Endpoint
+
+```
+POST https://pbx.mycentralino.com/API/outgoing_call_wave.php
+```
+
+## Autenticazione
+
+Ogni richiesta richiede una **API key** valida. Puoi generare la tua chiave accedendo alla [documentazione API](https://pbx.mycentralino.com/SCRIPTS/WAVE/api_docs.php).
+
+<Warning>
+**Importante**: La chiave API viene generata automaticamente al primo accesso e ha il formato `wave_key_[40 caratteri random]`. Conservala in modo sicuro.
+</Warning>
+
+## Parametri Richiesta
+
+| Parametro | Tipo | Richiesto | Descrizione |
+|-----------|------|-----------|-------------|
+| `api_key` | string | ✅ Sì | La tua chiave API per l'autenticazione |
+| `agent_id` | integer | ✅ Sì | ID dell'agente da utilizzare per la chiamata |
+| `phone_number` | string | ✅ Sì | Numero di telefono da chiamare (10-15 cifre) |
+| `provider` | integer | ✅ Sì | Numero identificativo del provider VoIP (>= 6) |
+| `objective` | string | ✅ Sì | Obiettivo specifico della chiamata (max 254 caratteri) |
+| `schedule_time` | string | No | Quando effettuare la chiamata (default: "now") |
+
+### Formati Schedule Time
+
+- `"now"` - Chiamata immediata (default)
+- Timestamp Unix - Es: `1737381600`
+- ISO 8601 - Es: `"2025-01-20T15:00:00"`
+
+## Esempi di Codice
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST https://pbx.mycentralino.com/API/outgoing_call_wave.php \
+  -H "Content-Type: application/json" \
+  -d '{
+    "api_key": "wave_key_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "agent_id": 1,
+    "phone_number": "3771844210",
+    "provider": 6,
+    "objective": "Contattare il cliente per conferma appuntamento del 20 gennaio alle 15:00",
+    "schedule_time": "now"
+  }'
+```
+
+```php PHP
+<?php
+$api_url = "https://pbx.mycentralino.com/API/outgoing_call_wave.php";
+$api_key = "wave_key_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+
+$data = [
+    "api_key" => $api_key,
+    "agent_id" => 1,
+    "phone_number" => "3771844210",
+    "provider" => 6,
+    "objective" => "Conferma appuntamento del 20 gennaio ore 15:00",
+    "schedule_time" => "now"
+];
+
+$ch = curl_init($api_url);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($ch);
+$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
+
+$result = json_decode($response, true);
+
+if ($http_code === 200 && $result['success']) {
+    echo "✅ Chiamata programmata!\n";
+    echo "Call ID: " . $result['data']['call_id'] . "\n";
+} else {
+    echo "❌ Errore: " . $result['error']['message'] . "\n";
+}
+?>
+```
+
+```python Python
+import requests
+
+api_url = "https://pbx.mycentralino.com/API/outgoing_call_wave.php"
+api_key = "wave_key_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+payload = {
+    "api_key": api_key,
+    "agent_id": 1,
+    "phone_number": "3771844210",
+    "provider": 6,
+    "objective": "Conferma appuntamento",
+    "schedule_time": "now"
+}
+
+response = requests.post(api_url, json=payload)
+result = response.json()
+
+if response.status_code == 200 and result['success']:
+    print(f"✅ Chiamata programmata!")
+    print(f"Call ID: {result['data']['call_id']}")
+else:
+    print(f"❌ Errore: {result['error']['message']}")
+```
+
+```javascript JavaScript
+const axios = require('axios');
+
+const apiUrl = "https://pbx.mycentralino.com/API/outgoing_call_wave.php";
+const apiKey = "wave_key_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+
+const data = {
+    api_key: apiKey,
+    agent_id: 1,
+    phone_number: "3771844210",
+    provider: 6,
+    objective: "Conferma appuntamento",
+    "schedule_time": "now"
+};
+
+axios.post(apiUrl, data)
+    .then(response => {
+        if (response.data.success) {
+            console.log("✅ Chiamata programmata!");
+            console.log(`Call ID: ${response.data.data.call_id}`);
+        }
+    })
+    .catch(error => {
+        console.error("❌ Errore:", error.response?.data?.error?.message);
+    });
+```
+
+</CodeGroup>
+
+## Risposta di Successo
+
+```json 200 OK
+{
+  "success": true,
+  "message": "Chiamata programmata con successo",
+  "data": {
+    "call_id": 12345,
+    "scheduled_for": "2025-01-20 15:00:00",
+    "agent_name": "Assistente Vendite",
+    "agent_id": 1,
+    "phone_number": "3771844210",
+    "provider": 6,
+    "objective": "Conferma appuntamento",
+    "status": "scheduled"
+  }
+}
+```
+
+## Gestione Errori
+
+<AccordionGroup>
+
+<Accordion title="400 - Bad Request">
+  
+**Parametro Mancante**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "MISSING_PARAMETER",
+    "message": "Parametro richiesto mancante: phone_number"
+  }
+}
+```
+
+**Numero Telefono Non Valido**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INVALID_PHONE",
+    "message": "Numero di telefono non valido"
+  }
+}
+```
+
+</Accordion>
+
+<Accordion title="401 - Unauthorized">
+
+**API Key Non Valida**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INVALID_API_KEY",
+    "message": "API key non valida"
+  }
+}
+```
+
+</Accordion>
+
+<Accordion title="403 - Forbidden">
+
+**Credito Insufficiente**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INSUFFICIENT_CREDIT",
+    "message": "Credito o minuti insufficienti"
+  }
+}
+```
+
+</Accordion>
+
+<Accordion title="404 - Not Found">
+
+**Agente Non Trovato**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INVALID_AGENT",
+    "message": "L'agente specificato non esiste"
+  }
+}
+```
+
+</Accordion>
+
+</AccordionGroup>
+
+## Rate Limits
+
+| Limite | Valore |
+|--------|--------|
+| Richieste per minuto | 60 |
+| Chiamate simultanee | 10 |
+
+## Supporto
+
+Hai bisogno di aiuto?
+
+- 📧 **Email**: support@mycentralino.com
+- ☎️ **Tel**: +39 089 8424847
+- 📖 **Docs**: [api_docs.php](https://pbx.mycentralino.com/SCRIPTS/WAVE/api_docs.php)

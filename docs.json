@@ -16,10 +16,15 @@
           {
             "group": "Introduzione",
             "pages": [
-              "index",
-              "wave-outgoing"
+              "index"
             ]
           }
+        ]
+      },
+      {
+        "group": "Wave API",
+        "pages": [
+          "wave-outgoing"
         ]
       }
     ],

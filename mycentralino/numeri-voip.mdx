@@ -81,11 +81,17 @@ I **numeri VoIP** sono i numeri telefonici che i tuoi clienti chiamano per raggi
   </Step>
 </Steps>
 
-### Esempio ricerca numeroPrefisso: 089 (Salerno)
-Numeri disponibili:✅ 089 123 4567 - Disponibile
-✅ 089 234 5678 - Disponibile
+### Esempio ricerca numero
+
+```
+Prefisso: 089 (Salerno)
+Numeri disponibili:
+
+✅ 089 123 4567 - Disponibile
+✅ 089 234 5678 - Disponibile  
 ✅ 089 345 6789 - Disponibile
 ❌ 089 456 7890 - Non disponibile
+```
 
 <Tip>
   **Vuoi un numero "facile"?**
@@ -169,54 +175,84 @@ Decidi dove indirizzare le chiamate in arrivo:
 
 <Tabs>
   <Tab title="Interno diretto">
-```yamlNumero: 089 123 4567
-Destinazione: Interno 101Comportamento:
-- Chiamata diretta all'interno
-- Nessun menu IVR
-- Risposta veloce
+    Chiamata diretta a un interno specifico senza menu
     
-    Ideale per: Linea diretta, cellulare aziendale, ufficio piccolo
+    **Configurazione:**
+    - Numero: 089 123 4567
+    - Destinazione: Interno 101
+    
+    **Comportamento:**
+    - Chiamata diretta all'interno
+    - Nessun menu IVR
+    - Risposta veloce
+    
+    **Ideale per:** Linea diretta, cellulare aziendale, ufficio piccolo
   </Tab>
   
   <Tab title="IVR (Menu vocale)">
-```yamlNumero: 089 123 4567
-Destinazione: IVR → Menu PrincipaleEsempio IVR:
-"Benvenuto. Premi 1 per supporto, 2 per vendite."
-- Tasto 1 → Interno 101
-- Tasto 2 → Coda Vendite
+    Menu vocale interattivo per instradare le chiamate
     
-    Ideale per: Aziende strutturate, call center, supporto
+    **Configurazione:**
+    - Numero: 089 123 4567
+    - Destinazione: IVR → Menu Principale
+    
+    **Esempio IVR:**
+    
+    Benvenuto. Premi 1 per supporto, 2 per vendite.
+    - Tasto 1 → Interno 101
+    - Tasto 2 → Coda Vendite
+    
+    **Ideale per:** Aziende strutturate, call center, supporto
   </Tab>
   
   <Tab title="Coda di chiamata">
-```yamlNumero: 089 123 4567
-Destinazione: Coda → Supporto ClientiMembri coda:
-- Interno 101, 102, 103
-Strategia: Ring-all (squillano tutti)
-Musica attesa: Attiva
+    Distribuisce le chiamate tra più operatori
     
-    Ideale per: Supporto, vendite, reception
+    **Configurazione:**
+    - Numero: 089 123 4567
+    - Destinazione: Coda → Supporto Clienti
+    
+    **Membri coda:**
+    - Interno 101, 102, 103
+    - Strategia: Ring-all (squillano tutti)
+    - Musica attesa: Attiva
+    
+    **Ideale per:** Supporto, vendite, reception
   </Tab>
   
   <Tab title="Gruppo squillo">
-```yamlNumero: 089 123 4567
-Destinazione: Gruppo → CommercialiMembri:
-- Interno 201, 202, 203
-Timeout: 20 secondi
-Fallback: Casella vocale
+    Fa squillare più interni contemporaneamente
     
-    Ideale per: Team vendite, assistenza, gruppi di lavoro
+    **Configurazione:**
+    - Numero: 089 123 4567
+    - Destinazione: Gruppo → Commerciali
+    
+    **Membri:**
+    - Interno 201, 202, 203
+    - Timeout: 20 secondi
+    - Fallback: Casella vocale
+    
+    **Ideale per:** Team vendite, assistenza, gruppi di lavoro
   </Tab>
 </Tabs>
 
 ### Regole orarie
 
 Configura comportamenti diversi per orari:
-```yamlLunedì - Venerdì (09:00 - 18:00):
-→ IVR Menu PrincipaleLunedì - Venerdì (18:00 - 09:00):
-→ Messaggio "Ufficio chiuso" + Casella vocaleSabato (09:00 - 13:00):
-→ Interno 101 (Reperibilità)Sabato (13:00 - 09:00) + Domenica + Festivi:
-→ Messaggio "Chiuso" + Casella vocale emergenze
+
+```
+Lunedì - Venerdì (09:00 - 18:00):
+  → IVR Menu Principale
+
+Lunedì - Venerdì (18:00 - 09:00):
+  → Messaggio "Ufficio chiuso" + Casella vocale
+
+Sabato (09:00 - 13:00):
+  → Interno 101 (Reperibilità)
+
+Sabato (13:00 - 09:00) + Domenica + Festivi:
+  → Messaggio "Chiuso" + Casella vocale emergenze
+```
 
 <Note>
   Il sistema riconosce automaticamente i festivi nazionali italiani. Puoi aggiungere chiusure personalizzate (es. ferie aziendali).
@@ -224,10 +260,14 @@ Configura comportamenti diversi per orari:
 
 ### Gestione festività
 
-Aggiungi chiusure straordinarie:Data: 01/08/2024 - 31/08/2024
+Aggiungi chiusure straordinarie:
+
+```
+Data: 01/08/2024 - 31/08/2024
 Motivo: Ferie estive
 Messaggio: "Siamo chiusi per ferie. Riapriremo il 2 settembre."
 Email emergenze: urgenze@tuaazienda.it
+```
 
 ## Funzionalità avanzate
 
@@ -260,7 +300,7 @@ Filtra le chiamate prima di farle squillare:
     
     **Flusso:**
     1. "Prego dire il suo nome dopo il segnale"
-    2. [Registrazione nome]
+    2. Registrazione nome
     3. "Un momento, la sto trasferendo"
     4. Interno ascolta nome prima di rispondere
     
@@ -272,20 +312,23 @@ Filtra le chiamate prima di farle squillare:
 
 <Tabs>
   <Tab title="Configurazione">
-```yamlNumero: 089 123 4567
-Registrazione: AttivaOpzioni:
-- Registra sempre: ✅
-- Registra solo chiamate > 30s: ❌
-- Avviso chiamante: ✅
-- Formato: MP3 (64 kbps)
-- Conservazione: 90 giorni
-- Accesso: Solo admin
+    Imposta le opzioni di registrazione
+    
+    **Opzioni:**
+    - Registra sempre: Sì
+    - Registra solo chiamate maggiori di 30s: No
+    - Avviso chiamante: Sì
+    - Formato: MP3 (64 kbps)
+    - Conservazione: 90 giorni
+    - Accesso: Solo admin
   </Tab>
   
   <Tab title="Messaggio GDPR">
-    È **obbligatorio** informare il chiamante:
+    È obbligatorio informare il chiamante
     
-    > "Questa chiamata viene registrata per finalità di formazione e controllo qualità del servizio."
+    Messaggio consigliato:
+    
+    Questa chiamata viene registrata per finalità di formazione e controllo qualità del servizio.
     
     Inserisci questo messaggio come annuncio prima dell'IVR.
   </Tab>
@@ -293,35 +336,52 @@ Registrazione: AttivaOpzioni:
   <Tab title="Accesso registrazioni">
     Le registrazioni sono disponibili in:
     
-    - 🖥️ **Dashboard CDR** - Ascolto online
-    - 📧 **Email** - Link download (se configurato)
-    - 📱 **API** - Download programmatico
-    - 💾 **FTP/SFTP** - Backup automatico
+    - Dashboard CDR - Ascolto online
+    - Email - Link download (se configurato)
+    - API - Download programmatico
+    - FTP/SFTP - Backup automatico
     
-    Formato file: `[data]_[ora]_[da]_[a]_[durata].mp3`
+    Formato file: data_ora_da_a_durata.mp3
   </Tab>
 </Tabs>
 
 ### Failover e ridondanza
 
 Cosa succede se MyCentralino ha problemi?
-```yamlFailover configurazione:Tentativo 1: Interni MyCentralino
-↓ (timeout 30s)
-Tentativo 2: Numero cellulare backup
-↓ (timeout 20s)
-Tentativo 3: Casella vocale
 
-Imposta numeri di backup:Numero primario: 089 123 4567 (MyCentralino)
+```
+Failover configurazione:
+  
+  Tentativo 1: Interni MyCentralino
+  (timeout 30s)
+  Tentativo 2: Numero cellulare backup
+  (timeout 20s)
+  Tentativo 3: Casella vocale
+```
+
+Imposta numeri di backup:
+
+```
+Numero primario: 089 123 4567 (MyCentralino)
 Failover 1: +39 333 123 4567 (Cellulare titolare)
 Failover 2: +39 333 234 5678 (Cellulare socio)
 Failover 3: Email urgenze@tuaazienda.it
+```
 
 ## Numerazione multipla
 
-### Più numeri, stesso centralinoNumero 1: 089 123 4567 (Sede Salerno)
-→ IVR Salerno → Interni 10xNumero 2: 02 1234 5678 (Sede Milano)
-→ IVR Milano → Interni 20xNumero 3: 800 123 456 (Numero verde)
-→ Coda Supporto → Interni 30x, 40x
+### Più numeri, stesso centralino
+
+```
+Numero 1: 089 123 4567 (Sede Salerno)
+  → IVR Salerno → Interni 10x
+
+Numero 2: 02 1234 5678 (Sede Milano)
+  → IVR Milano → Interni 20x
+
+Numero 3: 800 123 456 (Numero verde)
+  → Coda Supporto → Interni 30x, 40x
+```
 
 ### DDI (Direct Dial-In)
 
@@ -366,22 +426,24 @@ MyCentralino **NON offre** numeri premium (899, 892, 166) per policy aziendale.
 
 <Steps>
   <Step title="Imposta budget">
-```yamlBudget mensile: €200
-Avviso al 80%: Email admin
-Blocco al 100%: Solo chiamate in entrata
+    Budget mensile: €200
+    
+    Avviso al 80%: Email admin
+    
+    Blocco al 100%: Solo chiamate in entrata
   </Step>
   
   <Step title="Monitora in tempo reale">
     Dashboard mostra:
     - Spesa oggi: €12.50
     - Spesa mese: €187.30
-    - Proiezione fine mese: €220 ⚠️
+    - Proiezione fine mese: €220
   </Step>
   
   <Step title="Ricevi alert">
     Email automatiche quando:
     - Raggiungi 50%, 80%, 90% budget
-    - Chiamata singola > €10
+    - Chiamata singola maggiore di €10
     - Picchi anomali di traffico
   </Step>
 </Steps>
@@ -433,11 +495,11 @@ Blocco al 100%: Solo chiamate in entrata
   <Accordion title="Numero non riceve chiamate" icon="phone-slash">
     **Verifica:**
     
-    1. ✅ Numero attivo in dashboard
-    2. ✅ Instradamento configurato
-    3. ✅ Interni/code funzionanti
-    4. ✅ Nessun blocco blacklist
-    5. ✅ Credito sufficiente (per numero verde)
+    1. Numero attivo in dashboard
+    2. Instradamento configurato
+    3. Interni/code funzionanti
+    4. Nessun blocco blacklist
+    5. Credito sufficiente (per numero verde)
     
     **Test:** Chiama da cellulare personale e controlla CDR
   </Accordion>

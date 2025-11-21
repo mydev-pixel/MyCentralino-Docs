@@ -1,0 +1,171 @@
+---
+title: 'Guida al Centralino MyCentralino'
+description: 'Scopri come funziona il centralino cloud MyCentralino e tutte le sue funzionalità'
+icon: 'phone'
+---
+
+# Benvenuto in MyCentralino
+
+MyCentralino è un **centralino cloud VoIP** completo che ti permette di gestire la telefonia della tua azienda in modo professionale, flessibile e completamente via web.
+
+## Cos'è MyCentralino?
+
+MyCentralino è una piattaforma di telefonia cloud (Cloud PBX) che sostituisce il tradizionale centralino fisico con una soluzione moderna, scalabile e accessibile da qualsiasi dispositivo connesso a internet.
+
+<CardGroup cols={2}>
+  <Card title="🏢 Per Aziende" icon="building">
+    Gestisci interni, code, gruppi di chiamata e IVR per la tua azienda
+  </Card>
+  <Card title="☁️ 100% Cloud" icon="cloud">
+    Nessun hardware da installare, tutto è gestito online
+  </Card>
+  <Card title="📱 Multi-dispositivo" icon="mobile">
+    Rispondi alle chiamate da smartphone, computer o telefoni IP
+  </Card>
+  <Card title="📊 Analytics avanzate" icon="chart-line">
+    Monitora tutte le chiamate con reportistica dettagliata
+  </Card>
+</CardGroup>
+
+## Vantaggi del Centralino Cloud
+
+<AccordionGroup>
+  <Accordion title="Nessun investimento hardware" icon="circle-dollar">
+    Non serve acquistare centralini fisici, server o apparecchiature costose. Tutto funziona nel cloud.
+  </Accordion>
+  
+  <Accordion title="Scalabilità immediata" icon="arrow-up-right-dots">
+    Aggiungi o rimuovi interni in pochi click, senza limiti di crescita.
+  </Accordion>
+  
+  <Accordion title="Costi prevedibili" icon="receipt">
+    Abbonamento mensile fisso a partire da €24.90/mese, senza sorprese.
+  </Accordion>
+  
+  <Accordion title="Lavoro remoto e smart working" icon="laptop">
+    I tuoi collaboratori possono lavorare da casa con lo stesso numero aziendale.
+  </Accordion>
+  
+  <Accordion title="Manutenzione zero" icon="wrench">
+    Aggiornamenti automatici, backup e sicurezza gestiti da noi.
+  </Accordion>
+</AccordionGroup>
+
+## Come funziona?
+
+Il centralino MyCentralino si basa su **tecnologia VoIP (Voice over IP)**, che permette di effettuare e ricevere chiamate attraverso internet invece della linea telefonica tradizionale.
+```mermaidgraph LR
+A[Chiamata in arrivo] --> B[MyCentralino Cloud]
+B --> C{Regole di instradamento}
+C -->|IVR| D[Menu vocale]
+C -->|Diretto| E[Interno]
+C -->|Coda| F[Gruppo operatori]
+C -->|Orario chiusura| G[Messaggio registrato]
+
+### Flusso di una chiamata
+
+1. **Chiamata in arrivo** - Un cliente chiama il tuo numero
+2. **Instradamento intelligente** - Il sistema applica le regole configurate
+3. **Gestione chiamata** - La chiamata viene instradata verso l'interno, coda o IVR appropriato
+4. **Registrazione** - Tutte le chiamate vengono registrate nei CDR per analisi
+
+## Componenti principali
+
+### 🔢 Numeri VoIP
+
+I tuoi numeri di telefono aziendali, nazionali o internazionali, completamente gestiti nel cloud.
+
+- Numeri geografici (es. 089 per Salerno)
+- Numeri non geografici (es. 02, 06)
+- Numeri verdi (800)
+- Numeri internazionali
+
+### 📞 Interni
+
+Gli interni sono le estensioni telefoniche assegnate ai tuoi collaboratori. Ogni interno può:
+
+- Ricevere chiamate esterne
+- Chiamare altri interni gratuitamente
+- Effettuare chiamate esterne
+- Avere casella vocale personale
+- Essere configurato su più dispositivi
+
+### 🎙️ IVR (Risponditore Automatico)
+
+Il menu vocale interattivo che accoglie i chiamanti e li indirizza automaticamente:
+
+> "Benvenuto in MyCentralino. Premi 1 per il supporto tecnico, 2 per l'amministrazione..."
+
+### 👥 Code di chiamata
+
+Gruppi di operatori che rispondono in sequenza o simultaneamente alle chiamate in arrivo.
+
+### ⏰ Regole di instradamento
+
+Definisci come gestire le chiamate in base a:
+- Orario (ufficio aperto/chiuso)
+- Giorno della settimana
+- Numero chiamante
+- Numero chiamato
+
+## Piani disponibili
+
+<CardGroup cols={3}>
+  <Card title="Base" icon="seedling">
+    **€24.90/mese**
+    
+    - 1 interno
+    - 1 numero VoIP
+    - IVR di base
+    - CDR e registrazioni
+  </Card>
+  
+  <Card title="Professional" icon="briefcase">
+    **€49.90/mese**
+    
+    - 5 interni
+    - 2 numeri VoIP
+    - IVR avanzato
+    - Code di chiamata
+    - WhatsApp Business
+  </Card>
+  
+  <Card title="Enterprise" icon="building">
+    **Su misura**
+    
+    - Interni illimitati
+    - Numeri multipli
+    - Assistente AI
+    - Supporto dedicato
+    - API complete
+  </Card>
+</CardGroup>
+
+## Prossimi passi
+
+Ora che hai capito come funziona MyCentralino, puoi:
+
+<CardGroup cols={2}>
+  <Card title="Primi Passi" icon="rocket" href="/mycentralino/primi-passi">
+    Configura il tuo primo centralino in 5 minuti
+  </Card>
+  
+  <Card title="Gestione Interni" icon="users" href="/mycentralino/interni">
+    Crea e configura gli interni dei tuoi collaboratori
+  </Card>
+  
+  <Card title="Numeri VoIP" icon="hashtag" href="/mycentralino/numeri-voip">
+    Attiva e gestisci i tuoi numeri telefonici
+  </Card>
+  
+  <Card title="IVR e Menu" icon="list" href="/mycentralino/ivr">
+    Crea il menu vocale per i tuoi chiamanti
+  </Card>
+</CardGroup>
+
+---
+
+<Info>
+  **Hai bisogno di aiuto?**  
+  Contatta il nostro supporto su [mycentralino.com/contattaci](https://www.mycentralino.com/contattaci/) o consulta la dashboard per il supporto live.
+</Info>

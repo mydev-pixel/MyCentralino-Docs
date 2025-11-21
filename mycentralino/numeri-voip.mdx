@@ -1,0 +1,483 @@
+---
+title: 'Numeri VoIP'
+description: 'Gestione numeri telefonici VoIP, portabilità e configurazione'
+icon: 'hashtag'
+---
+
+# Numeri VoIP
+
+I **numeri VoIP** sono i numeri telefonici che i tuoi clienti chiamano per raggiungere la tua azienda. Con MyCentralino puoi attivare numeri nazionali, internazionali, verdi e portare i tuoi numeri esistenti.
+
+## Tipologie di numeri
+
+<CardGroup cols={2}>
+  <Card title="📍 Geografici" icon="location-dot">
+    Numeri associati a una specifica città o provincia
+    
+    **Esempi:**
+    - 089 (Salerno)
+    - 02 (Milano)
+    - 06 (Roma)
+    - 081 (Napoli)
+    
+    **Prezzo:** €3.90/mese
+  </Card>
+  
+  <Card title="🌍 Non Geografici" icon="earth-europe">
+    Numeri nazionali senza prefisso specifico
+    
+    **Esempi:**
+    - 0363, 0376, 0382...
+    
+    **Vantaggi:**
+    - Flessibilità
+    - Presenza nazionale
+    
+    **Prezzo:** €2.90/mese
+  </Card>
+  
+  <Card title="🆓 Numero Verde 800" icon="phone-volume">
+    Chiamate gratuite per chi chiama
+    
+    **Vantaggi:**
+    - Cliente chiama gratis
+    - +30% conversioni
+    - Immagine professionale
+    
+    **Prezzo:** €9.90/mese + chiamate
+  </Card>
+  
+  <Card title="🌐 Internazionali" icon="globe">
+    Numeri esteri per presenza globale
+    
+    **Paesi disponibili:**
+    - USA, UK, Germania
+    - Francia, Spagna
+    - 50+ paesi
+    
+    **Prezzo:** Da €4.90/mese
+  </Card>
+</CardGroup>
+
+## Attiva un nuovo numero
+
+### Passo 1: Scegli il numero
+
+<Steps>
+  <Step title="Vai su Numeri">
+    Dashboard → **Numeri → Aggiungi Numero**
+  </Step>
+  
+  <Step title="Seleziona tipologia">
+    Scegli tra Geografico, Non Geografico, Verde o Internazionale
+  </Step>
+  
+  <Step title="Cerca numero disponibile">
+    Inserisci prefisso o città desiderata e cerca tra i numeri disponibili
+  </Step>
+  
+  <Step title="Conferma attivazione">
+    Il numero viene attivato immediatamente e sei già pronto a ricevere chiamate
+  </Step>
+</Steps>
+
+### Esempio ricerca numeroPrefisso: 089 (Salerno)
+Numeri disponibili:✅ 089 123 4567 - Disponibile
+✅ 089 234 5678 - Disponibile
+✅ 089 345 6789 - Disponibile
+❌ 089 456 7890 - Non disponibile
+
+<Tip>
+  **Vuoi un numero "facile"?**
+  
+  Cerca numeri con cifre ripetute o sequenze:
+  - 089 777 7777
+  - 089 123 456
+  - 089 111 2222
+  
+  Numeri premium: +€5-15/mese
+</Tip>
+
+## Portabilità numero esistente
+
+Mantieni il tuo numero attuale passando a MyCentralino.
+
+### Quando fare portabilità
+
+- ✅ Hai già un numero aziendale conosciuto
+- ✅ Il numero è su materiale marketing (biglietti, sito web)
+- ✅ Vuoi mantenere la continuità con i clienti
+
+### Procedura portabilità
+
+<Steps>
+  <Step title="Richiedi portabilità">
+    Dashboard → **Numeri → Portabilità → Nuova Richiesta**
+  </Step>
+  
+  <Step title="Inserisci dati numero">
+    - Numero da portare
+    - Operatore attuale
+    - Intestatario contratto
+    - Codice migrazione (se disponibile)
+  </Step>
+  
+  <Step title="Carica documenti">
+    - Lettera di recesso operatore attuale
+    - Documento identità intestatario
+    - Visura camerale (aziende)
+    - Modulo autorizzazione firmato
+  </Step>
+  
+  <Step title="Attendi approvazione">
+    - Verifica documenti: 1-2 giorni
+    - Portabilità: 15-30 giorni lavorativi
+    - Notifiche via email sullo stato
+  </Step>
+</Steps>
+
+### Tempi di portabilità
+
+| Tipo linea | Tempo medio |
+|-----------|-------------|
+| Linea VoIP | 15 giorni |
+| Linea ISDN | 20 giorni |
+| Linea analogica | 25 giorni |
+| Numero verde | 30 giorni |
+
+<Warning>
+  **Durante la portabilità:**
+  
+  - Il numero continua a funzionare con il vecchio operatore
+  - NON disdire il contratto prima del completamento
+  - Potresti avere qualche ora di disservizio il giorno del passaggio
+</Warning>
+
+### Costi portabilità
+
+- **Gratuita** per i primi 3 numeri
+- €15 per ogni numero aggiuntivo
+- **Nessun costo nascosto** da MyCentralino
+
+Verifica eventuali penali del tuo operatore attuale.
+
+## Configurazione numero
+
+### Instradamento chiamate
+
+Decidi dove indirizzare le chiamate in arrivo:
+
+<Tabs>
+  <Tab title="Interno diretto">
+```yamlNumero: 089 123 4567
+Destinazione: Interno 101Comportamento:
+- Chiamata diretta all'interno
+- Nessun menu IVR
+- Risposta veloce
+    
+    Ideale per: Linea diretta, cellulare aziendale, ufficio piccolo
+  </Tab>
+  
+  <Tab title="IVR (Menu vocale)">
+```yamlNumero: 089 123 4567
+Destinazione: IVR → Menu PrincipaleEsempio IVR:
+"Benvenuto. Premi 1 per supporto, 2 per vendite."
+- Tasto 1 → Interno 101
+- Tasto 2 → Coda Vendite
+    
+    Ideale per: Aziende strutturate, call center, supporto
+  </Tab>
+  
+  <Tab title="Coda di chiamata">
+```yamlNumero: 089 123 4567
+Destinazione: Coda → Supporto ClientiMembri coda:
+- Interno 101, 102, 103
+Strategia: Ring-all (squillano tutti)
+Musica attesa: Attiva
+    
+    Ideale per: Supporto, vendite, reception
+  </Tab>
+  
+  <Tab title="Gruppo squillo">
+```yamlNumero: 089 123 4567
+Destinazione: Gruppo → CommercialiMembri:
+- Interno 201, 202, 203
+Timeout: 20 secondi
+Fallback: Casella vocale
+    
+    Ideale per: Team vendite, assistenza, gruppi di lavoro
+  </Tab>
+</Tabs>
+
+### Regole orarie
+
+Configura comportamenti diversi per orari:
+```yamlLunedì - Venerdì (09:00 - 18:00):
+→ IVR Menu PrincipaleLunedì - Venerdì (18:00 - 09:00):
+→ Messaggio "Ufficio chiuso" + Casella vocaleSabato (09:00 - 13:00):
+→ Interno 101 (Reperibilità)Sabato (13:00 - 09:00) + Domenica + Festivi:
+→ Messaggio "Chiuso" + Casella vocale emergenze
+
+<Note>
+  Il sistema riconosce automaticamente i festivi nazionali italiani. Puoi aggiungere chiusure personalizzate (es. ferie aziendali).
+</Note>
+
+### Gestione festività
+
+Aggiungi chiusure straordinarie:Data: 01/08/2024 - 31/08/2024
+Motivo: Ferie estive
+Messaggio: "Siamo chiusi per ferie. Riapriremo il 2 settembre."
+Email emergenze: urgenze@tuaazienda.it
+
+## Funzionalità avanzate
+
+### Call Screening
+
+Filtra le chiamate prima di farle squillare:
+
+<AccordionGroup>
+  <Accordion title="Whitelist" icon="circle-check">
+    Solo numeri autorizzati possono chiamare
+    
+    **Usa per:**
+    - Linee VIP
+    - Supporto riservato clienti premium
+    - Numeri interni per sicurezza
+  </Accordion>
+  
+  <Accordion title="Blacklist" icon="circle-xmark">
+    Blocca numeri indesiderati
+    
+    **Blocca automaticamente:**
+    - Telemarketing aggressivo
+    - Stalker
+    - Numeri segnalati spam
+    - Range numeri (es. tutti i numeri esteri)
+  </Accordion>
+  
+  <Accordion title="Announcement Name" icon="microphone">
+    Chi chiama deve dire il proprio nome
+    
+    **Flusso:**
+    1. "Prego dire il suo nome dopo il segnale"
+    2. [Registrazione nome]
+    3. "Un momento, la sto trasferendo"
+    4. Interno ascolta nome prima di rispondere
+    
+    **Utile per:** Professionisti (avvocati, medici), dirigenti
+  </Accordion>
+</AccordionGroup>
+
+### Registrazione chiamate
+
+<Tabs>
+  <Tab title="Configurazione">
+```yamlNumero: 089 123 4567
+Registrazione: AttivaOpzioni:
+- Registra sempre: ✅
+- Registra solo chiamate > 30s: ❌
+- Avviso chiamante: ✅
+- Formato: MP3 (64 kbps)
+- Conservazione: 90 giorni
+- Accesso: Solo admin
+  </Tab>
+  
+  <Tab title="Messaggio GDPR">
+    È **obbligatorio** informare il chiamante:
+    
+    > "Questa chiamata viene registrata per finalità di formazione e controllo qualità del servizio."
+    
+    Inserisci questo messaggio come annuncio prima dell'IVR.
+  </Tab>
+  
+  <Tab title="Accesso registrazioni">
+    Le registrazioni sono disponibili in:
+    
+    - 🖥️ **Dashboard CDR** - Ascolto online
+    - 📧 **Email** - Link download (se configurato)
+    - 📱 **API** - Download programmatico
+    - 💾 **FTP/SFTP** - Backup automatico
+    
+    Formato file: `[data]_[ora]_[da]_[a]_[durata].mp3`
+  </Tab>
+</Tabs>
+
+### Failover e ridondanza
+
+Cosa succede se MyCentralino ha problemi?
+```yamlFailover configurazione:Tentativo 1: Interni MyCentralino
+↓ (timeout 30s)
+Tentativo 2: Numero cellulare backup
+↓ (timeout 20s)
+Tentativo 3: Casella vocale
+
+Imposta numeri di backup:Numero primario: 089 123 4567 (MyCentralino)
+Failover 1: +39 333 123 4567 (Cellulare titolare)
+Failover 2: +39 333 234 5678 (Cellulare socio)
+Failover 3: Email urgenze@tuaazienda.it
+
+## Numerazione multipla
+
+### Più numeri, stesso centralinoNumero 1: 089 123 4567 (Sede Salerno)
+→ IVR Salerno → Interni 10xNumero 2: 02 1234 5678 (Sede Milano)
+→ IVR Milano → Interni 20xNumero 3: 800 123 456 (Numero verde)
+→ Coda Supporto → Interni 30x, 40x
+
+### DDI (Direct Dial-In)
+
+Assegna numeri diversi agli interni:
+
+| Numero | Destinazione |
+|--------|--------------|
+| 089 123 4567 | Switchboard (IVR) |
+| 089 123 4568 | Diretto interno 101 (CEO) |
+| 089 123 4569 | Diretto interno 201 (Vendite) |
+| 089 123 4570 | Diretto interno 301 (Supporto) |
+
+<Tip>
+  I numeri DDI permettono ai clienti VIP di chiamare direttamente una persona, bypassando l'IVR.
+</Tip>
+
+## Gestione costi
+
+### Tariffe chiamate
+
+| Destinazione | Costo/minuto | Scatto risposta |
+|--------------|--------------|-----------------|
+| Fissi Italia | €0.01 | €0.00 |
+| Mobili Italia | €0.05 | €0.00 |
+| Europa (fissi) | €0.03 | €0.00 |
+| USA/Canada | €0.02 | €0.00 |
+| Mobile estero | €0.15 | €0.05 |
+
+### Numeri con costi particolari
+
+#### Numero Verde 800
+
+- Cliente chiama **gratis**
+- Paghi tu: €0.08/minuto da fisso, €0.15/minuto da mobile
+- Canone: €9.90/mese
+
+#### Numeri a sovrapprezzo (non disponibili)
+
+MyCentralino **NON offre** numeri premium (899, 892, 166) per policy aziendale.
+
+### Controllo spesa
+
+<Steps>
+  <Step title="Imposta budget">
+```yamlBudget mensile: €200
+Avviso al 80%: Email admin
+Blocco al 100%: Solo chiamate in entrata
+  </Step>
+  
+  <Step title="Monitora in tempo reale">
+    Dashboard mostra:
+    - Spesa oggi: €12.50
+    - Spesa mese: €187.30
+    - Proiezione fine mese: €220 ⚠️
+  </Step>
+  
+  <Step title="Ricevi alert">
+    Email automatiche quando:
+    - Raggiungi 50%, 80%, 90% budget
+    - Chiamata singola > €10
+    - Picchi anomali di traffico
+  </Step>
+</Steps>
+
+## Statistiche numeri
+
+### Analytics per numero
+
+<CardGroup cols={2}>
+  <Card title="Volume chiamate" icon="chart-column">
+    - Chiamate ricevute: 1.247 (mese)
+    - Chiamate risposte: 1.156 (93%)
+    - Chiamate perse: 91 (7%)
+    - Media giorno: 42 chiamate
+  </Card>
+  
+  <Card title="Performance" icon="gauge-high">
+    - Tempo medio attesa: 12s
+    - Tempo medio chiamata: 4m 32s
+    - Abbandoni in coda: 3%
+    - Customer satisfaction: 4.2/5
+  </Card>
+  
+  <Card title="Distribuzione oraria" icon="clock">
+    Picchi:
+    - 09:00-10:00: 87 chiamate
+    - 11:00-12:00: 63 chiamate
+    - 15:00-16:00: 54 chiamate
+  </Card>
+  
+  <Card title="Provenienza" icon="location-dot">
+    - Salerno: 45%
+    - Napoli: 23%
+    - Milano: 12%
+    - Altro: 20%
+  </Card>
+</CardGroup>
+
+### Report disponibili
+
+- 📊 Report giornaliero (email automatica)
+- 📈 Report settimanale
+- 📉 Report mensile con confronto mese precedente
+- 🎯 Report personalizzato (periodo custom)
+
+## Risoluzione problemi
+
+<AccordionGroup>
+  <Accordion title="Numero non riceve chiamate" icon="phone-slash">
+    **Verifica:**
+    
+    1. ✅ Numero attivo in dashboard
+    2. ✅ Instradamento configurato
+    3. ✅ Interni/code funzionanti
+    4. ✅ Nessun blocco blacklist
+    5. ✅ Credito sufficiente (per numero verde)
+    
+    **Test:** Chiama da cellulare personale e controlla CDR
+  </Accordion>
+  
+  <Accordion title="Numero occupato sempre" icon="phone-busy">
+    **Possibili cause:**
+    
+    - Tutti gli interni sono in chiamata
+    - Limite chiamate simultanee raggiunto
+    - Problema instradamento
+    
+    **Soluzione:** Aumenta canali simultanei o aggiungi interni alla coda
+  </Accordion>
+  
+  <Accordion title="Chiamate cadono dopo pochi secondi" icon="phone-xmark">
+    **Probabile causa:** Problema codec audio o firewall
+    
+    **Verifica:**
+    - Codec compatibili attivi
+    - Firewall non blocca porte RTP (10000-20000 UDP)
+    - Qualità connessione internet
+  </Accordion>
+</AccordionGroup>
+
+## Prossimi passi
+
+<CardGroup cols={2}>
+  <Card title="Configura IVR" icon="sitemap" href="/mycentralino/ivr">
+    Crea il menu vocale per instradare le chiamate
+  </Card>
+  
+  <Card title="Regole instradamento" icon="route" href="/mycentralino/regole-instradamento">
+    Imposta regole avanzate basate su orari e condizioni
+  </Card>
+  
+  <Card title="Code di chiamata" icon="users" href="/mycentralino/code">
+    Gestisci gruppi di operatori per le chiamate
+  </Card>
+  
+  <Card title="Blacklist/Whitelist" icon="shield" href="/mycentralino/blacklist-whitelist">
+    Filtra e blocca numeri indesiderati
+  </Card>
+</CardGroup>

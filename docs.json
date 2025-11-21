@@ -11,18 +11,154 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentazione",
+        "tab": "Introduzione",
         "groups": [
           {
-            "group": "Introduzione",
+            "group": "Benvenuto",
             "pages": [
               "index"
             ]
+          }
+        ]
+      },
+      {
+        "tab": "Guida Centralino",
+        "groups": [
+          {
+            "group": "Panoramica",
+            "pages": [
+              "mycentralino/introduzione",
+              "mycentralino/primi-passi"
+            ]
           },
           {
-            "group": "Wave API",
+            "group": "Funzionalità Base",
             "pages": [
-              "wave-outgoing"
+              "mycentralino/interni",
+              "mycentralino/numeri-voip",
+              "mycentralino/chiamate"
+            ]
+          },
+          {
+            "group": "Funzionalità Avanzate",
+            "pages": [
+              "mycentralino/ivr",
+              "mycentralino/code",
+              "mycentralino/gruppi-squillo",
+              "mycentralino/deviazioni",
+              "mycentralino/registrazioni"
+            ]
+          },
+          {
+            "group": "Regole e Routing",
+            "pages": [
+              "mycentralino/regole-instradamento",
+              "mycentralino/orari-apertura",
+              "mycentralino/blacklist-whitelist"
+            ]
+          },
+          {
+            "group": "Integrazioni",
+            "pages": [
+              "mycentralino/whatsapp",
+              "mycentralino/assistente-ai",
+              "mycentralino/crm"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Centralino",
+        "groups": [
+          {
+            "group": "Inizia",
+            "pages": [
+              "mycentralino-api/introduzione",
+              "mycentralino-api/autenticazione",
+              "mycentralino-api/quick-start"
+            ]
+          },
+          {
+            "group": "Gestione Interni",
+            "pages": [
+              "mycentralino-api/interni/lista",
+              "mycentralino-api/interni/crea",
+              "mycentralino-api/interni/modifica",
+              "mycentralino-api/interni/elimina"
+            ]
+          },
+          {
+            "group": "Chiamate",
+            "pages": [
+              "mycentralino-api/chiamate/effettua",
+              "mycentralino-api/chiamate/stato",
+              "mycentralino-api/chiamate/termina",
+              "mycentralino-api/chiamate/trasferisci"
+            ]
+          },
+          {
+            "group": "Code e IVR",
+            "pages": [
+              "mycentralino-api/code/gestione",
+              "mycentralino-api/ivr/gestione"
+            ]
+          },
+          {
+            "group": "CDR e Analytics",
+            "pages": [
+              "mycentralino-api/cdr/lista",
+              "mycentralino-api/cdr/export",
+              "mycentralino-api/statistiche"
+            ]
+          },
+          {
+            "group": "Webhook",
+            "pages": [
+              "mycentralino-api/webhook/configurazione",
+              "mycentralino-api/webhook/eventi"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Wave API",
+        "groups": [
+          {
+            "group": "Panoramica",
+            "pages": [
+              "wave/introduzione",
+              "wave/autenticazione"
+            ]
+          },
+          {
+            "group": "Chiamate Outbound",
+            "pages": [
+              "wave/outbound/chiamata-semplice",
+              "wave/outbound/chiamata-avanzata",
+              "wave/outbound/parametri"
+            ]
+          },
+          {
+            "group": "Chiamate Inbound",
+            "pages": [
+              "wave/inbound/gestione",
+              "wave/inbound/ivr-dinamico"
+            ]
+          },
+          {
+            "group": "AI e Realtime",
+            "pages": [
+              "wave/ai/openai-realtime",
+              "wave/ai/tts-stt",
+              "wave/websocket"
+            ]
+          },
+          {
+            "group": "Webhook e Eventi",
+            "pages": [
+              "wave/webhook/configurazione",
+              "wave/webhook/eventi",
+              "wave/webhook/esempi"
             ]
           }
         ]
@@ -39,6 +175,11 @@
           "anchor": "Supporto",
           "href": "https://www.mycentralino.com/contattaci/",
           "icon": "headset"
+        },
+        {
+          "anchor": "Dashboard",
+          "href": "https://pbx.mycentralino.com/home-centralino",
+          "icon": "gauge"
         }
       ]
     }

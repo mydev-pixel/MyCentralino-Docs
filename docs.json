@@ -16,7 +16,8 @@
           {
             "group": "Introduzione",
             "pages": [
-              "index"
+              "index",
+              "wave-outgoing"
             ]
           }
         ]

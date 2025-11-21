@@ -18,13 +18,13 @@
             "pages": [
               "index"
             ]
+          },
+          {
+            "group": "Wave API",
+            "pages": [
+              "wave-outgoing"
+            ]
           }
-        ]
-      },
-      {
-        "group": "Wave API",
-        "pages": [
-          "wave-outgoing"
         ]
       }
     ],

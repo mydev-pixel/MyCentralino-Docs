@@ -1,0 +1,140 @@
+---
+title: "Origina Chiamata"
+description: "Avvia una chiamata da un interno verso un numero"
+---
+
+# POST /v1/call/originate
+
+Origina una chiamata (click-to-call): il centralino chiama prima l'interno specificato, poi collega la chiamata al numero di destinazione.
+
+## Request Body
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `extension` | string | ✅ | Interno che effettua la chiamata |
+| `number` | string | ✅ | Numero da chiamare |
+| `description` | string | ❌ | Descrizione caller ID |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST https://api.mycentralino.com/v1/call/originate \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "extension": "101",
+    "number": "3331234567",
+    "description": "Cliente importante"
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'extension' => '101',
+    'number' => '3331234567',
+    'description' => 'Cliente importante'
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/call/originate');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+
+$response = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {
+    'X-API-KEY': 'sk_mycentralino_your_api_key',
+    'Content-Type': 'application/json'
+}
+
+data = {
+    'extension': '101',
+    'number': '3331234567',
+    'description': 'Cliente importante'
+}
+
+response = requests.post(
+    'https://api.mycentralino.com/v1/call/originate',
+    headers=headers,
+    json=data
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta Successo
+
+```json
+{
+  "success": true,
+  "message": "Chiamata originata con successo",
+  "data": {
+    "call_id": "call_65f3a2b1c4e5f6.12345678",
+    "extension": "101",
+    "number": "3331234567",
+    "channel": "PJSIP/101",
+    "timestamp": "2024-03-15 14:32:10"
+  }
+}
+```
+
+## Errori
+
+### 400 - Parametri mancanti
+
+```json
+{
+  "success": false,
+  "error": "Parametri mancanti: extension e number sono obbligatori"
+}
+```
+
+### 400 - Numero non valido
+
+```json
+{
+  "success": false,
+  "error": "Numero di telefono non valido"
+}
+```
+
+### 404 - Interno non trovato
+
+```json
+{
+  "success": false,
+  "error": "Interno non trovato o non autorizzato"
+}
+```
+
+### 503 - Errore connessione
+
+```json
+{
+  "success": false,
+  "error": "Connessione AMI fallita: Connection refused"
+}
+```
+
+## Note
+
+- L'interno deve essere **registrato** per ricevere la chiamata
+- Il numero viene automaticamente pulito dai caratteri non numerici
+- Se `description` è vuoto, viene cercato automaticamente nel CRM
+- La chiamata è **asincrona**: la risposta arriva subito, la chiamata parte in background

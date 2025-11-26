@@ -1,0 +1,162 @@
+---
+title: "Code di Chiamata"
+description: "Gestione e statistiche delle code di chiamata"
+---
+
+# Code di Chiamata
+
+## GET /v1/queue
+
+Restituisce tutte le code configurate con i relativi membri.
+
+### Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/queue \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/queue');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get(
+    'https://api.mycentralino.com/v1/queue',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+### Risposta
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "queue_name": "commerciale",
+      "strategy": "ringall",
+      "timeout": 30,
+      "musiconhold": "default",
+      "announce": null,
+      "maxlen": 10,
+      "members": [
+        {
+          "extension": "101",
+          "callerid": "101",
+          "description": "Mario Rossi"
+        },
+        {
+          "extension": "102",
+          "callerid": "102",
+          "description": "Anna Bianchi"
+        }
+      ],
+      "total_members": 2
+    }
+  ],
+  "count": 1
+}
+```
+
+---
+
+## GET /v1/queue/{name}
+
+Restituisce i dettagli di una coda specifica con le **statistiche del giorno**.
+
+### Parametri URL
+
+| Parametro | Tipo | Descrizione |
+|-----------|------|-------------|
+| `name` | string | Nome della coda |
+
+### Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/queue/commerciale \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get(
+    'https://api.mycentralino.com/v1/queue/commerciale',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+### Risposta
+
+```json
+{
+  "success": true,
+  "data": {
+    "queue_name": "commerciale",
+    "strategy": "ringall",
+    "timeout": 30,
+    "musiconhold": "default",
+    "announce": null,
+    "maxlen": 10,
+    "members": [
+      {
+        "extension": "101",
+        "callerid": "101",
+        "description": "Mario Rossi"
+      }
+    ],
+    "total_members": 1,
+    "statistics": {
+      "date": "2024-03-15",
+      "calls_entered": 45,
+      "calls_answered": 38,
+      "calls_abandoned": 5,
+      "avg_wait_time": 23,
+      "avg_wait_time_formatted": "00:23"
+    }
+  }
+}
+```
+
+## Campi Statistics
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `calls_entered` | int | Chiamate entrate in coda oggi |
+| `calls_answered` | int | Chiamate risposte oggi |
+| `calls_abandoned` | int | Chiamate abbandonate oggi |
+| `avg_wait_time` | int | Tempo medio attesa (secondi) |
+| `avg_wait_time_formatted` | string | Tempo medio formattato (mm:ss) |
+
+## Strategy
+
+| Valore | Descrizione |
+|--------|-------------|
+| `ringall` | Squilla tutti contemporaneamente |
+| `roundrobin` | A rotazione |
+| `leastrecent` | Chi ha risposto meno di recente |
+| `fewestcalls` | Chi ha risposto meno chiamate |
+| `random` | Casuale |

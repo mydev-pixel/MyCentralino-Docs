@@ -1,0 +1,89 @@
+---
+title: "Introduzione alle API"
+description: "Come autenticarsi e iniziare ad usare le API di MyCentralino"
+---
+
+# Introduzione alle API MyCentralino
+
+Le API di MyCentralino permettono di integrare le funzionalità del centralino nelle tue applicazioni.
+
+## Base URL
+
+```
+https://api.mycentralino.com
+```
+
+## Autenticazione
+
+Tutte le richieste (eccetto `/test` e `/v1/ping`) richiedono una API key nell'header `X-API-KEY`.
+
+```bash
+X-API-KEY: sk_mycentralino_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+## Rate Limiting
+
+I limiti sono applicati **per account**, non per singola chiave API:
+
+| Limite | Default |
+|--------|---------|
+| Richieste/minuto | 20 |
+| Richieste/giorno | 1000 |
+
+### Headers di risposta
+
+Ogni risposta include headers informativi:
+
+```
+X-RateLimit-Limit-Minute: 20
+X-RateLimit-Remaining-Minute: 19
+X-RateLimit-Limit-Day: 1000
+X-RateLimit-Remaining-Day: 999
+```
+
+### Errore 429
+
+Se superi i limiti, riceverai:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "minute_limit_exceeded",
+    "message": "Troppe richieste. Riprova tra 45 secondi."
+  }
+}
+```
+
+L'header `Retry-After` indica i secondi di attesa.
+
+## Formato Risposte
+
+Tutte le risposte sono in formato JSON con struttura:
+
+```json
+{
+  "success": true,
+  "data": { ... }
+}
+```
+
+In caso di errore:
+
+```json
+{
+  "success": false,
+  "error": "Descrizione errore"
+}
+```
+
+## Codici HTTP
+
+| Codice | Significato |
+|--------|-------------|
+| 200 | Successo |
+| 400 | Richiesta non valida |
+| 401 | API key mancante o non valida |
+| 404 | Risorsa non trovata |
+| 429 | Rate limit superato |
+| 500 | Errore interno |

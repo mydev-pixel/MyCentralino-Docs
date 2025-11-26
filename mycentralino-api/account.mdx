@@ -1,0 +1,81 @@
+---
+title: "Account"
+description: "Informazioni sull'account e utilizzo API"
+---
+
+# GET /v1/account
+
+Restituisce le informazioni sul tuo account, i limiti configurati e l'utilizzo corrente delle API.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/account \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/account');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+$data = json_decode($response, true);
+print_r($data);
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get(
+    'https://api.mycentralino.com/v1/account',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": {
+    "context": "mia-azienda",
+    "key_name": "Chiave Produzione",
+    "limits": {
+      "requests_per_minute": 20,
+      "requests_per_day": 1000
+    },
+    "usage": {
+      "minute": {
+        "used": 3,
+        "limit": 20
+      },
+      "day": {
+        "used": 156,
+        "limit": 1000
+      }
+    }
+  }
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `context` | string | Identificativo del tuo centralino |
+| `key_name` | string | Nome della chiave API utilizzata |
+| `limits` | object | Limiti configurati per l'account |
+| `usage.minute` | object | Utilizzo nel minuto corrente |
+| `usage.day` | object | Utilizzo nella giornata corrente |

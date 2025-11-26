@@ -1,0 +1,88 @@
+---
+title: "Lista Interni"
+description: "Ottieni la lista di tutti gli interni del centralino"
+---
+
+# GET /v1/extensions
+
+Restituisce la lista di tutti gli interni configurati nel tuo centralino.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/extensions \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/extensions');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+$data = json_decode($response, true);
+print_r($data);
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get(
+    'https://api.mycentralino.com/v1/extensions',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1234,
+      "extension": "101",
+      "internal_number": "101",
+      "description": "Mario Rossi",
+      "outbound_provider": "PRINCIPALE"
+    },
+    {
+      "id": 1235,
+      "extension": "102",
+      "internal_number": "102",
+      "description": "Anna Bianchi",
+      "outbound_provider": "PRINCIPALE"
+    }
+  ],
+  "count": 2
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `id` | int | ID univoco dell'interno |
+| `extension` | string | Nome tecnico dell'interno |
+| `internal_number` | string | Numero interno (caller ID) |
+| `description` | string | Descrizione/nome utente |
+| `outbound_provider` | string | Provider per chiamate uscenti |
+
+### Valori outbound_provider
+
+| Valore | Significato |
+|--------|-------------|
+| `PRINCIPALE` | Provider predefinito |
+| `DISABILITATE` | Chiamate uscenti disabilitate |
+| `SCELTA MANUALE` | Selezione manuale del provider |

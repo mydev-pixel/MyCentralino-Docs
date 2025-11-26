@@ -1,0 +1,145 @@
+---
+title: "Chiamate in Entrata"
+description: "Recupera lo storico delle chiamate in entrata"
+---
+
+# Chiamate in Entrata
+
+## GET /v1/calls/in
+
+Restituisce le chiamate in entrata di **oggi e ieri** (default).
+
+### Query Parameters
+
+| Parametro | Tipo | Default | Descrizione |
+|-----------|------|---------|-------------|
+| `page` | int | 1 | Pagina corrente |
+| `limit` | int | 200 | Risultati per pagina (max 500) |
+| `search` | string | - | Filtra per numero |
+| `numbers[]` | array | tutti | Filtra per numeri VoIP specifici |
+
+### Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/calls/in?limit=50&page=1" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$params = http_build_query([
+    'limit' => 50,
+    'page' => 1,
+    'search' => '06868' // opzionale
+]);
+
+$ch = curl_init("https://api.mycentralino.com/v1/calls/in?{$params}");
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+params = {'limit': 50, 'page': 1}
+
+response = requests.get(
+    'https://api.mycentralino.com/v1/calls/in',
+    headers=headers,
+    params=params
+)
+print(response.json())
+```
+</CodeGroup>
+
+### Risposta
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "linkedid": "1710510730.12345",
+      "calldate": "2024-03-15 14:32:10",
+      "caller_number": "3331234567",
+      "caller_id": "Mario Rossi (3331234567)",
+      "destination": "0686858483",
+      "status": "answered",
+      "answered": true,
+      "abandoned": false,
+      "total_duration": 125,
+      "duration_formatted": "00:02:05",
+      "call_legs": 2
+    }
+  ],
+  "pagination": {
+    "current_page": 1,
+    "total_pages": 5,
+    "total_calls": 230,
+    "per_page": 50,
+    "showing_from": 1,
+    "showing_to": 50
+  },
+  "filters": {
+    "date_range": {
+      "start": "2024-03-14 00:00:00",
+      "end": "2024-03-15 23:59:59",
+      "description": "Oggi e ieri"
+    },
+    "numbers": ["0686858483"],
+    "search": ""
+  }
+}
+```
+
+---
+
+## GET /v1/calls/in/{date}
+
+Restituisce le chiamate in entrata di una **data specifica**.
+
+### Parametri URL
+
+| Parametro | Formato | Descrizione |
+|-----------|---------|-------------|
+| `date` | YYYY-MM-DD | Data da consultare |
+
+### Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/calls/in/2024-03-10" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get(
+    'https://api.mycentralino.com/v1/calls/in/2024-03-10',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Valori Status
+
+| Status | Descrizione |
+|--------|-------------|
+| `answered` | Chiamata risposta |
+| `not_answered` | Chiamata non risposta |
+| `abandoned` | Abbandonata in coda |

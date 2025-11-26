@@ -1,0 +1,135 @@
+---
+title: "Stato Interni"
+description: "Verifica lo stato di registrazione degli interni"
+---
+
+# Stato degli Interni
+
+## GET /v1/extensions/status
+
+Restituisce lo stato di tutti gli interni del centralino.
+
+### Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/extensions/status \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/extensions/status');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get(
+    'https://api.mycentralino.com/v1/extensions/status',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+### Risposta
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "extension": "101",
+      "internal_number": "101",
+      "description": "Mario Rossi",
+      "status": "ONLINE",
+      "is_online": true
+    },
+    {
+      "extension": "102",
+      "internal_number": "102",
+      "description": "Anna Bianchi",
+      "status": "BUSY",
+      "is_online": true
+    },
+    {
+      "extension": "103",
+      "internal_number": "103",
+      "description": "Luca Verdi",
+      "status": "OFFLINE",
+      "is_online": false
+    }
+  ],
+  "count": 3,
+  "summary": {
+    "online": 2,
+    "offline": 1
+  }
+}
+```
+
+---
+
+## GET /v1/extensions/status/{number}
+
+Restituisce lo stato di un singolo interno.
+
+### Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/extensions/status/101 \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get(
+    'https://api.mycentralino.com/v1/extensions/status/101',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+### Risposta
+
+```json
+{
+  "success": true,
+  "data": {
+    "extension": "101",
+    "internal_number": "101",
+    "description": "Mario Rossi",
+    "status": "ONLINE",
+    "is_online": true,
+    "timestamp": "2024-03-15 14:32:10"
+  }
+}
+```
+
+## Valori Status
+
+| Status | is_online | Descrizione |
+|--------|-----------|-------------|
+| `ONLINE` | true | Interno registrato e disponibile |
+| `OFFLINE` | false | Interno non registrato |
+| `BUSY` | true | Interno occupato in chiamata |
+| `RINGING` | true | Interno sta squillando |
+| `CALLING` | true | Interno sta effettuando una chiamata |
+| `UNKNOWN` | false | Stato non determinabile |

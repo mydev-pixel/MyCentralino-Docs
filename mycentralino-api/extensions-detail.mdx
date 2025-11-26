@@ -1,0 +1,95 @@
+---
+title: "Dettaglio Interno"
+description: "Ottieni i dettagli e la configurazione SIP di un interno"
+---
+
+# GET /v1/extensions/{number}
+
+Restituisce i dettagli di un interno specifico, inclusa la configurazione SIP per la registrazione.
+
+## Parametri URL
+
+| Parametro | Tipo | Descrizione |
+|-----------|------|-------------|
+| `number` | string | Extension o numero interno |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/extensions/101 \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$extension = '101';
+$ch = curl_init("https://api.mycentralino.com/v1/extensions/{$extension}");
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+$data = json_decode($response, true);
+print_r($data);
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+extension = '101'
+
+response = requests.get(
+    f'https://api.mycentralino.com/v1/extensions/{extension}',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 1234,
+    "extension": "101",
+    "internal_number": "101",
+    "description": "Mario Rossi",
+    "outbound_provider": "PRINCIPALE",
+    "sip_config": {
+      "server": "sip.mycentralino.com",
+      "stun_server": "stun.mycentralino.com",
+      "username": "101",
+      "port": 5060
+    }
+  }
+}
+```
+
+## Campi sip_config
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `server` | string | Server SIP per la registrazione |
+| `stun_server` | string | Server STUN per NAT traversal |
+| `username` | string | Username SIP (uguale a extension) |
+| `port` | int | Porta SIP (5060) |
+
+## Errori
+
+### 404 - Interno non trovato
+
+```json
+{
+  "success": false,
+  "error": "Interno non trovato"
+}
+```

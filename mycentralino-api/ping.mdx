@@ -1,0 +1,46 @@
+---
+title: "Ping"
+description: "Verifica la disponibilità del servizio API"
+---
+
+# GET /v1/ping
+
+Endpoint pubblico per verificare che il servizio API sia attivo. Non richiede autenticazione.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl https://api.mycentralino.com/v1/ping
+```
+
+```php PHP
+<?php
+$response = file_get_contents('https://api.mycentralino.com/v1/ping');
+$data = json_decode($response, true);
+print_r($data);
+```
+
+```python Python
+import requests
+
+response = requests.get('https://api.mycentralino.com/v1/ping')
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "status": "ok",
+  "timestamp": "2024-03-15 14:32:10"
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `status` | string | Sempre `ok` se il servizio è attivo |
+| `timestamp` | string | Data e ora del server (Y-m-d H:i:s) |

@@ -1,0 +1,108 @@
+---
+title: "Stato Numerazioni VoIP"
+description: "Verifica lo stato di registrazione delle numerazioni VoIP"
+---
+
+# GET /v1/voip/status
+
+Restituisce lo stato di registrazione di tutte le numerazioni VoIP associate al centralino.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/voip/status \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/voip/status');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get(
+    'https://api.mycentralino.com/v1/voip/status',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "number": "0686858483",
+      "registered": true,
+      "provider": "Convergenze",
+      "provider_label": "MyCentralino CVG",
+      "username": "user123456",
+      "sip_server": "sip.provider.it",
+      "description": "Numero principale",
+      "note": ""
+    },
+    {
+      "number": "0212345678",
+      "registered": false,
+      "provider": "Messagenet",
+      "provider_label": "MyCentralino MSG",
+      "username": "user789012",
+      "sip_server": "sip.messagenet.it",
+      "description": "Numero secondario",
+      "note": "Da verificare"
+    }
+  ],
+  "count": 2,
+  "summary": {
+    "total": 2,
+    "registered": 1,
+    "unregistered": 1
+  }
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `number` | string | Numero telefonico |
+| `registered` | bool | Stato registrazione SIP |
+| `provider` | string | Provider VoIP tecnico |
+| `provider_label` | string | Nome provider leggibile |
+| `username` | string | Username SIP |
+| `sip_server` | string | Server SIP del provider |
+| `description` | string | Descrizione del numero |
+| `note` | string | Note aggiuntive |
+
+## Provider Labels
+
+| Provider | Label |
+|----------|-------|
+| `Convergenze` | MyCentralino CVG |
+| `Messagenet` | MyCentralino MSG |
+| `SBC` | MyCentralino |
+| `VIRTUAL` | Virtuale |
+
+## Note
+
+- I numeri con provider `VIRTUAL` o `SBC` risultano sempre registrati
+- Lo stato `registered: false` indica un problema di connettività con il provider VoIP
+- Usa il `summary` per un monitoraggio rapido dello stato generale

@@ -73,49 +73,37 @@
           {
             "group": "Inizia",
             "pages": [
-              "mycentralino-api/introduzione",
-              "mycentralino-api/autenticazione",
-              "mycentralino-api/quick-start"
+              "mycentralino-api/introduction",
+              "mycentralino-api/ping",
+              "mycentralino-api/account"
             ]
           },
           {
-            "group": "Gestione Interni",
+            "group": "Interni",
             "pages": [
-              "mycentralino-api/interni/lista",
-              "mycentralino-api/interni/crea",
-              "mycentralino-api/interni/modifica",
-              "mycentralino-api/interni/elimina"
+              "mycentralino-api/extensions-list",
+              "mycentralino-api/extensions-detail",
+              "mycentralino-api/extensions-status"
             ]
           },
           {
             "group": "Chiamate",
             "pages": [
-              "mycentralino-api/chiamate/effettua",
-              "mycentralino-api/chiamate/stato",
-              "mycentralino-api/chiamate/termina",
-              "mycentralino-api/chiamate/trasferisci"
+              "mycentralino-api/call-originate",
+              "mycentralino-api/calls-inbound",
+              "mycentralino-api/calls-outbound"
             ]
           },
           {
-            "group": "Code e IVR",
+            "group": "Code",
             "pages": [
-              "mycentralino-api/code/gestione",
-              "mycentralino-api/ivr/gestione"
+              "mycentralino-api/queue"
             ]
           },
           {
-            "group": "CDR e Analytics",
+            "group": "Numerazioni VoIP",
             "pages": [
-              "mycentralino-api/cdr/lista",
-              "mycentralino-api/cdr/export",
-              "mycentralino-api/statistiche"
-            ]
-          },
-          {
-            "group": "Webhook",
-            "pages": [
-              "mycentralino-api/webhook/configurazione",
-              "mycentralino-api/webhook/eventi"
+              "mycentralino-api/voip-status"
             ]
           }
         ]

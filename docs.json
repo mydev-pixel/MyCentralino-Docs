@@ -11,23 +11,12 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Introduzione",
-        "groups": [
-          {
-            "group": "Benvenuto",
-            "pages": [
-              "index",
-              "mycentralino-api/introduction"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "API Centralino",
         "groups": [
           {
             "group": "Inizia",
             "pages": [
+              "index",
               "mycentralino-api/introduction",
               "mycentralino-api/ping",
               "mycentralino-api/account"

@@ -22,52 +22,6 @@
         ]
       },
       {
-        "tab": "Guida Centralino",
-        "groups": [
-          {
-            "group": "Panoramica",
-            "pages": [
-              "mycentralino/introduzione",
-              "mycentralino/primi-passi"
-            ]
-          },
-          {
-            "group": "Funzionalità Base",
-            "pages": [
-              "mycentralino/interni",
-              "mycentralino/numeri-voip",
-              "mycentralino/chiamate"
-            ]
-          },
-          {
-            "group": "Funzionalità Avanzate",
-            "pages": [
-              "mycentralino/ivr",
-              "mycentralino/code",
-              "mycentralino/gruppi-squillo",
-              "mycentralino/deviazioni",
-              "mycentralino/registrazioni"
-            ]
-          },
-          {
-            "group": "Regole e Routing",
-            "pages": [
-              "mycentralino/regole-instradamento",
-              "mycentralino/orari-apertura",
-              "mycentralino/blacklist-whitelist"
-            ]
-          },
-          {
-            "group": "Integrazioni",
-            "pages": [
-              "mycentralino/whatsapp",
-              "mycentralino/assistente-ai",
-              "mycentralino/crm"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "API Centralino",
         "groups": [
           {

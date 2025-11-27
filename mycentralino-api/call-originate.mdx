@@ -23,7 +23,7 @@ curl -X POST https://api.mycentralino.com/v1/call/originate \
   -H "X-API-KEY: sk_mycentralino_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{
-    "extension": "101",
+    "extension": "201",
     "number": "3331234567",
     "description": "Cliente importante"
   }'
@@ -32,7 +32,7 @@ curl -X POST https://api.mycentralino.com/v1/call/originate \
 ```php PHP
 <?php
 $data = [
-    'extension' => '101',
+    'extension' => '201',
     'number' => '3331234567',
     'description' => 'Cliente importante'
 ];
@@ -64,7 +64,7 @@ headers = {
 }
 
 data = {
-    'extension': '101',
+    'extension': '201',
     'number': '3331234567',
     'description': 'Cliente importante'
 }
@@ -86,9 +86,9 @@ print(response.json())
   "message": "Chiamata originata con successo",
   "data": {
     "call_id": "call_65f3a2b1c4e5f6.12345678",
-    "extension": "101",
+    "extension": "201",
     "number": "3331234567",
-    "channel": "PJSIP/101",
+    "channel": "PJSIP/201",
     "timestamp": "2024-03-15 14:32:10"
   }
 }

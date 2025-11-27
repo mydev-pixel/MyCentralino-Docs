@@ -43,7 +43,7 @@ print_r($data);
 import requests
 
 headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
-extension = '101'
+extension = '201'
 
 response = requests.get(
     f'https://api.mycentralino.com/v1/extensions/{extension}',
@@ -60,8 +60,8 @@ print(response.json())
   "success": true,
   "data": {
     "id": 1234,
-    "extension": "101",
-    "internal_number": "101",
+    "extension": "22123",
+    "internal_number": "201",
     "description": "Mario Rossi",
     "outbound_provider": "PRINCIPALE",
     "sip_config": {

@@ -16,7 +16,8 @@
           {
             "group": "Benvenuto",
             "pages": [
-              "index"
+              "index",
+              "mycentralino-api/introduction",
             ]
           }
         ]

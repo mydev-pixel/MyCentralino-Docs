@@ -41,7 +41,8 @@
           {
             "group": "Code",
             "pages": [
-              "mycentralino-api/queue"
+              "mycentralino-api/queue",
+              "mycentralino-api/queue-live"
             ]
           },
           {

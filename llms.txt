@@ -1,0 +1,133 @@
+# MyCentralino API
+
+> Documentazione completa delle API REST del centralino VoIP in cloud MyCentralino.
+> Base URL: https://api.mycentralino.com
+> Docs: https://docs.mycentralino.com
+
+## Autenticazione
+
+Tutte le richieste (eccetto GET /v1/ping) richiedono l'header:
+  X-API-KEY: sk_mycentralino_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Rate limiting per account (non per chiave):
+- 20 richieste/minuto (default)
+- 1000 richieste/giorno (default)
+
+Headers di risposta inclusi: X-RateLimit-Limit-Minute, X-RateLimit-Remaining-Minute, X-RateLimit-Limit-Day, X-RateLimit-Remaining-Day.
+Se superati: HTTP 429 con header Retry-After.
+
+Formato risposte JSON: { "success": true, "data": {...} } oppure { "success": false, "error": "..." }
+Codici HTTP: 200 (successo), 400 (richiesta non valida), 401 (API key mancante/non valida), 404 (non trovato), 429 (rate limit), 500 (errore interno), 503 (server non raggiungibile).
+
+---
+
+## Endpoint
+
+### GET /v1/ping
+Endpoint pubblico, non richiede autenticazione. Verifica che il servizio sia attivo.
+Risposta: { "status": "ok", "timestamp": "2024-03-15 14:32:10" }
+
+### GET /v1/account
+Informazioni account, limiti configurati e utilizzo corrente.
+Risposta: context (string), key_name (string), limits.requests_per_minute (int), limits.requests_per_day (int), usage.minute.used (int), usage.minute.limit (int), usage.day.used (int), usage.day.limit (int).
+
+### GET /v1/extensions
+Lista tutti gli interni del centralino.
+Risposta array: id (int), extension (string, nome tecnico), internal_number (string, caller ID), description (string), outbound_provider (string: PRINCIPALE|DISABILITATE|SCELTA MANUALE).
+
+### GET /v1/extensions/{number}
+Dettaglio di un interno specifico con configurazione SIP. Il parametro {number} puo' essere l'extension o il numero interno.
+Risposta: come /v1/extensions + sip_config: { server: "sip.mycentralino.com", stun_server: "stun.mycentralino.com", username (string), port: 5060 }.
+Errore 404: "Interno non trovato".
+
+### GET /v1/extensions/status
+Stato di registrazione di tutti gli interni.
+Risposta array: extension (string), internal_number (string), description (string), status (string), is_online (bool).
+Include summary: { online (int), offline (int) }.
+Valori status: ONLINE (is_online=true), OFFLINE (false), BUSY (true), RINGING (true), CALLING (true), UNKNOWN (false).
+
+### GET /v1/extensions/status/{number}
+Stato di un singolo interno. Stessi campi + timestamp.
+
+### GET /v1/calls/in
+Chiamate in entrata di oggi e ieri (default).
+Query params: page (int, default 1), limit (int, default 200, max 500), search (string, filtra per numero), numbers[] (array, filtra per numeri VoIP).
+Risposta array: id (int), linkedid (string), calldate (string), caller_number (string), caller_id (string), destination (string), status (string: answered|not_answered|abandoned), answered (bool), abandoned (bool), total_duration (int, secondi), duration_formatted (string HH:MM:SS), call_legs (int).
+Include pagination: current_page, total_pages, total_calls, per_page, showing_from, showing_to.
+Include filters: date_range (start, end, description), numbers, search.
+
+### GET /v1/calls/in/{date}
+Chiamate in entrata per data specifica. Formato: YYYY-MM-DD. Non accetta date future.
+Stessi query params e risposta di GET /v1/calls/in.
+
+### GET /v1/calls/out
+Chiamate in uscita di oggi e ieri (default).
+Query params: page (int, default 1), limit (int, default 200, max 500), search (string), extensions[] (array, filtra per interni).
+Risposta array: calldate (string), caller_id (string), source (string), destination (string), billsec (int, secondi), duration (string HH:MM:SS), disposition (string: ANSWERED|NO ANSWER|BUSY|FAILED), uniqueid (string), provider (string).
+Include pagination e filters.
+
+### GET /v1/calls/out/{date}
+Chiamate in uscita per data specifica. Formato: YYYY-MM-DD. Non accetta date future.
+Stessi query params e risposta di GET /v1/calls/out.
+
+### GET /v1/queue
+Lista tutte le code configurate con i relativi membri.
+Risposta array: queue_name (string), strategy (string), timeout (int), musiconhold (string), announce (string), maxlen (int), members (array: extension, callerid, description), total_members (int).
+Valori strategy: ringall (squilla tutti), roundrobin (a rotazione), leastrecent (meno recente), fewestcalls (meno chiamate), random (casuale).
+
+### GET /v1/queue/{name}
+Dettaglio coda specifica con statistiche giornaliere.
+Risposta: stessi campi di /v1/queue + statistics: { date (string), calls_entered (int), calls_answered (int), calls_abandoned (int), avg_wait_time (int, secondi), avg_wait_time_formatted (string mm:ss) }.
+Errore 404: "Coda non trovata".
+
+### GET /v1/queue/live
+Stato in tempo reale di TUTTE le code via connessione diretta al server telefonico (AMI).
+Risposta array di code, ciascuna con:
+- Parametri coda: queue_name, max, strategy, calls_waiting (int), holdtime (int), talktime (int), completed (int), abandoned (int), service_level (int), service_level_perf (float), weight (int).
+- members (array): extension (string), name (string), status (string), status_code (int), paused (bool), in_call (bool), calls_taken (int), last_call (string|null), penalty (int), callerid (string), description (string).
+- callers (array): position (int), channel (string), caller_number (string), caller_name (string), wait_seconds (int), wait_formatted (string mm:ss).
+- summary: total_members (int), members_available (int), members_in_call (int), members_paused (int), members_unavailable (int), callers_waiting (int).
+Valori status membri: AVAILABLE (1, disponibile), IN_CALL (2, in chiamata), BUSY (3, occupato), INVALID (4, non valido), UNAVAILABLE (5, offline), RINGING (6, squilla), RINGING_IN_USE (7, squilla in chiamata), ON_HOLD (8, in attesa), UNKNOWN (0).
+
+### GET /v1/queue/{name}/live
+Stato in tempo reale di una singola coda. Stessi campi di /v1/queue/live ma per una sola coda.
+Il nome coda deve essere URL-encoded se contiene caratteri speciali (es: @ -> %40).
+Errore 404: "Coda non trovata".
+
+### POST /v1/call/originate
+Origina una chiamata click-to-call: il centralino chiama prima l'interno, poi collega al numero di destinazione.
+Request body JSON: extension (string, obbligatorio), number (string, obbligatorio), description (string, opzionale per caller ID).
+Risposta successo: call_id (string), extension (string), number (string), channel (string), timestamp (string).
+Errori: 400 parametri mancanti, 400 numero non valido (min 6 cifre), 404 interno non trovato, 503 connessione fallita.
+Note: la chiamata e' asincrona, il numero viene pulito automaticamente, se description e' vuoto cerca nel CRM.
+
+### GET /v1/voip/status
+Stato di registrazione delle numerazioni VoIP.
+Risposta array: number (string), registered (bool), provider (string), provider_label (string), username (string), sip_server (string), description (string), note (string).
+Include summary: total (int), registered (int), unregistered (int).
+Provider labels: Convergenze -> MyCentralino CVG, Messagenet -> MyCentralino MSG, SBC -> MyCentralino, VIRTUAL -> Virtuale.
+Note: provider VIRTUAL e SBC risultano sempre registrati.
+
+---
+
+## Pagine documentazione
+
+- [Benvenuto](https://docs.mycentralino.com): Panoramica del centralino VoIP in cloud
+- [Introduzione API](https://docs.mycentralino.com/mycentralino-api/introduction): Autenticazione, rate limiting, formato risposte
+- [Ping](https://docs.mycentralino.com/mycentralino-api/ping): Health check del servizio
+- [Account](https://docs.mycentralino.com/mycentralino-api/account): Info account e utilizzo
+- [Lista Interni](https://docs.mycentralino.com/mycentralino-api/extensions-list): Elenco interni
+- [Dettaglio Interno](https://docs.mycentralino.com/mycentralino-api/extensions-detail): Dettaglio e configurazione SIP
+- [Stato Interni](https://docs.mycentralino.com/mycentralino-api/extensions-status): Stato registrazione interni
+- [Origina Chiamata](https://docs.mycentralino.com/mycentralino-api/call-originate): Click-to-call
+- [Chiamate in Entrata](https://docs.mycentralino.com/mycentralino-api/calls-inbound): Storico chiamate in ingresso
+- [Chiamate in Uscita](https://docs.mycentralino.com/mycentralino-api/calls-outbound): Storico chiamate in uscita
+- [Code di Chiamata](https://docs.mycentralino.com/mycentralino-api/queue): Gestione e statistiche code
+- [Stato Live Code](https://docs.mycentralino.com/mycentralino-api/queue-live): Stato real-time code via AMI
+- [Stato Numerazioni VoIP](https://docs.mycentralino.com/mycentralino-api/voip-status): Stato registrazione numerazioni
+
+## Link utili
+
+- [Sito Web](https://mycentralino.com)
+- [Supporto](https://www.mycentralino.com/contattaci/)
+- [Dashboard](https://pbx.mycentralino.com/home-centralino)

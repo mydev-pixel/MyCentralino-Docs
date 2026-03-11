@@ -1,0 +1,324 @@
+---
+title: "Stato Live Code"
+description: "Stato in tempo reale delle code di chiamata: membri attivi, chiamanti in attesa e statistiche live"
+---
+
+# Stato Live Code
+
+Questi endpoint si collegano direttamente al server Asterisk via AMI per restituire lo **stato in tempo reale** delle code: chi è disponibile, chi è al telefono, chi è in pausa e chi è in attesa.
+
+> A differenza di `/v1/queue/{name}` che restituisce statistiche giornaliere dal database, gli endpoint **live** interrogano il server telefonico in tempo reale.
+
+---
+
+## GET /v1/queue/live
+
+Restituisce lo stato live di **tutte le code** del tuo account in un'unica chiamata.
+
+### Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/queue/live \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/queue/live');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get(
+    'https://api.mycentralino.com/v1/queue/live',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+### Risposta
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "queue_name": "commerciale",
+      "max": 10,
+      "strategy": "ringall",
+      "calls_waiting": 1,
+      "holdtime": 15,
+      "talktime": 180,
+      "completed": 45,
+      "abandoned": 5,
+      "service_level": 0,
+      "service_level_perf": 0,
+      "weight": 0,
+      "members": [
+        {
+          "extension": "12345",
+          "name": "Mario Rossi",
+          "status": "IN_CALL",
+          "status_code": 2,
+          "paused": false,
+          "in_call": true,
+          "calls_taken": 12,
+          "last_call": "2024-03-15 10:30:00",
+          "penalty": 0,
+          "callerid": "201",
+          "description": "Mario Rossi"
+        },
+        {
+          "extension": "12346",
+          "name": "Anna Bianchi",
+          "status": "AVAILABLE",
+          "status_code": 1,
+          "paused": false,
+          "in_call": false,
+          "calls_taken": 8,
+          "last_call": "2024-03-15 10:25:12",
+          "penalty": 0,
+          "callerid": "202",
+          "description": "Anna Bianchi"
+        }
+      ],
+      "callers": [
+        {
+          "position": 1,
+          "channel": "PJSIP/trunk-00000012",
+          "caller_number": "0612345678",
+          "caller_name": "",
+          "wait_seconds": 23,
+          "wait_formatted": "00:23"
+        }
+      ],
+      "summary": {
+        "total_members": 2,
+        "members_available": 1,
+        "members_in_call": 1,
+        "members_paused": 0,
+        "members_unavailable": 0,
+        "callers_waiting": 1
+      }
+    }
+  ],
+  "count": 1
+}
+```
+
+---
+
+## GET /v1/queue/{name}/live
+
+Restituisce lo stato live di una **singola coda** specifica.
+
+### Parametri URL
+
+| Parametro | Tipo | Descrizione |
+|-----------|------|-------------|
+| `name` | string | Nome della coda (URL-encoded se contiene caratteri speciali) |
+
+### Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/queue/commerciale/live \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$queueName = urlencode('commerciale');
+$ch = curl_init("https://api.mycentralino.com/v1/queue/{$queueName}/live");
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+from urllib.parse import quote
+
+queue_name = quote('commerciale')
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get(
+    f'https://api.mycentralino.com/v1/queue/{queue_name}/live',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+### Risposta
+
+```json
+{
+  "success": true,
+  "data": {
+    "queue_name": "commerciale",
+    "max": 10,
+    "strategy": "ringall",
+    "calls_waiting": 2,
+    "holdtime": 15,
+    "talktime": 180,
+    "completed": 45,
+    "abandoned": 5,
+    "service_level": 0,
+    "service_level_perf": 0,
+    "weight": 0,
+    "members": [
+      {
+        "extension": "12345",
+        "name": "Mario Rossi",
+        "status": "IN_CALL",
+        "status_code": 2,
+        "paused": false,
+        "in_call": true,
+        "calls_taken": 12,
+        "last_call": "2024-03-15 10:30:00",
+        "penalty": 0,
+        "callerid": "201",
+        "description": "Mario Rossi"
+      },
+      {
+        "extension": "12346",
+        "name": "Anna Bianchi",
+        "status": "AVAILABLE",
+        "status_code": 1,
+        "paused": false,
+        "in_call": false,
+        "calls_taken": 8,
+        "last_call": "2024-03-15 10:25:12",
+        "penalty": 0,
+        "callerid": "202",
+        "description": "Anna Bianchi"
+      },
+      {
+        "extension": "12347",
+        "name": "Luca Verdi",
+        "status": "UNAVAILABLE",
+        "status_code": 5,
+        "paused": false,
+        "in_call": false,
+        "calls_taken": 0,
+        "last_call": null,
+        "penalty": 0,
+        "callerid": "203",
+        "description": "Luca Verdi"
+      }
+    ],
+    "callers": [
+      {
+        "position": 1,
+        "channel": "PJSIP/trunk-00000012",
+        "caller_number": "0612345678",
+        "caller_name": "",
+        "wait_seconds": 45,
+        "wait_formatted": "00:45"
+      },
+      {
+        "position": 2,
+        "channel": "PJSIP/trunk-00000013",
+        "caller_number": "3331234567",
+        "caller_name": "Marco Neri",
+        "wait_seconds": 12,
+        "wait_formatted": "00:12"
+      }
+    ],
+    "summary": {
+      "total_members": 3,
+      "members_available": 1,
+      "members_in_call": 1,
+      "members_paused": 0,
+      "members_unavailable": 1,
+      "callers_waiting": 2
+    }
+  }
+}
+```
+
+### Errori
+
+```json
+{
+  "success": false,
+  "error": "Coda non trovata"
+}
+```
+
+---
+
+## Campi Members
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `extension` | string | Numero interno dell'operatore |
+| `name` | string | Nome dell'operatore dal server |
+| `status` | string | Stato attuale (vedi tabella sotto) |
+| `status_code` | int | Codice numerico dello stato |
+| `paused` | bool | Se l'operatore e' in pausa |
+| `in_call` | bool | Se l'operatore e' attualmente in chiamata |
+| `calls_taken` | int | Chiamate gestite (dal riavvio della coda) |
+| `last_call` | string\|null | Data/ora dell'ultima chiamata gestita |
+| `penalty` | int | Priorita' dell'operatore nella coda |
+| `callerid` | string | Numero interno breve |
+| `description` | string | Descrizione dell'operatore |
+
+## Campi Callers
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `position` | int | Posizione in coda (1 = primo) |
+| `channel` | string | Canale SIP della chiamata |
+| `caller_number` | string | Numero del chiamante |
+| `caller_name` | string | Nome del chiamante (se disponibile) |
+| `wait_seconds` | int | Secondi in attesa |
+| `wait_formatted` | string | Tempo di attesa formattato (mm:ss) |
+
+## Campi Summary
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `total_members` | int | Totale operatori nella coda |
+| `members_available` | int | Operatori disponibili |
+| `members_in_call` | int | Operatori attualmente in chiamata |
+| `members_paused` | int | Operatori in pausa |
+| `members_unavailable` | int | Operatori non raggiungibili |
+| `callers_waiting` | int | Chiamanti in attesa |
+
+## Stato Operatore (status)
+
+| Valore | Codice | Descrizione |
+|--------|--------|-------------|
+| `AVAILABLE` | 1 | Disponibile, pronto a ricevere chiamate |
+| `IN_CALL` | 2 | In chiamata |
+| `BUSY` | 3 | Occupato |
+| `INVALID` | 4 | Interno non valido |
+| `UNAVAILABLE` | 5 | Non raggiungibile (telefono spento/offline) |
+| `RINGING` | 6 | Sta squillando |
+| `RINGING_IN_USE` | 7 | Squilla mentre e' gia' in chiamata |
+| `ON_HOLD` | 8 | Chiamata in attesa |
+| `UNKNOWN` | 0 | Stato sconosciuto |

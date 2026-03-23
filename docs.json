@@ -52,49 +52,6 @@
             ]
           }
         ]
-      },
-      {
-        "tab": "Wave API",
-        "groups": [
-          {
-            "group": "Panoramica",
-            "pages": [
-              "wave/introduzione",
-              "wave/autenticazione"
-            ]
-          },
-          {
-            "group": "Chiamate Outbound",
-            "pages": [
-              "wave/outbound/chiamata-semplice",
-              "wave/outbound/chiamata-avanzata",
-              "wave/outbound/parametri"
-            ]
-          },
-          {
-            "group": "Chiamate Inbound",
-            "pages": [
-              "wave/inbound/gestione",
-              "wave/inbound/ivr-dinamico"
-            ]
-          },
-          {
-            "group": "AI e Realtime",
-            "pages": [
-              "wave/ai/openai-realtime",
-              "wave/ai/tts-stt",
-              "wave/websocket"
-            ]
-          },
-          {
-            "group": "Webhook e Eventi",
-            "pages": [
-              "wave/webhook/configurazione",
-              "wave/webhook/eventi",
-              "wave/webhook/esempi"
-            ]
-          }
-        ]
       }
     ],
     "global": {

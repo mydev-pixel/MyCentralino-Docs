@@ -1,0 +1,126 @@
+---
+title: "Lista Switch Manuali"
+description: "Ottieni l'elenco degli switch manuali del centralino"
+---
+
+# GET /v1/switches
+
+Restituisce l'elenco di tutti gli switch manuali configurati sul tuo centralino, con il relativo stato (attivo/disattivo).
+
+<Note>
+Uno **switch manuale** è un interruttore on/off che modifica il comportamento del centralino. Quando è **attivo** (`status: 1`), il centralino esegue l'azione configurata (es. terminare la chiamata, attivare un IVR, deviare a una coda).
+</Note>
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/switches \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/switches');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get(
+    'https://api.mycentralino.com/v1/switches',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 348,
+      "description": "Chiusura Temporanea",
+      "activation": "*11",
+      "action": {
+        "type": "hangup",
+        "target": null,
+        "label": "Termina la chiamata"
+      },
+      "status": 0,
+      "active": false
+    },
+    {
+      "id": 620,
+      "description": "Deviazione Notturna",
+      "activation": "*12",
+      "action": {
+        "type": "ivr",
+        "target": "Benvenuto",
+        "label": "Attiva IVR"
+      },
+      "status": 1,
+      "active": true
+    }
+  ],
+  "count": 2,
+  "summary": {
+    "total": 2,
+    "active": 1,
+    "inactive": 1
+  }
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `id` | int | ID univoco dello switch |
+| `description` | string | Nome/descrizione dello switch |
+| `activation` | string \| null | Codice stella per attivarlo da interno (`*10`–`*19`), `null` se non assegnato |
+| `action` | object | Azione eseguita quando lo switch è attivo |
+| `status` | int | `1` attivo, `0` disattivo |
+| `active` | bool | `true` se lo switch è attivo |
+
+### Oggetto action
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `type` | string | Tipo di azione (vedi tabella sotto) |
+| `target` | string \| null | Destinazione dell'azione (es. nome IVR o coda) |
+| `label` | string | Etichetta leggibile dell'azione |
+
+### Valori action.type
+
+| Valore | Etichetta |
+|--------|-----------|
+| `hangup` | Termina la chiamata |
+| `ivr` | Attiva IVR |
+| `queue` | Coda di ricezione |
+| `internalservice` | Servizio interno |
+| `squilla` | Chiama interno |
+| `voicemail` | Casella vocale |
+| `callforwarding` | Inoltro a numero |
+| `confbridge` | Conferenza audio |
+| `disa` | Chiamata diretta (DISA) |
+
+## Note
+
+- Usa `summary` per un conteggio rapido di switch attivi/disattivi.
+- Per attivare o disattivare uno switch vedi [Attiva/Disattiva Switch](/mycentralino-api/switches-toggle).

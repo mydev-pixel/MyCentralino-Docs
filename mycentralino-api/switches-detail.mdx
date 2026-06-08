@@ -1,0 +1,95 @@
+---
+title: "Dettaglio Switch"
+description: "Ottieni i dati e lo stato di un singolo switch manuale"
+---
+
+# GET /v1/switches/{id}
+
+Restituisce i dati e lo stato corrente di un singolo switch manuale, identificato dal suo ID.
+
+## Parametri URL
+
+| Parametro | Tipo | Descrizione |
+|-----------|------|-------------|
+| `id` | int | ID dello switch |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/switches/348 \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$id = 348;
+$ch = curl_init("https://api.mycentralino.com/v1/switches/{$id}");
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+switch_id = 348
+
+response = requests.get(
+    f'https://api.mycentralino.com/v1/switches/{switch_id}',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 348,
+    "description": "Chiusura Temporanea",
+    "activation": "*11",
+    "action": {
+      "type": "hangup",
+      "target": null,
+      "label": "Termina la chiamata"
+    },
+    "status": 0,
+    "active": false
+  }
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `id` | int | ID univoco dello switch |
+| `description` | string | Nome/descrizione dello switch |
+| `activation` | string \| null | Codice stella di attivazione (`*10`–`*19`), `null` se non assegnato |
+| `action` | object | Azione eseguita quando lo switch è attivo (`type`, `target`, `label`) |
+| `status` | int | `1` attivo, `0` disattivo |
+| `active` | bool | `true` se lo switch è attivo |
+
+## Errori
+
+### 404 - Switch non trovato
+
+```json
+{
+  "success": false,
+  "error": "Switch non trovato"
+}
+```

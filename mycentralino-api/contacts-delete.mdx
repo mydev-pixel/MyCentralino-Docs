@@ -1,0 +1,82 @@
+---
+title: "Elimina Contatto"
+description: "Rimuovi un contatto dalla rubrica"
+---
+
+# DELETE /v1/contacts/{id}
+
+Elimina definitivamente un contatto dalla rubrica del centralino.
+
+## Parametri URL
+
+| Parametro | Tipo | Descrizione |
+|-----------|------|-------------|
+| `id` | int | ID del contatto da eliminare |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X DELETE https://api.mycentralino.com/v1/contacts/12345 \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$id = 12345;
+$ch = curl_init("https://api.mycentralino.com/v1/contacts/{$id}");
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'DELETE',
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+contact_id = 12345
+
+response = requests.delete(
+    f'https://api.mycentralino.com/v1/contacts/{contact_id}',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta Successo
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 12345,
+    "deleted": true
+  }
+}
+```
+
+## Errori
+
+### 404 - Contatto non trovato
+
+```json
+{
+  "success": false,
+  "error": "Contatto non trovato"
+}
+```
+
+## Note
+
+- L'eliminazione è **definitiva** e non può essere annullata.
+- Eliminare contatti libera spazio rispetto al limite di 4000 per account.

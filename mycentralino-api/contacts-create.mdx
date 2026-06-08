@@ -1,0 +1,145 @@
+---
+title: "Aggiungi Contatto"
+description: "Crea un nuovo contatto nella rubrica (max 4000 per account)"
+---
+
+# POST /v1/contacts
+
+Crea un nuovo contatto nella rubrica del centralino.
+
+<Warning>
+Ogni account può registrare al massimo **4000 contatti**. Quando il limite è raggiunto, la creazione di nuovi contatti viene rifiutata con un errore `403`. La modifica dei contatti esistenti resta sempre consentita.
+</Warning>
+
+## Request Body
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `number` | string | ✅ | Numero di telefono (max 25 caratteri) |
+| `name` | string | ✅ | Nome del contatto (max 80 caratteri) |
+| `company` | string | ❌ | Azienda (max 50 caratteri) |
+| `notes` | string | ❌ | Note (max 255 caratteri) |
+
+<Note>
+Il campo `number` ammette cifre e i caratteri `+ ( ) . - /` e spazi. La coppia account + numero deve essere **univoca**.
+</Note>
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST https://api.mycentralino.com/v1/contacts \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "number": "3331234567",
+    "name": "Mario Rossi",
+    "company": "ACME S.r.l.",
+    "notes": "Cliente principale"
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'number' => '3331234567',
+    'name' => 'Mario Rossi',
+    'company' => 'ACME S.r.l.',
+    'notes' => 'Cliente principale'
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/contacts');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {
+    'X-API-KEY': 'sk_mycentralino_your_api_key',
+    'Content-Type': 'application/json'
+}
+
+data = {
+    'number': '3331234567',
+    'name': 'Mario Rossi',
+    'company': 'ACME S.r.l.',
+    'notes': 'Cliente principale'
+}
+
+response = requests.post(
+    'https://api.mycentralino.com/v1/contacts',
+    headers=headers,
+    json=data
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta Successo
+
+`201 Created`
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 12347,
+    "number": "3331234567",
+    "name": "Mario Rossi",
+    "company": "ACME S.r.l.",
+    "notes": "Cliente principale"
+  }
+}
+```
+
+## Errori
+
+### 400 - Dati non validi
+
+```json
+{
+  "success": false,
+  "error": "Il campo \"number\" e' obbligatorio."
+}
+```
+
+### 403 - Limite raggiunto
+
+```json
+{
+  "success": false,
+  "error": "Limite massimo di 4000 contatti raggiunto. Impossibile aggiungere nuovi contatti.",
+  "limit": {
+    "max": 4000,
+    "used": 4000
+  }
+}
+```
+
+### 409 - Numero già presente
+
+```json
+{
+  "success": false,
+  "error": "Esiste gia' un contatto con questo numero in rubrica."
+}
+```
+
+## Note
+
+- Il limite di 4000 contatti è **per account**.
+- I campi `company` e `notes` sono opzionali: se omessi o vuoti vengono salvati come `null`.

@@ -1,0 +1,89 @@
+---
+title: "Dettaglio Contatto"
+description: "Ottieni i dati di un singolo contatto della rubrica"
+---
+
+# GET /v1/contacts/{id}
+
+Restituisce i dati di un singolo contatto della rubrica, identificato dal suo ID.
+
+## Parametri URL
+
+| Parametro | Tipo | Descrizione |
+|-----------|------|-------------|
+| `id` | int | ID del contatto |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET https://api.mycentralino.com/v1/contacts/12345 \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$id = 12345;
+$ch = curl_init("https://api.mycentralino.com/v1/contacts/{$id}");
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+contact_id = 12345
+
+response = requests.get(
+    f'https://api.mycentralino.com/v1/contacts/{contact_id}',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 12345,
+    "number": "3331234567",
+    "name": "Mario Rossi",
+    "company": "ACME S.r.l.",
+    "notes": "Cliente principale"
+  }
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `id` | int | ID univoco del contatto |
+| `number` | string | Numero di telefono |
+| `name` | string | Nome del contatto |
+| `company` | string \| null | Azienda (opzionale) |
+| `notes` | string \| null | Note (opzionale) |
+
+## Errori
+
+### 404 - Contatto non trovato
+
+```json
+{
+  "success": false,
+  "error": "Contatto non trovato"
+}
+```

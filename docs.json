@@ -50,6 +50,24 @@
             "pages": [
               "mycentralino-api/voip-status"
             ]
+          },
+          {
+            "group": "Rubrica",
+            "pages": [
+              "mycentralino-api/contacts-list",
+              "mycentralino-api/contacts-detail",
+              "mycentralino-api/contacts-create",
+              "mycentralino-api/contacts-update",
+              "mycentralino-api/contacts-delete"
+            ]
+          },
+          {
+            "group": "Switch Manuali",
+            "pages": [
+              "mycentralino-api/switches-list",
+              "mycentralino-api/switches-detail",
+              "mycentralino-api/switches-toggle"
+            ]
           }
         ]
       }

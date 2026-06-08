@@ -1,0 +1,138 @@
+---
+title: "Attiva/Disattiva Switch"
+description: "Attiva o disattiva uno switch manuale del centralino"
+---
+
+# PUT /v1/switches/{id}
+
+Attiva o disattiva uno switch manuale. L'operazione è **idempotente**: impostare uno stato già presente restituisce comunque successo.
+
+<Warning>
+Attivare o disattivare uno switch **modifica in tempo reale il comportamento del centralino** sulle chiamate associate.
+</Warning>
+
+## Parametri URL
+
+| Parametro | Tipo | Descrizione |
+|-----------|------|-------------|
+| `id` | int | ID dello switch |
+
+## Request Body
+
+Indica lo stato desiderato con **uno** dei seguenti campi:
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `active` | bool | `true` per attivare, `false` per disattivare |
+| `status` | int | `1` per attivare, `0` per disattivare |
+
+<Note>
+Se sono presenti entrambi i campi, ha priorità `active`.
+</Note>
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X PUT https://api.mycentralino.com/v1/switches/348 \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "active": true
+  }'
+```
+
+```php PHP
+<?php
+$id = 348;
+$data = ['active' => true];
+
+$ch = curl_init("https://api.mycentralino.com/v1/switches/{$id}");
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'PUT',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {
+    'X-API-KEY': 'sk_mycentralino_your_api_key',
+    'Content-Type': 'application/json'
+}
+switch_id = 348
+data = {'active': True}
+
+response = requests.put(
+    f'https://api.mycentralino.com/v1/switches/{switch_id}',
+    headers=headers,
+    json=data
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta Successo
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 348,
+    "description": "Chiusura Temporanea",
+    "activation": "*11",
+    "action": {
+      "type": "hangup",
+      "target": null,
+      "label": "Termina la chiamata"
+    },
+    "status": 1,
+    "active": true
+  }
+}
+```
+
+## Errori
+
+### 400 - Parametro mancante
+
+```json
+{
+  "success": false,
+  "error": "Parametro mancante: indicare \"active\" (true/false) oppure \"status\" (1/0)"
+}
+```
+
+### 400 - Stato non valido
+
+```json
+{
+  "success": false,
+  "error": "Stato non valido: usare 1 (attiva) o 0 (disattiva)."
+}
+```
+
+### 404 - Switch non trovato
+
+```json
+{
+  "success": false,
+  "error": "Switch non trovato"
+}
+```
+
+## Note
+
+- La risposta contiene lo switch aggiornato con il nuovo `status` e `active`.
+- L'endpoint modifica **solo lo stato** (attivo/disattivo): il codice di attivazione e l'azione si configurano dal pannello di gestione.

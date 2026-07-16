@@ -1,0 +1,122 @@
+---
+title: "Dettaglio Blacklist"
+description: "Dettaglio di una blacklist con tutti i numeri bloccati"
+---
+
+# GET /v1/blacklists/\{name\}
+
+Restituisce il dettaglio di una blacklist: i numeri bloccati (con il loro `id`, necessario per modificarli o eliminarli) e le regole di instradamento che la utilizzano.
+
+## Parametri URL
+
+| Parametro | Tipo | Descrizione |
+|-----------|------|-------------|
+| `name` | string | Nome della blacklist (lettere, numeri, `_` e `-`) |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl https://api.mycentralino.com/v1/blacklists/SPAM \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/blacklists/SPAM');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {
+    'X-API-KEY': 'sk_mycentralino_your_api_key'
+}
+
+response = requests.get(
+    'https://api.mycentralino.com/v1/blacklists/SPAM',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta Successo
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": {
+    "name": "SPAM",
+    "numbers": [
+      {
+        "id": 4521,
+        "number": "0287654321",
+        "description": "Call center pubblicitario"
+      },
+      {
+        "id": 4522,
+        "number": "^893",
+        "description": "Blocco numerazioni a pagamento"
+      }
+    ],
+    "numbers_count": 2,
+    "used_by_rules": ["0612345678"]
+  }
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `name` | string | Nome della blacklist |
+| `numbers` | array | Numeri bloccati: `id` (int), `number` (string), `description` (string\|null) |
+| `numbers_count` | int | Numero di voci contenute |
+| `used_by_rules` | array | Numerazioni le cui regole di instradamento utilizzano questa blacklist |
+
+<Note>
+Il prefisso `^` in un numero indica un **blocco per prefisso**: ad esempio `^893` blocca tutti i numeri che iniziano con 893.
+</Note>
+
+## Errori
+
+### 404 - Blacklist non trovata
+
+```json
+{
+  "success": false,
+  "error": "Blacklist non trovata"
+}
+```
+
+## Endpoint alternativo
+
+È disponibile anche `GET /v1/blacklists/{name}/numbers`, che restituisce solo l'array dei numeri:
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 4521,
+      "number": "0287654321",
+      "description": "Call center pubblicitario"
+    }
+  ],
+  "count": 1
+}
+```

@@ -101,6 +101,52 @@ Risposta successo: call_id (string), extension (string), number (string), channe
 Errori: 400 parametri mancanti, 400 numero non valido (min 6 cifre), 404 interno non trovato, 503 connessione fallita.
 Note: la chiamata e' asincrona, il numero viene pulito automaticamente, se description e' vuoto cerca nel CRM.
 
+### GET /v1/blacklists
+Elenco delle blacklist del centralino.
+Risposta array: name (string), numbers_count (int), used_by_rules (array di string, numerazioni le cui regole usano la blacklist).
+
+### POST /v1/blacklists
+Crea una blacklist vuota.
+Request body JSON: name (string, obbligatorio, max 50 caratteri, solo lettere/numeri/_/-).
+Risposta 201: name, numbers (array vuoto), numbers_count, used_by_rules.
+Errori: 400 nome non valido, 409 nome gia' esistente.
+
+### GET /v1/blacklists/{name}
+Dettaglio blacklist con tutti i numeri bloccati.
+Risposta: name (string), numbers (array: id (int), number (string), description (string|null)), numbers_count (int), used_by_rules (array).
+Il prefisso ^ in un numero indica blocco per prefisso (es. ^893 blocca tutti i numeri che iniziano con 893).
+Errore 404: "Blacklist non trovata".
+Variante GET /v1/blacklists/{name}/numbers: restituisce solo l'array dei numeri con count.
+
+### DELETE /v1/blacklists/{name}
+Elimina una blacklist con tutti i suoi numeri.
+Query param: force (boolean, default false).
+Se la blacklist e' usata da regole di instradamento risponde 409 con used_by_rules; con ?force=true elimina comunque.
+Risposta: { name, deleted: true }.
+Errore 404: "Blacklist non trovata".
+
+### POST /v1/blacklists/{name}/numbers
+Aggiunge un numero alla blacklist.
+Request body JSON: number (string, obbligatorio, max 25 caratteri, cifre/+/*/# con eventuale prefisso ^), description (string, opzionale, max 100 caratteri).
+Risposta 201: id (int), number, description.
+Errori: 400 numero non valido, 404 blacklist non trovata, 409 numero gia' presente.
+
+### GET /v1/blacklists/{name}/numbers/{id}
+Dettaglio di un singolo numero della blacklist.
+Risposta: id (int), number (string), description (string|null).
+Errore 404: "Numero non trovato in questa blacklist".
+
+### PUT /v1/blacklists/{name}/numbers/{id}
+Modifica un numero esistente. I campi non forniti mantengono il valore attuale.
+Request body JSON: number (string, opzionale), description (string, opzionale, stringa vuota per rimuoverla).
+Risposta: id, number, description aggiornati.
+Errori: 400 dati non validi, 404 numero non trovato, 409 numero gia' presente.
+
+### DELETE /v1/blacklists/{name}/numbers/{id}
+Rimuove un numero dalla blacklist. L'eliminazione dell'ultimo numero non elimina la blacklist.
+Risposta: { id, deleted: true }.
+Errore 404: "Numero non trovato in questa blacklist".
+
 ### GET /v1/voip/status
 Stato di registrazione delle numerazioni VoIP.
 Risposta array: number (string), registered (bool), provider (string), provider_label (string), username (string), sip_server (string), description (string), note (string).
@@ -125,6 +171,14 @@ Note: provider VIRTUAL e SBC risultano sempre registrati.
 - [Code di Chiamata](https://docs.mycentralino.com/mycentralino-api/queue): Gestione e statistiche code
 - [Stato Live Code](https://docs.mycentralino.com/mycentralino-api/queue-live): Stato real-time code via AMI
 - [Stato Numerazioni VoIP](https://docs.mycentralino.com/mycentralino-api/voip-status): Stato registrazione numerazioni
+- [Lista Blacklist](https://docs.mycentralino.com/mycentralino-api/blacklists-list): Elenco blacklist
+- [Dettaglio Blacklist](https://docs.mycentralino.com/mycentralino-api/blacklists-detail): Dettaglio con numeri bloccati
+- [Crea Blacklist](https://docs.mycentralino.com/mycentralino-api/blacklists-create): Creazione blacklist
+- [Elimina Blacklist](https://docs.mycentralino.com/mycentralino-api/blacklists-delete): Eliminazione blacklist
+- [Aggiungi Numero Blacklist](https://docs.mycentralino.com/mycentralino-api/blacklists-numbers-add): Aggiunta numero da bloccare
+- [Dettaglio Numero Blacklist](https://docs.mycentralino.com/mycentralino-api/blacklists-numbers-detail): Dettaglio singolo numero
+- [Modifica Numero Blacklist](https://docs.mycentralino.com/mycentralino-api/blacklists-numbers-update): Modifica numero bloccato
+- [Elimina Numero Blacklist](https://docs.mycentralino.com/mycentralino-api/blacklists-numbers-delete): Rimozione numero dalla blacklist
 
 ## Link utili
 

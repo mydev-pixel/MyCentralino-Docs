@@ -1,0 +1,125 @@
+---
+title: "Modifica Numero"
+description: "Modifica un numero esistente di una blacklist"
+---
+
+# PUT /v1/blacklists/\{name\}/numbers/\{id\}
+
+Modifica il numero e/o la descrizione di una voce esistente. I campi non forniti mantengono il valore attuale.
+
+## Parametri URL
+
+| Parametro | Tipo | Descrizione |
+|-----------|------|-------------|
+| `name` | string | Nome della blacklist |
+| `id` | int | ID del numero da modificare |
+
+## Request Body
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `number` | string | ❌ | Nuovo numero (max 25 caratteri; cifre, `+`, `*`, `#`, con eventuale prefisso `^`) |
+| `description` | string | ❌ | Nuova descrizione (max 100 caratteri; stringa vuota per rimuoverla) |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X PUT https://api.mycentralino.com/v1/blacklists/SPAM/numbers/4521 \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "number": "0287654322",
+    "description": "Call center - numero aggiornato"
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'number' => '0287654322',
+    'description' => 'Call center - numero aggiornato'
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/blacklists/SPAM/numbers/4521');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'PUT',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {
+    'X-API-KEY': 'sk_mycentralino_your_api_key',
+    'Content-Type': 'application/json'
+}
+
+data = {
+    'number': '0287654322',
+    'description': 'Call center - numero aggiornato'
+}
+
+response = requests.put(
+    'https://api.mycentralino.com/v1/blacklists/SPAM/numbers/4521',
+    headers=headers,
+    json=data
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta Successo
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 4521,
+    "number": "0287654322",
+    "description": "Call center - numero aggiornato"
+  }
+}
+```
+
+## Errori
+
+### 400 - Dati non validi
+
+```json
+{
+  "success": false,
+  "error": "Il campo \"number\" supera i 25 caratteri."
+}
+```
+
+### 404 - Numero non trovato
+
+```json
+{
+  "success": false,
+  "error": "Numero non trovato in questa blacklist"
+}
+```
+
+### 409 - Numero già presente
+
+```json
+{
+  "success": false,
+  "error": "Il numero e' gia' presente in questa blacklist."
+}
+```

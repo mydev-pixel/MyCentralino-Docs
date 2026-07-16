@@ -1,0 +1,130 @@
+---
+title: "Aggiungi Numero"
+description: "Aggiunge un numero da bloccare a una blacklist"
+---
+
+# POST /v1/blacklists/\{name\}/numbers
+
+Aggiunge un numero a una blacklist esistente. Il numero è bloccato da subito su tutte le regole di instradamento che utilizzano la blacklist.
+
+## Parametri URL
+
+| Parametro | Tipo | Descrizione |
+|-----------|------|-------------|
+| `name` | string | Nome della blacklist |
+
+## Request Body
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `number` | string | ✅ | Numero da bloccare (max 25 caratteri; cifre, `+`, `*`, `#`, con eventuale prefisso `^`) |
+| `description` | string | ❌ | Descrizione (max 100 caratteri) |
+
+<Note>
+Il prefisso `^` blocca **tutti i numeri che iniziano** con le cifre indicate: ad esempio `^893` blocca ogni numero che inizia con 893, mentre `^0044` blocca tutte le chiamate dal Regno Unito.
+</Note>
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST https://api.mycentralino.com/v1/blacklists/SPAM/numbers \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "number": "0287654321",
+    "description": "Call center pubblicitario"
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'number' => '0287654321',
+    'description' => 'Call center pubblicitario'
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/blacklists/SPAM/numbers');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {
+    'X-API-KEY': 'sk_mycentralino_your_api_key',
+    'Content-Type': 'application/json'
+}
+
+data = {
+    'number': '0287654321',
+    'description': 'Call center pubblicitario'
+}
+
+response = requests.post(
+    'https://api.mycentralino.com/v1/blacklists/SPAM/numbers',
+    headers=headers,
+    json=data
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta Successo
+
+`201 Created`
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 4521,
+    "number": "0287654321",
+    "description": "Call center pubblicitario"
+  }
+}
+```
+
+L'`id` restituito serve per [modificare](/mycentralino-api/blacklists-numbers-update) o [eliminare](/mycentralino-api/blacklists-numbers-delete) il numero.
+
+## Errori
+
+### 400 - Numero non valido
+
+```json
+{
+  "success": false,
+  "error": "Il campo \"number\" contiene caratteri non validi. Usa solo cifre (con eventuale prefisso ^ per bloccare tutti i numeri che iniziano con le cifre indicate)."
+}
+```
+
+### 404 - Blacklist non trovata
+
+```json
+{
+  "success": false,
+  "error": "Blacklist non trovata"
+}
+```
+
+### 409 - Numero già presente
+
+```json
+{
+  "success": false,
+  "error": "Il numero e' gia' presente in questa blacklist."
+}
+```

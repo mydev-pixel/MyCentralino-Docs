@@ -68,6 +68,19 @@
               "mycentralino-api/switches-detail",
               "mycentralino-api/switches-toggle"
             ]
+          },
+          {
+            "group": "Blacklist",
+            "pages": [
+              "mycentralino-api/blacklists-list",
+              "mycentralino-api/blacklists-detail",
+              "mycentralino-api/blacklists-create",
+              "mycentralino-api/blacklists-delete",
+              "mycentralino-api/blacklists-numbers-add",
+              "mycentralino-api/blacklists-numbers-detail",
+              "mycentralino-api/blacklists-numbers-update",
+              "mycentralino-api/blacklists-numbers-delete"
+            ]
           }
         ]
       }

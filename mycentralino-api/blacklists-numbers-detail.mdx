@@ -1,0 +1,82 @@
+---
+title: "Dettaglio Numero"
+description: "Dettaglio di un singolo numero di una blacklist"
+---
+
+# GET /v1/blacklists/\{name\}/numbers/\{id\}
+
+Restituisce il dettaglio di un singolo numero di una blacklist.
+
+## Parametri URL
+
+| Parametro | Tipo | Descrizione |
+|-----------|------|-------------|
+| `name` | string | Nome della blacklist |
+| `id` | int | ID del numero (restituito dagli endpoint di lista e creazione) |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl https://api.mycentralino.com/v1/blacklists/SPAM/numbers/4521 \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/blacklists/SPAM/numbers/4521');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {
+    'X-API-KEY': 'sk_mycentralino_your_api_key'
+}
+
+response = requests.get(
+    'https://api.mycentralino.com/v1/blacklists/SPAM/numbers/4521',
+    headers=headers
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta Successo
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 4521,
+    "number": "0287654321",
+    "description": "Call center pubblicitario"
+  }
+}
+```
+
+## Errori
+
+### 404 - Numero non trovato
+
+```json
+{
+  "success": false,
+  "error": "Numero non trovato in questa blacklist"
+}
+```
+
+L'errore viene restituito anche se l'`id` esiste ma appartiene a un'altra blacklist.

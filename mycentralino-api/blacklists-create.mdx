@@ -1,0 +1,106 @@
+---
+title: "Crea Blacklist"
+description: "Crea una nuova blacklist vuota sul centralino"
+---
+
+# POST /v1/blacklists
+
+Crea una nuova blacklist vuota. I numeri da bloccare si aggiungono successivamente con [POST /v1/blacklists/\{name\}/numbers](/mycentralino-api/blacklists-numbers-add).
+
+<Note>
+Dopo la creazione, la blacklist va associata a una regola di instradamento dalla dashboard (azione "Blacklist" nella regola) per diventare operativa.
+</Note>
+
+## Request Body
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `name` | string | ✅ | Nome della blacklist (max 50 caratteri; solo lettere, numeri, `_` e `-`) |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST https://api.mycentralino.com/v1/blacklists \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "SPAM"
+  }'
+```
+
+```php PHP
+<?php
+$data = ['name' => 'SPAM'];
+
+$ch = curl_init('https://api.mycentralino.com/v1/blacklists');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {
+    'X-API-KEY': 'sk_mycentralino_your_api_key',
+    'Content-Type': 'application/json'
+}
+
+data = {'name': 'SPAM'}
+
+response = requests.post(
+    'https://api.mycentralino.com/v1/blacklists',
+    headers=headers,
+    json=data
+)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta Successo
+
+`201 Created`
+
+```json
+{
+  "success": true,
+  "data": {
+    "name": "SPAM",
+    "numbers": [],
+    "numbers_count": 0,
+    "used_by_rules": []
+  }
+}
+```
+
+## Errori
+
+### 400 - Nome non valido
+
+```json
+{
+  "success": false,
+  "error": "Il campo \"name\" puo' contenere solo lettere, numeri, _ e -."
+}
+```
+
+### 409 - Nome già esistente
+
+```json
+{
+  "success": false,
+  "error": "Esiste gia' una blacklist con questo nome."
+}
+```

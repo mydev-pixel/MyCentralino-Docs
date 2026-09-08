@@ -81,6 +81,24 @@
               "mycentralino-api/blacklists-numbers-update",
               "mycentralino-api/blacklists-numbers-delete"
             ]
+          },
+          {
+            "group": "Calendario",
+            "pages": [
+              "mycentralino-api/calendar-introduction",
+              "mycentralino-api/calendar-calendars",
+              "mycentralino-api/calendar-events",
+              "mycentralino-api/calendar-availability",
+              "mycentralino-api/calendar-bookings-list",
+              "mycentralino-api/calendar-bookings-create",
+              "mycentralino-api/calendar-bookings-detail",
+              "mycentralino-api/calendar-bookings-update",
+              "mycentralino-api/calendar-bookings-cancel",
+              "mycentralino-api/calendar-blocks-list",
+              "mycentralino-api/calendar-blocks-create",
+              "mycentralino-api/calendar-blocks-delete",
+              "mycentralino-api/calendar-webhooks"
+            ]
           }
         ]
       }
@@ -99,7 +117,7 @@
         },
         {
           "anchor": "Dashboard",
-          "href": "https://pbx.mycentralino.com/home-centralino",
+          "href": "https://cloud.mycentralino.com/",
           "icon": "gauge"
         }
       ]
@@ -119,7 +137,7 @@
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://pbx.mycentralino.com/home-centralino"
+      "href": "https://cloud.mycentralino.com/"
     }
   },
   "contextual": {

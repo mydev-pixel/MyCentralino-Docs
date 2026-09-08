@@ -1,0 +1,73 @@
+---
+title: "Lista Calendari"
+description: "I calendari del centralino: professionisti, sale, sedi"
+---
+
+# GET /v1/calendar/calendars
+
+Restituisce i calendari del centralino. Un calendario è una risorsa che non può stare in due posti insieme: una persona, una stanza, un macchinario.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/calendar/calendars" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/calendar/calendars');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'GET',
+    CURLOPT_HTTPHEADER => ['X-API-KEY: sk_mycentralino_your_api_key']
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get('https://api.mycentralino.com/v1/calendar/calendars', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": [
+    {"id": 33, "slug": "mario", "name": "Mario", "location": "Studio Nord", "address": "Via Roma 12, Firenze", "timezone": "Europe/Rome", "is_active": true},
+    {"id": 34, "slug": "luigi", "name": "Luigi", "location": "Studio Nord", "address": "Via Roma 12, Firenze", "timezone": "Europe/Rome", "is_active": true}
+  ]
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `id` | int | ID del calendario |
+| `slug` | string | Identificativo da passare come `calendar` negli altri endpoint |
+| `name` | string | Nome mostrato nel pannello |
+| `location` | string \| null | Sede |
+| `address` | string \| null | Indirizzo della sede |
+| `timezone` | string | Fuso del calendario |
+| `is_active` | bool | Un calendario spento non riceve prenotazioni |
+
+## Errori
+
+### 403 - calendar_not_enabled
+Il Calendario non è attivo su questo account.
+
+### 404 - unknown_event / unknown_calendar
+Lo slug del tipo di appuntamento o del calendario non esiste.
+
+### 429 - rate_limit_minute / rate_limit_day
+Limiti dell'account superati: l'header `Retry-After` dice quanto aspettare.

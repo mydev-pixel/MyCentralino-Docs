@@ -1,0 +1,111 @@
+---
+title: "Dettaglio Prenotazione"
+description: "Una prenotazione per ID"
+---
+
+# GET /v1/calendar/bookings/{id}
+
+Restituisce una prenotazione. Le prenotazioni di altri account non esistono: `404`.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/calendar/bookings/91" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/calendar/bookings/91');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'GET',
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get('https://api.mycentralino.com/v1/calendar/bookings/91', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 91,
+    "status": "confirmed",
+    "calendar": {
+      "id": 34,
+      "slug": "luigi",
+      "name": "Luigi"
+    },
+    "event": {
+      "id": 12,
+      "slug": "visita-nord",
+      "name": "Visita",
+      "duration_minutes": 60
+    },
+    "date": "2026-09-17",
+    "time": "10:00",
+    "end_date": "2026-09-17",
+    "end_time": "11:00",
+    "timezone": "Europe/Rome",
+    "starts_at_utc": "2026-09-17T08:00:00Z",
+    "ends_at_utc": "2026-09-17T09:00:00Z",
+    "attendee": {
+      "name": "Mario Rossi",
+      "phone": "+393331234567",
+      "email": "mario@example.com",
+      "notes": null
+    },
+    "staff_notes": null,
+    "answers": null,
+    "source": "api",
+    "source_ref": "api:gestionale",
+    "created_by": "api:gestionale",
+    "created_at": "2026-09-07T12:30:00+02:00",
+    "updated_at": null,
+    "cancelled_at": null,
+    "cancel_reason": null,
+    "cancelled_by": null
+  }
+}
+```
+
+## Campi della prenotazione
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `id` | int | ID della prenotazione |
+| `status` | string | `pending` (da confermare), `confirmed`, `cancelled`, `no_show` (assente), `completed` (conclusa) |
+| `calendar` | object | Il calendario: `id`, `slug`, `name` |
+| `event` | object | Il tipo di appuntamento: `id`, `slug`, `name`, `duration_minutes` |
+| `date`, `time` | string | Inizio in ora locale del centralino: `YYYY-MM-DD` e `HH:MM` |
+| `end_date`, `end_time` | string | Fine in ora locale |
+| `timezone` | string | Il fuso del centralino, di norma `Europe/Rome` |
+| `starts_at_utc`, `ends_at_utc` | string | Gli stessi istanti in UTC, in più, mai al posto dei campi locali |
+| `attendee` | object | Chi ha prenotato: `name`, `phone`, `email`, `notes` |
+| `staff_notes` | string \| null | Note interne dello studio: solo nel pannello e qui, mai nelle email a chi prenota |
+| `answers` | object \| null | Le risposte alle domande del tipo di appuntamento (`fields`) |
+| `source` | string | Da dove è arrivata: `panel`, `ai` (agente telefonico), `public` (pagina di prenotazione), `api` |
+| `source_ref`, `created_by` | string \| null | Riferimento e autore; per l'API il nome della chiave usata |
+| `created_at`, `updated_at` | string \| null | Date in ISO 8601 con offset |
+| `cancelled_at`, `cancel_reason`, `cancelled_by` | — | Valorizzati solo dopo un annullamento |
+
+## Errori
+
+### 404 - not_found
+Nessuna prenotazione con questo ID.

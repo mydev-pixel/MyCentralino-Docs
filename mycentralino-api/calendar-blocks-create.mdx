@@ -1,0 +1,93 @@
+---
+title: "Crea Blocco"
+description: "Rendi non prenotabile un intervallo: ferie, riunione, chiusura"
+---
+
+# POST /v1/calendar/blocks
+
+Crea un blocco. Gli appuntamenti già presi nell'intervallo **restano**: la chiusura non li annulla, tocca a te spostarli o annullarli.
+
+## Request Body
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `calendar` | string | ❌ | Slug del calendario; senza, vale per tutto il centralino |
+| `date` | string | ✅ | Primo giorno (`YYYY-MM-DD`) |
+| `end_date` | string | ❌ | Ultimo giorno incluso; default `date` |
+| `all_day` | bool | dipende | `true` per giorni interi; altrimenti servono `time` e `end_time` |
+| `time`, `end_time` | string | dipende | Fascia oraria (`HH:MM`) |
+| `title` | string | ❌ | Compare in agenda (max 120) |
+| `note` | string | ❌ | Nota interna (max 500) |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.mycentralino.com/v1/calendar/blocks" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "calendar": "luigi",
+      "date": "2026-09-18",
+      "end_date": "2026-09-19",
+      "all_day": true,
+      "title": "Ferie"
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'calendar' => 'luigi',
+    'date' => '2026-09-18',
+    'end_date' => '2026-09-19',
+    'all_day' => true,
+    'title' => 'Ferie'
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/calendar/blocks');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+data = {"calendar": "luigi", "date": "2026-09-18", "end_date": "2026-09-19", "all_day": true, "title": "Ferie"}
+response = requests.post('https://api.mycentralino.com/v1/calendar/blocks', headers=headers, json=data)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`201 Created`.
+
+```json
+{
+  "success": true,
+  "data": {"id": 15, "calendar": "luigi", "all_day": true, "date": "2026-09-18", "time": null, "end_date": "2026-09-19", "end_time": null, "timezone": "Europe/Rome", "title": "Ferie", "note": null, "source": "manual", "created_by": "api:gestionale", "created_at": "2026-09-07T12:30:00+02:00"}
+}
+```
+
+## Errori
+
+### 422 - missing_date / missing_time
+Manca `date`, oppure né `all_day: true` né `time` + `end_time`.
+
+### 422 - invalid_range / range_too_wide
+Fine prima dell'inizio, o blocco più lungo di un anno.
+
+### 404 - unknown_calendar
+Slug sconosciuto.

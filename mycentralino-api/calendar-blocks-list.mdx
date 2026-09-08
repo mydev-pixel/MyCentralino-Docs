@@ -1,0 +1,80 @@
+---
+title: "Lista Blocchi"
+description: "Ferie, riunioni e chiusure che rendono non prenotabile un intervallo"
+---
+
+# GET /v1/calendar/blocks
+
+Un blocco rende **non prenotabile** un intervallo di un calendario, o di tutto il centralino (`calendar: null`): ferie, riunioni, chiusure. Comprende anche le festività generate dal pannello.
+
+## Parametri Query
+
+| Parametro | Tipo | Default | Descrizione |
+|-----------|------|---------|-------------|
+| `calendar` | string | — | Slug di un calendario |
+| `from`, `to` | date | oggi, +92 giorni | Finestra (`YYYY-MM-DD`) |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/calendar/blocks?from=2026-09-14&to=2026-09-30" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/calendar/blocks?from=2026-09-14&to=2026-09-30');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'GET',
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get('https://api.mycentralino.com/v1/calendar/blocks?from=2026-09-14&to=2026-09-30', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": [
+    {"id": 15, "calendar": "luigi", "all_day": true, "date": "2026-09-18", "time": null, "end_date": "2026-09-18", "end_time": null, "timezone": "Europe/Rome", "title": "Ferie", "note": null, "source": "manual", "created_by": "api:gestionale", "created_at": "2026-09-07T12:30:00+02:00"},
+    {"id": 40, "calendar": null, "all_day": true, "date": "2026-12-25", "time": null, "end_date": "2026-12-25", "end_time": null, "timezone": "Europe/Rome", "title": "Natale", "note": null, "source": "holiday", "created_by": "festività", "created_at": "2026-09-08T05:20:00+02:00"}
+  ]
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `calendar` | string \| null | Slug del calendario; `null` = tutto il centralino |
+| `all_day` | bool | Giorni interi |
+| `date`, `end_date` | string | Primo e ultimo giorno **inclusi** |
+| `time`, `end_time` | string \| null | Solo per i blocchi a fascia oraria |
+| `source` | string | `manual` (pannello o API), `holiday` (festività dalle Impostazioni), `import` |
+
+## Errori
+
+### 403 - calendar_not_enabled
+Il Calendario non è attivo su questo account.
+
+### 404 - unknown_event / unknown_calendar
+Lo slug del tipo di appuntamento o del calendario non esiste.
+
+### 429 - rate_limit_minute / rate_limit_day
+Limiti dell'account superati: l'header `Retry-After` dice quanto aspettare.

@@ -1,0 +1,85 @@
+---
+title: "Sposta, Conferma, Aggiorna"
+description: "Sposta una prenotazione, confermala o aggiorna i dati di chi prenota"
+---
+
+# PATCH /v1/calendar/bookings/{id}
+
+Una o più cose nella stessa chiamata, applicate in quest'ordine: **sposta** (`date` + `time`, ricontrollando la disponibilità come una prenotazione nuova), **conferma** (`status: "confirmed"`, solo se era `pending`), **aggiorna chi prenota** (`name`, `phone`, `email`, `notes`, `staff_notes`, `answers`). La prima che fallisce ferma tutto. Anche `PUT` è accettato.
+
+Chi ha prenotato riceve l'email di spostamento o di conferma; l'aggiornamento dei dati non manda email ma arriva ai [webhook](/mycentralino-api/calendar-webhooks).
+
+## Request Body
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `date`, `time` | string | Il nuovo orario, in ora locale, fra quelli della disponibilità |
+| `status` | string | Solo `confirmed`, per confermare una prenotazione `pending`. Per annullare usa [DELETE](/mycentralino-api/calendar-bookings-cancel) |
+| `name`, `phone`, `email`, `notes` | string | I dati di chi prenota |
+| `staff_notes` | string | Note interne dello studio: solo nel pannello e nell'API, mai nelle email a chi prenota |
+| `answers` | object | Le risposte alle domande del tipo |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X PATCH "https://api.mycentralino.com/v1/calendar/bookings/91" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "date": "2026-09-17",
+      "time": "11:00",
+      "staff_notes": "Paga a fine mese"
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'date' => '2026-09-17',
+    'time' => '11:00',
+    'staff_notes' => 'Paga a fine mese'
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/calendar/bookings/91');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'PATCH',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+data = {"date": "2026-09-17", "time": "11:00", "staff_notes": "Paga a fine mese"}
+response = requests.patch('https://api.mycentralino.com/v1/calendar/bookings/91', headers=headers, json=data)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200` con la prenotazione aggiornata, nello stesso formato di [GET /v1/calendar/bookings/{id}](/mycentralino-api/calendar-bookings-detail).
+
+## Errori
+
+### 404 - not_found
+Nessuna prenotazione con questo ID.
+
+### 409 - slot_unavailable / outside_hours / notice_too_short / beyond_horizon
+Il nuovo orario non è prenotabile.
+
+### 409 - not_modifiable
+Una prenotazione annullata, conclusa o segnata assente non si sposta né si modifica; si conferma solo una prenotazione in attesa.
+
+### 422 - invalid_status / invalid_email / invalid_answers / missing_name
+Campo malformato.

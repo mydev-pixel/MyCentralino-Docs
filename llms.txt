@@ -184,4 +184,20 @@ Note: provider VIRTUAL e SBC risultano sempre registrati.
 
 - [Sito Web](https://mycentralino.com)
 - [Supporto](https://www.mycentralino.com/contattaci/)
-- [Dashboard](https://pbx.mycentralino.com/home-centralino)
+- [Dashboard](https://cloud.mycentralino.com/)
+
+---
+
+## Calendario (prese appuntamenti) — /v1/calendar
+Date e ore in ora locale del centralino (campi separati date YYYY-MM-DD e time HH:MM, timezone dichiarato, starts_at_utc/ends_at_utc in più). Calendari e tipi si indicano con lo slug. Errori con code stabile: 409 slot_unavailable/outside_hours/notice_too_short/beyond_horizon/not_modifiable/already_cancelled/holiday_managed, 422 dati non validi, 403 calendar_not_enabled.
+
+### GET /v1/calendar/calendars — i calendari (id, slug, name, location, address, timezone, is_active)
+### GET /v1/calendar/events — i tipi di appuntamento (slug, duration_minutes, assignment_mode single|choice|round_robin|collective, requires_confirmation, calendars[], fields[])
+### GET /v1/calendar/availability?event=&calendar=&from=&to= — slot liberi: slots[] {date, time, end_time, calendar, seats_left}. L'orario di una prenotazione deve essere uno di questi.
+### GET /v1/calendar/bookings?view=upcoming|past|all&status=&calendar=&event=&from=&to=&q=&page=&limit= — prenotazioni + pagination
+### POST /v1/calendar/bookings — body event, calendar (obbligatorio se choice), date, time, name, phone, email, notes, answers, status; header Idempotency-Key consigliato; 201 created:true, replay 200 created:false
+### GET /v1/calendar/bookings/{id}
+### PATCH /v1/calendar/bookings/{id} — date+time (sposta), status confirmed (conferma), name/phone/email/notes/staff_notes/answers (aggiorna)
+### DELETE /v1/calendar/bookings/{id} — annulla, body {reason}; resta con status cancelled
+### GET /v1/calendar/blocks?calendar=&from=&to= · POST /v1/calendar/blocks (calendar?, date, end_date?, all_day|time+end_time, title, note) · DELETE /v1/calendar/blocks/{id} (409 holiday_managed sulle festività)
+### Webhook uscenti: POST JSON firmato (X-MyCentralino-Signature = sha256=HMAC-SHA256("{timestamp}.{body}", secret)), eventi booking.created/updated/cancelled/test, retry 1m/5m/30m/2h/6h.

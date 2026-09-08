@@ -1,0 +1,81 @@
+---
+title: "Lista Tipi di Appuntamento"
+description: "I tipi di appuntamento prenotabili e i calendari che li offrono"
+---
+
+# GET /v1/calendar/events
+
+Restituisce i tipi di appuntamento (durata, regole, calendari collegati). Lo `slug` è il valore da passare come `event` in disponibilità e prenotazioni.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/calendar/events" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/calendar/events');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'GET',
+    CURLOPT_HTTPHEADER => ['X-API-KEY: sk_mycentralino_your_api_key']
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get('https://api.mycentralino.com/v1/calendar/events', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 12, "slug": "visita-nord", "name": "Visita", "description": null, "duration_minutes": 60,
+      "buffer_before_minutes": 0, "buffer_after_minutes": 0, "min_notice_minutes": 120, "max_horizon_days": 60,
+      "assignment_mode": "choice", "requires_confirmation": false, "is_active": true, "bookable": true,
+      "calendars": ["mario", "luigi", "pippo"],
+      "fields": [{"key": "motivo", "label": "Motivo della visita", "type": "text", "required": false}]
+    }
+  ]
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `slug` | string | Da passare come `event` |
+| `duration_minutes` | int | Durata dell'appuntamento |
+| `buffer_before_minutes`, `buffer_after_minutes` | int | Tempo libero garantito prima e dopo |
+| `min_notice_minutes` | int | Preavviso minimo per prenotare |
+| `max_horizon_days` | int | Fino a quanti giorni avanti si può prenotare |
+| `assignment_mode` | string | `single` (un calendario), `choice` (più calendari, **chi prenota sceglie**: `calendar` obbligatorio), `round_robin` (si prenota col primo libero), `collective` (non ancora prenotabile) |
+| `requires_confirmation` | bool | La prenotazione nasce `pending` e va confermata dallo studio |
+| `bookable` | bool | Attivo e con almeno un calendario attivo |
+| `calendars` | string[] | Gli slug dei calendari che offrono questo tipo |
+| `fields` | object[] | Domande in più: le risposte si passano in `answers` come `{chiave: risposta}` |
+
+## Errori
+
+### 403 - calendar_not_enabled
+Il Calendario non è attivo su questo account.
+
+### 404 - unknown_event / unknown_calendar
+Lo slug del tipo di appuntamento o del calendario non esiste.
+
+### 429 - rate_limit_minute / rate_limit_day
+Limiti dell'account superati: l'header `Retry-After` dice quanto aspettare.

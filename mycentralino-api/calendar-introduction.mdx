@@ -1,0 +1,64 @@
+---
+title: "Calendario: introduzione"
+description: "Prenotazioni, disponibilità, calendari e blocchi del Calendario MyCentralino via API"
+---
+
+# Il Calendario via API
+
+Il **Calendario MyCentralino** è il sistema di prese appuntamenti integrato nel centralino: lo usano il pannello, l'agente telefonico AI, la pagina pubblica di prenotazione e, con queste API, il tuo gestionale. Tutti i canali passano dallo **stesso motore di disponibilità**: uno slot preso al telefono non è prenotabile via API, e viceversa.
+
+<Note>
+Il Calendario è incluso per gli account con **Agenti AI**, **MySegretaria** o **WhatsApp API**. Senza uno di questi, gli endpoint rispondono `403` con `calendar_not_enabled`.
+</Note>
+
+## Base URL e autenticazione
+
+Come tutta l'API: `https://api.mycentralino.com`, header `X-API-KEY`, [rate limiting per account](/mycentralino-api/introduction). Le risposte sono `{"success": true, "data": …}` oppure `{"success": false, "error": {"code": "…", "message": "…"}}`.
+
+## Convenzioni
+
+- **Date e ore in ora locale del centralino**, con campi separati: `date` = `YYYY-MM-DD`, `time` = `HH:MM` (24 ore). Niente ISO con offset. Il fuso è dichiarato in ogni risposta (`timezone`, di norma `Europe/Rome`); gli istanti UTC (`starts_at_utc`, `ends_at_utc`) ci sono **in più**, mai al posto.
+- **Calendari e tipi di appuntamento si indicano con lo slug** (`calendar`, `event`): quello che si legge in [GET /v1/calendar/calendars](/mycentralino-api/calendar-calendars) e [GET /v1/calendar/events](/mycentralino-api/calendar-events).
+- **Errori con `code` stabile** e un messaggio in italiano piano. Lo status HTTP dice la famiglia: `400` richiesta malformata, `404` non trovato, `409` conflitto (slot occupato, stato non modificabile), `422` dati non validi, `429` troppe richieste, `5xx` guasto nostro.
+- **`Idempotency-Key`** (header, facoltativo, max 200 caratteri) su [POST /v1/calendar/bookings](/mycentralino-api/calendar-bookings-create): ripetere la stessa chiamata con la stessa chiave restituisce la **stessa** prenotazione invece di crearne una seconda. Consigliato a chi fa retry.
+- Le prenotazioni fatte via API nascono con `source: "api"`; `created_by` porta il nome della chiave API usata.
+
+## Endpoint
+
+| Metodo | Endpoint | Cosa fa |
+|--------|----------|---------|
+| GET | `/v1/calendar/calendars` | I calendari (professionisti, sale, sedi) |
+| GET | `/v1/calendar/events` | I tipi di appuntamento, con i calendari che li offrono |
+| GET | `/v1/calendar/availability` | Gli orari liberi di un tipo di appuntamento |
+| GET | `/v1/calendar/bookings` | Le prenotazioni, con filtri e paginazione |
+| POST | `/v1/calendar/bookings` | Prenota |
+| GET | `/v1/calendar/bookings/{id}` | Una prenotazione |
+| PATCH | `/v1/calendar/bookings/{id}` | Sposta, conferma, aggiorna i dati di chi prenota |
+| DELETE | `/v1/calendar/bookings/{id}` | Annulla (resta nello storico) |
+| GET | `/v1/calendar/blocks` | I blocchi (ferie, riunioni, chiusure) |
+| POST | `/v1/calendar/blocks` | Crea un blocco |
+| DELETE | `/v1/calendar/blocks/{id}` | Elimina un blocco |
+
+## Il flusso tipico
+
+1. Leggi i tipi di appuntamento con `GET /v1/calendar/events` e scegli lo slug.
+2. Chiedi gli orari liberi con `GET /v1/calendar/availability?event=…`.
+3. Prenota uno di quegli orari con `POST /v1/calendar/bookings`, con una `Idempotency-Key`.
+4. Ricevi gli aggiornamenti con i [webhook uscenti](/mycentralino-api/calendar-webhooks), oppure rileggi con `GET /v1/calendar/bookings`.
+
+## Codici di errore
+
+| `code` | HTTP | Quando |
+|--------|------|--------|
+| `calendar_not_enabled` | 403 | il Calendario non è attivo su questo account |
+| `not_found` | 404 | prenotazione, blocco o endpoint inesistente |
+| `unknown_event`, `unknown_calendar` | 404 | slug sconosciuto |
+| `missing_event`, `missing_name`, `missing_time`, `missing_date`, `missing_body` | 422 / 400 | manca un campo obbligatorio |
+| `invalid_date`, `invalid_time`, `invalid_email`, `invalid_answers`, `invalid_status`, `invalid_view`, `invalid_range`, `invalid_json` | 422 / 400 | campo malformato |
+| `range_too_wide` | 422 | finestra oltre il massimo |
+| `calendar_required` | 422 | tipo `choice` con più calendari e nessun `calendar` (la risposta elenca `calendars`) |
+| `calendar_not_for_event` | 422 | quel calendario non offre quel tipo |
+| `event_inactive`, `event_without_calendars`, `collective_not_supported`, `inactive`, `invalid_attendee` | 422 | tipo o calendario non prenotabile |
+| `slot_unavailable`, `outside_hours`, `notice_too_short`, `beyond_horizon` | 409 | l'orario non è prenotabile (occupato, fuori griglia o orario, troppo vicino, troppo lontano) |
+| `not_modifiable`, `already_cancelled`, `holiday_managed` | 409 | stato o tipo di riga che non ammette l'operazione |
+| `calendar_unavailable`, `internal_error` | 502 / 500 | guasto nostro: riprovare |

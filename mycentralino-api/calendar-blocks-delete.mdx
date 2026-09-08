@@ -1,0 +1,54 @@
+---
+title: "Elimina Blocco"
+description: "Riapre un intervallo bloccato"
+---
+
+# DELETE /v1/calendar/blocks/{id}
+
+Elimina un blocco: l'intervallo torna prenotabile.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X DELETE "https://api.mycentralino.com/v1/calendar/blocks/15" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/calendar/blocks/15');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'DELETE',
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.delete('https://api.mycentralino.com/v1/calendar/blocks/15', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{"success": true, "data": {"id": 15, "deleted": true}}
+```
+
+## Errori
+
+### 404 - not_found
+Nessun blocco con questo ID.
+
+### 409 - holiday_managed
+È una festività generata dal pannello (`source: "holiday"`): si spegne da Calendario → Impostazioni → Festività, non da qui.

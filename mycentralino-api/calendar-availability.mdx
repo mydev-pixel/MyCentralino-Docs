@@ -1,0 +1,99 @@
+---
+title: "Disponibilità"
+description: "Gli orari liberi di un tipo di appuntamento, per calendario"
+---
+
+# GET /v1/calendar/availability
+
+Restituisce gli orari liberi di un tipo di appuntamento. Gli slot tengono conto di tutto: orari del calendario e del tipo, chiusure, festività, prenotazioni già prese da qualunque canale, blocchi, buffer, preavviso minimo, orizzonte, gruppi di contemporaneità, tetti giornalieri.
+
+<Warning>
+L'orario di una prenotazione deve essere **uno di quelli restituiti qui**. Un orario fuori dalla griglia del tipo (per esempio `09:07` con passo di 30 minuti) viene rifiutato con `outside_hours`, anche se cade dentro l'orario di lavoro.
+</Warning>
+
+## Parametri Query
+
+| Parametro | Tipo | Default | Descrizione |
+|-----------|------|---------|-------------|
+| `event` | string | — | **Obbligatorio.** Slug del tipo di appuntamento |
+| `calendar` | string | — | Slug di un calendario: restringe a quello solo |
+| `from` | date | oggi | Primo giorno (`YYYY-MM-DD`) |
+| `to` | date | `from` + 20 giorni | Ultimo giorno incluso. Al massimo 92 giorni da `from` |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/calendar/availability?event=visita-nord&calendar=luigi&from=2026-09-17&to=2026-09-17" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/calendar/availability?event=visita-nord&calendar=luigi&from=2026-09-17&to=2026-09-17');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'GET',
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get('https://api.mycentralino.com/v1/calendar/availability?event=visita-nord&calendar=luigi&from=2026-09-17&to=2026-09-17', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+```json
+{
+  "success": true,
+  "data": {
+    "event": {"id": 12, "slug": "visita-nord", "name": "Visita", "duration_minutes": 60, "capacity": 1},
+    "timezone": "Europe/Rome",
+    "from": "2026-09-17",
+    "to": "2026-09-17",
+    "calendars": [{"id": 34, "slug": "luigi", "name": "Luigi"}],
+    "slots": [
+      {"date": "2026-09-17", "time": "09:00", "end_time": "10:00", "calendar": "luigi", "seats_left": null},
+      {"date": "2026-09-17", "time": "10:00", "end_time": "11:00", "calendar": "luigi", "seats_left": null}
+    ]
+  }
+}
+```
+
+## Campi Risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `event.capacity` | int | Posti per orario: più di 1 = appuntamento di gruppo |
+| `slots[].date`, `slots[].time`, `slots[].end_time` | string | Inizio e fine in ora locale |
+| `slots[].calendar` | string | Lo slug del calendario libero a quell'ora |
+| `slots[].seats_left` | int \| null | Per gli appuntamenti di gruppo, i posti ancora liberi; `null` per i tipi normali |
+
+<Note>
+**Appuntamenti di gruppo.** Se il tipo ha `capacity` maggiore di 1 (un corso, una riunione), più persone prenotano lo stesso orario: ogni slot porta `seats_left` e sparisce quando arriva a zero.
+</Note>
+
+## Errori
+
+### 422 - missing_event
+Manca `event`.
+
+### 422 - invalid_range / range_too_wide
+`to` prima di `from`, oppure finestra oltre i 92 giorni.
+
+### 422 - event_without_calendars
+Il tipo non è collegato a nessun calendario attivo.
+
+### 404 - unknown_event / unknown_calendar
+Slug sconosciuto.

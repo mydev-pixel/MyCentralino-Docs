@@ -1,5 +1,197 @@
 ---
 title: "Agenti AI: panoramica"
+sidebarTitle: "Panoramica"
+description: "Cosa sono gli Agenti AI di MyCentralino, come sono fatte le loro pagine, cosa mostra la Home e i passi per far rispondere un agente al telefono."
+keywords:
+  - "agenti ai"
+  - "agente ai"
+  - "receptionist ai"
+  - "centralinista ai"
+  - "assistente telefonico ai"
+  - "ai receptionist"
+  - "wave"
+  - "risponditore automatico"
+  - "intelligenza artificiale telefono"
+  - "home agenti ai"
+  - "crediti"
+  - "servizio sospeso"
 ---
 
-Caricamento in corso.
+Gli **Agenti AI** sono centralinisti vocali basati sull'intelligenza artificiale che rispondono al telefono al posto della tua azienda. Parlano con chi chiama, capiscono cosa gli serve, danno informazioni prese dai tuoi documenti, possono fissare appuntamenti e passare la chiamata a una persona. A chiamata finita ti mandano il riassunto per email o WhatsApp. Possono anche chiamare loro una lista di numeri (campagne in uscita).
+
+**Dove si trova:** selettore dei prodotti in cima al menu laterale → **Agenti AI** → **Home** · `https://cloud.mycentralino.com/wave`
+
+**Chi la vede:** il titolare dell'account, quando gli Agenti AI sono attivi sul centralino. Un collaboratore solo se gli è stata concessa la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
+
+<Info>
+  Se gli Agenti AI non sono ancora attivi, aprendo `https://cloud.mycentralino.com/wave` arrivi alla pagina per sceglierli e attivarli. Vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani).
+</Info>
+
+Nelle pagine del pannello lo stesso prodotto compare anche con altri nomi: «Wave» (in alto nel menu laterale), «Assistente telefonico AI» (nel tuo abbonamento) e «AI Receptionist» (nelle condizioni d'uso). Sono sempre gli Agenti AI.
+
+## Come funziona, in breve
+
+| Parola | Cosa significa |
+| --- | --- |
+| **Agente** | Un «personaggio» vocale con nome, voce, lingua, frase di apertura e **copione**, cioè le istruzioni su chi è, cosa fa la tua azienda e come deve comportarsi. Ogni piano permette un numero massimo di agenti. Vedi [Crea un agente](/agenti-ai/agente/crea-un-agente). |
+| **Connessione VoIP** | Un interno dedicato del tuo centralino (numeri da 9000 in su) collegato al servizio AI. A ogni connessione assegni un agente: le chiamate che arrivano lì le gestisce lui. Vedi [Connessioni VoIP](/agenti-ai/connessioni). |
+| **Agente AI realtime** | Il passaggio delle **Regole delle chiamate** che manda le chiamate di un numero (o di un servizio interno) a una connessione, cioè al suo agente. Senza questo passaggio l'agente esiste ma nessuna chiamata gli arriva. Vedi [Collegare un numero](/agenti-ai/collegare-un-numero). |
+| **Crediti** | L'unità con cui si misura il consumo. Ogni conversazione consuma crediti in base a durata e tipo di conversazione. I crediti del piano si rinnovano il 1° di ogni mese. |
+| **Campagna** | Una lista di numeri che l'agente chiama per te. Vedi [Campagne in uscita](/agenti-ai/campagne-in-uscita). |
+
+Il percorso di una chiamata è quindi: **il tuo numero** → passaggio **Agente AI realtime** nelle Regole delle chiamate → **connessione VoIP** → **agente** che risponde.
+
+## Come iniziare
+
+<Steps>
+  <Step title="Attiva gli Agenti AI">
+    Dal menu del centralino apri **Aggiungi funzionalità**, trova la tessera **Agenti AI** e premi **Attiva gli Agenti AI**. Accetta le condizioni d'uso nella finestra che si apre, poi scegli il piano. Dettagli in [Attivazione e piani](/agenti-ai/attivazione-e-piani).
+  </Step>
+  <Step title="Crea l'agente">
+    Nel menu degli Agenti AI apri **Agenti** → **\+ Nuovo agente**. Scrivi nome, frase di apertura e copione, scegli la voce e premi **Crea agente**. Dettagli in [Crea un agente](/agenti-ai/agente/crea-un-agente).
+  </Step>
+  <Step title="Crea una connessione e assegnale l'agente">
+    Apri **Connessioni VoIP** → **\+ Nuova connessione** → **Crea connessione**. Poi, nella riga della connessione, scegli l'agente dall'elenco. Dettagli in [Connessioni VoIP](/agenti-ai/connessioni).
+  </Step>
+  <Step title="Manda le chiamate all'agente">
+    Torna al **Centralino**, apri **Regole chiamate**, clicca il numero e aggiungi il passaggio **Agente AI realtime** scegliendo la connessione. Dettagli in [Collegare un numero](/agenti-ai/collegare-un-numero).
+  </Step>
+  <Step title="Fai una telefonata di prova">
+    Chiama il numero da un cellulare. La conversazione compare in **Storico Chiamate** con registrazione, trascrizione e riassunto. Vedi [Storico chiamate](/agenti-ai/storico-chiamate).
+  </Step>
+</Steps>
+
+## Il menu degli Agenti AI
+
+Gli Agenti AI hanno un menu laterale proprio, di colore blu. Per passare dal Centralino agli Agenti AI e tornare indietro usa il **selettore dei prodotti** in cima al menu laterale: si apre **I tuoi prodotti** con **Centralino** e **Agenti AI** (quest'ultimo compare solo se li hai attivati).
+
+| Gruppo | Voce | Cosa trovi |
+| --- | --- | --- |
+| Panoramica | **Home** | Stato del servizio, crediti, agenti e ultime chiamate (questa pagina) |
+| Gestione | **Agenti** | Gli agenti: crearli, configurarli, duplicarli, eliminarli |
+| Gestione | **Connessioni VoIP** | Gli interni dedicati e l'agente che risponde su ciascuno |
+| Attività | **Storico Chiamate** | Tutte le conversazioni, con registrazione e trascrizione |
+| Attività | **Outbound** | Le campagne di chiamate in uscita |
+| Attività | **Crediti** | Piano, crediti del mese, ricarica automatica, movimenti |
+
+In fondo al menu c'è il **riquadro del piano**: un anello con la percentuale di crediti consumati nel mese, «Piano …» e i crediti che restano. Cliccandolo apri **Crediti**. Sotto può comparire una riga di stato:
+
+- **Servizio sospeso** (rosso): gli agenti non rispondono;
+- **Prova · N giorni** (ambra): sei in periodo di prova;
+- **Crediti in esaurimento** (ambra): hai consumato l'80% o più dei crediti del mese.
+
+### Gli avvisi in testa alle pagine
+
+In cima a ogni pagina degli Agenti AI può comparire **un solo** avviso, il più importante:
+
+1. **Servizio sospeso** (rosso): «Il servizio è sospeso: …» con il motivo, che può essere «ultimo pagamento non riuscito», «manca un metodo di pagamento», «limite di ricarica mensile raggiunto» o «crediti esauriti». Sotto c'è cosa fare, per esempio «Gli agenti non rispondono alle chiamate: attiva la ricarica automatica per riprendere subito, o attendi il 1° del mese.», e il bottone **Vai ai crediti**.
+2. **Crediti quasi esauriti** (ambra), quando restano meno del 10% dei crediti mensili: «Crediti quasi esauriti: ne restano N.» con **Vai ai crediti →**.
+3. **Periodo di prova** (ambra): «Periodo di prova · N giorni e N crediti rimanenti.» con **Scegli il piano →**.
+
+<Warning>
+  Quando il servizio è sospeso **gli agenti non rispondono alle chiamate**. Come riattivarlo è spiegato in [Attivazione e piani](/agenti-ai/attivazione-e-piani).
+</Warning>
+
+## Cosa trovi nella Home
+
+La Home si aggiorna da sola ogni 30 secondi. In fondo alla pagina c'è «Ultimo aggiornamento» con l'ora.
+
+### Il riquadro blu
+
+Titolo **I tuoi agenti AI** e la frase «Gli agenti rispondono per te: qui tieni d'occhio crediti e attività.» Sotto lo stato del servizio:
+
+| Stato | Cosa significa |
+| --- | --- |
+| **Attivo** | Il servizio funziona e in questo momento non ci sono chiamate in corso. |
+| **In linea adesso: N chiamate** | Gli agenti stanno parlando con N persone. |
+| **Sospeso** | Gli agenti non rispondono. Accanto c'è il motivo. |
+
+Sulla stessa riga: quante chiamate sono state gestite oggi e il consumo del mese («consumo del mese X su Y»). In alto a destra il nome del piano («Piano …») oppure, in prova, «Prova · N giorni». Le tre tessere **Agenti**, **Oggi** e **Crediti** riportano i numeri principali: **Agenti** apre l'elenco degli agenti, **Crediti** apre la pagina dei crediti.
+
+### I quattro indicatori
+
+| Indicatore | Cosa indica |
+| --- | --- |
+| **Crediti residui** | I crediti che hai ancora. Sotto: «Ricarica automatica attiva» oppure «Ricarica automatica disattivata». |
+| **Consumo del mese** | I crediti usati dal 1° del mese, con una barra «su N crediti del piano». La barra diventa ambra dall'80% in su. |
+| **Agenti AI** | Quanti agenti hai, «su N del piano». |
+| **Connessioni VoIP** | Quante connessioni hai. Sotto: «N campagne in esecuzione» oppure «Nessuna campagna in corso». |
+
+### In linea adesso
+
+Le chiamate in corso in questo momento, con il nome dell'agente e la durata. Se non ce ne sono: «Nessuna chiamata in corso» e «Le chiamate gestite dagli agenti compaiono qui in tempo reale.» Sotto, tre numeri: chiamate di **oggi**, **nel mese** e **durata media**.
+
+Accanto c'è il grafico **Chiamate · ultimi 30 giorni**, con una barra per giorno. Compare qualche istante dopo il resto della pagina.
+
+### Ultime chiamate
+
+Le 8 conversazioni più recenti del mese, con le colonne **Chiamante**, **Agente**, **Data**, **Durata**, **Costo** (in crediti) e **Riepilogo**. Il pallino accanto al numero indica l'esito: verde se la conversazione si è conclusa, rosso se è fallita, grigio negli altri casi. Clicca una riga per aprire il dettaglio della chiamata; **Storico →** apre l'elenco completo. Se nel mese non ci sono ancora conversazioni (per esempio il 1° del mese): «Ancora nessuna chiamata.» Le chiamate dei mesi precedenti sono in **Storico Chiamate**.
+
+## Come fare
+
+### Come controllo che gli agenti stiano funzionando
+
+<Steps>
+  <Step title="Apri la Home degli Agenti AI">
+    Dal selettore dei prodotti scegli **Agenti AI**, oppure apri `https://cloud.mycentralino.com/wave`.
+  </Step>
+  <Step title="Guarda lo stato nel riquadro blu">
+    **Attivo** o **In linea adesso** vuol dire che il servizio funziona. **Sospeso** vuol dire che gli agenti non rispondono: leggi il motivo e premi **Vai ai crediti** nell'avviso in alto.
+  </Step>
+  <Step title="Controlla le ultime chiamate">
+    In **Ultime chiamate** verifica che compaiano le telefonate recenti. Se l'agente è attivo ma non arriva nessuna chiamata, controlla la connessione e le regole del numero: vedi [Domande frequenti](/agenti-ai/domande-frequenti).
+  </Step>
+</Steps>
+
+## Da sapere
+
+- **Le chiamate arrivano all'agente solo dalle Regole delle chiamate.** Creare l'agente e la connessione non basta: serve il passaggio **Agente AI realtime** sul numero.
+- **Le risposte sono generate dall'intelligenza artificiale** e possono contenere errori: lo dicono anche le condizioni d'uso che accetti all'attivazione. Scrivi un copione chiaro e controlla ogni tanto le trascrizioni.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Perché vedo «Sospeso»?">
+    I crediti sono finiti, un pagamento non è andato a buon fine, manca un metodo di pagamento oppure hai raggiunto il limite mensile della ricarica automatica. Il motivo è scritto accanto allo stato e nell'avviso rosso in alto. Apri **Crediti** per rimediare: vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani).
+  </Accordion>
+
+  <Accordion title="Non vedo Agenti AI nel selettore dei prodotti.">
+    Il selettore mostra solo i prodotti attivi sul tuo centralino. Gli Agenti AI si attivano da **Aggiungi funzionalità**. Se sei un collaboratore, il titolare deve concederti la sezione **I tuoi moduli**.
+  </Accordion>
+
+  <Accordion title="Il numero delle chiamate di oggi non corrisponde a quelle del centralino.">
+    La Home conta solo le conversazioni gestite dagli agenti AI. Le altre telefonate del centralino sono in [Chiamate ricevute](/centralino/monitoraggio/chiamate-ricevute).
+  </Accordion>
+
+  <Accordion title="Una chiamata del cliente compare come «Sconosciuto».">
+    Nell'elenco il numero di chi chiama compare quando la conversazione è stata conteggiata nei crediti, poco dopo la fine della chiamata. Se resta «Sconosciuto», il numero non era disponibile, per esempio perché la chiamata è arrivata con numero nascosto. Aprendo la riga, il dettaglio mostra il numero quando è noto.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Attivazione e piani" icon="credit-card" href="/agenti-ai/attivazione-e-piani">
+    Scegliere il piano, crediti e ricarica automatica.
+  </Card>
+
+  <Card title="Crea un agente" icon="robot" href="/agenti-ai/agente/crea-un-agente">
+    Nome, voce e copione del tuo agente.
+  </Card>
+
+  <Card title="Connessioni VoIP" icon="phone" href="/agenti-ai/connessioni">
+    Gli interni dedicati che collegano gli agenti al centralino.
+  </Card>
+
+  <Card title="Collegare un numero" icon="sitemap" href="/agenti-ai/collegare-un-numero">
+    Far arrivare le chiamate di un numero all'agente.
+  </Card>
+
+  <Card title="Storico chiamate" icon="list" href="/agenti-ai/storico-chiamate">
+    Registrazioni, trascrizioni e riassunti.
+  </Card>
+
+  <Card title="Domande frequenti" icon="life-ring" href="/agenti-ai/domande-frequenti">
+    Le risposte ai dubbi più comuni.
+  </Card>
+</CardGroup>

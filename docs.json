@@ -29,7 +29,8 @@
               "centralino/come-fare/configurare-gli-orari-di-apertura",
               "centralino/come-fare/chiudere-per-ferie-o-festivita",
               "centralino/come-fare/messaggio-di-benvenuto",
-              "centralino/come-fare/creare-un-menu-vocale"
+              "centralino/come-fare/creare-un-menu-vocale",
+              "centralino/come-fare/far-squillare-piu-telefoni"
             ]
           },
           {
@@ -37,7 +38,8 @@
             "pages": [
               "centralino/regole/panoramica",
               "centralino/regole/editor",
-              "centralino/regole/passaggi-chiamata"
+              "centralino/regole/passaggi-chiamata",
+              "centralino/regole/passaggi-filtri"
             ]
           },
           {

@@ -1,0 +1,205 @@
+---
+title: "Far squillare più telefoni"
+sidebarTitle: "Più telefoni insieme"
+description: "Dall'inizio alla fine: quando chiamano il tuo numero squillano più telefoni dell'ufficio, insieme o uno alla volta, e se nessuno risponde la chiamata va in segreteria."
+keywords:
+  - "squillare più telefoni"
+  - "gruppo di squillo"
+  - "squillano tutti"
+  - "coda"
+  - "coda di ricezione"
+  - "ring group"
+  - "operatori"
+  - "a rotazione"
+  - "segreteria se non rispondono"
+  - "cellulare insieme all'ufficio"
+  - "squillare anche il cellulare"
+  - "Cloud Softphone"
+---
+
+Questa guida ti porta a un numero che, quando qualcuno chiama, fa squillare i telefoni di più colleghi: risponde il primo libero. Se nessuno risponde, la chiamata va in segreteria.
+
+## Cosa ottieni
+
+Due strade, scegli quella che ti serve:
+
+|  | **Fai squillare uno o più interni VoIP** | **Coda di ricezione** |
+| --- | --- | --- |
+| Come squillano | Tutti insieme | Tutti insieme, a rotazione, a caso o chi ha avuto meno chiamate |
+| Cosa sente chi chiama | Attende che qualcuno risponda | La musica d'attesa (o lo squillo), e se vuoi la sua posizione in coda |
+| Quanto aspetta | Da 1 a 180 secondi | Da 5 secondi a 2 ore |
+| Dove si imposta | Tutto nella regola del numero | Nella pagina della coda; la regola sceglie solo quale coda |
+| Quando conviene | Ufficio piccolo, poche chiamate insieme | Più chiamate insieme, attese più lunghe, statistiche delle code |
+
+In tutte e due i casi, se nessuno risponde nel tempo scelto la chiamata **passa alla regola successiva**: per questo sotto metti la segreteria.
+
+## Prima di cominciare
+
+- **Ti serve l'accesso** a **Regole delle chiamate** e, per la coda, a **Risorse del centralino**. Il titolare dell'account li ha sempre.
+- **I telefoni devono essere collegati.** Ogni collega ha un **interno**: in Menu → Telefoni e numeri → **Interni** lo stato deve essere **Libero** (o **Al telefono**, se in quel momento è in chiamata). Se dice **Non collegato** il suo telefono non squillerà: vedi [Collegare un telefono](/centralino/come-fare/collegare-un-telefono).
+- **La segreteria** per chi non trova risposta: le segreterie degli interni sono in Menu → Risorse centralino → Strumenti → **Segreterie**. Controlla che abbiano l'email giusta, perché i messaggi arrivano lì. Vedi [Segreterie](/centralino/strumenti/segreterie).
+
+## Come fare
+
+<Tabs>
+  <Tab title="Squillano tutti insieme">
+    **Dove si trova:** Menu → **Regole chiamate** → **Numeri di telefono** · `https://cloud.mycentralino.com/regole`
+
+    <Steps>
+      <Step title="Apri il numero">
+        Clicca il numero nell'elenco: si apre lo schema delle sue regole.
+      </Step>
+      <Step title="Aggiungi la regola">
+        Premi **Aggiungi regola** (la regola va in fondo) oppure il **\+** («Inserisci qui») nel punto giusto: sotto orari, ferie e messaggio di benvenuto, se ci sono. Se il numero non ha regole, premi **Aggiungi la prima regola**.
+      </Step>
+      <Step title="Scegli la regola">
+        Nell'argomento **Inoltra la chiamata** scegli **Fai squillare uno o più interni VoIP**.
+      </Step>
+      <Step title="Spunta gli interni">
+        In **Interni da far squillare** spunta i colleghi (puoi cercarli con «Cerca interno…»). Il pallino accanto a ogni interno dice lo stato adesso: verde libero, rosso al telefono, ambra che squilla o sta chiamando, grigio non collegato. Passando sopra il pallino leggi lo stato.
+      </Step>
+      <Step title="Scegli per quanto">
+        In **Fai squillare per** scegli il tempo: 1, 10, 20, 30, **45 secondi (consigliato)**, 60, 90 o 180 secondi.
+      </Step>
+      <Step title="Aggiungi regola">
+        Premi **Aggiungi regola**. Nello schema compare la scheda **INTERNI** con i primi interni scelti.
+      </Step>
+    </Steps>
+
+    Se un interno ha anche un secondo telefono o un cellulare associato allo stesso interno, squilla anche quello: il pannello lo aggiunge da solo quando crei la regola. Se il secondo dispositivo lo colleghi dopo, elimina la regola e aggiungila di nuovo.
+  </Tab>
+  <Tab title="Con una coda di ricezione">
+    **Prima crea la coda.** Menu → Risorse centralino → Instradamento → **Code di ricezione** · `https://cloud.mycentralino.com/code`
+
+    <Steps>
+      <Step title="Nuova coda">
+        Premi **Nuova coda**. In **Nome coda** scrivi per esempio `UFFICIO` (lettere, numeri, «\_» e «-», niente spazi, al massimo 40 caratteri) e premi **Crea e configura**.
+      </Step>
+      <Step title="1 · Operatori">
+        Spunta gli interni che devono rispondere. Il contatore dice quanti ne hai scelti, per esempio «3 / 8 interni selezionati».
+      </Step>
+      <Step title="Come squillano">
+        In **Ordine con cui squillano gli operatori** scegli **Tutti insieme**, **A rotazione**, **Casuale** o **Meno chiamate**. Poi scegli per quanto squillano: **Normale**, **Lungo** o **Squilla sempre**.
+      </Step>
+      <Step title="Quanto si aspetta">
+        Scegli il **Tempo massimo in attesa** (proposto 2 minuti) e la **Musica d'attesa**. Scaduto il tempo, la chiamata esce dalla coda e passa alla regola successiva.
+      </Step>
+      <Step title="Salva la coda">
+        Premi **Salva** in alto. Compare «Coda "UFFICIO" salvata.».
+      </Step>
+    </Steps>
+
+    **Poi mettila sul numero.** Menu → **Regole chiamate** → **Numeri di telefono**
+
+    <Steps>
+      <Step title="Apri il numero e aggiungi la regola">
+        Clicca il numero, poi **Aggiungi regola** o il **\+** nel punto giusto.
+      </Step>
+      <Step title="Scegli la coda">
+        Nell'argomento **Inoltra la chiamata** (o **Regole più usate**) scegli **Inoltra la chiamata a una coda di ricezione**. In **Coda di ricezione** scegli `UFFICIO` e premi **Aggiungi regola**.
+      </Step>
+    </Steps>
+
+    Se la coda è la prima regola di un numero ancora vuoto, il pannello mette da solo sopra la coda la regola **Prendo in carico la chiamata**.
+  </Tab>
+</Tabs>
+
+### Aggiungi la segreteria per chi non trova risposta
+
+<Steps>
+  <Step title="Aggiungi la regola sotto">
+    Nello schema del numero premi **Aggiungi regola in coda** (in fondo), così la segreteria va dopo la regola che fa squillare.
+  </Step>
+  <Step title="Segreteria telefonica">
+    Nell'argomento **Notifiche** scegli **Segreteria telefonica**. In **Casella vocale** scegli la segreteria (per numero, interno, nome o email) e premi **Aggiungi regola**.
+  </Step>
+</Steps>
+
+Le modifiche alle regole valgono subito: non c'è un bottone da premere per salvare.
+
+<Frame caption="Le regole di un numero: dopo il benvenuto squillano gli interni scelti">
+  <img
+    src="/images/guida/regole-editor.webp"
+    alt="Le regole di un numero: dopo il benvenuto squillano gli interni scelti"
+  />
+</Frame>
+
+### Prova
+
+Chiama il tuo numero da un cellulare: devono squillare i telefoni scelti. Poi richiama e non rispondere: passato il tempo, devi arrivare alla segreteria.
+
+## Da sapere
+
+- **L'ordine conta.** Le regole si eseguono dall'alto in basso: orari e ferie in cima, poi l'eventuale messaggio di benvenuto, poi la regola che fa squillare, in fondo la segreteria.
+- **Cambiare chi risponde.** Con **Fai squillare uno o più interni VoIP** gli interni sono scritti nella regola: per cambiarli elimina la regola (cestino **Elimina** sulla scheda) e aggiungila di nuovo. Con la coda basta aprire la coda, spuntare o togliere gli operatori e premere **Salva**: le regole che la usano restano come sono.
+- **Le impostazioni della coda valgono ovunque.** Tempo d'attesa, musica e operatori sono gli stessi per tutti i numeri e i menù che usano quella coda.
+- **Coda senza operatori.** Nell'elenco **Code di ricezione** compare «Nessun operatore · nessuno risponde»: chi chiama resta senza risposta. Apri la coda e spunta almeno un operatore.
+- **Un collega già al telefono.** Riceve un'altra chiamata della coda solo se nelle **Impostazioni avanzate** della coda è attiva «Squilla anche se l'interno è occupato».
+- **Avviso quando qualcuno riattacca in coda.** Nelle **Impostazioni avanzate** della coda scrivi un indirizzo in **Email notifica abbandono**. Chi ha riattaccato in attesa si ritrova anche in Monitoraggio → **Da richiamare**.
+- **Anche il cellulare.** Per farlo squillare **insieme** ai telefoni dell'ufficio, installa sul cellulare l'app **Cloud Softphone** collegata a un interno e metti quell'interno con gli altri (vedi la domanda «Voglio che squilli anche il cellulare, insieme ai telefoni dell'ufficio»). Con un inoltro, invece, il cellulare squilla prima o dopo l'ufficio, non insieme: vedi [Inoltrare al cellulare](/centralino/come-fare/inoltrare-al-cellulare).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Squilla solo un telefono, non tutti.">
+    Controlla in **Interni** che gli altri telefoni siano **Libero** e non **Non collegato**. Con la coda, controlla anche che gli interni siano spuntati in **1 · Operatori** e che la strategia sia **Tutti insieme**.
+  </Accordion>
+
+  <Accordion title="Nessuno risponde: chi chiama aspetta all'infinito?">
+    No. Passato il tempo scelto (**Fai squillare per** nella regola, **Tempo massimo in attesa** nella coda) la chiamata passa alla regola successiva. Se sotto non c'è nessuna regola, la chiamata non viene gestita: metti sempre una segreteria.
+  </Accordion>
+
+  <Accordion title="Ho aggiunto la segreteria ma non ci arriva mai.">
+    La segreteria deve stare **sotto** la regola che fa squillare. Se sta sopra, passa sulla scheda e usa **Sposta giù**.
+  </Accordion>
+
+  <Accordion title="Voglio che squilli anche il cellulare, insieme ai telefoni dell'ufficio.">
+    Fai diventare il cellulare un telefono del centralino:
+
+    1. In Menu → Telefoni e numeri → **Interni** scegli un interno libero per il cellulare e premi **Associa dispositivo VoIP** → **Cellulare**. Installa l'app **Cloud Softphone** e configurala con il QR. Tutti i passi sono in [Collegare un telefono](/centralino/come-fare/collegare-un-telefono).
+    2. Controlla che l'interno risulti **Libero**.
+    3. Metti quell'interno insieme agli altri: con **Fai squillare uno o più interni VoIP** elimina la regola e aggiungila di nuovo spuntando anche il nuovo interno; con una coda apri la coda, spuntalo in **1 · Operatori** e premi **Salva**.
+
+    Da quel momento l'app squilla nello stesso momento dei telefoni dell'ufficio. Serve che il cellulare sia connesso a internet e che l'app sia aperta o attiva in sottofondo. Se non hai un interno libero, si aggiunge da [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita).
+  </Accordion>
+
+  <Accordion title="Come faccio squillare un collega alla volta?">
+    Usa una coda e in **Ordine con cui squillano gli operatori** scegli **A rotazione** (oppure **Casuale** o **Meno chiamate**). Con **Per quanto squilla ogni operatore prima di passare al prossimo** decidi quanto squilla ciascuno.
+  </Accordion>
+
+  <Accordion title="Posso cambiare il nome di una coda?">
+    No. Crea una nuova coda con il nome giusto e aggiorna le regole che usano quella vecchia.
+  </Accordion>
+
+  <Accordion title="Dove vedo come rispondono le code?">
+    In Monitoraggio → **Analisi chiamate code**: chiamate prese da ogni operatore e attese.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Code di ricezione" icon="users" href="/centralino/instradamento/code-di-ricezione">
+    Tutte le impostazioni della coda.
+  </Card>
+
+  <Card title="Passaggi che instradano la chiamata" icon="phone" href="/centralino/regole/passaggi-chiamata">
+    Fai squillare, coda, segreteria e gli altri.
+  </Card>
+
+  <Card title="Segreterie" icon="voicemail" href="/centralino/strumenti/segreterie">
+    Dove arrivano i messaggi lasciati.
+  </Card>
+
+  <Card title="Interni" icon="headset" href="/centralino/telefoni-e-numeri/interni">
+    I telefoni dei colleghi e il loro stato.
+  </Card>
+
+  <Card title="Musica d'attesa" icon="music" href="/centralino/audio/musica-di-attesa">
+    La tua musica per chi aspetta in coda.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere, spostare ed eliminare le regole.
+  </Card>
+</CardGroup>

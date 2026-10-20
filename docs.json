@@ -131,7 +131,8 @@
               "centralino/moduli/contact-center",
               "centralino/moduli/reperibilita",
               "centralino/moduli/power-dialer",
-              "centralino/moduli/videoconferenza"
+              "centralino/moduli/videoconferenza",
+              "centralino/moduli/whatsapp"
             ]
           },
           {

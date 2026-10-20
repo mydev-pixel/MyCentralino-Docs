@@ -18,7 +18,8 @@
             "pages": [
               "index",
               "centralino/inizia/primo-accesso",
-              "centralino/inizia/il-pannello"
+              "centralino/inizia/il-pannello",
+              "centralino/inizia/home"
             ]
           },
           {

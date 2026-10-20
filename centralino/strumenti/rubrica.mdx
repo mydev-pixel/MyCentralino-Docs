@@ -1,5 +1,278 @@
 ---
 title: "Rubrica"
+sidebarTitle: "Rubrica"
+description: "I contatti del centralino: quando chiama un contatto il suo nome compare al posto del numero nelle chiamate e, con la regola giusta, sul display del telefono. Aggiungere, importare, esportare e svuotare la rubrica."
+keywords:
+  - "rubrica"
+  - "contatti"
+  - "agenda"
+  - "nome sul display"
+  - "nome del chiamante"
+  - "identificativo chiamante"
+  - "importa contatti"
+  - "esporta rubrica"
+  - "CSV"
+  - "Excel"
+  - "svuota rubrica"
+  - "attiva ricerca in rubrica"
 ---
 
-Caricamento in corso.
+La **Rubrica** è l'elenco dei contatti del centralino: nome, numero, azienda e note. Quando un contatto chiama, il suo nome compare al posto del numero nelle chiamate ricevute e, se nelle regole del numero c'è **Attiva ricerca in rubrica**, sul display dei telefoni che squillano.
+
+**Dove si trova:** Menu → Risorse centralino → Strumenti → **Rubrica** · `https://cloud.mycentralino.com/rubrica`
+
+Ci arrivi anche dalla pagina **Risorse del centralino** (`https://cloud.mycentralino.com/configurazione`), nel gruppo **Strumenti**.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**: senza quel permesso la voce non compare nel menu e l'indirizzo risponde con accesso negato. Non serve nessun modulo. Gli stessi contatti si vedono e si modificano anche nel **Pannello operatori**, alla voce **Rubrica**.
+
+## Cosa trovi nella pagina
+
+### L'elenco dei contatti
+
+In alto il titolo **Rubrica** con il conteggio (per esempio «120 contatti»; durante una ricerca «N risultati»), la frase «I contatti noti al centralino: il nome compare al posto del numero su chiamate e log.» e tre bottoni:
+
+- **Esporta**, un menu con **CSV**, **Excel**, **PDF / Stampa** e, separato, **Svuota la rubrica…**. È spento quando la rubrica è vuota;
+- **Importa**, che apre la pagina **Importa contatti**;
+- **Nuovo contatto**, che apre il pannello per aggiungere un contatto.
+
+Sotto ci sono la ricerca **Cerca nome o numero…** (trova anche per azienda) e il bottone **A–Z** / **Z–A**, che ordina per nome.
+
+La tabella **Contatti** (con il totale a destra) ha una riga per contatto:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Nome** | Il nome del contatto. |
+| **Numero** | Il numero, in verde. |
+| **Azienda** | L'azienda, oppure «—». |
+| **Note** | Le note, oppure «—». |
+| **Azioni** | La matita **Modifica** e il cestino **Elimina**. |
+
+Un clic su una riga (o sulla matita) apre il contatto nel pannello laterale. I contatti sono 100 per pagina: in fondo trovi «N contatti», oppure «1–100 di N contatti» con i numeri di pagina. Sul telefono ogni riga diventa una scheda.
+
+Se la rubrica è vuota compare «Rubrica vuota» con «Aggiungi il primo contatto: il suo nome comparirà al posto del numero su chiamate e log.» e il collegamento **Nuovo contatto →**. Se la ricerca non trova niente compare «Nessun contatto per questa ricerca» con «Prova con altri termini.».
+
+### Il pannello del contatto
+
+**Nuovo contatto** o un clic su una riga aprono da destra un pannello sopra l'elenco: in alto «Rubrica» e il titolo **Nuovo contatto** (o il nome del contatto), con la **X** per chiudere. Contiene i campi **Numero**, **Nome**, **Azienda (facoltativa)** e **Note (facoltative)**, e in fondo **Annulla** e **Salva**. Dopo **Salva** il pannello si chiude e l'elenco si aggiorna.
+
+Lo stesso contatto si apre anche come pagina a sé: con **Apri contatto** dalle chiamate ricevute (per un contatto già in rubrica) oppure con **Nuovo contatto →** quando la rubrica è vuota (`https://cloud.mycentralino.com/rubrica/nuovo`). La pagina ha gli stessi campi, i bottoni **Annulla** e **Salva** in alto e la barra **Modifiche non salvate** in basso quando cambi qualcosa.
+
+## Come fare
+
+### Come aggiungo un contatto
+
+<Steps>
+  <Step title="Apri la Rubrica">
+    Menu → Risorse centralino → Strumenti → **Rubrica**.
+  </Step>
+  <Step title="Premi Nuovo contatto">
+    Si apre il pannello **Nuovo contatto**.
+  </Step>
+  <Step title="Scrivi numero e nome">
+    In **Numero** scrivi il numero, per esempio `3351234567`: spazi, trattini e `+39` vengono tolti da soli. In **Nome** scrivi il nome che vuoi vedere, per esempio `Mario Rossi`.
+  </Step>
+  <Step title="Azienda e note, se servono">
+    **Azienda (facoltativa)** e **Note (facoltative)** si possono lasciare vuote. Le note non compaiono sul telefono.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Il pannello si chiude e il contatto compare nell'elenco.
+  </Step>
+</Steps>
+
+### Come faccio comparire il nome di chi chiama sul telefono
+
+Nelle chiamate ricevute il nome compare da solo. Sul display dei telefoni serve una regola in più.
+
+<Steps>
+  <Step title="Aggiungi il contatto">
+    Il numero di chi chiama deve essere in rubrica (vedi sopra).
+  </Step>
+  <Step title="Apri le regole del numero">
+    Menu → **Regole chiamate** → **Numeri di telefono** (`https://cloud.mycentralino.com/regole`) e clicca il numero su cui arrivano le chiamate.
+  </Step>
+  <Step title="Aggiungi la regola in cima">
+    Premi il **\+** subito sotto **Chiamata in arrivo**, così la regola va prima di quelle che fanno squillare i telefoni. Se il numero non ha ancora regole, premi **Aggiungi la prima regola**.
+  </Step>
+  <Step title="Scegli Attiva ricerca in rubrica">
+    Nella finestra **Aggiungi regola** apri l'argomento **Dettagli chiamata** e clicca **Attiva ricerca in rubrica**. Ha l'etichetta **Si aggiunge subito**: compare nello schema senza altri passaggi. Le modifiche alle regole valgono subito.
+  </Step>
+</Steps>
+
+<Note>
+  Il nome sul display dipende dal modello di telefono: alcuni non lo mostrano. Non ha effetto sulle chiamate inoltrate ai cellulari.
+</Note>
+
+### Come salvo in rubrica uno che mi ha appena chiamato
+
+<Steps>
+  <Step title="Apri le chiamate ricevute">
+    Menu → Monitoraggio → **Chiamate ricevute**.
+  </Step>
+  <Step title="Premi Aggiungi in rubrica">
+    Sulla riga della chiamata premi l'icona **Aggiungi in rubrica** (c'è solo per i numeri non anonimi e non ancora in rubrica), oppure apri il dettaglio della chiamata e premi **Aggiungi in rubrica**.
+  </Step>
+  <Step title="Scrivi il nome">
+    Si apre la finestra **Aggiungi il chiamante in rubrica** con il **Numero** già scritto. Scrivi il **Nome**; **Azienda** e **Note** sono facoltative.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva contatto**.
+  </Step>
+</Steps>
+
+Se il numero è già in rubrica la finestra dice «Numero già presente in rubrica» e offre **Apri contatto**.
+
+### Come modifico o elimino un contatto
+
+- **Modifica:** clicca la riga (o la matita), cambia i campi e premi **Salva**. Il pannello si chiude e l'elenco mostra i dati nuovi.
+- **Elimina:** premi il cestino. La finestra **Elimina contatto** dice «Stai per eliminare il contatto «Mario Rossi». L'azione non è reversibile.». Premi **Elimina** (oppure **Annulla**).
+
+### Come importo i contatti da un file
+
+<Steps>
+  <Step title="Prepara il file">
+    In Excel metti le colonne in quest'ordine: **Nome**, **Numero**, **Azienda**, **Note**. Imposta la colonna dei numeri come **Testo**, altrimenti lo zero iniziale si perde, e scrivi i numeri italiani senza `+39`. Salva come CSV con il punto e virgola come separatore.
+  </Step>
+  <Step title="Apri Importa">
+    In **Rubrica** premi **Importa**. Si apre la pagina **Importa contatti** (`https://cloud.mycentralino.com/rubrica/importa`).
+  </Step>
+  <Step title="Carica il file">
+    Nel passo **1 Carica file** clicca **Clicca per scegliere un file CSV**, scegli il file e premi **Carica e verifica**.
+  </Step>
+  <Step title="Controlla l'anteprima">
+    Nel passo **2 Anteprima** controlla la tabella. Se qualcosa non va premi **Carica altro file**.
+  </Step>
+  <Step title="Conferma">
+    Premi **Conferma importazione**. Il passo **3 Completato** dice quanti contatti sono stati **Inseriti**, quanti erano **Duplicati** e quanti avevano **Errori**.
+  </Step>
+</Steps>
+
+### Come faccio una copia della rubrica
+
+Premi **Esporta** e scegli **CSV** o **Excel**: il file si scarica con il nome `rubrica_` seguito dalla data. **PDF / Stampa** apre l'elenco in una nuova scheda, pronto da stampare. Se nella ricerca hai scritto qualcosa, il file contiene solo i contatti trovati. Per poter reimportare i contatti usa **CSV**.
+
+### Come svuoto la rubrica
+
+<Steps>
+  <Step title="Fai prima una copia">
+    **Esporta** → **CSV**: è il file che si reimporta così com'è con **Importa**, l'unico modo per recuperare i contatti dopo. La copia **Excel** serve per consultare i contatti; per reimportarla va prima salvata come CSV con il punto e virgola.
+  </Step>
+  <Step title="Apri Svuota la rubrica">
+    **Esporta** → **Svuota la rubrica…**. La finestra **Svuota rubrica** dice «Stai per eliminare tutti i N contatti della rubrica. Non si può annullare.».
+  </Step>
+  <Step title="Conferma">
+    Nel campo **Per confermare scrivi SVUOTA** scrivi `SVUOTA`: il bottone **Sì, elimina tutto** si accende. Premilo: la finestra si chiude e l'elenco si svuota.
+  </Step>
+</Steps>
+
+<Warning>
+  Svuotare la rubrica elimina tutti i contatti e non si può annullare. Esporta prima una copia.
+</Warning>
+
+## I campi
+
+### Contatto
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Numero** | Il numero del contatto | Obbligatorio. Spazi, trattini, punti, parentesi e `+39` / `0039` iniziali vengono tolti; un altro `+` iniziale diventa `00`. Alla fine solo cifre, al massimo 25. Esempio: «3351234567 oppure 00441234567» |
+| **Nome** | Il nome che compare al posto del numero: «È quello che compare sul telefono quando chiama.» | Obbligatorio, al massimo 80 caratteri. Esempio: «es. Mario Rossi» |
+| **Azienda (facoltativa)** | L'azienda del contatto | Facoltativa, al massimo 50 caratteri. Esempio: «es. ACME Srl» |
+| **Note (facoltative)** | Appunti tuoi: «Non compaiono sul telefono.» | Facoltative, al massimo 255 caratteri |
+
+Messaggi che puoi vedere al salvataggio: «Il numero può contenere solo cifre (spazi, trattini e +39 li togliamo noi).», «Esiste già un contatto con questo numero.».
+
+### File da importare
+
+| Regola | Dettaglio |
+| --- | --- |
+| Formato | File CSV (o testo), al massimo 5 MB |
+| Separatore | Punto e virgola `;` |
+| Colonne, in ordine | `Nome;Numero;Azienda;Note` · esempio a video: `Mario Rossi;3351234567;Acme SRL;Cliente VIP` |
+| Righe valide | Servono almeno nome e numero; le altre vengono saltate. Una riga di intestazione senza cifre nel numero viene saltata da sola |
+| Numeri | Spazi e simboli tolti, `+` diventa `00`. Scrivi i numeri italiani senza prefisso, gli esteri con `00` davanti |
+| Doppioni | Se un numero compare più volte nel file vale la prima riga; i numeri già in rubrica vengono saltati (**Duplicati**) |
+| Quantità | Al massimo 1000 contatti per file; con l'importazione la rubrica arriva al massimo a 3000 contatti |
+| Lunghezze | Nome al massimo 80 caratteri, azienda 50, note 255: il testo in più viene tagliato |
+
+Messaggi che puoi vedere: «Il file non contiene righe valide.», «Troppi contatti: N / 1000.», «Limite massimo di 3000 contatti raggiunto.», «Errore nella lettura del file.».
+
+## Da sapere
+
+- **Un numero, un contatto.** Ogni numero può stare in rubrica una sola volta.
+- **Il nome nelle chiamate compare da solo.** In **Chiamate ricevute**, **Chiamate effettuate** e **Da richiamare** accanto al numero compare il nome del contatto, senza bisogno di regole.
+- **Per il nome sul telefono serve la regola.** Sul display dei telefoni il nome compare solo se nelle regole del numero chiamato c'è **Attiva ricerca in rubrica**, prima delle regole che fanno squillare.
+- **Il file esportato in CSV si reimporta così com'è**, sia qui sia in un elenco di [Numeri bloccati](/centralino/instradamento/numeri-bloccati).
+- **Excel e lo zero iniziale.** Se apri o prepari il file con Excel, la colonna dei numeri va impostata come **Testo**: altrimenti `0212345678` diventa `212345678`.
+- **Il limite di 3000 contatti** vale per l'importazione: se la rubrica è già piena l'importazione si ferma, e se il file la supera vengono importati solo i contatti che ci stanno.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il nome non compare sul display del telefono.">
+    Nelle regole del numero chiamato manca **Attiva ricerca in rubrica**, oppure è sotto la regola che fa squillare i telefoni: spostala in cima. Alcuni modelli di telefono non mostrano il nome, e sulle chiamate inoltrate ai cellulari non ha effetto.
+  </Accordion>
+
+  <Accordion title="Compare «Esiste già un contatto con questo numero.»">
+    Quel numero è già in rubrica. Cercalo con **Cerca nome o numero…** e modifica il contatto esistente.
+  </Accordion>
+
+  <Accordion title="Devo scrivere il +39?">
+    No. Scrivendo a mano il `+39` viene tolto da solo. Nei file da importare scrivi i numeri italiani senza prefisso: lì il `+39` non viene tolto.
+  </Accordion>
+
+  <Accordion title="L'importazione dice «Il file non contiene righe valide.»">
+    Di solito il separatore non è il punto e virgola, oppure manca il nome o il numero. Controlla che ogni riga sia come `Mario Rossi;3351234567` e salva di nuovo il file come CSV con il punto e virgola.
+  </Accordion>
+
+  <Accordion title="Dopo l'importazione ai numeri manca lo zero iniziale.">
+    Excel lo ha tolto prima del salvataggio. Imposta la colonna dei numeri come **Testo**, correggi i numeri e importa di nuovo. I contatti sbagliati vanno corretti o eliminati a mano.
+  </Accordion>
+
+  <Accordion title="Ho svuotato la rubrica per errore. Posso recuperarla?">
+    Dal pannello no: l'operazione non si annulla. Se avevi esportato una copia in CSV, reimportala con **Importa**.
+  </Accordion>
+
+  <Accordion title="Posso esportare solo una parte dei contatti?">
+    Sì: scrivi qualcosa in **Cerca nome o numero…** e poi premi **Esporta**. Il file contiene solo i contatti trovati.
+  </Accordion>
+
+  <Accordion title="Gli operatori possono usare la rubrica?">
+    Sì: nel **Pannello operatori** c'è la voce **Rubrica** con gli stessi contatti. Vedi [Pannello operatori](/centralino/pannello-operatori).
+  </Accordion>
+
+  <Accordion title="Posso usare la rubrica per bloccare dei numeri?">
+    La rubrica non blocca. Puoi però esportarla in CSV e importare il file in un elenco di [Numeri bloccati](/centralino/instradamento/numeri-bloccati).
+  </Accordion>
+
+  <Accordion title="Un collaboratore non vede Rubrica nel menu.">
+    Gli serve l'accesso a **Risorse del centralino**. Lo concede il titolare dell'account. Vedi [Utenti e permessi](/centralino/account/utenti-e-permessi).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Orari, filtri e dettagli della chiamata" icon="list" href="/centralino/regole/passaggi-filtri">
+    La regola Attiva ricerca in rubrica.
+  </Card>
+
+  <Card title="Chiamate ricevute" icon="phone" href="/centralino/monitoraggio/chiamate-ricevute">
+    Chi ha chiamato, e il pulsante Aggiungi in rubrica.
+  </Card>
+
+  <Card title="Numeri bloccati" icon="ban" href="/centralino/instradamento/numeri-bloccati">
+    Elenchi di numeri da rifiutare, anche importati dalla rubrica.
+  </Card>
+
+  <Card title="Pannello operatori" icon="headset" href="/centralino/pannello-operatori">
+    La rubrica per chi risponde al telefono.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere e spostare le regole di un numero.
+  </Card>
+
+  <Card title="Utenti e permessi" icon="users" href="/centralino/account/utenti-e-permessi">
+    Chi può vedere le Risorse del centralino.
+  </Card>
+</CardGroup>

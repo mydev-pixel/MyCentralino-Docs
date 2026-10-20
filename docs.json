@@ -81,12 +81,15 @@
             "group": "Strumenti",
             "pages": [
               "centralino/strumenti/segreterie",
-              "centralino/strumenti/rubrica"
+              "centralino/strumenti/rubrica",
+              "centralino/strumenti/conferenze"
             ]
           },
           {
             "group": "Servizi a consumo",
-            "pages": []
+            "pages": [
+              "centralino/servizi-a-consumo/codici-servizio"
+            ]
           },
           {
             "group": "Pannello operatori",

@@ -128,7 +128,9 @@
         "groups": [
           {
             "group": "Inizia",
-            "pages": []
+            "pages": [
+              "agenti-ai/panoramica"
+            ]
           },
           {
             "group": "Il tuo agente",

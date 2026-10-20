@@ -167,7 +167,8 @@
               "agenti-ai/agente/crea-un-agente",
               "agenti-ai/agente/istruzioni-e-voce",
               "agenti-ai/agente/trasferimenti",
-              "agenti-ai/agente/appuntamenti"
+              "agenti-ai/agente/appuntamenti",
+              "agenti-ai/agente/dopo-la-chiamata"
             ]
           },
           {

@@ -1,0 +1,187 @@
+---
+title: "Aggiungere un collaboratore"
+sidebarTitle: "Aggiungere un collaboratore"
+description: "Dall'inizio alla fine: crei l'accesso di un collaboratore con le sole sezioni che gli servono, lui sceglie la sua password dal link che riceve per email, e tu puoi cambiargli i permessi o bloccarlo quando vuoi."
+keywords:
+  - "collaboratore"
+  - "utente secondario"
+  - "nuovo utente"
+  - "permessi"
+  - "accesso dipendente"
+  - "operatore"
+  - "segretaria"
+  - "credenziali"
+  - "password collaboratore"
+  - "disattivare utente"
+  - "sotto-utente"
+---
+
+Questa guida ti porta da zero a un collaboratore (una segretaria, un operatore, il commercialista) che entra nel pannello con la sua username e la sua password, e vede solo le sezioni che decidi tu.
+
+## Cosa ottieni
+
+- Il collaboratore ha credenziali proprie: non deve usare le tue e non vede la tua password.
+- Vede e usa solo le sezioni che gli concedi. La **Home** e il proprio profilo li vede sempre.
+- Puoi cambiargli i permessi, mandargli un link per una nuova password, bloccarlo o eliminarlo in qualsiasi momento.
+
+## Prima di cominciare
+
+- **Solo il titolare** dell'account può creare e gestire i collaboratori. Un collaboratore non vede la sezione **Utenti** e non può crearne altri.
+- **L'email del collaboratore.** Ci arriva il link per scegliere la password e, quando entra da un browser nuovo, il codice di verifica. Deve essere un indirizzo che legge lui.
+- **La username.** Sceglila prima, per esempio `mario.rossi`: almeno 6 caratteri, lettere, numeri, punto, trattino e underscore. Deve essere libera in tutto MyCentralino e **non si potrà cambiare**.
+- **Cosa deve fare.** Decidi quali sezioni gli servono (tabella in «Le sezioni che puoi concedere»). Se risponderà al telefono dal **Pannello operatori**, deve avere un interno: controlla in Menu → Telefoni e numeri → **Interni**.
+
+## Come fare
+
+### 1 · Crea l'accesso
+
+**Dove si trova:** barra in alto → icona con l'omino (**Il tuo account**) → **Il mio account** → scheda **Accessi e sicurezza** → sezione **Utenti** · `https://cloud.mycentralino.com/account/profile?tab=utenti`
+
+<Steps>
+  <Step title="Premi Nuovo utente">
+    Si apre la pagina **Nuovo utente** (`https://cloud.mycentralino.com/utenti/nuovo`).
+  </Step>
+  <Step title="Compila Dati utente">
+    Scrivi **Nome e cognome** (per esempio `Mario Rossi`), **Email** e **Username**. La username viene salvata in minuscolo.
+  </Step>
+  <Step title="Scegli le Sezioni consentite">
+    Spunta almeno una sezione. Per esempio, per chi deve solo guardare le chiamate spunta **Monitoraggio**; per chi risponde al telefono spunta **Pannello operatori**.
+  </Step>
+  <Step title="Se è un operatore, scegli i suoi interni">
+    Se hai spuntato **Pannello operatori** compare **Interni dell'operatore**: spunta il suo interno. Se ne gestisce più di uno, spuntali tutti.
+  </Step>
+  <Step title="Crea l'utente">
+    Premi **Crea utente e invia credenziali**. Torni alla sezione **Utenti** e compare «Utente «mario.rossi» creato: a … è arrivato il link per scegliere la password.».
+  </Step>
+</Steps>
+
+<Frame caption="Nuovo utente: dati e sezioni consentite">
+  <img
+    src="/images/guida/utente-nuovo.webp"
+    alt="Nuovo utente: dati e sezioni consentite"
+  />
+</Frame>
+
+<Note>
+  Il collaboratore **non** riceve una password: riceve un link per sceglierla lui. Se l'email non parte, l'utente non viene creato e compare «Invio email non riuscito: utente NON creato. Verifica l'indirizzo e riprova.».
+</Note>
+
+### 2 · Il collaboratore sceglie la password
+
+Questa parte la fa il collaboratore.
+
+<Steps>
+  <Step title="Apre l'email">
+    Riceve l'email **Il tuo accesso a MyCentralino** con la sua username e il bottone **Scegli la tua password**. Nell'email è scritta la data fino a cui il link vale.
+  </Step>
+  <Step title="Sceglie la password">
+    Nella pagina **Scegli la password** scrive la password due volte (oppure usa **Creala tu per me**) e preme **Salva ed entra**.
+  </Step>
+  <Step title="Le volte successive entra dalla pagina di accesso">
+    Da `https://cloud.mycentralino.com/login` con username e password. Da un browser nuovo gli viene chiesto il codice di verifica che arriva alla sua email. Vedi [Primo accesso](/centralino/inizia/primo-accesso).
+  </Step>
+</Steps>
+
+Se il link è scaduto, mandagliene un altro (parte 3) oppure fagli usare **Non ricordi la password?** nella pagina di accesso.
+
+### 3 · Gestisci il collaboratore
+
+Nella sezione **Utenti** ogni collaboratore ha una riga con **Username**, **Nome**, **Email**, **Sezioni**, **Ultimo accesso** («mai» se non è ancora entrato), **Stato** (**Attivo** o **Disattivato**) e le azioni.
+
+| Cosa vuoi fare | Come |
+| --- | --- |
+| Cambiare nome, email o sezioni | **Modifica** → cambia i campi → **Salva modifiche**. La username non si cambia. |
+| Fargli scegliere una nuova password | Menu «…» → **Manda il link per una nuova password** → conferma. Finché non la sceglie, resta valida quella di oggi. |
+| Bloccarlo per un po' | Menu «…» → **Disattiva l'accesso**. Per farlo rientrare: **Riattiva l'accesso**. |
+| Toglierlo per sempre | Menu «…» → **Elimina utente** → **Elimina**. Non si può annullare. |
+
+## Le sezioni che puoi concedere
+
+| Sezione | Cosa vede il collaboratore |
+| --- | --- |
+| **Regole delle chiamate** | Come viene gestita una chiamata, per ogni numero e servizio interno. |
+| **Risorse del centralino** | Messaggi audio, code, menù vocali, orari e chiusure, inoltri, numeri bloccati, rubrica, segreterie, conferenze. |
+| **Telefoni e numeri** | Gli interni e i numeri del centralino. |
+| **Monitoraggio** | Statistiche, in tempo reale, stato interni, storico delle chiamate ricevute ed effettuate. |
+| **Pannello operatori** | Il pannello di chi risponde al telefono: colleghi liberi e occupati, il proprio stato, la segreteria, le ultime chiamate, la rubrica, le chiamate dal pannello. Vanno scelti anche gli **Interni dell'operatore**. |
+| **I tuoi moduli** | I servizi che hai aggiunto al centralino. |
+| **Assistenza** | Le richieste all'assistenza e la chiamata da prenotare con un tecnico. |
+| **Aggiungi Funzionalità** | Il negozio del centralino: chi ce l'ha può fare acquisti che entrano nel tuo abbonamento. |
+| **Abbonamento e pagamenti** | Nel suo **Il mio account**: abbonamento, credito, pagamenti, fatture e documenti. |
+| **Gestione API** | La sezione **Chiavi API**: creare, revocare ed eliminare le chiavi. |
+
+Alcune caselle compaiono solo se hai attivato il modulo corrispondente (per esempio **Solo WhatsApp**), e **Aggiungi Funzionalità** compare solo se nel tuo centralino c'è il negozio.
+
+## I campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome e cognome** | Il nome del collaboratore | Obbligatorio, al massimo 120 caratteri |
+| **Email** | Dove arrivano il link per la password e i codici di verifica | Obbligatoria, un indirizzo valido |
+| **Username** | Il nome con cui entra | Solo alla creazione. Da 6 a 50 caratteri: lettere, numeri, punto, trattino, underscore. Libera in tutto MyCentralino. Non si cambia |
+| **Sezioni consentite** | Cosa può vedere e usare | Almeno una |
+| **Interni dell'operatore** | Gli interni da cui chiama e di cui vede stato e segreteria | Almeno uno, solo con **Pannello operatori** |
+
+## Da sapere
+
+- **Sempre visibili.** La **Home** e il proprio profilo (password, browser memorizzati) il collaboratore li vede comunque.
+- **Mai concedibili.** La gestione degli **Utenti** e la cancellazione dell'abbonamento restano solo del titolare.
+- **I cambi di sezione valgono subito** dopo **Salva modifiche**: il collaboratore li vede dalla prossima pagina che apre.
+- **Eliminare un utente** lo scollega anche dai browser in cui era memorizzato.
+- **Condizioni contrattuali.** Se tu, titolare, non hai ancora accettato le condizioni contrattuali, il collaboratore vede **Accettazione in sospeso** al posto del pannello finché non le accetti.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il collaboratore non ha ricevuto l'email.">
+    Controlla l'indirizzo in **Modifica** e fagli guardare nella posta indesiderata. Poi menu «…» → **Manda il link per una nuova password**.
+  </Accordion>
+
+  <Accordion title="Posso vedere la password di un collaboratore?">
+    No. La sceglie lui dal link che riceve per email.
+  </Accordion>
+
+  <Accordion title="Posso cambiare la username?">
+    No, si sceglie alla creazione. Puoi eliminare l'utente e crearne uno nuovo con la username giusta.
+  </Accordion>
+
+  <Accordion title="«Questa username è già in uso.»">
+    La username deve essere libera in tutto MyCentralino, non solo nel tuo centralino. Scegline un'altra, per esempio aggiungendo il nome dell'azienda.
+  </Accordion>
+
+  <Accordion title="Come faccio vedere le fatture al commercialista?">
+    Crea l'utente (o **Modifica** quello esistente) e spunta **Abbonamento e pagamenti**. Vedrà abbonamento, credito, pagamenti e fatture nel suo **Il mio account**.
+  </Accordion>
+
+  <Accordion title="Il collaboratore vede solo «Accessi e sicurezza» nel suo account.">
+    Non ha **Abbonamento e pagamenti**. Se deve vedere credito e fatture, spuntalo in **Modifica**.
+  </Accordion>
+
+  <Accordion title="Un collaboratore se ne va: cosa faccio?">
+    Menu «…» → **Disattiva l'accesso** se pensi che possa tornare, oppure **Elimina utente** per toglierlo del tutto.
+  </Accordion>
+
+  <Accordion title="Un collaboratore può creare altri utenti o cancellare l'abbonamento?">
+    No, mai. Sono cose che può fare solo il titolare.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Utenti e permessi" icon="users" href="/centralino/account/utenti-e-permessi">
+    La sezione Utenti e ogni permesso, nel dettaglio.
+  </Card>
+
+  <Card title="Primo accesso" icon="user" href="/centralino/inizia/primo-accesso">
+    Come entra il collaboratore: password e codice di verifica.
+  </Card>
+
+  <Card title="Pannello operatori" icon="headset" href="/centralino/pannello-operatori">
+    Cosa vede chi risponde al telefono.
+  </Card>
+
+  <Card title="Il mio account" icon="gear" href="/centralino/account/il-mio-account">
+    Password, browser memorizzati e sicurezza.
+  </Card>
+</CardGroup>

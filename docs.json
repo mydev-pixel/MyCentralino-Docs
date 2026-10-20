@@ -34,7 +34,8 @@
               "centralino/come-fare/collegare-un-telefono",
               "centralino/come-fare/inoltrare-al-cellulare",
               "centralino/come-fare/bloccare-un-numero",
-              "centralino/come-fare/capire-una-chiamata-persa"
+              "centralino/come-fare/capire-una-chiamata-persa",
+              "centralino/come-fare/aggiungere-un-collaboratore"
             ]
           },
           {
@@ -132,7 +133,8 @@
               "centralino/moduli/reperibilita",
               "centralino/moduli/power-dialer",
               "centralino/moduli/videoconferenza",
-              "centralino/moduli/whatsapp"
+              "centralino/moduli/whatsapp",
+              "centralino/moduli/mycrm"
             ]
           },
           {

@@ -109,7 +109,8 @@
           {
             "group": "Account e pagamenti",
             "pages": [
-              "centralino/account/il-mio-account"
+              "centralino/account/il-mio-account",
+              "centralino/account/utenti-e-permessi"
             ]
           },
           {

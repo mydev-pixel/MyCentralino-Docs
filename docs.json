@@ -88,7 +88,8 @@
           {
             "group": "Servizi a consumo",
             "pages": [
-              "centralino/servizi-a-consumo/codici-servizio"
+              "centralino/servizi-a-consumo/codici-servizio",
+              "centralino/servizi-a-consumo/accesso-con-pin"
             ]
           },
           {

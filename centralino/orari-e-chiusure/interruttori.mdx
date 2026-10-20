@@ -1,5 +1,240 @@
 ---
 title: "Interruttori"
+sidebarTitle: "Interruttori"
+description: "Interruttori acceso/spento per cambiare al volo cosa succede alle chiamate: chiusura improvvisa, tutti in riunione, deviazione al cellulare. Si accendono dal pannello o componendo un codice da un interno."
+keywords:
+  - "interruttore"
+  - "switch manuale"
+  - "chiusura improvvisa"
+  - "chiusura straordinaria"
+  - "chiudere il centralino"
+  - "deviazione al volo"
+  - "codice *11"
+  - "giorno notte"
+  - "day night"
+  - "emergenza"
 ---
 
-Caricamento in corso.
+Un **interruttore** è un comando acceso/spento che decidi tu. Quando è **Attivo** le chiamate vanno all'azione che hai scelto (per esempio la segreteria, o il cellulare del titolare); quando è **Spento** seguono il percorso normale. Si accende e si spegne dal pannello oppure componendo il suo codice da un interno.
+
+**Dove si trova:** Menu → Risorse centralino → Orari e chiusure → **Interruttori** · `https://cloud.mycentralino.com/switch`
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**. Non serve nessun modulo.
+
+<Info>
+  Nelle **Regole delle chiamate** questo passaggio si chiama **Switch manuale**. È la stessa cosa: un interruttore collegato a un numero.
+</Info>
+
+## Cosa trovi nella pagina
+
+### L'elenco
+
+In alto il titolo **Interruttori** con il conteggio, la frase «Accendili da qui o dal telefono, componendo il loro codice, per cambiare al volo cosa succede alle chiamate.» e il bottone **Nuovo interruttore**. Sotto, la ricerca **Cerca un interruttore…** (cerca nel nome e nel codice) e il bottone **A–Z** (cliccandolo diventa **Z–A** e inverte l'ordine).
+
+La tabella **Interruttori** ha una riga per interruttore:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Interruttore** | Il nome. Cliccalo per aprire l'interruttore. |
+| **Codice da telefono** | Il codice da comporre, per esempio `*11`, con sotto «componilo da un interno»; oppure «nessun codice». |
+| **Quando è acceso** | Dove vanno le chiamate quando l'interruttore è attivo, per esempio «Segreteria: 201» o «Termina». |
+| **Usato da** | I numeri collegati (i primi due e poi «+N»), oppure «—». |
+| **Stato** | L'interruttore grafico da cliccare, con pallino e testo **Attivo** oppure **Spento**. |
+
+In fondo a ogni riga c'è il cestino **Elimina**. Se non hai ancora interruttori: «Nessun interruttore» con **Nuovo interruttore →**.
+
+Sul telefono ogni riga diventa una scheda con il nome, l'azione e lo stato.
+
+<Frame caption="L'elenco degli Interruttori con il codice da telefono e lo stato">
+  <img
+    src="/images/guida/interruttori.webp"
+    alt="L'elenco degli Interruttori con il codice da telefono e lo stato"
+  />
+</Frame>
+
+### La pagina di un interruttore
+
+Si apre cliccando una riga. Dall'alto:
+
+1. **Intestazione** con il nome e, sopra, il codice («Codice · `*11`») oppure «Interruttore · nessun codice da telefono»; la frase «Quando lo switch è attivo, l'azione configurata qui sotto prende il sopravvento sul flusso normale.» e i bottoni **Annulla** e **Salva**.
+2. Il riquadro **Nome switch** e il riquadro **Codice di attivazione**.
+3. Il riquadro **Cosa fare quando lo switch è attivo**, «Scegli l'azione che prenderà il sopravvento sul flusso normale.», con **1 · Azione** e **2 · Destinazione**.
+
+Se cambi qualcosa compare in basso la barra **Modifiche non salvate** con **Annulla** e **Salva**. Da questa pagina non si accende e non si spegne l'interruttore: si fa dall'elenco o dal telefono.
+
+## Come fare
+
+### Come preparo un interruttore per chiudere al volo
+
+Si fa una volta sola.
+
+<Steps>
+  <Step title="Pensa a cosa deve succedere">
+    Decidi dove vanno le chiamate quando l'interruttore è acceso: la **Segreteria**, un **Servizio interno** o un **Menù vocale (IVR)** che fa sentire «Oggi siamo chiusi», un inoltro al cellulare. La destinazione deve esistere già.
+  </Step>
+  <Step title="Crea l'interruttore">
+    In **Interruttori** premi **Nuovo interruttore**. Nella finestra **Nuovo interruttore manuale** («Dagli un nome descrittivo. Il codice di attivazione lo scegli nel passo successivo.») scrivi in **Nome dell'interruttore** per esempio `Chiusura straordinaria` e premi **Crea e configura**.
+  </Step>
+  <Step title="Scegli il codice">
+    Si apre la pagina dell'interruttore. In **Codice di attivazione** scegli un codice libero, per esempio `*11`. I codici già usati da altri interruttori sono grigi con scritto **occupato**.
+  </Step>
+  <Step title="Scegli l'azione">
+    In **1 · Azione** scegli cosa succede quando è acceso e, se compare, la **2 · Destinazione**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Compare «Switch "Chiusura straordinaria" salvato.» e torni all'elenco. L'interruttore è **Spento**.
+  </Step>
+  <Step title="Collegalo a ogni numero">
+    Apri le **Regole delle chiamate** del numero, premi il **\+** subito sotto **Chiamata in arrivo** (o **Aggiungi regola**), apri **Orari e chiusure**, scegli **Switch manuale**, seleziona `*11` «Chiusura straordinaria» e premi **Aggiungi regola**. Mettilo **in cima**, sopra ferie e orari. Ripeti per ogni numero.
+  </Step>
+</Steps>
+
+<Warning>
+  Il codice si sceglie una volta sola: dopo il salvataggio compare con l'etichetta **Non modificabile**. Se ti serve un codice diverso devi eliminare l'interruttore, crearne uno nuovo e collegarlo di nuovo nelle regole.
+</Warning>
+
+### Come accendo e spengo l'interruttore dal pannello
+
+<Steps>
+  <Step title="Clicca l'interruttore grafico">
+    In **Interruttori**, colonna **Stato**, clicca l'interruttore grafico della riga.
+  </Step>
+  <Step title="Conferma">
+    Si apre la finestra **Accendi** («Stai per attivare «Nome». L'azione configurata prenderà il sopravvento sul flusso normale.»): premi **Sì, attiva**. Per spegnere si apre la finestra **Spegni** («Stai per disattivare «Nome». Il flusso tornerà a quello predefinito.»): premi **Sì, disattiva**. Con **Annulla** non cambia niente.
+  </Step>
+  <Step title="Controlla lo stato">
+    Compare «Switch "Nome" attivato.» (o «disattivato.») e la colonna **Stato** dice **Attivo** o **Spento**. Il cambio vale dalla chiamata successiva.
+  </Step>
+</Steps>
+
+La pagina **Interruttori** funziona anche dal browser del telefono.
+
+<Tip>
+  Puoi cambiare lo stato anche dalle **Regole delle chiamate**: apri il passaggio **Switch manuale** del numero e, in **Stato switch**, premi **Attiva** o **Disattiva**.
+</Tip>
+
+### Come accendo e spengo l'interruttore dal telefono
+
+Da un **interno** del centralino (un telefono fisso, l'app o il computer collegati come interno) componi il codice dell'interruttore, per esempio `*11`. Ogni volta che lo componi l'interruttore cambia stato: se era spento si accende, se era acceso si spegne. Controlla lo stato nella colonna **Stato** della pagina **Interruttori**.
+
+Il codice funziona solo se l'interruttore ne ha uno: con «nessun codice» si accende e si spegne solo dal pannello.
+
+### Come cambio nome o azione
+
+Apri l'interruttore, cambia **Nome switch** o l'azione e premi **Salva**. Il nome si può cambiare quando vuoi; il codice no.
+
+### Come elimino un interruttore
+
+<Steps>
+  <Step title="Premi il cestino">
+    Nell'elenco premi il cestino **Elimina** sulla riga. Si apre la finestra **Elimina interruttore**: «Stai per eliminare l'interruttore «Nome». L'azione non è reversibile.».
+  </Step>
+  <Step title="Leggi chi lo usa">
+    Se è collegato, la finestra lo dice («Questo interruttore è usato nelle regole.») ed elenca i numeri.
+  </Step>
+  <Step title="Conferma">
+    Premi **Elimina**. Compare «Switch "Nome" eliminato.» e il suo codice torna libero.
+  </Step>
+</Steps>
+
+<Note>
+  Prima di eliminare un interruttore collegato, togli il passaggio **Switch manuale** dalle regole dei numeri che lo usano.
+</Note>
+
+## I campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome dell'interruttore** / **Nome switch** | Il nome che vedi nell'elenco e nelle regole. Scegline uno che dica subito cosa fa. | Obbligatorio, al massimo 100 caratteri, qualsiasi testo. Si può cambiare. Nella creazione deve essere diverso dagli altri interruttori. |
+| **Codice di attivazione** | Il codice da comporre da un interno per accendere e spegnere l'interruttore. | **Nessuno** oppure uno tra `*10`, `*11`, `*12`, `*13`, `*14`, `*15`, `*16`, `*17`, `*18`, `*19`. Un codice per interruttore; quelli già usati sono **occupato**. Dopo il salvataggio non si cambia. |
+| **1 · Azione** | Dove vanno le chiamate quando l'interruttore è **Attivo**. | Una scelta, proposta **Termina la chiamata**. Vedi la tabella qui sotto. |
+| **2 · Destinazione** | Quale menù vocale, coda, servizio interno, interno, segreteria, inoltro o sala. | Obbligatoria per le azioni che la chiedono. |
+| **Stato** (nell'elenco) | Se l'interruttore è acceso. | **Attivo** / **Spento**. Un interruttore nuovo è **Spento**. |
+
+Le scelte di **1 · Azione**:
+
+| Scelta | Cosa succede | Destinazione |
+| --- | --- | --- |
+| **Termina la chiamata** | La chiamata si chiude. | Nessuna |
+| **Menù vocale (IVR)** | Chi chiama sceglie con i tasti. | Un menù vocale |
+| **Coda di ricezione** | La chiamata entra in una coda. | Una coda |
+| **Servizio interno** | La chiamata segue le regole di un servizio interno. | Un servizio interno |
+| **Chiama interno** | Squilla un telefono del centralino. | Un interno |
+| **Segreteria** | Chi chiama può lasciare un messaggio. | Una casella di segreteria |
+| **Inoltro a numero** | La chiamata va a un numero esterno, per esempio un cellulare. | Uno degli inoltri di **Inoltro chiamate** |
+| **Conferenza audio** | Chi chiama entra in una sala conferenza. | Una sala |
+| **Chiamata diretta (DISA)** | Opzione avanzata. | Nessuna |
+
+Se il centralino non ha niente da proporre per l'azione scelta, compare «Nessuna opzione disponibile per questo tipo di azione. Crea prima una destinazione.».
+
+## Da sapere
+
+- **Non si spegne da solo.** Un interruttore resta acceso finché non lo spegni tu. Ricordati di spegnerlo quando riapri. Per una deviazione che si ripete sempre alla stessa ora usa un [Interruttore a orario](/centralino/orari-e-chiusure/interruttori-a-orario) o gli [Orari](/centralino/orari-e-chiusure/orari).
+- **Funziona solo se è collegato.** L'interruttore agisce sui numeri che hanno il passaggio **Switch manuale** nelle loro regole. Mettilo in cima, sopra ferie e orari, se deve valere a qualsiasi ora.
+- **Assegna sempre un codice prima di collegarlo.** Nelle regole l'interruttore si sceglie dal suo codice, e la colonna **Usato da** trova i numeri collegati attraverso il codice: senza codice resta «—».
+- **Dieci codici in tutto**, da `*10` a `*19`: quindi al massimo dieci interruttori con codice.
+- **Nessun messaggio proprio.** L'interruttore non ha un suo messaggio audio. Se chi chiama deve sentire un avviso, scegli come azione un **Servizio interno** o un **Menù vocale (IVR)** che lo fa sentire, oppure la **Segreteria**.
+- **Termina la chiamata** è l'azione proposta: se la lasci, con l'interruttore acceso le chiamate vengono chiuse.
+- **Creato subito.** Con **Crea e configura** l'interruttore esiste già, spento e senza codice, anche se poi premi **Annulla**: se non ti serve, eliminalo dall'elenco.
+- **Crearlo dalle regole.** Nel passaggio **Switch manuale** delle **Regole delle chiamate** il bottone **Nuovo** apre una finestra in cui scegli nome, codice e azione in un passo solo.
+- **Dove vedo cosa è acceso.** Nella colonna **Stato** di questa pagina, nel riquadro **Interruttori** in cima a **Risorse del centralino** («Tutti spenti», «Acceso: «Nome»», «2 accesi su 5») e in **Monitoraggio** → **In tempo reale**, riquadro **Come risponde adesso**.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Ho acceso l'interruttore ma non succede nulla.">
+    Controlla la colonna **Usato da**: l'interruttore deve essere nelle **Regole delle chiamate** del numero, con il passaggio **Switch manuale**, sopra i passaggi che fanno squillare i telefoni. Se usa «nessun codice», assegnagli un codice e collegalo di nuovo.
+  </Accordion>
+
+  <Accordion title="Posso accendere l'interruttore dal cellulare?">
+    Sì, in due modi: apri la pagina **Interruttori** del pannello dal browser del telefono, oppure, se sul cellulare hai l'app collegata come interno del centralino, componi il codice (per esempio `*11`).
+  </Accordion>
+
+  <Accordion title="Ho sbagliato codice.">
+    Il codice non si cambia. Elimina l'interruttore, creane uno nuovo con il codice giusto e collegalo di nuovo nelle regole dei numeri.
+  </Accordion>
+
+  <Accordion title="Il codice che voglio è grigio e dice occupato.">
+    Lo usa già un altro interruttore. Scegli un altro codice, oppure elimina l'interruttore che lo usa per liberarlo.
+  </Accordion>
+
+  <Accordion title="Come faccio a chiudere oggi pomeriggio per un imprevisto?">
+    Prepara una volta l'interruttore di chiusura (vedi «Come preparo un interruttore per chiudere al volo»). Quando serve, accendilo dal pannello o componendo il codice da un interno; quando riapri, spegnilo.
+  </Accordion>
+
+  <Accordion title="Che differenza c'è con gli interruttori a orario?">
+    L'interruttore lo accendi e lo spegni tu, quando vuoi. L'interruttore a orario si accende e si spegne da solo nelle fasce della settimana che hai scelto.
+  </Accordion>
+
+  <Accordion title="Un collaboratore può accendere l'interruttore?">
+    Dal pannello sì, se ha accesso a **Risorse del centralino**. Dal telefono chiunque componga il codice da un interno del centralino.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Interruttori a orario" icon="clock" href="/centralino/orari-e-chiusure/interruttori-a-orario">
+    Le deviazioni che si accendono da sole.
+  </Card>
+
+  <Card title="Ferie e festività" icon="calendar" href="/centralino/orari-e-chiusure/ferie-e-festivita">
+    I giorni di chiusura decisi in anticipo.
+  </Card>
+
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Gli orari di apertura della settimana.
+  </Card>
+
+  <Card title="Passaggi: orari, filtri e messaggi" icon="list" href="/centralino/regole/passaggi-filtri">
+    Il passaggio Switch manuale nelle regole.
+  </Card>
+
+  <Card title="Interni" icon="phone" href="/centralino/telefoni-e-numeri/interni">
+    I telefoni da cui comporre il codice.
+  </Card>
+
+  <Card title="In tempo reale" icon="chart-line" href="/centralino/monitoraggio/in-tempo-reale">
+    Come risponde adesso ogni numero.
+  </Card>
+</CardGroup>

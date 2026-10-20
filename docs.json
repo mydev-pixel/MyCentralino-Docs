@@ -31,7 +31,8 @@
               "centralino/come-fare/messaggio-di-benvenuto",
               "centralino/come-fare/creare-un-menu-vocale",
               "centralino/come-fare/far-squillare-piu-telefoni",
-              "centralino/come-fare/collegare-un-telefono"
+              "centralino/come-fare/collegare-un-telefono",
+              "centralino/come-fare/inoltrare-al-cellulare"
             ]
           },
           {

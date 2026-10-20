@@ -89,7 +89,8 @@
             "group": "Servizi a consumo",
             "pages": [
               "centralino/servizi-a-consumo/codici-servizio",
-              "centralino/servizi-a-consumo/accesso-con-pin"
+              "centralino/servizi-a-consumo/accesso-con-pin",
+              "centralino/servizi-a-consumo/servizi-prepagati"
             ]
           },
           {
@@ -100,7 +101,9 @@
           },
           {
             "group": "Moduli",
-            "pages": []
+            "pages": [
+              "centralino/moduli/i-tuoi-moduli"
+            ]
           },
           {
             "group": "Account e pagamenti",

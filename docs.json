@@ -77,7 +77,8 @@
               "centralino/telefoni-e-numeri/collegare-un-dispositivo",
               "centralino/telefoni-e-numeri/stato-interni",
               "centralino/telefoni-e-numeri/i-tuoi-numeri",
-              "centralino/telefoni-e-numeri/numeri-in-uscita"
+              "centralino/telefoni-e-numeri/numeri-in-uscita",
+              "centralino/telefoni-e-numeri/richieste-di-numeri"
             ]
           },
           {
@@ -85,7 +86,8 @@
             "pages": [
               "centralino/monitoraggio/statistiche",
               "centralino/monitoraggio/in-tempo-reale",
-              "centralino/monitoraggio/chiamate-ricevute"
+              "centralino/monitoraggio/chiamate-ricevute",
+              "centralino/monitoraggio/esiti-delle-chiamate"
             ]
           },
           {

@@ -1,5 +1,210 @@
 ---
 title: "Numeri in uscita"
+sidebarTitle: "Numeri in uscita"
+description: "Le linee con cui il centralino fa le chiamate verso l'esterno: la PRINCIPALE, valida per tutti gli interni, e le linee aggiuntive da assegnare interno per interno. Come configurarle con i dati del tuo operatore o copiarle da uno dei tuoi numeri."
+keywords:
+  - "numeri in uscita"
+  - "linea in uscita"
+  - "chiamate in uscita"
+  - "provider in uscita"
+  - "PRINCIPALE"
+  - "numero chiamante"
+  - "caller ID"
+  - "con che numero chiamo"
+  - "chiamare con il mio numero"
+  - "linea aggiuntiva"
+  - "ripulisci provider"
+  - "operatore per chiamare"
+  - "trunk"
 ---
 
-Caricamento in corso.
+In **Numeri in uscita** trovi le **linee** con cui il centralino fa le chiamate verso l'esterno. La linea **PRINCIPALE** vale per tutti gli interni; le altre (**Provider #7**, **#8**…) si assegnano a singoli interni. Qui vedi come è configurata ogni linea e, se la linea usa un tuo operatore, inserisci o cambi i suoi dati.
+
+**Dove si trova:** Menu → Telefoni e numeri → **Numeri in uscita** · `https://cloud.mycentralino.com/provider-voip-uscita`
+
+Ci arrivi anche dalla pagina della sezione **Telefoni e numeri** (`https://cloud.mycentralino.com/parametri-voip`), dalla scheda **Numeri in uscita**, e dal link **Configura un provider** che compare nelle regole di inoltro quando il centralino non ha linee in uscita.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Telefoni e numeri**. Non serve nessun modulo.
+
+<Info>
+  Per molti centralini la linea **PRINCIPALE** la gestisce MyCentralino («gestito da noi») e non c'è niente da fare in questa pagina. Ti serve se vuoi chiamare con un operatore tuo, o mostrare un numero diverso a chi chiami da alcuni interni.
+</Info>
+
+## Cosa trovi nella pagina
+
+In alto il titolo **Numeri in uscita**, il numero di linee (per esempio «3 linee») e la frase «Con quale linea escono le chiamate: PRINCIPALE vale per tutti gli interni, le altre si scelgono interno per interno.». A destra il bottone **ⓘ** (**Come funziona**).
+
+### La tabella «Linee»
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Linea** | **PRINCIPALE** (con l'etichetta «predefinito») oppure **Provider #7**, **Provider #8**… |
+| **Nome** | La descrizione della linea. |
+| **Numero** | Il numero che la linea mostra a chi chiami, se è impostato. |
+| **SIP server** | L'indirizzo del server della linea, con il tasto per copiarlo. Sulle linee aggiuntive veicolate da MyCentralino («Provider veicolato MyCentralino») compare «MyCentralino». |
+| **Username** | Lo username della linea, con il tasto per copiarlo. Sulle linee aggiuntive veicolate da MyCentralino compare «protetto». |
+| **Stato** | Vedi la tabella qui sotto. |
+| **Azioni** | **Configura** (linea vuota) o **Modifica**; se hai numeri da cui si può copiare, anche il menu **…** con **Copia da uno dei tuoi numeri**. Sulla PRINCIPALE gestita da MyCentralino: «gestito da noi». |
+
+Sul telefono ogni riga diventa una scheda.
+
+Se il centralino non ha linee in uscita compare «Nessuna linea in uscita» con «Per attivare le linee in uscita contatta l'assistenza.».
+
+<Frame caption="Numeri in uscita: le linee del centralino">
+  <img
+    src="/images/guida/numeri-in-uscita.webp"
+    alt="Numeri in uscita: le linee del centralino"
+  />
+</Frame>
+
+### Gli stati di una linea
+
+| Stato | Pallino | Cosa significa |
+| --- | --- | --- |
+| **Attivo** | verde | La linea la gestisce MyCentralino. |
+| **Configurato** | verde | La linea ha i dati del tuo operatore. |
+| **Vuoto** | grigio | La linea non è ancora configurata. |
+
+## Come fare
+
+### Come configuro una linea con i dati del mio operatore
+
+Ti servono **server**, **username** e **password** che ti ha dato l'operatore, e il numero da mostrare a chi chiami.
+
+<Steps>
+  <Step title="Apri la linea">
+    Nella riga della linea premi **Configura** (se è vuota) o **Modifica**. Si apre la pagina **Configura provider VoIP in uscita** con il nome della linea come titolo.
+  </Step>
+  <Step title="Compila i dati">
+    Inserisci **SIP server** (per esempio `sip.provider.it`), **Porta** se l'operatore ne indica una diversa da 5060, **Username SIP**, **Password SIP**, **Telefono (caller ID)** e, se vuoi, una **Descrizione**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva modifiche**. Torni all'elenco con «Provider #7 aggiornato.» (o «Provider PRINCIPALE aggiornato.»).
+  </Step>
+  <Step title="Assegna la linea agli interni">
+    La **PRINCIPALE** vale per tutti gli interni. Una linea aggiuntiva invece va scelta interno per interno: in **Interni** → **Modifica** → **Provider in uscita** scegli «Provider 7» (o il numero della linea) e salva. Vedi [Interni](/centralino/telefoni-e-numeri/interni).
+  </Step>
+</Steps>
+
+<Warning>
+  Il campo **Password SIP** è già riempito con `********`, anche su una linea vuota. Quegli asterischi vogliono dire «non cambiare la password». Su una linea nuova, o per cambiare la password, **cancellali** e scrivi la password dell'operatore.
+</Warning>
+
+### Come chiamo fuori con un numero su cui già ricevo
+
+Puoi copiare su una linea in uscita i dati di uno dei tuoi numeri (di un altro operatore o MyCentralino), se il numero lo permette. Il menu **…** con **Copia da uno dei tuoi numeri** compare solo se almeno uno dei tuoi numeri si può copiare.
+
+<Steps>
+  <Step title="Apri la copia">
+    Nel menu **…** della linea scegli **Copia da uno dei tuoi numeri**. Si apre la finestra «Copia da uno dei tuoi numeri» («Usa le credenziali di uno dei tuoi numeri per chiamare con questa linea.»).
+  </Step>
+  <Step title="Scegli il numero">
+    In **Numero da cui copiare** scegli il numero. Compaiono solo i numeri da cui la copia è possibile.
+  </Step>
+  <Step title="Conferma">
+    Conferma («Confermi la copia di … su …? Sovrascriverà la configurazione attuale del provider.»). Compare «Configurazione di … copiata sul provider …».
+  </Step>
+</Steps>
+
+La stessa cosa si fa partendo dal numero: **I tuoi numeri** → menu **…** → **Usalo anche per le chiamate in uscita**. Vedi [I tuoi numeri](/centralino/telefoni-e-numeri/i-tuoi-numeri).
+
+### Come cambio solo il nome di una linea gestita da MyCentralino
+
+Su alcune linee aggiuntive le credenziali le gestisce MyCentralino («Provider veicolato MyCentralino»): **Modifica** apre una pagina dove **SIP server** e **Telefono** sono in sola lettura e si cambia solo la **Descrizione** (obbligatoria). Premi **Salva descrizione**: «Descrizione aggiornata.».
+
+<Warning>
+  Su queste linee c'è anche **Ripulisci provider**: cancella le credenziali che gestisce MyCentralino e tu non puoi reinserirle. Gli interni che usano la linea non chiamano più fuori con quella linea. Per rimetterla com'era serve una richiesta di assistenza.
+</Warning>
+
+### Come svuoto una linea
+
+<Steps>
+  <Step title="Apri la linea">
+    **Modifica** nella riga della linea.
+  </Step>
+  <Step title="Ripulisci">
+    In alto premi **Ripulisci provider** (c'è solo se la linea è configurata) e conferma («Ripulire la configurazione di …? Tutti i parametri verranno azzerati.»). Torni all'elenco con «Provider #7 ripulito.».
+  </Step>
+</Steps>
+
+<Warning>
+  Dopo **Ripulisci provider** la linea torna **Vuoto**: gli interni che la usano non riescono più a chiamare fuori con quella linea finché non la configuri di nuovo o non scegli per loro un'altra linea in **Interni** → **Modifica** → **Provider in uscita**.
+</Warning>
+
+## I campi della linea
+
+| Campo | Cosa mettere | Regole |
+| --- | --- | --- |
+| **SIP server** | L'indirizzo del server dell'operatore, per esempio `sip.provider.it`. | Obbligatorio. Solo un nome di server: gli indirizzi IP non sono ammessi. Se incolli anche la porta (`sip.provider.it:5060`), la porta viene spostata da sola nel campo accanto. |
+| **Porta (opzionale)** | La porta indicata dall'operatore. | Solo cifre. Vuoto = porta standard 5060. |
+| **Username SIP** | Lo username dato dall'operatore. | Obbligatorio. Lettere, cifre e i simboli `. _ - + * : / =`, con al massimo una @ seguita dal dominio. |
+| **Password SIP** | La password data dall'operatore. Il tasto con l'occhio la mostra. | Obbligatoria. `********` = non cambiarla. |
+| **Telefono (caller ID)** | Il numero che l'operatore mostrerà a chi chiami. | Solo cifre, attaccate, con l'eventuale + all'inizio. |
+| **Descrizione (opzionale)** | Un nome per riconoscere la linea nella lista. | Fino a 200 caratteri. |
+
+### I messaggi
+
+| Messaggio | Cosa fare |
+| --- | --- |
+| «SIP server obbligatorio.» | Compila **SIP server**. |
+| «Inserisci un hostname (es. sip.provider.it). Indirizzi IP non ammessi.» | Scrivi il nome del server; se l'operatore ti ha dato solo un indirizzo IP, chiedigli il nome del server o apri una richiesta di assistenza. |
+| «La porta può contenere solo cifre (es. 5060).» | Scrivi solo il numero della porta. |
+| «Lo username può contenere solo lettere, cifre e . \_ - + \* : / =, con al massimo un @ seguito dal dominio.» | Ricopia lo username, senza spazi. |
+| «Il telefono può contenere solo cifre, attaccate (es. 0212345678).» | Togli spazi e trattini. |
+| «Il provider PRINCIPALE è gestito da MyCentralino: scegli un altro provider in uscita.» | Copia su una linea aggiuntiva. |
+
+## Da sapere
+
+- **La PRINCIPALE gestita da MyCentralino** («gestito da noi») non si modifica dal pannello: per cambiarla apri una richiesta di assistenza.
+- **Nella pagina Interni** la linea PRINCIPALE si chiama **Provider 6 · principale (predefinito)** e le altre «Provider 7», «Provider 8»…: sono le stesse linee di questa pagina.
+- **Le modifiche si applicano da sole**, senza altri passaggi.
+- **Le regole che inoltrano a un numero esterno** hanno un campo **Provider di uscita**: lì scegli con quale linea esce la chiamata inoltrata (la PRINCIPALE è segnata «(PRINCIPALE)»). Vedi [Inoltro chiamate](/centralino/instradamento/inoltro-chiamate).
+- **Le linee** non si creano né si eliminano da questa pagina: si configurano, si modificano o si svuotano quelle che ci sono.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Con quale numero chiamano i miei interni?">
+    Dipende dalla linea usata dall'interno: la **PRINCIPALE** se in **Interni** → **Modifica** → **Provider in uscita** c'è **Provider 6 · principale (predefinito)**, altrimenti la linea indicata lì. Il numero impostato per ogni linea è nella colonna **Numero**.
+  </Accordion>
+
+  <Accordion title="Voglio che un interno chiami con un altro numero.">
+    Configura una linea aggiuntiva con i dati del numero (o copiali con **Copia da uno dei tuoi numeri**), poi in **Interni** → **Modifica** → **Provider in uscita** scegli quella linea per l'interno e salva.
+  </Accordion>
+
+  <Accordion title="La PRINCIPALE dice «gestito da noi».">
+    La linea la gestisce MyCentralino e funziona così. Per cambiarla apri una richiesta di assistenza.
+  </Accordion>
+
+  <Accordion title="Ho configurato una linea ma le chiamate non partono.">
+    Controlla con l'operatore server, username e password, e che la password non sia rimasta `********` (su una linea nuova vuol dire «nessuna password»). Controlla poi che l'interno usi davvero quella linea in **Interni** → **Modifica** → **Provider in uscita**, e che non sia impostato **Nessuno · questo interno non può chiamare fuori**.
+  </Accordion>
+
+  <Accordion title="Perché non posso scrivere un indirizzo IP come SIP server?">
+    Il campo accetta solo il nome del server (per esempio `sip.provider.it`). Chiedi all'operatore il nome del server; se non ne ha uno, apri una richiesta di assistenza.
+  </Accordion>
+
+  <Accordion title="Nelle regole di inoltro leggo «Nessun provider di uscita configurato per questo centralino».">
+    Il centralino non ha linee in uscita utilizzabili per l'inoltro. Il link **Configura un provider** porta a questa pagina; se la tabella è vuota («Nessuna linea in uscita»), contatta l'assistenza.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Interni" icon="phone" href="/centralino/telefoni-e-numeri/interni">
+    Scegliere la linea di ogni interno.
+  </Card>
+
+  <Card title="I tuoi numeri" icon="phone-volume" href="/centralino/telefoni-e-numeri/i-tuoi-numeri">
+    I numeri su cui ricevi e «Usalo anche per le chiamate in uscita».
+  </Card>
+
+  <Card title="Inoltro chiamate" icon="arrow-right-arrow-left" href="/centralino/instradamento/inoltro-chiamate">
+    La linea con cui escono gli inoltri.
+  </Card>
+
+  <Card title="Richieste di assistenza" icon="life-ring" href="/centralino/assistenza/richieste-di-assistenza">
+    Per cambiare una linea gestita da noi.
+  </Card>
+</CardGroup>

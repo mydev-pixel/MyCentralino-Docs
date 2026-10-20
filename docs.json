@@ -139,7 +139,8 @@
             "group": "Il tuo agente",
             "pages": [
               "agenti-ai/agente/crea-un-agente",
-              "agenti-ai/agente/istruzioni-e-voce"
+              "agenti-ai/agente/istruzioni-e-voce",
+              "agenti-ai/agente/trasferimenti"
             ]
           },
           {

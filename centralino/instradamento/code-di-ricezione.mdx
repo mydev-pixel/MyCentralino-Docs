@@ -1,5 +1,327 @@
 ---
 title: "Code di ricezione"
+sidebarTitle: "Code di ricezione"
+description: "Più telefoni che squillano per la stessa chiamata, con chi chiama che aspetta in linea finché qualcuno risponde: l'elenco delle code e la pagina per scegliere operatori, ordine di squillo, attesa massima, musica e avvisi."
+keywords:
+  - "coda di ricezione"
+  - "code"
+  - "coda"
+  - "queue"
+  - "gruppo di squillo"
+  - "far squillare più telefoni"
+  - "operatori"
+  - "attesa"
+  - "tempo di attesa"
+  - "musica d'attesa"
+  - "strategia di squillo"
+  - "squillano tutti"
+  - "a rotazione"
+  - "annuncio posizione"
+  - "chiamate abbandonate"
 ---
 
-Caricamento in corso.
+Una **Coda di ricezione** raccoglie più **operatori**, cioè più interni (telefoni) del centralino, che rispondono alle stesse chiamate. Quando la chiamata entra in coda gli operatori squillano nell'ordine che hai scelto, e chi chiama aspetta in linea con la musica d'attesa finché qualcuno risponde o finché scade il tempo massimo.
+
+**Dove si trova:** Menu → Risorse centralino → Instradamento → **Code di ricezione** · `https://cloud.mycentralino.com/code`
+
+Si arriva qui anche dalla pagina **Risorse del centralino** (`https://cloud.mycentralino.com/configurazione`), zona **Instradamento chiamate**.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**: senza quel permesso la voce non compare nel menu e l'indirizzo risponde con accesso negato. Non serve nessun modulo.
+
+<Note>
+  Una coda da sola non riceve chiamate. Funziona solo quando qualcosa la usa: di solito la regola **Inoltra la chiamata a una coda di ricezione** sul tuo numero, oppure un tasto di un menù vocale, la chiusura di un orario o un interruttore. Finché non è collegata, nell'elenco la colonna **Collegata a** dice «Non collegata · non riceve chiamate».
+</Note>
+
+## Cosa trovi nella pagina
+
+### L'elenco delle code
+
+In alto il titolo **Code di ricezione** con il conteggio (per esempio «3 code»; durante una ricerca «N risultati»), la frase «Le code di ricezione che distribuiscono le chiamate in arrivo agli operatori.» e il bottone **Nuova coda**.
+
+Se qualcosa non va, in cima all'elenco compare un riquadro ambra (non durante una ricerca):
+
+- «N code ricevono chiamate ma non hanno operatori: chi chiama **resta senza risposta**.» (al singolare «1 coda riceve chiamate ma non ha operatori…»);
+- «N code non sono collegate a nessun numero e non ricevono chiamate.».
+
+Il bottone **Mostra quali** filtra la tabella su quelle code; **Mostra tutte** torna all'elenco completo.
+
+Sotto, la ricerca **Cerca coda…** (cerca nel nome) e il bottone per ordinare dalla A alla Z o al contrario. La tabella **Code** ha una riga per coda:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Coda** | Il nome. Un clic sul nome o in qualsiasi punto della riga apre la coda. |
+| **Operatori** | Quanti operatori ha («3 operatori»). Senza operatori, in ambra: «Nessun operatore · nessuno risponde» se la coda riceve chiamate, «Nessun operatore» se non è collegata. |
+| **Come squillano** | «—» se squillano tutti insieme (è il caso più comune), altrimenti **A rotazione**, **Casuale** o **Meno chiamate**. |
+| **Musica di attesa** | Business 1, Business 2, Business 3, Jazz, Pop, Classica, Squilla, oppure Personalizzata #1, #2, #3. |
+| **Collegata a** | I numeri o i servizi interni che la usano (i primi due, poi «+N»), oppure un collegamento indiretto, scritto per esempio apertura «Ufficio» (la chiusura di un orario), chiusura «Natale» (una chiusura per ferie), switch temporale «…» (un interruttore a orario), switch manuale «…» (un interruttore) o menu «MENU_PRINCIPALE» (tasto 1), con «+N» se sono di più (passa il mouse sopra per l'elenco completo). Se non la usa niente: «Non collegata · non riceve chiamate». |
+| (azioni) | Il cestino **Elimina** e la freccia per aprirla. |
+
+Se non hai ancora code la tabella dice «Nessuna coda configurata · Crea la prima coda per distribuire le chiamate tra più operatori.» con **Nuova coda →**. Se la ricerca non trova niente: «Nessuna coda per questa ricerca».
+
+<Frame caption="L'elenco delle Code di ricezione">
+  <img
+    src="/images/guida/code-elenco.webp"
+    alt="L'elenco delle Code di ricezione"
+  />
+</Frame>
+
+### La pagina di una coda
+
+In testa il nome della coda, la frase «Scegli chi risponde, la strategia di squillo e gli annunci al chiamante.» e i bottoni **Annulla** e **Salva** (anche con la tastiera: Ctrl S, su Mac ⌘S). La pagina è divisa in parti:
+
+- **Nome coda**: su una coda esistente è in sola lettura («Il nome della coda non può essere modificato dopo la creazione.»).
+- **1 · Operatori** — «Chi risponde alle chiamate che entrano in coda.»: una casella per ogni interno, con numero e nome, e il contatore «N / M interni selezionati». Con più di 6 interni compare la ricerca **Cerca un interno per numero o nome…**.
+- **2 · Comportamento della coda** — «Come vengono chiamati gli operatori e cosa succede a chi aspetta.», in due zone: **Chi squilla, e per quanto** e **Quanto si aspetta**.
+- **Impostazioni avanzate** — «Annunci a chi aspetta, email di avviso, comportamento al riaggancio.»: un riquadro chiuso all'apertura, con il contatore «N attive». Si apre con un clic.
+
+Appena cambi qualcosa compare in basso la barra **Modifiche non salvate** con **Annulla** e **Salva**. Se provi a uscire senza salvare, il pannello chiede «Ci sono modifiche non salvate. Uscire senza salvarle?».
+
+<Frame caption="La pagina di una coda: operatori e comportamento">
+  <img
+    src="/images/guida/coda-modifica.webp"
+    alt="La pagina di una coda: operatori e comportamento"
+  />
+</Frame>
+
+## Come fare
+
+### Come creo una coda
+
+<Steps>
+  <Step title="Premi Nuova coda">
+    Si apre la finestra **Nuova coda**: «Assegna un nome alla coda. Potrai aggiungere operatori e impostare la strategia subito dopo.».
+  </Step>
+  <Step title="Scrivi il nome">
+    In **Nome coda** scrivi per esempio `COMMERCIALE`: lettere, numeri, trattino e trattino basso, **niente spazi**, al massimo 40 caratteri. Il nome non si potrà cambiare dopo.
+  </Step>
+  <Step title="Premi Crea e configura">
+    La coda viene creata con le impostazioni proposte e si apre la sua pagina.
+  </Step>
+  <Step title="Scegli gli operatori">
+    In **1 · Operatori** spunta gli interni che devono rispondere.
+  </Step>
+  <Step title="Scegli come squillano">
+    In **Ordine con cui squillano gli operatori** scegli per esempio **Tutti insieme**, poi la durata dello squillo.
+  </Step>
+  <Step title="Scegli quanto si aspetta e cosa si sente">
+    Imposta **Tempo massimo in attesa** (per esempio 1 minuto) e la **Musica d'attesa**.
+  </Step>
+  <Step title="Premi Salva">
+    Conferma: «Coda "nome" salvata.».
+  </Step>
+  <Step title="Collega la coda al tuo numero">
+    In **Regole chiamate** apri il numero, premi **Aggiungi regola**, scegli **Inoltra la chiamata a una coda di ricezione**, seleziona la coda e premi **Aggiungi regola**.
+  </Step>
+  <Step title="Prevedi cosa succede se nessuno risponde">
+    Subito dopo la coda aggiungi una regola di riserva, per esempio la segreteria: quando scade il tempo massimo la chiamata prosegue lì.
+  </Step>
+</Steps>
+
+La guida completa, con le prove da fare, è in [Far squillare più telefoni](/centralino/come-fare/far-squillare-piu-telefoni).
+
+<Tip>
+  Puoi creare una coda anche senza uscire dalle regole: nel passaggio **Inoltra la chiamata a una coda di ricezione** premi **Nuovo** (o **Crea la prima coda** se non ne hai). Si apre la pagina **Nuova coda** in una finestra: lì il nome può contenere spazi e accenti. Spazi e simboli diventano trattino basso e le lettere accentate perdono l'accento («Ufficio Tecnico» diventa «Ufficio_Tecnico», «Contabilità» diventa «Contabilita»). Appena esci dal campo vedi il nome già convertito. Dopo **Salva** la coda è già nell'elenco della regola.
+</Tip>
+
+### Come aggiungo o tolgo un operatore
+
+<Steps>
+  <Step title="Apri la coda">
+  </Step>
+  <Step title="Spunta o togli la spunta">
+    In **1 · Operatori**, sulla casella dell'interno.
+  </Step>
+  <Step title="Premi Salva">
+  </Step>
+</Steps>
+
+### Come faccio squillare un operatore alla volta
+
+<Steps>
+  <Step title="Apri la coda">
+  </Step>
+  <Step title="Scegli l'ordine">
+    In **Ordine con cui squillano gli operatori** scegli **A rotazione**, **Casuale** o **Meno chiamate**.
+  </Step>
+  <Step title="Scegli per quanto squilla ciascuno">
+    Nel campo della durata dello squillo, sotto le strategie, scegli **Normale** o **Lungo**. Con queste strategie il campo si intitola **Per quanto squilla ogni operatore prima di passare al prossimo** (l'etichetta può aggiornarsi solo dopo la tua azione successiva, per esempio quando spunti un operatore o salvi).
+  </Step>
+  <Step title="Premi Salva">
+  </Step>
+</Steps>
+
+### Come cambio la musica che sente chi aspetta
+
+Apri la coda, in **Musica d'attesa** scegli una delle musiche e premi **Salva**. Per usare una musica tua: caricala in [Messaggi audio](/centralino/audio/messaggi-audio), assegnala a un profilo in [Musica d'attesa](/centralino/audio/musica-di-attesa) (per esempio **Musica 1**) e nella coda scegli **Personalizzata #1**.
+
+### Come ricevo un'email quando qualcuno riattacca mentre aspetta
+
+<Steps>
+  <Step title="Apri la coda e poi Impostazioni avanzate">
+  </Step>
+  <Step title="Scrivi l'indirizzo">
+    In **Email notifica abbandono** scrivi un solo indirizzo email.
+  </Step>
+  <Step title="Premi Salva">
+    Per smettere di riceverle, svuota il campo e salva.
+  </Step>
+</Steps>
+
+### Come tolgo l'annuncio della posizione in coda
+
+Apri la coda → **Impostazioni avanzate** → togli la spunta a **Annuncia la posizione in coda** → **Salva**.
+
+Togliere l'annuncio cambia anche la durata dello squillo scelta in **Normale** o **Lungo**: con **Tutti insieme** lo squillo di ogni operatore diventa più breve. Se ti sembra troppo breve, scegli **Lungo**.
+
+### Come elimino una coda
+
+<Steps>
+  <Step title="Premi il cestino sulla riga della coda">
+    Si apre **Elimina coda**: «Stai per eliminare la coda «nome». L'azione non è reversibile.».
+  </Step>
+  <Step title="Leggi l'avviso">
+    Se la coda è usata nelle regole di un numero o di un servizio interno, un riquadro avvisa che quei numeri non riusciranno più a distribuire le chiamate agli operatori finché non li riconfiguri, e li elenca. La finestra non avvisa se la coda è usata solo da un tasto di un menù vocale, da un orario, da una chiusura per ferie o da un interruttore: prima di eliminare controlla la colonna **Collegata a**.
+  </Step>
+  <Step title="Premi Elimina">
+    La coda sparisce dall'elenco.
+  </Step>
+</Steps>
+
+<Warning>
+  L'eliminazione è **definitiva** e **non toglie le regole** che usano la coda: quelle regole smettono di funzionare finché non le correggi. Prima di eliminare, togli o sostituisci la coda in tutto ciò che compare in **Collegata a**: regole dei numeri, tasti dei menù, orari, chiusure e interruttori.
+</Warning>
+
+## I campi
+
+### Finestra «Nuova coda»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome coda** | Il nome con cui la ritrovi nell'elenco e nelle regole. Non si cambia dopo. | Obbligatorio. Al massimo 40 caratteri: lettere, numeri, «-» e «\_», niente spazi. |
+
+Messaggi possibili: «Il nome è obbligatorio.», «Usa solo lettere, numeri, \_ e -.», «Esiste già una coda con questo nome.».
+
+### 1 · Operatori
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| Caselle degli interni | Chi squilla quando la chiamata entra in coda | Uno o più interni del centralino |
+
+Se non selezioni nessuno compare l'avviso «Nessun operatore selezionato. Le chiamate in coda non potranno essere inoltrate.». Se il centralino non ha interni: «Nessun interno SIP configurato.»; prima va creato almeno un interno in [Interni](/centralino/telefoni-e-numeri/interni).
+
+### 2 · Comportamento della coda
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Ordine con cui squillano gli operatori** | Chi squilla e in che ordine | **Tutti insieme** (proposto): «Squillano tutti gli operatori contemporaneamente» · **A rotazione**: «Un operatore alla volta, a rotazione» · **Casuale**: «Un operatore a caso ogni chiamata» · **Meno chiamate**: «L'operatore con meno chiamate oggi» |
+| **Per quanto squillano** (con **Tutti insieme**) · **Per quanto squilla ogni operatore prima di passare al prossimo** (con le altre scelte) | La durata dello squillo | **Normale** (proposto): «Squilla per il tempo standard, poi la chiamata passa al prossimo operatore.» · **Lungo**: «Squilla più a lungo prima di passare al prossimo: utile se gli operatori sono spesso impegnati.» · **Squilla sempre**: «Il telefono continua a squillare finché qualcuno risponde: la chiamata non passa al prossimo operatore.» |
+| **Tempo massimo in attesa** | Quanto può aspettare chi chiama. «Scaduto il tempo, la chiamata esce dalla coda e prosegue con la regola successiva.» | 5, 10, 15, 30 secondi · 1, 2 (proposto), 3, 5, 10, 25 minuti · 1 ora · 2 ore |
+| **Persone che possono aspettare insieme** | Quante chiamate possono stare in attesa nello stesso momento. «Oltre questo numero la chiamata non entra in coda e prosegue con la regola successiva.» | **Nessun limite** (proposto), da 1 a 20, poi 25, 30, 35, 40, 50, 100, 200 |
+| **Musica d'attesa** | Cosa sente chi aspetta | Business 1 (proposta), Business 2, Business 3, Jazz, Pop, Classica, **Squilla (no musica)**, **Personalizzata #1**, **#2**, **#3** |
+
+Accanto alle musiche già pronte l'elenco riporta un'indicazione di anteprima, per esempio «Business 1 (anteprima: chiama 310)». Con **Squilla (no musica)** chi aspetta sente lo squillo invece della musica. Le **Personalizzata** suonano il file che hai assegnato al profilo corrispondente in [Musica d'attesa](/centralino/audio/musica-di-attesa).
+
+Se una coda creata in passato ha un tempo d'attesa che non è tra quelli dell'elenco, compare con accanto «(legacy)»: puoi lasciarlo o sceglierne uno dell'elenco.
+
+### Impostazioni avanzate
+
+Zona **Annunci al chiamante**:
+
+| Opzione | Cosa fa | All'inizio |
+| --- | --- | --- |
+| **Annuncia la posizione in coda** | A chi aspetta viene detto a intervalli regolari quante persone ha davanti. La pagina lo descrive con «"Sei il terzo in attesa" ogni 60 secondi.». | Attiva |
+| **Audio specifico della coda** | A video: «Riproduci un messaggio dedicato a questa coda al posto di quello generico.». In pratica serve all'operatore: quando risponde sente prima un messaggio (per esempio «Chiamata dal numero commerciale»), poi viene collegato a chi chiama. Il messaggio si sceglie nelle regole del numero con **Riproduci audio per operatore**, da mettere prima di **Inoltra la chiamata a una coda di ricezione**. | Spenta |
+| **Segnala le chiamate perse sui telefoni** | «Mostra una notifica di chiamata non risposta ai telefoni della coda quando nessuno risponde.» | Attiva |
+| **Squilla anche se l'interno è occupato** | «Prova a passare la chiamata anche a operatori già impegnati in altre telefonate.» | Spenta |
+
+Zona **Notifiche**:
+
+| Opzione | Cosa fa | All'inizio |
+| --- | --- | --- |
+| **Email notifica abbandono** | «Ricevi una email quando un cliente abbandona la coda prima di essere servito. Lascia vuoto per disattivare.» Un solo indirizzo, al massimo 120 caratteri. | Vuota |
+| **Invia segnale alla risposta** | «Quando un operatore risponde, il centralino avvisa il sistema esterno collegato. Funzione avanzata.» È una funzione per chi collega il centralino a un programma esterno: se non sai a cosa serve, lasciala spenta. Con questa opzione accesa, quando salvi la coda le regole che la usano non tengono conto di **Squilla (no musica)** (chi aspetta sente la musica) né di **Segnala le chiamate perse sui telefoni** spenta (i telefoni mostrano la notifica di chiamata persa). | Spenta |
+| **Log applicazione abbandono** | «Registra nel log di sistema ogni chiamata che esce dalla coda senza essere servita.» | Spenta |
+| **Continua se operatore riaggancia** | Quando l'operatore riaggancia, la chiamata non viene chiusa: prosegue con la regola successiva del numero. | Spenta |
+
+Se l'indirizzo email non è valido compare «Scrivi un indirizzo email valido, es. [nome@azienda.it](mailto:nome@azienda.it)» e il riquadro **Impostazioni avanzate** si apre da solo.
+
+## Da sapere
+
+- **Gli operatori sono gli interni** del centralino: telefoni fissi, app sul cellulare o sul computer. Un interno può stare in più code.
+- **Le impostazioni sono della coda, non della regola.** La regola **Inoltra la chiamata a una coda di ricezione** sceglie solo la coda («Il timeout e tutti gli altri parametri sono quelli configurati nella coda.»). Quando salvi la coda, le regole dei numeri e dei servizi interni che la usano si aggiornano. Nel pannello della regola, per ogni coda, vedi quanti operatori ha e l'«attesa max» in secondi.
+- **Dopo la coda serve una riserva.** Quando scade il **Tempo massimo in attesa**, o se la coda è piena, la chiamata prosegue con la regola successiva del numero. Metti dopo la coda una segreteria o un inoltro: vedi [Segreterie](/centralino/strumenti/segreterie).
+- **Una coda senza operatori** lascia chi chiama senza risposta: il riquadro ambra in cima all'elenco te lo segnala.
+- **Il nome non si cambia.** Per un nome diverso crea una nuova coda, mettila nelle regole al posto della vecchia ed elimina la vecchia.
+- **Le statistiche** delle code sono in [Analisi chiamate code](/centralino/monitoraggio/analisi-chiamate-code).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Nessuno risponde: il cliente resta in attesa all'infinito?">
+    No. Dopo il **Tempo massimo in attesa** la chiamata esce dalla coda e prosegue con la regola successiva. Controlla che nelle regole del numero, dopo la coda, ci sia una regola di riserva (per esempio la segreteria).
+  </Accordion>
+
+  <Accordion title="Nell'elenco vedo «Nessun operatore · nessuno risponde».">
+    La coda riceve chiamate ma non ha interni selezionati. Aprila, spunta almeno un operatore in **1 · Operatori** e premi **Salva**.
+  </Accordion>
+
+  <Accordion title="Vedo «Non collegata · non riceve chiamate».">
+    Nessun numero, menù, orario o interruttore la usa. In **Regole chiamate** apri il numero e aggiungi la regola **Inoltra la chiamata a una coda di ricezione**.
+  </Accordion>
+
+  <Accordion title="Un operatore è già al telefono: gli arriva un'altra chiamata della coda?">
+    Solo se nella coda è attiva **Squilla anche se l'interno è occupato** (in **Impostazioni avanzate**).
+  </Accordion>
+
+  <Accordion title="Che differenza c'è tra «Tutti insieme» e «A rotazione»?">
+    Con **Tutti insieme** squillano tutti gli operatori nello stesso momento e risponde il primo che alza. Con **A rotazione** squilla un operatore alla volta, a turno; se non risponde entro la durata scelta, la chiamata passa al prossimo.
+  </Accordion>
+
+  <Accordion title="Posso cambiare il nome di una coda?">
+    No. Crea una nuova coda, aggiorna le regole che usavano la vecchia ed elimina la vecchia.
+  </Accordion>
+
+  <Accordion title="La finestra Nuova coda mi dà «Usa solo lettere, numeri, _ e -.».">
+    Il nome contiene spazi, accenti o simboli. Usa per esempio `UFFICIO_TECNICO` al posto di «Ufficio Tecnico».
+  </Accordion>
+
+  <Accordion title="Ho cambiato le impostazioni della coda: devo rifare la regola?">
+    No. Quando salvi la coda, le regole dei numeri e dei servizi interni che la usano si aggiornano.
+  </Accordion>
+
+  <Accordion title="Posso mettere una musica mia nell'attesa?">
+    Sì: caricala in **Messaggi audio**, assegnala a un profilo in **Musica d'attesa** e nella coda scegli **Personalizzata** con lo stesso numero. Vedi [Musica d'attesa](/centralino/audio/musica-di-attesa).
+  </Accordion>
+
+  <Accordion title="Come smetto di ricevere le email di abbandono?">
+    Apri la coda → **Impostazioni avanzate**, svuota **Email notifica abbandono** e premi **Salva**.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Far squillare più telefoni" icon="phone" href="/centralino/come-fare/far-squillare-piu-telefoni">
+    La coda dall'inizio alla fine, con le prove.
+  </Card>
+
+  <Card title="Passaggi che instradano la chiamata" icon="sitemap" href="/centralino/regole/passaggi-chiamata">
+    La regola Inoltra la chiamata a una coda di ricezione.
+  </Card>
+
+  <Card title="Musica d'attesa" icon="music" href="/centralino/audio/musica-di-attesa">
+    La tua musica nell'attesa di una coda.
+  </Card>
+
+  <Card title="Menù vocali (IVR)" icon="list" href="/centralino/instradamento/menu-vocali">
+    Una coda dietro ogni tasto.
+  </Card>
+
+  <Card title="Interni" icon="headset" href="/centralino/telefoni-e-numeri/interni">
+    I telefoni che fanno da operatori.
+  </Card>
+
+  <Card title="Analisi chiamate code" icon="chart-line" href="/centralino/monitoraggio/analisi-chiamate-code">
+    Come vanno le tue code.
+  </Card>
+</CardGroup>

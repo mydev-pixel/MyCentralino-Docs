@@ -117,7 +117,9 @@
           },
           {
             "group": "Assistenza e aiuto",
-            "pages": []
+            "pages": [
+              "centralino/assistenza/richieste-di-assistenza"
+            ]
           }
         ]
       },

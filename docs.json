@@ -87,7 +87,8 @@
               "centralino/monitoraggio/statistiche",
               "centralino/monitoraggio/in-tempo-reale",
               "centralino/monitoraggio/chiamate-ricevute",
-              "centralino/monitoraggio/esiti-delle-chiamate"
+              "centralino/monitoraggio/esiti-delle-chiamate",
+              "centralino/monitoraggio/chiamate-effettuate"
             ]
           },
           {
@@ -95,7 +96,8 @@
             "pages": [
               "centralino/strumenti/segreterie",
               "centralino/strumenti/rubrica",
-              "centralino/strumenti/conferenze"
+              "centralino/strumenti/conferenze",
+              "centralino/strumenti/ascolto-chiamate"
             ]
           },
           {

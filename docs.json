@@ -34,7 +34,8 @@
             "group": "Regole delle chiamate",
             "pages": [
               "centralino/regole/panoramica",
-              "centralino/regole/editor"
+              "centralino/regole/editor",
+              "centralino/regole/passaggi-chiamata"
             ]
           },
           {

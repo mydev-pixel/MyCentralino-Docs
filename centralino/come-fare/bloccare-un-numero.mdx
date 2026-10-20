@@ -1,5 +1,231 @@
 ---
 title: "Bloccare un numero"
+sidebarTitle: "Bloccare un numero"
+description: "Dall'inizio alla fine: crei un elenco di numeri bloccati, ci metti il numero che disturba (anche da Chiamate ricevute), lo colleghi al tuo numero e controlli che funzioni."
+keywords:
+  - "bloccare un numero"
+  - "numeri bloccati"
+  - "blacklist"
+  - "lista nera"
+  - "call center molesto"
+  - "telemarketing"
+  - "rifiutare chiamate"
+  - "bloccare prefisso"
+  - "chiamate anonime"
+  - "whitelist"
 ---
 
-Caricamento in corso.
+Questa guida ti porta da zero a un numero che rifiuta le chiamate di chi ti disturba: un call center, un numero indesiderato o un intero prefisso.
+
+## Cosa ottieni
+
+- Le chiamate dai numeri in elenco vengono chiuse prima di arrivare ai telefoni. Se vuoi, chi è bloccato sente un beep o un tuo messaggio.
+- Lo stesso elenco vale per tutti i numeri a cui lo colleghi: aggiungi un numero una volta e lo blocchi ovunque.
+- In **Chiamate ricevute** vedi le chiamate bloccate, con la frase «Bloccata: il numero è in un elenco di numeri bloccati.».
+
+## Prima di cominciare
+
+- **Ti serve l'accesso** a **Risorse del centralino** e a **Regole delle chiamate** e, per bloccare partendo da una chiamata, anche a **Monitoraggio**. Il titolare dell'account li ha sempre; un collaboratore solo se glieli hai concessi.
+- **Il numero da bloccare.** Il modo più comodo è partire dalla chiamata in Menu → Monitoraggio → **Chiamate ricevute**: il numero viene compilato da solo. Se lo scrivi a mano, scrivilo come lo componi in Italia, senza `+39` (per esempio `0287196069`).
+- **Il messaggio per chi è bloccato** (facoltativo): se vuoi che senta qualcosa prima che la chiamata si chiuda, prepara il messaggio in Menu → Risorse centralino → Audio → **Messaggi audio**. Vedi [Messaggi audio](/centralino/audio/messaggi-audio).
+
+<Warning>
+  Un elenco blocca **solo** se è collegato alle regole di un numero (parte 3). Finché non lo colleghi, in **Numeri bloccati** la colonna **Usato da** dice «Non collegata · non blocca niente» e le chiamate passano.
+</Warning>
+
+## Come fare
+
+### 1 · Crea l'elenco (si fa una volta sola)
+
+**Dove si trova:** Menu → Risorse centralino → Instradamento → **Numeri bloccati** · `https://cloud.mycentralino.com/blacklist`
+
+Se hai già un elenco, passa alla parte 2.
+
+<Steps>
+  <Step title="Apri Numeri bloccati e premi Nuova">
+    Si apre la finestra **Nuova blacklist**: «Assegna un nome. Potrai aggiungere i numeri subito dopo.».
+  </Step>
+  <Step title="Scrivi il nome">
+    In **Nome blacklist** scrivi per esempio `MOLESTI`. Sono ammessi lettere senza accenti, numeri, `_` e `-`, senza spazi, al massimo 50 caratteri. Il nome non si potrà cambiare.
+  </Step>
+  <Step title="Crea">
+    Premi **Crea e configura**: si apre subito la pagina dell'elenco, pronta per i numeri.
+  </Step>
+</Steps>
+
+### 2 · Aggiungi il numero
+
+<Tabs>
+  <Tab title="Da Chiamate ricevute">
+    **Dove si trova:** Menu → Monitoraggio → **Chiamate ricevute** · `https://cloud.mycentralino.com/chiamate-in`
+
+    <Steps>
+      <Step title="Trova la chiamata">
+        Scrivi il numero in **Cerca numero o nome…**, oppure scorri l'elenco. Se la chiamata è di qualche giorno fa, allarga il periodo con **Ultimi 30 gg**.
+      </Step>
+      <Step title="Apri la riga">
+        Clicca la riga della chiamata: sotto si apre il **Percorso chiamata**. In fondo premi **Blocca il numero**.
+      </Step>
+      <Step title="Scegli l'elenco e conferma">
+        Nella finestra **Blocca il numero** scegli l'**Elenco** (è proposto il primo). **Numero da bloccare** è già compilato e **Descrizione (facoltativo)** riporta «Da chiamate in ricezione» seguito dalla data di oggi (non quella della chiamata). Premi **Blocca il numero**: compare «Numero … aggiunto ai numeri bloccati «MOLESTI».».
+      </Step>
+    </Steps>
+
+    Se non hai ancora nessun elenco compare «Nessun elenco di numeri bloccati» con **Vai a Numeri bloccati**: crea prima l'elenco (parte 1).
+  </Tab>
+  <Tab title="A mano, nell'elenco">
+    **Dove si trova:** Menu → Risorse centralino → Instradamento → **Numeri bloccati** → clic sul nome dell'elenco
+
+    <Steps>
+      <Step title="Scrivi il numero">
+        In **Numero** scrivi il numero, per esempio `0287196069`. Solo cifre (sono ammessi anche `+`, `*` e `#`), al massimo 25 caratteri.
+      </Step>
+      <Step title="Aggiungi una descrizione, se vuoi">
+        In **Descrizione (opzionale)** scrivi per esempio `Call center molesto` (al massimo 100 caratteri).
+      </Step>
+      <Step title="Aggiungi">
+        Premi **Aggiungi**. Il numero compare nell'elenco con una barretta verde a sinistra.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+### 3 · Collega l'elenco al tuo numero (si fa una volta per numero)
+
+**Dove si trova:** Menu → **Regole chiamate** → **Numeri di telefono** · `https://cloud.mycentralino.com/regole`
+
+<Steps>
+  <Step title="Apri il numero">
+    Nell'elenco clicca il numero su cui vuoi bloccare le chiamate. Si apre lo schema delle sue regole, che parte da **Chiamata in arrivo**.
+  </Step>
+  <Step title="Inserisci la regola in cima">
+    Passa con il mouse sulla linea subito sotto **Chiamata in arrivo** e premi il **\+** («Inserisci qui»). Se il numero non ha ancora regole, premi **Aggiungi la prima regola**.
+  </Step>
+  <Step title="Scegli Numeri bloccati">
+    Nella finestra **Aggiungi regola** apri l'argomento **Filtri chiamate** e scegli **Numeri bloccati**.
+  </Step>
+  <Step title="Scegli l'elenco">
+    In **Lista numeri** scegli il tuo elenco (accanto vedi quanti numeri contiene, per esempio «MOLESTI (3 numeri)»). Se leggi «Nessuna blacklist configurata per questo centralino.», non hai ancora un elenco: premi **Crea una blacklist** (si apre in una nuova scheda), fai la parte 1 e poi riapri la regola.
+  </Step>
+  <Step title="Scegli cosa sente chi è bloccato">
+    In **Audio per il chiamante** scegli **Nessun audio** (proposto: la chiamata si chiude), **Solo beep** oppure uno dei tuoi messaggi audio.
+  </Step>
+  <Step title="Lascia spente le due caselle">
+    Per bloccare i numeri in elenco lascia spenta **Modalità whitelist**. Lascia spenta anche **Ammetti numeri anonimi** se vuoi rifiutare pure le chiamate con il numero nascosto.
+  </Step>
+  <Step title="Aggiungi la regola">
+    Premi **Aggiungi regola**. La scheda **Numeri bloccati** deve stare **in cima**, prima delle regole che fanno squillare i telefoni. Se non è così, usa **Sposta su** oppure clicca il numerino della posizione e scegli **In cima**. Va sopra anche a ferie e orari: l'ordine completo è in [Editor delle regole](/centralino/regole/editor), sezione «In che ordine metto i passaggi».
+  </Step>
+</Steps>
+
+Le modifiche alle regole valgono subito: in questa pagina non c'è un bottone da premere per salvare. Ripeti questa parte per ogni numero su cui vuoi bloccare le chiamate, scegliendo sempre lo stesso elenco.
+
+### 4 · Controlla
+
+<Steps>
+  <Step title="Guarda la colonna Usato da">
+    In **Numeri bloccati** la colonna **Usato da** del tuo elenco ora mostra il numero collegato, al posto di «Non collegata · non blocca niente». Se un elenco non è collegato a nessun numero, in alto compare un riquadro ambra con **Mostra i non collegati**.
+  </Step>
+  <Step title="Guarda Chiamate ricevute">
+    Quando il numero bloccato richiama, in **Chiamate ricevute** la chiamata risulta **Persa** con la frase «Bloccata: il numero è in un elenco di numeri bloccati.».
+  </Step>
+</Steps>
+
+## Altre cose che puoi fare
+
+### Come blocco un intero prefisso
+
+Nell'elenco scrivi in **Numero** il simbolo `^` seguito dalle prime cifre. Per esempio `^02` blocca tutti i numeri che iniziano con 02, `^800` tutti quelli che iniziano con 800, `^3` tutti i cellulari italiani. Nell'elenco la riga ha la barretta ambra e l'etichetta **prefisso**.
+
+### Come sblocco un numero
+
+Apri l'elenco, trova il numero (puoi cercarlo in **Cerca numero o nome…**), premi il cestino e conferma con **Elimina** nella finestra **Rimuovi dalla blacklist**. La chiamata successiva da quel numero passa normalmente.
+
+### Come aggiungo molti numeri in una volta
+
+Nell'elenco premi **Importa da CSV**, scegli il file, premi **Verifica il file**, controlla l'anteprima e premi **Aggiungi N numeri**. Il formato del file è spiegato nel riquadro **Formato del file**. Vedi [Numeri bloccati](/centralino/instradamento/numeri-bloccati).
+
+### Come faccio passare solo alcuni numeri
+
+Crea un elenco con i soli numeri ammessi e, nella regola **Numeri bloccati**, spunta **Modalità whitelist**: «Inverte il criterio: solo i numeri della lista sono ammessi; tutti gli altri vengono bloccati.». Usa un elenco diverso da quello dei numeri molesti.
+
+## I campi
+
+| Dove | Campo | Cosa indica | Valori |
+| --- | --- | --- | --- |
+| Nuova blacklist | **Nome blacklist** | Il nome dell'elenco | Obbligatorio. Lettere senza accenti, numeri, `_` e `-`, niente spazi, al massimo 50 caratteri. Non si cambia dopo |
+| Elenco | **Numero** | Il numero o il prefisso da bloccare | Obbligatorio. Cifre, `+`, `*`, `#`; `^` all'inizio per un prefisso. Al massimo 25 caratteri |
+| Elenco | **Descrizione (opzionale)** | Un promemoria | Al massimo 100 caratteri |
+| Regola | **Lista numeri** | L'elenco da usare | Uno degli elenchi di **Numeri bloccati** |
+| Regola | **Audio per il chiamante** | Cosa sente chi è bloccato prima che la chiamata si chiuda | **Nessun audio** (proposto), **Solo beep**, uno dei tuoi messaggi audio |
+| Regola | **Modalità whitelist** | Passano solo i numeri in elenco | Spenta di base |
+| Regola | **Ammetti numeri anonimi** | Lascia passare le chiamate con il numero nascosto | Spenta di base: le anonime sono bloccate |
+
+## Da sapere
+
+- **Senza la regola l'elenco non blocca.** Contano solo i numeri le cui regole contengono **Numeri bloccati** con quell'elenco scelto.
+- **Un elenco, tanti numeri.** Puoi collegare lo stesso elenco a tutti i tuoi numeri: quando aggiungi un numero all'elenco, vale subito ovunque.
+- **Le chiamate anonime.** Con la regola **Numeri bloccati** sono bloccate anche le chiamate con il numero nascosto, anche se l'elenco è vuoto. Per riceverle spunta **Ammetti numeri anonimi** nella regola.
+- **Scrivi i numeri senza +39.** Scrivili come li componi in Italia (`3351234567`); gli esteri con `00` davanti.
+- **Eliminare un elenco collegato.** La finestra **Elimina blacklist** ti avvisa: «Eliminandola, i numeri qui sotto smetteranno di filtrare le chiamate indesiderate.» e mostra i numeri collegati. L'azione non si può annullare.
+- **Limiti dell'importazione da file.** Fino a 1000 numeri per file e 5000 numeri per elenco. Con l'importazione non si possono inserire prefissi `^`: aggiungili a mano.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Ho bloccato il numero ma mi chiama ancora. Perché?">
+    Quasi sempre l'elenco non è collegato al numero che ha ricevuto la chiamata: in **Numeri bloccati** la colonna **Usato da** dice «Non collegata · non blocca niente». Aggiungi la regola **Numeri bloccati** in cima alle regole di quel numero (parte 3). Controlla anche di aver scritto il numero senza `+39`.
+  </Accordion>
+
+  <Accordion title="Devo scrivere +39?">
+    No. Scrivi il numero come lo componi in Italia, per esempio `3351234567`.
+  </Accordion>
+
+  <Accordion title="Che differenza c'è tra 3351234567 e ^335?">
+    Il primo blocca solo quel numero. Il secondo blocca tutti i numeri che iniziano con 335.
+  </Accordion>
+
+  <Accordion title="Ho più numeri: devo bloccare il molesto su ognuno?">
+    No. Basta un elenco solo: collegalo con la regola **Numeri bloccati** a ogni numero, e aggiungi i molesti una volta sola nell'elenco.
+  </Accordion>
+
+  <Accordion title="Chi è bloccato sente qualcosa?">
+    Dipende da **Audio per il chiamante** nella regola: con **Nessun audio** la chiamata si chiude, con **Solo beep** sente un beep, oppure sente il messaggio audio che hai scelto.
+  </Accordion>
+
+  <Accordion title="Le chiamate con numero nascosto vengono bloccate?">
+    Sì, a meno che nella regola non spunti **Ammetti numeri anonimi**.
+  </Accordion>
+
+  <Accordion title="Posso cambiare il nome dell'elenco?">
+    No. Crea un elenco nuovo con il nome giusto, collegalo ai numeri al posto del vecchio e poi elimina quello vecchio.
+  </Accordion>
+
+  <Accordion title="Una chiamata «Anonima» risulta «Bloccata», ma non è in nessun elenco.">
+    La regola **Numeri bloccati** ferma anche le chiamate con il numero nascosto, pure se l'elenco è vuoto. Per riceverle apri la regola e spunta **Ammetti numeri anonimi**.
+  </Accordion>
+
+  <Accordion title="Ho bloccato un numero per errore.">
+    Apri l'elenco, premi il cestino sulla riga del numero e conferma con **Elimina**.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Numeri bloccati" icon="ban" href="/centralino/instradamento/numeri-bloccati">
+    Tutti i campi degli elenchi, l'importazione da CSV e i limiti.
+  </Card>
+
+  <Card title="Passaggi: filtri" icon="list" href="/centralino/regole/passaggi-filtri">
+    La regola Numeri bloccati e gli altri filtri.
+  </Card>
+
+  <Card title="Chiamate ricevute" icon="phone" href="/centralino/monitoraggio/chiamate-ricevute">
+    Trovare la chiamata e bloccare il numero da lì.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere e spostare le regole di un numero.
+  </Card>
+</CardGroup>

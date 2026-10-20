@@ -135,7 +135,8 @@
               "centralino/moduli/power-dialer",
               "centralino/moduli/videoconferenza",
               "centralino/moduli/whatsapp",
-              "centralino/moduli/mycrm"
+              "centralino/moduli/mycrm",
+              "centralino/moduli/integrazioni"
             ]
           },
           {

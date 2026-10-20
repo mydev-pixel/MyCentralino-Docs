@@ -56,7 +56,8 @@
           {
             "group": "Instradamento chiamate",
             "pages": [
-              "centralino/instradamento/code-di-ricezione"
+              "centralino/instradamento/code-di-ricezione",
+              "centralino/instradamento/menu-vocali"
             ]
           },
           {

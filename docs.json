@@ -88,7 +88,8 @@
               "centralino/monitoraggio/in-tempo-reale",
               "centralino/monitoraggio/chiamate-ricevute",
               "centralino/monitoraggio/esiti-delle-chiamate",
-              "centralino/monitoraggio/chiamate-effettuate"
+              "centralino/monitoraggio/chiamate-effettuate",
+              "centralino/monitoraggio/da-richiamare"
             ]
           },
           {
@@ -127,7 +128,8 @@
             "pages": [
               "centralino/account/il-mio-account",
               "centralino/account/utenti-e-permessi",
-              "centralino/account/abbonamento"
+              "centralino/account/abbonamento",
+              "centralino/account/credito-e-ricariche"
             ]
           },
           {

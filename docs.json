@@ -42,7 +42,8 @@
             "group": "Orari e chiusure",
             "pages": [
               "centralino/orari-e-chiusure/orari",
-              "centralino/orari-e-chiusure/ferie-e-festivita"
+              "centralino/orari-e-chiusure/ferie-e-festivita",
+              "centralino/orari-e-chiusure/interruttori-a-orario"
             ]
           },
           {

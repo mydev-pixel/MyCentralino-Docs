@@ -1,5 +1,266 @@
 ---
 title: "Menù vocali (IVR)"
+sidebarTitle: "Menù vocali (IVR)"
+description: "I menù «Premi 1 per…»: chi chiama sente un messaggio e sceglie con un tasto dove andare. L'elenco dei menù e la pagina con il tastierino per decidere dove porta ogni tasto."
+keywords:
+  - "menù vocale"
+  - "menu vocale"
+  - "IVR"
+  - "premi 1"
+  - "tasti"
+  - "tastierino"
+  - "risponditore automatico"
+  - "centralino automatico"
+  - "smistamento chiamate"
+  - "sotto-menù"
+  - "messaggio del menù"
+  - "selezione passante"
 ---
 
-Caricamento in corso.
+Un **Menù vocale (IVR)** fa sentire a chi chiama un messaggio con le scelte («Per l'amministrazione premi 1, per l'assistenza premi 2») e manda la chiamata dove porta il tasto premuto. Ogni menù ha un tastierino da 0 a 9: per ogni tasto scegli la destinazione.
+
+**Dove si trova:** Menu → Risorse centralino → Instradamento → **Menù vocali (IVR)** · `https://cloud.mycentralino.com/ivr`
+
+Si arriva qui anche dalla pagina **Risorse del centralino** (`https://cloud.mycentralino.com/configurazione`), zona **Instradamento chiamate**.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**: senza quel permesso la voce non compare nel menu e l'indirizzo risponde con accesso negato. Non serve nessun modulo.
+
+<Note>
+  Un menù da solo non risponde a nessuno. Funziona solo quando qualcosa lo usa: di solito la regola **Menù vocale (IVR)** sul tuo numero, oppure un tasto di un altro menù, la chiusura di un orario o un interruttore. La colonna **Usato da** conta solo i numeri e i servizi interni che hanno la regola **Menù vocale (IVR)** con questo menù: un sotto-menù raggiunto da un tasto di un altro menù, o un menù usato da un orario o da un interruttore, compare come «Non collegato» anche se funziona.
+</Note>
+
+## Cosa trovi nella pagina
+
+### L'elenco dei menù
+
+In alto il titolo **Menù vocali** con il conteggio (per esempio «2 menù»; durante una ricerca «N risultati»), la frase «I menù a tastiera (IVR): il chiamante preme un tasto e viene instradato al servizio giusto.» e il bottone **Nuovo menù**.
+
+Sotto, la ricerca **Cerca menù…** (cerca nel nome) e il bottone per ordinare dalla A alla Z o al contrario. La tabella **Menù vocali** ha una riga per menù:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Nome** | Il nome del menù. Un clic sul nome o in qualsiasi punto della riga apre il menù. |
+| **Tasti** | Quanti tasti hanno una destinazione («3 tasti»), oppure il pallino grigio con «Nessun tasto». |
+| **Audio messaggio** | Il bottone play per ascoltare il messaggio del menù e il suo nome, oppure «Nessun audio». |
+| **Usato da** | Quanti numeri o servizi interni lo hanno nelle loro regole («1 numero», «2 numeri»: anche un servizio interno è contato come numero), oppure «Non collegato». Un menù usato solo da un tasto di un altro menù, da un orario o da un interruttore compare comunque come «Non collegato». |
+| (azioni) | Il cestino **Elimina** (compare passando sopra la riga) e la freccia per aprirlo. |
+
+Se non hai ancora menù la tabella dice «Nessun menù vocale · Crea il primo menù per far scegliere al chiamante dove essere instradato.» con **Nuovo menù →**. Se la ricerca non trova niente: «Nessun menù per questa ricerca».
+
+### La pagina di un menù
+
+In testa il nome del menù, la frase «Scegli un tasto sul tastierino e imposta l'azione.» e i bottoni **Annulla** e **Salva** (anche con la tastiera: Ctrl S, su Mac ⌘S). Poi:
+
+- **Nome del menù**: su un menù esistente è in sola lettura («Il nome del menù non può essere modificato dopo la creazione.»).
+- **Messaggio di benvenuto (audio)**: il messaggio che elenca le scelte, da scegliere tra i tuoi messaggi audio («Guida il chiamante nella scelta del tasto»). Se la libreria è vuota compare «Nessun file audio. Carica prima un file.».
+- **Tastierino** (0 · 9): i tasti disposti come su un telefono. Ogni tasto mostra il numero, un pallino verde se è configurato, il tipo di destinazione (**Servizio**, **IVR**, **Coda**) e il suo nome, oppure «non usato». Sotto: «Se non preme nessun tasto entro 10 secondi, o preme un tasto non usato, la chiamata si chiude.» e il conteggio **Tasti usati** «N / 10».
+- **Tasto selezionato**: il pannello del tasto su cui hai cliccato, con il numero, l'azione scelta (oppure «non configurato»), il link **Svuota tasto** e i campi **Azione** e **Destinazione**.
+- **Riepilogo menù**: «L'ordine in cui il chiamante sente le opzioni dipende dall'audio registrato.», il contatore «N tasto/i attivi» e una riga per ogni tasto configurato con azione e destinazione. Un clic su una riga seleziona quel tasto. Se nessun tasto è configurato: «Nessun tasto configurato · Seleziona un tasto sul tastierino per iniziare.».
+
+Appena cambi qualcosa compare in basso la barra **Modifiche non salvate** con **Annulla** e **Salva**. Se provi a uscire senza salvare, il pannello chiede «Ci sono modifiche non salvate. Uscire senza salvarle?». Sul telefono, toccando un tasto la pagina scorre da sola fino al pannello del tasto e poi alla destinazione.
+
+<Frame caption="La pagina di un menù vocale: tastierino e azione del tasto scelto">
+  <img
+    src="/images/guida/ivr-modifica.webp"
+    alt="La pagina di un menù vocale: tastierino e azione del tasto scelto"
+  />
+</Frame>
+
+## Come fare
+
+### Come creo un menù «Premi 1 per l'amministrazione, 2 per l'assistenza»
+
+<Steps>
+  <Step title="Prepara il messaggio">
+    In [Messaggi audio](/centralino/audio/messaggi-audio) premi **Crea** e scrivi in **Testo da convertire** le scelte nello stesso ordine dei tasti, per esempio «Per l'amministrazione premi 1. Per l'assistenza premi 2.». Oppure carica una tua registrazione.
+  </Step>
+  <Step title="Prepara le destinazioni">
+    Ogni tasto porta a una **Coda di ricezione**, a un **Servizio interno** o a un altro menù. Se non le hai ancora, crea prima le code (vedi [Code di ricezione](/centralino/instradamento/code-di-ricezione)) o i servizi interni (vedi [Servizi interni](/centralino/regole/servizi-interni)).
+  </Step>
+  <Step title="Premi Nuovo menù">
+    Si apre la finestra **Nuovo menù vocale**: «Assegna un nome al menù. Potrai configurare i tasti subito dopo.».
+  </Step>
+  <Step title="Scrivi il nome e premi Crea e configura">
+    In **Nome menù** scrivi per esempio `MENU_PRINCIPALE`: lettere, numeri, «\_» e «-», niente spazi, al massimo 50 caratteri. Si apre la pagina del menù.
+  </Step>
+  <Step title="Scegli il messaggio">
+    In **Messaggio di benvenuto (audio)** scegli il messaggio preparato al primo passo.
+  </Step>
+  <Step title="Configura il tasto 1">
+    Nel **Tastierino** clicca **1**. In **Azione** scegli **Coda di ricezione** (o **Servizio interno**), poi in **Destinazione** scegli dall'elenco.
+  </Step>
+  <Step title="Configura il tasto 2">
+    Clicca **2** e ripeti. Controlla il **Riepilogo menù**.
+  </Step>
+  <Step title="Premi Salva">
+    Conferma: «IVR "nome" salvato.».
+  </Step>
+  <Step title="Metti il menù sul tuo numero">
+    In **Regole chiamate** apri il numero e premi il **\+** («Inserisci qui») nel punto giusto: dopo orari e ferie, se li hai, al posto della regola che fa squillare (se il numero non ha regole, **Aggiungi la prima regola**). Scegli **Menù vocale (IVR)**, seleziona il menù in **IVR disponibili** e premi **Aggiungi regola**.
+  </Step>
+</Steps>
+
+La guida completa, con l'ordine delle regole e le prove da fare, è in [Creare un menù vocale](/centralino/come-fare/creare-un-menu-vocale).
+
+<Tip>
+  Puoi creare un menù anche senza uscire dalle regole: nel passaggio **Menù vocale (IVR)** premi **Nuovo** (o **Crea il primo IVR** se non ne hai). Si apre la pagina **Nuovo IVR** in una finestra; dopo **Salva** il menù è già nell'elenco della regola. Dagli un nome che non hai ancora usato per un altro menù.
+</Tip>
+
+### Come cambio dove porta un tasto
+
+<Steps>
+  <Step title="Apri il menù">
+  </Step>
+  <Step title="Clicca il tasto">
+    Sul **Tastierino** o sulla sua riga nel **Riepilogo menù**.
+  </Step>
+  <Step title="Scegli un'altra destinazione">
+    Oppure un'altra **Azione** e poi la **Destinazione**.
+  </Step>
+  <Step title="Premi Salva">
+    Il cambio vale subito per tutti i numeri che usano il menù.
+  </Step>
+</Steps>
+
+### Come disattivo un tasto
+
+Clicca il tasto, premi **Svuota tasto** e poi **Salva**. Ricordati di togliere quella scelta anche dal messaggio del menù.
+
+### Come faccio un tasto «ripeti il menù»
+
+Clicca per esempio il tasto **9**, in **Azione** scegli **Altro menù vocale (IVR)** e in **Destinazione** scegli **lo stesso menù**. Premi **Salva** e aggiungi al messaggio «Per riascoltare premi 9».
+
+### Come faccio un sotto-menù
+
+<Steps>
+  <Step title="Crea il secondo menù">
+    Per esempio `MENU_ASSISTENZA`, con il suo messaggio e i suoi tasti.
+  </Step>
+  <Step title="Collegalo al primo">
+    Nel menù principale clicca un tasto, scegli **Altro menù vocale (IVR)** e come **Destinazione** `MENU_ASSISTENZA`.
+  </Step>
+  <Step title="Premi Salva">
+  </Step>
+</Steps>
+
+### Come cambio il messaggio del menù
+
+Apri il menù, scegli un altro messaggio in **Messaggio di benvenuto (audio)** e premi **Salva**. Se invece vuoi solo correggere le parole di un messaggio sintetico, aprilo in [Messaggi audio](/centralino/audio/messaggi-audio), cambia il testo e salva: il menù fa sentire subito la nuova versione.
+
+### Come elimino un menù
+
+<Steps>
+  <Step title="Premi il cestino sulla riga del menù">
+    Si apre **Elimina menù vocale**: «Stai per eliminare il menù «nome». L'azione non è reversibile.».
+  </Step>
+  <Step title="Leggi l'avviso">
+    Se il menù è usato nelle regole di un numero o di un servizio interno, un riquadro avvisa che quei numeri non presenteranno più il menù vocale, e li elenca. La finestra non avvisa se il menù è usato solo da un tasto di un altro menù, da un orario o da un interruttore: controlla prima di eliminarlo.
+  </Step>
+  <Step title="Premi Elimina">
+    Il menù sparisce dall'elenco.
+  </Step>
+</Steps>
+
+<Warning>
+  L'eliminazione è **definitiva** e **non toglie le regole** che usano il menù: quei numeri restano con un passaggio vuoto finché non li correggi. Prima di eliminare, sostituisci il menù nelle regole dei numeri elencati e nei tasti degli altri menù, negli orari e negli interruttori che lo usano.
+</Warning>
+
+## I campi
+
+### Finestra «Nuovo menù vocale»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome menù** | Il nome con cui lo ritrovi nell'elenco e nelle regole. Non si cambia dopo. | Obbligatorio. Al massimo 50 caratteri: lettere, numeri, «\_» e «-», niente spazi. |
+
+Messaggi possibili: «Il nome è obbligatorio.», «Usa solo lettere, numeri, \_ e -.», «Esiste già un IVR con questo nome.».
+
+### Pagina del menù
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Messaggio di benvenuto (audio)** | Il messaggio con le scelte | Uno dei tuoi messaggi audio, oppure «Nessun messaggio audio» |
+| **Azione** (per ogni tasto) | Il tipo di destinazione | **Servizio interno** · **Altro menù vocale (IVR)** · **Coda di ricezione** |
+| **Destinazione** (per ogni tasto) | Dove va la chiamata | Con **Servizio interno**: i tuoi servizi interni («numero · descrizione»). Con **Altro menù vocale (IVR)**: i tuoi menù, compreso quello che stai modificando. Con **Coda di ricezione**: le tue code. |
+
+Se per l'azione scelta non hai ancora niente da collegare compare «Nessuna opzione disponibile per questo tipo di azione.». Se un tasto ha l'azione ma non la destinazione, nel **Riepilogo menù** è segnato in ambra «Destinazione non impostata» e il salvataggio si ferma con «Scegli dove va la chiamata dall'elenco.».
+
+## Da sapere
+
+- **Al massimo 10 scelte per menù**, una cifra ciascuna (da 0 a 9). Per averne di più usa un sotto-menù.
+- **Il messaggio e i tasti devono coincidere.** Il pannello non controlla che il testo annunci proprio i tasti configurati: se aggiungi o togli un tasto, aggiorna anche il messaggio.
+- **Se chi chiama non preme niente**: la pagina indica che dopo 10 secondi senza tasto, o con un tasto non usato, la chiamata si chiude. Per dare una seconda possibilità prevedi un tasto «ripeti» e annuncialo nel messaggio.
+- **Segreteria, interno o numero esterno su un tasto.** Da questa pagina un tasto porta solo a un servizio interno, a un altro menù o a una coda. Per una segreteria, per far squillare un solo telefono o per inoltrare a un cellulare, crea un **servizio interno** con la regola giusta e collega il tasto a quel servizio. Vedi [Servizi interni](/centralino/regole/servizi-interni).
+- **Tasti configurati in passato.** Nei menù creati con il vecchio pannello possono comparire tasti con azioni che oggi non si scelgono più («Chiama interno», «Segreteria», «Numero esterno», «Conferenza audio», «Chiamata diretta (DISA)»): restano come sono e continuano a essere mostrati. Per cambiarli scegli una delle tre azioni attuali.
+- **Dopo il menù la chiamata va dove porta il tasto**: le regole messe sotto **Menù vocale (IVR)** nelle regole del numero di solito non vengono raggiunte.
+- **Nello schema delle regole** il passaggio **Menù vocale (IVR)** mostra un ramo per ogni tasto («Tasto 1», «Tasto 2»…); i rami che portano a un menù o a una coda si aprono con un clic per modificarli.
+- **Scelte a due cifre**: c'è anche la regola **Menù vocale (IVR) a 2 cifre**, in cui chi chiama digita due cifre e va al servizio interno formato dal **Prefisso destinazione** scelto nella regola (**4xx**, **5xx**, **6xx** o **7xx**) più quelle due cifre: con **4xx**, chi digita 12 va al servizio interno 412. Vedi [Passaggi che instradano la chiamata](/centralino/regole/passaggi-chiamata).
+- **Il nome non si cambia.** Per un nome diverso crea un nuovo menù, mettilo nelle regole al posto del vecchio ed elimina il vecchio.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Cosa succede se chi chiama non preme niente?">
+    Come indica la pagina del menù, dopo 10 secondi senza tasto, o con un tasto non usato, la chiamata si chiude. Prevedi un tasto «ripeti» che porta allo stesso menù e dillo nel messaggio.
+  </Accordion>
+
+  <Accordion title="Perché non posso scegliere «Segreteria» o «Numero esterno» per un tasto?">
+    I tasti portano solo a servizi interni, altri menù o code. Crea un servizio interno con la regola che ti serve (per esempio **Segreteria telefonica**) e collega il tasto a quel servizio interno.
+  </Accordion>
+
+  <Accordion title="Posso avere più di 10 scelte?">
+    Sì, con un sotto-menù: un tasto porta a un secondo menù con altre scelte. In alternativa c'è la regola **Menù vocale (IVR) a 2 cifre**.
+  </Accordion>
+
+  <Accordion title="Nell'elenco vedo «Non collegato».">
+    Nessun numero o servizio interno ha la regola **Menù vocale (IVR)** con questo menù. Se è un sotto-menù raggiunto da un tasto di un altro menù, o lo usa un orario o un interruttore, funziona lo stesso: non devi fare niente. Altrimenti, in **Regole chiamate** apri il numero e aggiungi la regola **Menù vocale (IVR)**.
+  </Accordion>
+
+  <Accordion title="Il messaggio del menù non si sente più.">
+    Probabilmente è stato eliminato dalla libreria audio. Apri il menù, scegli un altro messaggio in **Messaggio di benvenuto (audio)** e premi **Salva**.
+  </Accordion>
+
+  <Accordion title="Non trovo nessuna destinazione nell'elenco.">
+    Compare «Nessuna opzione disponibile per questo tipo di azione.»: non hai ancora code o servizi interni. Creali prima, poi torna al menù.
+  </Accordion>
+
+  <Accordion title="Ho cambiato un tasto: devo aggiornare le regole del numero?">
+    No. Le modifiche al menù valgono subito per tutti i numeri che lo usano.
+  </Accordion>
+
+  <Accordion title="Posso cambiare il nome di un menù?">
+    No. Crea un nuovo menù con il nome giusto, mettilo nelle regole al posto del vecchio ed elimina il vecchio.
+  </Accordion>
+
+  <Accordion title="In che ordine chi chiama sente le scelte?">
+    Nell'ordine in cui le dice il messaggio. Il tastierino decide solo dove porta ogni tasto.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Creare un menù vocale" icon="list" href="/centralino/come-fare/creare-un-menu-vocale">
+    Il menù dall'inizio alla fine, con le prove.
+  </Card>
+
+  <Card title="Messaggi audio" icon="microphone" href="/centralino/audio/messaggi-audio">
+    Il messaggio con le scelte.
+  </Card>
+
+  <Card title="Code di ricezione" icon="users" href="/centralino/instradamento/code-di-ricezione">
+    La destinazione più semplice per un tasto.
+  </Card>
+
+  <Card title="Servizi interni" icon="sitemap" href="/centralino/regole/servizi-interni">
+    Segreteria, inoltro o più passaggi dietro un tasto.
+  </Card>
+
+  <Card title="Passaggi che instradano la chiamata" icon="phone" href="/centralino/regole/passaggi-chiamata">
+    Le regole Menù vocale (IVR) e Menù vocale (IVR) a 2 cifre.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere il menù alle regole di un numero.
+  </Card>
+</CardGroup>

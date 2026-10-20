@@ -57,12 +57,15 @@
             "group": "Instradamento chiamate",
             "pages": [
               "centralino/instradamento/code-di-ricezione",
-              "centralino/instradamento/menu-vocali"
+              "centralino/instradamento/menu-vocali",
+              "centralino/instradamento/inoltro-chiamate"
             ]
           },
           {
             "group": "Telefoni e numeri",
-            "pages": []
+            "pages": [
+              "centralino/telefoni-e-numeri/interni"
+            ]
           },
           {
             "group": "Monitoraggio",

@@ -80,7 +80,8 @@
           {
             "group": "Strumenti",
             "pages": [
-              "centralino/strumenti/segreterie"
+              "centralino/strumenti/segreterie",
+              "centralino/strumenti/rubrica"
             ]
           },
           {

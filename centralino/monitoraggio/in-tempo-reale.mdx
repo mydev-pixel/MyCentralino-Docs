@@ -1,5 +1,243 @@
 ---
 title: "In tempo reale"
+sidebarTitle: "In tempo reale"
+description: "Cosa succede adesso al centralino: chiamate in corso, persone in attesa nelle code, operatori liberi o al telefono, e come risponde in questo momento ogni tuo numero."
+keywords:
+  - "tempo reale"
+  - "chiamate in corso"
+  - "chi è al telefono"
+  - "centralino aperto adesso"
+  - "fuori orario adesso"
+  - "persone in attesa"
+  - "coda adesso"
+  - "operatori liberi"
+  - "dashboard live"
+  - "monitor chiamate"
+  - "come risponde adesso"
 ---
 
-Caricamento in corso.
+**In tempo reale** mostra cosa sta succedendo al centralino in questo momento: quante chiamate sono in corso, chi aspetta in coda, quali operatori sono liberi o al telefono e se ogni tuo numero adesso risponde, è fuori orario o è chiuso. È una pagina da guardare: da qui non si cambia niente.
+
+**Dove si trova:** Menu → Monitoraggio → **In tempo reale** · `https://cloud.mycentralino.com/tech-dashboard`
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli è stata concessa la sezione **Monitoraggio** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)). Non serve nessun modulo.
+
+<Info>
+  La pagina si aggiorna da sola ogni 15 secondi circa mentre la guardi. Se passi a un'altra scheda del browser gli aggiornamenti rallentano o si fermano, e riprendono quando torni.
+</Info>
+
+## Cosa trovi nella pagina
+
+<Frame caption="Il centralino in tempo reale">
+  <img
+    src="/images/guida/in-tempo-reale.webp"
+    alt="Il centralino in tempo reale"
+  />
+</Frame>
+
+### La card verde
+
+In alto, la card verde «Il tuo centralino · adesso» con il titolo **Centralino in tempo reale** e i contatori:
+
+| Contatore | Cosa conta |
+| --- | --- |
+| **in uso adesso** | Le chiamate con l'esterno in corso adesso, in entrata e in uscita, comprese quelle che stanno ancora squillando. |
+| **in squillo** | Quante di queste stanno ancora squillando, senza risposta. |
+| **in attesa in coda** | Le persone che aspettano in una coda di ricezione. Compare solo se hai almeno una coda. |
+| **interni collegati** | Gli interni liberi in questo momento sul totale degli interni, per esempio «11/28». |
+
+<Note>
+  Il contatore **interni collegati** conta solo gli interni **liberi**: un interno al telefono o che squilla è collegato, ma in questo contatore non rientra. Per il quadro completo guarda **Operatori adesso** più in basso.
+</Note>
+
+### Come risponde adesso
+
+Il riquadro **Come risponde adesso** dice, numero per numero, cosa succede in questo momento a chi chiama. I numeri che hanno gli stessi orari e le stesse ferie stanno sulla stessa riga: ne vedi fino a tre, poi «e altri _N_». Se la riga ha un solo numero, accanto vedi anche la sua descrizione.
+
+Ogni riga ha un pallino colorato e una frase:
+
+| Frase | Pallino | Cosa vuol dire |
+| --- | --- | --- |
+| «Aperto · chiude alle 17:30 (orari «Ufficio»)» | verde | Secondo gli **Orari** indicati il numero adesso è aperto, e chiude all'ora scritta. |
+| «Fuori orario · apre domani alle 9:00 (orari «Ufficio»)» | grigio | Secondo gli **Orari** il numero adesso è chiuso, e riapre all'ora scritta («alle …», «domani alle …» o il giorno della settimana). |
+| «Orari «Ufficio»» | grigio | Il numero usa quegli orari, ma la pagina non riesce a dire se adesso è aperto o chiuso. Controllali in **Orari**. |
+| «Risponde sempre: nessun orario» | verde | Il numero non ha orari: risponde a qualunque ora. |
+| «Chiuso per ferie («Natale»)» | ambra | Oggi è un giorno di chiusura di quel gruppo di **Ferie e festività**. |
+| «Nessuna regola: non risponde» | ambra | Il numero non ha nessuna regola: le chiamate arrivano ma nessuno le gestisce. Va sistemato in **Regole delle chiamate**. |
+
+Le righe ambra (chiusure di oggi e numeri senza regole) stanno in cima.
+
+Sotto le righe, separate da una linea, compaiono delle pastiglie per ciò che è **attivo adesso**. Ogni pastiglia porta il nome e lo stato; cliccala per aprire la pagina dove si modifica:
+
+| Pastiglia | Cosa vuol dire | Pagina che apre |
+| --- | --- | --- |
+| «_nome_ · oggi festivo» | Oggi è un giorno di chiusura di quel gruppo di ferie. | **Ferie e festività** |
+| «_nome_ · attiva» | Un interruttore a orario è acceso in questa fascia. | **Interruttori a orario** |
+| «_nome_ · attivo» | Un interruttore è acceso. | **Interruttori** |
+
+Se non hai nessun numero, nello stesso riquadro possono comparire anche gli orari con «· in orario» o «· fuori orario», oppure «Nessuna deviazione o chiusura attiva».
+
+<Tip>
+  Un orario, un gruppo di ferie o un interruttore cambia davvero le chiamate di un numero solo se è inserito nelle **Regole delle chiamate** di quel numero. Le pastiglie dicono cosa è acceso, non a quali numeri si applica.
+</Tip>
+
+### Chiamate in corso
+
+L'elenco **Chiamate in corso** mostra fino a 12 chiamate, dalla più lunga. Il numero accanto al titolo è quante ne vedi.
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Tipo** | **In entrata**, **In uscita** o **Interna**, con un pallino. Se la chiamata sta ancora suonando leggi «· squilla». |
+| **Numero / Servizio** | Il numero di chi chiama (in entrata), il numero chiamato (in uscita) o, per le chiamate interne, cosa sta facendo l'interno (per esempio «Verso interno 201», «Segreteria», «In coda Commerciale»). |
+| **Destinazione** | In entrata: il tuo numero chiamato, con la sua descrizione. In uscita: il numero mostrato a chi riceve. Per le chiamate interne, un dettaglio quando c'è. |
+| **Operatore** | L'interno che ha la chiamata (numero e nome). Se nessun telefono l'ha ancora presa, chi la sta gestendo: per esempio «Coda Commerciale», «Agente AI _nome_», «Annuncio audio», «Segreteria». In uscita, l'interno che ha chiamato. |
+| **Durata** | Da quanto dura la chiamata (mm:ss). |
+
+Se non c'è niente in corso leggi «Nessuna chiamata in corso» e «Le chiamate live appariranno qui appena instradate.»
+
+### Code di ricezione
+
+Il riquadro **Code di ricezione** compare solo se hai almeno una coda: «Le chiamate in entrata in coda adesso, coda per coda.»
+
+- Se nessuno aspetta e nessuno parla, una sola riga: «Nessuno in attesa nelle _N_ code.» (o «Nessuno in attesa nella coda «_nome_».» se ne hai una).
+- Altrimenti, un riquadro per ogni coda che ha qualcuno, con «_N_ in attesa» e «_N_ in conversazione». Se qualcuno aspetta il riquadro è ambra con il pallino che lampeggia, e accanto al titolo leggi il totale «_N_ in attesa». Sotto, «Le altre _N_ code sono vuote.» (o «L'altra coda è vuota.» se è una sola).
+
+### Operatori adesso
+
+Il riquadro **Operatori adesso** mostra lo stato di ogni interno.
+
+In alto una barra divide gli interni per stato, con la legenda «_N_ liberi», «_N_ in squillo», «_N_ al telefono», «_N_ non collegati».
+
+Sotto, una casella per interno, sempre nello stesso ordine (per numero di interno), così una casella non si sposta quando cambia lo stato. Ogni casella ha il numero di interno, il nome e lo stato:
+
+| Stato nella casella | Cosa vuol dire |
+| --- | --- |
+| **Disponibile** | **Libero**: il telefono è collegato e non è al telefono. |
+| **Squilla** | Il telefono sta suonando. |
+| **In chiamata · con 3331234567** | **Al telefono**: l'interno è in conversazione, con la durata della chiamata a destra. Per una chiamata fatta dall'interno leggi «· verso» e il numero chiamato. La casella è ambra. |
+| **Non collegato** | Il telefono è spento, scollegato o non configurato. |
+
+Nelle altre pagine questi stati si chiamano **Libero**, **Squilla**, **Al telefono** e **Non collegato**.
+
+Un interno con più telefoni (per esempio telefono fisso e app sul cellulare) ha una casella sola, con lo stato più «impegnato» fra i suoi telefoni.
+
+Si vedono al massimo 48 caselle: le altre sono nella casella «+_N_ altri». Il link **Vedi tutti →** e la casella «+_N_ altri» aprono **Stato interni**.
+
+Se non hai interni leggi «Nessun interno configurato» e «Aggiungi un interno per iniziare a ricevere chiamate.»
+
+## Come fare
+
+### Come vedo se in questo momento il centralino è aperto
+
+<Steps>
+  <Step title="Apri In tempo reale">
+    Menu → Monitoraggio → **In tempo reale**.
+  </Step>
+  <Step title="Leggi Come risponde adesso">
+    Trova la riga del tuo numero: «Aperto · chiude alle …», «Fuori orario · apre …», «Chiuso per ferie (…)» o «Nessuna regola: non risponde».
+  </Step>
+  <Step title="Controlla le pastiglie">
+    Se sotto le righe vedi una pastiglia ambra («· oggi festivo», «· attiva», «· attivo»), c'è una chiusura o un interruttore acceso adesso.
+  </Step>
+</Steps>
+
+### Come disattivo una chiusura o un interruttore acceso adesso
+
+<Steps>
+  <Step title="Clicca la pastiglia">
+    Nel riquadro **Come risponde adesso** clicca la pastiglia, per esempio «Natale · oggi festivo». Si apre la pagina di modifica di quell'elemento.
+  </Step>
+  <Step title="Modifica nella sua pagina">
+    Togli il giorno di chiusura in **Ferie e festività**, oppure spegni l'interruttore in **Interruttori** o **Interruttori a orario**. Vedi [Ferie e festività](/centralino/orari-e-chiusure/ferie-e-festivita), [Interruttori](/centralino/orari-e-chiusure/interruttori) e [Interruttori a orario](/centralino/orari-e-chiusure/interruttori-a-orario).
+  </Step>
+  <Step title="Ricontrolla">
+    Torna su **In tempo reale**: le frasi si ricalcolano dopo qualche minuto.
+  </Step>
+</Steps>
+
+### Come vedo quante persone aspettano in coda
+
+<Steps>
+  <Step title="Guarda la card verde">
+    Il contatore **in attesa in coda** è il totale di tutte le code.
+  </Step>
+  <Step title="Guarda Code di ricezione">
+    Ogni coda con qualcuno ha il suo riquadro con «in attesa» e «in conversazione». I riquadri ambra sono quelli in cui qualcuno aspetta.
+  </Step>
+</Steps>
+
+Chi riattacca mentre aspetta in coda di solito compare anche in **Da richiamare**, per essere richiamato. Se lì non c'è, lo richiami da **Chiamate ricevute** con l'icona **Richiama**. Vedi [Da richiamare](/centralino/monitoraggio/da-richiamare).
+
+### Come vedo chi è al telefono adesso
+
+<Steps>
+  <Step title="Guarda Operatori adesso">
+    Le caselle ambra con «In chiamata» sono gli interni al telefono, con il numero dell'interlocutore e la durata.
+  </Step>
+  <Step title="Per più dettagli">
+    Premi **Vedi tutti →** per aprire **Stato interni**, dove vedi ogni singolo telefono. Vedi [Stato interni](/centralino/telefoni-e-numeri/stato-interni).
+  </Step>
+</Steps>
+
+## Da sapere
+
+- **Niente numeri di giornata.** Questa pagina mostra solo cosa succede adesso. Per le chiamate di oggi, le perse e l'andamento usa [Statistiche](/centralino/monitoraggio/statistiche).
+- **Le frasi su orari e ferie non sono istantanee.** Dopo una modifica a orari, ferie o interruttori, il riquadro **Come risponde adesso** può metterci qualche minuto a cambiare.
+- **Gli orari valgono se sono nelle regole.** Il riquadro guarda gli orari e le ferie inseriti nelle **Regole delle chiamate** di ogni numero (anche passando da un servizio interno).
+- **Ora italiana.** Tutte le ore sono in ora italiana.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Un numero dice «Nessuna regola: non risponde». Cosa faccio?">
+    Quel numero non ha nessuna regola delle chiamate: le chiamate arrivano ma non vanno a nessuno. Aprilo in **Regole delle chiamate** e aggiungi almeno un passaggio che fa squillare i telefoni. Vedi [Regole delle chiamate](/centralino/regole/panoramica).
+  </Accordion>
+
+  <Accordion title="Un interno risulta «Non collegato» ma il telefono è acceso.">
+    Il telefono è acceso ma non è collegato al centralino: può dipendere dalla configurazione, dalla rete o dall'app chiusa sul cellulare. Controlla in **Stato interni** e segui [Collegare un dispositivo](/centralino/telefoni-e-numeri/collegare-un-dispositivo).
+  </Accordion>
+
+  <Accordion title="Perché «interni collegati» dice 5/10 se ho 7 telefoni accesi?">
+    Il contatore conta solo gli interni liberi. Quelli al telefono o che squillano sono collegati ma non rientrano nel numero. Guarda la legenda di **Operatori adesso** per vedere liberi, in squillo, al telefono e non collegati.
+  </Accordion>
+
+  <Accordion title="Il numero dice «Fuori orario» ma dovremmo essere aperti.">
+    Apri **Orari**, scegli il gruppo indicato fra parentesi e controlla le fasce di oggi. Se il numero passa da un servizio interno, gli orari possono essere nelle regole di quel servizio. Vedi [Orari](/centralino/orari-e-chiusure/orari).
+  </Accordion>
+
+  <Accordion title="Posso rispondere o chiudere una chiamata da qui?">
+    No. La pagina serve solo a guardare. Per chiamare dal pannello si usa il **Pannello operatori**. Vedi [Pannello operatori](/centralino/pannello-operatori).
+  </Accordion>
+
+  <Accordion title="La pagina non si aggiorna.">
+    Si aggiorna ogni 15 secondi circa mentre la guardi. Se il browser è in un'altra scheda o lo schermo è spento gli aggiornamenti rallentano o si fermano, e riprendono quando torni. Se resta ferma, ricarica la pagina.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Statistiche" icon="chart-line" href="/centralino/monitoraggio/statistiche">
+    I numeri della giornata e l'andamento ora per ora.
+  </Card>
+
+  <Card title="Stato interni" icon="headset" href="/centralino/telefoni-e-numeri/stato-interni">
+    Ogni telefono, collegato o no, adesso.
+  </Card>
+
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Quando il centralino è aperto.
+  </Card>
+
+  <Card title="Ferie e festività" icon="calendar" href="/centralino/orari-e-chiusure/ferie-e-festivita">
+    I giorni di chiusura.
+  </Card>
+
+  <Card title="Code di ricezione" icon="users" href="/centralino/instradamento/code-di-ricezione">
+    Come funzionano le code e i loro operatori.
+  </Card>
+
+  <Card title="Da richiamare" icon="phone-volume" href="/centralino/monitoraggio/da-richiamare">
+    Chi ha riattaccato mentre aspettava in coda.
+  </Card>
+</CardGroup>

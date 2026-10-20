@@ -1,5 +1,268 @@
 ---
 title: "Segreterie"
+sidebarTitle: "Segreterie"
+description: "Le segreterie degli interni: dove arrivano i messaggi lasciati da chi chiama, come riceverli per email, come ascoltarli dal telefono con il 300 e come cambiare il PIN."
+keywords:
+  - "segreteria"
+  - "segreterie"
+  - "segreteria telefonica"
+  - "casella vocale"
+  - "caselle vocali"
+  - "voicemail"
+  - "messaggi vocali"
+  - "messaggio in segreteria"
+  - "email segreteria"
+  - "PIN segreteria"
+  - "300"
+  - "ascoltare i messaggi"
 ---
 
-Caricamento in corso.
+La **Segreteria** è la casella in cui chi chiama può lasciare un messaggio quando nessuno risponde. Di norma ogni interno ha la sua. In questa pagina decidi, per ogni casella, il **PIN** per ascoltare i messaggi dal telefono e l'**email** a cui mandare i messaggi lasciati.
+
+**Dove si trova:** Menu → Risorse centralino → Strumenti → **Segreterie** · `https://cloud.mycentralino.com/caselle-vocali`
+
+Ci arrivi anche dalla pagina **Risorse del centralino** (`https://cloud.mycentralino.com/configurazione`), nel gruppo **Strumenti**. Nel menu la voce si chiama **Segreterie**; il titolo della pagina è **Caselle vocali**.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**: senza quel permesso la voce non compare nel menu e l'indirizzo risponde con accesso negato. Non serve nessun modulo.
+
+<Note>
+  Una segreteria riceve messaggi solo se qualcosa ci porta le chiamate: di solito la regola **Segreteria telefonica** nelle regole del tuo numero, messa dopo la regola che fa squillare i telefoni. Può essere anche la destinazione di **Orari** (quando il centralino è chiuso), **Ferie e festività**, **Interruttori** o **Interruttori a orario**, alla voce **Segreteria**. Infine, nel [Pannello operatori](/centralino/pannello-operatori) ogni operatore può accendere l'interruttore **Segreteria** del proprio interno: se nessuno risponde, chi chiama quell'interno può lasciare un messaggio nella sua casella.
+</Note>
+
+## Cosa trovi nella pagina
+
+### L'elenco delle caselle
+
+In alto il titolo **Caselle vocali** con il conteggio (per esempio «4 caselle»; durante una ricerca «N risultati») e la frase «Le caselle vocali del centralino: chi non risponde può lasciare un messaggio.».
+
+Se una o più caselle mandano i messaggi a un indirizzo che non funziona, sotto il titolo compare un riquadro ambra, per esempio «2 caselle mandano i messaggi a un indirizzo di esempio («[indirizzo@email.it](mailto:indirizzo@email.it)») o vuoto: non arrivano a nessuno. Apri la casella e scrivi l'email giusta.». Il bottone **Mostra quali** lascia in tabella solo quelle caselle; **Mostra tutte** toglie il filtro.
+
+Sotto ci sono la ricerca **Cerca casella…** (trova per interno, codice casella, nome o email) e il bottone **A–Z** / **Z–A**, che ordina per numero di interno.
+
+La tabella **Caselle** (con il totale a destra) ha una riga per casella:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Interno** | L'interno di cui è la segreteria, in verde. Un clic apre la casella. |
+| **Codice casella** | Il codice da digitare quando ascolti i messaggi dal telefono. |
+| **Nome** | Il nome del titolare della casella, oppure «—». |
+| **Email** | L'indirizzo a cui arrivano i messaggi, oppure «—». |
+| **Notifiche** | Come arrivano i messaggi (vedi sotto). |
+
+Gli stati della colonna **Notifiche**:
+
+| Stato | Cosa significa |
+| --- | --- |
+| **Via mail** | Ogni nuovo messaggio arriva per email all'indirizzo della casella. |
+| **Solo telefono** | Nessuna email: i messaggi si ascoltano solo dal telefono, chiamando il `300`. |
+| **Email da completare** (ambra) | L'invio per email è acceso, ma l'indirizzo è vuoto o è un indirizzo di esempio: «Con un indirizzo di esempio i messaggi non arrivano a nessuno». |
+
+Un clic su una riga apre la casella. Sul telefono ogni riga diventa una scheda.
+
+Se non ci sono caselle compare «Nessuna casella vocale configurata» con «Le caselle vengono provisionate dal centralino: contatta il supporto per attivarne di nuove.». Se la ricerca non trova niente compare «Nessuna casella per questa ricerca».
+
+<Frame caption="L'elenco delle Caselle vocali">
+  <img
+    src="/images/guida/segreterie.webp"
+    alt="L'elenco delle Caselle vocali"
+  />
+</Frame>
+
+### La pagina della casella
+
+Si apre con un clic su una riga. Il titolo è **Casella** seguito dall'interno (per esempio «Casella 201»), sopra «Interno · 201». Sotto il titolo: «Imposta PIN, nome del titolare ed eventuale recapito email per i messaggi vocali ricevuti su questo interno.». In alto i bottoni **Annulla** (torna all'elenco senza salvare) e **Salva**.
+
+Il primo riquadro mostra due dati con l'etichetta «non modificabile»:
+
+- **Interno**: «L'interno di cui è la segreteria.»;
+- **Codice casella**: «Da dire quando chiami il 300 per ascoltare i messaggi.».
+
+Il secondo riquadro contiene i campi che puoi cambiare: **PIN d'accesso**, **Nome titolare** e la sezione **Recapito via email** (vedi «I campi»).
+
+Appena cambi qualcosa compare in basso la barra **Modifiche non salvate** con **Annulla** e **Salva**. Se provi a uscire senza salvare, il pannello chiede «Ci sono modifiche non salvate. Uscire senza salvarle?».
+
+## Come fare
+
+### Come ricevo per email i messaggi della segreteria
+
+<Steps>
+  <Step title="Apri Segreterie">
+    Menu → Risorse centralino → Strumenti → **Segreterie**.
+  </Step>
+  <Step title="Apri la casella">
+    Clicca la riga dell'interno, per esempio `201`.
+  </Step>
+  <Step title="Accendi l'invio per email">
+    In **Recapito via email** spunta **Spedisci via email**. Lascia spuntato **Allega audio del messaggio** se vuoi il file audio nell'email.
+  </Step>
+  <Step title="Scrivi l'indirizzo">
+    In **Email a cui mandarli** scrivi l'indirizzo, per esempio `mario.rossi@azienda.it`.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Torni all'elenco e compare «Casella 201 aggiornata.». Nella colonna **Notifiche** la casella ora dice **Via mail**.
+  </Step>
+</Steps>
+
+### Come faccio arrivare in segreteria le chiamate a cui nessuno risponde
+
+<Steps>
+  <Step title="Apri le regole del numero">
+    Menu → **Regole chiamate** → **Numeri di telefono** (`https://cloud.mycentralino.com/regole`) e clicca il numero.
+  </Step>
+  <Step title="Aggiungi la regola sotto quella che fa squillare">
+    Premi il **\+** sotto la regola che fa squillare i telefoni (per esempio **Fai squillare uno o più interni VoIP** o la coda), oppure **Aggiungi regola in coda** se è l'ultima.
+  </Step>
+  <Step title="Scegli Segreteria telefonica">
+    Nella finestra **Aggiungi regola** apri l'argomento **Notifiche** e scegli **Segreteria telefonica**.
+  </Step>
+  <Step title="Scegli la casella">
+    In **Casella vocale** spunta la casella (puoi cercarla con **Cerca per mailbox, interno, nome o email…**).
+  </Step>
+  <Step title="Aggiungi la regola">
+    Premi **Aggiungi regola**. Le modifiche alle regole valgono subito.
+  </Step>
+</Steps>
+
+Dopo la segreteria, di norma, la chiamata finisce: le regole messe sotto non vengono raggiunte. Per questo la **Segreteria telefonica** va di solito in fondo.
+
+### Come ascolto i messaggi dal telefono
+
+<Steps>
+  <Step title="Chiama il 300">
+    Da un telefono del centralino componi `300`.
+  </Step>
+  <Step title="Segui la voce">
+    Quando la voce te li chiede, digita il **Codice casella** (lo trovi nella colonna **Codice casella** dell'elenco o nella pagina della casella) e il **PIN d'accesso** della casella.
+  </Step>
+</Steps>
+
+Se nella casella è spuntato **Cancella dalla casella dopo l'invio**, i messaggi già mandati per email non ci sono più: li trovi solo nell'email.
+
+### Come ricevo i messaggi solo per email
+
+Apri la casella, spunta **Spedisci via email**, **Allega audio del messaggio** e **Cancella dalla casella dopo l'invio**, scrivi l'indirizzo in **Email a cui mandarli** e premi **Salva**. Ogni messaggio arriva per email con l'audio allegato e non resta nella casella.
+
+### Come cambio il PIN della segreteria
+
+<Steps>
+  <Step title="Apri la casella">
+    In **Segreterie** clicca la riga dell'interno.
+  </Step>
+  <Step title="Scrivi il nuovo PIN">
+    In **PIN d'accesso** scrivi il nuovo PIN: solo cifre, al massimo 5. Il PIN è nascosto; premi **Mostra** per vederlo, **Nascondi** per coprirlo.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**.
+  </Step>
+</Steps>
+
+### Come trovo le caselle con l'email sbagliata
+
+Se in alto c'è il riquadro ambra, premi **Mostra quali**: restano in tabella solo le caselle con **Email da completare**. Apri ogni casella, scrivi l'indirizzo vero in **Email a cui mandarli** e premi **Salva**.
+
+## I campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **PIN d'accesso** | Il codice per ascoltare i messaggi dal telefono: «Serve per ascoltare i messaggi dal telefono (numero 300).» | Obbligatorio. Solo cifre, al massimo 5. Nascosto, con **Mostra** / **Nascondi**. |
+| **Nome titolare (opzionale)** | Di chi è la casella. Compare nella colonna **Nome** e nella scelta della casella nelle regole. | Al massimo 150 caratteri. Esempio: «es. Mario Rossi» |
+| **Spedisci via email** | «Quando arriva un nuovo messaggio, ti arriva un'email all'indirizzo qui sotto.» | Spunta |
+| **Allega audio del messaggio** | «L'email contiene il file audio della registrazione come allegato.» | Spunta, attiva solo con **Spedisci via email** |
+| **Cancella dalla casella dopo l'invio** | «Una volta inviata l'email, il messaggio viene rimosso dalla casella vocale del centralino. Utile se vuoi ricevere tutto solo per email.» | Spunta, attiva solo con **Spedisci via email** |
+| **Email a cui mandarli** | «Qui arrivano i messaggi lasciati in segreteria.» | Un solo indirizzo email valido, al massimo 50 caratteri. Esempio: «es. [mario.rossi@azienda.it](mailto:mario.rossi@azienda.it)». Se è un indirizzo di esempio compare in ambra «Indirizzo di esempio: scrivi l'email vera». |
+
+**Interno** e **Codice casella** non si possono cambiare.
+
+Messaggi che puoi vedere al salvataggio: «Solo cifre, max 5.» (PIN), «Indirizzo email non valido.», e a salvataggio riuscito «Casella 201 aggiornata.».
+
+### Regola «Segreteria telefonica»
+
+È la regola che porta le chiamate in una casella. Si aggiunge dall'editor delle regole, argomento **Notifiche**. Introduzione a video: «Il chiamante viene inoltrato alla segreteria telefonica: sente il messaggio di benvenuto e può lasciare un messaggio, inviato poi via email al titolare della casella.».
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Casella vocale** | La casella che riceve il messaggio. Per ognuna si vedono il codice (con l'interno accanto, se è diverso dal codice) e, se ci sono, il nome del titolare e l'email. | Una casella, con la ricerca **Cerca per mailbox, interno, nome o email…** |
+
+Se il centralino non ha caselle compare «Nessuna casella vocale configurata per questo centralino.» con **Configura segreterie**, che apre questa pagina in una nuova scheda. Tutti i dettagli della regola sono in [Passaggi che instradano la chiamata](/centralino/regole/passaggi-chiamata).
+
+## Da sapere
+
+- **Le caselle non si creano e non si eliminano da qui.** Nascono insieme agli interni. Per una casella in più chiedi all'assistenza.
+- **L'email parte solo con «Spedisci via email» spuntato** e con un indirizzo vero. Il campo si può salvare anche vuoto: con «Spedisci via email» spuntato la casella diventa **Email da completare** e i messaggi non arrivano a nessuno; senza spunta la casella risulta **Solo telefono**.
+- **Un solo indirizzo per casella.** Se i messaggi devono arrivare a più persone, usa un indirizzo condiviso (per esempio quello dell'ufficio).
+- **Dopo la segreteria, di norma, la chiamata finisce.** Le regole sotto la **Segreteria telefonica** di solito non vengono raggiunte.
+- **I tasti di un Menù vocale (IVR)** non portano direttamente a una segreteria: crea un servizio interno con la regola **Segreteria telefonica** e collega il tasto a quel servizio interno. Vedi [Servizi interni](/centralino/regole/servizi-interni).
+- **Il saluto della segreteria** (quello che sente chi chiama prima di lasciare il messaggio) non si imposta da questa pagina.
+- **Nel Pannello operatori** ogni operatore ha anche un interruttore **Segreteria** per il proprio interno. Vedi [Pannello operatori](/centralino/pannello-operatori).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Non mi arrivano le email dei messaggi. Perché?">
+    Controlla in **Segreterie** la colonna **Notifiche** della casella: deve dire **Via mail**. Se dice **Solo telefono**, apri la casella e spunta **Spedisci via email**; se dice **Email da completare**, scrivi l'indirizzo vero in **Email a cui mandarli**. Controlla anche la cartella dello spam e che le regole del numero portino davvero a quella casella (regola **Segreteria telefonica**).
+  </Accordion>
+
+  <Accordion title="Chi chiama non riesce a lasciare un messaggio.">
+    Nelle regole del numero manca la **Segreteria telefonica**, oppure c'è una regola sopra che chiude la chiamata prima (per esempio **Termina chiamata**). Aggiungi la segreteria sotto la regola che fa squillare i telefoni.
+  </Accordion>
+
+  <Accordion title="Chiamo il 300 ma la casella è vuota, eppure i messaggi arrivano per email.">
+    Nella casella è spuntato **Cancella dalla casella dopo l'invio**: dopo l'email il messaggio viene tolto dalla casella. Se vuoi ascoltarli anche dal telefono, togli quella spunta e premi **Salva**.
+  </Accordion>
+
+  <Accordion title="Ho dimenticato il PIN della segreteria.">
+    Apri la casella in **Segreterie** e premi **Mostra** accanto a **PIN d'accesso** per vederlo, oppure scrivine uno nuovo e premi **Salva**.
+  </Accordion>
+
+  <Accordion title="Dove trovo il codice della casella?">
+    Nella colonna **Codice casella** dell'elenco, o nella pagina della casella sotto **Codice casella**.
+  </Accordion>
+
+  <Accordion title="Posso mandare i messaggi a due indirizzi email?">
+    No, il campo accetta un solo indirizzo. Usa un indirizzo condiviso che arrivi a tutte le persone interessate.
+  </Accordion>
+
+  <Accordion title="Posso creare una segreteria nuova o cambiare l'interno di una casella?">
+    No, non da qui: le caselle nascono con gli interni e **Interno** e **Codice casella** non si possono cambiare. Per una casella in più apri una richiesta all'assistenza. Vedi [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza).
+  </Accordion>
+
+  <Accordion title="Posso cambiare il messaggio che sente chi chiama prima della segreteria?">
+    Il pannello non ha un'impostazione per il saluto della segreteria. Se ti serve un saluto personalizzato, chiedi all'assistenza.
+  </Accordion>
+
+  <Accordion title="Voglio la segreteria solo fuori orario.">
+    In **Orari**, nel riquadro di quando il centralino è chiuso, scegli **Segreteria** e la casella. Vedi [Orari](/centralino/orari-e-chiusure/orari).
+  </Accordion>
+
+  <Accordion title="Un collaboratore non vede Segreterie nel menu.">
+    Gli serve l'accesso a **Risorse del centralino**. Lo concede il titolare dell'account. Vedi [Utenti e permessi](/centralino/account/utenti-e-permessi).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Passaggi che instradano la chiamata" icon="phone" href="/centralino/regole/passaggi-chiamata">
+    La regola Segreteria telefonica e le altre.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere, spostare ed eliminare le regole di un numero.
+  </Card>
+
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Mandare in segreteria le chiamate fuori orario.
+  </Card>
+
+  <Card title="Interni" icon="phone" href="/centralino/telefoni-e-numeri/interni">
+    I telefoni del centralino, a cui appartengono le caselle.
+  </Card>
+
+  <Card title="Pannello operatori" icon="headset" href="/centralino/pannello-operatori">
+    La segreteria del proprio interno, accesa o spenta dall'operatore.
+  </Card>
+
+  <Card title="Email che ricevi" icon="envelope" href="/centralino/assistenza/email-che-ricevi">
+    Le email che manda il centralino.
+  </Card>
+</CardGroup>

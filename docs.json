@@ -49,7 +49,8 @@
           {
             "group": "Audio",
             "pages": [
-              "centralino/audio/messaggi-audio"
+              "centralino/audio/messaggi-audio",
+              "centralino/audio/musica-di-attesa"
             ]
           },
           {

@@ -144,7 +144,8 @@
               "centralino/assistenza/prenota-una-call",
               "centralino/assistenza/assistenza-remota",
               "centralino/assistenza/segnala-un-problema",
-              "centralino/assistenza/novita"
+              "centralino/assistenza/novita",
+              "centralino/assistenza/email-che-ricevi"
             ]
           }
         ]
@@ -172,7 +173,8 @@
             "pages": [
               "agenti-ai/collegare-un-numero",
               "agenti-ai/storico-chiamate",
-              "agenti-ai/campagne-in-uscita"
+              "agenti-ai/campagne-in-uscita",
+              "agenti-ai/connessioni"
             ]
           },
           {

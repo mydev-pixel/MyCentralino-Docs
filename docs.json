@@ -17,7 +17,8 @@
             "group": "Inizia",
             "pages": [
               "index",
-              "centralino/inizia/primo-accesso"
+              "centralino/inizia/primo-accesso",
+              "centralino/inizia/il-pannello"
             ]
           },
           {

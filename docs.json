@@ -36,7 +36,8 @@
               "centralino/come-fare/bloccare-un-numero",
               "centralino/come-fare/capire-una-chiamata-persa",
               "centralino/come-fare/aggiungere-un-collaboratore",
-              "centralino/come-fare/ricaricare-il-credito"
+              "centralino/come-fare/ricaricare-il-credito",
+              "centralino/come-fare/creare-la-chiave-api"
             ]
           },
           {

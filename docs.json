@@ -129,7 +129,8 @@
               "centralino/moduli/analisi-chiamate-ai",
               "centralino/moduli/analisi-utilizzo-flat",
               "centralino/moduli/contact-center",
-              "centralino/moduli/reperibilita"
+              "centralino/moduli/reperibilita",
+              "centralino/moduli/power-dialer"
             ]
           },
           {

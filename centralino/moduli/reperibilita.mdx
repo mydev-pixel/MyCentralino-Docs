@@ -1,5 +1,386 @@
 ---
 title: "Reperibilità"
+sidebarTitle: "Reperibilità"
+description: "Turni per le emergenze fuori orario: chi è di turno riceve la chiamata sul cellulare, uno dopo l'altro finché qualcuno risponde. Gruppi, operatori reperibili, calendario dei turni e regola «Gestione reperibilità»."
+keywords:
+  - "reperibilità"
+  - "reperibile"
+  - "turni"
+  - "turno notturno"
+  - "weekend"
+  - "emergenze"
+  - "fuori orario"
+  - "chi è di turno"
+  - "calendario turni"
+  - "operatori reperibili"
+  - "gestione reperibilità"
+  - "on call"
+  - "guardia"
+  - "pronto intervento"
 ---
 
-Caricamento in corso.
+Con la **Reperibilità** le chiamate di emergenza, per esempio di notte o nel weekend, arrivano al cellulare di chi è di turno. Se il primo non risponde, il centralino chiama il secondo, poi il terzo, finché qualcuno risponde.
+
+**Dove si trova:** Menu → **I tuoi moduli** → Organizzazione → **Reperibilità** · `https://cloud.mycentralino.com/reperibilita`
+
+**Chi la vede:** il titolare dell'account. Un collaboratore solo se gli hai dato il permesso **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
+
+<Info>
+  Serve il modulo **Reperibilità**. Si attiva in autonomia da [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita) con **Attiva la Reperibilità**: serve un metodo di pagamento salvato, e il prezzo è indicato nella pagina prima della conferma. Nella pagina **Attiva Reperibilità** scegli come pagare il periodo fino al rinnovo e premi **Attiva il modulo** (o **Attiva gratis**, se mancano pochi giorni al rinnovo). Dettagli in [I tuoi moduli](/centralino/moduli/i-tuoi-moduli).
+</Info>
+
+## Come funziona
+
+Tre pezzi lavorano insieme:
+
+1. **Gli operatori reperibili.** Un elenco unico di persone, ognuna con nome, numero da chiamare e **timer di risposta** (per quanti secondi squilla il suo telefono). Vale per tutti i gruppi.
+2. **I gruppi di reperibilità.** Un gruppo è un turno, per esempio «Turno Notturno» o «Weekend». Ha un **calendario**: per ogni giorno una o più **fasce** orarie (dalle… alle…) e, in ogni fascia, l'elenco **in ordine** delle persone da chiamare.
+3. **La regola «Gestione reperibilità».** Nelle [Regole delle chiamate](/centralino/regole/editor) di un numero o di un servizio, punta al gruppo. È lei che fa partire le chiamate ai reperibili.
+
+Quando una chiamata arriva alla regola, il centralino guarda la fascia del gruppo in corso in quel momento e prova il primo reperibile per i suoi secondi, poi il secondo, e così via. Se nessuno risponde, la chiamata prosegue con la regola successiva.
+
+## Cosa trovi nella pagina
+
+### La pagina «Reperibilità» (elenco dei gruppi)
+
+In alto il titolo **Reperibilità** e il riepilogo «N gruppi · M operatori». A destra:
+
+- il campo **Cerca gruppo o operatore…**: cerca nel nome del gruppo e tra le persone di turno in quel momento;
+- il bottone **ⓘ** (**Cos'è?**), che apre da destra un riassunto di come si usa il modulo;
+- **Operatori (M)**, che apre l'elenco degli operatori reperibili;
+- **Nuovo gruppo**.
+
+Sotto c'è la tabella dei gruppi.
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **#** | Il numero della riga. |
+| **Gruppo** | Il nome del gruppo. Un clic apre la sua configurazione. |
+| **Di turno** | Chi è reperibile adesso, nell'ordine in cui viene chiamato. Se adesso non c'è nessuno, una di queste frasi (vedi sotto). |
+| **Stato** | **Configurato** (verde) oppure, in ambra, una situazione da sistemare. |
+| (azioni) | Le icone **Configura** ed **Elimina**. |
+
+Sul telefono ogni gruppo diventa una scheda con nome, chi è di turno, stato e azioni.
+
+#### Le frasi della colonna «Di turno»
+
+| Frase | Cosa significa |
+| --- | --- |
+| I nomi con il pallino verde | Le persone di turno adesso, nell'ordine di chiamata. |
+| **Turno scoperto adesso: nessun operatore** (in ambra) | Adesso c'è una fascia, ma senza nessuno da chiamare. Da sistemare. |
+| «Prossimo turno: … · nomi» | Adesso non c'è nessuna fascia; il prossimo turno con persone inizia quando indicato. |
+| «Ultimo turno finito …» | Il calendario è finito in quella data. |
+| «I prossimi turni non hanno operatori» | Ci sono fasce in calendario, ma nessuna ha persone da chiamare. |
+| «Nessun turno in calendario» | Il gruppo non ha turni utili. |
+
+#### Gli stati
+
+| Stato | Cosa significa |
+| --- | --- |
+| **Configurato** | Il gruppo ha un calendario con persone da chiamare. |
+| **Senza turni · non chiama nessuno** | Il gruppo non ha ancora un calendario. |
+| **Turni finiti · non chiama nessuno** | Il calendario è scaduto: va prolungato. |
+| **Turni senza operatori · non chiama nessuno** | Il calendario c'è, ma le fasce non hanno persone. |
+
+Senza gruppi la pagina dice «Nessun gruppo di reperibilità configurato» e offre **Crea primo gruppo**. Se la ricerca non trova niente: «Nessun gruppo per questa ricerca» con «Prova con altri termini, o rimuovi il filtro.».
+
+### La pagina «Operatori reperibili»
+
+Si apre con **Operatori (M)** · `https://cloud.mycentralino.com/reperibilita/operatori`
+
+In alto «Catalogo condiviso fra tutti i gruppi del centralino» con il numero di operatori, e il bottone **Nuovo operatore**. La tabella ha le colonne **Nome** (un clic apre la modifica), **Numero da chiamare**, **Timer** (in secondi), **Email** e **Username PWA**. In fondo a ogni riga le icone **Modifica**, **Credenziali** ed **Elimina**.
+
+Senza operatori: «Nessun operatore configurato» con **Crea primo operatore**.
+
+### La configurazione di un gruppo
+
+Si apre con un clic sul nome del gruppo o sull'icona **Configura** · `https://cloud.mycentralino.com/reperibilita/…/configura`
+
+In testa il nome del gruppo, la riga «Gruppo di reperibilità — slot calendario: N» (con «(non ancora configurato)» se è vuoto), i bottoni **Operatori (N)** e, se il calendario esiste già, **Rigenera calendario**. Il riquadro **Reperibili adesso** mostra chi è di turno in questo momento, in ordine di chiamata.
+
+Il resto della pagina mostra una di due cose:
+
+- **la preparazione del calendario**, che si apre da sola per un gruppo nuovo, oppure con **Rigenera calendario**;
+- **il calendario** già fatto, giorno per giorno, dove correggi i singoli turni.
+
+## Come fare
+
+### Come aggiungo un reperibile
+
+<Steps>
+  <Step title="Apri gli operatori">
+    In **Reperibilità** premi **Operatori**.
+  </Step>
+  <Step title="Nuovo operatore">
+    Premi **Nuovo operatore**.
+  </Step>
+  <Step title="Compila i dati">
+    Scrivi il **Nome operatore**, il **Numero da chiamare** (per esempio il cellulare, `+393331234567`) e il **Timer di risposta (s)**, cioè per quanti secondi squilla prima di passare al successivo. Di base sono 30.
+  </Step>
+  <Step title="Salva">
+    Premi **Crea operatore**. Compare «Operatore "…" creato.».
+  </Step>
+</Steps>
+
+### Come creo un turno, per esempio notturno dal lunedì al venerdì
+
+Prima aggiungi almeno un reperibile: senza operatori la preparazione del calendario dice «Nessun operatore nel catalogo».
+
+<Steps>
+  <Step title="Crea il gruppo">
+    In **Reperibilità** premi **Nuovo gruppo**, scrivi il **Nome gruppo** (per esempio «Turno Notturno») e premi **Crea e configura**. Compare «Gruppo "…" creato.» e si apre la preparazione del calendario.
+  </Step>
+  <Step title="Scegli il periodo">
+    In **Periodo di applicazione** imposta **Dal** e **Al**. Di base va da oggi a 30 giorni. Accanto leggi «Coprirà N giorni.».
+  </Step>
+  <Step title="Apri il primo giorno">
+    Premi la scheda **LUN**. La pagina si apre sul giorno della settimana di oggi.
+  </Step>
+  <Step title="Aggiungi le fasce">
+    Premi **Aggiungi fascia** e imposta **Dalle** e **Alle**, per esempio 00:00 e 08:00. Premi di nuovo **Aggiungi fascia** per la sera, per esempio 20:00 e 23:59.
+  </Step>
+  <Step title="Metti le persone in ordine">
+    In ogni fascia scegli dal menu **\+ Aggiungi operatore alla fascia…** il primo da chiamare, poi il secondo. Con **Sposta su** e **Sposta giù** cambi l'ordine, con **Rimuovi dalla fascia** togli una persona.
+  </Step>
+  <Step title="Copia sugli altri giorni">
+    Premi **Copia su…** e scegli **Solo feriali (Lun-Ven)**. Le fasce del lunedì vengono copiate dal martedì al venerdì e prendono il posto di quelle che avevi già preparato in quei giorni.
+  </Step>
+  <Step title="Genera">
+    Premi **Genera calendario**. Al termine compare «Calendario generato per "…" dal … al …» e la pagina mostra il calendario.
+  </Step>
+  <Step title="Collega il gruppo alle chiamate">
+    Senza questo passo il gruppo non chiama nessuno: vedi «Come faccio arrivare le chiamate ai reperibili» qui sotto.
+  </Step>
+</Steps>
+
+<Tip>
+  Una fascia sta dentro un solo giorno: **Alle** deve venire dopo **Dalle**. Il pannello non lo controlla: una fascia come 20:00-08:00 viene accettata, ma non risulta mai di turno. Per coprire tutta la notte usa due fasce, una la sera (per esempio 20:00-23:59) e una la mattina dopo (00:00-08:00).
+</Tip>
+
+### Come faccio arrivare le chiamate ai reperibili
+
+<Steps>
+  <Step title="Apri le regole del numero">
+    Vai in **Regole delle chiamate** e apri il numero o il [servizio interno](/centralino/regole/servizi-interni) che deve passare le chiamate ai reperibili.
+  </Step>
+  <Step title="Aggiungi la regola">
+    Premi **Aggiungi regola** e scegli **Gestione reperibilità** (argomento **Orari e chiusure**). La regola compare solo se il modulo è attivo.
+  </Step>
+  <Step title="Scegli gruppo e linea">
+    In **Modulo di reperibilità** scegli il gruppo. In **Provider di uscita** scegli la linea da cui partono le chiamate ai reperibili. Premi **Aggiungi regola**. La regola si salva subito: non c'è un altro bottone da premere.
+  </Step>
+</Steps>
+
+Se la regola dice «Nessun modulo di reperibilità configurato.», crea prima un gruppo in **Reperibilità**. Se dice «Nessun provider di uscita.», serve una linea in [Numeri in uscita](/centralino/telefoni-e-numeri/numeri-in-uscita) (link **Configura un provider**). Finché manca uno dei due, **Aggiungi regola** resta spento.
+
+Se i reperibili servono solo fuori orario, un modo semplice è mettere la regola in un [servizio interno](/centralino/regole/servizi-interni) e sceglierlo nell'orario, in **Quando il centralino è chiuso** → **Servizio interno** (vedi [Orari](/centralino/orari-e-chiusure/orari)). Tutti i campi della regola sono in [Notifiche, registrazioni e moduli](/centralino/regole/passaggi-moduli).
+
+### Come sostituisco una persona in un giorno solo
+
+<Steps>
+  <Step title="Apri il gruppo">
+    In **Reperibilità** premi il nome del gruppo.
+  </Step>
+  <Step title="Trova il giorno">
+    Nel **Calendario reperibilità** trova la riga del giorno e della fascia. Il bottone **Oggi** porta alla riga di oggi; il filtro **Filtra** mostra solo le fasce di una persona.
+  </Step>
+  <Step title="Cambia la persona">
+    Togli il nome con **Rimuovi** e aggiungi il sostituto dal menu **\+ Aggiungi operatore…**. Con **Sposta su** e **Sposta giù** sistemi l'ordine.
+  </Step>
+</Steps>
+
+Ogni modifica nel calendario vale subito, senza un bottone di salvataggio, e solo per quel giorno e quella fascia.
+
+### Come prolungo il calendario quando sta per finire
+
+<Steps>
+  <Step title="Apri il gruppo">
+    In **Reperibilità** premi il nome del gruppo, poi **Rigenera calendario**.
+  </Step>
+  <Step title="Imposta il nuovo periodo">
+    In **Dal** e **Al** scegli solo i giorni nuovi, per esempio dal giorno dopo la fine del calendario attuale.
+  </Step>
+  <Step title="Rifai le fasce">
+    La preparazione si apre vuota: imposta di nuovo le fasce e le persone giorno per giorno, come la prima volta.
+  </Step>
+  <Step title="Genera">
+    Premi **Genera calendario**. I giorni fuori dal periodo scelto restano come erano. Per tornare indietro senza cambiare nulla premi **Annulla**.
+  </Step>
+</Steps>
+
+### Come vedo i turni di una persona
+
+Apri il gruppo e scegli il nome nel menu **Filtra** (di base **Tutti gli operatori**). Il calendario mostra solo le fasce in cui c'è quella persona e il riepilogo dice quante sono sul totale delle fasce del calendario, passate comprese, per esempio «12 / 60 slot». La **×** (**Rimuovi filtro**) torna a tutte le fasce.
+
+### Come mando a un reperibile le credenziali per vedere i suoi turni
+
+I reperibili possono consultare i propri turni in una web app dedicata. Le credenziali sono facoltative.
+
+<Steps>
+  <Step title="Apri le credenziali">
+    In **Operatori reperibili** premi l'icona **Credenziali** sulla riga della persona. Si apre **Gestione credenziali**.
+  </Step>
+  <Step title="Controlla i dati">
+    Se la persona non ha ancora le credenziali, lo **Username** è già proposto dal nome (per esempio «mario.rossi») e la **Password** è già generata. Scrivi l'indirizzo in **Email (per invio credenziali)**.
+  </Step>
+  <Step title="Salva e invia">
+    Premi **Salva e invia email**. Compare «Credenziali salvate e inviate a ….». La persona riceve l'email «Credenziali Accesso Reperibilità» con username, password e il collegamento **Accedi alla WebApp**.
+  </Step>
+</Steps>
+
+Se ha già le credenziali, la finestra dice «Questo operatore ha già le credenziali configurate.» e mostra **Username** e **Link WebApp**, ciascuno con il tasto **Copia**, e la **Password** nascosta. Per cambiarle compila **Genera nuove credenziali** e salva.
+
+### Come elimino un gruppo
+
+Premi l'icona **Elimina** sulla riga del gruppo. La finestra «Eliminare il gruppo?» avvisa che le regole che usano il gruppo smettono di funzionare finché non scegli un altro gruppo. Premi **Elimina**: compare «Gruppo "…" eliminato.». Insieme al gruppo si cancella il suo calendario.
+
+## I campi
+
+### Finestra «Nuovo gruppo di reperibilità»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome gruppo** | Il nome del turno. Esempio nel campo: «Es. Turno Notturno». | Obbligatorio, al massimo 50 caratteri, diverso dagli altri gruppi. |
+
+Bottoni **Annulla** e **Crea e configura**.
+
+### Finestra «Nuovo operatore» / «Modifica operatore»
+
+In testa una nota: nome, numero da chiamare e timer sono obbligatori; email, username e password servono solo se la persona deve consultare i propri turni nella web app.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome operatore \*** | Il nome della persona. Esempio: «Es. Mario Rossi». | Obbligatorio, al massimo 50 caratteri. |
+| **Numero da chiamare \*** | Il numero su cui chiamarla. Esempio: «Es. 3331234567». | Obbligatorio. Solo cifre, spazi e il + iniziale; si salva senza spazi. |
+| **Timer di risposta (s) \*** | Per quanti secondi squilla prima di passare al successivo. | Da 1 a 600 secondi. Di base 30. |
+| **Email** | Sezione **Accesso PWA operatore (opzionale)**. | Un indirizzo email valido. |
+| **Username** | Il nome utente per la web app. | Al massimo 50 caratteri. |
+| **Password** | La password per la web app. In modifica: «(vuoto = invariata)». | **Genera** ne crea una casuale di 10 caratteri. |
+
+Bottoni **Annulla** e **Crea operatore** (in modifica **Salva modifiche**).
+
+### Finestra «Gestione credenziali»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Email (per invio credenziali)** | Dove mandare le credenziali. | Obbligatoria solo per **Salva e invia email**. |
+| **Username \*** | Il nome utente per la web app. | Obbligatorio, al massimo 50 caratteri. |
+| **Password \*** | La password per la web app. | Obbligatoria. **Genera** ne crea una nuova. |
+
+Bottoni **Chiudi**, **Salva** e **Salva e invia email**.
+
+### Preparazione del calendario
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Dal** · **Al** | Il **Periodo di applicazione** del calendario. | Date. **Al** uguale o successiva a **Dal**. |
+| Schede **LUN** … **DOM** | Il giorno della settimana che stai preparando, con il numero di fasce. |  |
+| **Copia su…** | Copia le fasce del giorno aperto su altri giorni. | **Tutta la settimana** · **Solo feriali (Lun-Ven)** · **Solo weekend (Sab-Dom)** |
+| **Dalle** · **Alle** | Inizio e fine della fascia. | Orari. Servono tutti e due. |
+| **Rimuovi fascia** (icona accanto a **Dalle** e **Alle**) | Toglie la fascia dal giorno. |  |
+| **Operatori da chiamare in ordine** | Le persone della fascia, «1°», «2°»… | Dal menu **\+ Aggiungi operatore alla fascia…**. La stessa persona si può mettere più volte. |
+
+## Messaggi che puoi vedere
+
+| Messaggio | Cosa significa |
+| --- | --- |
+| «Inserisci un nome per il gruppo.» · «Il nome non può superare 50 caratteri.» · «Esiste già un gruppo con questo nome.» | Nome del gruppo mancante, troppo lungo o già usato. |
+| «Il nome è obbligatorio.» · «Il numero da chiamare è obbligatorio.» | Mancano il nome o il numero del reperibile. |
+| «Il numero può contenere solo cifre, spazi e il + iniziale.» | Nel numero del reperibile ci sono lettere o simboli. |
+| «Email non valida.» · «Username troppo lungo (max 50).» | L'indirizzo email non è scritto bene, o lo username supera i 50 caratteri. |
+| «Timer non valido (intero positivo, secondi).» | Il timer deve essere un numero di secondi maggiore di zero. |
+| «Username e password sono obbligatori.» | Nelle credenziali mancano username o password. |
+| «Inserisci un indirizzo email per inviare le credenziali.» | Hai premuto **Salva e invia email** senza email. |
+| «Credenziali già inviate poco fa a …. Riprova più tardi.» | Le credenziali a quella persona sono state inviate da poco. Riprova più tardi. |
+| «Credenziali salvate con successo.» | Hai premuto **Salva**: le credenziali sono salvate, senza email. |
+| «Credenziali salvate. Errore invio email.» | Le credenziali sono salvate ma l'email non è partita: comunicale tu o riprova. |
+| «La data di fine deve essere uguale o successiva a quella di inizio.» | **Al** viene prima di **Dal**. |
+| «Fascia N in Giorno: inserisci sia inizio sia fine.» | A una fascia di quel giorno manca **Dalle** o **Alle**. Il messaggio compare sotto la fascia, nella scheda del suo giorno: se premendo **Genera calendario** non succede nulla, apri le schede **LUN** … **DOM** e cerca la fascia incompleta. Il numero nel messaggio parte da 0: «Fascia 0» è la prima fascia del giorno. |
+| «Definisci almeno una fascia in un giorno della settimana.» | Non c'è nessuna fascia da generare. |
+
+## Da sapere
+
+<Warning>
+  **Genera calendario** sostituisce **tutte** le fasce del gruppo nei giorni del periodo scelto, anche quelle che avevi corretto a mano. Un giorno del periodo senza fasce resta senza turni. I giorni fuori dal periodo non cambiano.
+</Warning>
+
+- **Il gruppo da solo non chiama nessuno.** Serve la regola **Gestione reperibilità** nelle regole di un numero o di un servizio.
+- **Il calendario ha una fine.** Dopo la data **Al** il gruppo risulta **Turni finiti · non chiama nessuno**. Prolungalo per tempo con **Rigenera calendario**.
+- **Una fascia senza persone** si può salvare: in quella fascia il centralino non chiama nessuno e la chiamata passa alla regola successiva. Nell'elenco il gruppo può risultare **Turno scoperto adesso: nessun operatore**.
+- **Richiamare la stessa persona.** Se metti due volte la stessa persona nella stessa fascia, il centralino la richiama se non ha risposto la prima volta.
+- **Eliminare un operatore reperibile** lo toglie dall'elenco, ma nei calendari dove era previsto il suo posto compare la scritta **rimosso**: toglilo o sostituiscilo a mano nei gruppi che lo usavano.
+- **Le chiamate ai reperibili** escono dal centralino con la linea scelta nella regola, come le altre chiamate in uscita.
+- **Gli orari** del calendario sono quelli italiani.
+- **Senza modulo attivo**, se apri la pagina compare l'avviso **Modulo Reperibilità non attivo**: il centralino non usa i gruppi finché il modulo non è attivo, e la regola **Gestione reperibilità** non compare nelle regole.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il gruppo dice «Turno scoperto adesso: nessun operatore». Cosa faccio?">
+    In questo momento c'è una fascia senza persone da chiamare. Apri il gruppo, trova la riga di oggi con **Oggi** e aggiungi qualcuno dal menu **\+ Aggiungi operatore…**. La modifica vale subito.
+  </Accordion>
+
+  <Accordion title="Il gruppo dice «Turni finiti · non chiama nessuno».">
+    Il calendario è scaduto. Apri il gruppo, premi **Rigenera calendario**, scegli il nuovo periodo, imposta le fasce e premi **Genera calendario**.
+  </Accordion>
+
+  <Accordion title="Ho creato il gruppo ma le chiamate non arrivano ai reperibili.">
+    Controlla tre cose: che il gruppo risulti **Configurato** con qualcuno **Di turno** nell'orario della chiamata; che nelle regole del numero, o del servizio interno dove arrivano le chiamate fuori orario, ci sia **Gestione reperibilità** con quel gruppo; che la regola sia nelle regole del numero o del servizio interno che riceve davvero quelle chiamate.
+  </Accordion>
+
+  <Accordion title="Posso far richiamare la stessa persona se non risponde?">
+    Sì: aggiungila due volte nella stessa fascia, per esempio Mario, Luca, Mario.
+  </Accordion>
+
+  <Accordion title="Come copro la notte da sera a mattina?">
+    Con due fasce, perché una fascia non passa la mezzanotte: una la sera (per esempio 20:00-23:59) e una la mattina (00:00-08:00). Se il turno è uguale tutta la settimana, prepara un giorno e usa **Copia su…** → **Tutta la settimana**.
+  </Accordion>
+
+  <Accordion title="Ho premuto «Rigenera calendario» e non vedo più le fasce di prima.">
+    È normale: la preparazione si apre vuota e va compilata di nuovo. Se non vuoi cambiare nulla premi **Annulla**: il calendario resta com'era.
+  </Accordion>
+
+  <Accordion title="Come cambio l'ordine di chiamata in un giorno?">
+    Apri il gruppo, trova il giorno nel calendario e usa **Sposta su** e **Sposta giù** accanto ai nomi.
+  </Accordion>
+
+  <Accordion title="Un reperibile non ha ricevuto l'email con le credenziali.">
+    Apri **Credenziali** sulla sua riga e controlla l'indirizzo in **Email (per invio credenziali)**. Se il pannello ha detto «Credenziali salvate. Errore invio email.», l'email non è partita: riprova o comunica tu username e password. Se dice «Credenziali già inviate poco fa», aspetta prima di riprovare.
+  </Accordion>
+
+  <Accordion title="Posso cercare un reperibile nell'elenco dei gruppi?">
+    Il campo **Cerca gruppo o operatore…** trova i gruppi per nome e le persone di turno in questo momento. Per vedere tutti i turni di una persona apri il gruppo e usa **Filtra**.
+  </Accordion>
+
+  <Accordion title="Come disattivo il modulo?">
+    Apri `https://cloud.mycentralino.com/moduli/attiva/availability`: la pagina **Attiva Reperibilità** mostra **Modulo già attivo**. In fondo, accanto a «Non usi più questo modulo?», premi **Richiedi disattivazione**, scrivi se vuoi il motivo e premi **Invia richiesta**. Compare «Richiesta di disattivazione inviata: ti ricontatteremo al più presto.» e ricevi un'email di conferma. La disattivazione la gestisce l'assistenza. Vedi [I tuoi moduli](/centralino/moduli/i-tuoi-moduli).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Notifiche, registrazioni e moduli" icon="sitemap" href="/centralino/regole/passaggi-moduli">
+    La regola «Gestione reperibilità» nel dettaglio.
+  </Card>
+
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Dove vanno le chiamate quando il centralino è chiuso.
+  </Card>
+
+  <Card title="Editor delle regole" icon="list" href="/centralino/regole/editor">
+    Come si aggiunge e si salva una regola.
+  </Card>
+
+  <Card title="Numeri in uscita" icon="arrow-right-arrow-left" href="/centralino/telefoni-e-numeri/numeri-in-uscita">
+    Le linee da cui partono le chiamate ai reperibili.
+  </Card>
+
+  <Card title="Inoltro chiamate" icon="phone-volume" href="/centralino/instradamento/inoltro-chiamate">
+    Per mandare le chiamate sempre allo stesso cellulare.
+  </Card>
+
+  <Card title="I tuoi moduli" icon="gear" href="/centralino/moduli/i-tuoi-moduli">
+    Attivare e disattivare un modulo.
+  </Card>
+</CardGroup>

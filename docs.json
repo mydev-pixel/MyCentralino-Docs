@@ -26,12 +26,15 @@
             "group": "Come fare",
             "pages": [
               "centralino/come-fare/configurare-gli-orari-di-apertura",
-              "centralino/come-fare/chiudere-per-ferie-o-festivita"
+              "centralino/come-fare/chiudere-per-ferie-o-festivita",
+              "centralino/come-fare/messaggio-di-benvenuto"
             ]
           },
           {
             "group": "Regole delle chiamate",
-            "pages": []
+            "pages": [
+              "centralino/regole/panoramica"
+            ]
           },
           {
             "group": "Orari e chiusure",

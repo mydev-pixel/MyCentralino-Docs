@@ -103,14 +103,16 @@
             "group": "Moduli",
             "pages": [
               "centralino/moduli/i-tuoi-moduli",
-              "centralino/moduli/aggiungi-funzionalita"
+              "centralino/moduli/aggiungi-funzionalita",
+              "centralino/moduli/analisi-chiamate-ai"
             ]
           },
           {
             "group": "Account e pagamenti",
             "pages": [
               "centralino/account/il-mio-account",
-              "centralino/account/utenti-e-permessi"
+              "centralino/account/utenti-e-permessi",
+              "centralino/account/abbonamento"
             ]
           },
           {

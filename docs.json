@@ -33,7 +33,8 @@
               "centralino/come-fare/far-squillare-piu-telefoni",
               "centralino/come-fare/collegare-un-telefono",
               "centralino/come-fare/inoltrare-al-cellulare",
-              "centralino/come-fare/bloccare-un-numero"
+              "centralino/come-fare/bloccare-un-numero",
+              "centralino/come-fare/capire-una-chiamata-persa"
             ]
           },
           {
@@ -91,7 +92,8 @@
               "centralino/monitoraggio/chiamate-ricevute",
               "centralino/monitoraggio/esiti-delle-chiamate",
               "centralino/monitoraggio/chiamate-effettuate",
-              "centralino/monitoraggio/da-richiamare"
+              "centralino/monitoraggio/da-richiamare",
+              "centralino/monitoraggio/analisi-chiamate-code"
             ]
           },
           {

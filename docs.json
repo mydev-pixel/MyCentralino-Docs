@@ -11,12 +11,95 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "Guida al centralino",
+        "groups": [
+          {
+            "group": "Inizia",
+            "pages": [
+              "index"
+            ]
+          },
+          {
+            "group": "Come fare",
+            "pages": []
+          },
+          {
+            "group": "Regole delle chiamate",
+            "pages": []
+          },
+          {
+            "group": "Orari e chiusure",
+            "pages": []
+          },
+          {
+            "group": "Audio",
+            "pages": []
+          },
+          {
+            "group": "Instradamento chiamate",
+            "pages": []
+          },
+          {
+            "group": "Telefoni e numeri",
+            "pages": []
+          },
+          {
+            "group": "Monitoraggio",
+            "pages": []
+          },
+          {
+            "group": "Strumenti",
+            "pages": []
+          },
+          {
+            "group": "Servizi a consumo",
+            "pages": []
+          },
+          {
+            "group": "Pannello operatori",
+            "pages": []
+          },
+          {
+            "group": "Moduli",
+            "pages": []
+          },
+          {
+            "group": "Account e pagamenti",
+            "pages": []
+          },
+          {
+            "group": "Assistenza e aiuto",
+            "pages": []
+          }
+        ]
+      },
+      {
+        "tab": "Agenti AI",
+        "groups": [
+          {
+            "group": "Inizia",
+            "pages": []
+          },
+          {
+            "group": "Il tuo agente",
+            "pages": []
+          },
+          {
+            "group": "Numeri e chiamate",
+            "pages": []
+          },
+          {
+            "group": "Domande frequenti",
+            "pages": []
+          }
+        ]
+      },
+      {
         "tab": "API Centralino",
         "groups": [
           {
             "group": "Inizia",
             "pages": [
-              "index",
               "mycentralino-api/introduction",
               "mycentralino-api/ping",
               "mycentralino-api/account"

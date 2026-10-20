@@ -143,7 +143,8 @@
               "centralino/assistenza/richieste-di-assistenza",
               "centralino/assistenza/prenota-una-call",
               "centralino/assistenza/assistenza-remota",
-              "centralino/assistenza/segnala-un-problema"
+              "centralino/assistenza/segnala-un-problema",
+              "centralino/assistenza/novita"
             ]
           }
         ]

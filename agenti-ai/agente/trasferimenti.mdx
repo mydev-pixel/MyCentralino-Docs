@@ -1,5 +1,234 @@
 ---
 title: "Trasferimenti dell'agente"
+sidebarTitle: "Trasferimenti"
+description: "Quando e a chi l'agente AI passa la chiamata: a un interno, a una coda o a un cellulare, con o senza presentazione, oppure a un altro agente AI."
+keywords:
+  - "trasferimento chiamata agente"
+  - "passare la chiamata"
+  - "inoltro agente ai"
+  - "trasferire a un collega"
+  - "trasferire al cellulare"
+  - "presenta la chiamata"
+  - "trasferimento con presentazione"
+  - "trasferimento dinamico"
+  - "passaggio a un altro agente"
+  - "smistamento chiamate ai"
+  - "musica d'attesa trasferimento"
+  - "numeri di inoltro"
 ---
 
-Caricamento in corso.
+Nella sezione **Trasferimento** della configurazione decidi quando l'agente AI passa la chiamata a una persona (un interno, un servizio interno come una coda, un fisso o un cellulare) e quando la passa a un altro agente AI. Se non imposti niente, l'agente gestisce tutta la chiamata da solo.
+
+**Dove si trova:** menu degli Agenti AI → Gestione → **Agenti** → **Configura** sull'agente → sezione **Trasferimento** · `https://cloud.mycentralino.com/wave/agenti`
+
+**Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)), quando gli Agenti AI sono attivi.
+
+<Note>
+  Tutto quello che imposti in questa sezione vale solo dopo **Salva agente**.
+</Note>
+
+## Cosa trovi nella sezione
+
+Il titolo è **Trasferimento di chiamata** — «Quando e verso chi l'agente passa la chiamata a una persona vera.». Sotto, in quest'ordine:
+
+1. la **modalità**: **Classico** oppure **Dinamico**;
+2. i numeri (in **Classico**) o la condizione (in **Dinamico**);
+3. l'interruttore **Presenta la chiamata prima di passarla**;
+4. il **Suono mentre la chiamata viene passata**;
+5. il **Passaggio a un altro agente**.
+
+## Le due modalità
+
+| Modalità | Testo a video | Quando sceglierla |
+| --- | --- | --- |
+| **Classico** | «Uno o più numeri in ordine di priorità: interni, fissi o cellulari.» | Hai pochi numeri fissi: la segreteria, il commerciale, il tuo cellulare. È la modalità proposta. |
+| **Dinamico** | «L'agente trova il numero giusto nei suoi dati (elenco o documenti).» | Il numero cambia secondo chi chiama: il tecnico della zona, il referente del servizio. |
+
+### Classico: i numeri di inoltro
+
+Sotto **Numeri di inoltro (in ordine di priorità)** premi **\+ Aggiungi** per ogni numero. Ogni riga ha due campi:
+
+| Campo | Cosa indica | Esempio |
+| --- | --- | --- |
+| Numero | Il numero a cui passare la chiamata | `201`, `400`, `0422123456`, `3331234567` |
+| **Quando trasferire qui** | In quale situazione l'agente deve usare questo numero | «richieste commerciali», «urgenze e guasti», «chi chiede del titolare» |
+
+Il numero si scrive «Solo cifre, come da un telefono del centralino: un interno (201), un servizio interno come una coda (400), un fisso (0422123456) o un cellulare (3331234567).». Niente spazi, niente trattini.
+
+Con due numeri o più compare la posizione (1, 2, 3…) e le frecce **Sposta su** e **Sposta giù**: l'ordine dell'elenco è la priorità. **Rimuovi** toglie la riga. Senza numeri leggi «Nessun inoltro: l'agente gestisce tutto da solo.».
+
+<Warning>
+  Compila sempre **Quando trasferire qui**. È quello che dice all'agente quando usare il numero: un numero senza questa frase non viene usato, e quando riapri la configurazione la riga non c'è più.
+</Warning>
+
+### Dinamico: la condizione
+
+In **Dinamico** c'è un solo campo, **Quando trasferire (condizione)**, per esempio «Trasferisci quando il cliente chiede un tecnico per un intervento urgente». Il numero l'agente lo cerca da solo nei suoi dati: nell'elenco della **Ricerca dati** o nei documenti della **Knowledge Base** (vedi [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce)). Quindi i numeri devono essere scritti lì, insieme a quando usarli.
+
+Se il primo numero non risponde e nei dati ce ne sono altri adatti, l'agente è istruito a provarli uno alla volta; quando li ha provati tutti, dice a chi chiama che la richiesta è stata inoltrata e che verrà ricontattato.
+
+<Note>
+  Se passi a **Dinamico** e salvi, l'elenco dei numeri del **Classico** non viene conservato: tornando a **Classico** va riscritto.
+</Note>
+
+## Presenta la chiamata prima di passarla
+
+«Chi risponde sente il nome di chi chiama e il motivo, poi preme 1 per prendere la chiamata. Se non risponde o non può, l'agente riprende a parlare con il chiamante.»
+
+Con l'interruttore acceso la chiamata va così:
+
+1. l'agente si assicura di sapere il nome di chi chiama e il motivo (li chiede solo se mancano);
+2. dice una frase breve di attesa, come «La metto in contatto, un attimo di pazienza.»;
+3. il collega risponde e sente una presentazione con il nome e il motivo;
+4. il collega preme **1** per prendere la chiamata;
+5. se il collega non risponde o non accetta, l'agente prova il numero successivo adatto alla stessa richiesta, se c'è; quando non ne restano, dice con calma che al momento nessuno è disponibile e propone di lasciare un messaggio o di essere richiamato.
+
+La presentazione funziona con entrambe le modalità. In **Classico** si accende solo se almeno un numero ha anche **Quando trasferire qui**.
+
+Quando l'interruttore è acceso compare l'avviso: «La destinazione non deve rispondere da sola: se è un servizio interno, togli «Rispondi» e gli audio iniziali, altrimenti la presentazione non arriva a nessuno.». Se trasferisci a un servizio interno (per esempio una coda), apri le sue [Regole delle chiamate](/centralino/regole/servizi-interni) e togli il passaggio **Prendo in carico la chiamata** (nell'avviso dell'agente è chiamato «Rispondi») e i messaggi audio iniziali: la chiamata deve far squillare i telefoni, non essere accolta da un messaggio.
+
+Se al salvataggio leggi «Il trasferimento con presentazione non può essere attivato: nel centralino esiste già una regola che usa la stessa estensione. Contatta l'assistenza.», il tuo centralino ha già una configurazione che impedisce la presentazione: scrivi all'assistenza.
+
+## Suono mentre la chiamata viene passata
+
+«Lo sente chi chiama mentre l'agente gli passa la chiamata.» Le scelte sono **Nessuno (silenzio)** (proposta), **Tastiera che digita**, **Musica d'attesa 1**, **Musica d'attesa 2**, **Musica d'attesa 3**, **Musica d'attesa 4**. Il tasto accanto all'elenco fa ascoltare il suono scelto.
+
+## Passaggio a un altro agente
+
+«Per dividere i compiti: questo agente accoglie e smista, un altro agente porta avanti la richiesta. La chiamata resta la stessa.» Vale sia in **Classico** sia in **Dinamico**, e anche senza numeri di inoltro.
+
+Premi **\+ Aggiungi** e compila la riga:
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Scegli l'agente…** | L'agente che prende la chiamata | Gli altri agenti del tuo centralino |
+| **Quando passare a questo agente** | In quale situazione passargli la chiamata | Es. «chiede assistenza tecnica» |
+| **Frase da dire prima di passare** | Cosa dice l'agente prima del passaggio | Facoltativa |
+| **Fagli dire la sua frase di apertura** | Se l'agente che riceve si presenta con la sua frase di apertura | Casella, spenta di serie |
+
+**Rimuovi** toglie la riga. Senza righe leggi «Nessun passaggio: l'agente gestisce da solo tutta la chiamata.».
+
+- «L'agente che riceve la chiamata riparte con la propria configurazione: copione, voce e strumenti sono i suoi.» Configura bene anche lui.
+- Le righe senza agente o senza **Quando passare a questo agente** vengono scartate al salvataggio.
+- Se hai un solo agente leggi «Serve almeno un secondo agente: creane un altro e potrai passargli le chiamate.». Crealo da **Agenti** → **\+ Nuovo agente** (vedi [Crea un agente](/agenti-ai/agente/crea-un-agente)).
+- Se l'agente di destinazione è stato eliminato, nella riga compare **Agente non più disponibile**: scegline un altro o togli la riga.
+
+## Come fare
+
+### Come faccio passare la chiamata a un collega
+
+<Steps>
+  <Step title="Apri la sezione">
+    Apri la configurazione dell'agente e la sezione **Trasferimento**. Lascia selezionato **Classico**.
+  </Step>
+  <Step title="Aggiungi il numero">
+    Premi **\+ Aggiungi** e scrivi il numero del collega: il suo interno (es. `201`) o il cellulare (es. `3331234567`), senza spazi.
+  </Step>
+  <Step title="Scrivi quando trasferire">
+    In **Quando trasferire qui** scrivi in poche parole quando usarlo, per esempio «chi chiede un preventivo o un'offerta commerciale».
+  </Step>
+  <Step title="Scegli la presentazione">
+    Se vuoi che il collega sappia chi chiama prima di rispondere, accendi **Presenta la chiamata prima di passarla**.
+  </Step>
+  <Step title="Salva e prova">
+    Premi **Salva agente**. Fai una telefonata di prova chiedendo proprio quella cosa.
+  </Step>
+</Steps>
+
+### Come imposto più numeri in ordine
+
+<Steps>
+  <Step title="Aggiungi i numeri">
+    Con **\+ Aggiungi** inserisci tutti i numeri, ognuno con il suo **Quando trasferire qui**.
+  </Step>
+  <Step title="Mettili in ordine">
+    Usa **Sposta su** e **Sposta giù** per mettere in alto il numero da provare per primo. Per la stessa richiesta puoi scrivere la stessa frase su più numeri (es. «assistenza tecnica» sul tecnico 1 e sul tecnico 2).
+  </Step>
+  <Step title="Salva">
+    Premi **Salva agente**.
+  </Step>
+</Steps>
+
+### Come divido le chiamate tra due agenti
+
+<Steps>
+  <Step title="Crea i due agenti">
+    Crea un agente che accoglie (es. «Centralino») e uno specializzato (es. «Assistenza tecnica»), ognuno con il suo copione.
+  </Step>
+  <Step title="Aggiungi il passaggio">
+    Nella configurazione dell'agente che accoglie apri **Trasferimento**, vai a **Passaggio a un altro agente** e premi **\+ Aggiungi**.
+  </Step>
+  <Step title="Compila la riga">
+    In **Scegli l'agente…** seleziona «Assistenza tecnica», in **Quando passare a questo agente** scrivi «chiede assistenza su un prodotto già acquistato» e, se vuoi, una **Frase da dire prima di passare** come «Le passo il collega dell'assistenza».
+  </Step>
+  <Step title="Salva">
+    Premi **Salva agente**. Solo l'agente che accoglie deve rispondere sulla connessione del tuo numero.
+  </Step>
+</Steps>
+
+## Da sapere
+
+- Scrivi nel copione le stesse situazioni che metti in **Quando trasferire qui**: l'agente decide meglio se le due cose dicono la stessa cosa (vedi [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce)).
+- Con la presentazione accesa o in **Dinamico**, l'agente è istruito a trasferire solo quando chi chiama deve parlare subito con una persona: se basta raccogliere i dati o fissare un appuntamento, completa la chiamata da solo.
+- Dopo un trasferimento a numero, nel riassunto di fine chiamata può comparire la riga **Risposta**: vedi [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata).
+- Dopo un **Passaggio a un altro agente**, il riassunto e i dati di fine chiamata li manda solo l'agente che ha chiuso la conversazione, con le sue impostazioni di **Post-chiamata**.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Ho aggiunto un numero ma l'agente non trasferisce mai.">
+    Controlla che la riga abbia anche **Quando trasferire qui**: senza, il numero non viene usato. Poi controlla che la frase descriva bene la situazione e che il copione non dica il contrario (per esempio «non passare mai la chiamata»). Infine premi **Salva agente**.
+  </Accordion>
+
+  <Accordion title="Posso trasferire a una coda o a un gruppo di telefoni?">
+    Sì: scrivi il numero del servizio interno, come nell'esempio `400`. Se usi la presentazione, il servizio interno non deve rispondere da solo: togli **Prendo in carico la chiamata** e i messaggi audio iniziali dalle sue regole. Vedi [Servizi interni](/centralino/regole/servizi-interni) e [Code di ricezione](/centralino/instradamento/code-di-ricezione).
+  </Accordion>
+
+  <Accordion title="Posso trasferire al mio cellulare?">
+    Sì: scrivi il cellulare solo con le cifre, senza spazi, per esempio `3331234567`.
+  </Accordion>
+
+  <Accordion title="Cosa succede se il collega non risponde?">
+    Con **Presenta la chiamata prima di passarla** accesa, l'agente riprende a parlare con chi chiama: prova un altro numero adatto, se c'è, altrimenti propone di lasciare un messaggio o di essere richiamato. Senza presentazione l'esito dipende dalla destinazione (una coda, per esempio, può tenere chi chiama in attesa). Se vuoi che l'agente riprenda la chiamata quando nessuno risponde, accendi la presentazione.
+  </Accordion>
+
+  <Accordion title="Il collega sente chi sta chiamando prima di rispondere?">
+    Solo con **Presenta la chiamata prima di passarla** accesa: sente nome e motivo e preme 1 per prendere la chiamata.
+  </Accordion>
+
+  <Accordion title="Dove trova l'agente i numeri in modalità Dinamico?">
+    Nell'elenco della **Ricerca dati** o nei documenti della **Knowledge Base**. Per esempio un CSV con le colonne `Zona`, `Tecnico`, `Telefono`, `Priorità`, con la zona come colonna chiave.
+  </Accordion>
+
+  <Accordion title="L'agente a cui passo la chiamata deve avere una connessione?">
+    Non serve per ricevere il passaggio: la chiamata resta la stessa. Serve solo all'agente che risponde per primo sul tuo numero.
+  </Accordion>
+
+  <Accordion title="Non vedo il bottone «+ Aggiungi» nel Passaggio a un altro agente.">
+    Hai un solo agente. Il messaggio dice «Serve almeno un secondo agente: creane un altro e potrai passargli le chiamate.».
+  </Accordion>
+
+  <Accordion title="Dopo un passaggio tra agenti non mi arriva il riassunto.">
+    Il riassunto lo manda l'ultimo agente della chiamata, con le sue impostazioni di **Post-chiamata**. Accendi **Riepilogo via email** o **Riepilogo via WhatsApp** anche sull'agente che riceve il passaggio.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Istruzioni e voce" icon="microphone" href="/agenti-ai/agente/istruzioni-e-voce">
+    Copione, Knowledge Base e Ricerca dati.
+  </Card>
+
+  <Card title="Dopo la chiamata" icon="envelope" href="/agenti-ai/agente/dopo-la-chiamata">
+    Il riassunto e la riga «Risposta».
+  </Card>
+
+  <Card title="Servizi interni" icon="list" href="/centralino/regole/servizi-interni">
+    Cosa sono e come si configurano.
+  </Card>
+
+  <Card title="Interni" icon="phone" href="/centralino/telefoni-e-numeri/interni">
+    I numeri interni dei tuoi colleghi.
+  </Card>
+</CardGroup>

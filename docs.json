@@ -40,7 +40,8 @@
               "centralino/regole/panoramica",
               "centralino/regole/editor",
               "centralino/regole/passaggi-chiamata",
-              "centralino/regole/passaggi-filtri"
+              "centralino/regole/passaggi-filtri",
+              "centralino/regole/passaggi-moduli"
             ]
           },
           {
@@ -48,7 +49,8 @@
             "pages": [
               "centralino/orari-e-chiusure/orari",
               "centralino/orari-e-chiusure/ferie-e-festivita",
-              "centralino/orari-e-chiusure/interruttori-a-orario"
+              "centralino/orari-e-chiusure/interruttori-a-orario",
+              "centralino/orari-e-chiusure/interruttori"
             ]
           },
           {

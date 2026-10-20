@@ -132,7 +132,8 @@
               "centralino/account/utenti-e-permessi",
               "centralino/account/abbonamento",
               "centralino/account/credito-e-ricariche",
-              "centralino/account/fatture-e-pagamenti"
+              "centralino/account/fatture-e-pagamenti",
+              "centralino/account/documenti"
             ]
           },
           {

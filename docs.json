@@ -73,7 +73,8 @@
             "group": "Monitoraggio",
             "pages": [
               "centralino/monitoraggio/statistiche",
-              "centralino/monitoraggio/in-tempo-reale"
+              "centralino/monitoraggio/in-tempo-reale",
+              "centralino/monitoraggio/chiamate-ricevute"
             ]
           },
           {

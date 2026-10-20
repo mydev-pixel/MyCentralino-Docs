@@ -1,5 +1,236 @@
 ---
 title: "Collegare un telefono"
+sidebarTitle: "Collegare un telefono"
+description: "Dall'inizio alla fine: colleghi a un interno il cellulare (app), il computer (Windows o Mac), un telefono da scrivania o cordless, e controlli che risulti Libero."
+keywords:
+  - "collegare telefono"
+  - "configurare telefono"
+  - "app cellulare"
+  - "Cloud Softphone"
+  - "softphone"
+  - "MicroSIP"
+  - "ZoiPer"
+  - "telefono VoIP"
+  - "cordless"
+  - "Yealink"
+  - "Gigaset"
+  - "Fanvil"
+  - "credenziali SIP"
+  - "interno"
+  - "QR"
 ---
 
-Caricamento in corso.
+Questa guida ti porta da un interno «Non collegato» a un telefono che squilla quando chiamano: l'app sul cellulare, un programma sul computer o un telefono da scrivania.
+
+## Cosa ottieni
+
+- Un dispositivo collegato a un **interno** del centralino: riceve le chiamate che le regole mandano a quell'interno e può chiamare.
+- Nella pagina **Interni** lo stato dell'interno passa da **Non collegato** a **Libero**.
+
+## Prima di cominciare
+
+- **Ti serve l'accesso** a **Telefoni e numeri**. Il titolare dell'account lo ha sempre.
+- **Un interno libero.** Gli interni non si creano dalla pagina Interni: se ti servono interni in più si aggiungono da **Aggiungi funzionalità**. Vedi [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita).
+- **Internet sul dispositivo.** Il centralino è in cloud: il telefono, l'app o il computer devono essere connessi a internet.
+- **Il dispositivo a portata di mano**: il cellulare (per inquadrare i codici QR), il computer su cui installare il programma, oppure il telefono da scrivania con il suo pannello di configurazione.
+
+## Come fare
+
+### 1 · Apri la procedura guidata
+
+**Dove si trova:** Menu → Telefoni e numeri → **Interni** · `https://cloud.mycentralino.com/interni`
+
+<Steps>
+  <Step title="Apri Interni">
+    Vedi una scheda per ogni interno, con il numero breve, lo stato e il nome.
+  </Step>
+  <Step title="Associa dispositivo VoIP">
+    Sulla scheda dell'interno premi **Associa dispositivo VoIP**. In alternativa usa il bottone verde **Associa dispositivo VoIP** in alto e scegli l'interno nella finestra «A quale interno vuoi associare un dispositivo?».
+  </Step>
+  <Step title="Scegli il dispositivo">
+    Alla domanda «Quale dispositivo vuoi configurare?» scegli **Cellulare** (Android / iPhone), **Computer** (Windows / Mac), **VoIP** (Cordless / scrivania) oppure **WebRTC** (Browser), poi premi **Avanti**.
+  </Step>
+</Steps>
+
+<Frame caption="Associa dispositivo VoIP: per prima cosa si sceglie l'interno">
+  <img
+    src="/images/guida/associa-dispositivo.webp"
+    alt="Associa dispositivo VoIP: per prima cosa si sceglie l'interno"
+  />
+</Frame>
+
+### 2 · Segui i passi per il tuo dispositivo
+
+<Tabs>
+  <Tab title="Cellulare">
+    Si usa l'app **Cloud Softphone**, per Android e iPhone.
+
+    <Steps>
+      <Step title="Scegli il sistema">
+        **Android** o **iPhone**, poi **Avanti**.
+      </Step>
+      <Step title="Installa l'app">
+        Inquadra con il cellulare il QR «Inquadra il QR», oppure tocca **Google Play** / **App Store**, e installa **Cloud Softphone**. C'è anche un video che mostra i passi. Poi premi **Ho scaricato l'app**.
+      </Step>
+      <Step title="Configura con il QR">
+        Apri Cloud Softphone, cerca **«Scansiona QR»** e inquadra il codice mostrato nella finestra (passo **Configura**). L'app si configura da sola con i dati dell'interno.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Computer Windows">
+    Si usa il programma gratuito **MicroSIP**.
+
+    <Steps>
+      <Step title="Scegli Windows">
+        **Windows** (MicroSIP), poi **Avanti**.
+      </Step>
+      <Step title="Installa MicroSIP">
+        Premi **Scarica MicroSIP** e installa il programma.
+      </Step>
+      <Step title="Configurazione automatica">
+        Premi **Auto-config .bat**, apri il file scaricato sul computer: MicroSIP si configura da solo. In alternativa inserisci a mano i parametri mostrati accanto (**Server SIP**, **Porta**, **Username**, **Password**, **Trasporto**), seguendo il video.
+      </Step>
+    </Steps>
+
+    <Warning>
+      Il file **Auto-config .bat** contiene la password dell'interno. Usalo solo sul computer del collega e non inoltrarlo per email o chat.
+    </Warning>
+  </Tab>
+  <Tab title="Computer Mac">
+    Si usa il programma **ZoiPer**.
+
+    <Steps>
+      <Step title="Scegli Mac">
+        **Mac** (ZoiPer), poi **Avanti**.
+      </Step>
+      <Step title="Installa ZoiPer">
+        Premi **Scarica ZoiPer** e installa il programma.
+      </Step>
+      <Step title="Inserisci i parametri">
+        Inserisci in ZoiPer i parametri mostrati nella finestra (**Server SIP**, **Porta**, **Username**, **Password**, **Trasporto**), seguendo il video.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Telefono da scrivania o cordless">
+    Per un telefono VoIP (per esempio Gigaset, Yealink, Fanvil).
+
+    <Steps>
+      <Step title="Scegli VoIP">
+        **VoIP** (Cordless / scrivania), poi **Avanti**.
+      </Step>
+      <Step title="Guarda il video del tuo modello">
+        La finestra mostra i video per Gigaset, Yealink e Fanvil.
+      </Step>
+      <Step title="Inserisci i parametri nel telefono">
+        Nel pannello di configurazione del telefono inserisci i parametri mostrati: **Server SIP**, **Porta**, **Username**, **Password**, **STUN Server**, **Trasporto**.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Nel browser (WebRTC)">
+    Se il tuo piano prevede il **Telefono nel browser (WebRTC)**, sulla scheda dell'interno c'è l'interruttore omonimo.
+
+    <Steps>
+      <Step title="Accendi il telefono nel browser">
+        Sulla scheda dell'interno accendi **Telefono nel browser (WebRTC)**. Compare «Telefono nel browser acceso.».
+      </Step>
+      <Step title="Apri la procedura">
+        Premi **Associa dispositivo VoIP** e scegli **WebRTC**: trovi i parametri per il collegamento dal browser (Server WSS, Server SIP, Username, Password).
+      </Step>
+    </Steps>
+
+    Si può accendere su un numero limitato di interni. Quando sono tutti in uso compare «Telefoni nel browser al massimo: spegnine uno per accenderne un altro». Un interno con il telefono nel browser acceso si configura solo come WebRTC: per usarlo di nuovo con un telefono, l'app o il computer spegni prima l'interruttore.
+  </Tab>
+</Tabs>
+
+### 3 · Controlla che sia collegato
+
+<Steps>
+  <Step title="Guarda lo stato in Interni">
+    Torna in **Interni**: lo stato dell'interno deve essere **Libero** (pallino verde). La pagina si aggiorna da sola ogni 10 secondi.
+  </Step>
+  <Step title="Fai una prova">
+    Da un altro interno componi il numero breve di quello appena collegato: deve squillare. Poi chiama il tuo numero da un cellulare, se le regole fanno squillare quell'interno.
+  </Step>
+</Steps>
+
+Anche Menu → Monitoraggio → **Stato interni** mostra quali telefoni sono collegati e il modello del dispositivo. Vedi [Stato interni](/centralino/telefoni-e-numeri/stato-interni).
+
+## I parametri per la configurazione a mano
+
+Nella finestra **Associa dispositivo VoIP** la scheda **Impostazioni SIP interno** («per i tecnici») raccoglie tutti i dati, ognuno con il tasto per copiarlo.
+
+| Campo | Cosa mettere | Note |
+| --- | --- | --- |
+| **Interno (numero breve)** | Il numero breve, per esempio 201 | È il numero che compongono i colleghi. Non è il nome utente. |
+| **Utente SIP · interno assoluto** | Il codice dell'interno mostrato nella scheda | È il nome utente da mettere nel telefono. |
+| **ID di autenticazione** | Lo stesso valore dell'utente SIP | Alcuni telefoni lo chiamano «Auth ID» o «Authentication user». |
+| **Password** | La password dell'interno | Nascosta finché non premi **Mostra**. |
+| **Server SIP · dominio** | `sip.mycentralino.com` |  |
+| **Porta** | `5060` |  |
+| **Trasporto** | `UDP` |  |
+| **Server STUN** | `stun.mycentralino.com:3478` | Serve ai telefoni da scrivania e cordless. |
+
+Sotto i parametri la finestra mostra anche la **Linea per le chiamate in uscita** dell'interno e l'**Indirizzo del dispositivo** collegato (oppure «nessun dispositivo collegato»).
+
+## Da sapere
+
+- **Username è l'interno assoluto**, non il numero breve. È l'errore più frequente.
+- **Un dispositivo perso o un ex collega.** In **Interni** premi **Modifica** sull'interno e, nel riquadro **Password SIP**, premi **Rigenera**. La vecchia password smette subito di funzionare: tutti i dispositivi di quell'interno vanno configurati di nuovo (con il QR, il file .bat o i parametri nuovi).
+- **Il nome dell'interno** (per esempio «Mario Rossi · Vendite») si cambia in **Modifica**, campo **Descrizione**, almeno 3 caratteri. Compare nella rubrica e nelle pagine di stato.
+- **Collegare il telefono non basta perché squilli** quando chiamano il tuo numero: l'interno deve essere nelle regole del numero. Vedi [Far squillare più telefoni](/centralino/come-fare/far-squillare-piu-telefoni).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il telefono risulta «Non collegato».">
+    Il dispositivo non è collegato al centralino. Controlla nella scheda **Impostazioni SIP interno** che server, utente e password nel telefono siano esattamente quelli mostrati («Se il dispositivo non si registra, controlla server, utente e password: sono quelli qui sopra.»), e che il dispositivo sia connesso a internet. Aspetta 10 secondi: lo stato si aggiorna da solo.
+  </Accordion>
+
+  <Accordion title="Quale nome utente metto nel telefono?">
+    L'**Utente SIP · interno assoluto**, non il numero breve.
+  </Accordion>
+
+  <Accordion title="Che app uso sul cellulare?">
+    **Cloud Softphone**, per Android e iPhone. La procedura ti porta allo store e poi la configura con un QR.
+  </Accordion>
+
+  <Accordion title="Le tessere Cellulare, Computer e VoIP sono grigie.">
+    Su quell'interno è acceso il **Telefono nel browser (WebRTC)**. Spegnilo dalla scheda dell'interno e riapri la procedura.
+  </Accordion>
+
+  <Accordion title="Non riesco ad accendere il telefono nel browser.">
+    Hai raggiunto il numero di telefoni nel browser previsto dal piano. Spegnilo su un altro interno.
+  </Accordion>
+
+  <Accordion title="Come aggiungo un interno?">
+    Da **Aggiungi funzionalità**. Dalla pagina Interni non si possono creare né eliminare interni.
+  </Accordion>
+
+  <Accordion title="Dopo «Rigenera» il telefono non funziona più.">
+    È normale: con la nuova password va configurato di nuovo, come la prima volta.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Collegare un dispositivo" icon="phone" href="/centralino/telefoni-e-numeri/collegare-un-dispositivo">
+    La procedura guidata, scheda per scheda.
+  </Card>
+
+  <Card title="Interni" icon="headset" href="/centralino/telefoni-e-numeri/interni">
+    La pagina Interni e la modifica di un interno.
+  </Card>
+
+  <Card title="Stato interni" icon="chart-line" href="/centralino/telefoni-e-numeri/stato-interni">
+    Quali telefoni sono collegati, adesso.
+  </Card>
+
+  <Card title="Far squillare più telefoni" icon="users" href="/centralino/come-fare/far-squillare-piu-telefoni">
+    Far arrivare le chiamate ai telefoni collegati.
+  </Card>
+
+  <Card title="Aggiungi funzionalità" icon="gear" href="/centralino/moduli/aggiungi-funzionalita">
+    Dove si aggiungono gli interni.
+  </Card>
+</CardGroup>

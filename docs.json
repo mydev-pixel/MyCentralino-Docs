@@ -107,7 +107,9 @@
           },
           {
             "group": "Account e pagamenti",
-            "pages": []
+            "pages": [
+              "centralino/account/il-mio-account"
+            ]
           },
           {
             "group": "Assistenza e aiuto",

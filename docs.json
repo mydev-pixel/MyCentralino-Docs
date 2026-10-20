@@ -16,7 +16,8 @@
           {
             "group": "Inizia",
             "pages": [
-              "index"
+              "index",
+              "centralino/inizia/primo-accesso"
             ]
           },
           {

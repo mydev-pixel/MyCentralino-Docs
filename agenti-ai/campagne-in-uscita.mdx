@@ -1,5 +1,264 @@
 ---
 title: "Campagne in uscita"
+sidebarTitle: "Campagne in uscita"
+description: "Far chiamare all'agente AI una lista di numeri: come si crea una campagna, come si caricano i contatti, come si avvia, si segue, si mette in pausa e si scarica il risultato."
+keywords:
+  - "campagne outbound"
+  - "outbound"
+  - "chiamate in uscita agente ai"
+  - "agente chiama clienti"
+  - "lista numeri"
+  - "promemoria appuntamenti"
+  - "solleciti"
+  - "ricontatti"
+  - "esecuzione"
+  - "carica csv"
+  - "riprova falliti"
+  - "report csv"
+  - "avvio programmato"
+  - "stop automatico"
 ---
 
-Caricamento in corso.
+Con le **campagne** l'agente AI chiama lui una lista di numeri per te: promemoria di appuntamenti, solleciti, ricontatti di preventivi. Una **campagna** stabilisce quale agente chiama e con quali istruzioni; ogni **esecuzione** è un lotto di numeri da chiamare con quella campagna. Una campagna può avere tante esecuzioni.
+
+**Dove si trova:** menu degli Agenti AI → Attività → **Outbound** · `https://cloud.mycentralino.com/wave/outbound`
+
+**Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
+
+<Info>
+  L'agente della campagna deve avere una **connessione VoIP**: le chiamate partono da lì. Le chiamate consumano crediti come quelle in entrata. Vedi [Connessioni VoIP](/agenti-ai/connessioni).
+</Info>
+
+## Cosa trovi nella pagina
+
+In alto «N campagne · N in esecuzione», il titolo **Campagne outbound** e la frase «L'agente chiama liste di numeri per te: una campagna, più esecuzioni.» A destra **Archivio** (mostra anche le campagne archiviate; diventa **Nascondi archiviate**) e **\+ Nuova campagna**.
+
+Ogni campagna è un riquadro con:
+
+- il **nome**, l'etichetta **In esecuzione** se sta chiamando e **Archiviata** se l'hai archiviata;
+- la riga «Agente … · N esecuzioni · ultimo avvio …»;
+- i bottoni **\+ Esecuzione**, **Archivia** (o **Ripristina**) ed **Elimina**;
+- il riepilogo di tutte le esecuzioni: **Contatti**, **Buon fine**, **Falliti**, **Segreteria**, **Da chiamare**;
+- l'elenco delle esecuzioni, ognuna con lo stato, il nome, l'origine dei contatti (**CSV**, **Incolla**, **Retry** per le esecuzioni rifatte) e una barra «fatti/totale». Clicca un'esecuzione per aprirne il dettaglio.
+
+Se la campagna non ha ancora esecuzioni: «Nessuna esecuzione: premi «+ Esecuzione» per caricare i contatti e partire.» Se non hai campagne: «Nessuna campagna» e «Crea la prima campagna e carica i numeri da chiamare.»
+
+### Gli stati di un'esecuzione
+
+| Stato | Cosa significa |
+| --- | --- |
+| **Bozza** | Creata ma non partita, per esempio perché l'agente non ha una connessione. Si avvia con **Avvia** |
+| **In coda** | Pronta: le chiamate stanno per partire |
+| **Programmata** | Partirà alla data e ora scelte |
+| **In corso** | L'agente sta chiamando |
+| **In pausa** | Ferma; riparte con **Riprendi** |
+| **Completata** | Tutti i contatti sono stati chiamati |
+| **Fallita** | L'esecuzione non è andata a buon fine |
+| **Annullata** | Fermata definitivamente con **Annulla** |
+
+## Nuova campagna: i campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome** | Il nome della campagna | Obbligatorio, da 2 a 100 caratteri. Esempio: «Richiamo preventivi» |
+| **Agente** | L'agente che fa le chiamate | Obbligatorio, **Scegli…** e i tuoi agenti |
+| **Frase di apertura per la campagna (vuota = quella dell'agente)** | La prima frase che l'agente dice quando la persona risponde | Facoltativo |
+| **Istruzioni aggiuntive al copione (facoltative)** | Istruzioni che si aggiungono al copione dell'agente solo per questa campagna, per esempio lo scopo della chiamata | Facoltativo |
+| **Chiamate per lotto** | Impostazione avanzata dell'invio delle chiamate | Da 1 a 10, proposto 1 |
+| **Chiamate simultanee max** | Quante chiamate al massimo l'agente fa nello stesso momento | Da 1 a 10, proposto 1 |
+
+## Nuova esecuzione: i campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Etichetta (facoltativa)** | Il nome dell'esecuzione | Se la lasci vuota: «Esecuzione» con giorno e ora, per esempio «Esecuzione 21/05 14:32» |
+| **Contatti — uno per riga: numero,nome** | I numeri da chiamare | Un contatto per riga, numero e nome separati da virgola. Esempio: `3331234567,Mario Rossi` |
+| **… oppure carica CSV** | Un file con i contatti, al posto della casella | File `.csv` o `.txt` |
+| **Avvio programmato (vuoto = subito)** | Quando partire | Data e ora; vuoto = subito |
+| **Stop automatico alle (HH:MM)** | Un'ora a cui l'esecuzione si ferma da sola | Facoltativo, per esempio `18:00` |
+
+### Come scrivere i contatti
+
+- **Un contatto per riga**: il numero e, dopo una virgola, il nome. Il nome è facoltativo. Al posto della virgola puoi usare il punto e virgola.
+- **I numeri italiani** si scrivono come al telefono, senza prefisso (`3331234567`, `0641234567`), oppure con `+39` davanti (`+393331234567`). Per un numero estero metti davanti `+` o `00`.
+- **Spazi, trattini e punti** nel numero vengono ignorati.
+- **Non scrivere il prefisso 39 senza `+`** (per esempio `393331234567`): un numero senza `+` o `00` davanti viene letto come italiano senza prefisso e deve avere da 7 a 11 cifre, quindi la riga viene scartata o viene chiamato un numero sbagliato.
+- **Le righe con un numero non valido** vengono saltate senza avviso: controlla il totale dei contatti nel dettaglio dell'esecuzione.
+- **Con un file CSV** la casella di testo non viene letta: conta solo il file.
+
+### Dati diversi per ogni contatto
+
+Se la prima riga è un'intestazione con una colonna `numero` (vanno bene anche `telefono`, `cellulare`, `number`, `phone`), puoi passare dati diversi per ogni persona:
+
+- `nome` (o `name`): il nome del contatto. Compare nella tabella **Contatti** e nel **Report CSV**, ma l'agente non lo riceve. Se vuoi che lo usi in chiamata, ripetilo in una colonna con un altro nome, per esempio `cliente`;
+- `first_message` (o `messaggio`): una frase di apertura solo per quel contatto;
+- **ogni altra colonna** diventa una variabile che puoi usare nelle istruzioni dell'agente scrivendo il nome della colonna tra doppie graffe, per esempio `{{data_appuntamento}}`.
+
+Le colonne del numero, `nome` e `first_message` non sono variabili. Una variabile passa all'agente solo se la sua cella è piena: riempila in ogni riga.
+
+Esempio di file:
+
+```text
+numero,nome,cliente,data_appuntamento
+3331234567,Mario Rossi,Mario,giovedì 9:30
+3339876543,Anna Bianchi,Anna,venerdì 15:00
+```
+
+E nelle **Istruzioni aggiuntive al copione**: `Ricorda a {{cliente}} l'appuntamento di {{data_appuntamento}} e chiedi se conferma.`
+
+## Come fare
+
+### Come faccio richiamare una lista di clienti dall'agente
+
+<Steps>
+  <Step title="Controlla l'agente">
+    L'agente che chiamerà deve avere una connessione: in **Connessioni VoIP** verifica che compaia «Risponde» con il suo nome su una connessione.
+  </Step>
+  <Step title="Crea la campagna">
+    In **Outbound** premi **\+ Nuova campagna**. Scrivi il **Nome**, scegli l'**Agente** e, se vuoi, una frase di apertura e le istruzioni per questa campagna. Premi **Crea campagna**. Compare «Campagna creata: ora aggiungi un'esecuzione coi contatti.»
+  </Step>
+  <Step title="Aggiungi un'esecuzione">
+    Sulla campagna premi **\+ Esecuzione**. Incolla i contatti (uno per riga: numero,nome) oppure carica un CSV.
+  </Step>
+  <Step title="Scegli quando partire">
+    Lascia vuoto **Avvio programmato** per partire subito, oppure scegli data e ora: in questo caso, dopo l'avvio, controlla l'ora di partenza nel dettaglio (vedi «Controlla l'orario di partenza» in **Da sapere**). Se vuoi, imposta **Stop automatico alle**.
+  </Step>
+  <Step title="Avvia">
+    Premi **Carica e avvia**. Compare «Esecuzione avviata: il sistema inizia a chiamare.» oppure «Esecuzione programmata.»
+  </Step>
+  <Step title="Segui l'avanzamento">
+    Clicca l'esecuzione nell'elenco: il dettaglio si aggiorna da solo ogni 15 secondi finché è in coda, programmata o in corso.
+  </Step>
+</Steps>
+
+Se l'agente non ha una connessione, l'esecuzione viene creata ma resta in **Bozza**: «Esecuzione creata in bozza: Nessun numero VoIP associato all'agente: assegnane uno in Connessioni VoIP.» Assegna la connessione, apri l'esecuzione e premi **Avvia**.
+
+### Come richiamo chi non ha risposto
+
+<Steps>
+  <Step title="Apri l'esecuzione">
+    In **Outbound** clicca l'esecuzione conclusa.
+  </Step>
+  <Step title="Premi Riprova falliti">
+    Il bottone compare se ci sono contatti falliti o finiti in segreteria. Si crea una nuova esecuzione «Retry di …» con solo quei contatti, e si apre il suo dettaglio.
+  </Step>
+  <Step title="Premi Avvia">
+    La nuova esecuzione nasce in **Bozza**: premi **Avvia** per far partire le chiamate.
+  </Step>
+</Steps>
+
+### Come metto in pausa o fermo un'esecuzione
+
+Nel dettaglio dell'esecuzione:
+
+- **Pausa** (solo quando è **In corso**): ferma le chiamate. Compare «Esecuzione in pausa.» I contatti non ancora chiamati restano da chiamare.
+- **Riprendi** (quando è **In pausa**): riparte. Compare «Esecuzione ripresa.»
+- **Annulla**: ferma l'esecuzione per sempre, dopo la conferma «Annullare l'esecuzione?». I contatti non ancora chiamati diventano **Annullata**. Compare «Esecuzione annullata.»
+
+### Come scarico il risultato
+
+Nel dettaglio dell'esecuzione premi **Report CSV**: scarica un file con una riga per contatto e le colonne Numero, E164 (il numero in formato internazionale), Nome, Stato, Motivo, Durata (s), Crediti, Chiamato il, Terminato il.
+
+### Come archivio o elimino una campagna
+
+- **Archivia** nasconde la campagna dall'elenco senza cancellare niente («Campagna archiviata.»). La ritrovi con **Archivio** e la riporti nell'elenco con **Ripristina**.
+- **Elimina** cancella la campagna con tutte le sue esecuzioni, dopo la conferma «Eliminare la campagna e tutte le sue esecuzioni?». Se un'esecuzione è in coda, programmata o in corso compare «Ferma o annulla le esecuzioni attive prima di eliminare la campagna.»
+
+## Il dettaglio dell'esecuzione
+
+**Dove si trova:** **Outbound** → clic su un'esecuzione · `https://cloud.mycentralino.com/wave/outbound/esecuzioni/ID`
+
+### In alto
+
+Il link con il nome della campagna per tornare all'elenco, il nome dell'esecuzione con lo stato e, quando servono:
+
+- «Avvio programmato per il …» con giorno e ora in cui partirà;
+- un eventuale messaggio di errore;
+- il motivo della pausa: «In pausa: manuale», «In pausa: credito esaurito», «In pausa: stop automatico» o «In pausa: connessione mancante».
+
+I bottoni cambiano con lo stato: **Avvia** (bozza), **Riprendi** (in pausa), **Pausa** (in corso), **Annulla**, **Riprova falliti**, **Report CSV** ed **Elimina** (non quando è in corso).
+
+### Avanzamento ed Esiti
+
+**Avanzamento** mostra la percentuale e i numeri **Totale**, **Completate**, **Fallite**, **Segreteria**, **Da chiamare**, **In corso**; sotto, «Motivi dei fallimenti:» con il conteggio per motivo (per esempio Occupato, Nessuna risposta, Numero non valido).
+
+**Esiti** è un anello con la percentuale di **risposte** e quattro voci: **Risposta**, **Non risposta** (occupato, rifiutata, nessuna risposta, tempo scaduto, non raggiungibile), **Segreteria** ed **Errori**. Prima della prima chiamata conclusa: «Nessuna chiamata conclusa finora.»
+
+### Contatti
+
+I filtri **Tutti**, **Da chiamare**, **Completate**, **Fallite**, **Segreteria**, **Annullate** (ognuno con il conteggio) e la ricerca **cerca numero…**, che cerca il numero come l'hai scritto nella lista: se l'hai caricato senza `+39`, cercalo senza `+39`. La tabella:
+
+| Colonna | Cosa indica |
+| --- | --- |
+| **Numero** | Il numero chiamato, in formato internazionale |
+| **Nome** | Il nome indicato nella lista |
+| **Stato** | **Da chiamare**, **In coda**, **In chiamata**, **Completata**, **Fallita** (con il motivo sotto), **Segreteria**, **Annullata** |
+| **Tentativi** | Quante volte è stato chiamato |
+| **Inizio · Fine** | Quando la chiamata è partita e quando è finita |
+| **Durata** | Minuti e secondi |
+| **Crediti** | I crediti consumati |
+
+**Conversazione →** apre il dettaglio della chiamata, con registrazione e trascrizione (vedi [Storico chiamate](/agenti-ai/storico-chiamate)).
+
+## Da sapere
+
+- **Una campagna non si modifica** dopo averla creata: per cambiare agente, frase di apertura o istruzioni crea una nuova campagna.
+- **Lo stop automatico vale una volta.** Se l'esecuzione si ferma per lo stop automatico e la riprendi con **Riprendi**, lo stop non vale più per quell'esecuzione.
+- **Riprova falliti** ripassa solo numero e nome: le altre colonne del CSV (frase di apertura e variabili) non vengono riportate nella nuova esecuzione.
+- **Crediti.** Ogni chiamata consuma crediti. Se finiscono, l'esecuzione va in pausa («In pausa: credito esaurito»). Vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani).
+
+<Warning>
+  **Controlla l'orario di partenza.** Dopo aver programmato un'esecuzione, apri il suo dettaglio e leggi la riga «Avvio programmato per il …»: è l'ora in cui partono davvero le chiamate, e può essere diversa da quella che hai scelto. Un'esecuzione programmata non si modifica: se l'ora non è quella giusta, premi **Annulla** e crea una nuova esecuzione con gli stessi contatti. Il modo più sicuro è crearla all'ora in cui vuoi partire, lasciando vuoto **Avvio programmato**.
+</Warning>
+
+<Warning>
+  **Elimina** su una campagna o su un'esecuzione cancella anche i contatti e i loro esiti. Non si può annullare: se ti servono i risultati, scarica prima il **Report CSV**.
+</Warning>
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="L'esecuzione resta in Bozza.">
+    L'agente della campagna non ha una connessione VoIP. In **Connessioni VoIP** assegna l'agente a una connessione, poi apri l'esecuzione e premi **Avvia**.
+  </Accordion>
+
+  <Accordion title="Ho caricato 100 numeri ma nel totale ne vedo meno.">
+    Le righe con un numero non valido vengono saltate. Senza intestazione il numero deve essere il primo valore della riga. Un numero senza `+` davanti deve avere da 7 a 11 cifre ed è considerato italiano: se hai scritto il prefisso 39 senza `+` (per esempio `393331234567`) la riga viene scartata, quindi scrivi `+393331234567` oppure `3331234567`. I numeri esteri vanno con `+` o `00` davanti.
+  </Accordion>
+
+  <Accordion title="Compare «Inserisci almeno un numero (uno per riga: numero,nome).»">
+    La casella è vuota oppure nessuna riga contiene un numero valido. Se usi un file con intestazione, la colonna del numero deve chiamarsi `numero`, `telefono`, `cellulare`, `number` o `phone`.
+  </Accordion>
+
+  <Accordion title="L'esecuzione è in pausa e non l'ho fermata io.">
+    Leggi il motivo in alto: «credito esaurito» (ricarica o attendi il 1° del mese), «stop automatico» (è arrivata l'ora scelta) o «connessione mancante» (l'agente non ha più una connessione). Risolto il motivo, premi **Riprendi**. Se compare «In pausa: manuale» con un messaggio di errore sotto il titolo, l'invio delle chiamate non è riuscito più volte di seguito: premi **Riprendi**, e se si ferma di nuovo scrivi all'assistenza da [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza).
+  </Accordion>
+
+  <Accordion title="Posso usare un agente diverso da quello che risponde in entrata?">
+    Sì: crea un secondo agente con un copione pensato per le chiamate in uscita, assegnagli una sua connessione e sceglilo nella campagna.
+  </Accordion>
+
+  <Accordion title="Dove ascolto le chiamate fatte dalla campagna?">
+    Nella tabella **Contatti** del dettaglio, con **Conversazione →**, oppure in **Storico Chiamate**: nel dettaglio la **Direzione** è «In uscita».
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Connessioni VoIP" icon="phone" href="/agenti-ai/connessioni">
+    L'agente della campagna deve averne una.
+  </Card>
+
+  <Card title="Crea un agente" icon="robot" href="/agenti-ai/agente/crea-un-agente">
+    Copione e voce dell'agente che chiama.
+  </Card>
+
+  <Card title="Storico chiamate" icon="list" href="/agenti-ai/storico-chiamate">
+    Registrazione e trascrizione di ogni chiamata.
+  </Card>
+
+  <Card title="Attivazione e piani" icon="credit-card" href="/agenti-ai/attivazione-e-piani">
+    Crediti e ricarica automatica.
+  </Card>
+</CardGroup>

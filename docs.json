@@ -41,7 +41,8 @@
               "centralino/regole/editor",
               "centralino/regole/passaggi-chiamata",
               "centralino/regole/passaggi-filtri",
-              "centralino/regole/passaggi-moduli"
+              "centralino/regole/passaggi-moduli",
+              "centralino/regole/servizi-interni"
             ]
           },
           {
@@ -65,7 +66,8 @@
             "pages": [
               "centralino/instradamento/code-di-ricezione",
               "centralino/instradamento/menu-vocali",
-              "centralino/instradamento/inoltro-chiamate"
+              "centralino/instradamento/inoltro-chiamate",
+              "centralino/instradamento/numeri-bloccati"
             ]
           },
           {

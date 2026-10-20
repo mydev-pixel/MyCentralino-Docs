@@ -24,7 +24,9 @@
           },
           {
             "group": "Come fare",
-            "pages": []
+            "pages": [
+              "centralino/come-fare/configurare-gli-orari-di-apertura"
+            ]
           },
           {
             "group": "Regole delle chiamate",

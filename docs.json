@@ -120,7 +120,8 @@
             "pages": [
               "centralino/moduli/i-tuoi-moduli",
               "centralino/moduli/aggiungi-funzionalita",
-              "centralino/moduli/analisi-chiamate-ai"
+              "centralino/moduli/analisi-chiamate-ai",
+              "centralino/moduli/analisi-utilizzo-flat"
             ]
           },
           {

@@ -1,5 +1,348 @@
 ---
 title: "Messaggi audio"
+sidebarTitle: "Messaggi audio"
+description: "La libreria dei messaggi che il centralino fa sentire a chi chiama: benvenuto, chiusura, testo dei menù. Si creano con la voce sintetica o caricando un MP3/WAV, si ascoltano, si modificano e si vede dove sono usati."
+keywords:
+  - "messaggi audio"
+  - "messaggio di benvenuto"
+  - "messaggio di chiusura"
+  - "audio"
+  - "sintesi vocale"
+  - "voce sintetica"
+  - "text to speech"
+  - "tts"
+  - "caricare mp3"
+  - "caricare wav"
+  - "registrazione"
+  - "annuncio"
+  - "libreria audio"
+  - "file audio"
 ---
 
-Caricamento in corso.
+I **Messaggi audio** sono la libreria di tutto ciò che il centralino può far sentire a chi chiama: il benvenuto, il messaggio di chiusura, il testo che elenca le scelte di un menù vocale, la musica caricata dall'azienda. Da qui li crei, li ascolti, li cambi, li scarichi e li elimini, e per ognuno vedi dove viene usato.
+
+**Dove si trova:** Menu → Risorse centralino → Audio → **Messaggi audio** · `https://cloud.mycentralino.com/audio`
+
+Si arriva qui anche dalla pagina **Risorse del centralino** (`https://cloud.mycentralino.com/configurazione`), zona **Audio**, e dal bottone **Libreria audio** della pagina [Musica d'attesa](/centralino/audio/musica-di-attesa).
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**: senza quel permesso la voce non compare nel menu e l'indirizzo risponde con accesso negato. Non serve nessun modulo.
+
+<Note>
+  Un messaggio da solo non si sente da nessuna parte. Si sente solo quando qualcosa lo usa: una regola **Riproduco audio** su un numero, la chiusura di un **Orario**, un **Menù vocale (IVR)**, un profilo della **Musica d'attesa**. Per questo la libreria ti dice, per ogni messaggio, dove è usato.
+</Note>
+
+## Cosa trovi nella pagina
+
+### L'elenco dei messaggi
+
+In alto il titolo **Messaggi audio** con il conteggio (per esempio «12 messaggi»; durante una ricerca «N risultati»; se non ce n'è nessuno «Nessun messaggio ancora») e la frase «Gli audio riprodotti dal centralino: caricali in MP3/WAV o generali con la sintesi vocale.». A destra due bottoni:
+
+- **Carica MP3/WAV**, per caricare una registrazione già pronta;
+- **Crea**, per scrivere un testo che una voce sintetica legge.
+
+Sotto, la ricerca **Cerca audio…** (cerca nel nome e nella descrizione) e il bottone per ordinare dalla A alla Z o al contrario (**A–Z** / **Z–A**).
+
+Se almeno un messaggio non è usato da niente compare il filtro **Non usati (N)**, con accanto la frase «Messaggi che nessuna regola, orario o menù fa sentire.». Un clic mostra solo quelli, un secondo clic torna a mostrarli tutti.
+
+La tabella ha una riga per messaggio:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| (bottone tondo) | **Play / pausa**: ascolti il messaggio nel browser. Se avvii un altro messaggio, quello che stava suonando si ferma. |
+| **Messaggio** | Il nome, cliccabile: apre la pagina del messaggio. Sotto, la descrizione o il testo letto dalla voce, se è diverso dal nome. |
+| **Voce** | «Voce sintetica · » seguito dalla voce scelta, se il messaggio è stato creato con la sintesi vocale (per le voci naturali compare il nome con un suffisso, per esempio «Voce sintetica · Ginevra_11»); «Registrazione caricata» se è un file caricato. |
+| **Usato in** | Il primo punto in cui il messaggio si sente, più «e altri N» se sono di più (passa il mouse sopra per l'elenco completo). Se non lo usa niente: «Non usato». |
+| (azioni) | **Modifica** e il menu **⋯** con **Scarica il file** ed **Elimina**. |
+
+I punti che compaiono in **Usato in** sono di questo tipo: «Orari: nome dell'orario», «Interruttore a orario: nome», «Ferie: nome», «Menù vocale: nome», «Musica d'attesa: DEF» (profilo **Default**) oppure «Musica d'attesa: 1», «2», «3» (profili **Musica 1**, **2**, **3**), «Servizio interno 401», «Numero» seguito dal tuo numero.
+
+Se non hai ancora messaggi la pagina dice «Nessun messaggio audio · Carica il primo MP3/WAV oppure genera un messaggio con la sintesi vocale.» con i bottoni **Crea messaggio audio** e **Carica MP3/WAV**. Se la ricerca non trova niente: «Nessun audio per questa ricerca · Prova con altri termini.».
+
+Sul telefono ogni riga diventa una scheda con il nome, la voce, dove è usato e il play.
+
+<Frame caption="L'elenco dei Messaggi audio con la colonna Usato in">
+  <img
+    src="/images/guida/audio-elenco.webp"
+    alt="L'elenco dei Messaggi audio con la colonna Usato in"
+  />
+</Frame>
+
+### La pagina «Nuovo messaggio audio»
+
+Si apre con **Crea** o **Carica MP3/WAV** (indirizzo `https://cloud.mycentralino.com/audio/nuovo`). Titolo **Nuovo messaggio audio**, sottotitolo «Scegli se caricare un file MP3/WAV già pronto oppure generare il messaggio con la sintesi vocale.». In alto due schede: **Carica file** e **Sintesi vocale**. **Crea** apre la seconda, **Carica MP3/WAV** la prima; puoi passare dall'una all'altra in qualsiasi momento.
+
+### La pagina di un messaggio
+
+Si apre con **Modifica** o con un clic sul nome. In testa il nome del messaggio; sopra, «Voce ·» con il nome della voce (messaggi sintetici) oppure «File audio» (registrazioni caricate). A destra **Annulla** e **Salva**.
+
+- A sinistra il riquadro **Ascolta**, con il lettore, e sotto **Dove si sente**: l'elenco dei punti in cui il messaggio è usato, oppure «Per ora non lo usa nessuna regola, orario o menù.».
+- A destra, per un messaggio sintetico, il riquadro **Voce e testo**: «Cambia la voce o il testo: al salvataggio il messaggio viene rigenerato mantenendo lo stesso riferimento (i collegamenti restano validi).».
+- A destra, per una registrazione caricata, il riquadro **Audio e descrizione**: «Puoi tenere l'audio così com'è e cambiare solo la descrizione, oppure sostituirlo con una voce sintetica.», con la scelta tra **Tieni l'audio attuale** (proposta) e **Sostituisci con una voce sintetica**.
+
+Appena cambi qualcosa compare in basso la barra **Modifiche non salvate** («· restano solo in questa pagina finché non salvi») con **Annulla** e **Salva**. Se provi a uscire senza salvare, il pannello chiede «Ci sono modifiche non salvate. Uscire senza salvarle?».
+
+## Come fare
+
+### Come creo un messaggio con la voce sintetica
+
+<Steps>
+  <Step title="Apri Messaggi audio e premi Crea">
+    Si apre **Nuovo messaggio audio** sulla scheda **Sintesi vocale**.
+  </Step>
+  <Step title="Dai un nome al messaggio">
+    In **Nome messaggio** scrivi un nome che riconoscerai, per esempio `benvenuto` o `chiusura_estiva`. Lettere senza accenti, numeri, spazio, «_» e «-», al massimo 100 caratteri. Gli spazi diventano «_».
+  </Step>
+  <Step title="Scegli la voce">
+    In **Tipo di voce** scegli **Voce standard** oppure **Voce naturale**, poi scegli la **Voce**. Cambiando tipo di voce viene proposta la prima voce dell'elenco.
+  </Step>
+  <Step title="Scrivi il testo">
+    In **Testo da convertire** scrivi esattamente ciò che deve sentire chi chiama, per esempio «Benvenuti in Rossi Srl. Restate in linea, vi rispondiamo subito.». Al massimo 4000 caratteri. Il testo diventa anche la descrizione del messaggio.
+  </Step>
+  <Step title="Premi Genera messaggio">
+    Durante la creazione il bottone dice «Generazione…». Poi torni all'elenco con la conferma «Messaggio "nome" creato con» seguita dalla voce (per esempio «Emia», oppure «Ginevra_11» per una voce naturale).
+  </Step>
+  <Step title="Ascoltalo">
+    Nell'elenco premi il play sulla riga del messaggio. Se non ti convince, aprilo e cambia testo o voce.
+  </Step>
+</Steps>
+
+### Come carico una mia registrazione
+
+<Steps>
+  <Step title="Premi Carica MP3/WAV">
+    Si apre **Nuovo messaggio audio** sulla scheda **Carica file**.
+  </Step>
+  <Step title="Scegli il file">
+    Clicca **Clicca per scegliere un file** e scegli un file **.mp3** o **.wav** di massimo **20 MB**. Mentre il file sale compare «Caricamento in corso…»; poi vedi il nome del file e il peso, con «click per cambiare».
+  </Step>
+  <Step title="Aggiungi una descrizione (facoltativa)">
+    In **Descrizione** scrivi in breve cosa contiene, per esempio «Benvenuto con la musica dell'azienda». Al massimo 500 caratteri.
+  </Step>
+  <Step title="Premi Carica e converti">
+    Il file viene convertito in automatico nel formato usato dalle telefonate. Torni all'elenco con la conferma «File "nome" caricato.».
+  </Step>
+</Steps>
+
+<Tip>
+  Il nome del messaggio è il **nome del file** senza estensione: gli spazi diventano «\_» e lettere accentate e simboli vengono tolti. Prima di caricarlo, rinomina il file sul computer con un nome chiaro, per esempio `benvenuto_estate.mp3`: dopo il nome non si può più cambiare.
+</Tip>
+
+### Come cambio il testo o la voce di un messaggio sintetico
+
+<Steps>
+  <Step title="Apri il messaggio">
+    Nell'elenco premi **Modifica** sulla riga, oppure clicca il nome.
+  </Step>
+  <Step title="Cambia testo o voce">
+    Correggi **Testo del messaggio** (al massimo 4000 caratteri), oppure scegli un altro **Tipo di voce** o un'altra **Voce**.
+  </Step>
+  <Step title="Premi Salva">
+    Il messaggio viene rigenerato. Conferma: «Messaggio "nome" aggiornato.».
+  </Step>
+  <Step title="Riascoltalo">
+    Premi il play nell'elenco o nella pagina del messaggio.
+  </Step>
+</Steps>
+
+Il messaggio **mantiene lo stesso riferimento**: le regole, gli orari, i menù e le musiche che lo usano fanno sentire subito la nuova versione, senza toccarli. Se non cambi né testo né voce, **Salva** non rigenera niente.
+
+### Come cambio la descrizione di una registrazione caricata
+
+<Steps>
+  <Step title="Apri il messaggio">
+    Premi **Modifica** sulla riga della registrazione.
+  </Step>
+  <Step title="Lascia «Tieni l'audio attuale»">
+    È la scelta proposta: l'audio resta com'è.
+  </Step>
+  <Step title="Scrivi la descrizione">
+    Nel campo **Descrizione** («Compare nella lista dei messaggi · l'audio non cambia»).
+  </Step>
+  <Step title="Premi Salva">
+  </Step>
+</Steps>
+
+### Come sostituisco una registrazione con la voce sintetica
+
+<Steps>
+  <Step title="Apri la registrazione">
+    Premi **Modifica** sulla riga.
+  </Step>
+  <Step title="Scegli «Sostituisci con una voce sintetica»">
+    Compaiono l'avviso «L'audio attuale verrà sostituito.» e i campi **Tipo di voce**, **Voce** e **Testo del messaggio**.
+  </Step>
+  <Step title="Scegli la voce e scrivi il testo">
+  </Step>
+  <Step title="Premi Salva">
+    Da quel momento si sente la voce sintetica, ovunque il messaggio sia usato.
+  </Step>
+</Steps>
+
+<Warning>
+  La sostituzione non si annulla: **la registrazione di prima non si può recuperare**. Se ti serve ancora, scaricala prima con **Scarica il file**.
+</Warning>
+
+### Come faccio sentire un messaggio a chi chiama
+
+Il messaggio va collegato a qualcosa. I casi più comuni:
+
+- **Benvenuto su un numero**: in **Regole chiamate** apri il numero e premi il **\+** («Inserisci qui») sopra il passaggio che fa squillare (se il numero non ha ancora regole, **Aggiungi la prima regola**). Scegli **Riproduco audio**, seleziona il messaggio in **File audio disponibili** e premi **Aggiungi regola**. Non usare **Aggiungi regola** in alto: mette il messaggio in fondo, dopo la regola che fa squillare, e chi chiama non lo sentirebbe. Dopo il messaggio la chiamata prosegue con la regola successiva. Passo passo in [Mettere un messaggio di benvenuto](/centralino/come-fare/messaggio-di-benvenuto).
+- **Messaggio di chiusura**: si sceglie dentro l'orario o la chiusura per ferie. Vedi [Orari](/centralino/orari-e-chiusure/orari) e [Ferie e festività](/centralino/orari-e-chiusure/ferie-e-festivita).
+- **Testo di un menù vocale**: si sceglie nel menù, in **Messaggio di benvenuto (audio)**. Vedi [Menù vocali (IVR)](/centralino/instradamento/menu-vocali).
+- **Musica d'attesa personalizzata**: vedi [Musica d'attesa](/centralino/audio/musica-di-attesa).
+
+<Tip>
+  Puoi creare un messaggio anche senza uscire dalle regole: nel passaggio **Riproduco audio** premi **Nuovo** (o **Crea il primo audio** se non ne hai). Si apre la stessa finestra di creazione; dopo il salvataggio il nuovo messaggio è subito nell'elenco della regola.
+</Tip>
+
+### Come capisco dove si sente un messaggio
+
+Guarda la colonna **Usato in** dell'elenco (passa il mouse sopra per vedere tutti i punti), oppure apri il messaggio e leggi **Dove si sente**.
+
+### Come scarico un messaggio
+
+Nella riga del messaggio apri il menu **⋯** e scegli **Scarica il file**. Il file scaricato è un MP3.
+
+### Come elimino un messaggio
+
+<Steps>
+  <Step title="Apri il menu ⋯ sulla riga">
+    Scegli **Elimina**.
+  </Step>
+  <Step title="Leggi la conferma">
+    Si apre **Elimina messaggio audio**: «Stai per eliminare il messaggio «nome». L'azione non è reversibile.». Se il messaggio è usato, un riquadro avvisa «Questo messaggio è usato nelle regole del centralino.» ed elenca i punti in cui si sente (fino a 12, più «+N»).
+  </Step>
+  <Step title="Premi Elimina">
+    Il messaggio sparisce dall'elenco. Con **Annulla** non cambia niente.
+  </Step>
+</Steps>
+
+<Warning>
+  L'eliminazione è **definitiva** e il pannello **non la impedisce** se il messaggio è usato: avvisa soltanto. Dopo, regole, orari, menù o musiche che lo usavano restano senza quell'audio finché non scegli un altro messaggio. Prima di eliminare, controlla **Usato in**.
+</Warning>
+
+### Come faccio pulizia dei messaggi che non uso più
+
+<Steps>
+  <Step title="Premi Non usati (N)">
+    L'elenco mostra solo i messaggi che nessuna regola, orario o menù fa sentire.
+  </Step>
+  <Step title="Ascoltali">
+    Con il play, uno alla volta.
+  </Step>
+  <Step title="Elimina quelli che non servono">
+    Menu **⋯** → **Elimina** → **Elimina**.
+  </Step>
+</Steps>
+
+## I campi
+
+### Nuovo messaggio · scheda «Sintesi vocale»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome messaggio** | Il nome con cui lo ritrovi nella libreria e nelle regole. Non si cambia dopo. | Obbligatorio. Al massimo 100 caratteri: lettere senza accenti, numeri, spazio, «_» e «-». Gli spazi diventano «_». |
+| **Tipo di voce** | La famiglia di voci | **Voce standard** (proposta) · **Voce naturale** |
+| **Voce** | Chi legge il testo | Con **Voce standard**: **Emia (neural IT)** (proposta), **Isabella (neural IT)**, **Sara (neural IT)**, **Valeria (neural IT)**, **Diego (neural IT)**, **Matteo (neural IT)**. Con **Voce naturale**: Ginevra e Marco (a video ciascuna con un'indicazione tra parentesi accanto al nome). |
+| **Testo da convertire** | Ciò che la voce legge. Diventa anche la descrizione del messaggio. | Obbligatorio. Al massimo 4000 caratteri. |
+
+Bottoni: **Annulla** e **Genera messaggio**.
+
+### Nuovo messaggio · scheda «Carica file»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **File audio** | La registrazione da caricare. Il suo nome diventa il nome del messaggio. | Obbligatorio. Solo **.mp3** o **.wav**, al massimo **20 MB**. |
+| **Descrizione** (opzionale) | Una nota su cosa contiene | Al massimo 500 caratteri |
+
+Bottoni: **Annulla** e **Carica e converti**.
+
+### Pagina di un messaggio
+
+| Campo | Quando c'è | Valori |
+| --- | --- | --- |
+| **Tipo di voce** · **Voce** | Messaggi sintetici, o registrazioni con **Sostituisci con una voce sintetica** | Le stesse della creazione |
+| **Testo del messaggio** | Come sopra | Obbligatorio. Al massimo 4000 caratteri («è ciò che si sente e ciò che compare nella lista dei messaggi») |
+| **Descrizione** | Registrazioni caricate con **Tieni l'audio attuale** | Facoltativa. Al massimo 4000 caratteri |
+
+## Da sapere
+
+- **Il nome non si cambia.** Né per i messaggi sintetici né per le registrazioni: la pagina del messaggio cambia solo voce, testo o descrizione.
+- **Voce standard o naturale?** Sono due famiglie di voci italiane. Conviene provarle: crea il messaggio, ascoltalo e, se serve, cambia la voce dalla pagina del messaggio con **Salva**.
+- **Formati.** Si caricano solo MP3 e WAV. Un file M4A, OGG o di altro tipo va prima convertito sul computer.
+- **Mentre un messaggio suona** con la regola **Riproduco audio**, chi chiama non può premere tasti: per far scegliere con un tasto serve un [menù vocale](/centralino/instradamento/menu-vocali).
+- **Dopo un messaggio la chiamata prosegue** con la regola successiva del numero. Se vuoi che la chiamata si chiuda dopo il messaggio, metti subito sotto la regola **Termina chiamata**.
+- **«Usato in» e «Non usati»** tengono conto di orari, interruttori a orario, ferie, menù vocali, musica d'attesa e della regola **Riproduco audio** sui numeri e sui servizi interni. Un messaggio scelto in altri passaggi delle regole (per esempio **Riproduci audio per operatore**) può risultare «Non usato»: ascoltalo prima di eliminarlo.
+- **Salvare con la tastiera**: in questa pagina non c'è la scorciatoia Ctrl S; usa il bottone **Salva**.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Posso rinominare un messaggio?">
+    No. Crea un nuovo messaggio con il nome giusto, sceglilo al posto del vecchio dove serve (regole, orari, menù) ed elimina il vecchio.
+  </Accordion>
+
+  <Accordion title="Ho eliminato un messaggio per errore: posso recuperarlo?">
+    No, l'eliminazione è definitiva. Va ricreato: con la sintesi vocale riscrivendo il testo, oppure ricaricando il file.
+  </Accordion>
+
+  <Accordion title="Ho eliminato un messaggio usato in un menù: cosa succede?">
+    Il menù resta senza quel messaggio. Apri il menù in **Menù vocali (IVR)**, scegli un altro messaggio in **Messaggio di benvenuto (audio)** e premi **Salva**. Lo stesso vale per orari, ferie e regole che lo usavano.
+  </Accordion>
+
+  <Accordion title="Se cambio il testo devo rifare le regole?">
+    No. Il messaggio rigenerato mantiene lo stesso riferimento: tutto ciò che lo usa fa sentire subito la nuova versione.
+  </Accordion>
+
+  <Accordion title="Ho salvato ma nel pannello sento ancora il vecchio audio.">
+    Ricarica la pagina del browser: il lettore può tenere in memoria la versione precedente.
+  </Accordion>
+
+  <Accordion title="Posso caricare un file M4A o OGG?">
+    No, solo MP3 o WAV. Convertilo prima sul computer, oppure esportalo in MP3 dal programma con cui l'hai registrato.
+  </Accordion>
+
+  <Accordion title="Il file è troppo grande.">
+    Il limite è 20 MB. Accorcia la registrazione o esportala in MP3, che pesa molto meno di un WAV.
+  </Accordion>
+
+  <Accordion title="Il nome del messaggio caricato è diverso da quello del mio file.">
+    Il pannello toglie lettere accentate e simboli e trasforma gli spazi in «\_». Per avere un nome preciso, rinomina il file prima di caricarlo.
+  </Accordion>
+
+  <Accordion title="Posso avere due messaggi con lo stesso nome?">
+    Il pannello non lo impedisce, ma poi nelle regole e nei menù non li distingui. Usa nomi diversi e chiari.
+  </Accordion>
+
+  <Accordion title="Come metto il messaggio sul mio numero?">
+    In **Regole chiamate** apri il numero, premi il **\+** («Inserisci qui») sopra il passaggio che fa squillare, scegli **Riproduco audio**, seleziona il messaggio e premi **Aggiungi regola**. La guida completa è in [Mettere un messaggio di benvenuto](/centralino/come-fare/messaggio-di-benvenuto).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Mettere un messaggio di benvenuto" icon="microphone" href="/centralino/come-fare/messaggio-di-benvenuto">
+    Dal messaggio al numero, passo passo.
+  </Card>
+
+  <Card title="Musica d'attesa" icon="music" href="/centralino/audio/musica-di-attesa">
+    Usare un messaggio della libreria come musica.
+  </Card>
+
+  <Card title="Menù vocali (IVR)" icon="list" href="/centralino/instradamento/menu-vocali">
+    Il messaggio con le scelte «premi 1 per…».
+  </Card>
+
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Il messaggio che si sente quando sei chiuso.
+  </Card>
+
+  <Card title="Orari, filtri e dettagli della chiamata" icon="sitemap" href="/centralino/regole/passaggi-filtri">
+    La regola Riproduco audio e le altre regole con un audio.
+  </Card>
+
+  <Card title="Utenti e permessi" icon="users" href="/centralino/account/utenti-e-permessi">
+    Dare a un collaboratore l'accesso a Risorse del centralino.
+  </Card>
+</CardGroup>

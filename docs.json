@@ -54,7 +54,9 @@
           },
           {
             "group": "Instradamento chiamate",
-            "pages": []
+            "pages": [
+              "centralino/instradamento/code-di-ricezione"
+            ]
           },
           {
             "group": "Telefoni e numeri",

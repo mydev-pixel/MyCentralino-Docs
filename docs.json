@@ -93,7 +93,8 @@
               "centralino/monitoraggio/esiti-delle-chiamate",
               "centralino/monitoraggio/chiamate-effettuate",
               "centralino/monitoraggio/da-richiamare",
-              "centralino/monitoraggio/analisi-chiamate-code"
+              "centralino/monitoraggio/analisi-chiamate-code",
+              "centralino/monitoraggio/costi-numero-verde"
             ]
           },
           {
@@ -138,7 +139,8 @@
               "centralino/account/abbonamento",
               "centralino/account/credito-e-ricariche",
               "centralino/account/fatture-e-pagamenti",
-              "centralino/account/documenti"
+              "centralino/account/documenti",
+              "centralino/account/chiavi-api"
             ]
           },
           {

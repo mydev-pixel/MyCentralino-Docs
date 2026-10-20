@@ -122,7 +122,8 @@
               "centralino/moduli/aggiungi-funzionalita",
               "centralino/moduli/analisi-chiamate-ai",
               "centralino/moduli/analisi-utilizzo-flat",
-              "centralino/moduli/contact-center"
+              "centralino/moduli/contact-center",
+              "centralino/moduli/reperibilita"
             ]
           },
           {
@@ -141,7 +142,8 @@
             "pages": [
               "centralino/assistenza/richieste-di-assistenza",
               "centralino/assistenza/prenota-una-call",
-              "centralino/assistenza/assistenza-remota"
+              "centralino/assistenza/assistenza-remota",
+              "centralino/assistenza/segnala-un-problema"
             ]
           }
         ]

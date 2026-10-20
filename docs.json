@@ -118,7 +118,8 @@
           {
             "group": "Assistenza e aiuto",
             "pages": [
-              "centralino/assistenza/richieste-di-assistenza"
+              "centralino/assistenza/richieste-di-assistenza",
+              "centralino/assistenza/prenota-una-call"
             ]
           }
         ]
@@ -129,7 +130,8 @@
           {
             "group": "Inizia",
             "pages": [
-              "agenti-ai/panoramica"
+              "agenti-ai/panoramica",
+              "agenti-ai/attivazione-e-piani"
             ]
           },
           {

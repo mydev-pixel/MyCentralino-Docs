@@ -1,0 +1,246 @@
+---
+title: "Statistiche"
+sidebarTitle: "Statistiche"
+description: "I numeri di una giornata: chiamate ricevute, senza risposta, durata media, chiamate in uscita e andamento ora per ora, confrontati con lo stesso giorno della settimana precedente."
+keywords:
+  - "statistiche"
+  - "statistiche centralino"
+  - "chiamate di oggi"
+  - "chiamate perse oggi"
+  - "senza risposta"
+  - "tasso di risposta"
+  - "ora di picco"
+  - "andamento chiamate"
+  - "confronto settimana scorsa"
+  - "report giornaliero"
+  - "quante chiamate"
+---
+
+**Statistiche** ti dice in un colpo d'occhio com'è andata una giornata al telefono: quante chiamate sono arrivate, quante sono rimaste senza risposta, quanto si è parlato, quante chiamate sono state fatte verso l'esterno e in che ore c'è stato più lavoro. Ogni giornata è confrontata con lo stesso giorno della settimana precedente, così capisci subito se oggi c'è più o meno lavoro del solito.
+
+**Dove si trova:** Menu → Monitoraggio → **Statistiche** · `https://cloud.mycentralino.com/statistiche-centralino`
+
+Per aprire direttamente un giorno preciso aggiungi la data all'indirizzo: `https://cloud.mycentralino.com/statistiche-centralino?giorno=2026-10-14`.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli è stata concessa la sezione **Monitoraggio** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)). Non serve nessun modulo.
+
+## Cosa trovi nella pagina
+
+In testa il titolo **Statistiche centralino** e la frase «Ricevute, senza risposta, in uscita e andamento della giornata, confrontati con lo stesso giorno della settimana precedente.» Sotto, quattro riquadri, il grafico dell'andamento e l'elenco delle chiamate perse.
+
+<Frame caption="Statistiche centralino della giornata">
+  <img
+    src="/images/guida/statistiche.webp"
+    alt="Statistiche centralino della giornata"
+  />
+</Frame>
+
+### Il selettore del giorno
+
+In alto a destra scegli la giornata da guardare:
+
+- la freccia **Giorno precedente** (a sinistra) torna indietro di un giorno;
+- il campo data al centro permette di scegliere un giorno dal calendario;
+- la freccia **Giorno successivo** (a destra) va avanti di un giorno. Quando stai guardando oggi è spenta;
+- il bottone **Oggi** compare solo quando stai guardando un altro giorno e ti riporta a oggi.
+
+Non si possono scegliere giorni futuri: se scrivi una data che non è ancora arrivata, la pagina mostra oggi.
+
+Le etichette della pagina seguono il giorno scelto: «oggi», «ieri» oppure la data, per esempio «Ricevute mar 14 ott» e «Andamento di martedì 14 ottobre».
+
+### I quattro riquadri
+
+| Riquadro | Il numero grande | La riga sotto |
+| --- | --- | --- |
+| **Ricevute oggi** | Le chiamate arrivate sui tuoi numeri da numeri esterni. | «_N_ risposte · tasso _N_%»: quante hanno avuto risposta e la percentuale sul totale. |
+| **Senza risposta oggi** | Le chiamate ricevute che nessuno ha preso. | Il link «_N_ da richiamare →», che apre **Da richiamare**, oppure «nessuna in coda da richiamare». |
+| **Durata media risposta** | La durata media delle chiamate ricevute che hanno avuto risposta (minuti e secondi). | «_N_ minuti di conversazione oggi»: il totale dei minuti delle chiamate ricevute con risposta. |
+| **In uscita oggi** | Le chiamate verso l'esterno fatte dai telefoni del centralino, anche quelle a cui non ha risposto nessuno. | «_N_ minuti al telefono»: i minuti delle chiamate in uscita che hanno avuto risposta. |
+
+Sul telefono i riquadri si dispongono su due colonne.
+
+<Note>
+  Il numero «da richiamare» del riquadro **Senza risposta oggi** è il totale della lista **Da richiamare**, non solo quello del giorno che stai guardando. Chi hai già richiamato e ha risposto esce dal conteggio la prima volta che apri **Da richiamare**.
+</Note>
+
+### Andamento della giornata
+
+Il grafico **Andamento di oggi** mostra le chiamate ricevute ora per ora, dalle 00 alle 23. Per ogni ora ci sono due colonne:
+
+- **verde**: il giorno che stai guardando;
+- **grigia**: lo stesso giorno della settimana precedente (per esempio, se oggi è giovedì, giovedì scorso).
+
+Sopra il grafico trovi:
+
+- il totale delle chiamate ricevute nella giornata;
+- il valore della settimana precedente. Per oggi è contato **fino alla stessa ora** («giovedì scorso alla stessa ora»), così il confronto è giusto anche a metà giornata;
+- l'**ora di picco**, cioè l'ora con più chiamate, con il numero di chiamate («ora di picco · 12»).
+
+A destra del titolo c'è un'etichetta di confronto:
+
+- «+12% su giovedì scorso» in verde se le chiamate sono aumentate, in ambra se sono diminuite;
+- se sia il giorno scelto sia la settimana precedente hanno meno di 10 chiamate, al posto della percentuale vedi i due numeri, per esempio «3 contro 5 giovedì scorso».
+
+Per un giorno passato il confronto è sulla giornata intera e l'etichetta dice «precedente» invece di «scorso».
+
+Passa il mouse su un'ora per vedere la fascia oraria (per esempio «10:00 – 11:00», con «· picco» se è l'ora di picco) e i due valori. Per oggi l'ora corrente è evidenziata e le ore che devono ancora arrivare non hanno la colonna verde. Sul telefono l'asse mostra solo le ore pari e l'ora corrente.
+
+Se nella giornata e nella settimana precedente non ci sono chiamate, al posto del grafico leggi «Ancora nessuna chiamata oggi» (per un giorno passato «Nessuna chiamata ieri» o «Nessuna chiamata mar 14 ott») e «Anche giovedì scorso non c'è stato traffico.» (per un giorno passato «giovedì precedente»).
+
+### Perse della giornata
+
+Il riquadro **Perse di oggi** mostra le ultime 8 chiamate senza risposta della giornata, dalla più recente. Il numero a destra del titolo è il totale delle perse del giorno. Per ogni chiamata vedi:
+
+- l'ora;
+- il numero di chi ha chiamato;
+- «su» il tuo numero chiamato (o la sua descrizione) e, dopo il punto, dove si è fermata la chiamata, per esempio «Coda Commerciale» o «Squilla interno 201 · Anna». Le parole sono quelle del **Percorso chiamata**: vedi [Esiti delle chiamate](/centralino/monitoraggio/esiti-delle-chiamate);
+- a destra lo stato, con un pallino:
+
+| Stato | Cosa vuol dire |
+| --- | --- |
+| **senza risposta** | Nessuno ha risposto. |
+| **abbandonata in coda** | Chi chiamava ha riattaccato mentre aspettava in coda. È lo stesso caso che altrove si chiama **Ha riattaccato in attesa**. |
+| **poi risposta alle 10:42** (in verde) | La chiamata resta persa, ma lo stesso numero ha richiamato più tardi nella stessa giornata e ha avuto risposta. Non serve richiamarlo. |
+
+In fondo, se ci sono chiamate da richiamare, c'è di nuovo il link «_N_ da richiamare →».
+
+Se nella giornata non ci sono perse leggi «Nessuna chiamata persa oggi» e «Tutte le chiamate ricevute hanno avuto risposta.»
+
+## Come fare
+
+### Come vedo quante chiamate ho perso oggi
+
+<Steps>
+  <Step title="Apri Statistiche">
+    Menu → Monitoraggio → **Statistiche**. La pagina si apre su oggi.
+  </Step>
+  <Step title="Leggi il riquadro Senza risposta oggi">
+    Il numero grande è il totale delle chiamate senza risposta di oggi.
+  </Step>
+  <Step title="Guarda l'elenco Perse di oggi">
+    Vedi le ultime 8, con il numero di chi ha chiamato e dove si è fermata la chiamata. Quelle con «poi risposta alle …» in verde non vanno richiamate.
+  </Step>
+  <Step title="Per l'elenco completo">
+    Apri Menu → Monitoraggio → **Chiamate ricevute**, premi **Oggi** e in **Esito** attiva **Perse**. Vedi [Chiamate ricevute](/centralino/monitoraggio/chiamate-ricevute).
+  </Step>
+</Steps>
+
+### Come vedo le statistiche di un giorno passato
+
+<Steps>
+  <Step title="Apri Statistiche">
+    Menu → Monitoraggio → **Statistiche**.
+  </Step>
+  <Step title="Scegli il giorno">
+    Premi la freccia **Giorno precedente** fino al giorno che ti serve, oppure clicca il campo data e scegli il giorno dal calendario.
+  </Step>
+  <Step title="Torna a oggi">
+    Premi **Oggi**.
+  </Step>
+</Steps>
+
+### Come capisco in che ore arrivano più chiamate
+
+<Steps>
+  <Step title="Guarda l'ora di picco">
+    Sopra il grafico **Andamento di oggi** leggi l'ora con più chiamate, per esempio «10:00» con «ora di picco · 12».
+  </Step>
+  <Step title="Confronta le colonne">
+    Passa il mouse sulle colonne per vedere, ora per ora, le chiamate del giorno scelto e quelle dello stesso giorno della settimana precedente.
+  </Step>
+  <Step title="Guarda più giorni">
+    Ripeti con le frecce del selettore per gli altri giorni della settimana: il traffico di un'attività tende a ripetersi nello stesso giorno della settimana.
+  </Step>
+</Steps>
+
+### Come richiamo chi non ha avuto risposta
+
+<Steps>
+  <Step title="Apri la lista Da richiamare">
+    Premi il link «_N_ da richiamare →» nel riquadro **Senza risposta oggi** o in fondo a **Perse di oggi**.
+  </Step>
+  <Step title="Premi Richiama">
+    Sulla riga del cliente premi **Richiama**. Vedi [Da richiamare](/centralino/monitoraggio/da-richiamare).
+  </Step>
+</Steps>
+
+Se chi non ha avuto risposta non compare in **Da richiamare** (per esempio perché non era in coda), lo richiami da **Chiamate ricevute** con l'icona **Richiama** sulla riga.
+
+## Cosa viene contato
+
+| Voce | Cosa conta |
+| --- | --- |
+| Chiamate ricevute | Le chiamate arrivate sui tuoi numeri da numeri esterni. Le chiamate fra interni non contano. Ogni chiamata conta una volta, anche se ha fatto squillare più telefoni o è passata da più code. |
+| Risposte | Le chiamate a cui ha risposto una persona (a un interno, in una coda, al numero esterno a cui è stata inoltrata) oppure un agente AI. L'attesa in coda, un messaggio, un menù vocale o la segreteria non contano come risposta, salvo quando la chiamata è presa in carico da un servizio interno (vedi [Esiti delle chiamate](/centralino/monitoraggio/esiti-delle-chiamate)). |
+| Senza risposta | Tutte le altre: le chiamate perse, quelle di chi ha riattaccato in attesa e quelle arrivate fuori orario. |
+| In uscita | Le chiamate verso numeri esterni fatte dai telefoni del centralino, con o senza risposta. |
+
+Le chiamate sono contate come in **Chiamate ricevute**: scegliendo lo stesso giorno, il numero di chiamate coincide. I minuti invece no: qui contano solo le chiamate con risposta, mentre i «min totali» di **Chiamate ricevute** comprendono anche il tempo delle chiamate senza risposta (attesa, messaggi).
+
+## Da sapere
+
+- **I numeri di oggi si ricalcolano circa una volta al minuto.** La pagina non si aggiorna da sola: per vedere i numeri più recenti ricaricala. I giorni passati non cambiano più.
+- **Ora italiana.** Le ore del grafico e delle chiamate sono in ora italiana.
+- **Numero attivato da poco.** Se un numero è diventato tuo da poco, le sue chiamate contano solo da quando è sul tuo centralino.
+- **Il confronto è con lo stesso giorno della settimana**, non con ieri: un lunedì si confronta con il lunedì precedente.
+- **Le chiamate qui non si aprono.** Per il percorso di una singola chiamata, per richiamare o per bloccare un numero usa **Chiamate ricevute**.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Perché una chiamata persa dice «poi risposta alle 10:42»?">
+    Lo stesso numero ha richiamato più tardi nella stessa giornata e ha avuto risposta. La chiamata resta contata fra le senza risposta, ma non serve richiamarlo.
+  </Accordion>
+
+  <Accordion title="Perché al posto della percentuale vedo «3 contro 5»?">
+    Con meno di 10 chiamate una percentuale può ingannare: una sola chiamata in meno può diventare «-100%». Per questo la pagina mostra i due numeri.
+  </Accordion>
+
+  <Accordion title="La percentuale di oggi è molto più bassa della settimana scorsa: è normale?">
+    Per oggi il confronto è fatto fino alla stessa ora della settimana precedente, quindi è giusto anche a metà giornata. Se la differenza ti sembra strana, guarda il grafico ora per ora.
+  </Accordion>
+
+  <Accordion title="Perché il numero «da richiamare» non corrisponde alle perse del giorno?">
+    Il numero «da richiamare» è il totale della lista **Da richiamare**, di tutti i giorni, non solo delle perse del giorno. In quella lista finisce chi ha riattaccato mentre aspettava in coda. Chi hai già richiamato e ha risposto esce dal conteggio la prima volta che apri **Da richiamare**.
+  </Accordion>
+
+  <Accordion title="Le chiamate finite in segreteria contano come risposte?">
+    No. La segreteria non è una risposta: nessuna persona ha parlato con chi chiamava. Queste chiamate sono fra le **Senza risposta**. Unica eccezione: una chiamata presa in carico da un servizio interno conta come risposta anche se dentro quel servizio è finita in segreteria (vedi [Esiti delle chiamate](/centralino/monitoraggio/esiti-delle-chiamate)).
+  </Accordion>
+
+  <Accordion title="Le chiamate fuori orario contano fra le senza risposta?">
+    Sì. Una chiamata arrivata quando il numero era chiuso non ha avuto risposta e conta nel riquadro **Senza risposta**.
+  </Accordion>
+
+  <Accordion title="Posso vedere le statistiche di una settimana o di un mese?">
+    Questa pagina mostra un giorno alla volta. Per un periodo più lungo apri **Chiamate ricevute**: in alto vedi il numero di chiamate, i minuti totali e la durata media del periodo scelto, e puoi scaricare l'elenco con **Excel** o **PDF**.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Chiamate ricevute" icon="phone" href="/centralino/monitoraggio/chiamate-ricevute">
+    Ogni chiamata, con esito e percorso.
+  </Card>
+
+  <Card title="Esiti delle chiamate" icon="list" href="/centralino/monitoraggio/esiti-delle-chiamate">
+    Cosa vuol dire ogni esito e perché una chiamata è persa.
+  </Card>
+
+  <Card title="Da richiamare" icon="phone-volume" href="/centralino/monitoraggio/da-richiamare">
+    Chi ha riattaccato in coda, da richiamare.
+  </Card>
+
+  <Card title="In tempo reale" icon="chart-line" href="/centralino/monitoraggio/in-tempo-reale">
+    Cosa succede adesso al centralino.
+  </Card>
+
+  <Card title="Chiamate effettuate" icon="phone" href="/centralino/monitoraggio/chiamate-effettuate">
+    Le chiamate fatte dai tuoi interni.
+  </Card>
+
+  <Card title="Capire una chiamata persa" icon="life-ring" href="/centralino/come-fare/capire-una-chiamata-persa">
+    Dalla chiamata persa alla causa, passo passo.
+  </Card>
+</CardGroup>

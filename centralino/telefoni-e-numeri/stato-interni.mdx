@@ -1,0 +1,160 @@
+---
+title: "Stato interni"
+sidebarTitle: "Stato interni"
+description: "Quali telefoni sono collegati al centralino adesso, quali sono al telefono e quali no, con l'indirizzo e il modello del dispositivo. Si aggiorna da sola ogni 10 secondi."
+keywords:
+  - "stato interni"
+  - "telefoni collegati"
+  - "interno non collegato"
+  - "telefono non registrato"
+  - "estensioni"
+  - "registrazione"
+  - "chi è al telefono"
+  - "modello telefono"
+  - "indirizzo IP telefono"
+  - "FollowMe"
+  - "secondo telefono"
+  - "monitoraggio interni"
+---
+
+**Stato interni** mostra, in tempo reale, quali telefoni sono collegati al centralino, quali sono impegnati in una chiamata e quali non sono collegati. Per ogni telefono vedi anche da quale indirizzo di rete è collegato e che modello o app è. È una pagina **solo da guardare**: per collegare o modificare un telefono si usa la pagina **Interni**.
+
+**Dove si trova:** Menu → Monitoraggio → **Stato interni** · `https://cloud.mycentralino.com/estensioni`
+
+Ci arrivi anche da Monitoraggio → **In tempo reale**: nel riquadro **Operatori adesso**, il link **Vedi tutti →** o la casella «+N altri».
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Monitoraggio**. Non serve nessun modulo.
+
+## Cosa trovi nella pagina
+
+### In alto
+
+Il titolo **Stato interni** e, sopra, un pallino verde lampeggiante con «live · aggiornamento ogni 10s · 14:32:05»: l'ora dell'ultimo aggiornamento. La pagina si aggiorna da sola ogni 10 secondi, finché è aperta.
+
+A destra:
+
+- la ricerca **Cerca per interno, nome o IP…**;
+- l'ordine **Interno** (per numero di interno) / **Nome** (alfabetico);
+- il bottone **ⓘ** («Cos'è questa sezione?»), che apre una breve spiegazione.
+
+### I filtri per stato
+
+Sotto la testata, quattro filtri a pastiglia con il conteggio:
+
+| Filtro | Cosa mostra |
+| --- | --- |
+| **Tutti** | Tutti i telefoni, compresi i secondi telefoni degli interni. |
+| **Liberi** | I telefoni collegati e pronti a ricevere. |
+| **Al telefono** | I telefoni in conversazione, che squillano o che stanno chiamando. |
+| **Non collegati** | I telefoni che non sono collegati al centralino. |
+
+I conteggi seguono la ricerca: se cerchi «Rossi», contano solo i telefoni che corrispondono.
+
+### Le tessere
+
+Una tessera per telefono. Ogni tessera mostra:
+
+- un'icona della cornetta, colorata secondo lo stato;
+- il **numero dell'interno**, in grande, e tra parentesi l'interno assoluto;
+- l'etichetta **FollowMe** se è il secondo telefono di un interno;
+- il nome dell'interno;
+- l'indirizzo di rete e la porta del dispositivo collegato, oppure **non registrato** se non è collegato;
+- il modello del telefono o il nome dell'app con cui è collegato (per esempio il nome del softphone).
+
+Lo stato si legge dal colore della tessera e della cornetta:
+
+| Aspetto | Stato |
+| --- | --- |
+| Tessera verde, cornetta verde | **Libero**: collegato e pronto a ricevere. |
+| Tessera azzurra, cornetta rossa lampeggiante | **Al telefono** o **Squilla**. |
+| Tessera grigia, cornetta grigia barrata, scritta «non registrato» | **Non collegato**. |
+
+<Frame caption="Stato interni con i filtri per stato">
+  <img
+    src="/images/guida/stato-interni.webp"
+    alt="Stato interni con i filtri per stato"
+  />
+</Frame>
+
+Se un filtro o la ricerca non trovano niente compare «Nessuna estensione corrispondente» con «Prova con altri filtri.».
+
+Se il centralino non ha ancora interni compare «Nessuna estensione configurata»: gli interni si aggiungono da [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita).
+
+## Come fare
+
+### Come vedo quali telefoni non sono collegati
+
+<Steps>
+  <Step title="Apri Stato interni">
+    Menu → Monitoraggio → **Stato interni**.
+  </Step>
+  <Step title="Filtra">
+    Premi **Non collegati**: restano solo i telefoni che il centralino non vede.
+  </Step>
+  <Step title="Ricollega">
+    Per ognuno controlla che il dispositivo sia acceso e connesso a internet. Se non basta, ricontrolla la configurazione da **Interni** → **Associa dispositivo VoIP** → **Impostazioni SIP interno**.
+  </Step>
+</Steps>
+
+### Come trovo il telefono di un collega
+
+Scrivi il numero di interno o il nome nella casella **Cerca per interno, nome o IP…**. Con **Nome** in alto a destra le tessere sono in ordine alfabetico.
+
+### Come capisco che telefono o app usa un interno
+
+Guarda l'ultima riga della sua tessera: il modello del telefono o il nome dell'app con cui è collegato. Se l'interno non è collegato la riga non c'è.
+
+### Come vedo chi è al telefono adesso
+
+Premi **Al telefono**. Per sapere anche con chi sta parlando e da quanto, usa Monitoraggio → **In tempo reale**: vedi [In tempo reale](/centralino/monitoraggio/in-tempo-reale).
+
+## Da sapere
+
+- **Qui si contano i telefoni, non gli interni.** Il secondo telefono di un interno (etichetta **FollowMe**) ha una sua tessera, quindi **Tutti** può essere più alto del numero di interni. Il numero di interni è nella pagina **Interni**.
+- **Un interno può essere collegato senza indirizzo visibile.** Alcuni collegamenti (per esempio il telefono nel browser) non mostrano l'indirizzo di rete: la tessera è verde ma la riga dell'indirizzo manca.
+- **Collegato non vuol dire che squilla per i tuoi numeri**: quale interno squilla quando chiamano lo decidono le [Regole delle chiamate](/centralino/regole/panoramica).
+- **Da qui non si modifica niente.** Per collegare un dispositivo, cambiare nome o password di un interno vai in [Interni](/centralino/telefoni-e-numeri/interni).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Che differenza c'è con la pagina Interni?">
+    **Stato interni** è solo da guardare e mostra in più l'indirizzo di rete e il modello di ogni dispositivo collegato. Da **Interni** (Menu → Telefoni e numeri) colleghi i dispositivi e modifichi gli interni.
+  </Accordion>
+
+  <Accordion title="Cosa vuol dire «FollowMe»?">
+    È il **secondo telefono** di un interno: un altro apparecchio, con un suo accesso, che squilla insieme all'interno con lo stesso numero. Nella pagina **Interni** la stessa scheda si chiama «Secondo telefono dell'interno».
+  </Accordion>
+
+  <Accordion title="Perché qui vedo più telefoni che interni?">
+    Questa pagina conta i dispositivi: un interno con un secondo telefono compare due volte. Il numero di interni è nella pagina **Interni**.
+  </Accordion>
+
+  <Accordion title="Un telefono è acceso ma risulta «non registrato».">
+    Il telefono è acceso ma non è collegato al centralino: controlla che sia connesso a internet (per l'app sul cellulare: che sia aperta o attiva in sottofondo) e che server, utente e password siano quelli della scheda **Impostazioni SIP interno**, in **Interni** → **Associa dispositivo VoIP**. Lo stato si aggiorna entro 10 secondi.
+  </Accordion>
+
+  <Accordion title="Un collega dice di non ricevere chiamate ma qui risulta Libero.">
+    Il telefono è collegato: il problema è altrove. Controlla che l'interno sia nelle regole del numero chiamato e che a quell'ora le regole lo facciano squillare. Per una chiamata precisa, guarda il suo percorso in Monitoraggio → **Chiamate ricevute**: vedi [Capire una chiamata persa](/centralino/come-fare/capire-una-chiamata-persa).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Interni" icon="phone" href="/centralino/telefoni-e-numeri/interni">
+    Collegare e modificare gli interni.
+  </Card>
+
+  <Card title="Collegare un dispositivo" icon="headset" href="/centralino/telefoni-e-numeri/collegare-un-dispositivo">
+    La procedura guidata e i parametri.
+  </Card>
+
+  <Card title="In tempo reale" icon="chart-line" href="/centralino/monitoraggio/in-tempo-reale">
+    Chiamate in corso, code e operatori adesso.
+  </Card>
+
+  <Card title="Capire una chiamata persa" icon="phone-volume" href="/centralino/come-fare/capire-una-chiamata-persa">
+    Perché una chiamata non è arrivata.
+  </Card>
+</CardGroup>

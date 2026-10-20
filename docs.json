@@ -65,12 +65,15 @@
             "group": "Telefoni e numeri",
             "pages": [
               "centralino/telefoni-e-numeri/interni",
-              "centralino/telefoni-e-numeri/collegare-un-dispositivo"
+              "centralino/telefoni-e-numeri/collegare-un-dispositivo",
+              "centralino/telefoni-e-numeri/stato-interni"
             ]
           },
           {
             "group": "Monitoraggio",
-            "pages": []
+            "pages": [
+              "centralino/monitoraggio/statistiche"
+            ]
           },
           {
             "group": "Strumenti",

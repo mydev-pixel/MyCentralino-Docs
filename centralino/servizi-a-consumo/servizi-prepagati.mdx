@@ -1,5 +1,224 @@
 ---
 title: "Servizi prepagati"
+sidebarTitle: "Servizi prepagati"
+description: "Clienti con un saldo di minuti prepagati, riconosciuti dal numero da cui chiamano: come si aggiunge un cliente, come si ricarica, cosa sono i profili e come si attiva il servizio su un numero."
+keywords:
+  - "servizi prepagati"
+  - "prepagato"
+  - "credito a tempo"
+  - "minuti prepagati"
+  - "ricarica minuti"
+  - "saldo cliente"
+  - "riconoscimento numero"
+  - "servizi basati su callerid"
+  - "profilo di servizio"
+  - "callerid services"
 ---
 
-Caricamento in corso.
+I **Servizi prepagati** sono l'elenco dei tuoi clienti con un **credito di minuti prepagato**. Il centralino li riconosce dal **numero di telefono da cui chiamano** e a ogni chiamata scala il tempo di conversazione dal loro saldo. A differenza dell'[Accesso con PIN](/centralino/servizi-a-consumo/accesso-con-pin), il cliente non deve digitare niente.
+
+**Dove si trova:** Menu → Risorse centralino → A consumo → **Servizi prepagati** · `https://cloud.mycentralino.com/servizi-prepagati`
+
+Ci arrivi anche dalla pagina **Risorse del centralino** (`https://cloud.mycentralino.com/configurazione`), nel gruppo **Servizi a consumo**.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**. Non serve nessun modulo.
+
+<Warning>
+  L'elenco da solo non cambia niente. Perché il saldo venga usato, nelle **Regole delle chiamate** del numero va aggiunto il passaggio **Servizi basati su CallerID**, con il profilo e il servizio interno. Vedi «Come attivo il servizio su un numero» più sotto.
+</Warning>
+
+## Come funziona
+
+1. Aggiungi il cliente: il numero da cui chiamerà, il nome, i minuti di credito e il profilo.
+2. Sul numero che riceve le chiamate c'è il passaggio **Servizi basati su CallerID**. Nello schema delle regole la sua scheda dice «Verifica il chiamante sul profilo …» e «Se valido, inoltra la chiamata al servizio interno scalando i secondi di conversazione al chiamante».
+3. Il centralino riconosce il cliente dal suo numero, porta la chiamata al servizio interno scelto e scala la conversazione dal saldo.
+4. Nell'elenco vedi il saldo che resta e l'ultima chiamata. Quando il saldo si esaurisce, lo ricarichi modificando il cliente.
+
+## Cosa trovi nella pagina
+
+In alto il titolo **Servizi prepagati** con il conteggio (per esempio «240 clienti»; durante una ricerca «N risultati su M») e la frase «Clienti con credito telefonico prepagato: chi chiama da questi numeri usa il suo saldo di tempo.». A destra il bottone **Nuovo cliente**.
+
+Sotto c'è la ricerca **Cerca cliente, numero, nota o ultimo chiamante…**, che filtra mentre scrivi. Si può cercare anche una parte del numero.
+
+La tabella ha una riga per cliente, dal più recente:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Cliente** | Il nome. Sotto, in piccolo, «Profilo N» (se il profilo non è P0) e la nota. Cliccandolo apri la modifica. |
+| **Telefono** | Il numero da cui il cliente chiama. |
+| **Saldo** | Il tempo che resta (per esempio «12 min», «3 h 20 min» o «39 s») con lo stato **Disponibile**, **In esaurimento** o **Esaurito**. Sotto può comparire «ricaricato» con la data dell'ultima ricarica registrata. |
+| **Ultima chiamata** | Quando ha chiamato l'ultima volta (per esempio «oggi · 10:53»), sotto «da» con il numero e la durata. «Mai chiamato» se non ha ancora chiamato. |
+
+In fondo alla riga c'è il cestino **Elimina**. Un clic in un punto qualsiasi della riga apre la modifica. Le righe sono 300 per pagina, con i numeri di pagina in fondo.
+
+**Sul telefono** ogni riga diventa una scheda con il nome, il numero, il saldo con il suo stato, il cestino e una freccia. Nota e profilo si vedono aprendo il cliente (campi **Note** e **Profilo di servizio**). La data «ricaricato» e l'ultima chiamata si vedono solo su uno schermo più largo (computer o tablet).
+
+Se l'elenco è vuoto vedi «Nessun cliente prepagato» con «Aggiungi il primo cliente con credito a tempo per abilitare il servizio prepagato.». Se la ricerca non trova niente: «Nessun cliente per questa ricerca» con «Prova con altri termini.».
+
+### Gli stati del saldo
+
+| Stato | Quando |
+| --- | --- |
+| **Disponibile** (verde) | 10 minuti o più |
+| **In esaurimento** (ambra) | Meno di 10 minuti |
+| **Esaurito** (rosso) | Saldo a zero |
+
+## Come fare
+
+### Come aggiungo un cliente prepagato
+
+<Steps>
+  <Step title="Apri Servizi prepagati">
+    Menu → Risorse centralino → A consumo → **Servizi prepagati**.
+  </Step>
+  <Step title="Premi Nuovo cliente">
+    Si apre la pagina **Nuovo cliente prepagato**.
+  </Step>
+  <Step title="Scrivi il Telefono (PIN)">
+    Il numero da cui il cliente chiamerà, solo cifre e almeno 9: i numeri italiani senza +39 (per esempio `3351234567`), quelli esteri con 00 davanti (per esempio `0044…`).
+  </Step>
+  <Step title="Compila Cliente e Minuti di credito">
+    Il nome (per esempio `Mario Rossi`) e i minuti di conversazione che ha comprato, in minuti interi.
+  </Step>
+  <Step title="Scegli il Profilo di servizio">
+    Se non usi i profili lascia **P0**.
+  </Step>
+  <Step title="Salva">
+    Se vuoi aggiungi una nota, poi premi **Salva**. Torni all'elenco e compare «Cliente "Mario Rossi" creato.».
+  </Step>
+</Steps>
+
+### Come ricarico un cliente
+
+<Steps>
+  <Step title="Trova il cliente">
+    Scrivi il nome o il numero (anche una parte) nella ricerca e clicca la sua riga.
+  </Step>
+  <Step title="Scrivi il nuovo totale">
+    In **Minuti di credito** c'è il saldo attuale, arrotondato al minuto. Scrivi il **totale** che deve risultare: se restano 5 minuti e ne vendi 60, scrivi `65`.
+  </Step>
+  <Step title="Salva">
+    Appena cambi un campo compare in basso la barra **Modifiche non salvate**. Premi **Salva** in alto o nella barra. Compare «Cliente "…" aggiornato.».
+  </Step>
+</Steps>
+
+Per uscire senza salvare premi **Annulla** in alto, oppure il link **Torna ai servizi prepagati** sopra il titolo. **Annulla** nella barra, invece, rimette i valori di prima e resti nella scheda. Se provi ad aprire un'altra pagina del pannello senza salvare, compare «Ci sono modifiche non salvate. Uscire senza salvarle?». Se chiudi la scheda del browser, l'avviso è quello del browser.
+
+### Come attivo il servizio su un numero
+
+<Steps>
+  <Step title="Apri le regole del numero">
+    Menu → **Regole chiamate** e clicca il numero che riceve le chiamate. Vedi [Editor delle regole](/centralino/regole/editor).
+  </Step>
+  <Step title="Aggiungi il passaggio">
+    Premi **Aggiungi regola** (o il **\+** nel punto giusto). Nell'argomento **Impostazioni avanzate**, oppure scrivendo in **Cerca una regola…**, clicca **Servizi basati su CallerID**.
+  </Step>
+  <Step title="Scegli il Profilo">
+    Da **0** a **9** il passaggio riconosce i clienti di quel profilo. Se non usi i profili, lascia i clienti su **P0** e nel passaggio scegli **NA**.
+  </Step>
+  <Step title="Scegli il Servizio interno">
+    Il servizio interno in cui entra il cliente riconosciuto. Puoi cercarlo con **Cerca servizio interno…**.
+  </Step>
+  <Step title="Conferma">
+    Premi **Aggiungi regola**. Il passaggio compare nello schema.
+  </Step>
+</Steps>
+
+Se nella finestra vedi «Nessun servizio interno configurato.», il centralino non ha ancora servizi interni: vedi [Servizi interni](/centralino/regole/servizi-interni).
+
+### Come elimino un cliente
+
+<Steps>
+  <Step title="Premi il cestino">
+    Nella riga del cliente premi **Elimina** (il cestino).
+  </Step>
+  <Step title="Conferma">
+    Nella finestra **Elimina cliente** («Stai per eliminare il cliente «Mario Rossi». L'azione non è reversibile.») premi **Elimina**. Compare «Cliente "Mario Rossi" eliminato.».
+  </Step>
+</Steps>
+
+## I campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Telefono (PIN)** | Il numero da cui il cliente chiama. «Solo cifre, minimo 9 · è il numero da cui il cliente chiama per usare il credito.» | Obbligatorio, solo cifre, da 9 a 16; italiani senza +39, esteri con 00 davanti |
+| **Cliente** | Il nome che vedi nell'elenco. Esempio nel campo: «es. Mario Rossi». | Obbligatorio, al massimo 200 caratteri |
+| **Minuti di credito** | Il saldo in minuti. «Minuti utilizzabili in conversazione · il saldo viene scalato a ogni chiamata.» | Obbligatorio, numero intero da 0 a 16666 |
+| **Profilo di servizio** | Un gruppo di clienti. «P0–P9 · permette di associare tariffe o regole diverse.» | Da **P0** a **P9** (proposto P0) |
+| **Note** (opzionale) | Un appunto per te. Esempio nel campo: «Appunti interni sul cliente». | Al massimo 500 caratteri |
+
+Messaggi che puoi vedere salvando:
+
+- «Solo cifre.»
+- «Il numero deve avere almeno 9 cifre (vincolo legacy).»
+- «Esiste già un cliente con questo numero su questo profilo.»
+
+## I profili
+
+Il **Profilo di servizio** (da P0 a P9) serve quando hai gruppi di clienti diversi, per esempio due servizi con tariffe diverse. Ogni passaggio **Servizi basati su CallerID** indica un **Profilo**: da 0 a 9 riconosce chi chiama su quel profilo.
+
+- Lo stesso numero può comparire su profili diversi, come clienti separati, ciascuno con il suo saldo.
+- Lo stesso numero non può comparire due volte sullo stesso profilo: salvando compare «Esiste già un cliente con questo numero su questo profilo.».
+- Per servire clienti di profili diversi sullo stesso numero servono passaggi diversi, uno per profilo.
+- Se non usi i profili, lascia tutti i clienti su **P0** e nel passaggio scegli **NA**: nell'elenco il profilo non viene mostrato.
+
+## Da sapere
+
+- **Il campo dei minuti è il saldo, non la ricarica.** Quello che scrivi diventa il saldo del cliente.
+- **Salvare arrotonda il saldo al minuto.** Il centralino scala il tempo al secondo, mentre il campo **Minuti di credito** mostra il saldo arrotondato al minuto. Quando salvi una scheda, anche solo per cambiare la nota, il saldo diventa esattamente i minuti scritti nel campo: per esempio un saldo di «12 min» e 40 secondi diventa 13 minuti.
+- **La data «ricaricato» non cambia dal pannello.** Modificare i minuti dalla scheda aggiorna il saldo ma non la data mostrata sotto il saldo.
+- **Il numero è l'identità del cliente.** Se il cliente chiama da un altro telefono non viene riconosciuto: aggiungi anche quel numero come cliente.
+- **È un saldo che gestisci tu.** Caricare o togliere minuti dal pannello non comporta addebiti: sono i minuti che hai venduto ai tuoi clienti.
+- **Eliminare un cliente è definitivo**, insieme al suo saldo.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Perché devo scrivere almeno 9 cifre?">
+    Il cliente viene riconosciuto dal numero di telefono completo, quindi i numeri brevi non sono accettati. Se vuoi che il cliente si identifichi con un codice breve da digitare, usa l'[Accesso con PIN](/centralino/servizi-a-consumo/accesso-con-pin).
+  </Accordion>
+
+  <Accordion title="Il cliente chiama da un altro telefono e non viene riconosciuto.">
+    Il riconoscimento avviene sul numero da cui chiama. Aggiungi anche l'altro numero con **Nuovo cliente**. Controlla anche che il numero sia scritto senza +39.
+  </Accordion>
+
+  <Accordion title="Come ricarico un cliente?">
+    Cercalo, apri la sua scheda, scrivi in **Minuti di credito** il totale che deve risultare e premi **Salva**.
+  </Accordion>
+
+  <Accordion title="Ho salvato la scheda e il saldo è cambiato di qualche secondo. Perché?">
+    Il campo **Minuti di credito** lavora in minuti interi: salvando, il saldo diventa esattamente i minuti scritti nel campo, e i secondi in più o in meno vengono arrotondati al minuto.
+  </Accordion>
+
+  <Accordion title="Come trovo un cliente partendo dal numero?">
+    Scrivi il numero, o una sua parte, nella ricerca **Cerca cliente, numero, nota o ultimo chiamante…**.
+  </Accordion>
+
+  <Accordion title="Lo stesso numero può avere due saldi?">
+    Sì, su due profili diversi: per esempio una volta su P0 e una su P1. Sullo stesso profilo no.
+  </Accordion>
+
+  <Accordion title="Che differenza c'è con l'Accesso con PIN?">
+    Con i Servizi prepagati il cliente è riconosciuto dal numero da cui chiama e non digita niente. Con l'[Accesso con PIN](/centralino/servizi-a-consumo/accesso-con-pin) digita un PIN personale e può chiamare da qualsiasi telefono.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Accesso con PIN" icon="key" href="/centralino/servizi-a-consumo/accesso-con-pin">
+    Saldo di minuti con un PIN da digitare.
+  </Card>
+
+  <Card title="Codici servizio" icon="list" href="/centralino/servizi-a-consumo/codici-servizio">
+    Codici brevi per arrivare dritti a un servizio.
+  </Card>
+
+  <Card title="Servizi interni" icon="sitemap" href="/centralino/regole/servizi-interni">
+    Il servizio in cui entra il cliente riconosciuto.
+  </Card>
+
+  <Card title="Passaggi che instradano la chiamata" icon="arrow-right-arrow-left" href="/centralino/regole/passaggi-chiamata">
+    Il passaggio Servizi basati su CallerID.
+  </Card>
+</CardGroup>

@@ -1,5 +1,208 @@
 ---
 title: "Analisi chiamate code"
+sidebarTitle: "Analisi chiamate code"
+description: "Come rispondono le code di ricezione: quante chiamate, quante risposte, quanto si aspetta, chi riattacca in attesa, operatore per operatore e coda per coda."
+keywords:
+  - "analisi chiamate code"
+  - "statistiche code"
+  - "code di ricezione"
+  - "attesa media"
+  - "tempo di attesa"
+  - "chiamate abbandonate"
+  - "ha riattaccato in attesa"
+  - "attesa scaduta"
+  - "operatori coda"
+  - "report code"
+  - "esporta code"
+  - "queue"
 ---
 
-Caricamento in corso.
+**Analisi chiamate code** ti dice come stanno rispondendo le tue code di ricezione in un periodo: quante chiamate sono entrate, quante hanno avuto risposta, quanto hanno aspettato i clienti e quanti hanno riattaccato prima di parlare con qualcuno. Come dice la pagina: «Come rispondono le code: chi risponde, quanto si aspetta, chi riattacca prima.»
+
+**Dove si trova:** Menu → Monitoraggio → Dettagli → **Analisi chiamate code** · `https://cloud.mycentralino.com/analisi-chiamate-code`
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli è stata concessa la sezione **Monitoraggio** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)). Non serve nessun modulo, ma la pagina mostra qualcosa solo se usi le [Code di ricezione](/centralino/instradamento/code-di-ricezione).
+
+## Cosa trovi nella pagina
+
+Sopra il titolo leggi quante chiamate sono passate dalle code, per esempio «214 chiamate in coda nel periodo». In alto a destra c'è il bottone **Esporta in Excel**.
+
+### I filtri
+
+| Filtro | Cosa fa |
+| --- | --- |
+| **Periodo** | Due date, dal giorno al giorno. Predefinito: gli ultimi 7 giorni. |
+| **Oggi** · **Ieri** · **Ultimi 7 gg** · **Ultimi 30 gg** · **Mese corrente** | Scorciatoie per il periodo. |
+| **Cerca numero, operatore o coda…** | Cerca nel numero di chi chiamava, nell'operatore e nel nome della coda. |
+| **Esito** | **Risposte**, **Ha riattaccato in attesa**, **Attesa scaduta**. Puoi attivarne più di uno; nessuno attivo = tutti. |
+| **Code** | Una pillola per ogni coda che ha ricevuto chiamate nel periodo. Clicca una o più code per vedere solo quelle. |
+| **Operatori** | Una pillola per ogni operatore che ha risposto nel periodo. Clicca uno o più operatori per vedere solo le loro chiamate. |
+| **Togli i filtri** | Compare quando hai attivato un filtro o una ricerca: li toglie tutti. Il periodo resta quello scelto. |
+
+Sul telefono restano visibili solo la ricerca e il bottone **Filtri**, con accanto il numero di filtri attivi, per esempio «Filtri (2)»: toccalo per aprire periodo, scorciatoie, esito, code e operatori. Un periodo diverso dagli ultimi 7 giorni conta come filtro; la ricerca no.
+
+### I numeri del periodo
+
+Sei riquadri, calcolati sulle chiamate che corrispondono ai filtri:
+
+| Riquadro | Cosa indica |
+| --- | --- |
+| **Chiamate in coda** | Le chiamate entrate in una coda nel periodo e concluse con uno degli esiti della tabella «Gli esiti di una chiamata in coda». |
+| **Risposte** | Quelle a cui ha risposto un operatore, con la percentuale: «_N_% del totale». |
+| **Hanno riattaccato in attesa** | Chi ha chiuso mentre aspettava, prima di parlare con un operatore. |
+| **Attesa scaduta** | «nessuno ha risposto in tempo»: la chiamata è uscita dalla coda perché è passato il tempo massimo di attesa. |
+| **Minuti di conversazione** | Il tempo totale passato al telefono con gli operatori. |
+| **Durata media** | Quanto dura in media una conversazione; sotto, «attesa media _m:ss_». |
+
+### Per operatore
+
+Una riga per ogni operatore che ha risposto ad almeno una chiamata, dal più attivo: **Operatore**, **Risposte**, **Minuti**, **Durata media**. Se nessuno ha risposto: «Nessun operatore ha risposto nel periodo.»
+
+### Per coda
+
+Una riga per ogni coda, dalla più trafficata: **Coda**, **Chiamate**, **Risposte** (in percentuale), **Attesa media**. La percentuale di risposte è verde dall'80% in su, ambra fra il 50% e l'80%, rossa sotto il 50%. Se non ci sono chiamate: «Nessuna chiamata in coda nel periodo.»
+
+### Le chiamate
+
+L'elenco di tutte le chiamate passate dalle code, dalla più recente, 100 per pagina. Con più pagine, in fondo trovi «Pagina _N_ di _M_» e i bottoni **‹ Precedente** e **Successiva ›**.
+
+| Colonna | Cosa indica |
+| --- | --- |
+| **Quando** | Il momento in cui la chiamata è entrata in coda, per esempio «oggi · 10:53». |
+| **Chi chiamava** | Il numero del cliente, oppure «Numero nascosto». |
+| **Coda** | Il nome della coda. |
+| **Operatore** | Chi ha risposto. «—» se nessuno ha risposto. |
+| **Attesa** | Quanto ha aspettato il cliente prima che un operatore rispondesse. «—» se nessuno ha risposto. |
+| **Durata** | Quanto è durata la conversazione. «—» se nessuno ha risposto. |
+| **Esito** | Come è finita, vedi la tabella qui sotto. |
+
+Sul telefono ogni riga diventa una scheda.
+
+### Gli esiti di una chiamata in coda
+
+| Esito | Cosa significa |
+| --- | --- |
+| **Risposta · ha chiuso chi chiamava** | Un operatore ha risposto; alla fine ha riattaccato il cliente. |
+| **Risposta · ha chiuso l'operatore** | Un operatore ha risposto; alla fine ha riattaccato l'operatore. |
+| **Risposta · trasferita** | Un operatore ha risposto e poi ha trasferito la chiamata. |
+| **Ha riattaccato in attesa** | Il cliente ha chiuso mentre aspettava, prima di parlare con qualcuno. |
+| **Attesa scaduta** | Nessun operatore ha risposto entro il **Tempo massimo in attesa** della coda: la chiamata è uscita dalla coda. |
+
+Il filtro **Risposte** comprende tutti e tre gli esiti che iniziano con «Risposta».
+
+## Come fare
+
+### Come vedo quante chiamate ha preso ogni operatore questa settimana
+
+<Steps>
+  <Step title="Apri Analisi chiamate code">
+    Menu → Monitoraggio → Dettagli → **Analisi chiamate code**.
+  </Step>
+  <Step title="Scegli il periodo">
+    Clicca **Ultimi 7 gg** (è già il periodo predefinito).
+  </Step>
+  <Step title="Leggi la tabella Per operatore">
+    La colonna **Risposte** dice quante chiamate ha preso ciascuno, **Minuti** quanto è stato al telefono.
+  </Step>
+</Steps>
+
+### Come vedo quanto aspettano i clienti in una coda
+
+<Steps>
+  <Step title="Apri Analisi chiamate code">
+    Menu → Monitoraggio → Dettagli → **Analisi chiamate code**, e scegli il periodo.
+  </Step>
+  <Step title="Guarda la tabella Per coda">
+    La colonna **Attesa media** dice quanto hanno aspettato in media i clienti a cui un operatore ha risposto.
+  </Step>
+  <Step title="Se vuoi, filtra una sola coda">
+    In **Code** clicca la pillola della coda: il riquadro **Durata media** mostra sotto l'«attesa media» di quella coda, e l'elenco le sue chiamate.
+  </Step>
+</Steps>
+
+### Come vedo chi ha riattaccato in attesa
+
+In **Esito** attiva **Ha riattaccato in attesa**: l'elenco mostra solo quelle chiamate, con il numero del cliente e la coda. Per richiamarli usa la pagina [Da richiamare](/centralino/monitoraggio/da-richiamare).
+
+### Come vedo le chiamate a cui nessuno ha risposto in tempo
+
+In **Esito** attiva **Attesa scaduta**. Se sono tante, apri la coda in [Code di ricezione](/centralino/instradamento/code-di-ricezione) e controlla gli operatori e il **Tempo massimo in attesa**.
+
+### Come esporto il report delle code
+
+<Steps>
+  <Step title="Imposta periodo e filtri">
+    Scegli il periodo e, se vuoi, code, operatori, esiti o una ricerca.
+  </Step>
+  <Step title="Premi Esporta in Excel">
+    Il file si scarica subito e contiene le stesse chiamate che vedi in pagina, con gli stessi filtri.
+  </Step>
+</Steps>
+
+## Cosa c'è nel file esportato
+
+Il file (in formato CSV, si apre con Excel o con qualunque foglio di calcolo) contiene:
+
+| Parte | Contenuto |
+| --- | --- |
+| Testata | Il periodo, la data in cui lo hai scaricato e gli eventuali filtri attivi (gli esiti con le parole del file: Cliente, Operatore, Trasferita, Abbandono, Timeout). |
+| Riepilogo | Totale chiamate, risposte, abbandoni (chi ha riattaccato in attesa), timeout (attesa scaduta), percentuale di risposta, minuti totali, durata media, attesa media. |
+| Per operatore | Operatore, risposte, minuti, durata media. |
+| Per coda | Coda, totale, risposte, abbandoni, timeout, percentuale di risposta, attesa media. |
+| Dettaglio | Una riga per chiamata: numero progressivo, data e ora, chiamante, coda, operatore, attesa, durata, la colonna «Ha chiuso» con l'esito (Cliente, Operatore, Trasferita, Abbandono, Timeout) e un codice della chiamata. |
+
+## Da sapere
+
+- **Solo le chiamate passate da una coda.** Le chiamate che hanno fatto squillare direttamente un interno, senza coda, non sono qui: le trovi in [Chiamate ricevute](/centralino/monitoraggio/chiamate-ricevute).
+- **L'attesa si misura sulle chiamate con risposta.** La colonna **Attesa**, l'**Attesa media** della tabella **Per coda** e l'«attesa media» sotto **Durata media** contano solo le chiamate a cui un operatore ha risposto. Per chi ha riattaccato o è uscito per attesa scaduta l'attesa non è indicata.
+- **Contano solo le chiamate concluse con uno degli esiti elencati.** Una chiamata ancora in corso non compare.
+- **Le pillole Code e Operatori** mostrano solo le code e gli operatori che hanno avuto chiamate nel periodo scelto: se allarghi il periodo possono comparirne altri.
+- **«Ha riattaccato in attesa» e «Attesa scaduta» non sono la stessa cosa.** Nel primo caso ha chiuso il cliente; nel secondo nessuno ha risposto entro il **Tempo massimo in attesa** della coda.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Che differenza c'è fra «Ha riattaccato in attesa» e «Attesa scaduta»?">
+    **Ha riattaccato in attesa**: il cliente si è stancato di aspettare e ha chiuso. **Attesa scaduta**: il cliente era ancora in linea, ma è passato il **Tempo massimo in attesa** della coda senza che nessun operatore rispondesse, e la chiamata è uscita dalla coda.
+  </Accordion>
+
+  <Accordion title="Dove trovo i clienti che hanno riattaccato, per richiamarli?">
+    In [Da richiamare](/centralino/monitoraggio/da-richiamare): lì puoi richiamarli con un clic e segnare chi hai già sentito.
+  </Accordion>
+
+  <Accordion title="Perché un operatore non compare nella tabella Per operatore?">
+    La tabella mostra solo chi ha risposto ad almeno una chiamata nel periodo scelto. Allarga il periodo, oppure togli i filtri con **Togli i filtri**.
+  </Accordion>
+
+  <Accordion title="La pagina è vuota: perché?">
+    Se leggi «Nessuna chiamata nel periodo» – «Prova ad allargare il periodo o a togliere i filtri.», nel periodo scelto nessuna chiamata è passata da una coda, oppure i filtri sono troppo stretti. Se non usi le code, questa pagina resta vuota: le tue chiamate sono in [Chiamate ricevute](/centralino/monitoraggio/chiamate-ricevute).
+  </Accordion>
+
+  <Accordion title="Il file esportato segue i filtri?">
+    Sì: periodo, code, operatori, esiti e ricerca. In testa al file trovi scritti i filtri usati.
+  </Accordion>
+
+  <Accordion title="Cosa vuol dire «Risposta · trasferita»?">
+    L'operatore ha risposto e poi ha passato la chiamata a qualcun altro. Conta fra le **Risposte**.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Code di ricezione" icon="users" href="/centralino/instradamento/code-di-ricezione">
+    Operatori, Tempo massimo in attesa e impostazioni delle code.
+  </Card>
+
+  <Card title="Da richiamare" icon="phone-volume" href="/centralino/monitoraggio/da-richiamare">
+    Chi ha riattaccato in coda, da richiamare.
+  </Card>
+
+  <Card title="Chiamate ricevute" icon="phone" href="/centralino/monitoraggio/chiamate-ricevute">
+    Tutte le chiamate arrivate, con esito e percorso.
+  </Card>
+
+  <Card title="In tempo reale" icon="chart-line" href="/centralino/monitoraggio/in-tempo-reale">
+    Chi è in attesa nelle code adesso.
+  </Card>
+</CardGroup>

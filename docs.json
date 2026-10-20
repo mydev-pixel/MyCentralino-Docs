@@ -130,7 +130,8 @@
               "centralino/account/il-mio-account",
               "centralino/account/utenti-e-permessi",
               "centralino/account/abbonamento",
-              "centralino/account/credito-e-ricariche"
+              "centralino/account/credito-e-ricariche",
+              "centralino/account/fatture-e-pagamenti"
             ]
           },
           {

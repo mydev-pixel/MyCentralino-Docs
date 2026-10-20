@@ -1,5 +1,198 @@
 ---
 title: "Analisi utilizzo Flat"
+sidebarTitle: "Analisi utilizzo Flat"
+description: "Quanti minuti del pacchetto FLAT hai usato nel mese, giorno per giorno, e l'elenco delle chiamate in uscita con durata e costo, da scaricare in CSV, Excel o PDF."
+keywords:
+  - "flat"
+  - "minuti inclusi"
+  - "minuti residui"
+  - "consumo flat"
+  - "pacchetto minuti"
+  - "costi chiamate in uscita"
+  - "a consumo"
+  - "giorno di saturazione"
+  - "esportare chiamate"
+  - "csv"
+  - "excel"
+  - "pdf"
+  - "chiamate illimitate"
 ---
 
-Caricamento in corso.
+**Analisi utilizzo Flat** mostra quanto hai usato del tuo pacchetto di minuti (FLAT) e quanto costano le chiamate in uscita. Ha due pagine: l'elenco delle chiamate con il loro costo e **Utilizzo FLAT**, il consumo giorno per giorno del mese in corso.
+
+**Dove si trova:** Menu → **I tuoi moduli** → Chiamate → **Analisi utilizzo Flat** · `https://cloud.mycentralino.com/costi-flat`
+
+**Chi la vede:** il titolare dell'account. Un collaboratore solo se gli hai dato il permesso **I tuoi moduli**.
+
+<Info>
+  Non è un modulo da attivare: la pagina mostra i dati quando per il tuo centralino è attivo il dettaglio dei costi delle chiamate in uscita, come succede a chi ha un pacchetto FLAT. Altrimenti nel menu la voce non c'è e la pagina dice «Nessun billing FLAT configurato»: per attivare il monitoraggio dei costi va contattata l'assistenza. Un pacchetto FLAT si sceglie da [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita).
+</Info>
+
+## Cosa trovi nella pagina
+
+### Minuti usati in questo ciclo
+
+In alto, se hai un pacchetto FLAT, il riquadro **Minuti usati in questo ciclo**:
+
+- il numero dei minuti usati, grande, con «su …» e i minuti inclusi nel pacchetto; per le FLAT senza limite c'è «minuti · chiamate illimitate»;
+- una barra del consumo e la riga «Restano N minuti · aggiornato …»;
+- quando i minuti sono finiti la barra diventa ambra e la riga dice «Minuti della FLAT finiti: fino al prossimo ciclo le chiamate si pagano a consumo.»;
+- il bottone **Giorno per giorno ›**, che apre **Utilizzo FLAT**.
+
+### L'elenco delle chiamate
+
+Sotto, l'elenco delle chiamate in uscita. Il titolo riporta il nome del tuo operatore FLAT e la pagina può avere due forme, secondo la linea che usi.
+
+<Tabs>
+  <Tab title="Con il filtro per date">
+    - Accanto al titolo, **Profilo FLAT attivo:** con un'etichetta: **A consumo** (tariffa per minuto a scaglioni: cellulari, nazionali, numeri speciali), **FLAT …** (chiamate comprese nel canone, quelle fuori FLAT a consumo) oppure **N/D** se il profilo non è noto.
+    - **Periodo**: due date, dal … al …, e le scorciatoie **Oggi**, **Ultimi 3 gg**, **Ultimi 7 gg**, **Mese corrente**. Di base dal primo del mese a oggi; al massimo 31 giorni.
+    - Il conteggio «N chiamate» e i bottoni **CSV** ed **Excel**.
+    - La tabella, 50 chiamate per pagina, con **Precedente**, i numeri di pagina e **Successiva**.
+  </Tab>
+  <Tab title="Periodo di fatturazione corrente">
+    - Mostra sempre tutto il periodo di fatturazione in corso, senza filtro per date. I costi sono già comprensivi di IVA.
+    - A destra **Totale periodo** in euro e il numero di chiamate.
+    - La tabella con tutte le chiamate del periodo e i bottoni **CSV** ed **Excel**.
+  </Tab>
+</Tabs>
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **#** | Il numero della riga. |
+| **Data** | Giorno e ora della chiamata. |
+| **Sorgente** | Il numero da cui è partita la chiamata. |
+| **Destinazione** | Il numero chiamato. |
+| **Durata** (o **Bill sec**) | Quanto è durata la chiamata; **Bill sec** sono i secondi fatturati. |
+| **Costo** | Il costo della chiamata. Le chiamate coperte dalla FLAT hanno un'etichetta verde con la scritta **FLAT**. |
+| **Direttrice** | Il tipo di destinazione (per esempio cellulare o fisso), con la tariffa sotto quando c'è. |
+
+### Utilizzo FLAT (giorno per giorno)
+
+Si apre con **Giorno per giorno ›** oppure dalla Home con **Dettaglio utilizzo →** nella card **Pacchetto FLAT** · `https://cloud.mycentralino.com/costi-flat/utilizzo`. Il collegamento indietro riporta ad **Analisi utilizzo Flat**.
+
+- **Utilizzo del piano FLAT** · «Stato e consumo del mese in corso — …», con i bottoni **Lista chiamate** (torna all'elenco), **Statistiche** (le statistiche delle chiamate in uscita), **Excel** e **PDF**.
+- Una fascia di stato: **FLAT attiva**, **FLAT completata per questo ciclo** (i minuti sono finiti), **FLAT in sospensione** oppure **Nessuna FLAT associata al tuo account**, con l'ora dell'ultimo aggiornamento. Se il dato non è disponibile: «Il consumo del mese non è al momento disponibile: i minuti qui sotto non sono aggiornati.»
+- Quattro numeri: **Minuti inclusi** (oppure **Illimitati**), **Minuti consumati**, **Minuti residui** (fino a fine ciclo) e **Consumo FLAT** in percentuale.
+- **Progresso del piano**: una barra con minuti usati, minuti inclusi e percentuale.
+- Il calendario **Minuti giornalieri — …**, con la nota «Solo fissi e mobili italiani — Totale mese: N min». Ogni giorno mostra i minuti e la percentuale di FLAT consumata a fine giornata.
+
+La legenda del calendario:
+
+| Voce | Cosa significa |
+| --- | --- |
+| **In FLAT (intensità = minuti nel giorno)** | Minuti coperti dal pacchetto. Più il colore è intenso, più minuti in quel giorno. |
+| **Giorno di saturazione** | Il giorno in cui la FLAT è finita: la casella è divisa tra minuti in FLAT e a consumo («… flat + … cons»). Sotto il calendario c'è anche «Giorno di saturazione: N». |
+| **A consumo (post-overflow)** | I giorni dopo la saturazione, con l'etichetta «consumo»: quelle chiamate si pagano a consumo. |
+
+Senza pacchetto la pagina dice «Nessun piano FLAT attivo — Non risulta alcun piano FLAT associato al tuo account. Se intendi attivare un pacchetto di minuti inclusi contatta il supporto.»
+
+## Come fare
+
+### Come vedo quanti minuti mi restano
+
+<Steps>
+  <Step title="Apri la pagina">
+    Menu → **I tuoi moduli** → Chiamate → **Analisi utilizzo Flat**.
+  </Step>
+  <Step title="Leggi il riquadro in alto">
+    In **Minuti usati in questo ciclo** leggi i minuti usati sul totale e la riga «Restano N minuti».
+  </Step>
+</Steps>
+
+Dalla Home, **Dettaglio utilizzo →** nella card **Pacchetto FLAT** apre invece direttamente **Utilizzo FLAT**: lì i minuti che restano sono in **Minuti residui**.
+
+### Come capisco in che giorno ho finito i minuti
+
+<Steps>
+  <Step title="Apri il giorno per giorno">
+    In **Analisi utilizzo Flat** premi **Giorno per giorno ›**.
+  </Step>
+  <Step title="Cerca il giorno di saturazione">
+    Leggi «Giorno di saturazione: N» sotto il calendario, oppure cerca la casella divisa in due colori.
+  </Step>
+  <Step title="Guarda i giorni dopo">
+    I giorni con l'etichetta «consumo» sono stati pagati a consumo.
+  </Step>
+</Steps>
+
+### Come scarico le chiamate del mese (per esempio per il commercialista)
+
+<Steps>
+  <Step title="Apri la pagina">
+    Menu → **I tuoi moduli** → Chiamate → **Analisi utilizzo Flat**.
+  </Step>
+  <Step title="Scegli il periodo">
+    Premi **Mese corrente**, oppure scegli le date in **Periodo** (al massimo 31 giorni). Nella versione «periodo di fatturazione corrente» il periodo è fisso.
+  </Step>
+  <Step title="Scarica">
+    Premi **Excel** o **CSV**: scarichi l'elenco del periodo mostrato.
+  </Step>
+</Steps>
+
+### Come scarico il riepilogo del mese in PDF
+
+<Steps>
+  <Step title="Apri Utilizzo FLAT">
+    In **Analisi utilizzo Flat** premi **Giorno per giorno ›**.
+  </Step>
+  <Step title="Scarica">
+    Premi **PDF**: ottieni il riepilogo del mese con il calendario e il dettaglio giornaliero. Con **Excel**, dove la tua linea lo consente, scarichi invece l'elenco delle chiamate del mese.
+  </Step>
+</Steps>
+
+## Da sapere
+
+- **Quali chiamate consumano la FLAT.** I minuti del calendario contano solo le chiamate verso fissi e cellulari italiani.
+- **Quando i minuti finiscono** le chiamate si pagano a consumo fino al prossimo ciclo. I minuti si azzerano e ripartono il 1° del mese.
+- **Periodo massimo.** Nella versione con il filtro per date si vedono al massimo 31 giorni insieme. Se ne scegli di più, il periodo viene accorciato: «Il range massimo consentito è di 31 giorni. È stato ridotto automaticamente.»
+- **Cambiare taglio.** Il pacchetto si alza da [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita); per scendere di taglio si chiede di essere richiamati.
+- Le chiamate in uscita con tutti i dettagli sono anche in [Chiamate effettuate](/centralino/monitoraggio/chiamate-effettuate).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Perché nel costo leggo «FLAT»?">
+    La chiamata è coperta dai minuti inclusi nel pacchetto.
+  </Accordion>
+
+  <Accordion title="Posso vedere più di 31 giorni insieme?">
+    No. Scarica un periodo alla volta, per esempio un mese.
+  </Accordion>
+
+  <Accordion title="Le chiamate oltre la FLAT come si pagano?">
+    A consumo, fino all'inizio del ciclo successivo.
+  </Accordion>
+
+  <Accordion title="Quando ripartono i minuti?">
+    Il 1° del mese: i minuti si azzerano e ripartono.
+  </Accordion>
+
+  <Accordion title="La pagina dice «Nessun billing FLAT configurato». Cosa faccio?">
+    Per il tuo centralino non è attivo il dettaglio dei costi delle chiamate in uscita. Se ti serve, apri una [richiesta di assistenza](/centralino/assistenza/richieste-di-assistenza). Per un pacchetto di minuti vedi [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita).
+  </Accordion>
+
+  <Accordion title="Ho le chiamate illimitate: cosa vedo?">
+    Al posto del totale dei minuti leggi «minuti · chiamate illimitate» e, in **Utilizzo FLAT**, **Illimitati**: non c'è un tetto, quindi né giorno di saturazione né giorni a consumo.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Aggiungi funzionalità" icon="gear" href="/centralino/moduli/aggiungi-funzionalita">
+    Scegliere o alzare il pacchetto FLAT.
+  </Card>
+
+  <Card title="Chiamate effettuate" icon="phone" href="/centralino/monitoraggio/chiamate-effettuate">
+    Tutte le chiamate in uscita.
+  </Card>
+
+  <Card title="I tuoi moduli" icon="list" href="/centralino/moduli/i-tuoi-moduli">
+    I moduli del centralino.
+  </Card>
+
+  <Card title="Credito e ricariche" icon="credit-card" href="/centralino/account/credito-e-ricariche">
+    Il credito del centralino e le ricariche.
+  </Card>
+</CardGroup>

@@ -1,5 +1,339 @@
 ---
 title: "Orari, filtri e dettagli della chiamata"
+sidebarTitle: "Passaggi: orari e filtri"
+description: "Catalogo dei passaggi che controllano orari e interruttori, fanno sentire messaggi, filtrano chi chiama e cambiano quello che si vede sul telefono: tutti i campi e le opzioni."
+keywords:
+  - "apertura settimanale"
+  - "orari"
+  - "ferie e festività"
+  - "switch temporale"
+  - "switch manuale"
+  - "interruttore"
+  - "numeri bloccati"
+  - "blacklist"
+  - "whitelist"
+  - "spam"
+  - "filtra per prefisso"
+  - "fissi mobili"
+  - "riproduco audio"
+  - "messaggio di benvenuto"
+  - "rubrica"
+  - "nome sul display"
+  - "imposta lingua"
+  - "nascondi numero"
 ---
 
-Caricamento in corso.
+Questa pagina descrive, uno per uno, i passaggi della finestra **Aggiungi regola** che controllano l'orario, fanno sentire un messaggio, filtrano chi chiama o cambiano quello che compare sul telefono di chi risponde. Per ciascuno trovi il nome esatto, l'argomento, a cosa serve e i campi.
+
+**Dove si trova:** Menu → **Regole chiamate** → clic su un numero o servizio interno → **Aggiungi regola** · `https://cloud.mycentralino.com/regole`
+
+**Chi la vede:** chi può modificare le **Regole delle chiamate**.
+
+Come si apre la finestra e come si usa è spiegato in [Editor delle regole](/centralino/regole/editor).
+
+<Note>
+  Nella finestra **Aggiungi regola** gli interruttori si chiamano ancora **Switch temporale** (sono gli **Interruttori a orario** del menu) e **Switch manuale** (sono gli **Interruttori**). Qui li trovi con il nome che vedi a video.
+</Note>
+
+## In sintesi
+
+| Passaggio | Argomento | Etichetta sulla scheda | Cosa fa |
+| --- | --- | --- | --- |
+| **Riproduco audio** | Regole più usate | AUDIO | Fa sentire un messaggio, poi prosegue |
+| **Apertura settimanale** | Orari e chiusure · Regole più usate | ORARIO | Aperti o chiusi, secondo gli orari |
+| **Ferie e festività** | Orari e chiusure · Regole più usate | FESTIVITÀ | Nei giorni di chiusura devia la chiamata |
+| **Switch temporale** | Orari e chiusure | INTERRUTTORE A ORARIO | Devia la chiamata in fasce orarie tue |
+| **Switch manuale** | Orari e chiusure | INTERRUTTORE | Devia la chiamata quando lo accendi tu |
+| **Numeri bloccati** | Filtri chiamate | NUMERI BLOCCATI · NUMERI AMMESSI | Blocca (o lascia passare solo) i numeri di una lista |
+| **Filtra per numero chiamante** | Filtri chiamate | FILTRO CHIAMANTE | I numeri di una lista vanno a un servizio interno |
+| **Blocca chiamate SPAM** | Filtri chiamate | SPAM BLOCKER | Chiude le chiamate dei numeri segnalati come SPAM |
+| **Filtra fissi / mobili** | Filtri chiamate | CHECK PHONE NUMBER | I fissi vanno a un servizio interno |
+| **Filtra per prefisso** | Filtri chiamate | FILTER BY PREFIX | Chi ha un certo prefisso va a un servizio interno |
+| **Attiva ricerca in rubrica** | Dettagli chiamata | RUBRICA | Mostra sul telefono il nome dalla rubrica |
+| **Imposta dettaglio chiamata** | Dettagli chiamata | INFO CHIAMATA | Aggiunge un'etichetta sul telefono |
+| **Nascondi numero chiamante** | Dettagli chiamata | SETCALLERIDANONYMOUS | Da qui in poi chi chiama risulta anonimo |
+| **Imposta lingua** | Dettagli chiamata | LINGUA | Cambia la lingua dei messaggi automatici |
+| **Riproduci audio per operatore** | Impostazioni avanzate | AUDIOFILE TO OPERATOR | Un messaggio che sente solo l'operatore |
+
+## Riproduco audio
+
+**Argomento:** Regole più usate
+
+Fa sentire a chi chiama un messaggio della tua libreria, poi la chiamata passa alla regola successiva. Mentre il messaggio suona chi chiama non può premere tasti (per quello serve un menù vocale). Se vuoi che la chiamata si fermi dopo il messaggio, aggiungi sotto **Termina chiamata**.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **File audio disponibili** | Il messaggio da far sentire, con il contatore «visibili/totali», la ricerca **Cerca per nome o descrizione…**, la descrizione e il lettore per ascoltarlo prima di sceglierlo. **Nuovo** crea un messaggio (carichi un MP3 o un WAV, oppure lo fai leggere alla sintesi vocale). | Un messaggio |
+
+- Senza messaggi: «Nessun file audio configurato per questo centralino.» con **Crea il primo audio**.
+- Errori: «Seleziona un file audio.», «File audio non trovato per questo centralino.».
+- **Dopo:** nella finestra di dettaglio puoi ascoltarlo, aprirlo con **Modifica audio** o sceglierne un altro con **Sostituisci file audio**.
+
+Vedi [Messaggi audio](/centralino/audio/messaggi-audio) e [Messaggio di benvenuto](/centralino/come-fare/messaggio-di-benvenuto).
+
+## Apertura settimanale
+
+**Argomento:** Orari e chiusure (anche in Regole più usate) · **Divide la chiamata**
+
+Controlla l'orario scelto. Se siete **aperti** la chiamata passa alla regola successiva; se siete **chiusi** sente il messaggio di chiusura (se c'è) e va alla destinazione di chiusura impostata nell'orario (riaggancia, segreteria, servizio interno, coda, menù vocale…). Mettilo in cima alla sequenza. Gli orari seguono l'ora italiana.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Gestione aperture** | L'orario da controllare; per ognuno vedi «N / 7 giorni configurati». Ricerca **Cerca gestione orari…**; **Nuovo** crea un orario («Nuova apertura»). | Un orario |
+
+- Senza orari: «Nessuna gestione aperture configurata per questo centralino.» con **Crea la prima gestione**.
+- Errori: «Seleziona una gestione aperture.», «Gestione aperture non trovata.».
+- Nello schema la scheda dice l'orario di oggi («Oggi 09:00–13:00 · 14:00–18:00» o «Oggi chiuso»), a destra c'è il ramo **Chiusi** e sotto la linea **Aperti**.
+- Fasce, messaggio e destinazione di chiusura si cambiano nell'orario: nella finestra di dettaglio premi **Modifica** accanto a **Orari**.
+
+Vedi [Orari](/centralino/orari-e-chiusure/orari) e [Configurare gli orari di apertura](/centralino/come-fare/configurare-gli-orari-di-apertura).
+
+## Ferie e festività
+
+**Argomento:** Orari e chiusure (anche in Regole più usate) · **Divide la chiamata**
+
+Nei giorni del gruppo di ferie scelto la chiamata sente il messaggio (se c'è) e va alla destinazione di chiusura del gruppo; negli altri giorni passa alla regola successiva. Mettilo sopra **Apertura settimanale**: così nei giorni di chiusura chi chiama sente sempre il messaggio delle ferie, a qualsiasi ora.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Gruppo festività** | Il gruppo di giorni di chiusura; per ognuno «N date configurate». Ricerca **Cerca ferie…**; **Nuovo** crea un gruppo («Nuovo gruppo festività»). | Un gruppo |
+
+- Senza gruppi: «Nessun gruppo festività configurato per questo centralino.» con **Crea il primo gruppo**.
+- Errori: «Seleziona una gestione festività.», «Gestione festività non trovata.».
+- Nello schema la scheda dice «Prossima chiusura: …», «Chiusi ora · …» oppure «Oggi è festivo»; a destra c'è il ramo **Festivo**, sotto **Non festivo**.
+
+Vedi [Ferie e festività](/centralino/orari-e-chiusure/ferie-e-festivita) e [Chiudere per ferie o festività](/centralino/come-fare/chiudere-per-ferie-o-festivita).
+
+## Switch temporale
+
+**Argomento:** Orari e chiusure · **Divide la chiamata**
+
+È l'**Interruttore a orario**: devia le chiamate da solo nelle finestre orarie che decidi tu (al massimo due al giorno), per esempio verso la segreteria durante la pausa pranzo. Quando la chiamata arriva **dentro** una finestra va sul ramo **Attivo** e segue l'azione dell'interruttore; fuori dalle finestre prosegue (**Disattivo**). Finestre e azione si impostano in [Interruttori a orario](/centralino/orari-e-chiusure/interruttori-a-orario). Nello schema la scheda mostra la domanda «Siamo fuori dalla finestra oraria?», ma il ramo **Attivo** si accende quando la chiamata è dentro una finestra.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Interruttore a orario** | Quale interruttore usare; per ognuno «N / 7 giorni configurati». Ricerca **Cerca switch…**; **Nuovo** crea un interruttore a orario. | Un interruttore a orario |
+
+- Senza interruttori: «Nessun interruttore a orario configurato per questo centralino.» con **Crea il primo switch**.
+- Errori: «Seleziona uno switch temporale.», «Switch temporale non trovato.».
+
+Vedi [Interruttori a orario](/centralino/orari-e-chiusure/interruttori-a-orario).
+
+## Switch manuale
+
+**Argomento:** Orari e chiusure · **Divide la chiamata**
+
+È l'**Interruttore** che accendi e spegni tu: dal pannello oppure componendo il suo codice da un interno (per esempio `*11`). **Acceso** → la chiamata va all'azione dell'interruttore (per esempio il cellulare del titolare); **spento** → prosegue. Utile per «chiudere» a mano fuori orario o in un'emergenza.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Interruttore** | Quale interruttore usare: il suo codice e la descrizione. Ricerca **Cerca switch…**; **Nuovo** crea un interruttore. | Un interruttore |
+
+- Senza interruttori: «Nessun interruttore configurato per questo centralino.» con **Crea il primo switch**.
+- Errori: «Seleziona uno switch manuale.», «Switch manuale non trovato.».
+- Nello schema l'icona della scheda mostra l'interruttore acceso o spento e la scheda chiede «Lo switch è acceso?».
+- **Dopo:** nella finestra di dettaglio c'è **Stato switch** con il bottone **Attiva** / **Disattiva**: cambia lo stato subito, per tutte le chiamate.
+
+Vedi [Interruttori](/centralino/orari-e-chiusure/interruttori).
+
+### Come chiudo il centralino a mano in caso di emergenza
+
+<Steps>
+  <Step title="Crea l'interruttore">
+    Menu → Risorse centralino → Orari e chiusure → **Interruttori**: crea l'interruttore e scegli dove va la chiamata quando è acceso.
+  </Step>
+  <Step title="Mettilo in cima al numero">
+    Nell'editor del numero premi il **\+** sotto **Chiamata in arrivo** e scegli **Switch manuale** → l'interruttore → **Aggiungi regola**.
+  </Step>
+  <Step title="Accendilo quando serve">
+    Clicca la scheda **INTERRUTTORE** e premi **Attiva**, oppure componi il suo codice da un interno. Per tornare alla normalità premi **Disattiva**.
+  </Step>
+</Steps>
+
+## Numeri bloccati
+
+**Argomento:** Filtri chiamate
+
+Blocca le chiamate dai numeri della lista scelta: chi è bloccato sente l'audio scelto e la chiamata si chiude, gli altri proseguono. Con **Modalità whitelist** fa il contrario: passano **solo** i numeri della lista. Mettilo in cima alla sequenza.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Lista numeri** | La lista, con quanti numeri contiene. La prima lista è già proposta. | Una lista di [Numeri bloccati](/centralino/instradamento/numeri-bloccati) |
+| **Audio per il chiamante** | Cosa sente chi viene bloccato | **Nessun audio** (proposto: riaggancia subito), **Solo beep**, oppure un tuo messaggio audio |
+| **Modalità whitelist** | «Inverte il criterio: solo i numeri della lista sono ammessi; tutti gli altri vengono bloccati.» | Spuntato / non spuntato |
+| **Ammetti numeri anonimi** | «Consente di ricevere chiamate da numerazioni anonime anche se il filtro è attivo.» | Spuntato / non spuntato |
+
+- Nello schema la scheda dice «Numeri in lista e anonime bloccati», «Numeri in lista bloccati · anonime ammesse», oppure, in modalità whitelist (etichetta NUMERI AMMESSI), «Passano solo i numeri in lista · anonime ammesse» o «· anonime bloccate».
+- Senza liste: «Nessuna blacklist configurata per questo centralino.» con **Crea una blacklist**.
+- Errori: «Seleziona una blacklist.», «Blacklist non trovata.», «Audio non trovato per questo centralino.».
+
+<Warning>
+  Senza **Ammetti numeri anonimi**, anche le chiamate da numero anonimo vengono bloccate.
+</Warning>
+
+Guida completa: [Bloccare un numero](/centralino/come-fare/bloccare-un-numero).
+
+## Filtra per numero chiamante
+
+**Argomento:** Filtri chiamate
+
+Se chi chiama è nella lista scelta, la chiamata va al servizio interno indicato (per esempio i clienti importanti che saltano il menù); altrimenti passa alla regola successiva.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Lista numeri** | La lista dei numeri riconosciuti. La prima lista è già proposta. | Una lista di **Numeri bloccati** |
+| **Servizio interno (destinazione per match)** | Dove va chi è nella lista. Ricerca **Cerca servizio interno…**. | Un servizio interno |
+| **Considera anche chiamate anonime** | «I chiamanti anonimi vengono trattati come se fossero in lista e instradati al servizio interno.» | Spuntato / non spuntato |
+
+- Senza liste: «Nessuna lista configurata.» con **Crea una lista**. Senza servizi interni: «Nessun servizio interno configurato.».
+- Errori: «Seleziona una lista.», «Seleziona un servizio interno.», «Lista non trovata.», «Servizio non trovato.».
+- Nello schema, sotto la scheda, il servizio interno è cliccabile e apre i suoi passaggi.
+
+## Blocca chiamate SPAM
+
+**Argomento:** Filtri chiamate
+
+Controlla chi chiama su elenchi di numeri segnalati come SPAM: se il numero è segnalato chiude la chiamata e manda un'email con i dettagli; altrimenti la chiamata prosegue.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Email di notifica** | Dove arriva l'avviso di ogni chiamata bloccata. Si sceglie tra le email delle tue segreterie; ricerca **Cerca email…**. | Un indirizzo |
+
+- Senza email nelle segreterie: «Nessun indirizzo email nelle caselle vocali.» con **Configura email**.
+- Errori: «Seleziona un indirizzo email.», «Email non trovata.».
+
+## Filtra fissi / mobili
+
+**Argomento:** Filtri chiamate
+
+Se chi chiama ha un **telefono fisso**, la chiamata va al servizio interno scelto; se chiama da **cellulare**, passa alla regola successiva.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Servizio interno (destinazione per chiamate da fisso)** | Dove vanno le chiamate dai fissi. Ricerca **Cerca servizio interno…**. | Un servizio interno |
+
+- Errori: «Seleziona un servizio interno per fissi.», «Servizio interno non trovato.».
+
+## Filtra per prefisso
+
+**Argomento:** Filtri chiamate
+
+Se il numero di chi chiama comincia con il prefisso indicato, la chiamata va al servizio interno scelto; altrimenti passa alla regola successiva. Utile per separare zone o cellulari.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Prefisso** | Le prime cifre del numero di chi chiama, per esempio «02 (Milano) o 06 (Roma) o 33 (cellulari)». | Solo cifre, al massimo 10. Gli altri caratteri vengono tolti da soli. |
+| **Servizio interno (destinazione per match)** | Dove va chi ha quel prefisso. Ricerca **Cerca servizio interno…**. | Un servizio interno |
+
+- Errori: «Scrivi un prefisso numerico.», «Seleziona un servizio interno.», «Servizio non trovato.».
+
+## Attiva ricerca in rubrica
+
+**Argomento:** Dettagli chiamata · **Si aggiunge subito**
+
+Cerca chi chiama nella [Rubrica](/centralino/strumenti/rubrica): se c'è, sul display del telefono che squilla compare «Nome - Descrizione» al posto del numero. Mettilo **prima** dei passaggi che fanno squillare.
+
+## Imposta dettaglio chiamata
+
+**Argomento:** Dettagli chiamata
+
+Aggiunge un'etichetta davanti al numero sul display del telefono che squilla, così chi risponde capisce da quale numero o servizio arriva la chiamata. Per esempio con «Num Verde» il telefono mostra «Num Verde: numero di chi chiama». Mettilo **prima** dei passaggi che fanno squillare.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Descrizione servizio** | L'etichetta da mostrare, per esempio «Num Verde». È già proposto «Serv.» seguito dal numero. | Testo, al massimo 40 caratteri: restano lettere, numeri, spazi e i segni . \_ -; gli altri caratteri (virgola, due punti, apostrofo, barra…) diventano \_. |
+
+- A video: «Il supporto dipende dal modello del telefono IP. Non ha effetto sulle chiamate inoltrate verso cellulari.».
+- Errore: «Scrivi una descrizione.».
+- **Dopo:** nella finestra di dettaglio cambi l'etichetta nel campo **Dettaglio** (lì al massimo 32 caratteri) e premi **Salva**.
+
+## Nascondi numero chiamante
+
+**Argomento:** Dettagli chiamata · **Si aggiunge subito**
+
+Da questo passaggio in poi chi chiama risulta anonimo, anche sul display di chi risponde. Utile quando inoltri la chiamata a qualcuno che non deve vedere il numero originale.
+
+## Imposta lingua
+
+**Argomento:** Dettagli chiamata
+
+Cambia la lingua dei messaggi automatici del centralino (segreteria, code, conferenze) per questa chiamata. I tuoi messaggi audio non cambiano. Mettilo **prima** della coda, della conferenza o della segreteria a cui si riferisce.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Lingua** | La lingua dei messaggi automatici | **Italiano** (proposto), **Inglese**, **Francese**, **Spagnolo**, **Russo** |
+
+- Errore: «Lingua non valida.».
+- **Dopo:** nella finestra di dettaglio cambi la **Lingua** e premi **Salva**.
+
+## Riproduci audio per operatore
+
+**Argomento:** Impostazioni avanzate
+
+Fa sentire un messaggio **solo all'operatore** quando risponde, prima di collegarlo a chi chiama (per esempio «Chiamata dal numero commerciale»). Chi chiama non sente niente. Funziona con le code di ricezione che hanno attiva l'opzione **Audio specifico della coda**: mettilo prima del passaggio della coda.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **File audio** | Il messaggio per l'operatore. Ricerca **Cerca per nome o descrizione…**; **Nuovo** crea un messaggio. | Un messaggio |
+
+- Senza messaggi: «Nessun file audio configurato.» con **Crea il primo audio**.
+- Errori: «Seleziona un file audio.», «Audio non trovato.».
+
+## Da sapere
+
+- **Ordine consigliato in cima a un numero:** Numeri bloccati → Switch manuale → Ferie e festività → Switch temporale → Apertura settimanale → passaggi che cambiano il display (rubrica, dettaglio) → Prendo in carico la chiamata → Registra chiamata → messaggio di benvenuto → passaggio che fa squillare. La tabella completa, con i casi particolari, è in [Editor delle regole](/centralino/regole/editor), sezione «In che ordine metto i passaggi».
+- **Le liste dei filtri** (Numeri bloccati, Filtra per numero chiamante) si preparano in Menu → Risorse centralino → Instradamento → **Numeri bloccati**.
+- **I passaggi che portano a un servizio interno** (Filtra per numero chiamante, Filtra fissi / mobili, Filtra per prefisso) hanno bisogno di almeno un servizio interno: vedi [Servizi interni](/centralino/regole/servizi-interni).
+- **Il nome sul display** dipende dal modello del telefono e non arriva sui cellulari a cui inoltri la chiamata.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Fuori orario la chiamata cade senza messaggio.">
+    Nell'orario non c'è il messaggio di chiusura, oppure la destinazione di chiusura è **Riaggancia**. Apri la scheda **ORARIO**, premi **Modifica** accanto a **Orari** e imposta messaggio e destinazione.
+  </Accordion>
+
+  <Accordion title="Ho messo gli orari ma il telefono squilla anche di notte.">
+    Il passaggio **Apertura settimanale** deve stare sopra quello che fa squillare. Spostalo in cima con **Sposta al posto…** → **In cima**.
+  </Accordion>
+
+  <Accordion title="Il nome del chiamante non compare sul telefono.">
+    **Attiva ricerca in rubrica** o **Imposta dettaglio chiamata** devono stare prima dei passaggi che fanno squillare. Alcuni telefoni non mostrano il nome e sui cellulari non ha effetto.
+  </Accordion>
+
+  <Accordion title="Ho bloccato un numero ma riesce ancora a chiamare.">
+    Controlla che il passaggio **Numeri bloccati** sia sul numero che chiama quella persona e che stia in cima, prima dei passaggi che fanno squillare. Controlla anche che il numero sia scritto nella lista giusta.
+  </Accordion>
+
+  <Accordion title="Voglio che passino solo alcuni numeri: come faccio?">
+    Aggiungi **Numeri bloccati** con la lista dei numeri ammessi e spunta **Modalità whitelist**. Tutti gli altri sentono l'audio scelto e la chiamata si chiude.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Come si aggiungono e si spostano i passaggi.
+  </Card>
+
+  <Card title="Passaggi che instradano la chiamata" icon="phone" href="/centralino/regole/passaggi-chiamata">
+    Il primo catalogo dei passaggi.
+  </Card>
+
+  <Card title="Notifiche, registrazioni e moduli" icon="bell" href="/centralino/regole/passaggi-moduli">
+    Il terzo catalogo dei passaggi.
+  </Card>
+
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Fasce di apertura e destinazione di chiusura.
+  </Card>
+
+  <Card title="Interruttori" icon="toggle-on" href="/centralino/orari-e-chiusure/interruttori">
+    Accesi e spenti da te.
+  </Card>
+
+  <Card title="Numeri bloccati" icon="ban" href="/centralino/instradamento/numeri-bloccati">
+    Le liste di numeri.
+  </Card>
+</CardGroup>

@@ -1,5 +1,380 @@
 ---
 title: "Editor delle regole"
+sidebarTitle: "Editor delle regole"
+description: "Lo schema dei passaggi di un numero o di un servizio interno: come si aggiungono, si spostano, si modificano e si eliminano, e come si legge la strada di una chiamata."
+keywords:
+  - "aggiungi regola"
+  - "modificare regole"
+  - "spostare regola"
+  - "eliminare regola"
+  - "svuota"
+  - "flusso chiamata"
+  - "schema regole"
+  - "inserisci qui"
+  - "regola speciale"
+  - "ordine delle regole"
+  - "ordine dei passaggi"
+  - "ordine consigliato"
+  - "in cima"
+  - "cosa metto prima"
 ---
 
-Caricamento in corso.
+L'editor mostra, come uno schema che scende dall'alto, la strada di una chiamata in arrivo verso un numero o un servizio interno, passo dopo passo. Da qui aggiungi, sposti, modifichi ed elimini i passaggi.
+
+**Dove si trova:** Menu → **Regole chiamate** → clic su un numero o su un servizio interno Indirizzo di un numero: `https://cloud.mycentralino.com/regole/did/NUMERO/modifica` · di un servizio interno: `https://cloud.mycentralino.com/regole/internal/NUMERO/modifica`
+
+**Chi la vede:** il titolare dell'account e i collaboratori con la sezione **Regole delle chiamate**. Si aprono solo i numeri e i servizi del proprio centralino.
+
+<Note>
+  Ogni modifica si salva da sola nel momento in cui la fai e vale per le chiamate successive. Non c'è un bottone **Salva** generale né una barra «Modifiche non salvate».
+</Note>
+
+## Cosa trovi nella pagina
+
+<Frame caption="L'editor delle regole di un numero, passaggio dopo passaggio">
+  <img
+    src="/images/guida/regole-editor.webp"
+    alt="L'editor delle regole di un numero, passaggio dopo passaggio"
+  />
+</Frame>
+
+### La testata
+
+- In piccolo **Regole delle chiamate**, sotto il **numero** grande. Per un numero vero è un collegamento per chiamarlo; accanto c'è **Copia il numero**.
+- Il nome del numero o del servizio con **Cambia numero**: apre un menu per saltare a un altro numero o servizio interno, con la ricerca **Cerca numero o nome…**, diviso in **Numeri** e **Servizi interni**, con quante regole ha ciascuno (in ambra quelli senza regole).
+- La matita **Rinomina il numero** (o **Rinomina il servizio**): cambia la descrizione. **Invio** salva, **Esc** annulla; al massimo 50 caratteri per un numero, 150 per un servizio interno.
+- La riga «Cosa succede a una chiamata in arrivo, passo dopo passo.».
+- A destra **Altre azioni** (i tre puntini) con **Copia su un altro numero o servizio** e, se ci sono passaggi, **Svuota: elimina tutte le regole** in rosso.
+- Il bottone verde **Aggiungi regola**.
+
+Se sei arrivato a un servizio interno cliccando dentro lo schema di un altro numero, sopra la testata compare il percorso (per esempio «Centralino › Commerciale › 402»): cliccalo per tornare indietro.
+
+### Lo schema
+
+- In cima la pillola **Ingresso** · **Chiamata in arrivo**.
+- Sotto, una scheda per ogni passaggio, unite da una linea. Ogni scheda ha:
+  - il **numero di posizione** (1, 2, 3…), cliccabile quando i passaggi sono almeno due;
+  - l'**etichetta del tipo** in maiuscolo (tabella più sotto);
+  - il **nome dell'elemento** collegato: la coda, il menù, l'orario, il numero esterno, l'email…;
+  - una **riga di dettaglio**. Per un orario «Oggi 09:00–13:00 · 14:00–18:00» o «Oggi chiuso»; per le ferie «Prossima chiusura: …», «Chiusi ora · …» o «Oggi è festivo»; per una coda come squilla, quanto si attende, quanti operatori e i primi cinque; per gli interni i primi cinque («+ altri N interni»); per la segreteria «Lascia un messaggio in segreteria» e «Arriva via email a …»; per un menù vocale i tasti e dove portano; per un servizio interno la riga cliccabile «402 apri il servizio».
+- Al passaggio del mouse sulla scheda compaiono le azioni **Sposta su**, **Sposta giù**, **Sposta al posto…** (con almeno due passaggi) ed **Elimina**.
+- Tra due schede, al passaggio del mouse, compare un **\+** (**Inserisci qui**).
+- In fondo il bottone tratteggiato **Aggiungi regola in coda**.
+
+Se il numero non ha ancora passaggi, al posto dello schema c'è «Nessuna regola configurata», con la riga «Aggiungi la prima regola per definire cosa succede a una chiamata in arrivo verso questo numero.» e il bottone **Aggiungi la prima regola**.
+
+### I rami: quando un passaggio divide la chiamata
+
+Orari, ferie e interruttori hanno a destra un **ramo**: la strada che prende la chiamata quando la condizione è vera. Sulla linea che continua in basso c'è l'etichetta opposta.
+
+| Passaggio | Ramo a destra | Linea che prosegue sotto |
+| --- | --- | --- |
+| **Apertura settimanale** (Orari) | **Chiusi** | **Aperti** |
+| **Ferie e festività** | **Festivo** | **Non festivo** |
+| **Switch temporale** (Interruttori a orario) | **Attivo** | **Disattivo** |
+| **Switch manuale** (Interruttori) | **Attivo** | **Disattivo** |
+
+Nel ramo trovi, se c'è, il messaggio audio (scheda **Audio**, cliccabile per modificarlo), poi la destinazione: un servizio interno (cliccabile, apre i suoi passaggi), un'azione su una coda o un menù vocale (cliccabile, apre l'elemento), oppure **Termina chiamata**.
+
+**La strada di adesso.** Le linee e le etichette verdi animate mostrano dove andrebbe una chiamata **in questo momento**: se adesso siete chiusi, è acceso il ramo **Chiusi**. È solo un'indicazione, non cambia niente.
+
+Su telefono e finestre strette le schede occupano tutta la larghezza e i rami vanno a capo sotto la scheda.
+
+### Le etichette delle schede
+
+| Etichetta | Passaggio |
+| --- | --- |
+| RISPONDI | Prendo in carico la chiamata |
+| AUDIO | Riproduco audio |
+| ORARIO | Apertura settimanale |
+| FESTIVITÀ | Ferie e festività |
+| INTERRUTTORE A ORARIO | Switch temporale |
+| INTERRUTTORE | Switch manuale |
+| INTERNI | Fai squillare uno o più interni VoIP |
+| CODA | Inoltra la chiamata a una coda di ricezione |
+| SERVIZIO INTERNO | Inoltra la chiamata a un servizio interno |
+| INOLTRO | Inoltra a numero telefonico esterno |
+| CONFERENZA | Conferenza telefonica |
+| DISA | Interno diretto DISA |
+| CHIUDI | Termina chiamata |
+| SEGRETERIA | Segreteria telefonica |
+| IVR · IVR2 | Menù vocale (IVR) · Menù vocale (IVR) a 2 cifre |
+| PIN SERVICES · CODICE CLIENTE · VERIFICA CALLER ID | Servizi basati su PIN · Filtro per codice numerico · Servizi basati su CallerID |
+| AGENTE AI | Agente AI realtime |
+| MYSEGRETARIA | Servizio MySegretaria |
+| NUMERI BLOCCATI · NUMERI AMMESSI | Numeri bloccati (normale · con **Modalità whitelist**) |
+| FILTRO CHIAMANTE | Filtra per numero chiamante |
+| SPAM BLOCKER · CHECK PHONE NUMBER · FILTER BY PREFIX | Blocca chiamate SPAM · Filtra fissi / mobili · Filtra per prefisso |
+| RUBRICA · INFO CHIAMATA · SETCALLERIDANONYMOUS · LINGUA | Attiva ricerca in rubrica · Imposta dettaglio chiamata · Nascondi numero chiamante · Imposta lingua |
+| AUDIOFILE TO OPERATOR | Riproduci audio per operatore |
+| NOTIFICA EMAIL · LOG CLOUD | Notifica email · Log CloudSoftphone |
+| REGISTRAZIONE · REGISTRAZIONE OP · REGISTRAZIONE AI | Registra chiamata · Registra chiamata (solo operatore) · Analisi chiamata AI |
+| NOTIFICA API · RUBRICA API · NOTIFICA URL | Invia dettagli chiamata via API · Custom CALLERID via API · Invia API alla risposta di coda |
+| ADVANCED AVAILABILITY | Gestione reperibilità |
+| ALFADOCS | AlfaDocs · Riconosci Paziente |
+| LOG CRM · RUBRICA CRM · NOTIFICA WEB · API CRM · VOCE CRM · TASK CRM | I passaggi di MyCRM |
+| RISPONDI PD · LOG PD · BLACKLIST PD | I passaggi del Power Dialer |
+| NOTIFICA WHATSAPP | Invio messaggio WhatsApp Legacy |
+| REGOLA SPECIALE | Una configurazione fatta su misura dall'assistenza (vedi Da sapere) |
+
+Cosa fa ogni passaggio è spiegato nei tre cataloghi: [Passaggi che instradano la chiamata](/centralino/regole/passaggi-chiamata), [Orari, filtri e dettagli](/centralino/regole/passaggi-filtri), [Notifiche, registrazioni e moduli](/centralino/regole/passaggi-moduli).
+
+## La finestra «Aggiungi regola»
+
+Si apre con **Aggiungi regola**, **Aggiungi regola in coda**, il **\+** (**Inserisci qui**) o **Aggiungi la prima regola**. È una finestra ampia al centro dello schermo; sul telefono occupa tutto lo schermo.
+
+<Frame caption="La finestra Aggiungi regola con gli argomenti a sinistra">
+  <img
+    src="/images/guida/regole-aggiungi.webp"
+    alt="La finestra Aggiungi regola con gli argomenti a sinistra"
+  />
+</Frame>
+
+- **In testata** il titolo **Aggiungi regola** e dove andrà il passaggio: «Prima regola», «In cima, prima di tutte le regole», «In fondo, dopo l'ultima regola» oppure «Dopo lo step N». Accanto la ricerca **Cerca una regola…** e la X **Chiudi**.
+- **A sinistra gli argomenti**, ognuno con quanti passaggi contiene: **Regole più usate**, **Orari e chiusure**, **Inoltra la chiamata**, **Notifiche**, **Registrazione chiamate**, **Menù vocali (IVR)**, **AI**, **Filtri chiamate**, **Dettagli chiamata**, **Impostazioni avanzate** e, solo se hai il modulo, **CRM** e **Power Dialer**. Su telefono diventano una fila di etichette da scorrere.
+- **A destra le tessere** dell'argomento scelto: nome, spiegazione breve e, se serve, un'etichetta.
+- **In fondo** la riga «Scegli il tipo di regola: i parametri si impostano nel passaggio dopo, e le regole senza parametri si aggiungono subito.».
+
+**Regole più usate** contiene **Prendo in carico la chiamata** e **Riproduco audio**, più **Apertura settimanale**, **Ferie e festività**, **Inoltra la chiamata a una coda di ricezione** e **Menù vocale (IVR)**, che restano anche nel loro argomento.
+
+| Etichetta sulla tessera | Cosa vuol dire |
+| --- | --- |
+| **API** | Per sviluppatori: il passaggio scambia i dati della chiamata con un tuo servizio via API. |
+| **Divide la chiamata** | Il passaggio può mandare la chiamata su un'altra strada (orari, ferie, interruttori, menù vocali). |
+| **Si aggiunge subito** | Il passaggio non ha niente da impostare: un clic e compare nello schema. |
+| **Modulo non attivo** | La tessera è grigia e non si può scegliere: serve un modulo che non hai. |
+
+**La ricerca** guarda il nome dei passaggi. Mentre cerchi compaiono tutti gli argomenti che hanno risultati; senza risultati: «Nessuna regola corrisponde a «…».».
+
+**Il modulo dei parametri.** Cliccando una tessera che ha qualcosa da impostare, la finestra mostra i campi del passaggio: in testata la freccia **Torna al catalogo**, l'icona, il nome e la spiegazione; in fondo **Annulla** (torna al catalogo) e **Aggiungi regola**, che si accende quando i campi necessari sono compilati.
+
+**Il bottone «Nuovo».** Molti moduli hanno **Nuovo** (o, se non hai ancora niente, «Crea il primo…»): crei al volo l'elemento che manca (un messaggio audio, una coda, un menù vocale, un orario, un gruppo di ferie, un interruttore, un numero di inoltro) in una finestra sopra. Dopo averlo salvato ritrovi il nuovo elemento già scelto.
+
+**Le scelte.** Negli elenchi a scelta (messaggi, code, orari, menù, interni, servizi interni) nessuna voce è scelta in partenza: la scegli tu. Nei menu a tendina, invece, è già proposta la prima lista di **Numeri bloccati** e, per il **Provider di uscita**, quello indicato come «(PRINCIPALE)».
+
+Esc, un clic fuori dalla finestra o la X chiudono senza aggiungere niente.
+
+## La finestra di dettaglio di un passaggio
+
+Si apre cliccando una scheda dello schema.
+
+- **In testata** il numero di posizione, l'etichetta del tipo, il nome del passaggio, il bottone **(i)** «Cos'è questa regola» (apre il riquadro **A cosa serve** con la spiegazione) e la X.
+- **L'elemento collegato**, quando c'è: un'etichetta (**Orari**, **Ferie**, **Interruttore a orario**, **Interruttore**, **Coda**, **Menù vocale (IVR)**, **Lista numeri**, **Connessione AI**), il nome e:
+  - **Modifica**, che apre l'elemento in una finestra sopra l'editor;
+  - **Apri l'agente**, per l'agente AI, che si apre in una nuova scheda del browser;
+  - «non più disponibile» in ambra, se l'elemento è stato eliminato o rinominato.
+- **Argomenti**: i dettagli e, per alcuni passaggi, i campi che puoi cambiare con il loro bottone **Salva** (si accende dopo una modifica; durante il salvataggio dice «Salvo…»). Salvato il valore, la finestra si chiude e la scheda nello schema mostra già il valore nuovo.
+- **In fondo** un eventuale messaggio d'errore in rosso e il bottone **Chiudi**.
+
+### Cosa si cambia direttamente dalla finestra
+
+| Passaggio | Cosa puoi cambiare |
+| --- | --- |
+| Riproduco audio | **Sostituisci file audio** (c'è anche il lettore e **Modifica audio**) |
+| Segreteria telefonica | **Casella vocale** |
+| Inoltra la chiamata a un servizio interno | **Servizio interno**, con l'anteprima **Regole del servizio** e **Apri il servizio interno** |
+| Imposta lingua | **Lingua** |
+| Imposta dettaglio chiamata | **Dettaglio** |
+| Notifica email | **Email di recapito**, **Nome servizio** |
+| Registra chiamata · Registra chiamata (solo operatore) | **Come arrivano**, **Email di recapito** (o **Email di riserva**), **Nome servizio**, **Indirizzo API**, **Token** |
+| Analisi chiamata AI | **Email di recapito (opzionale)**, **Nome servizio**, **Funzioni** (**Trascrizione**, **Riassunto**, **Chiamate in uscita**), **Profilo di analisi**, **Webhook** |
+| Invia API alla risposta di coda | **URL di notifica** |
+| Invia dettagli chiamata via API | **URL dell'endpoint**, **API key**, i tre marcatori |
+| Custom CALLERID via API | **URL dell'endpoint**, **API key** |
+| Log CloudSoftphone | **Dettaglio** |
+| Gestione reperibilità | **Modulo reperibilità**, **Provider di uscita** |
+| Switch manuale | Il bottone **Attiva** / **Disattiva**, che accende o spegne subito l'interruttore |
+
+Per gli altri passaggi cambi l'elemento collegato con **Modifica** (per esempio gli orari, la coda, il menù vocale), oppure elimini il passaggio e lo aggiungi di nuovo con i valori giusti.
+
+### Cosa mostra la finestra per le condizioni
+
+- **Apertura settimanale:** «Oggi · giorno» con l'ora attuale e una barra da 00 a 24 con le fasce di apertura («Oggi chiuso tutto il giorno» se oggi siete chiusi); la tabella **Orario settimanale** da lunedì a domenica («chiuso» nei giorni senza fasce); **Se aperto** (con «in orario» se adesso siete aperti) → la regola successiva, oppure «fine delle regole · la chiamata si chiude»; **Se chiuso** (con «fuori orario») → il messaggio di chiusura (con lettore e **Modifica audio**) e la destinazione di chiusura, oppure **Riaggancia** se non è impostata.
+- **Ferie e festività:** **Se festivo** (con «oggi festivo») → messaggio e destinazione; **Se non festivo** (con «oggi non festivo») → la regola successiva; **Periodi di chiusura**, con quando si comincia («si comincia oggi», «domani», «tra N giorni»), la durata, «ogni anno» se si ripete.
+- **Switch manuale:** **Stato switch** acceso o spento con il bottone **Attiva** / **Disattiva**; **Se attivo** → l'azione dell'interruttore (o «azione non configurata»); **Se spento** → la regola successiva.
+- **Menù vocale (IVR):** **Messaggio di benvenuto** con lettore e testo; **Tasti del menù** con quanti sono configurati e, per ogni tasto, dove porta (cliccabile); «Nessun tasto configurato» se non ce ne sono.
+- **Coda** e **interni:** la strategia, il tempo di squillo e gli operatori o gli interni con il loro stato in questo momento.
+
+## La finestra «Modifica» degli elementi collegati
+
+Si apre da **Modifica**, **Modifica audio**, dalle schede **Audio** e dalle destinazioni nei rami, e dai bottoni **Nuovo**. È una finestra grande al centro con in testata «Modifica» e il nome dell'elemento; dentro c'è la sua pagina (l'orario, la coda, il menù…). Mentre si carica dice «Caricamento…». Quando salvi l'elemento la finestra si chiude e l'editor si aggiorna.
+
+## In che ordine metto i passaggi
+
+La chiamata esegue i passaggi dal numero 1 in giù. Molte guide dicono di mettere il proprio passaggio «in cima»: quando ne usi più di uno, questo è l'ordine consigliato, dall'alto in basso. Salta le righe che non ti servono.
+
+| Posto | Passaggio | Perché lì |
+| --- | --- | --- |
+| 1 | **Numeri bloccati** e gli altri filtri su chi chiama (**Filtra per numero chiamante**, **Blocca chiamate SPAM**, **Filtra fissi / mobili**, **Filtra per prefisso**) | Chi non deve entrare si ferma subito, a qualsiasi ora. |
+| 2 | **Switch manuale** (Interruttori) | Una chiusura improvvisa vale a qualsiasi ora, anche nei giorni di ferie. |
+| 3 | **Ferie e festività** | Nei giorni di chiusura chi chiama sente sempre il messaggio delle ferie, anche fuori orario. |
+| 4 | **Switch temporale** (Interruttori a orario) | Sopra **Apertura settimanale** scatta anche fuori orario. Se deve valere solo quando sei aperto, mettilo subito sotto **Apertura settimanale**. |
+| 5 | **Apertura settimanale** (Orari) | Fuori orario la chiamata prende il ramo **Chiusi** e non fa squillare nessuno. |
+| 6 | Passaggi che cambiano il nome sul display o mandano avvisi: **Attiva ricerca in rubrica**, **Imposta dettaglio chiamata**, **AlfaDocs · Riconosci Paziente**, **Custom CALLERID via API**, **Notifica email**, **Invia dettagli chiamata via API** | Devono agire prima che i telefoni squillino. Non fermano la chiamata. |
+| 7 | **Prendo in carico la chiamata**, se lo usi | Risponde alla chiamata prima dei passaggi che parlano con chi chiama. |
+| 8 | **Registra chiamata**, **Registra chiamata (solo operatore)** o **Analisi chiamata AI** | La registrazione deve partire prima che qualcuno risponda. |
+| 9 | **Riproduco audio** (il messaggio di benvenuto) | Sotto gli orari lo sente solo chi chiama quando sei aperto. |
+| 10 | Il passaggio che porta la chiamata a qualcuno: **Fai squillare uno o più interni VoIP**, **Inoltra la chiamata a una coda di ricezione**, **Menù vocale (IVR)**, **Inoltra a numero telefonico esterno**, **Agente AI realtime**, **Inoltra la chiamata a un servizio interno** | È il cuore del percorso. Dopo un menù vocale o un servizio interno i passaggi sotto di norma non vengono raggiunti. |
+| 11 | La riserva per chi non ha avuto risposta: **Segreteria telefonica**, un altro **Inoltra a numero telefonico esterno** o **Agente AI realtime** | Interni, code e inoltri, se nessuno risponde, passano la chiamata al passaggio sotto. |
+
+Alcuni passaggi dipendono da un altro:
+
+- **Invia API alla risposta di coda** va subito prima della coda; **Notifica web alla risposta** (MyCRM) e **Riproduci audio per operatore** vanno prima della coda a cui si riferiscono.
+- **Agente AI realtime** al posto 10 risponde al posto dei telefoni; al posto 11 risponde solo quando nessuno ha risposto. Se deve rispondere sempre, anche fuori orario e nei giorni di chiusura, mettilo sopra **Ferie e festività** e **Apertura settimanale**. Vedi [Collegare un numero all'agente AI](/agenti-ai/collegare-un-numero).
+
+Esempio di un numero completo: **Numeri bloccati** → **Ferie e festività** → **Apertura settimanale** → **Prendo in carico la chiamata** → **Registra chiamata** → **Riproduco audio** → **Inoltra la chiamata a una coda di ricezione** → **Segreteria telefonica**.
+
+Per mettere un passaggio al posto giusto usa il **\+** (**Inserisci qui**) nel punto voluto, oppure aggiungilo e poi spostalo con **Sposta al posto…** (vedi «Come cambio l'ordine dei passaggi»).
+
+## Come fare
+
+### Come aggiungo un passaggio
+
+<Steps>
+  <Step title="Scegli dove">
+    **Aggiungi regola** in alto o **Aggiungi regola in coda** in fondo mettono il passaggio dopo l'ultimo. Il **\+** che compare tra due schede (**Inserisci qui**) lo mette in quel punto; quello subito sotto **Chiamata in arrivo** lo mette in cima.
+  </Step>
+  <Step title="Scegli il tipo">
+    Scegli un argomento a sinistra, oppure scrivi in **Cerca una regola…**, e clicca la tessera. Se ha l'etichetta **Si aggiunge subito**, il passaggio compare nello schema e hai finito.
+  </Step>
+  <Step title="Imposta i parametri">
+    Compila i campi. Se ti manca l'elemento da scegliere (un messaggio, una coda, un orario), crealo con **Nuovo**.
+  </Step>
+  <Step title="Conferma">
+    Premi **Aggiungi regola**. La finestra si chiude e la nuova scheda è nello schema.
+  </Step>
+</Steps>
+
+### Come cambio l'ordine dei passaggi
+
+- **Di un posto:** passa con il mouse sulla scheda e usa **Sposta su** o **Sposta giù** (sono spenti sulla prima e sull'ultima).
+- **Di più posti:** clicca il numero di posizione della scheda (oppure l'icona **Sposta al posto…**). Nel riquadro **Sposta al posto** scrivi la nuova posizione («di N» dice quanti sono i passaggi) e premi **Sposta** o **Invio**. **In cima** e **In fondo** fanno prima. **Esc** chiude senza spostare.
+
+Dopo lo spostamento la pagina scorre fino alla scheda, che lampeggia in verde.
+
+### Come modifico un passaggio
+
+<Steps>
+  <Step title="Apri la scheda">
+    Clicca la scheda nello schema: si apre la finestra di dettaglio.
+  </Step>
+  <Step title="Cambia il valore">
+    Se il passaggio ha campi modificabili, cambiali e premi **Salva**. Per cambiare l'elemento collegato (l'orario, la coda, il menù) premi **Modifica** accanto al suo nome.
+  </Step>
+</Steps>
+
+### Come elimino un passaggio
+
+<Steps>
+  <Step title="Premi il cestino">
+    Passa con il mouse sulla scheda e premi **Elimina**.
+  </Step>
+  <Step title="Conferma">
+    Nella finestra **Elimina regola** («Stai per eliminare la regola «Step N — nome». L'azione non è reversibile.») premi **Elimina**. I passaggi sotto salgono di un posto.
+  </Step>
+</Steps>
+
+### Come elimino tutti i passaggi di un numero
+
+<Steps>
+  <Step title="Altre azioni">
+    Premi **Altre azioni** (i tre puntini) → **Svuota: elimina tutte le regole**.
+  </Step>
+  <Step title="Conferma">
+    Nella finestra **Svuota la configurazione** («Stai per eliminare tutte le N regole di «numero». L'azione non è reversibile.») premi **Elimina**.
+  </Step>
+</Steps>
+
+<Warning>
+  Eliminare un passaggio o svuotare un numero non si può annullare. Dopo lo svuotamento il numero non gestisce più le chiamate finché non aggiungi nuovi passaggi. Gli elementi collegati (messaggi audio, code, orari…) non vengono cancellati.
+</Warning>
+
+### Come apro i passaggi di un servizio interno e torno indietro
+
+Clicca «apri il servizio» sotto la scheda **SERVIZIO INTERNO**, oppure il servizio interno nel ramo di un orario o di un interruttore. Si apre il suo schema; in alto compare il percorso, che usi per tornare al numero di partenza.
+
+### Come passo a un altro numero senza tornare all'elenco
+
+Premi **Cambia numero** accanto al nome, cerca con **Cerca numero o nome…** e clicca il numero o il servizio interno.
+
+### Come copio questi passaggi su un altro numero
+
+**Altre azioni** → **Copia su un altro numero o servizio** → scegli la destinazione → **Copia configurazione**. Le regole della destinazione vengono sostituite. Tutti i dettagli in [Panoramica](/centralino/regole/panoramica).
+
+## Da sapere
+
+- **L'ordine conta.** La chiamata esegue i passaggi dal numero 1 in giù. I passaggi messi dopo uno che chiude o devia la chiamata (Termina chiamata, Segreteria telefonica, un menù vocale, un servizio interno, una coda in cui qualcuno risponde) di norma non vengono raggiunti.
+- **Orari e ferie vanno in cima.** Così fuori orario e nei giorni di chiusura la chiamata non fa squillare nessuno. L'ordine completo è in «In che ordine metto i passaggi», più sopra. Vedi anche [Configurare gli orari di apertura](/centralino/come-fare/configurare-gli-orari-di-apertura).
+- **Coda come primo passaggio.** Se aggiungi una coda come prima regola di un numero vuoto, il pannello mette da solo sopra la coda il passaggio **Prendo in carico la chiamata**.
+- **«non più disponibile».** L'elemento collegato è stato eliminato o rinominato: elimina il passaggio e aggiungine uno nuovo con l'elemento giusto.
+- **Valori rifiutati.** Se un campo contiene caratteri che il centralino non accetta, nella finestra compare in rosso «Questo valore contiene caratteri non ammessi. Usa lettere, numeri e i segni . \_ -» e il passaggio non viene salvato.
+- **REGOLA SPECIALE.** È una configurazione fatta su misura dall'assistenza che il pannello non sa mostrare. Nella finestra c'è «Regola speciale configurata dall'assistenza · **Chiedi cosa fa ›**», che apre una richiesta di assistenza. Non toccarla senza aver chiesto.
+- **Passaggi che il catalogo non offre più.** Nei centralini configurati tempo fa possono comparire passaggi che oggi non si aggiungono più dalla finestra **Aggiungi regola**. Per cambiarli elimina il passaggio e aggiungine uno del catalogo, oppure chiedi all'assistenza.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Devo premere Salva dopo aver aggiunto o spostato un passaggio?">
+    No. Aggiunte, spostamenti ed eliminazioni si salvano subito. Il bottone **Salva** c'è solo dentro la finestra di dettaglio, quando cambi un valore di un passaggio.
+  </Accordion>
+
+  <Accordion title="Ogni guida dice «in cima»: in che ordine metto orari, ferie, numeri bloccati e registrazione?">
+    Dall'alto: **Numeri bloccati**, **Switch manuale**, **Ferie e festività**, **Switch temporale**, **Apertura settimanale**, i passaggi del display e degli avvisi, **Prendo in carico la chiamata**, **Registra chiamata**, **Riproduco audio**, il passaggio che fa squillare (interni, coda, menù vocale, inoltro o agente AI) e in fondo la **Segreteria telefonica**. La tabella completa è in «In che ordine metto i passaggi», più sopra.
+  </Accordion>
+
+  <Accordion title="Ho aggiunto un passaggio ma non succede niente.">
+    Controlla l'ordine. Forse prima c'è un passaggio che chiude o devia la chiamata: un orario sul ramo **Chiusi**, **Termina chiamata**, una segreteria, un menù vocale. Spostalo con **Sposta al posto…** prima di quel passaggio.
+  </Accordion>
+
+  <Accordion title="Il ramo «Chiusi» è verde: è un errore?">
+    No. Le linee verdi mostrano dove andrebbe una chiamata in questo momento: se il ramo **Chiusi** è acceso, adesso siete fuori orario.
+  </Accordion>
+
+  <Accordion title="Ho messo un passaggio dopo il menù vocale e non viene mai eseguito.">
+    Dopo un menù vocale la chiamata va alla destinazione del tasto premuto: i passaggi sotto il menù di norma non vengono raggiunti. Come indica la pagina del menù, se chi chiama non preme nessun tasto entro 10 secondi, o preme un tasto non usato, la chiamata si chiude: prevedi un tasto «ripeti» e annuncialo nel messaggio. Vedi [Menù vocali (IVR)](/centralino/instradamento/menu-vocali).
+  </Accordion>
+
+  <Accordion title="Non trovo un passaggio nel catalogo.">
+    Usa **Cerca una regola…**: cerca nel nome del passaggio. Alcuni passaggi compaiono solo con il modulo attivo (MyCRM, Power Dialer, Reperibilità, AlfaDocs); altri sono in grigio con **Modulo non attivo**.
+  </Accordion>
+
+  <Accordion title="Come cambio gli interni che squillano?">
+    Gli interni sono scritti nel passaggio **Fai squillare uno o più interni VoIP**: elimina il passaggio e aggiungilo di nuovo con gli interni giusti. Se usi una coda, invece, cambi gli operatori nella pagina della coda e il passaggio resta com'è.
+  </Accordion>
+
+  <Accordion title="Una scheda dice «non più disponibile».">
+    L'elemento collegato (coda, menù, orario…) è stato eliminato o rinominato. Elimina il passaggio e aggiungine uno nuovo scegliendo l'elemento giusto.
+  </Accordion>
+
+  <Accordion title="Posso annullare uno svuotamento?">
+    No. Le regole eliminate vanno ricreate a mano.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Regole delle chiamate" icon="sitemap" href="/centralino/regole/panoramica">
+    L'elenco dei numeri e dei servizi interni.
+  </Card>
+
+  <Card title="Passaggi che instradano la chiamata" icon="phone" href="/centralino/regole/passaggi-chiamata">
+    Interni, code, inoltri, segreteria, menù vocali, agente AI.
+  </Card>
+
+  <Card title="Orari, filtri e dettagli" icon="clock" href="/centralino/regole/passaggi-filtri">
+    Orari, ferie, interruttori, numeri bloccati, messaggi audio.
+  </Card>
+
+  <Card title="Notifiche, registrazioni e moduli" icon="bell" href="/centralino/regole/passaggi-moduli">
+    Email, registrazioni, Analisi AI, API e moduli.
+  </Card>
+
+  <Card title="Servizi interni" icon="sitemap" href="/centralino/regole/servizi-interni">
+    I numeri brevi con passaggi propri.
+  </Card>
+
+  <Card title="Far squillare più telefoni" icon="users" href="/centralino/come-fare/far-squillare-piu-telefoni">
+    Guida dall'inizio alla fine.
+  </Card>
+</CardGroup>

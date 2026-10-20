@@ -1,5 +1,238 @@
 ---
 title: "Regole delle chiamate"
+sidebarTitle: "Panoramica"
+description: "L'elenco dei tuoi numeri e dei servizi interni: per ognuno, i passaggi che decidono cosa succede a una chiamata in arrivo, e cosa c'è da sistemare."
+keywords:
+  - "regole delle chiamate"
+  - "regole chiamate"
+  - "instradamento"
+  - "dove va una chiamata"
+  - "numero non risponde"
+  - "da sistemare"
+  - "copia configurazione"
+  - "servizi interni"
+  - "flusso chiamate"
+  - "dial rules"
 ---
 
-Caricamento in corso.
+**Regole delle chiamate** decide cosa succede quando qualcuno chiama uno dei tuoi numeri. Ogni numero e ogni servizio interno ha la sua sequenza di passaggi: la chiamata li attraversa uno dopo l'altro, dall'alto verso il basso, finché qualcuno risponde, la chiamata va in segreteria o si chiude, oppure i passaggi finiscono.
+
+**Dove si trova:** Menu → **Regole chiamate** (scorciatoie **Numeri di telefono** e **Servizi interni**) · `https://cloud.mycentralino.com/regole` Solo i servizi interni: `https://cloud.mycentralino.com/regole?kind=internal`
+
+**Chi la vede:** il titolare dell'account sempre; un collaboratore solo se gli è stata concessa la sezione **Regole delle chiamate** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
+
+## Come funziona, in breve
+
+| Parola | Cosa significa |
+| --- | --- |
+| **Numero di telefono** | Un numero che le persone compongono da fuori (fisso, numero verde, numero senza operatore). Ha la sua sequenza di passaggi. Se non ne ha nessuno, le chiamate arrivano ma nessuno le gestisce. |
+| **Servizio interno** | Un numero breve del centralino (per esempio 401, 402) con una sequenza di passaggi sua. Non si chiama da fuori: ci si arriva da un numero, da un tasto di un menù vocale, da un orario e così via. Vedi [Servizi interni](/centralino/regole/servizi-interni). |
+| **Regola** o **passaggio** | Una sola azione della sequenza: fai squillare i telefoni, fai sentire un messaggio, controlla l'orario, manda in segreteria. Ogni passaggio ha un numero di posizione: 1, 2, 3… |
+| **Divide la chiamata** | Alcuni passaggi (orari, ferie, interruttori, menù vocali) controllano una condizione e possono mandare la chiamata su un'altra strada, per esempio «Chiusi» → messaggio di chiusura. |
+| **Elemento collegato** | Molti passaggi usano qualcosa che si prepara in un'altra pagina: un messaggio audio, una coda, un orario, una segreteria. Il passaggio dice _quando_ usarlo; l'elemento si modifica nella sua pagina, o direttamente dall'editor con **Modifica**. |
+
+<Note>
+  In quest'area ogni azione si salva subito: aggiungere, spostare o eliminare un passaggio, rinominare un numero. Non c'è un bottone **Salva** generale della pagina.
+</Note>
+
+## Cosa trovi nella pagina
+
+<Frame caption="Regole delle chiamate: l'elenco dei numeri e dei servizi interni">
+  <img
+    src="/images/guida/regole-elenco.webp"
+    alt="Regole delle chiamate: l'elenco dei numeri e dei servizi interni"
+  />
+</Frame>
+
+### In alto
+
+- In piccolo il conteggio, per esempio «3 numeri · 7 servizi interni» (se non c'è niente: «Nessun elemento configurato»).
+- Il titolo **Regole delle chiamate** e la riga «Cosa succede quando qualcuno chiama i tuoi numeri.»
+- **Il riquadro ambra**, solo quando un numero non ha regole o una numerazione è da completare (i servizi interni senza regole non lo fanno comparire: li trovi con il filtro **Da sistemare**). Per esempio «Il numero +390612345678 non ha regole: le chiamate che arrivano non vengono gestite.», oppure «2 numeri non hanno regole: le chiamate che arrivano non vengono gestite.», oppure «1 numerazione è da completare.». A destra c'è **Configura** (se il problema è un solo numero: apre subito le sue regole) oppure **Mostra** (accende il filtro **Da sistemare**; se il filtro è già acceso il bottone non c'è). Se non ci sono numeri senza regole né numerazioni da completare, il riquadro non c'è.
+
+### La barra degli strumenti
+
+- **Cerca un numero o un nome…**: cerca nel numero e nella descrizione.
+- I filtri **Tutti**, **Numeri**, **Servizi interni**, ognuno con il suo conteggio. Aprendo la pagina è acceso **Numeri**.
+- **Da sistemare**, in ambra con un pallino, compare solo quando c'è qualcosa da sistemare (vedi sotto).
+- **A–Z / Z–A**: cambia l'ordine dell'elenco.
+
+Il filtro scelto resta nell'indirizzo della pagina: se lo salvi tra i preferiti, la pagina si riapre con lo stesso filtro.
+
+### La tabella «Numeri e servizi interni»
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Stato** | Solo per i numeri. Un'icona: passandoci sopra con il mouse leggi cosa vuol dire (tabella qui sotto). |
+| **Numero** | Il numero in verde: cliccandolo si aprono le sue regole. Al passaggio del mouse compare **Copia il numero** (diventa «Copiato»). Se la numerazione non ha ancora un numero compare **Numero non assegnato** in ambra e la riga non si apre. |
+| **Descrizione** | Il nome che hai dato al numero o al servizio. Al passaggio del mouse compare la matita **Modifica descrizione**. Per i servizi interni, sotto, c'è **Ci arriva da: …** oppure **Nessun numero ci arriva · non ha effetto**. |
+| **Tipo** | Solo per i numeri: **MyCentralino**, **Altro operatore**, **Senza operatore** o **Spento**. |
+| **Regole** | Quanti passaggi ha, per esempio «4 regole». Se non ne ha: **Nessuna regola · non risponde** (numeri) o **Nessuna regola** (servizi interni), in ambra. Per un numero spento, o con l'account disattivato, compare invece «nessuna regola» in grigio. Per una numerazione senza numero: **Da completare**. |
+| Azioni (a destra) | **Modifica numerazione** (solo per i numeri che puoi modificare: porta alla scheda del numero in [I tuoi numeri](/centralino/telefoni-e-numeri/i-tuoi-numeri)); **Copia la configurazione su un altro numero o servizio**; la freccia **Apri le regole di questo numero** (o di questo servizio interno). |
+
+Cliccando in un punto qualsiasi della riga si apre l'[editor delle regole](/centralino/regole/editor) di quel numero o servizio.
+
+#### Cosa dicono le icone di stato
+
+| Icona | Testo al passaggio del mouse | Cosa significa |
+| --- | --- | --- |
+| Spunta verde o azzurra | **Attivo** | Il numero è collegato e funziona. |
+| Triangolo ambra | **Nessuna regola: le chiamate a questo numero non vengono gestite** | Il numero arriva al centralino, ma non ha passaggi: aggiungine almeno uno. |
+| Triangolo rosso | **Configurazione errata** | La numerazione ha un problema di configurazione: aprila con **Modifica numerazione** o chiedi all'assistenza. |
+| Cerchio ambra con la X | **Non collegato** | Il numero non risulta collegato al centralino in questo momento. |
+| Cerchio grigio | **Disabilitato** | Il numero è spento. |
+| Cerchio barrato grigio | **Offline · account disattivato** | L'account è disattivato (per esempio scaduto o sospeso): tutti i numeri risultano offline. |
+
+### Sul telefono
+
+Ogni riga diventa una scheda con numero, descrizione, quante regole ha (o **Nessuna regola · non risponde**) e freccia. L'icona di stato e il tipo di numero si vedono solo da computer. Le icone **Modifica numerazione**, **Copia la configurazione** e la matita **Modifica descrizione** non ci sono: tocca la scheda per aprire le regole, e da lì usa la matita accanto al nome per rinominare e **Altre azioni** per copiare.
+
+## Il filtro «Da sistemare»
+
+Raccoglie le righe che esistono ma non fanno niente:
+
+- i numeri senza nessun passaggio (non quelli spenti apposta);
+- i servizi interni senza nessun passaggio, compresi quelli mai usati («Posto libero»);
+- le numerazioni ancora senza numero.
+
+Con l'account disattivato il filtro non segnala nulla, perché è tutto offline.
+
+## Come fare
+
+### Come vedo cosa succede alle chiamate di un numero
+
+<Steps>
+  <Step title="Apri Regole delle chiamate">
+    Menu → **Regole chiamate** → **Numeri di telefono**.
+  </Step>
+  <Step title="Clicca il numero">
+    Si apre lo schema dei suoi passaggi, dalla pillola **Chiamata in arrivo** in giù. Le linee verdi animate mostrano la strada che farebbe una chiamata in questo momento. Tutto il resto è spiegato in [Editor delle regole](/centralino/regole/editor).
+  </Step>
+</Steps>
+
+### Come trovo i numeri che non rispondono
+
+<Steps>
+  <Step title="Accendi il filtro">
+    Premi **Da sistemare**, oppure **Mostra** nel riquadro ambra. Se il problema è un solo numero, nel riquadro c'è **Configura**: porta subito alle sue regole.
+  </Step>
+  <Step title="Apri il numero e aggiungi un passaggio">
+    Clicca il numero e premi **Aggiungi la prima regola**. Il passaggio più semplice è **Fai squillare uno o più interni VoIP** (vedi [Passaggi che instradano la chiamata](/centralino/regole/passaggi-chiamata)).
+  </Step>
+</Steps>
+
+### Come do un nome a un numero o a un servizio interno
+
+<Steps>
+  <Step title="Passa con il mouse sulla riga">
+    Accanto alla descrizione compare la matita **Modifica descrizione**.
+  </Step>
+  <Step title="Scrivi il nome">
+    Al massimo 50 caratteri per un numero, 150 per un servizio interno.
+  </Step>
+  <Step title="Conferma">
+    Premi **Invio** o la spunta **Salva**. Con **Esc** o la X **Annulla** lasci tutto com'era.
+  </Step>
+</Steps>
+
+Lasciando il campo vuoto e salvando, la descrizione si cancella. Lo stesso si fa dall'editor, con la matita accanto al nome.
+
+### Come vedo solo i servizi interni
+
+Menu → **Regole chiamate** → **Servizi interni**, oppure il filtro **Servizi interni** nella pagina.
+
+### Come copio le regole di un numero su un altro
+
+Serve quando due numeri devono comportarsi allo stesso modo, per non rifare tutti i passaggi a mano.
+
+<Steps>
+  <Step title="Apri la copia">
+    Da computer: passa con il mouse sulla riga del numero da copiare e premi l'icona **Copia la configurazione su un altro numero o servizio**. In alternativa, dall'editor del numero: **Altre azioni** (i tre puntini) → **Copia su un altro numero o servizio**.
+  </Step>
+  <Step title="Scegli la destinazione">
+    Nella finestra **Copia configurazione** cerca con **Cerca numero o nome…** e clicca la destinazione. L'elenco è diviso in **Numeri** e **Servizi interni** e per ognuno dice quante regole ha già. Il numero da cui copi non compare. Controlla anche che il numero da cui copi abbia le sue regole: copiando da un numero vuoto la destinazione viene svuotata.
+  </Step>
+  <Step title="Leggi l'avviso e conferma">
+    Compare l'avviso rosso: le regole attuali della destinazione verranno **sostituite**. Premi **Copia configurazione** (durante l'operazione: «Copio…»). Se hai copiato dall'editor, accanto ad **Altre azioni** compare per qualche secondo «Copiata».
+  </Step>
+</Steps>
+
+<Warning>
+  La copia **sostituisce** tutte le regole della destinazione e non si può annullare: le regole che c'erano prima vanno rifatte a mano. Gli elementi collegati (code, messaggi audio, orari…) non vengono duplicati: la destinazione usa gli stessi. Se il numero da cui copi non ha regole, anche la destinazione resta senza regole: controlla nell'elenco quante ne ha prima di copiare.
+</Warning>
+
+Messaggi che puoi vedere nella finestra: «Destinazione non valida.», «La destinazione coincide con la sorgente.» (dall'editor: «La destinazione coincide con questo numero.»), «Numero o servizio non trovato.».
+
+## I campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Descrizione** (matita in tabella o nell'editor) | Il nome con cui riconosci il numero o il servizio interno. Compare nell'elenco, nell'editor e nei menu di scelta. | Testo libero, facoltativo. Al massimo 50 caratteri per i numeri, 150 per i servizi interni. Vuoto = nessuna descrizione. |
+
+## Da sapere
+
+- **Un numero senza passaggi non risponde.** Le chiamate arrivano ma nessuno le gestisce: per questo compare in ambra.
+- **Un servizio interno senza passaggi, o a cui non arriva nessuna chiamata, non ha effetto.** È segnalato con **Nessuna regola** o **Nessun numero ci arriva · non ha effetto**. Il controllo segue solo numeri, menù vocali, code, orari, ferie, interruttori e filtri: un servizio raggiunto solo con **Servizi basati su PIN**, **Servizi basati su CallerID**, **Menù vocale (IVR) a 2 cifre**, i codici servizio o da una campagna del Power Dialer compare con **Nessun numero ci arriva · non ha effetto** anche se funziona.
+- **«Ci arriva da»** dice da dove passa la chiamata per arrivare a quel servizio interno: da quale numero, tasto di un menù vocale, coda, orario o interruttore. Dopo una modifica può servire fino a un paio di minuti prima che si aggiorni. Lo vedi con i filtri **Tutti**, **Servizi interni** o **Da sistemare**.
+- **Numero non assegnato:** è una numerazione rimasta senza numero. Non ha regole da aprire: si completa con l'icona **Completa la configurazione di questa numerazione**, che porta alla sua scheda in **I tuoi numeri**.
+- **Aggiungi numerazione →**: se non hai ancora né numeri né servizi interni, con il filtro **Tutti** la pagina dice «Nessuna numerazione configurata» e il collegamento **Aggiungi numerazione →** porta a [I tuoi numeri](/centralino/telefoni-e-numeri/i-tuoi-numeri). Con il filtro **Numeri**, quello acceso quando apri la pagina, vedi invece «Nessun risultato» e «Nessuna voce per il filtro corrente.». Per un numero nuovo vedi [Richieste di numeri](/centralino/telefoni-e-numeri/richieste-di-numeri).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Un mio numero ha il triangolo ambra: cosa vuol dire?">
+    Il numero non ha regole: le chiamate arrivano ma nessuno le gestisce. Aprilo e aggiungi almeno un passaggio, per esempio **Fai squillare uno o più interni VoIP**.
+  </Accordion>
+
+  <Accordion title="Cos'è «Posto libero»?">
+    È un servizio interno che hai a disposizione ma non hai ancora usato. Dagli un nome con la matita e aggiungi i suoi passaggi: vedi [Servizi interni](/centralino/regole/servizi-interni).
+  </Accordion>
+
+  <Accordion title="Cosa significa «Nessun numero ci arriva · non ha effetto»?">
+    Nessun numero, tasto di menù vocale, coda, orario, ferie, interruttore o filtro manda chiamate a quel servizio interno. Collegalo da un numero (per esempio con il passaggio **Inoltra la chiamata a un servizio interno**) oppure lascialo stare se non ti serve. Attenzione: se lo usi con un PIN, un codice servizio, il menù vocale a 2 cifre, **Servizi basati su CallerID** o il Power Dialer, la scritta compare lo stesso ma il servizio funziona.
+  </Accordion>
+
+  <Accordion title="Le chiamate non arrivano a nessun telefono: da dove comincio?">
+    Prima controlla qui che il numero non sia **Nessuna regola · non risponde**. Poi apri il numero e segui le linee verdi da **Chiamata in arrivo**: forse in questo momento la chiamata è deviata da un orario («Chiusi»), dalle ferie («Festivo») o da un interruttore acceso («Attivo»). Infine verifica che i telefoni siano collegati in [Stato interni](/centralino/telefoni-e-numeri/stato-interni).
+  </Accordion>
+
+  <Accordion title="Posso annullare una copia della configurazione?">
+    No. La copia sostituisce le regole della destinazione e non è reversibile: quelle di prima vanno ricreate a mano.
+  </Accordion>
+
+  <Accordion title="Perché non vedo le icone per copiare dal telefono?">
+    Sul telefono la tabella diventa un elenco di schede e le icone **Modifica numerazione** e **Copia la configurazione** non ci sono. Apri il numero e usa **Altre azioni** → **Copia su un altro numero o servizio**.
+  </Accordion>
+
+  <Accordion title="Un mio collaboratore non vede Regole delle chiamate.">
+    Gli serve la sezione **Regole delle chiamate** tra i suoi permessi: la concede il titolare in [Utenti e permessi](/centralino/account/utenti-e-permessi).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere, spostare, modificare ed eliminare i passaggi.
+  </Card>
+
+  <Card title="Servizi interni" icon="sitemap" href="/centralino/regole/servizi-interni">
+    Cosa sono, come si ottengono e come si collegano.
+  </Card>
+
+  <Card title="Passaggi che instradano la chiamata" icon="phone" href="/centralino/regole/passaggi-chiamata">
+    Interni, code, inoltri, segreteria, menù vocali, agente AI.
+  </Card>
+
+  <Card title="Orari, filtri e dettagli" icon="clock" href="/centralino/regole/passaggi-filtri">
+    Orari, ferie, interruttori, numeri bloccati, messaggi audio.
+  </Card>
+
+  <Card title="Notifiche, registrazioni e moduli" icon="bell" href="/centralino/regole/passaggi-moduli">
+    Email, registrazioni, Analisi AI, API e moduli.
+  </Card>
+
+  <Card title="I tuoi numeri" icon="phone-volume" href="/centralino/telefoni-e-numeri/i-tuoi-numeri">
+    I numeri su cui ricevi le chiamate.
+  </Card>
+</CardGroup>

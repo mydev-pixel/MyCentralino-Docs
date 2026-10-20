@@ -1,5 +1,192 @@
 ---
 title: "Mettere un messaggio di benvenuto"
+sidebarTitle: "Messaggio di benvenuto"
+description: "Dall'inizio alla fine: crei il messaggio (con la voce sintetica o caricando un file), lo metti sul tuo numero prima dei telefoni che squillano e provi."
+keywords:
+  - "messaggio di benvenuto"
+  - "benvenuto"
+  - "messaggio iniziale"
+  - "annuncio"
+  - "sintesi vocale"
+  - "voce sintetica"
+  - "caricare mp3"
+  - "riproduco audio"
+  - "welcome"
 ---
 
-Caricamento in corso.
+Questa guida ti porta a un numero che, appena qualcuno chiama, fa sentire un messaggio («Benvenuti in Rossi Srl, restate in linea») e poi fa squillare i telefoni, la coda o il menù vocale.
+
+## Cosa ottieni
+
+- Un **messaggio audio** nella libreria del centralino, creato scrivendo il testo (una voce sintetica lo legge) oppure caricando una tua registrazione.
+- Sul tuo numero, una regola **Riproduco audio** che fa sentire il messaggio e poi passa la chiamata alla regola successiva.
+
+## Prima di cominciare
+
+- **Ti serve l'accesso** a **Risorse del centralino** e a **Regole delle chiamate**. Il titolare dell'account li ha sempre.
+- **Il testo**: breve e chiaro, per esempio «Benvenuti in Rossi Srl. Restate in linea, vi rispondiamo subito.». Chi chiama lo sente ogni volta.
+- **Se carichi una registrazione**: serve un file **MP3** o **WAV** di massimo **20 MB**. Il nome del messaggio sarà il nome del file: dagli un nome chiaro prima di caricarlo (per esempio `benvenuto.mp3`).
+- **Vuoi far scegliere con un tasto** («premi 1 per…»)? Allora ti serve un menù vocale: vedi [Creare un menù vocale](/centralino/come-fare/creare-un-menu-vocale).
+
+## Come fare
+
+### 1 · Crea il messaggio
+
+**Dove si trova:** Menu → Risorse centralino → Audio → **Messaggi audio** · `https://cloud.mycentralino.com/audio`
+
+<Tabs>
+  <Tab title="Con la voce sintetica">
+    <Steps>
+      <Step title="Premi Crea">
+        Si apre **Nuovo messaggio audio** sulla scheda **Sintesi vocale**.
+      </Step>
+      <Step title="Nome messaggio">
+        Scrivi per esempio `benvenuto`. Al massimo 100 caratteri; lettere, numeri, «_» e «-». Gli spazi diventano «_». Il nome non si può cambiare dopo.
+      </Step>
+      <Step title="Tipo di voce e Voce">
+        Scegli **Voce standard** o **Voce naturale**, poi la **Voce** dall'elenco.
+      </Step>
+      <Step title="Testo da convertire">
+        Scrivi il testo da leggere (al massimo 4000 caratteri). Diventa anche la descrizione del messaggio.
+      </Step>
+      <Step title="Genera messaggio">
+        Premi **Genera messaggio**. Torni all'elenco: ascolta il messaggio con il tasto play della sua riga.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Caricando un file">
+    <Steps>
+      <Step title="Premi Carica MP3/WAV">
+        Si apre **Nuovo messaggio audio** sulla scheda **Carica file**.
+      </Step>
+      <Step title="Scegli il file">
+        Nel riquadro **File audio** premi «Clicca per scegliere un file» e scegli un MP3 o WAV (massimo 20 MB).
+      </Step>
+      <Step title="Descrizione">
+        Se vuoi, scrivi una **Descrizione** (facoltativa, al massimo 500 caratteri): aiuta a riconoscere il messaggio nell'elenco.
+      </Step>
+      <Step title="Carica e converti">
+        Premi **Carica e converti**. Il file viene convertito da solo nel formato delle telefonate. Ascoltalo con il tasto play nell'elenco.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Frame caption="Nuovo messaggio audio con la sintesi vocale">
+  <img
+    src="/images/guida/audio-nuovo.webp"
+    alt="Nuovo messaggio audio con la sintesi vocale"
+  />
+</Frame>
+
+### 2 · Mettilo sul tuo numero
+
+**Dove si trova:** Menu → **Regole chiamate** → **Numeri di telefono** · `https://cloud.mycentralino.com/regole`
+
+<Steps>
+  <Step title="Apri il numero">
+    Clicca il numero nell'elenco: si apre lo schema delle sue regole.
+  </Step>
+  <Step title="Scegli il punto giusto">
+    Il messaggio va **prima** della regola che fa squillare i telefoni (o della coda, o del menù). Passa con il mouse sulla linea sopra quella regola e premi il **\+** («Inserisci qui»). Se il numero non ha regole, premi **Aggiungi la prima regola**.
+  </Step>
+  <Step title="Scegli Riproduco audio">
+    Nella finestra **Aggiungi regola**, argomento **Regole più usate**, scegli **Riproduco audio**.
+  </Step>
+  <Step title="Seleziona il messaggio">
+    Nell'elenco **File audio disponibili** scegli `benvenuto` (puoi cercarlo con «Cerca per nome o descrizione…» e ascoltarlo prima di sceglierlo). Premi **Aggiungi regola**.
+  </Step>
+</Steps>
+
+La regola compare nello schema con l'etichetta **AUDIO** e il nome del messaggio. Le modifiche alle regole valgono subito: non c'è un bottone da premere per salvare. Se la regola è finita nel punto sbagliato, passa sulla scheda e usa **Sposta su** o **Sposta giù**.
+
+<Tip>
+  Puoi creare il messaggio anche senza lasciare le regole: nel passaggio **Riproduco audio** premi **Nuovo**, crea il messaggio nella finestra che si apre e torni con il messaggio già selezionato. Resta da premere **Aggiungi regola**.
+</Tip>
+
+### 3 · Prova
+
+Chiama il tuo numero da un cellulare: devi sentire il messaggio e subito dopo il passaggio successivo (i telefoni che squillano, la coda, il menù).
+
+## Un esempio completo
+
+Un numero con orari e benvenuto, dall'alto in basso:
+
+| Posizione | Regola | Cosa fa |
+| --- | --- | --- |
+| 1 | **Ferie e festività** | Nei giorni di chiusura: messaggio delle ferie e fine. |
+| 2 | **Apertura settimanale** | Fuori orario: messaggio di chiusura e fine. |
+| 3 | **Riproduco audio** | Fa sentire il benvenuto. |
+| 4 | **Fai squillare uno o più interni VoIP** | Squillano i telefoni. |
+| 5 | **Segreteria telefonica** | Se nessuno risponde, chi chiama lascia un messaggio. |
+
+Con il benvenuto **sotto** gli orari, chi chiama fuori orario sente solo il messaggio di chiusura. Se lo metti in cima, lo sentono tutti, anche fuori orario, prima del messaggio di chiusura. Se usi anche numeri bloccati, interruttori o la registrazione delle chiamate, l'ordine completo è in [Editor delle regole](/centralino/regole/editor), sezione «In che ordine metto i passaggi».
+
+## Da sapere
+
+- **Il messaggio non si interrompe con i tasti.** Durante **Riproduco audio** chi chiama ascolta e basta. Per far scegliere con un tasto serve un [menù vocale](/centralino/come-fare/creare-un-menu-vocale), che ha già il suo messaggio di benvenuto.
+- **Cambiare il testo** di un messaggio creato con la voce sintetica: in **Messaggi audio** premi **Modifica** sul messaggio, correggi **Testo del messaggio** (o cambia la **Voce**) e premi **Salva**. Il messaggio viene rigenerato «mantenendo lo stesso riferimento»: le regole che lo usano fanno sentire subito la versione nuova, senza toccarle.
+- **Usare un altro messaggio** sulla stessa regola: nelle regole del numero clicca la scheda **AUDIO**, scegli il nuovo file in **Sostituisci file audio** e premi **Salva**.
+- **Dove si sente un messaggio**: in **Messaggi audio** la colonna **Usato in** dice dove è usato (numeri, orari, menù…).
+- **I messaggi non si rinominano.** Per un nome diverso crea un nuovo messaggio, sostituiscilo dove serve ed elimina il vecchio.
+- **Eliminare un messaggio** usato da una regola è possibile ma lascia quella regola senza audio: il pannello avvisa, non blocca. L'eliminazione è definitiva.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il benvenuto si sente anche quando siamo chiusi.">
+    La regola **Riproduco audio** sta sopra **Apertura settimanale**. Spostala sotto (con **Sposta giù**) così fuori orario si sente solo il messaggio di chiusura.
+  </Accordion>
+
+  <Accordion title="Ho cambiato il testo: devo rifare la regola?">
+    No. Se hai modificato il messaggio dalla sua pagina in **Messaggi audio**, le regole restano collegate e fanno sentire la versione nuova.
+  </Accordion>
+
+  <Accordion title="Ho salvato ma nel pannello sento ancora il vecchio audio.">
+    Ricarica la pagina del browser: il lettore può tenere in memoria la versione precedente.
+  </Accordion>
+
+  <Accordion title="Posso caricare un file M4A o OGG?">
+    No, solo MP3 o WAV. Convertilo prima con un programma o un sito di conversione.
+  </Accordion>
+
+  <Accordion title="Il file è troppo grande.">
+    Il limite è 20 MB. Accorcia l'audio o esportalo in MP3.
+  </Accordion>
+
+  <Accordion title="Che differenza c'è tra Voce standard e Voce naturale?">
+    Sono due famiglie di voci sintetiche in italiano. Provale tutte e due e ascolta il risultato con il play prima di metterlo sul numero.
+  </Accordion>
+
+  <Accordion title="Posso mettere un benvenuto diverso su ogni numero?">
+    Sì: crea un messaggio per numero e su ogni numero metti la sua regola **Riproduco audio**.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Messaggi audio" icon="microphone" href="/centralino/audio/messaggi-audio">
+    Creare, modificare, scaricare ed eliminare i messaggi.
+  </Card>
+
+  <Card title="Passaggi: orari, filtri e messaggi" icon="list" href="/centralino/regole/passaggi-filtri">
+    La regola Riproduco audio e le altre regole che controllano la chiamata.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere, spostare ed eliminare le regole di un numero.
+  </Card>
+
+  <Card title="Creare un menù vocale" icon="list" href="/centralino/come-fare/creare-un-menu-vocale">
+    «Premi 1 per…, premi 2 per…».
+  </Card>
+
+  <Card title="Far squillare più telefoni" icon="phone" href="/centralino/come-fare/far-squillare-piu-telefoni">
+    Cosa mettere dopo il benvenuto.
+  </Card>
+
+  <Card title="Musica d'attesa" icon="music" href="/centralino/audio/musica-di-attesa">
+    Cosa sente chi aspetta in coda.
+  </Card>
+</CardGroup>

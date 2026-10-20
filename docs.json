@@ -48,7 +48,9 @@
           },
           {
             "group": "Audio",
-            "pages": []
+            "pages": [
+              "centralino/audio/messaggi-audio"
+            ]
           },
           {
             "group": "Instradamento chiamate",

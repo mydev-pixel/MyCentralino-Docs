@@ -72,12 +72,15 @@
           {
             "group": "Monitoraggio",
             "pages": [
-              "centralino/monitoraggio/statistiche"
+              "centralino/monitoraggio/statistiche",
+              "centralino/monitoraggio/in-tempo-reale"
             ]
           },
           {
             "group": "Strumenti",
-            "pages": []
+            "pages": [
+              "centralino/strumenti/segreterie"
+            ]
           },
           {
             "group": "Servizi a consumo",

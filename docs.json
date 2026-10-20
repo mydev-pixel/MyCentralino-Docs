@@ -38,7 +38,9 @@
           },
           {
             "group": "Orari e chiusure",
-            "pages": []
+            "pages": [
+              "centralino/orari-e-chiusure/orari"
+            ]
           },
           {
             "group": "Audio",

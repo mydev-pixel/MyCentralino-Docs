@@ -119,7 +119,8 @@
             "group": "Assistenza e aiuto",
             "pages": [
               "centralino/assistenza/richieste-di-assistenza",
-              "centralino/assistenza/prenota-una-call"
+              "centralino/assistenza/prenota-una-call",
+              "centralino/assistenza/assistenza-remota"
             ]
           }
         ]

@@ -25,7 +25,8 @@
           {
             "group": "Come fare",
             "pages": [
-              "centralino/come-fare/configurare-gli-orari-di-apertura"
+              "centralino/come-fare/configurare-gli-orari-di-apertura",
+              "centralino/come-fare/chiudere-per-ferie-o-festivita"
             ]
           },
           {

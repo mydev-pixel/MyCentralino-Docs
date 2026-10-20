@@ -141,7 +141,8 @@
               "centralino/account/credito-e-ricariche",
               "centralino/account/fatture-e-pagamenti",
               "centralino/account/documenti",
-              "centralino/account/chiavi-api"
+              "centralino/account/chiavi-api",
+              "centralino/account/eliminare-l-account"
             ]
           },
           {

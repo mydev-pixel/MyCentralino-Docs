@@ -1,5 +1,148 @@
 ---
 title: "Log attività"
+sidebarTitle: "Log attività"
+description: "Chi ha cambiato cosa nel centralino, e quando: ogni modifica fatta da te, dai tuoi collaboratori o dall'assistenza, con filtri per periodo, tipo e utente."
+keywords:
+  - "log attività"
+  - "registro modifiche"
+  - "storico modifiche"
+  - "chi ha modificato"
+  - "chi ha cambiato"
+  - "chi ha cancellato"
+  - "audit"
+  - "modifiche assistenza"
+  - "attività utenti"
+  - "cronologia"
 ---
 
-Caricamento in corso.
+**Log attività** è il registro delle modifiche al centralino. Ogni modifica, fatta da te, da un tuo collaboratore o dall'assistenza, lascia una riga con la data, chi l'ha fatta e cosa ha cambiato. Serve soprattutto quando qualcosa ha smesso di funzionare e vuoi capire chi ha toccato cosa, e quando. Come dice la pagina: «Chi ha cambiato cosa nel centralino, e quando.»
+
+**Dove si trova:** Menu → Monitoraggio → Dettagli → **Log attività** · `https://cloud.mycentralino.com/log-attivita`
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli è stata concessa la sezione **Monitoraggio** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)). Non serve nessun modulo.
+
+## Cosa trovi nella pagina
+
+Sopra il titolo leggi quanti eventi corrispondono ai filtri, per esempio «1.284 eventi registrati». Accanto al titolo ci sono la ricerca e i filtri; sotto, l'elenco degli eventi, dal più recente.
+
+### Ricerca e filtri
+
+| Filtro | Cosa fa | Valori |
+| --- | --- | --- |
+| **Cerca attività, utente, numero…** | Cerca nel testo dell'attività, nel nome utente di chi ha agito e nel numero o interno della riga. Per le modifiche più vecchie conviene cercare un nome (della coda, degli orari) o un numero, invece di parole come «coda» o «orari». | Testo libero. |
+| Periodo | Quanto indietro guardare. | **Oggi**, **Ultimi 7 giorni**, **Ultimi 30 giorni** (predefinito), **Da sempre**. |
+| Tipo | Che genere di modifica. | **Tutti i tipi** (predefinito), **Modifiche**, **Aggiunte**, **Eliminazioni**. |
+| Utente | Chi ha fatto la modifica. | **Tutti gli utenti** (predefinito), i nomi utente di chi ha agito sul centralino, **Assistenza MyCentralino** (modifiche fatte dall'assistenza), **Sistema MyCentralino** (operazioni automatiche). Le ultime due compaiono solo se nel registro ci sono righe loro. |
+| **Pulisci** | Compare quando hai cambiato un filtro o scritto nella ricerca: torna agli ultimi 30 giorni, senza filtri. |  |
+
+### L'elenco
+
+50 eventi per pagina. Con più pagine, in fondo leggi «Pagina _N_ / _M_» e quattro bottoni a freccia: **«** (prima pagina), **‹** (precedente), **›** (successiva) e **»** (ultima pagina).
+
+| Colonna | Cosa indica |
+| --- | --- |
+| **Data e ora** | Quando è stata fatta la modifica, per esempio «oggi · 10:53». Passando il mouse vedi la data completa. |
+| **Utente** | Chi l'ha fatta: il nome utente, **Assistenza MyCentralino** o **Sistema MyCentralino**. Sotto, se c'è, il numero o l'interno a cui si riferisce. |
+| **Tipo** | Un'etichetta: **Aggiunta**, **Modifica**, **Eliminazione**, **Esportazione**, **Accesso** oppure **Altro**. |
+| **Attività** | La descrizione di cosa è stato fatto. |
+| **IP** | L'indirizzo internet da cui ha agito chi ha fatto la modifica. La colonna compare solo se nella pagina c'è almeno una riga con l'indirizzo. |
+
+Sul telefono ogni riga diventa una scheda.
+
+## Come fare
+
+### Come scopro chi ha cambiato gli orari
+
+<Steps>
+  <Step title="Apri Log attività">
+    Menu → Monitoraggio → Dettagli → **Log attività**.
+  </Step>
+  <Step title="Cerca">
+    In **Cerca attività, utente, numero…** scrivi il nome che hai dato a quegli orari (oppure «orari»).
+  </Step>
+  <Step title="Allarga il periodo se serve">
+    Se non trovi niente negli ultimi 30 giorni, nel menu del periodo scegli **Da sempre**.
+  </Step>
+  <Step title="Leggi la riga">
+    Nella colonna **Utente** vedi chi ha fatto la modifica, in **Data e ora** quando.
+  </Step>
+</Steps>
+
+### Come vedo cosa ha fatto un collaboratore
+
+Nel menu degli utenti (quello che parte da **Tutti gli utenti**) scegli il suo nome utente. Se serve, allarga il periodo.
+
+### Come vedo cosa è stato eliminato
+
+Nel menu dei tipi (quello che parte da **Tutti i tipi**) scegli **Eliminazioni**.
+
+### Come vedo le modifiche fatte dall'assistenza
+
+Nel menu degli utenti scegli **Assistenza MyCentralino**. La voce c'è solo se l'assistenza ha fatto almeno una modifica sul tuo centralino.
+
+### Come torno alla vista iniziale
+
+Premi **Pulisci**: la pagina torna agli ultimi 30 giorni, senza ricerca né filtri.
+
+## I messaggi che puoi vedere
+
+| Messaggio | Quando compare |
+| --- | --- |
+| «Nessun evento negli ultimi 30 giorni» – «Qui compare ogni modifica fatta al centralino, da te, dai tuoi utenti o dall'assistenza.» | Nessuna modifica nell'ultimo mese, senza filtri. |
+| «Nessun evento con questi filtri» – «Prova un periodo più lungo o togli qualche filtro.» | I filtri o la ricerca non trovano niente. |
+
+## Da sapere
+
+- **Il periodo predefinito è 30 giorni.** Per cercare fra le modifiche più vecchie scegli **Da sempre**.
+- **È un registro in sola lettura.** Le righe non si modificano e non si cancellano.
+- **Le modifiche dell'assistenza** sono firmate **Assistenza MyCentralino**, senza indirizzo IP. Le operazioni fatte in automatico dal centralino sono firmate **Sistema MyCentralino**.
+- **I PIN non si vedono.** Se una riga riguarda un codice PIN, al suo posto leggi «••••••».
+- **Il nome utente** è quello con cui chi ha agito entra nel pannello. I collaboratori e i loro nomi utente si gestiscono in [Utenti e permessi](/centralino/account/utenti-e-permessi).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Non trovo una modifica vecchia: è stata cancellata?">
+    Il periodo predefinito mostra solo gli ultimi 30 giorni: nel menu del periodo scegli **Da sempre** e cerca di nuovo.
+  </Accordion>
+
+  <Accordion title="Qualcosa ha smesso di funzionare: come capisco cosa è cambiato?">
+    Apri **Log attività**, scegli un periodo che comprenda il giorno in cui il problema è iniziato e guarda le righe di quei giorni. Se conosci la parte del centralino coinvolta (un numero, un interno, una regola, degli orari), scrivila nella ricerca.
+  </Accordion>
+
+  <Accordion title="Chi è «Assistenza MyCentralino»?">
+    È la firma delle modifiche fatte dall'assistenza di MyCentralino sul tuo centralino, per esempio quando ti ha aiutato a configurarlo.
+  </Accordion>
+
+  <Accordion title="Chi è «Sistema MyCentralino»?">
+    È la firma delle operazioni che il centralino fa da solo, senza che nessuno le abbia fatte a mano dal pannello.
+  </Accordion>
+
+  <Accordion title="Posso cancellare una riga del registro?">
+    No. Il registro serve proprio a sapere sempre chi ha fatto cosa: non si modifica e non si cancella.
+  </Accordion>
+
+  <Accordion title="Un collaboratore può vedere il Log attività?">
+    Sì, se gli hai concesso la sezione **Monitoraggio**. Vede lo stesso registro che vedi tu.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Utenti e permessi" icon="users" href="/centralino/account/utenti-e-permessi">
+    I collaboratori e le sezioni che possono vedere.
+  </Card>
+
+  <Card title="Chiamate ricevute" icon="phone" href="/centralino/monitoraggio/chiamate-ricevute">
+    Perché una chiamata non è arrivata.
+  </Card>
+
+  <Card title="Regole delle chiamate" icon="sitemap" href="/centralino/regole/panoramica">
+    Dove vanno le chiamate di ogni numero.
+  </Card>
+
+  <Card title="Richieste di assistenza" icon="life-ring" href="/centralino/assistenza/richieste-di-assistenza">
+    Scrivi all'assistenza se qualcosa non torna.
+  </Card>
+</CardGroup>

@@ -1,5 +1,239 @@
 ---
 title: "Inoltrare le chiamate al cellulare"
+sidebarTitle: "Inoltrare al cellulare"
+description: "Dall'inizio alla fine: salvi il numero del cellulare, lo metti nelle regole del tuo numero (subito o dopo che l'ufficio non risponde) e provi."
+keywords:
+  - "inoltro"
+  - "inoltrare al cellulare"
+  - "deviare le chiamate"
+  - "trasferimento di chiamata"
+  - "deviazione"
+  - "call forwarding"
+  - "numero esterno"
+  - "cellulare"
+  - "altra sede"
+  - "reperibile"
+  - "cellulare insieme all'ufficio"
+  - "squillo contemporaneo"
+  - "Cloud Softphone"
 ---
 
-Caricamento in corso.
+Questa guida ti porta da zero a un numero che, quando qualcuno chiama, fa squillare il tuo cellulare (o quello di un collega, o un'altra sede). Puoi farlo squillare subito, oppure solo quando in ufficio nessuno risponde.
+
+## Cosa ottieni
+
+- Chi chiama il tuo numero viene passato al cellulare che hai scelto.
+- Puoi decidere per quanti secondi il cellulare squilla e cosa succede se non risponde (per esempio la segreteria).
+- Lo stesso cellulare si può usare su più numeri, fuori orario, con un interruttore o come tasto di un menù vocale.
+
+## Prima di cominciare
+
+- **Ti serve l'accesso** a **Risorse del centralino** e a **Regole delle chiamate**. Il titolare dell'account li ha sempre; un collaboratore solo se glieli hai concessi.
+- **Il credito.** L'inoltro è una chiamata in uscita dal centralino verso il cellulare: consuma traffico secondo il tuo piano, come le altre chiamate in uscita. Controlla il credito in **Il mio account** e, se vuoi stare tranquillo, attiva la ricarica automatica. Vedi [Ricaricare il credito](/centralino/come-fare/ricaricare-il-credito).
+- **La linea per le chiamate in uscita.** Di norma c'è già. Se nella regola compare «Nessun provider di uscita configurato per questo centralino.», scrivi all'assistenza: la configura lei.
+- **Decidi quando deve squillare il cellulare**: sempre e subito, oppure dopo che gli interni dell'ufficio non hanno risposto. I passi sono gli stessi; cambia solo la posizione della regola (parte 2).
+
+## Come fare
+
+### 1 · Salva il numero del cellulare
+
+**Dove si trova:** Menu → Risorse centralino → Instradamento → **Inoltro chiamate** · `https://cloud.mycentralino.com/inoltro-chiamate`
+
+<Steps>
+  <Step title="Apri Inoltro chiamate e premi Nuovo inoltro">
+    Si apre la pagina **Nuovo numero di inoltro**.
+  </Step>
+  <Step title="Scrivi il numero">
+    In **Numero di telefono** scrivi il cellulare, per esempio `3351234567`. I numeri italiani si scrivono senza prefisso: se scrivi `+39` viene tolto da solo, e anche gli spazi vengono tolti. Per un numero estero metti `00` davanti (per esempio `0041791234567`).
+  </Step>
+  <Step title="Scrivi una descrizione">
+    In **Descrizione** scrivi un nome che riconosci quando lo scegli nelle regole, per esempio `Cellulare Mario`. È obbligatoria, al massimo 150 caratteri.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Torni all'elenco e compare «Numero "Cellulare Mario" aggiunto.».
+  </Step>
+</Steps>
+
+<Frame caption="Il numero di cellulare si registra prima in Inoltro chiamate">
+  <img
+    src="/images/guida/inoltro-nuovo.webp"
+    alt="Il numero di cellulare si registra prima in Inoltro chiamate"
+  />
+</Frame>
+
+<Note>
+  Un numero salvato qui non fa ancora niente: è solo in elenco. Le chiamate arrivano al cellulare quando lo metti nelle regole del tuo numero (parte 2).
+</Note>
+
+### 2 · Metti l'inoltro nelle regole del tuo numero
+
+**Dove si trova:** Menu → **Regole chiamate** → **Numeri di telefono** · `https://cloud.mycentralino.com/regole`
+
+<Steps>
+  <Step title="Apri il numero">
+    Nell'elenco clicca il numero che deve squillare sul cellulare. Si apre lo schema delle sue regole, che parte da **Chiamata in arrivo**.
+  </Step>
+  <Step title="Scegli il punto in cui inserire l'inoltro">
+    Dipende da cosa vuoi ottenere:
+
+    - **Il cellulare squilla subito**: passa con il mouse sulla linea sotto **Chiamata in arrivo** e premi il **\+** («Inserisci qui»). Se il numero non ha ancora regole, premi **Aggiungi la prima regola**. Se il numero ha già numeri bloccati, ferie od orari che devono continuare a valere, usa invece il **\+** subito sotto quei passaggi: l'ordine completo è in [Editor delle regole](/centralino/regole/editor), sezione «In che ordine metto i passaggi».
+    - **Prima l'ufficio, poi il cellulare**: premi il **\+** sulla linea subito **sotto** la regola che fa squillare gli interni (per esempio **Fai squillare uno o più interni VoIP**). Se è l'ultima regola, puoi usare **Aggiungi regola in coda** in fondo.
+  </Step>
+  <Step title="Scegli Inoltra a numero telefonico esterno">
+    Nella finestra **Aggiungi regola** apri l'argomento **Inoltra la chiamata** e scegli **Inoltra a numero telefonico esterno**. In alternativa scrivi «inoltra» in **Cerca una regola…**.
+  </Step>
+  <Step title="Scegli il cellulare">
+    In **Numero a cui inoltrare** scegli il numero salvato nella parte 1 (puoi cercarlo con **Cerca numero…**). Se non l'hai ancora salvato premi **Nuovo**. Se l'elenco è ancora vuoto leggi «Nessun numero in rubrica di inoltro.» e premi **Aggiungi il primo numero**. In tutti e due i casi si apre la finestra **Nuovo numero di inoltro**, e dopo **Salva** il numero risulta già scelto. **Squilla per**, **Provider di uscita** e **Inoltro avanzato** compaiono quando c'è almeno un numero in elenco.
+  </Step>
+  <Step title="Scegli quanto deve squillare">
+    In **Squilla per** scegli i secondi: 5, 10, 15, 20, 25, 30, 35, 40, **45** (proposto), 60, 90 o 180. Se prima squilla l'ufficio, tieni conto che chi chiama aspetta la somma dei due tempi.
+  </Step>
+  <Step title="Lascia la linea proposta">
+    In **Provider di uscita** è già scelta la linea principale, segnata **(PRINCIPALE)**: di norma va bene così. Una linea con «— non configurato» non è pronta.
+  </Step>
+  <Step title="Inoltro avanzato, se serve">
+    Spunta **Inoltro avanzato** se il cellulare è spesso irraggiungibile o occupato: il centralino «Prova a contattare il numero per tre volte con intervalli di 30 secondi.».
+  </Step>
+  <Step title="Aggiungi la regola">
+    Premi **Aggiungi regola** (si attiva quando hai scelto il numero). Nello schema compare la scheda con il numero, la scritta «Inoltra a un numero esterno» e la linea usata.
+  </Step>
+</Steps>
+
+Le modifiche alle regole valgono subito: in questa pagina non c'è un bottone da premere per salvare.
+
+<Tip>
+  Metti sempre una regola **dopo** l'inoltro, per esempio **Segreteria telefonica** (argomento **Notifiche**): se il cellulare non risponde entro il tempo di **Squilla per**, la chiamata passa alla regola successiva e chi chiama può lasciare un messaggio.
+</Tip>
+
+Esempio di sequenza «prima l'ufficio, poi il cellulare»:
+
+| Posizione | Regola | Cosa succede |
+| --- | --- | --- |
+| 1 | **Fai squillare uno o più interni VoIP** · 20 secondi | Squillano i telefoni dell'ufficio. |
+| 2 | **Inoltra a numero telefonico esterno** · `Cellulare Mario` · 25 secondi | Se in ufficio nessuno risponde, squilla il cellulare. |
+| 3 | **Segreteria telefonica** | Se non risponde nemmeno il cellulare, chi chiama lascia un messaggio. |
+
+Il tempo di squillo dell'ufficio si sceglie quando aggiungi la regola **Fai squillare uno o più interni VoIP** (campo **Fai squillare per**) e dalla finestra della regola non si cambia: per portarlo per esempio a 20 secondi, elimina la regola e aggiungila di nuovo con il tempo giusto. Se il numero fa squillare una coda, il tempo si imposta nella pagina della coda, con **Tempo massimo in attesa**.
+
+### 3 · Prova
+
+<Steps>
+  <Step title="Chiama il tuo numero da un altro telefono">
+    Usa un telefono diverso dal cellulare di destinazione. Il cellulare deve squillare (subito, o dopo l'ufficio se hai scelto così).
+  </Step>
+  <Step title="Controlla in Chiamate ricevute">
+    In Menu → Monitoraggio → **Chiamate ricevute** la chiamata risulta **Risposta** con la frase «Inoltrata a …: ha risposto.». Se il cellulare non ha risposto leggi «Inoltrata a …, ma non ha risposto nessuno.». Aprendo la riga, nel **Percorso chiamata** trovi il passaggio **Inoltro**. Vedi [Capire una chiamata persa](/centralino/come-fare/capire-una-chiamata-persa).
+  </Step>
+</Steps>
+
+## Altri modi di usare l'inoltro
+
+Il numero salvato in **Inoltro chiamate** si può scegliere anche in altre pagine, con questi nomi:
+
+| Quando vuoi inoltrare | Dove | Voce da scegliere |
+| --- | --- | --- |
+| Solo fuori orario | **Orari**, riquadro **Quando il centralino è chiuso** | **Inoltro a un numero** |
+| Nei giorni di ferie | **Ferie e festività** | **Inoltro chiamata** |
+| Quando lo decidi tu (acceso o spento) | **Interruttori** | **Inoltro a numero** |
+| In certe fasce orarie fisse | **Interruttori a orario** | **Inoltro chiamata** |
+| Quando chi chiama preme un tasto | **Menù vocali (IVR)** | **Numero esterno** |
+
+Vedi [Configurare gli orari di apertura](/centralino/come-fare/configurare-gli-orari-di-apertura), [Interruttori](/centralino/orari-e-chiusure/interruttori) e [Menù vocali](/centralino/instradamento/menu-vocali).
+
+## I campi
+
+### Nuovo numero di inoltro
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Numero di telefono** | Il numero da far squillare | Obbligatorio. Cifre, spazi e un `+` iniziale, al massimo 50 caratteri. Il `+39` e gli spazi vengono tolti. Esteri con `00` davanti |
+| **Descrizione** | Il nome con cui lo riconosci nelle regole | Obbligatoria, al massimo 150 caratteri |
+
+### Regola «Inoltra a numero telefonico esterno»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Numero a cui inoltrare** | Il numero da chiamare, scelto dall'elenco di **Inoltro chiamate** | Uno solo. Non si può scrivere un numero libero: si sceglie o si crea con **Nuovo** |
+| **Squilla per** | Quanto squilla prima di passare alla regola successiva | 5, 10, 15, 20, 25, 30, 35, 40, 45 (proposto), 60, 90, 180 secondi |
+| **Provider di uscita** | La linea con cui parte la chiamata | Proposta la linea **(PRINCIPALE)** |
+| **Inoltro avanzato** | Ritenta se il numero è irraggiungibile o occupato | Tre tentativi a 30 secondi di distanza. Spenta di base |
+
+## Da sapere
+
+- **La regola si ricorda il numero com'era quando l'hai aggiunta.** Se poi correggi il numero in **Inoltro chiamate**, la regola continua a chiamare quello vecchio: elimina la regola e aggiungila di nuovo scegliendo il numero corretto.
+- **Eliminare il numero da Inoltro chiamate non ferma l'inoltro.** Per smettere di inoltrare, elimina la regola **Inoltra a numero telefonico esterno** dalle regole del numero. La finestra di eliminazione in **Inoltro chiamate** non ti avvisa se il numero è usato in una regola.
+- **L'ordine conta.** Le regole si eseguono dall'alto verso il basso. Se sopra l'inoltro c'è una regola che chiude la chiamata o la manda altrove (per esempio un orario fuori orario o una segreteria), l'inoltro non viene raggiunto.
+- **Costi.** L'inoltro è traffico in uscita verso il numero esterno: si paga come una chiamata in uscita, secondo il tuo piano.
+- **Più cellulari in fila.** Puoi mettere più regole **Inoltra a numero telefonico esterno** una sotto l'altra: se il primo non risponde, prova il secondo.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Ho salvato il cellulare ma le chiamate non arrivano. Perché?">
+    Il numero salvato in **Inoltro chiamate** va anche messo nelle regole del numero chiamato con **Inoltra a numero telefonico esterno** (parte 2). Se c'è già, controlla che sopra non ci sia una regola che porta la chiamata altrove, e che ci sia credito.
+  </Accordion>
+
+  <Accordion title="Ho cambiato il numero del cellulare ma squilla ancora quello vecchio.">
+    La regola tiene il numero che aveva quando l'hai aggiunta. Nelle regole del numero elimina la scheda dell'inoltro e aggiungila di nuovo scegliendo il numero corretto.
+  </Accordion>
+
+  <Accordion title="Il cellulare non risponde: cosa succede alla chiamata?">
+    Dopo i secondi di **Squilla per** la chiamata passa alla regola successiva. Per questo conviene mettere sotto l'inoltro una **Segreteria telefonica** o un altro numero.
+  </Accordion>
+
+  <Accordion title="Voglio che il cellulare squilli insieme ai telefoni dell'ufficio, non dopo.">
+    Con **Inoltra a numero telefonico esterno** il cellulare squilla prima o dopo gli interni, uno dopo l'altro. Per farlo squillare **insieme** ai telefoni dell'ufficio, trasforma il cellulare in un telefono del centralino: installa l'app **Cloud Softphone** e collegala a un interno libero con **Associa dispositivo VoIP** → **Cellulare** (passi in [Collegare un telefono](/centralino/come-fare/collegare-un-telefono)). Poi aggiungi quell'interno insieme agli altri nella regola **Fai squillare uno o più interni VoIP** (elimina la regola e aggiungila di nuovo spuntando anche il nuovo interno) oppure tra gli operatori della coda. In questo modo non serve un inoltro: il cellulare squilla come un interno, purché sia connesso a internet e l'app sia attiva. Vedi [Far squillare più telefoni](/centralino/come-fare/far-squillare-piu-telefoni).
+  </Accordion>
+
+  <Accordion title="Posso inoltrare a un numero estero?">
+    Sì: scrivilo con `00` davanti, per esempio `0041791234567`.
+  </Accordion>
+
+  <Accordion title="Posso scrivere il numero direttamente nella regola?">
+    No, il numero si sceglie dall'elenco di **Inoltro chiamate**. Dalla regola puoi però crearne uno nuovo con **Nuovo**, senza uscire dalle regole.
+  </Accordion>
+
+  <Accordion title="Come smetto di inoltrare?">
+    Apri le regole del numero ed elimina la scheda **Inoltra a numero telefonico esterno**. Per inoltrare solo in certi momenti, usa invece un interruttore o un interruttore a orario (vedi «Altri modi di usare l'inoltro»).
+  </Accordion>
+
+  <Accordion title="Nella regola compare «Nessun provider di uscita configurato per questo centralino.»">
+    Manca la linea per le chiamate in uscita. Il bottone **Configura un provider** apre **Numeri in uscita** in una nuova scheda, dove leggi «Per attivare le linee in uscita contatta l'assistenza.»: apri una richiesta all'assistenza, la linea la configura lei.
+  </Accordion>
+
+  <Accordion title="Il bottone Aggiungi regola è grigio.">
+    Non hai ancora scelto il numero in **Numero a cui inoltrare**, oppure in **Provider di uscita** non c'è una linea. Scegli un numero dell'elenco; se compare «Nessun provider di uscita configurato per questo centralino.», apri una richiesta all'assistenza.
+  </Accordion>
+
+  <Accordion title="Quanto costa l'inoltro?">
+    È una chiamata in uscita dal centralino verso il numero esterno e si paga secondo il tuo piano, come le altre chiamate in uscita.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Inoltro chiamate" icon="arrow-right-arrow-left" href="/centralino/instradamento/inoltro-chiamate">
+    L'elenco dei numeri esterni, campo per campo.
+  </Card>
+
+  <Card title="Passaggi che fanno squillare" icon="phone" href="/centralino/regole/passaggi-chiamata">
+    Inoltra a numero telefonico esterno e gli altri passaggi.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere, spostare ed eliminare le regole.
+  </Card>
+
+  <Card title="Far squillare più telefoni" icon="users" href="/centralino/come-fare/far-squillare-piu-telefoni">
+    Prima l'ufficio: interni e code di ricezione.
+  </Card>
+
+  <Card title="Segreterie" icon="voicemail" href="/centralino/strumenti/segreterie">
+    Dove arrivano i messaggi se nessuno risponde.
+  </Card>
+
+  <Card title="Ricaricare il credito" icon="credit-card" href="/centralino/come-fare/ricaricare-il-credito">
+    Il credito che serve alle chiamate in uscita.
+  </Card>
+</CardGroup>

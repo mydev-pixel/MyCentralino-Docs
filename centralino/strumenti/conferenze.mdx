@@ -1,5 +1,191 @@
 ---
 title: "Conferenze"
+sidebarTitle: "Conferenze"
+description: "Le stanze di conferenza telefonica: più persone parlano insieme chiamando lo stesso numero e digitando il PIN. Come creare una stanza, collegarla a un numero ed eliminarla."
+keywords:
+  - "conferenza"
+  - "conferenze"
+  - "conferenza telefonica"
+  - "audioconferenza"
+  - "stanza di conferenza"
+  - "sala conferenza"
+  - "conference room"
+  - "riunione telefonica"
+  - "chiamata di gruppo"
+  - "PIN conferenza"
 ---
 
-Caricamento in corso.
+Una **stanza di conferenza** è una sala telefonica in cui più persone parlano insieme. Ognuno chiama il numero che porta alla stanza e digita il PIN, che è uguale per tutte le stanze del tuo centralino.
+
+**Dove si trova:** Menu → Risorse centralino → Strumenti → **Conferenze** · `https://cloud.mycentralino.com/conference-room`
+
+Ci arrivi anche dalla pagina **Risorse del centralino** (`https://cloud.mycentralino.com/configurazione`), nel gruppo **Strumenti**.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**: senza quel permesso la voce non compare nel menu e l'indirizzo risponde con accesso negato. Non serve nessun modulo.
+
+<Note>
+  Una stanza appena creata non si raggiunge ancora. Ci si entra solo quando qualcosa porta lì le chiamate: di solito la regola **Conferenza telefonica** nelle regole di un tuo numero o di un servizio interno.
+</Note>
+
+## Cosa trovi nella pagina
+
+### L'elenco delle stanze
+
+In alto il titolo **Conferenze**. Sopra il titolo c'è il conteggio delle stanze seguito da **PIN per entrare** e dal PIN da dare ai partecipanti. Sotto: «Più persone parlano insieme: ognuno chiama il numero della stanza e digita il PIN, uguale per tutte le stanze.» A destra il bottone **Nuova stanza**.
+
+Sotto ci sono la ricerca **Cerca stanza…** e il bottone **A–Z** / **Z–A**, che ordina per nome.
+
+Ogni stanza occupa una riga con:
+
+- il **nome** della stanza;
+- sotto, **Si entra chiamando** seguito dai servizi interni le cui regole portano alla stanza. Se nessun servizio interno porta lì compare lo stato ambra **Nessun numero porta qui** con il collegamento **Aggiungi la regola ›**, che apre le **Regole delle chiamate**. Le stanze collegate direttamente a un tuo numero di telefono mostrano comunque **Nessun numero porta qui**: per controllarle apri le regole del numero;
+- a destra il cestino **Elimina**.
+
+Durante una ricerca, se non tutte le stanze corrispondono, in fondo compare «N di M stanze». Se non ci sono stanze compare «Nessuna stanza configurata» con «Crea la prima stanza per le chiamate in conferenza.»; se la ricerca non trova niente, «Nessuna stanza per questa ricerca» con «Prova con altri termini.».
+
+## Come fare
+
+### Come creo una stanza
+
+<Steps>
+  <Step title="Apri Conferenze">
+    Menu → Risorse centralino → Strumenti → **Conferenze**.
+  </Step>
+  <Step title="Premi Nuova stanza">
+    Si apre la finestra **Nuova stanza**: «Scegli un nome univoco.», con il PIN d'accesso comune a tutte le stanze.
+  </Step>
+  <Step title="Scrivi il nome">
+    In **Nome** scrivi un nome senza spazi, per esempio `Riunione_Lunedi`. Sono ammessi lettere, numeri, trattino `-` e trattino basso `_`.
+  </Step>
+  <Step title="Crea">
+    Premi **Crea**. La finestra si chiude e la stanza compare in elenco con **Nessun numero porta qui**.
+  </Step>
+</Steps>
+
+### Come collego la stanza a un numero
+
+<Steps>
+  <Step title="Apri le regole">
+    Menu → **Regole chiamate** (`https://cloud.mycentralino.com/regole`), oppure **Aggiungi la regola ›** sotto la stanza. Clicca il numero da dedicare alla conferenza, oppure un servizio interno (per esempio per collegare la stanza a un tasto di un menù vocale).
+  </Step>
+  <Step title="Aggiungi la regola">
+    Premi **Aggiungi regola** (o il **\+** nel punto in cui vuoi la regola). Nella finestra **Aggiungi regola** apri l'argomento **Inoltra la chiamata** e scegli **Conferenza telefonica**.
+  </Step>
+  <Step title="Scegli la stanza">
+    In **Stanza di conferenza** spunta la stanza (puoi cercarla con **Cerca stanza…**).
+  </Step>
+  <Step title="Conferma">
+    Premi **Aggiungi regola**. Le modifiche alle regole valgono subito. Se hai usato un servizio interno, in **Conferenze** sotto la stanza ora compare **Si entra chiamando** con il suo numero; se hai usato un tuo numero di telefono, la riga continua a dire **Nessun numero porta qui**.
+  </Step>
+</Steps>
+
+Se nella regola compare «Nessuna stanza di conferenza configurata per questo centralino.», premi **Crea una stanza**: **Conferenze** si apre in una nuova scheda. Crea la stanza, torna alle regole e scegli di nuovo **Conferenza telefonica**.
+
+### Come si partecipa a una conferenza
+
+<Steps>
+  <Step title="Dai ai partecipanti numero e PIN">
+    Il numero è il tuo numero di telefono che porta alla stanza: quello nelle cui regole c'è **Conferenza telefonica** con questa stanza, oppure quello che porta al servizio interno scritto dopo **Si entra chiamando**. Il PIN è quello scritto in cima alla pagina **Conferenze**, dopo **PIN per entrare**.
+  </Step>
+  <Step title="Ognuno chiama e digita il PIN">
+    Ogni partecipante chiama il numero e, quando viene chiesto, digita il PIN. Chi è già nella stanza parla con chi entra.
+  </Step>
+</Steps>
+
+### Come elimino una stanza
+
+<Steps>
+  <Step title="Premi il cestino">
+    Nella riga della stanza premi il cestino **Elimina**.
+  </Step>
+  <Step title="Conferma">
+    La finestra **Elimina stanza** dice «Stai per eliminare la stanza «Riunione_Lunedi». L'azione non è reversibile e disconnette eventuali partecipanti collegati.». Premi **Elimina** (oppure **Annulla**): la stanza sparisce dall'elenco.
+  </Step>
+  <Step title="Togli la regola">
+    Nelle regole del numero che portava alla stanza elimina anche la scheda **Conferenza telefonica**, e decidi dove devono andare ora le chiamate di quel numero.
+  </Step>
+</Steps>
+
+<Warning>
+  La finestra avvisa che l'eliminazione «disconnette eventuali partecipanti collegati»: elimina una stanza quando nessuno la sta usando.
+</Warning>
+
+## I campi
+
+### Nuova stanza
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome** | Il nome della stanza, che scegli poi nelle regole | Obbligatorio, unico, al massimo 50 caratteri. Solo lettere senza accenti, numeri, `-` e `_`; niente spazi: «Lettere, numeri, trattino e trattino basso. Niente spazi: usa \_.». Esempio: «Es. Sala_Riunioni_1» |
+
+Messaggi che puoi vedere: «Il nome della conferenza non puo' essere vuoto.», «Il nome non puo' contenere spazi: usa underscore (\_).», «Il nome supera la lunghezza massima di 50 caratteri.», «Usa solo lettere, numeri, trattino e trattino basso.», «Esiste gia' una conference room con questo nome.», «Non è stato possibile creare la stanza. Riprova tra poco.».
+
+### Regola «Conferenza telefonica»
+
+È la regola che porta chi chiama nella stanza. Si aggiunge dall'editor delle regole, argomento **Inoltra la chiamata**.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Stanza di conferenza** | La stanza in cui entra chi chiama | Una delle stanze, con la ricerca **Cerca stanza…** |
+
+Il bottone **Aggiungi regola** si accende quando hai scelto la stanza. Tutti i dettagli sono in [Passaggi che instradano la chiamata](/centralino/regole/passaggi-chiamata).
+
+## Da sapere
+
+- **Il PIN è uno solo** per tutte le stanze del tuo centralino. Non si cambia e non si imposta stanza per stanza. Dallo solo alle persone che devono partecipare.
+- **Il nome non si cambia.** Per rinominare una stanza creane una nuova, sceglila nella regola **Conferenza telefonica** al posto della vecchia ed elimina la vecchia.
+- **«Si entra chiamando» mostra solo i servizi interni.** Se la stanza è collegata direttamente a un tuo numero di telefono, oppure è la destinazione di **Orari** o di un **Interruttore** (voce **Conferenza** o **Conferenza audio**), la riga dice comunque **Nessun numero porta qui**.
+- **I tasti di un Menù vocale (IVR)** non portano direttamente a una stanza: crea un servizio interno con la regola **Conferenza telefonica** e collega il tasto a quel servizio interno. Vedi [Servizi interni](/centralino/regole/servizi-interni).
+- **Conferenze e videoconferenze sono cose diverse.** Questa pagina riguarda solo l'audio al telefono. Per le riunioni con il video c'è il modulo [VideoConferenza](/centralino/moduli/videoconferenza).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="La stanza dice «Nessun numero porta qui». Cosa devo fare?">
+    Nessun servizio interno porta alla stanza. Se l'hai collegata a un tuo numero di telefono, apri le regole di quel numero e controlla che ci sia **Conferenza telefonica** con questa stanza: se c'è, la stanza funziona. Altrimenti premi **Aggiungi la regola ›**, apri il numero (o il servizio interno) e aggiungi la regola scegliendo la stanza.
+  </Accordion>
+
+  <Accordion title="Dove trovo il PIN della conferenza?">
+    In cima alla pagina **Conferenze**, dopo **PIN per entrare**. È scritto anche nella finestra **Nuova stanza**.
+  </Accordion>
+
+  <Accordion title="Posso avere un PIN diverso per ogni stanza?">
+    No, il PIN è uguale per tutte le stanze del centralino e non si può cambiare.
+  </Accordion>
+
+  <Accordion title="Posso cambiare il nome di una stanza?">
+    No. Crea una stanza con il nome nuovo, sceglila nella regola **Conferenza telefonica** al posto della vecchia, poi elimina la vecchia.
+  </Accordion>
+
+  <Accordion title="Il nome che scrivo viene rifiutato.">
+    Il nome non può contenere spazi, accenti o simboli. Usa lettere, numeri, `-` e `_`, per esempio `Sala_Riunioni_1`.
+  </Accordion>
+
+  <Accordion title="Ho eliminato la stanza: cosa succede a chi chiama quel numero?">
+    La regola **Conferenza telefonica** resta nelle regole del numero. Toglila e scegli dove devono andare ora quelle chiamate.
+  </Accordion>
+
+  <Accordion title="Un collaboratore non vede Conferenze nel menu.">
+    Gli serve l'accesso a **Risorse del centralino**. Lo concede il titolare dell'account. Vedi [Utenti e permessi](/centralino/account/utenti-e-permessi).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Passaggi che instradano la chiamata" icon="phone" href="/centralino/regole/passaggi-chiamata">
+    La regola Conferenza telefonica e le altre.
+  </Card>
+
+  <Card title="Servizi interni" icon="sitemap" href="/centralino/regole/servizi-interni">
+    Collegare una stanza a un tasto del menù vocale.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere ed eliminare le regole di un numero.
+  </Card>
+
+  <Card title="VideoConferenza" icon="users" href="/centralino/moduli/videoconferenza">
+    Riunioni con il video, dal browser.
+  </Card>
+</CardGroup>

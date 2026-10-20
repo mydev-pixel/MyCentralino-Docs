@@ -93,7 +93,9 @@
           },
           {
             "group": "Pannello operatori",
-            "pages": []
+            "pages": [
+              "centralino/pannello-operatori"
+            ]
           },
           {
             "group": "Moduli",

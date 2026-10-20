@@ -137,11 +137,15 @@
           },
           {
             "group": "Il tuo agente",
-            "pages": []
+            "pages": [
+              "agenti-ai/agente/crea-un-agente"
+            ]
           },
           {
             "group": "Numeri e chiamate",
-            "pages": []
+            "pages": [
+              "agenti-ai/collegare-un-numero"
+            ]
           },
           {
             "group": "Domande frequenti",

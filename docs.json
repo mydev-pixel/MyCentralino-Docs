@@ -33,7 +33,8 @@
           {
             "group": "Regole delle chiamate",
             "pages": [
-              "centralino/regole/panoramica"
+              "centralino/regole/panoramica",
+              "centralino/regole/editor"
             ]
           },
           {

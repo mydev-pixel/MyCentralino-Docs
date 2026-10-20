@@ -1,5 +1,305 @@
 ---
 title: "Chiamate effettuate"
+sidebarTitle: "Chiamate effettuate"
+description: "Lo storico delle chiamate fatte dai tuoi interni: chi ha chiamato, con quale numero, chi è stato chiamato, l'esito e la durata. Con le statistiche per interno e l'esportazione mensile."
+keywords:
+  - "chiamate effettuate"
+  - "chiamate in uscita"
+  - "chiamate fatte"
+  - "storico chiamate uscita"
+  - "registro chiamate"
+  - "chi ha chiamato"
+  - "statistiche per interno"
+  - "statistiche operatore"
+  - "esporta chiamate"
+  - "CSV chiamate"
+  - "numero usato"
+  - "occupato"
+  - "non risposta"
+  - "chiamata fallita"
 ---
 
-Caricamento in corso.
+**Chiamate effettuate** è lo storico delle telefonate fatte dagli interni del centralino verso l'esterno: chi ha chiamato, con quale numero è uscita la chiamata, chi è stato chiamato, com'è andata e quanto è durata. Da qui apri anche le **Statistiche chiamate**, interno per interno, e scarichi le chiamate di un mese intero.
+
+**Dove si trova:** Menu → Monitoraggio → **Chiamate effettuate** · `https://cloud.mycentralino.com/chiamate-uscita`
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli è stata concessa la sezione **Monitoraggio** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)). Non serve nessun modulo.
+
+<Info>
+  La pagina si aggiorna da sola ogni 30 secondi, finché è aperta e visibile sullo schermo. Le nuove chiamate compaiono senza ricaricare.
+</Info>
+
+## Cosa trovi nella pagina
+
+Sopra il titolo leggi il conto del periodo scelto, per esempio «128 chiamate · 342 min in conversazione» (con un filtro sull'esito attivo diventa «_N_ con i filtri attivi»). Sotto il titolo la frase «Tutte le telefonate effettuate dal centralino, raggruppate per interno e provider.»
+
+### Quali chiamate compaiono
+
+- Le chiamate fatte **dai telefoni degli interni** verso numeri esterni (fissi e cellulari).
+- **Non** compaiono le chiamate fra interni.
+- Il periodo predefinito è **oggi**. Il periodo può durare al massimo un mese (dal giorno 1 all'ultimo del mese ci sta); le date possono essere anche vecchie.
+
+### La card verde
+
+Compare solo se nel periodo ci sono chiamate. Mostra:
+
+- «Periodo · _data_ → _data_»;
+- quante chiamate hanno avuto risposta sul totale, per esempio «96 / 128 chiamate hanno avuto risposta»;
+- **Tasso di successo**: la percentuale di chiamate con risposta;
+- **Tempo totale**: il tempo passato in conversazione (ore:minuti:secondi);
+- **Durata media**: quanto è durata in media una conversazione.
+
+### I filtri
+
+Stanno in un riquadro sopra l'elenco.
+
+| Filtro | Cosa fa |
+| --- | --- |
+| **Periodo** | Due date, dal giorno al giorno. Non si possono scegliere giorni futuri; i giorni passati sì, anche lontani. Se il periodo dura più di un mese, viene accorciato da solo e compare l'avviso «Il range massimo consentito è di 30 giorni. È stato ridotto automaticamente.» |
+| **Oggi** · **Ultimi 7 gg** · **Ultimi 30 gg** · **Mese corrente** | Scorciatoie per il periodo. Quella attiva è evidenziata. |
+| **Cerca numero o nome chiamato…** | Cerca nel numero chiamato (anche solo una parte) e nei nomi e nelle aziende della tua **Rubrica**: scrivendo «Rossi» trovi le chiamate verso i numeri dei contatti che si chiamano così. Non cerca l'interno che ha chiamato: per quello c'è il filtro **Interni**. |
+| **Esito** | **Risposta**, **Non risposta**, **Occupato**, **Fallita**. Puoi attivarne più di uno insieme; nessuno attivo = tutti. |
+| **Interni** | Un menu con l'elenco degli interni (numero e nome), una casella **Filtra interni…** per trovarli e il conto «_N_ disponibili». Spunta uno o più interni; **Tutti** toglie la scelta. Sul bottone leggi «Interni tutti» oppure quanti ne hai scelti, per esempio «2/11». |
+| **Reset filtri** | Toglie ricerca, esito e interni e riporta anche il periodo a oggi. |
+
+Accanto ai filtri ci sono anche i bottoni **Statistiche** (apre le statistiche per interno, vedi più sotto) ed **Esporta CSV** (scarica un mese intero).
+
+<Note>
+  Se il tuo centralino ha un pacchetto di minuti FLAT, nella prima riga dei filtri compaiono anche due scorciatoie: **Utilizzo FLAT** e il bottone dei costi del tuo operatore FLAT (la parola **Costi** seguita dal nome dell'operatore). Portano alle pagine del modulo [Analisi utilizzo Flat](/centralino/moduli/analisi-utilizzo-flat).
+</Note>
+
+### I riquadri del periodo
+
+Cinque riquadri con il numero di chiamate: **Totale**, **Risposte**, **Occupati**, **Non risposta**, **Fallite**; accanto agli ultimi quattro la percentuale sul totale. Il riquadro **Fallite** conta anche le chiamate **Congestione**.
+
+Questi riquadri, come la card verde, compaiono solo se nel periodo ci sono chiamate.
+
+Sotto, due riquadri affiancati:
+
+- **Tempi conversazioni**: **Tempo totale** e **Durata media**, con la nota «Calcolato sulle _N_ chiamate risposte del periodo.»
+- **Per provider**: una riga per ogni linea con cui sono uscite le chiamate. Nella colonna **Provider** vedi il numero mostrato a chi riceve la chiamata (sotto, la descrizione della linea, se c'è); poi **Tot** (chiamate), **Risposte**, **% Successo** e **Durata** (tempo in conversazione). La percentuale è verde dal 70% in su, ambra fra il 40% e il 70%, rossa sotto il 40%. Se non c'è niente da mostrare: «Nessun provider rilevato nel periodo.»
+
+<Note>
+  La card verde e i riquadri tengono conto del periodo, degli interni e della ricerca, ma **non** del filtro **Esito**: anche se attivi solo **Risposta**, i riquadri mostrano sempre tutte le chiamate del periodo. Il filtro **Esito** cambia solo l'elenco.
+</Note>
+
+### L'elenco delle chiamate
+
+Il riquadro si intitola «Chiamate · _data_ → _data_» e mostra 50 chiamate per pagina, dalla più recente. Con più pagine, in fondo trovi **Precedente**, i numeri di pagina e **Successiva**.
+
+| Colonna | Cosa indica |
+| --- | --- |
+| **#** | Il numero progressivo della riga. |
+| **Data** | Giorno (es. `14 ott 2026`) e, sotto, l'ora con i secondi. |
+| **Chiamante** | Il nome dell'interno che ha chiamato e, sotto, il suo numero di interno. Se l'interno non ha un nome, solo il numero. |
+| **Numero usato** | Il numero mostrato a chi riceve la chiamata, con la descrizione della linea se c'è. |
+| **Chiamato** | Il numero chiamato. Se è nella tua **Rubrica**, sopra compare il nome del contatto (passando il mouse vedi anche l'azienda). |
+| **Esito** | **Risposta**, **Non risposta**, **Occupato**, **Fallita** o **Congestione**, con un'icona. |
+| **Durata** | Il tempo di conversazione (ore:minuti:secondi). `00:00:00` se nessuno ha risposto. |
+
+Se l'elenco è vuoto leggi «Nessuna chiamata in uscita in questo periodo» – «Prova ad allargare il range date o a rimuovere i filtri esito/interni.»: allarga il periodo o togli i filtri **Esito** e **Interni**. Se nel periodo non c'è proprio nessuna chiamata, non compaiono neanche la card verde e i riquadri del periodo.
+
+Il numero nella colonna **Chiamato** è un collegamento: se apri la pagina dal cellulare, toccandolo si prepara la chiamata con il telefono che hai in mano (non passa dal centralino).
+
+Sul telefono le colonne **Numero usato** e **Durata** sono nascoste e la tabella scorre di lato.
+
+### Cosa vogliono dire gli esiti
+
+| Esito | Significato |
+| --- | --- |
+| **Risposta** | Il numero chiamato ha risposto. |
+| **Non risposta** | Ha squillato, ma nessuno ha risposto. |
+| **Occupato** | Il numero chiamato era occupato. |
+| **Fallita** | La chiamata non è riuscita a partire o a raggiungere il numero. |
+| **Congestione** | Come **Fallita**: la chiamata non ha raggiunto il numero. Non ha un filtro suo: attivando **Fallita** in **Esito** vedi anche queste, e il riquadro **Fallite** le conta insieme. |
+
+Se molte chiamate risultano **Fallita** e non capisci perché, scrivi all'assistenza da [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza) indicando giorno, ora e numero chiamato.
+
+## Statistiche chiamate (per interno)
+
+Dal bottone **Statistiche** si apre la pagina **Statistiche chiamate**: «Chi ha telefonato, quanto e per quanto tempo, interno per interno. Al massimo 30 giorni alla volta.»
+
+**Dove si trova:** Menu → Monitoraggio → **Chiamate effettuate** → **Statistiche** · `https://cloud.mycentralino.com/chiamate-uscita/statistiche`
+
+Cosa trovi:
+
+- **Periodo**: due date, predefinito dal primo del mese a oggi. Scorciatoie **Oggi**, **7 giorni**, **Mese corrente**, **Mese scorso**. Anche qui il periodo può durare al massimo un mese: oltre, viene accorciato con lo stesso avviso.
+- La nota «Aggregato per interno chiamante» e i bottoni **Excel** e **PDF** (spenti se nel periodo non ci sono chiamate).
+- Tre riquadri: **Chiamate totali** («di cui _N_ connesse»), **Minuti totali in conversazione** (con il tempo in ore:minuti:secondi sotto), **Durata media (connesse)** («su _N_ chiamate», oppure «nessuna chiamata connessa»). «Connesse» sono le chiamate che hanno avuto risposta.
+- La tabella **Per operatore**, con la casella **Filtra interno o nome…**: colonne **Operatore** (numero e nome dell'interno), **Chiamate totali**, **Connesse**, **Minuti totali**, **Media (connesse)**. Come dice la nota sopra la tabella: «Clicca una riga per vedere le chiamate dell'operatore nel periodo».
+- **Chi telefona di più**: una barra per interno, dal più attivo, con «chiamate nel periodo, e i minuti al telefono».
+- **Durata media per operatore (connesse)**: un grafico a barre, dalla durata più lunga; la «linea tratteggiata = media globale».
+
+Se nel periodo non ci sono chiamate: «Nessuna chiamata nel periodo selezionato» – «Scegli un periodo diverso o verifica che ci siano interni configurati.»
+
+## Come fare
+
+### Come vedo le chiamate fatte da un collega
+
+<Steps>
+  <Step title="Apri Chiamate effettuate">
+    Menu → Monitoraggio → **Chiamate effettuate**.
+  </Step>
+  <Step title="Scegli il periodo">
+    Clicca una scorciatoia (**Oggi**, **Ultimi 7 gg**, **Ultimi 30 gg**, **Mese corrente**) oppure imposta le due date in **Periodo**.
+  </Step>
+  <Step title="Scegli l'interno">
+    Clicca **Interni**, scrivi il numero o il nome in **Filtra interni…** e spunta il suo interno. L'elenco si aggiorna subito.
+  </Step>
+</Steps>
+
+### Come controllo se un cliente è stato chiamato
+
+<Steps>
+  <Step title="Apri Chiamate effettuate">
+    Menu → Monitoraggio → **Chiamate effettuate**.
+  </Step>
+  <Step title="Allarga il periodo">
+    Clicca **Ultimi 30 gg**, oppure, per un mese passato, imposta in **Periodo** il primo e l'ultimo giorno di quel mese.
+  </Step>
+  <Step title="Cerca il cliente">
+    In **Cerca numero o nome chiamato…** scrivi il suo numero, anche solo le ultime cifre, oppure il nome con cui è salvato in **Rubrica**.
+  </Step>
+  <Step title="Leggi l'esito">
+    Nella colonna **Esito** vedi se ha risposto; in **Chiamante** chi lo ha chiamato.
+  </Step>
+</Steps>
+
+### Come vedo solo le chiamate senza risposta
+
+In **Esito** attiva **Non risposta** (e, se vuoi, anche **Occupato** e **Fallita**, che comprende anche le chiamate **Congestione**). Per tornare a vedere tutto, clicca di nuovo sui filtri attivi. **Reset filtri** toglie tutti i filtri ma riporta anche il periodo a oggi.
+
+### Come scarico le chiamate di un mese
+
+<Steps>
+  <Step title="Apri l'esportazione">
+    In **Chiamate effettuate** clicca **Esporta CSV**. Si apre la finestra «Esporta chiamate del mese» («Tutto un mese, statistiche e dettaglio in un unico CSV.»).
+  </Step>
+  <Step title="Scegli il mese">
+    Imposta **Mese** e **Anno** (l'anno in corso o quello precedente). Sotto leggi il periodo, per esempio «Periodo: 01/09/2026 – 30/09/2026».
+  </Step>
+  <Step title="Scarica">
+    Clicca **Scarica CSV**. Il file si apre con Excel o con qualunque foglio di calcolo.
+  </Step>
+</Steps>
+
+Si possono esportare solo gli **ultimi 12 mesi**. Se scegli un mese troppo vecchio la finestra dice «Puoi esportare solo gli ultimi 12 mesi.», se scegli un mese che deve ancora arrivare «Non puoi selezionare un mese futuro.»: in entrambi i casi **Scarica CSV** resta spento.
+
+### Come vedo chi ha telefonato di più il mese scorso
+
+<Steps>
+  <Step title="Apri le statistiche">
+    In **Chiamate effettuate** clicca **Statistiche**.
+  </Step>
+  <Step title="Scegli il mese scorso">
+    Clicca **Mese scorso**.
+  </Step>
+  <Step title="Leggi la classifica">
+    Guarda il riquadro **Chi telefona di più**, oppure la tabella **Per operatore**. Clicca una riga per vedere le singole chiamate di quell'interno nel periodo.
+  </Step>
+</Steps>
+
+### Come stampo o salvo il report per interno
+
+In **Statistiche chiamate** imposta il periodo e clicca:
+
+- **PDF** per il «Report per operatore», con il riepilogo (chiamate totali, chiamate connesse, minuti totali, durata media) e il dettaglio per interno (con la percentuale di chiamate e di minuti di ciascuno);
+- **Excel** per scaricare le stesse statistiche in un file da aprire con Excel.
+
+### Come vedo con quale numero escono le chiamate
+
+Guarda la colonna **Numero usato** nell'elenco, oppure il riquadro **Per provider**, che raggruppa le chiamate del periodo per linea. Le linee le vedi in [Numeri in uscita](/centralino/telefoni-e-numeri/numeri-in-uscita); la linea di un singolo interno si sceglie in [Interni](/centralino/telefoni-e-numeri/interni) → **Modifica** → **Provider in uscita**.
+
+## I campi
+
+### Finestra «Esporta chiamate del mese»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Mese** | Il mese da esportare. | Da **Gennaio** a **Dicembre**. Predefinito: il mese in corso. |
+| **Anno** | L'anno del mese. | L'anno in corso o quello precedente. |
+
+### Cosa c'è nel file CSV del mese
+
+| Parte | Contenuto |
+| --- | --- |
+| Testata | Il periodo e la data in cui hai scaricato il file. |
+| Statistiche riepilogative | Totale chiamate, chiamate risposte, numeri occupati, nessuna risposta, chiamate fallite (con le percentuali), tempo totale e durata media delle conversazioni. |
+| Statistiche per provider | Per ogni linea usata in uscita (colonna «Provider»): totale chiamate, risposte, percentuale di successo, durata totale. |
+| Dettaglio chiamate | Una riga per chiamata: numero progressivo, data e ora, nome e numero dell'interno, numero chiamato, linea usata (colonna «Provider»), esito, durata, se c'è stata conversazione, un codice identificativo della chiamata (utile se scrivi all'assistenza) e in fondo nome e azienda del chiamato se è in **Rubrica**. |
+
+## Da sapere
+
+- **Al massimo un mese alla volta in pagina.** Se il periodo è più lungo viene accorciato da solo. Per avere tutto il mese in un file usa **Esporta CSV**.
+- **L'esportazione è sempre del mese intero.** Il file contiene tutte le chiamate del mese scelto nella finestra, qualunque siano i filtri impostati nella pagina (periodo, interni, esito, ricerca).
+- **Le chiamate fra interni non compaiono**: qui ci sono solo le chiamate verso numeri esterni.
+- **Il nome nella colonna Chiamante** è quello dell'interno, come lo hai chiamato nella pagina [Interni](/centralino/telefoni-e-numeri/interni). I nomi lunghi sono accorciati: passa il mouse per leggerli interi.
+- **Le chiamate ricevute** sono in un'altra pagina: [Chiamate ricevute](/centralino/monitoraggio/chiamate-ricevute).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Posso vedere più di un mese insieme?">
+    Non nella pagina: se il periodo supera un mese viene accorciato. Puoi però guardare un mese alla volta, anche vecchio, impostando le due date in **Periodo**. Per un file con tutto il mese clicca **Esporta CSV**, scegli **Mese** e **Anno** e premi **Scarica CSV**.
+  </Accordion>
+
+  <Accordion title="Ho scaricato il CSV ma contiene anche chiamate che avevo filtrato: perché?">
+    L'esportazione non segue i filtri della pagina: scarica sempre tutto il mese scelto nella finestra. Una volta aperto il file in Excel puoi filtrarlo per interno o per esito.
+  </Accordion>
+
+  <Accordion title="Posso scaricare le chiamate di due anni fa?">
+    Nel file no: l'esportazione arriva agli ultimi 12 mesi. In pagina puoi impostare in **Periodo** date più vecchie, un mese alla volta.
+  </Accordion>
+
+  <Accordion title="Ho attivato solo «Risposta» ma i riquadri mostrano anche le altre chiamate: è un errore?">
+    No, è il comportamento della pagina: card verde e riquadri contano tutte le chiamate del periodo, degli interni e della ricerca scelti. Il filtro **Esito** restringe solo l'elenco.
+  </Accordion>
+
+  <Accordion title="Che differenza c'è fra «Non risposta», «Occupato» e «Fallita»?">
+    **Non risposta**: il telefono chiamato ha squillato ma nessuno ha risposto. **Occupato**: era già impegnato in un'altra chiamata. **Fallita** (e **Congestione**): la chiamata non è riuscita a raggiungere il numero.
+  </Accordion>
+
+  <Accordion title="Cosa vuol dire «Numero usato»?">
+    È il numero che vede chi riceve la tua chiamata, cioè il numero della linea con cui è uscita. La linea di ogni interno si sceglie in [Interni](/centralino/telefoni-e-numeri/interni) → **Modifica** → **Provider in uscita**; le linee disponibili sono in [Numeri in uscita](/centralino/telefoni-e-numeri/numeri-in-uscita).
+  </Accordion>
+
+  <Accordion title="Perché al posto del numero chiamato vedo un nome?">
+    Perché quel numero è nella tua **Rubrica**: sopra il numero compare il nome del contatto. Il numero resta visibile sotto.
+  </Accordion>
+
+  <Accordion title="Non trovo una chiamata fatta da un collega: perché?">
+    Controlla il periodo (quello predefinito è solo oggi): scegli **Ultimi 30 gg** e togli ricerca, esito e interni. **Reset filtri** toglie tutto ma riporta il periodo a oggi. Ricorda che qui compaiono solo le chiamate partite dai telefoni degli interni verso numeri esterni: le chiamate fra interni non ci sono.
+  </Accordion>
+
+  <Accordion title="Cosa vuol dire «Connesse» nelle Statistiche chiamate?">
+    Sono le chiamate che hanno avuto risposta. **Media (connesse)** è la durata media calcolata solo su quelle.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Chiamate ricevute" icon="phone" href="/centralino/monitoraggio/chiamate-ricevute">
+    Le chiamate arrivate sui tuoi numeri.
+  </Card>
+
+  <Card title="Statistiche" icon="chart-line" href="/centralino/monitoraggio/statistiche">
+    I numeri di una giornata, comprese le chiamate in uscita.
+  </Card>
+
+  <Card title="Numeri in uscita" icon="arrow-right-arrow-left" href="/centralino/telefoni-e-numeri/numeri-in-uscita">
+    Con quale numero escono le chiamate degli interni.
+  </Card>
+
+  <Card title="Analisi utilizzo Flat" icon="chart-line" href="/centralino/moduli/analisi-utilizzo-flat">
+    Minuti del pacchetto FLAT e costi delle chiamate.
+  </Card>
+
+  <Card title="Interni" icon="phone" href="/centralino/telefoni-e-numeri/interni">
+    I telefoni del centralino e i loro nomi.
+  </Card>
+
+  <Card title="Rubrica" icon="address-book" href="/centralino/strumenti/rubrica">
+    I contatti che danno il nome ai numeri chiamati.
+  </Card>
+</CardGroup>

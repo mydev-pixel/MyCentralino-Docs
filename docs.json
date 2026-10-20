@@ -130,7 +130,8 @@
               "centralino/moduli/analisi-utilizzo-flat",
               "centralino/moduli/contact-center",
               "centralino/moduli/reperibilita",
-              "centralino/moduli/power-dialer"
+              "centralino/moduli/power-dialer",
+              "centralino/moduli/videoconferenza"
             ]
           },
           {
@@ -154,7 +155,8 @@
               "centralino/assistenza/assistenza-remota",
               "centralino/assistenza/segnala-un-problema",
               "centralino/assistenza/novita",
-              "centralino/assistenza/email-che-ricevi"
+              "centralino/assistenza/email-che-ricevi",
+              "centralino/assistenza/errori-e-pagine-bloccate"
             ]
           }
         ]

@@ -94,7 +94,8 @@
               "centralino/monitoraggio/chiamate-effettuate",
               "centralino/monitoraggio/da-richiamare",
               "centralino/monitoraggio/analisi-chiamate-code",
-              "centralino/monitoraggio/costi-numero-verde"
+              "centralino/monitoraggio/costi-numero-verde",
+              "centralino/monitoraggio/log-attivita"
             ]
           },
           {

@@ -1,5 +1,320 @@
 ---
 title: "Esiti delle chiamate"
+sidebarTitle: "Esiti delle chiamate"
+description: "Cosa vuol dire ogni esito di una chiamata (Risposta, Persa, Ha riattaccato in attesa, Fuori orario), ogni frase che lo spiega e ogni passaggio del percorso: perché una chiamata è andata persa e cosa fare."
+keywords:
+  - "esito chiamata"
+  - "chiamata persa"
+  - "perché chiamata persa"
+  - "persa"
+  - "fuori orario"
+  - "ha riattaccato in attesa"
+  - "risposta"
+  - "nessuno ha risposto"
+  - "occupato"
+  - "segreteria"
+  - "percorso chiamata"
+  - "bloccata"
+  - "non risposta"
+  - "fallita"
+  - "congestione"
+  - "attesa scaduta"
+  - "abbandonata"
 ---
 
-Caricamento in corso.
+Ogni chiamata ricevuta ha un **esito**, cioè com'è finita: qualcuno ha risposto, nessuno ha risposto, chi chiamava ha riattaccato mentre aspettava, oppure il numero era chiuso. Accanto all'esito il pannello scrive **una frase che spiega dove si è fermata** la chiamata. Questa pagina spiega ogni esito, ogni frase e ogni passaggio del percorso, e cosa fare quando una chiamata va persa.
+
+**Dove si vedono:** soprattutto in Menu → Monitoraggio → **Chiamate ricevute** · `https://cloud.mycentralino.com/chiamate-in` (esito, frase e **Percorso chiamata**). Anche in **Statistiche** (elenco delle perse), nei file **Excel** e **PDF**, in **Chiamate effettuate** e in **Analisi chiamate code**, ognuna con i suoi esiti (spiegati più sotto).
+
+**Chi li vede:** il titolare dell'account, sempre. Un collaboratore solo se gli è stata concessa la sezione **Monitoraggio** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
+
+## I quattro esiti di una chiamata ricevuta
+
+| Esito | Pallino | Cosa vuol dire |
+| --- | --- | --- |
+| **Risposta** | verde | Qualcuno ha risposto: una persona a un interno, un operatore di una coda, il numero esterno a cui la chiamata è stata inoltrata, oppure un agente AI. Risulta **Risposta** anche una chiamata presa in carico da un servizio interno (vedi sotto). |
+| **Persa** | rosso | Nessuno ha risposto. La frase sotto il numero dice dove si è fermata la chiamata. |
+| **Ha riattaccato in attesa** | ambra | Chi chiamava ha chiuso mentre aspettava in una coda, prima di parlare con qualcuno. |
+| **Fuori orario** | grigio | In quel momento il numero era chiuso secondo i suoi **Orari** o per un giorno di **Ferie e festività**, e nessun telefono ha squillato. |
+
+### Come il pannello sceglie l'esito
+
+Il pannello guarda tutti i passaggi della chiamata, in quest'ordine:
+
+1. Se **in un qualunque passaggio** ha risposto una persona o un agente AI, oppure un servizio interno ha preso in carico la chiamata, l'esito è **Risposta**, anche se prima la chiamata ha fatto squillare altri telefoni senza risposta.
+2. Altrimenti, se chi chiamava ha riattaccato **mentre aspettava in una coda**, l'esito è **Ha riattaccato in attesa**.
+3. Altrimenti, se **nessun telefono, coda, agente AI o inoltro** è stato raggiunto e gli **Orari** o le **Ferie e festività** del numero chiamato dicevano «chiuso» a quell'ora, l'esito è **Fuori orario**.
+4. In tutti gli altri casi l'esito è **Persa**.
+
+<Note>
+  **Cosa non è una risposta.** L'attesa in coda con la musica, un messaggio audio, un menù vocale e la **segreteria** non contano come risposta: nessuna persona ha parlato con chi chiamava. Una chiamata finita in segreteria risulta **Persa**, anche se il cliente ha lasciato un messaggio.
+
+  Unica eccezione: se la chiamata passa da un servizio interno che la prende in carico, risulta **Risposta** («Gestita dal servizio interno …») anche quando dentro quel servizio ha sentito solo un messaggio o è finita in segreteria.
+</Note>
+
+## Le frasi che spiegano l'esito
+
+La frase compare sotto il numero di chi ha chiamato. I nomi in corsivo sono quelli del tuo centralino: il nome dell'interno, della coda, del messaggio, dell'agente.
+
+### Risposta
+
+| Frase | Cosa vuol dire |
+| --- | --- |
+| «Risposto da _Anna_ · interno _201_.» | Ha risposto quell'interno, direttamente o come operatore di una coda. |
+| «Ha risposto l'agente AI _nome_.» | Ha risposto un agente AI. |
+| «Inoltrata a _+393331234567_: ha risposto.» | La chiamata è stata inoltrata a quel numero esterno e lì hanno risposto. |
+| «Gestita dal servizio interno _502 · Commerciale_.» | La chiamata è passata da quel servizio interno, che l'ha presa in carico, e il pannello la conta come **Risposta**. Dai passaggi registrati non si capisce chi abbia risposto: può essere un telefono, ma anche un messaggio o la segreteria dentro quel servizio. Apri il **Percorso chiamata** e guarda i passaggi dopo **Passa a**. |
+
+A volte sotto una chiamata **Risposta** non c'è nessuna frase: succede quando dai passaggi non si capisce chi ha risposto. Apri il **Percorso chiamata**.
+
+### Ha riattaccato in attesa
+
+| Frase | Cosa vuol dire | Cosa fare |
+| --- | --- | --- |
+| «Ha riattaccato mentre aspettava nella coda _Commerciale_.» | Chi chiamava era in coda e ha chiuso prima che un operatore rispondesse. | Richiamalo con **Richiama** da **Chiamate ricevute** (o da **Da richiamare**, se compare lì). Se succede spesso, guarda in **Analisi chiamate code** quanto si aspetta e valuta più operatori nella coda. |
+| «Ha riattaccato mentre aspettava che qualcuno rispondesse.» | Stessa cosa, ma il pannello non sa dire in quale coda. | Come sopra. |
+
+### Fuori orario
+
+La frase dice perché il numero era chiuso, ed eventualmente cosa ha sentito chi chiamava:
+
+| Frase | Cosa vuol dire | Cosa fare |
+| --- | --- | --- |
+| «Il centralino era chiuso secondo «_Ufficio_».» | A quell'ora gli **Orari** «Ufficio» del numero dicevano chiuso. | Se doveva essere aperto, controlla le fasce in **Orari**. |
+| «Giorno di chiusura (ferie «_Natale_»).» | Quel giorno era un giorno di chiusura del gruppo di **Ferie e festività** «Natale». | Se non doveva essere chiuso, controlla le date in **Ferie e festività**. |
+
+Alla fine della frase può esserci un'aggiunta:
+
+- «…: ha sentito il messaggio «_Chiusura_».» Chi chiamava ha ascoltato il messaggio di chiusura e la chiamata è finita.
+- «…: è passata alla segreteria.» Chi chiamava è finito in segreteria.
+
+<Warning>
+  **«Fuori orario» si calcola con gli orari e le ferie di oggi.** Il pannello confronta l'ora della chiamata con gli **Orari** e le **Ferie e festività** che il numero ha **adesso**. Se li hai cambiati dopo quella chiamata, il motivo mostrato può non essere quello di quel giorno. Vale solo per le chiamate in cui nessun telefono ha squillato: per capire cosa è successo davvero apri il **Percorso chiamata**.
+</Warning>
+
+Una chiusura fatta con un **Interruttore** o un **Interruttore a orario** non dà l'esito **Fuori orario**: la chiamata risulta **Persa** e la frase dice dove si è fermata.
+
+### Persa
+
+Per le chiamate perse il pannello guarda **l'ultimo passaggio** della chiamata, cioè dove si è fermata.
+
+| Frase | Cosa è successo | Cosa fare |
+| --- | --- | --- |
+| «Nessuno ha risposto: ha squillato _Anna · interno 201, Marco · interno 202_.» | I telefoni hanno squillato ma nessuno ha risposto, oppure chi chiamava ha chiuso mentre squillavano. Con più di tre telefoni leggi «ha squillato _N_ telefoni». | In **Stato interni** controlla che quei telefoni siano collegati: un telefono **Non collegato** non squilla. Nella regola valuta un tempo più lungo in **Fai squillare per**, più interni o una coda, e metti la segreteria dopo. |
+| «Occupato: _Anna · interno 201_.» | Il telefono era occupato. | Fai squillare più interni insieme o usa una **Coda di ricezione**, così chi chiama aspetta invece di trovare occupato. |
+| «Nessuno ha risposto nella coda _Commerciale_.» | La chiamata è rimasta in coda senza che un operatore rispondesse. | Controlla gli operatori della coda e il **Tempo massimo in attesa**. Guarda **Analisi chiamate code**. |
+| «È passata alla segreteria.» o «È passata alla segreteria di _Anna · interno 201_.» | Nessuno ha risposto e la chiamata è andata in segreteria. | Controlla se il cliente ha lasciato un messaggio. Vedi **Segreterie**. |
+| «L'agente AI _nome_ non ha risposto.» | La chiamata è passata all'agente AI, che non ha risposto. | Controlla l'agente in **Agenti AI**. |
+| «Inoltrata a _+393331234567_, ma non ha risposto nessuno.» | La chiamata è stata inoltrata a un numero esterno (per esempio un cellulare) e lì nessuno ha risposto. | Controlla il numero di inoltro e cosa succede dopo l'inoltro nelle regole. |
+| «È passata al servizio interno _502 · Commerciale_, ma non ha risposto nessuno.» | La chiamata è passata a un servizio interno e lì nessuno ha risposto. | Apri le regole di quel servizio interno. |
+| «Si è chiusa con il messaggio «_Benvenuto_».» | Chi chiamava ha ascoltato un messaggio e poi la chiamata è finita (ha chiuso lui, oppure dopo il messaggio non c'era altro). | Se non era voluto, nelle regole del numero metti dopo il messaggio un passaggio che fa squillare i telefoni o la segreteria. |
+| «Bloccata: il numero è in un elenco di numeri bloccati.» | La chiamata si è fermata al passaggio **Numeri bloccati**. | Se il numero non doveva essere bloccato, toglilo dall'elenco in **Numeri bloccati**. |
+| «Si è chiusa nel menu vocale _Principale_.» | Chi chiamava era nel menù vocale e non ha scelto un tasto, oppure ha chiuso lì. | Controlla le opzioni del menù vocale e cosa succede se non si preme niente. |
+| «Si è chiusa alla regola _Apertura settimanale · Ufficio_.» | La chiamata si è fermata a quella regola. | Apri le regole del numero e guarda cosa succede in quel punto. |
+| «Si è chiusa a un passaggio automatico.» | La chiamata si è fermata a un passaggio diverso da quelli sopra (per esempio una sala conferenze o la musica di attesa). | Apri il **Percorso chiamata** per vedere qual era l'ultimo passaggio. |
+| «Si è chiusa prima di arrivare a un telefono o a un messaggio.» | Non c'è nessun passaggio registrato: di solito chi chiamava ha chiuso subito. | Se succede spesso, controlla in **In tempo reale** che il numero non dica «Nessuna regola: non risponde». |
+
+<Tip>
+  Nelle frasi gli interni sono scritti con il nome prima («Anna · interno 201»); nel **Percorso chiamata** con il numero prima («interno 201 · Anna»). È la stessa cosa.
+</Tip>
+
+## Il percorso della chiamata
+
+Clicca una riga di **Chiamate ricevute** per aprire il **Percorso chiamata · N passaggi**: l'elenco, in ordine di tempo, di tutto ciò che la chiamata ha fatto dentro il centralino. Ogni passaggio ha un'etichetta, cosa ha coinvolto, chi ha risposto (dopo la freccia «→»), l'ora con i secondi, l'esito del passaggio e, se c'è, la durata.
+
+### Le etichette dei passaggi
+
+| Etichetta | Cosa è successo | Cosa vedi accanto |
+| --- | --- | --- |
+| **Regola** | La chiamata è passata da una regola che controlla qualcosa (orari, ferie, interruttori, filtri) o fa un'azione automatica. | Il nome della regola e, se c'è, il nome dell'elemento, per esempio «Apertura settimanale · Ufficio» (vedi la tabella sotto). |
+| **Squilla** | Hanno squillato uno o più interni. | Gli interni, per esempio «interno 201 · Anna, interno 202 · Marco»; se qualcuno ha risposto, «→» e chi. |
+| **Coda** | La chiamata è entrata in una coda di ricezione. | Il nome della coda (o «smistamento in coda»); se un operatore ha risposto, «→» e l'interno. |
+| **Menu vocale** | La chiamata è passata da un menù vocale («premi 1 per…»). | Il nome del menù. |
+| **Audio** | Chi chiamava ha ascoltato un messaggio. | La descrizione del messaggio o il suo nome. |
+| **Segreteria** | La chiamata è andata in segreteria. | Di quale interno, se si sa. |
+| **Inoltro** | La chiamata è stata inoltrata a un numero esterno. | «a» e il numero (o «a numero esterno»). |
+| **Agente AI** | La chiamata è passata a un agente AI. | Il nome dell'agente. |
+| **Passa a** | La chiamata è passata da un servizio interno, che la smista. | Il servizio interno, per esempio «servizio interno 502 · Commerciale». |
+| **Conferenza** | La chiamata è entrata in una sala conferenze. | «sala conferenze». |
+| **Passaggio** | Un altro passaggio automatico. | «musica di attesa», «trasferimento», «parcheggio chiamata», «registrazione», «rubrica vocale» o «passaggio automatico». |
+
+### I nomi che puoi trovare in un passaggio «Regola»
+
+| A video | Cos'è | Dove si gestisce |
+| --- | --- | --- |
+| «Apertura settimanale · _nome_» | Il controllo degli orari di apertura. | **Orari** |
+| «Ferie e festività · _nome_» | Il controllo dei giorni di chiusura. | **Ferie e festività** |
+| «Switch temporale · _nome_» | Un interruttore a orario. | **Interruttori a orario** |
+| «Switch manuale · _nome_» | Un interruttore. | **Interruttori** |
+| «Gestione reperibilità · _nome_» | La reperibilità. | **Reperibilità** |
+| «Numeri bloccati · _nome_» | Il controllo dei numeri bloccati. | **Numeri bloccati** |
+| «Filtra per numero chiamante · _nome_» | Un filtro sul numero di chi chiama. | **Regole delle chiamate** |
+| Altri nomi (per esempio «Registra chiamata», «Notifica email») | Il nome del passaggio, come lo trovi aggiungendolo nelle **Regole delle chiamate**. | **Regole delle chiamate** |
+| «regola personalizzata» | Un passaggio fatto su misura per il tuo centralino. | Scrivi all'assistenza da [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza). |
+
+### L'esito di ogni passaggio
+
+| Esito del passaggio | Cosa vuol dire |
+| --- | --- |
+| **Risposta** (verde) | In quel passaggio qualcuno ha risposto, oppure il passaggio è stato eseguito. |
+| **Non risposta** (rosso) | In quel passaggio nessuno ha risposto. |
+| **Occupato** (ambra) | Il telefono o il numero era occupato. |
+| **Fallita** (rosso) | Il passaggio non è riuscito, per esempio il numero non era raggiungibile. |
+| **—** | Nessun esito da dire per quel passaggio. |
+
+Per un passaggio **Passa a** che ha preso la chiamata l'esito non è scritto: chi ha risposto davvero, se qualcuno ha risposto, è nei passaggi che vengono dopo.
+
+Se non c'è nessun passaggio leggi «Nessun passaggio da mostrare: la chiamata si è chiusa prima di raggiungere un interno, una coda o un messaggio.»
+
+## Gli esiti nelle altre pagine
+
+### In Statistiche
+
+Nel riquadro **Perse di oggi** di [Statistiche](/centralino/monitoraggio/statistiche) (per un altro giorno «Perse di ieri» o «Perse di» seguito dalla data) ogni chiamata senza risposta ha uno stato:
+
+| Stato | Cosa vuol dire |
+| --- | --- |
+| **senza risposta** | Nessuno ha risposto (comprende anche le chiamate fuori orario). |
+| **abbandonata in coda** | Chi chiamava ha riattaccato mentre aspettava in coda: è l'esito **Ha riattaccato in attesa**. |
+| **poi risposta alle 10:42** (verde) | La chiamata resta persa, ma lo stesso numero ha richiamato più tardi nella stessa giornata e ha avuto risposta. Non serve richiamarlo. |
+
+Accanto al numero vedi anche dove si è fermata, con le etichette del percorso: per esempio «Coda Commerciale» o «Squilla interno 201 · Anna».
+
+### Nei file Excel e PDF
+
+Nei file scaricati da **Chiamate ricevute** l'esito è **Risposta**, **Persa** o **Ha riattaccato in attesa**. Le chiamate che a video sono **Fuori orario** nei file risultano **Persa**. Anche il filtro **Perse** della pagina le comprende.
+
+### Nelle chiamate effettuate
+
+In [Chiamate effettuate](/centralino/monitoraggio/chiamate-effettuate) l'esito riguarda la chiamata fatta da un tuo interno:
+
+| Esito | Cosa vuol dire |
+| --- | --- |
+| **Risposta** | Il numero chiamato ha risposto. |
+| **Non risposta** | Nessuno ha risposto. |
+| **Occupato** | Il numero chiamato era occupato. |
+| **Fallita** | La chiamata non è riuscita a raggiungere il numero. |
+| **Congestione** | Come **Fallita**: la chiamata non è riuscita a raggiungere il numero. Compare nell'elenco ma non fra i filtri. |
+
+### Nelle code
+
+In [Analisi chiamate code](/centralino/monitoraggio/analisi-chiamate-code) ogni chiamata passata da una coda ha uno di questi esiti:
+
+| Esito | Cosa vuol dire |
+| --- | --- |
+| **Risposta · ha chiuso chi chiamava** | Un operatore ha risposto; alla fine ha riattaccato il cliente. |
+| **Risposta · ha chiuso l'operatore** | Un operatore ha risposto; alla fine ha riattaccato l'operatore. |
+| **Risposta · trasferita** | Un operatore ha risposto e poi ha trasferito la chiamata. |
+| **Ha riattaccato in attesa** | Il cliente ha chiuso mentre aspettava in coda. |
+| **Attesa scaduta** | Nessun operatore ha risposto entro il tempo massimo di attesa della coda. |
+
+## Come fare
+
+### Come capisco perché una chiamata è andata persa
+
+<Steps>
+  <Step title="Trova la chiamata">
+    Menu → Monitoraggio → **Chiamate ricevute**. Scrivi il numero di chi ha chiamato in **Cerca numero o nome…** e, se serve, allarga il periodo con **Ultimi 30 gg**.
+  </Step>
+  <Step title="Leggi esito e frase">
+    Guarda l'esito (pallino e parola) e la frase sotto il numero. Cercala nelle tabelle di questa pagina.
+  </Step>
+  <Step title="Apri il percorso">
+    Clicca la riga e leggi il **Percorso chiamata**: l'ultimo passaggio è dove si è fermata la chiamata.
+  </Step>
+  <Step title="Sistema la causa">
+    Segui la colonna «Cosa fare» della frase che hai trovato.
+  </Step>
+</Steps>
+
+Per la guida completa, con la richiamata del cliente, vedi [Capire una chiamata persa](/centralino/come-fare/capire-una-chiamata-persa).
+
+### Come vedo tutte le chiamate non risposte di un giorno
+
+<Steps>
+  <Step title="Scegli il giorno">
+    In **Chiamate ricevute** premi **Oggi** o **Ieri**, oppure imposta il **Periodo**.
+  </Step>
+  <Step title="Filtra">
+    In **Esito** attiva **Perse** e **Ha riattaccato in attesa**. Fra le **Perse** ci sono anche quelle **Fuori orario**: le riconosci dal pallino grigio.
+  </Step>
+</Steps>
+
+## Da sapere
+
+- **Una chiamata, un esito.** Anche se ha fatto squillare più telefoni o è passata da più code, la chiamata ha un esito solo. Basta che qualcuno risponda in un passaggio perché sia **Risposta**.
+- **«Persa» comprende anche chi riattacca mentre squilla.** Se chi chiama chiude mentre i telefoni squillano, la chiamata risulta **Persa** con «Nessuno ha risposto: ha squillato …».
+- **Solo le chiamate in coda diventano «Ha riattaccato in attesa».** Di solito compaiono anche in **Da richiamare**, per essere richiamate. Le altre chiamate perse restano in **Chiamate ricevute** e in **Statistiche**.
+- **Ora italiana.** Le ore dei passaggi sono in ora italiana, con i secondi.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Perché la chiamata è andata persa se i telefoni hanno squillato?">
+    Nessuno ha risposto in tempo, oppure chi chiamava ha chiuso prima. Controlla in **Stato interni** che i telefoni fossero collegati e, nella regola che li fa squillare, il tempo **Fai squillare per**. Mettere dopo la segreteria o una coda evita che la chiamata si chiuda senza risposta.
+  </Accordion>
+
+  <Accordion title="Il cliente ha lasciato un messaggio in segreteria: perché la chiamata è Persa?">
+    La segreteria non conta come risposta: nessuna persona ha parlato con chi chiamava. La frase dice «È passata alla segreteria».
+  </Accordion>
+
+  <Accordion title="Vedo «Fuori orario» ma eravamo aperti.">
+    L'esito si calcola con gli orari e le ferie attuali del numero. Se li hai cambiati dopo quella chiamata, il motivo può non essere quello di quel giorno. Apri il **Percorso chiamata** per vedere cosa è successo davvero.
+  </Accordion>
+
+  <Accordion title="Abbiamo chiuso con un interruttore: perché non vedo «Fuori orario»?">
+    «Fuori orario» si basa solo su **Orari** e **Ferie e festività**. Le chiusure fatte con un interruttore risultano **Persa**, con la frase che dice dove si è fermata la chiamata (per esempio il messaggio di chiusura).
+  </Accordion>
+
+  <Accordion title="Che differenza c'è fra «Ha riattaccato in attesa» e «Nessuno ha risposto nella coda»?">
+    Nel primo caso ha chiuso il cliente mentre aspettava. Nel secondo la chiamata è rimasta in coda senza che un operatore rispondesse ed è uscita dalla coda.
+  </Accordion>
+
+  <Accordion title="Cosa vuol dire «Si è chiusa prima di arrivare a un telefono o a un messaggio»?">
+    Non c'è nessun passaggio registrato: di solito chi chiamava ha chiuso subito. Se succede spesso, controlla in **In tempo reale** che il numero abbia le sue regole.
+  </Accordion>
+
+  <Accordion title="Una chiamata dice «Bloccata» ma il numero non doveva esserlo.">
+    Il numero è in un elenco di **Numeri bloccati** collegato al tuo numero. Apri [Numeri bloccati](/centralino/instradamento/numeri-bloccati), cerca il numero (anche fra quelli che iniziano con `^`, che bloccano un intero prefisso) e toglilo.
+  </Accordion>
+
+  <Accordion title="Perché nel percorso vedo «Switch manuale» o «Switch temporale»?">
+    Sono i nomi che i passaggi degli interruttori hanno nelle **Regole delle chiamate**: «Switch manuale» è un **Interruttore**, «Switch temporale» un **Interruttore a orario**.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Chiamate ricevute" icon="phone" href="/centralino/monitoraggio/chiamate-ricevute">
+    Dove leggere esito, frase e percorso.
+  </Card>
+
+  <Card title="Capire una chiamata persa" icon="life-ring" href="/centralino/come-fare/capire-una-chiamata-persa">
+    Dalla chiamata persa alla causa, passo passo.
+  </Card>
+
+  <Card title="Da richiamare" icon="phone-volume" href="/centralino/monitoraggio/da-richiamare">
+    Chi ha riattaccato mentre aspettava in coda.
+  </Card>
+
+  <Card title="Stato interni" icon="headset" href="/centralino/telefoni-e-numeri/stato-interni">
+    Quali telefoni sono collegati e possono squillare.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Dove sistemare il percorso di un numero.
+  </Card>
+
+  <Card title="Code di ricezione" icon="users" href="/centralino/instradamento/code-di-ricezione">
+    Operatori e tempo massimo di attesa.
+  </Card>
+
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Le fasce di apertura dei numeri.
+  </Card>
+
+  <Card title="Segreterie" icon="voicemail" href="/centralino/strumenti/segreterie">
+    Dove arrivano i messaggi lasciati.
+  </Card>
+</CardGroup>

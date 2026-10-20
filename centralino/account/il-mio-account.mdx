@@ -1,5 +1,290 @@
 ---
 title: "Il mio account"
+sidebarTitle: "Il mio account"
+description: "La pagina del tuo account: il riepilogo con credito, rinnovo e pagamento, le quattro schede, il cambio della password con il codice via email e i browser memorizzati."
+keywords:
+  - "il mio account"
+  - "profilo"
+  - "account"
+  - "cambia password"
+  - "cambiare password"
+  - "nuova password"
+  - "codice di verifica"
+  - "dispositivi autorizzati"
+  - "browser memorizzati"
+  - "revoca dispositivo"
+  - "sicurezza"
+  - "accessi e sicurezza"
+  - "email account"
+  - "username"
 ---
 
-Caricamento in corso.
+**Il mio account** è la pagina con i tuoi dati di accesso, l'abbonamento, le fatture, la sicurezza e i documenti che hai accettato. In alto c'è un riepilogo con le tre cose che si vengono a controllare più spesso: il credito, il prossimo rinnovo e come paghi.
+
+**Dove si trova:** barra in alto → icona con l'omino (**Il tuo account**) → **Il mio account** · `https://cloud.mycentralino.com/account/profile`
+
+**Chi la vede:** tutti gli utenti, ognuno con il proprio account. Il titolare vede tutte e quattro le schede. Un collaboratore vede la scheda **Accessi e sicurezza** e, solo se il titolare gli ha concesso **Abbonamento e pagamenti**, anche le altre tre. Non serve nessun modulo.
+
+## Cosa trovi nella pagina
+
+### Il riepilogo in alto
+
+Titolo **Il tuo account**, sotto «Anagrafica, abbonamento, fatturazione e sicurezza.». Poi una card con:
+
+- la tua **username** e l'**email** del tuo account;
+- il bottone **Cambia password** (vedi più sotto);
+- tre riquadri, solo se puoi vedere i pagamenti:
+
+| Riquadro | Cosa mostra | Link |
+| --- | --- | --- |
+| **Credito** | Il credito prepagato di oggi. | **Ricarica ›** porta a **Credito e ricariche**. |
+| **Prossimo rinnovo** | La data del prossimo rinnovo dell'abbonamento, «Nessuna scadenza» se l'abbonamento non scade, oppure «—» se non c'è una data. Sotto, se ci sono, il nome del piano e il costo al mese. | Nessuno. |
+| **Pagamento** | Il pagamento automatico salvato (per esempio una carta con le ultime quattro cifre e la scadenza, «Addebito sul conto (RID)» o «PayPal»), oppure «Dal credito prepagato» se non c'è un pagamento automatico. | **Cambia ›** oppure **Aggiungi un pagamento automatico ›** porta a **Metodo di pagamento**. |
+
+Sul telefono i tre riquadri si mettono uno sotto l'altro.
+
+<Frame caption="Il riepilogo in testa a Il tuo account">
+  <img
+    src="/images/guida/account-abbonamento.webp"
+    alt="Il riepilogo in testa a Il tuo account"
+  />
+</Frame>
+
+### Le quattro schede
+
+| Scheda | Cosa contiene | Guida |
+| --- | --- | --- |
+| **Abbonamento e pagamenti** | Cosa paghi ogni mese, **Credito e ricariche**, **Metodo di pagamento** e, in fondo, **Cancella abbonamento**. È la scheda che si apre per prima. | [Abbonamento](/centralino/account/abbonamento), [Credito e ricariche](/centralino/account/credito-e-ricariche), [Eliminare l'account](/centralino/account/eliminare-l-account) |
+| **Fatture** | Le fatture e le ricevute da scaricare e i **Dati di fatturazione**. | [Fatture e pagamenti](/centralino/account/fatture-e-pagamenti) |
+| **Accessi e sicurezza** | **Password**, **Dispositivi autorizzati** e, a seconda di chi sei, **Utenti** e **Chiavi API**. | Questa pagina, [Utenti e permessi](/centralino/account/utenti-e-permessi), [Chiavi API](/centralino/account/chiavi-api) |
+| **Documenti** | Le condizioni contrattuali che hai accettato, con data, versione e impronta. | [Documenti](/centralino/account/documenti) |
+
+Se nei dati di fatturazione mancano sia la partita IVA sia il codice fiscale, accanto a **Fatture** compare l'avviso ambra «manca P.IVA o codice fiscale».
+
+### La scheda «Accessi e sicurezza»
+
+Si apre anche dall'indirizzo `https://cloud.mycentralino.com/account/profile?tab=sicurezza`. Dall'alto:
+
+- **Password** — «Per cambiarla ti chiediamo quella di oggi e un codice via email.» e il bottone **Cambia password**.
+- **Dispositivi autorizzati** — l'elenco dei browser in cui hai scelto di non ripetere il codice di verifica. Vedi più sotto.
+- **Utenti** — solo per il titolare: i collaboratori che entrano nel pannello con credenziali proprie. Vedi [Utenti e permessi](/centralino/account/utenti-e-permessi).
+- **Chiavi API** — per il titolare e per i collaboratori con il permesso **Gestione API**. Vedi [Chiavi API](/centralino/account/chiavi-api).
+
+### Il menu «Il tuo account»
+
+Cliccando l'omino in alto a destra si apre un menu con il tuo nome e la tua username, e le voci:
+
+| Voce | Dove porta |
+| --- | --- |
+| **Il mio account** | Questa pagina. |
+| **Credito e ricariche** | La sezione del credito nella scheda **Abbonamento e pagamenti**. Solo per chi può vedere i pagamenti. |
+| **Fatture** | La scheda **Fatture**. Solo per chi può vedere i pagamenti. |
+| **Assistenza** | Le tue richieste di assistenza. Un collaboratore la apre solo se ha il permesso **Assistenza**. |
+| **Novità** | Le novità del pannello, con il numero di quelle da leggere. |
+| **Messaggi WhatsApp** | Compare solo se usi il canale WhatsApp per aziende (WhatsApp: guida in arrivo). |
+| **Esci** | Esce dal pannello. |
+
+## Come fare
+
+### Come cambio la password
+
+<Steps>
+  <Step title="Apri Cambia password">
+    Barra in alto → **Il tuo account** → **Il mio account** → **Cambia password** (nel riepilogo in alto, oppure nella scheda **Accessi e sicurezza**, sezione **Password**). Si apre la finestra **Cambia password**, «Passo 1 di 2».
+  </Step>
+  <Step title="Scrivi la password di oggi">
+    Nel campo **Password di oggi** scrivi quella che usi adesso.
+  </Step>
+  <Step title="Scegli la nuova password">
+    Sotto **La nuova password** scrivila in **Password** e di nuovo in **Scrivila di nuovo**. L'indicatore sotto il campo ti dice quanto è robusta (**Troppo corta**, **Discreta**, **Buona**, **Ottima**). In alternativa clicca **Creala tu per me**: il pannello scrive una password robusta di 16 caratteri nei due campi; con **Copia** la copi, con **Generane un'altra** ne crei una diversa.
+  </Step>
+  <Step title="Decidi se scollegare gli altri browser">
+    La casella **Disconnetti gli altri dispositivi già autorizzati** è spuntata di base: lasciala così se vuoi che sugli altri browser memorizzati venga chiesto di nuovo il codice. Tu resti dentro su questo.
+  </Step>
+  <Step title="Chiedi il codice">
+    Clicca **Mandami il codice**. In fondo alla finestra vedi a quale email arriva (in parte nascosta). Si passa al «Passo 2 di 2».
+  </Step>
+  <Step title="Scrivi il codice e conferma">
+    Apri l'email **Il codice per cambiare la password: …** (il codice è scritto anche nell'oggetto), scrivi le sei cifre nel campo **Codice di 6 cifre** e clicca **Cambia password**. In alto nella pagina compare «Password cambiata.» oppure «Password cambiata. Gli altri dispositivi sono stati scollegati.».
+  </Step>
+</Steps>
+
+Finché non scrivi il codice, la password resta quella di prima. Se chiudi la finestra o premi **Annulla** non cambia niente. Con **Indietro** torni al primo passo e riscrivi le password.
+
+Dopo il cambio arriva all'email del tuo account l'avviso **La password del tuo centralino è cambiata**, con la data, il dispositivo e l'indirizzo da cui l'hai cambiata.
+
+### Il codice non mi arriva
+
+1. Controlla la posta indesiderata.
+2. Nella finestra, al passo 2, clicca **rimanda il codice**. Compare «Codice nuovo inviato.».
+3. Il codice vale 10 minuti: se è scaduto compare «Il codice è scaduto: chiedine uno nuovo.» e lo chiedi con **rimanda il codice**.
+
+### Non ricordo la password di oggi
+
+Dalla finestra non si può fare: serve la password attuale. Premi **Esci** e nella pagina di accesso usa **Non ricordi la password?**: ti arriva un link per sceglierne una nuova. Vedi [Primo accesso](/centralino/inizia/primo-accesso).
+
+### Come vedo i browser memorizzati
+
+<Steps>
+  <Step title="Apri Accessi e sicurezza">
+    Barra in alto → **Il tuo account** → **Il mio account** → scheda **Accessi e sicurezza**.
+  </Step>
+  <Step title="Guarda Dispositivi autorizzati">
+    Ogni riga è un browser in cui hai spuntato **Memorizza questo browser per 30 giorni** all'accesso (o in cui sei entrato con Google o dal link per scegliere la password). Per ognuno vedi il nome (per esempio un browser e il sistema operativo, oppure «Browser sconosciuto»), l'indirizzo IP e l'**Ultimo accesso**, e sotto «Autorizzato il …». Il browser che stai usando ha il bollino **Questo dispositivo**.
+  </Step>
+</Steps>
+
+Se non hai browser memorizzati compare «Nessun dispositivo autorizzato.».
+
+### Come scollego un browser che non uso più
+
+<Steps>
+  <Step title="Trova la riga">
+    In **Accessi e sicurezza** → **Dispositivi autorizzati** trova il browser nell'elenco.
+  </Step>
+  <Step title="Revoca">
+    Clicca **Revoca** sulla sua riga e conferma nella finestra del browser («Revocare …?»). La riga sparisce.
+  </Step>
+</Steps>
+
+Per scollegare in un colpo tutti i browser tranne quello che stai usando clicca **Revoca tutti gli altri** e conferma («Revocare tutti gli altri dispositivi?»). Il bottone compare quando nell'elenco ci sono più browser e quello che stai usando è tra questi.
+
+Su un browser revocato, al prossimo accesso viene chiesto di nuovo il codice di verifica via email.
+
+<Frame caption="La scheda Accessi e sicurezza: password e dispositivi autorizzati">
+  <img
+    src="/images/guida/account-sicurezza.webp"
+    alt="La scheda Accessi e sicurezza: password e dispositivi autorizzati"
+  />
+</Frame>
+
+### Vedo un accesso che non riconosco
+
+<Steps>
+  <Step title="Revoca i browser">
+    In **Dispositivi autorizzati** clicca **Revoca** sul browser che non conosci, oppure **Revoca tutti gli altri**.
+  </Step>
+  <Step title="Cambia la password">
+    Clicca **Cambia password** e lascia spuntata **Disconnetti gli altri dispositivi già autorizzati**.
+  </Step>
+  <Step title="Avvisa l'assistenza">
+    Apri una richiesta da **Assistenza** → **Le tue richieste** (vedi [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza)) o scrivi a [supporto@mycentralino.com](mailto:supporto@mycentralino.com).
+  </Step>
+</Steps>
+
+## I campi
+
+### Finestra «Cambia password»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Password di oggi** | La password che usi adesso. | Obbligatoria. |
+| **Password** | La nuova password. | Obbligatoria. Da 10 a 128 caratteri, con almeno 4 caratteri diversi. Non deve contenere la tua username, il tuo nome o la parte prima della @ della tua email. Deve essere diversa da quella di oggi e non deve comparire tra le password rubate su internet. |
+| **Scrivila di nuovo** | La stessa password, per conferma. | Deve coincidere con **Password**. |
+| **Disconnetti gli altri dispositivi già autorizzati** | Scollega gli altri browser memorizzati. | Casella, spuntata di base. |
+| **Codice di 6 cifre** | Il codice arrivato via email. | Sei cifre, vale 10 minuti. |
+
+### Dispositivi autorizzati
+
+| Dato | Cosa indica |
+| --- | --- |
+| Nome | Il browser e il sistema operativo, oppure «Browser sconosciuto». |
+| **Questo dispositivo** | Il browser che stai usando adesso. |
+| IP e **Ultimo accesso** | Da quale indirizzo internet e quando è stato usato l'ultima volta. |
+| **Autorizzato il** | Quando lo hai memorizzato. |
+
+## Da sapere
+
+<Note>
+  - **Il codice di verifica all'accesso.** Quando entri da un browser che non è memorizzato, dopo la password ti viene chiesto un codice di 6 cifre che arriva all'email del tuo account. Spuntando **Memorizza questo browser per 30 giorni** non te lo chiede più su quel browser per 30 giorni da quando l'hai memorizzato: usarlo non allunga la durata. Tutti i passi sono in [Primo accesso](/centralino/inizia/primo-accesso).
+  - **I browser memorizzati restano in elenco 30 giorni dall'ultimo uso.** Un browser che non usi da più di 30 giorni sparisce da solo dall'elenco.
+  - **Dopo «Esci»** su quel browser il codice viene chiesto di nuovo, ma la riga può restare in **Dispositivi autorizzati** fino a 30 giorni dall'ultimo uso. Se vuoi, revocala.
+  - **L'email del tuo account** (quella mostrata nel riepilogo) è quella a cui arrivano i codici e gli avvisi di sicurezza. Il titolare non la cambia dal pannello: per cambiarla apre una richiesta all'assistenza. L'email di un collaboratore la cambia il titolare in **Utenti** → **Modifica**. L'email che scrivi nei **Dati di fatturazione** serve per le fatture e non cambia l'email del tuo account.
+  - **La username non si cambia.**
+  - **Senza email sul tuo account** la password non si può cambiare dalla finestra: compare «Al tuo account non è collegata un'email: scrivi a [supporto@mycentralino.com](mailto:supporto@mycentralino.com).».
+  - **Troppi tentativi.** Se provi troppe volte di fila, compare «Troppi tentativi: riprova tra qualche minuto.» o «Hai già chiesto troppi codici: riprova tra qualche minuto.». Aspetta qualche minuto. Dopo troppi codici sbagliati compare «Troppi codici sbagliati: ricomincia da capo.» e si torna al primo passo.
+  - MyCentralino non ti chiede mai la password o il codice per email: i codici si scrivono solo nel pannello.
+</Note>
+
+### Messaggi della finestra «Cambia password»
+
+| Messaggio | Cosa fare |
+| --- | --- |
+| «Scrivi la password che usi oggi.» | Compila **Password di oggi**. |
+| «La password attuale non è giusta.» | Riscrivi la password di oggi. Se non la ricordi, esci e usa **Non ricordi la password?**. |
+| «La nuova password deve essere diversa da quella di oggi.» | Scegline una diversa. |
+| «Scegli una password.» | Scrivi la nuova password in **Password**. |
+| «Servono almeno 10 caratteri.» | Allunga la password. |
+| «La password è troppo lunga.» | Usa al massimo 128 caratteri. |
+| «Non usare la username, il tuo nome o la tua email nella password.» | Togli dalla password la username, il nome o la parte dell'email. |
+| «La password è troppo ripetitiva: usa caratteri diversi.» | Usa almeno 4 caratteri diversi. |
+| «Questa password è comparsa in un furto di dati su internet: scegline un'altra.» | Scegline un'altra, oppure usa **Creala tu per me**. |
+| «Le due password non coincidono.» | Riscrivi la stessa password nei due campi. |
+| «Il codice non è giusto.» | Ricontrolla le sei cifre nell'email più recente. |
+| «Il codice è scaduto: chiedine uno nuovo.» | Clicca **rimanda il codice**. |
+| «Non siamo riusciti a mandarti il codice: riprova tra poco.» | Riprova tra qualche minuto. |
+| «Ricominciamo: scrivi di nuovo le password.» | La procedura è ricominciata: riscrivi le password e chiedi un nuovo codice. |
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Sono un collaboratore e nel mio account vedo solo «Accessi e sicurezza».">
+    Il titolare non ti ha concesso **Abbonamento e pagamenti**. Se ti serve vedere credito, fatture e documenti, chiedigli di aggiungerlo al tuo utente. Vedi [Utenti e permessi](/centralino/account/utenti-e-permessi).
+  </Accordion>
+
+  <Accordion title="Cosa vuol dire «Dal credito prepagato» nel riquadro Pagamento?">
+    Non hai salvato una carta o un conto per i rinnovi automatici: l'abbonamento si rinnova scalando il costo dal credito. Puoi aggiungere un pagamento automatico con **Aggiungi un pagamento automatico ›**. Vedi [Fatture e pagamenti](/centralino/account/fatture-e-pagamenti).
+  </Accordion>
+
+  <Accordion title="Devo rifare il codice di verifica sugli altri computer dopo aver cambiato la password?">
+    Sì, se hai lasciato spuntata **Disconnetti gli altri dispositivi già autorizzati**: su quei browser al prossimo accesso ti verrà chiesto il codice. Su quello da cui hai cambiato la password resti dentro.
+  </Accordion>
+
+  <Accordion title="Mi chiede sempre il codice di verifica.">
+    Al passo del codice spunta **Memorizza questo browser per 30 giorni**. Il codice torna 30 giorni dopo che hai memorizzato il browser (anche se lo usi ogni giorno), dopo **Esci**, se hai cancellato i cookie, in navigazione in incognito o se il browser è stato revocato.
+  </Accordion>
+
+  <Accordion title="Ho ricevuto l'email «Nuovo dispositivo autorizzato su MyCentralino» ma non sono stato io.">
+    Qualcuno conosce la tua password. Revoca il dispositivo in **Dispositivi autorizzati**, cambia la password lasciando spuntata la casella per scollegare gli altri dispositivi e avvisa l'assistenza.
+  </Accordion>
+
+  <Accordion title="Come cambio l'email del mio account?">
+    Se sei il titolare, dal pannello non si può: apri una richiesta all'assistenza indicando l'email nuova. Se sei un collaboratore, l'email la cambia il titolare: **Il mio account** → **Accessi e sicurezza** → **Utenti** → **Modifica** sulla tua riga. Se invece vuoi che le fatture arrivino a un altro indirizzo, cambia l'**Email** nei **Dati di fatturazione** (scheda **Fatture**).
+  </Accordion>
+
+  <Accordion title="Posso cambiare la mia username?">
+    No, la username resta quella scelta alla creazione dell'account.
+  </Accordion>
+
+  <Accordion title="La password generata da «Creala tu per me» dove la ritrovo?">
+    Da nessuna parte: dopo il cambio il pannello non te la mostra più. Prima di confermare clicca **Copia** e salvala nel gestore di password del browser o in un posto sicuro.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Primo accesso" icon="user" href="/centralino/inizia/primo-accesso">
+    Accesso, codice di verifica, password e username dimenticate.
+  </Card>
+
+  <Card title="Utenti e permessi" icon="users" href="/centralino/account/utenti-e-permessi">
+    Dare accesso ai collaboratori, sezione per sezione.
+  </Card>
+
+  <Card title="Abbonamento" icon="file-invoice" href="/centralino/account/abbonamento">
+    Cosa paghi ogni mese e quando si rinnova.
+  </Card>
+
+  <Card title="Credito e ricariche" icon="credit-card" href="/centralino/account/credito-e-ricariche">
+    Ricarica con carta o bonifico e ricarica automatica.
+  </Card>
+
+  <Card title="Documenti" icon="file-invoice" href="/centralino/account/documenti">
+    Le condizioni contrattuali che hai accettato.
+  </Card>
+
+  <Card title="Email che ricevi" icon="envelope" href="/centralino/assistenza/email-che-ricevi">
+    Codici, avvisi di sicurezza e altre email del pannello.
+  </Card>
+</CardGroup>

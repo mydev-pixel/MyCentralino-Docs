@@ -146,7 +146,8 @@
             "group": "Numeri e chiamate",
             "pages": [
               "agenti-ai/collegare-un-numero",
-              "agenti-ai/storico-chiamate"
+              "agenti-ai/storico-chiamate",
+              "agenti-ai/campagne-in-uscita"
             ]
           },
           {

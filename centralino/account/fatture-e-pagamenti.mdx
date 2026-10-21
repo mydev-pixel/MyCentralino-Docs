@@ -1,0 +1,294 @@
+---
+title: "Fatture e pagamenti"
+sidebarTitle: "Fatture e pagamenti"
+description: "Le carte e l'addebito sul conto per i rinnovi automatici, le fatture e le ricevute da scaricare, i dati di fatturazione: partita IVA, codice fiscale, codice SDI, PEC e indirizzo."
+keywords:
+  - "fatture"
+  - "fattura"
+  - "scaricare fattura"
+  - "PDF fattura"
+  - "ricevuta"
+  - "metodo di pagamento"
+  - "carta di credito"
+  - "cambiare carta"
+  - "carta scaduta"
+  - "RID"
+  - "SEPA"
+  - "addebito sul conto"
+  - "IBAN"
+  - "predefinito"
+  - "default"
+  - "dati di fatturazione"
+  - "partita IVA"
+  - "codice fiscale"
+  - "codice SDI"
+  - "PEC"
+  - "ragione sociale"
+  - "fattura elettronica"
+---
+
+Qui trovi come paghi e cosa ricevi: i **metodi di pagamento** (carte e addebito sul conto) usati per i rinnovi automatici e per la ricarica automatica, le **fatture** e le **ricevute** da scaricare, e i **dati di fatturazione** che compaiono sui documenti.
+
+**Dove si trova:**
+
+- **Metodo di pagamento:** barra in alto → icona con l'omino (**Il tuo account**) → **Il mio account** → scheda **Abbonamento e pagamenti** → sezione **Metodo di pagamento** · `https://cloud.mycentralino.com/account/profile?tab=pagamento`
+- **Fatture:** barra in alto → **Il tuo account** → **Fatture** · `https://cloud.mycentralino.com/account/profile?tab=fatture`
+- **Dati di fatturazione:** scheda **Fatture**, più in basso · `https://cloud.mycentralino.com/account/profile?tab=fatturazione`
+
+Ci arrivi anche dal riquadro **Pagamento** in cima a **Il mio account** (link **Cambia ›** o **Aggiungi un pagamento automatico ›**).
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se il titolare gli ha concesso **Abbonamento e pagamenti**: senza quel permesso le voci **Credito e ricariche** e **Fatture** non compaiono nel menu dell'account e in **Il mio account** vede solo **Accessi e sicurezza**. Non serve nessun modulo.
+
+## Cosa trovi nella pagina
+
+### Metodo di pagamento
+
+La sezione serve ad associare una carta o un conto corrente per il rinnovo automatico ogni 30 giorni, a scegliere quale usare e a rimuovere quelli vecchi. I pagamenti sono gestiti da Stripe: i dati della carta e dell'IBAN si inseriscono nella sua pagina sicura, non nel pannello.
+
+Dall'alto:
+
+- **Dati di fatturazione incompleti** (solo se mancano sia partita IVA sia codice fiscale): «Mancano la partita IVA e il codice fiscale: senza almeno uno dei due non è possibile emettere fattura.» con il link **Completa i dati di fatturazione →**.
+- Se non hai ancora metodi: **Nessun metodo di pagamento** «Associa un metodo per consentire il rinnovo automatico ogni 30 giorni. Riceverai la fattura via email.».
+- **Metodi associati**: una scheda per ogni carta o conto, con:
+  - il tipo, **Carta** oppure **Addebito diretto**, e il circuito (per esempio Visa, Mastercard, American Express, oppure «Addebito SEPA»);
+  - le ultime quattro cifre;
+  - **Titolare**;
+  - **Scadenza** per le carte, **Paese** per i conti;
+  - in basso **Imposta default** (o la scritta «Usato per i rinnovi» se è già il predefinito) e **Rimuovi**.
+
+  Il metodo predefinito ha il bordo verde e il bollino **DEFAULT**.
+- Gli avvisi sul rinnovo, quando servono: **Rinnovo abbonamento in sospeso** con **Riprova rinnovo** e **L'abbonamento è scaduto** con **Riattiva abbonamento**. Sono spiegati in [Abbonamento](/centralino/account/abbonamento).
+- **Aggiungi un metodo di pagamento**, con due riquadri:
+  - **Carta di credito / debito** — «Visa, Mastercard, American Express e altre carte supportate.» — bottone **Aggiungi carta**;
+  - **RID Bancario (SEPA)** — «Addebito diretto sul conto corrente via codice IBAN.» — bottone **Aggiungi SEPA**. Su alcuni account l'addebito sul conto non è disponibile e questo riquadro non compare.
+- In fondo, se hai almeno un metodo salvato: «Il metodo default viene usato per i rinnovi automatici dell'abbonamento. Puoi aggiungere più metodi e scegliere quale usare come predefinito. Pagamenti gestiti da Stripe.»
+
+### Le fatture
+
+La scheda **Fatture** si apre con: «Documenti emessi dal …: se non trovi qui una tua fattura, scrivi a [amministrazione@mycentralino.com](mailto:amministrazione@mycentralino.com).». La data indica da quando l'archivio è disponibile nel pannello.
+
+Se nei dati di fatturazione mancano sia partita IVA sia codice fiscale compare: «Nei tuoi dati non risultano né partita IVA né codice fiscale: per i pagamenti emettiamo una ricevuta, non una fattura.» con **Completa i dati di fatturazione**.
+
+La tabella elenca fatture e ricevute insieme, dalla più recente, 10 per pagina (in fondo i numeri di pagina):
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Data** | Il giorno di emissione. |
+| **Documento** | La descrizione della fattura. Le ricevute si chiamano «Ricevuta di pagamento» e hanno l'etichetta **Ricevuta**. |
+| **Importo** | Per le fatture, il totale IVA inclusa. Sulle ricevute, sotto l'importo, c'è la scritta «imponibile»: l'importo è senza IVA. |
+| **PDF** | Il bottone con l'icona di download, che scarica il PDF della fattura. Dove il PDF non c'è (per esempio le ricevute) compare «Non disponibile». |
+
+Se non c'è ancora nessun documento: «Nessun documento in archivio · Qui compariranno le fatture e le ricevute emesse per il tuo centralino.».
+
+Accanto al nome della scheda **Fatture**, se mancano partita IVA e codice fiscale, compare l'avviso ambra «manca P.IVA o codice fiscale».
+
+### I dati di fatturazione
+
+Sotto le fatture, **Dati di fatturazione** «I dati che compaiono sulle tue fatture.». Se non li hai mai compilati compare: «Per questo centralino non sono ancora stati registrati dati di fatturazione. Compila i campi qui sotto e salva.», e l'email è già scritta con quella del tuo account.
+
+I campi sono divisi in **Dati fiscali**, **Anagrafica**, **Indirizzo**, **Contatti** e **Altri dati (facoltativi)** (chiuso: si apre con un clic). In fondo il bottone **Salva dati di fatturazione**. Il dettaglio è nella tabella **Dati di fatturazione** della sezione «I campi», più sotto.
+
+Il **Telefono** che scrivi qui viene proposto anche quando apri una richiesta di assistenza o prenoti una chiamata.
+
+## Come fare
+
+### Come aggiungo una carta per i rinnovi
+
+<Steps>
+  <Step title="Apri Metodo di pagamento">
+    Barra in alto → **Il tuo account** → **Il mio account** → scheda **Abbonamento e pagamenti** → sezione **Metodo di pagamento**.
+  </Step>
+  <Step title="Premi Aggiungi carta">
+    Si apre la pagina sicura di Stripe: inserisci i dati della carta e conferma.
+  </Step>
+  <Step title="Torna nel pannello">
+    Torni da solo nella sezione con «Metodo di pagamento aggiunto con successo!». Se è il primo metodo che salvi, diventa subito il predefinito (**DEFAULT**).
+  </Step>
+</Steps>
+
+Se un rinnovo era in sospeso, al ritorno compare invece «Metodo di pagamento aggiunto. Il tuo abbonamento ha un addebito non riuscito…» e si apre la finestra **Rinnovo abbonamento**, che propone di rinnovare subito con il metodo appena aggiunto. Lo stesso succede dopo **Aggiungi SEPA**. Vedi [Abbonamento](/centralino/account/abbonamento).
+
+Se annulli nella pagina di Stripe, torni con «Operazione annullata.» e non cambia niente.
+
+### Come pago con addebito sul conto (RID/SEPA)
+
+<Steps>
+  <Step title="Premi Aggiungi SEPA">
+    Nel riquadro **RID Bancario (SEPA)** premi **Aggiungi SEPA**.
+  </Step>
+  <Step title="Inserisci IBAN e intestatario">
+    Nella pagina sicura scrivi l'IBAN del conto e i dati dell'intestatario, poi conferma.
+  </Step>
+  <Step title="Rendilo predefinito, se serve">
+    Se hai già una carta come predefinita e vuoi che i rinnovi vadano sul conto, premi **Imposta default** sulla scheda del conto.
+  </Step>
+</Steps>
+
+Con l'addebito sul conto l'incasso richiede qualche giorno bancario: il servizio non si ferma, e la fattura arriva a incasso confermato.
+
+### Come cambio il metodo usato per i rinnovi
+
+Sulla scheda della carta o del conto che vuoi usare premi **Imposta default**. Compare «Metodo di pagamento predefinito aggiornato.» e quella scheda prende il bollino **DEFAULT** con «Usato per i rinnovi».
+
+### Come sostituisco una carta in scadenza
+
+<Steps>
+  <Step title="Aggiungi la carta nuova">
+    **Aggiungi carta** e inserisci i dati.
+  </Step>
+  <Step title="Rendila predefinita">
+    Sulla scheda della carta nuova premi **Imposta default**.
+  </Step>
+  <Step title="Rimuovi la vecchia">
+    Sulla scheda della carta vecchia premi **Rimuovi** e poi, nella finestra **Rimuovi metodo di pagamento**, ancora **Rimuovi**. Compare «Metodo di pagamento rimosso.».
+  </Step>
+</Steps>
+
+### Come tolgo una carta o un conto
+
+Premi **Rimuovi** sulla sua scheda. La finestra **Rimuovi metodo di pagamento** avvisa: «Il metodo verrà scollegato dal tuo profilo Stripe. Se è quello di default, il primo metodo rimanente diventerà automaticamente il nuovo default.» Premi **Rimuovi** per confermare, **Annulla** per tornare indietro.
+
+<Warning>
+  Se togli l'unico metodo salvato, i rinnovi e la ricarica automatica non hanno più una carta o un conto da addebitare. La ricarica automatica resta accesa, ma l'addebito non può riuscire. Prima di rimuoverlo, aggiungi quello nuovo.
+</Warning>
+
+### Come scarico una fattura
+
+<Steps>
+  <Step title="Apri Fatture">
+    Barra in alto → **Il tuo account** → **Fatture**.
+  </Step>
+  <Step title="Trova la riga">
+    Cerca il documento per **Data**; se serve, passa alle pagine successive in fondo alla tabella.
+  </Step>
+  <Step title="Scarica il PDF">
+    Premi il bottone nella colonna **PDF**: il file si scarica sul tuo computer o telefono.
+  </Step>
+</Steps>
+
+Se compare «Non è stato possibile scaricare il PDF in questo momento. Riprova più tardi oppure scrivi a [amministrazione@mycentralino.com](mailto:amministrazione@mycentralino.com).», riprova dopo qualche minuto.
+
+### Come inserisco la partita IVA per ricevere la fattura
+
+<Steps>
+  <Step title="Apri i Dati di fatturazione">
+    Barra in alto → **Il tuo account** → **Fatture** → scorri fino a **Dati di fatturazione**.
+  </Step>
+  <Step title="Compila i dati fiscali">
+    Scrivi la **Partita IVA** (oppure il **Codice fiscale**), il **Codice SDI** e, se ce l'hai, la **PEC**.
+  </Step>
+  <Step title="Compila anagrafica e indirizzo">
+    **Ragione sociale** (o **Nome** e **Cognome**), **Indirizzo**, **CAP**, **Città**, **Paese** e **Provincia / Stato**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva dati di fatturazione**. Compare «Dati di fatturazione salvati.» e l'avviso «manca P.IVA o codice fiscale» sparisce.
+  </Step>
+</Steps>
+
+## I campi
+
+### Dati di fatturazione
+
+Tutti i campi sono facoltativi. Per ricevere una fattura invece di una ricevuta serve almeno uno tra **Partita IVA** e **Codice fiscale**.
+
+| Gruppo | Campo | Cosa indica | Valori |
+| --- | --- | --- | --- |
+| **Dati fiscali** | **Partita IVA** | La partita IVA dell'azienda | Testo |
+| **Dati fiscali** | **Codice fiscale** | Il codice fiscale dell'azienda o della persona | Testo |
+| **Dati fiscali** | **Codice SDI** | Il codice destinatario per la fattura elettronica | Testo; suggerimento «0000000 se non disponibile» |
+| **Dati fiscali** | **PEC** | L'indirizzo di posta certificata | Testo |
+| **Anagrafica** | **Ragione sociale** | Il nome completo della tua azienda, come in visura | Testo |
+| **Anagrafica** | **Nome**, **Cognome** | La persona intestataria | Testo |
+| **Indirizzo** | **Indirizzo** | «Via / Piazza e numero civico» | Testo |
+| **Indirizzo** | **Indirizzo (riga 2)** | «Scala, interno, presso… (facoltativo)» | Testo |
+| **Indirizzo** | **CAP**, **Città** | CAP e città della sede | Testo |
+| **Indirizzo** | **Paese** | Il paese della sede | Elenco, «— Seleziona —» |
+| **Indirizzo** | **Provincia / Stato** | La provincia (o lo stato estero) | Elenco che dipende dal **Paese**; finché il paese non è scelto dice «— Seleziona prima il paese —». Se cambi paese e la provincia non vale più, si svuota. |
+| **Contatti** | **Email** | L'email per i documenti | Un indirizzo email valido |
+| **Contatti** | **Telefono**, **Telefono alternativo** | I recapiti telefonici | Testo |
+| **Altri dati (facoltativi)** | **Titolo** | Il titolo della persona | —, Sig., Sig.ra, Sig.na, Ms, Dott. |
+| **Altri dati (facoltativi)** | **Secondo nome**, **Fax** | Dati aggiuntivi | Testo |
+
+### Scheda di un metodo di pagamento
+
+| Elemento | Cosa indica |
+| --- | --- |
+| **Carta** / **Addebito diretto** | Il tipo di metodo. |
+| Circuito | Visa, Mastercard, American Express… oppure «Addebito SEPA». |
+| Ultime quattro cifre | Della carta o dell'IBAN. |
+| **Titolare** | Il nome dell'intestatario. |
+| **Scadenza** / **Paese** | Mese e anno di scadenza della carta, oppure il paese del conto. |
+| **DEFAULT** · «Usato per i rinnovi» | È il metodo addebitato per i rinnovi automatici. |
+
+## Da sapere
+
+- **Fattura o ricevuta.** Se nei dati di fatturazione mancano sia partita IVA sia codice fiscale, per i pagamenti viene emessa una ricevuta, non una fattura. Le ricevute non hanno il PDF da scaricare.
+- **Le fatture più vecchie.** La scheda mostra i documenti emessi dalla data scritta in alto. Per quelli precedenti scrivi ad [amministrazione@mycentralino.com](mailto:amministrazione@mycentralino.com).
+- **Il metodo predefinito.** I rinnovi automatici usano solo il metodo con **DEFAULT**. Se rimuovi il predefinito, diventa predefinito il primo metodo rimasto.
+- **Ricarica automatica.** Usa il metodo di pagamento salvato: se lo cambi, controlla la [ricarica automatica](/centralino/account/credito-e-ricariche).
+- **Carte con verifica 3D Secure.** Se la banca chiede la verifica, un rinnovo avviato da qui può non riuscire: compare «Il pagamento richiede autenticazione 3D Secure. Riprova o usa un'altra carta.».
+- **PayPal.** Dal pannello si aggiungono solo carte e addebito sul conto.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Quale carta usate per il rinnovo?">
+    Quella con il bollino **DEFAULT** e la scritta «Usato per i rinnovi».
+  </Accordion>
+
+  <Accordion title="Posso avere più carte o conti?">
+    Sì. Li aggiungi con **Aggiungi carta** o **Aggiungi SEPA** e scegli quale usare con **Imposta default**.
+  </Accordion>
+
+  <Accordion title="La mia carta sta per scadere.">
+    Aggiungi la carta nuova, premi **Imposta default** su di lei e poi **Rimuovi** su quella vecchia.
+  </Accordion>
+
+  <Accordion title="Non vedo il riquadro RID Bancario (SEPA).">
+    Su alcuni account l'addebito sul conto non è disponibile: in quel caso puoi usare una carta. Per chiarimenti apri una richiesta all'assistenza, categoria **Amministrazione**.
+  </Accordion>
+
+  <Accordion title="Perché ricevo ricevute e non fatture?">
+    Nei **Dati di fatturazione** mancano sia la partita IVA sia il codice fiscale. Compila almeno uno dei due e premi **Salva dati di fatturazione**.
+  </Accordion>
+
+  <Accordion title="Non ho il codice SDI.">
+    Scrivi `0000000` in **Codice SDI**, come suggerisce il campo, e indica la **PEC** se ce l'hai.
+  </Accordion>
+
+  <Accordion title="Non trovo una fattura.">
+    La scheda mostra i documenti emessi dalla data scritta in alto. Se la fattura che cerchi è precedente, o non compare, scrivi ad [amministrazione@mycentralino.com](mailto:amministrazione@mycentralino.com).
+  </Accordion>
+
+  <Accordion title="Perché la ricevuta dice «imponibile»?">
+    L'importo delle ricevute è mostrato senza IVA.
+  </Accordion>
+
+  <Accordion title="Il download del PDF non funziona.">
+    Se compare «Non è stato possibile scaricare il PDF in questo momento.», riprova più tardi. Se il problema resta, scrivi ad [amministrazione@mycentralino.com](mailto:amministrazione@mycentralino.com).
+  </Accordion>
+
+  <Accordion title="Sono un collaboratore e non vedo Fatture.">
+    Il titolare non ti ha concesso **Abbonamento e pagamenti**. Chiedigli di aggiungerlo al tuo utente.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Abbonamento" icon="calendar" href="/centralino/account/abbonamento">
+    Cosa paghi, rinnovo, rinnovo in sospeso e riattivazione.
+  </Card>
+
+  <Card title="Credito e ricariche" icon="credit-card" href="/centralino/account/credito-e-ricariche">
+    Ricarica del credito, dei giorni e ricarica automatica.
+  </Card>
+
+  <Card title="Il mio account" icon="user" href="/centralino/account/il-mio-account">
+    Il riepilogo in alto e le quattro schede.
+  </Card>
+
+  <Card title="Richieste di assistenza" icon="life-ring" href="/centralino/assistenza/richieste-di-assistenza">
+    Per domande su pagamenti e fatture, categoria Amministrazione.
+  </Card>
+</CardGroup>

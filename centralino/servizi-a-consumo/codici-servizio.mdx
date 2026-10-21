@@ -1,0 +1,204 @@
+---
+title: "Codici servizio"
+sidebarTitle: "Codici servizio"
+description: "Codici numerici brevi che chi chiama digita per arrivare dritto al servizio interno giusto, senza passare da un menù vocale a tasti. Come si creano, come si cambiano e come si attivano su un numero."
+keywords:
+  - "codici servizio"
+  - "codice cliente"
+  - "codice numerico"
+  - "codice a 4 cifre"
+  - "digita il codice"
+  - "instradamento per codice"
+  - "filtro per codice numerico"
+  - "servizio interno"
+  - "smistamento chiamate"
+  - "codici servizi"
+---
+
+I **Codici servizio** sono codici numerici brevi (di norma 4 cifre) che chi chiama digita all'inizio della telefonata per essere portato subito al **servizio interno** collegato a quel codice. Servono quando sullo stesso numero ci sono tanti servizi, più di quanti ne stiano sui tasti da 0 a 9 di un menù vocale: ogni tuo cliente si ricorda il proprio codice e arriva dritto dove deve.
+
+**Dove si trova:** Menu → Risorse centralino → A consumo → **Codici servizio** · `https://cloud.mycentralino.com/codici-servizi`
+
+Ci arrivi anche dalla pagina **Risorse del centralino** (`https://cloud.mycentralino.com/configurazione`), nel gruppo **Servizi a consumo**. Il titolo della pagina è **Codici servizi**.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**. Non serve nessun modulo.
+
+<Warning>
+  Un codice da solo non cambia niente. Perché il centralino chieda il codice a chi chiama, nelle **Regole delle chiamate** del numero va aggiunto il passaggio **Filtro per codice numerico**. Vedi «Come faccio chiedere il codice a chi chiama» più sotto.
+</Warning>
+
+## Come funziona
+
+1. Prepari un **servizio interno** per ogni destinazione (per esempio «Assistenza Studio Rossi»): nelle [Regole delle chiamate](/centralino/regole/panoramica) gli dai un nome e i suoi passaggi. Se non ne hai di liberi, si aggiungono da **Aggiungi funzionalità**. Vedi [Servizi interni](/centralino/regole/servizi-interni).
+2. In questa pagina crei un codice e lo colleghi a quel servizio interno.
+3. Sul numero che riceve le chiamate aggiungi il passaggio **Filtro per codice numerico**: il centralino chiede il codice a chi chiama e porta la chiamata al servizio interno collegato.
+
+## Cosa trovi nella pagina
+
+In alto il titolo **Codici servizi** con il conteggio (per esempio «12 codici») e la frase «Codici brevi a 4 cifre che instradano il chiamante al servizio interno corrispondente.». A destra due bottoni:
+
+- **Cos'è**, che apre un pannello laterale con la spiegazione: «Quando ti serve», «Come si usa» e il riquadro «Codice univoco»;
+- **Nuovo codice**, che apre la pagina per creare un codice.
+
+Sotto c'è la ricerca **Cerca cliente, codice, servizio o note…**: filtra mentre scrivi, su cliente, codice, numero e nome del servizio interno, e note.
+
+La tabella **Codici servizi** (con il totale a destra) ha una riga per codice, in ordine di cliente:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Codice** | Il codice, in verde. Cliccandolo apri la modifica. |
+| **Cliente** | Il nome che hai dato al codice. |
+| **Servizio interno** | Il numero del servizio interno e il suo nome. Se compare in rosso «non più disponibile», il servizio interno collegato non c'è più (oppure non ha un nome). |
+| **Note** | Le tue note. |
+
+In fondo alla riga c'è il cestino **Elimina**. Un clic in un punto qualsiasi della riga apre la modifica.
+
+Se non hai ancora codici vedi «Nessun codice configurato» con «Crea un codice a 4 cifre e collegalo a un servizio interno.». Se la ricerca non trova niente: «Nessun codice per questa ricerca».
+
+## Come fare
+
+### Come creo un codice servizio
+
+<Steps>
+  <Step title="Prepara il servizio interno">
+    Il servizio interno di destinazione deve già esistere, con un nome e i suoi passaggi. Se l'elenco è vuoto, il centralino non ha servizi interni: si aggiungono da **Aggiungi funzionalità** → **Servizi interni** → **Aggiungi servizi** e poi si configurano nelle **Regole delle chiamate**. Vedi [Servizi interni](/centralino/regole/servizi-interni).
+  </Step>
+  <Step title="Apri Codici servizio">
+    Menu → Risorse centralino → A consumo → **Codici servizio**.
+  </Step>
+  <Step title="Premi Nuovo codice">
+    Si apre la pagina **Nuovo codice servizio**.
+  </Step>
+  <Step title="Compila Cliente">
+    Scrivi un nome che ti aiuti a riconoscere il codice, per esempio `Studio Rossi`.
+  </Step>
+  <Step title="Controlla il Codice">
+    Il pannello propone già un codice libero di 4 cifre. Puoi tenerlo o scriverne un altro, solo cifre.
+  </Step>
+  <Step title="Scegli il Servizio interno associato">
+    Nell'elenco le voci hanno la forma «numero · nome». Scegli dove deve arrivare chi digita questo codice.
+  </Step>
+  <Step title="Salva">
+    Se vuoi aggiungi una nota, poi premi **Aggiungi codice**. Torni all'elenco e compare «Codice "Studio Rossi" aggiunto.».
+  </Step>
+</Steps>
+
+### Come faccio chiedere il codice a chi chiama
+
+<Steps>
+  <Step title="Apri le regole del numero">
+    Menu → **Regole chiamate** e clicca il numero (o il servizio interno) che riceve le chiamate. Vedi [Editor delle regole](/centralino/regole/editor).
+  </Step>
+  <Step title="Scegli il punto">
+    Premi **Aggiungi regola** in alto (o **Aggiungi regola in coda** in fondo) per metterlo dopo l'ultimo passaggio, oppure il **\+** (**Inserisci qui**) tra due schede, nel punto in cui il codice va chiesto. Di solito dopo il messaggio di benvenuto.
+  </Step>
+  <Step title="Scegli Filtro per codice numerico">
+    Nell'argomento **Menù vocali (IVR)**, oppure scrivendo in **Cerca una regola…**, clicca **Filtro per codice numerico**. Ha l'etichetta **Si aggiunge subito**: non ci sono campi da compilare e il passaggio compare subito nello schema.
+  </Step>
+</Steps>
+
+Il passaggio usa tutti i codici di questa pagina: non devi sceglierli uno per uno.
+
+### Come cambio il servizio a cui porta un codice
+
+<Steps>
+  <Step title="Apri il codice">
+    Clicca la riga del codice nell'elenco. Il titolo della pagina è il nome del cliente.
+  </Step>
+  <Step title="Cambia il Servizio interno associato">
+    Scegli il nuovo servizio interno. Puoi cambiare anche cliente, codice e note.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva modifiche**. Torni all'elenco e compare «Codice "…" aggiornato.».
+  </Step>
+</Steps>
+
+Per uscire senza salvare premi **Annulla**.
+
+### Come elimino un codice
+
+<Steps>
+  <Step title="Premi il cestino">
+    Nella riga del codice premi **Elimina** (il cestino).
+  </Step>
+  <Step title="Conferma">
+    Nella finestra **Elimina codice servizio** («Stai per eliminare il codice di «Studio Rossi». L'azione non è reversibile.») premi **Elimina**. Il codice sparisce dall'elenco.
+  </Step>
+</Steps>
+
+## I campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Cliente** | Un nome per riconoscere il codice nell'elenco. Esempio nel campo: «es. Studio Rossi, Ufficio Marketing, Riccardo». | Obbligatorio, al massimo 50 caratteri |
+| **Codice** | Il codice che chi chiama digita. Alla creazione il pannello ne propone uno libero di 4 cifre. | Obbligatorio, solo cifre (il campo ne accetta fino a 6); unico nel centralino |
+| **Servizio interno associato** | Dove arriva chi digita il codice. Prima voce: «— Seleziona un servizio interno —». | Obbligatorio, un servizio interno del centralino |
+| **Note** (opzionale) | Un appunto per te, per esempio «Codice consegnato a cliente VIP». | Al massimo 50 caratteri |
+
+Messaggi che puoi vedere salvando:
+
+- «Il codice deve contenere solo cifre (max 6).»
+- «Seleziona un servizio interno.»
+- «Scegli un servizio interno dall'elenco.»
+- «Questo codice è già usato da un altro servizio. Scegline un altro.»
+
+## Da sapere
+
+- **Usa codici di 4 cifre.** Il passaggio **Filtro per codice numerico** chiede a chi chiama un codice di 4 cifre. Il campo accetta anche codici più corti o più lunghi, ma il modo sicuro è restare sulle 4 cifre, come il codice che il pannello propone.
+- **Ogni codice è unico** in tutto il centralino: due clienti non possono avere lo stesso codice.
+- **Apostrofi e punti e virgola** in **Cliente** e **Note** vengono sostituiti da un trattino quando salvi: «D'Amico» diventa «D-Amico».
+- **Se elimini un servizio interno** usato da un codice, il codice resta in elenco con «non più disponibile». Aprilo e scegli un altro servizio interno.
+- **Eliminare un codice è definitivo.** Chi lo usava non viene più portato al suo servizio.
+- **Nessun costo per i codici.** Creare, cambiare ed eliminare codici non comporta addebiti. I servizi interni a cui portano, invece, si aggiungono da **Aggiungi funzionalità**, dove il prezzo è indicato prima della conferma.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="L'elenco dei servizi interni è vuoto. Cosa faccio?">
+    Il codice deve portare a un servizio interno, e il centralino non ne ha ancora. I servizi interni si aggiungono da **Aggiungi funzionalità** → **Servizi interni** → **Aggiungi servizi**; poi gli dai un nome e i passaggi nelle **Regole delle chiamate** (vedi [Servizi interni](/centralino/regole/servizi-interni)). Poi torna su **Nuovo codice**.
+  </Accordion>
+
+  <Accordion title="Ho creato il codice, ma a chi chiama non viene chiesto niente.">
+    Manca il passaggio **Filtro per codice numerico** nelle regole del numero che riceve le chiamate. Aggiungilo come spiegato in «Come faccio chiedere il codice a chi chiama».
+  </Accordion>
+
+  <Accordion title="Accanto a un codice vedo «non più disponibile». Che significa?">
+    Il servizio interno collegato non esiste più, oppure non ha un nome. Apri il codice, scegli un servizio interno in **Servizio interno associato** e premi **Salva modifiche**.
+  </Accordion>
+
+  <Accordion title="Posso usare un codice di 2 o di 6 cifre?">
+    Il campo accetta da 1 a 6 cifre, ma il passaggio **Filtro per codice numerico** chiede un codice di 4 cifre. Per non avere sorprese usa codici di 4 cifre.
+  </Accordion>
+
+  <Accordion title="Che differenza c'è con un menù vocale?">
+    Un [menù vocale (IVR)](/centralino/instradamento/menu-vocali) offre al massimo i tasti da 0 a 9 («premi 1 per…»). Con i codici servizio i servizi possono essere molti di più: ognuno ha il suo codice, che dai al cliente.
+  </Accordion>
+
+  <Accordion title="Che differenza c'è con l'Accesso con PIN?">
+    Il codice servizio serve solo a smistare la chiamata: non ha un saldo di minuti. Con l'[Accesso con PIN](/centralino/servizi-a-consumo/accesso-con-pin) ogni cliente ha un PIN personale e un saldo di minuti da consumare.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Servizi interni" icon="sitemap" href="/centralino/regole/servizi-interni">
+    Le destinazioni a cui portano i codici.
+  </Card>
+
+  <Card title="Editor delle regole" icon="list" href="/centralino/regole/editor">
+    Dove si aggiunge il passaggio Filtro per codice numerico.
+  </Card>
+
+  <Card title="Passaggi che instradano la chiamata" icon="arrow-right-arrow-left" href="/centralino/regole/passaggi-chiamata">
+    Il catalogo dei passaggi, con Filtro per codice numerico.
+  </Card>
+
+  <Card title="Accesso con PIN" icon="key" href="/centralino/servizi-a-consumo/accesso-con-pin">
+    PIN personali con un saldo di minuti.
+  </Card>
+
+  <Card title="Aggiungi funzionalità" icon="gear" href="/centralino/moduli/aggiungi-funzionalita">
+    Dove si aggiungono altri servizi interni.
+  </Card>
+</CardGroup>

@@ -1,0 +1,345 @@
+---
+title: "Chiamate ricevute"
+sidebarTitle: "Chiamate ricevute"
+description: "Lo storico delle chiamate in entrata: chi ha chiamato, su quale numero, chi ha risposto o perché è andata persa, il percorso dentro il centralino. Con filtri, esportazione Excel e PDF, richiamata, rubrica e blocco del numero."
+keywords:
+  - "chiamate ricevute"
+  - "chiamate in entrata"
+  - "storico chiamate"
+  - "registro chiamate"
+  - "chiamate perse"
+  - "chi ha chiamato"
+  - "percorso chiamata"
+  - "esporta chiamate"
+  - "excel"
+  - "pdf"
+  - "richiama"
+  - "aggiungi in rubrica"
+  - "blocca numero"
+  - "log chiamate"
+---
+
+**Chiamate ricevute** è lo storico di tutte le telefonate arrivate sui tuoi numeri: chi ha chiamato, su quale numero, quando, quanto è durata, chi ha risposto o perché è andata persa, e il percorso completo dentro il centralino. È la pagina giusta per rispondere a «perché questa chiamata non mi è arrivata?». Da qui puoi anche richiamare, salvare il numero in rubrica, bloccarlo ed esportare l'elenco.
+
+**Dove si trova:** Menu → Monitoraggio → **Chiamate ricevute** · `https://cloud.mycentralino.com/chiamate-in`
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli è stata concessa la sezione **Monitoraggio** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)). Non serve nessun modulo.
+
+<Info>
+  Il bottone **Richiama** compare solo a chi ha anche il **Pannello operatori**: il titolare lo ha sempre, un collaboratore solo se gli è stato concesso. Per chiamare davvero, il collaboratore deve avere anche un interno assegnato.
+</Info>
+
+## Cosa trovi nella pagina
+
+In testa il titolo **Chiamate ricevute** e la frase «Tutte le telefonate in entrata, con il dettaglio del percorso.» Sopra il titolo un riepilogo del periodo, per esempio «128 chiamate · 342 min totali · media 2:41»:
+
+- il numero di chiamate (con un filtro sull'esito attivo: «_N_ con i filtri attivi»);
+- i minuti totali del periodo, contando anche il tempo delle chiamate senza risposta (attesa, messaggi);
+- la durata media delle chiamate con risposta.
+
+I minuti e la media restano quelli di tutte le chiamate del periodo anche quando è attivo un filtro sull'esito.
+
+<Frame caption="Chiamate ricevute: periodo, esito e ricerca">
+  <img
+    src="/images/guida/chiamate-ricevute.webp"
+    alt="Chiamate ricevute: periodo, esito e ricerca"
+  />
+</Frame>
+
+### I filtri
+
+I filtri stanno in un riquadro sopra l'elenco. All'apertura la pagina mostra gli **ultimi 7 giorni**, senza altri filtri.
+
+| Filtro | Cosa fa |
+| --- | --- |
+| **Periodo** | Due date: dal giorno… al giorno. Le chiamate di entrambi i giorni sono comprese. |
+| **Oggi**, **Ieri**, **Ultimi 7 gg**, **Ultimi 30 gg**, **Mese corrente** | Scorciatoie per il periodo. Quella attiva è evidenziata. Se scegli le date a mano compare l'etichetta «Range personalizzato». |
+| **Cerca numero o nome…** | Cerca nel numero di chi ha chiamato, nel tuo numero chiamato, nel nome che il chiamante trasmette e nei nomi dei contatti della tua **Rubrica**. Il numero si può scrivere anche con spazi, trattini o `+39`. Basta una parte del numero. |
+| **Esito** | **Risposte**, **Perse**, **Ha riattaccato in attesa**. Puoi attivarne più di uno; se non ne attivi nessuno vedi tutte le chiamate. |
+| **Tutte le numerazioni** | Un menu per vedere le chiamate di uno solo dei tuoi numeri. Dentro trovi la ricerca «Cerca numero…» e la voce **Tutti i numeri** per tornare a tutti. Con un numero scelto il bottone mostra «Numero» e il numero. |
+| **Excel** | Scarica l'elenco del periodo, con gli stessi filtri. |
+| **PDF** | Apre il report da stampare o salvare in PDF, con gli stessi filtri. |
+| **Reset filtri** | Torna agli ultimi 7 giorni, senza ricerca, esito o numero. |
+
+**Excel** e **PDF** sono spenti quando nel periodo non ci sono chiamate.
+
+Sul telefono restano visibili solo la ricerca e il bottone **Filtri (N)**: toccalo per aprire periodo, scorciatoie, esito, numero ed esportazioni. Il numero fra parentesi dice quanti filtri sono attivi (un periodo diverso dagli ultimi 7 giorni conta come filtro).
+
+### L'elenco
+
+L'elenco si intitola «Chiamate · 14 ott → 20 ott» e mostra 50 chiamate per pagina, dalla più recente. Ogni chiamata è una riga sola, anche se ha fatto squillare più telefoni o è passata da più code.
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Esito** | Un pallino colorato e una parola: **Risposta**, **Persa**, **Ha riattaccato in attesa** o **Fuori orario**. Vedi [Esiti delle chiamate](/centralino/monitoraggio/esiti-delle-chiamate). |
+| **Quando** | Il giorno e l'ora: «oggi · 10:53», «ieri · 18:02», «ven 17 ott · 20:20». Passa il mouse per la data completa. |
+| **Chi ha chiamato** | Il numero di chi ha chiamato e il nome: quello del contatto in **Rubrica** se c'è, altrimenti il nome che il chiamante trasmette (se lo trasmette). «Anonima» se il numero era nascosto. Sotto, **la frase che spiega cosa è successo**, per esempio «Risposto da Anna · interno 201.» o «Nessuno ha risposto nella coda Commerciale.» |
+| **Ricevuta su** | Il tuo numero che è stato chiamato. |
+| **Durata** | Quanto è durata la chiamata (minuti e secondi), «—» se zero. Per le chiamate senza risposta il numero è in grigio: è il tempo passato nel centralino (per esempio ad ascoltare un messaggio o in attesa), non una conversazione. |
+
+A destra di ogni riga ci sono due icone:
+
+- **Richiama** (il telefono): solo se hai il **Pannello operatori** e il numero non è nascosto;
+- **Aggiungi in rubrica**: solo se il numero non è nascosto e non è già in **Rubrica**.
+
+Sul telefono l'esito e l'ora vanno sotto il numero, e le colonne **Ricevuta su** e **Durata** non si vedono.
+
+In fondo, se le chiamate sono più di 50: **Precedente**, i numeri di pagina e **Successiva**.
+
+### Il dettaglio di una chiamata
+
+Clicca una riga per aprirla (ricliccala per chiuderla). Si apre il **Percorso chiamata · N passaggi**: tutto ciò che la chiamata ha fatto dentro il centralino, in ordine di tempo. Ogni passaggio ha:
+
+- un'etichetta: **Regola**, **Squilla**, **Coda**, **Menu vocale**, **Audio**, **Segreteria**, **Inoltro**, **Agente AI**, **Passa a**, **Conferenza** o **Passaggio**;
+- cosa ha coinvolto (il nome della coda, l'interno, il messaggio, la regola…) e, dopo la freccia, chi ha risposto;
+- l'ora (ore, minuti e secondi), l'esito del passaggio (**Risposta**, **Non risposta**, **Occupato**, **Fallita**) e, se c'è, la durata.
+
+Il significato di ogni etichetta è spiegato in [Esiti delle chiamate](/centralino/monitoraggio/esiti-delle-chiamate).
+
+Se la chiamata si è chiusa subito leggi «Nessun passaggio da mostrare: la chiamata si è chiusa prima di raggiungere un interno, una coda o un messaggio.»
+
+In fondo al dettaglio ci sono i bottoni **Aggiungi in rubrica** e **Blocca il numero**.
+
+## Come fare
+
+### Come scopro perché una chiamata non mi è arrivata
+
+<Steps>
+  <Step title="Apri Chiamate ricevute">
+    Menu → Monitoraggio → **Chiamate ricevute**.
+  </Step>
+  <Step title="Cerca il numero di chi ha chiamato">
+    Scrivilo in **Cerca numero o nome…**, anche solo in parte. Se la chiamata è più vecchia di 7 giorni premi **Ultimi 30 gg** o imposta il **Periodo**.
+  </Step>
+  <Step title="Leggi l'esito e la frase">
+    L'esito dice se ha avuto risposta; la frase sotto il numero dice dove si è fermata.
+  </Step>
+  <Step title="Apri il percorso">
+    Clicca la riga per vedere il **Percorso chiamata** passo per passo.
+  </Step>
+</Steps>
+
+Se la ricerca non trova niente leggi «Nessuna chiamata da «…» in questo periodo» e «Se il numero è giusto, la chiamata non è arrivata al centralino. Prova ad allargare il periodo o a togliere gli altri filtri.» Per la guida completa vedi [Capire una chiamata persa](/centralino/come-fare/capire-una-chiamata-persa).
+
+### Come vedo solo le chiamate perse di ieri
+
+<Steps>
+  <Step title="Scegli il giorno">
+    Premi **Ieri**.
+  </Step>
+  <Step title="Filtra l'esito">
+    In **Esito** attiva **Perse**. Se vuoi anche chi ha riattaccato mentre aspettava, attiva anche **Ha riattaccato in attesa**.
+  </Step>
+</Steps>
+
+Il filtro **Perse** comprende anche le chiamate arrivate **Fuori orario**.
+
+### Come vedo le chiamate arrivate su un solo numero
+
+<Steps>
+  <Step title="Apri il menu dei numeri">
+    Premi **Tutte le numerazioni**.
+  </Step>
+  <Step title="Scegli il numero">
+    Clicca il numero, oppure scrivine una parte in «Cerca numero…» per trovarlo. Per tornare a tutti scegli **Tutti i numeri**.
+  </Step>
+</Steps>
+
+### Come richiamo chi mi ha chiamato
+
+<Steps>
+  <Step title="Premi Richiama">
+    Sulla riga della chiamata premi l'icona del telefono (**Richiama**).
+  </Step>
+  <Step title="Scegli l'interno">
+    Se puoi chiamare da più interni si apre la finestra «Da quale interno vuoi chiamare?». Accanto a ogni interno vedi lo stato: **Libero**, **Al telefono**, **Squilla** o **Non collegato**. Gli interni **Non collegato** non si possono scegliere. Premi **Chiama** (o **Annulla**). Se hai un solo interno la chiamata parte subito.
+  </Step>
+  <Step title="Rispondi al tuo telefono">
+    Squilla prima il telefono dell'interno scelto: quando rispondi, parte la chiamata al cliente. In basso compare un avviso, per esempio «Squilla il tuo interno 201: rispondi e parte la chiamata a 3331234567.»
+  </Step>
+</Steps>
+
+Il titolare può scegliere fra tutti gli interni del centralino; un collaboratore chiama dai propri interni.
+
+### Come salvo in rubrica chi mi ha chiamato
+
+<Steps>
+  <Step title="Apri la finestra">
+    Premi l'icona **Aggiungi in rubrica** sulla riga, oppure apri la riga e premi **Aggiungi in rubrica**. Si apre la finestra «Aggiungi il chiamante in rubrica».
+  </Step>
+  <Step title="Compila">
+    Il **Numero** è già scritto. Scrivi il **Nome** (è già scritto se il chiamante lo trasmette). Se vuoi aggiungi **Azienda** e **Note**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva contatto**. Vedi la conferma «Contatto aggiunto in rubrica: Mario Rossi (3331234567).»
+  </Step>
+</Steps>
+
+Se il numero è già in rubrica la finestra mostra «Numero già presente in rubrica» con il nome del contatto: premi **Apri contatto** per modificarlo o **Chiudi**.
+
+### Come blocco un numero molesto
+
+<Steps>
+  <Step title="Apri la chiamata">
+    Clicca la riga della chiamata.
+  </Step>
+  <Step title="Premi Blocca il numero">
+    In fondo al dettaglio premi **Blocca il numero**. Si apre la finestra «Blocca il numero».
+  </Step>
+  <Step title="Scegli l'elenco">
+    In **Elenco** scegli l'elenco di numeri bloccati in cui aggiungerlo (è già scelto il primo). Il **Numero da bloccare** è già scritto.
+  </Step>
+  <Step title="Conferma">
+    Premi **Blocca il numero**. Vedi la conferma «Numero … aggiunto ai numeri bloccati «…».»
+  </Step>
+</Steps>
+
+<Warning>
+  Il blocco funziona solo se l'elenco scelto è collegato al tuo numero nelle **Regole delle chiamate** (passaggio **Numeri bloccati**). Se non hai ancora nessun elenco, la finestra mostra «Nessun elenco di numeri bloccati» con **Vai a Numeri bloccati**. Vedi [Numeri bloccati](/centralino/instradamento/numeri-bloccati).
+</Warning>
+
+### Come esporto le chiamate di un mese
+
+<Steps>
+  <Step title="Scegli il periodo">
+    Premi **Mese corrente**, oppure imposta il **Periodo** con le date che ti servono. Se vuoi, aggiungi gli altri filtri.
+  </Step>
+  <Step title="Scarica il file">
+    Premi **Excel** per il file da aprire con un foglio di calcolo, oppure **PDF** per il report.
+  </Step>
+  <Step title="Stampa o salva il PDF">
+    Il report si apre in una nuova scheda: premi **Stampa / Salva PDF** e scegli la stampante o «Salva come PDF». **Chiudi** chiude la scheda.
+  </Step>
+</Steps>
+
+## I campi delle finestre
+
+### Aggiungi il chiamante in rubrica
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Numero** | Il numero da salvare. | Obbligatorio. Solo cifre, senza spazi o segni, al massimo 25. Già scritto, senza `+39`. |
+| **Nome** | Il nome del contatto. | Obbligatorio, al massimo 80 caratteri. Già scritto se il chiamante trasmette un nome. |
+| **Azienda** (facoltativo) | L'azienda del contatto. | Al massimo 50 caratteri. |
+| **Note** (facoltativo) | Appunti liberi. | Al massimo 255 caratteri. |
+
+Un numero può stare in rubrica una sola volta per centralino.
+
+### Blocca il numero
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Elenco** | L'elenco di **Numeri bloccati** in cui aggiungere il numero. Ogni voce mostra il nome e quanti numeri contiene. | Obbligatorio. |
+| **Numero da bloccare** | Il numero da rifiutare. | Obbligatorio. Cifre e i simboli `+` `*` `#`, al massimo 25 caratteri. Con `^` davanti blocchi tutti i numeri che iniziano così (per esempio `^800`). |
+| **Descrizione** (facoltativo) | Un promemoria. | Al massimo 100 caratteri. Già scritta: «Da chiamate in ricezione · _data_». |
+
+### Messaggi che puoi vedere
+
+| Messaggio | Cosa fare |
+| --- | --- |
+| «Inserisci un numero.» / «Numero mancante.» | Scrivi il numero. |
+| «Solo cifre, senza spazi o segni.» | Nella rubrica il numero va scritto solo con le cifre. |
+| «Solo cifre (+, \*, # ammessi).» | Nel blocco togli spazi, lettere e altri segni. |
+| «Assegna un nome al contatto.» | Scrivi il **Nome**. |
+| «Questo numero è già in rubrica.» | Il numero è stato salvato nel frattempo: aprilo da **Rubrica**. |
+| «Scegli l'elenco in cui aggiungere il numero.» | Scegli un **Elenco**. |
+| «Questo elenco non esiste più.» | L'elenco è stato eliminato nel frattempo: chiudi la finestra e riaprila. |
+| «Non hai un interno da cui chiamare: chiedi al titolare di assegnartene uno.» | Al tuo utente non è assegnato un interno. |
+| «Questo interno non è tra i tuoi.» | Scegli uno degli interni assegnati a te, oppure chiedi al titolare di assegnartelo. |
+| «Il telefono dell'interno 201 risulta spento o non collegato: accendilo e riprova.» | Accendi il telefono o apri l'app e riprova. |
+| «Non puoi chiamare il tuo stesso interno.» | Scegli un altro numero. |
+| «Numero non valido.» | Il numero da chiamare non è valido. |
+| «Troppe chiamate di fila: riprova fra un minuto.» | Aspetta un minuto. |
+| «La chiamata non è partita. Riprova fra poco; se continua, avvisa l'assistenza.» | Riprova; se si ripete scrivi all'assistenza da [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza). |
+
+## Le esportazioni
+
+| Bottone | Cosa ottieni | Cosa contiene |
+| --- | --- | --- |
+| **Excel** | Un file CSV (valori separati da punto e virgola) che si apre con Excel o con qualunque foglio di calcolo. | In testa il periodo, la data di esportazione e i filtri usati; poi un riepilogo (**Totale chiamate**, **Totale minuti**, **Media chiamata**) e una riga per chiamata con **N°**, **Data e Ora**, **Chiamante**, **Nome CLI** (il nome trasmesso dal chiamante), **Numero chiamato**, **Esito**, **Durata**. |
+| **PDF** | Una pagina da stampare o salvare in PDF, con il logo. | Il periodo, i totali (**Totale chiamate**, **Totale minuti**, **Media chiamata**), i filtri usati e la tabella delle chiamate. |
+
+Entrambe rispettano periodo, numero, esito e ricerca della pagina. Il PDF mostra al massimo le 5000 chiamate più recenti (i totali in alto restano completi): per l'elenco completo usa **Excel**.
+
+<Note>
+  Nei file l'esito è **Risposta**, **Persa** o **Ha riattaccato in attesa**: le chiamate che a video risultano **Fuori orario** nei file risultano **Persa**. Nei file non c'è il percorso della chiamata e non ci sono i nomi della rubrica.
+</Note>
+
+## Da sapere
+
+- **Solo chiamate dall'esterno.** Compaiono le chiamate arrivate sui tuoi numeri da numeri esterni. Le chiamate fra interni non ci sono.
+- **Una riga per chiamata.** Una chiamata che ha fatto squillare più telefoni, o è passata da una coda e poi da un altro telefono, resta una riga sola; i passaggi sono nel dettaglio.
+- **Numero attivato da poco.** Se un numero è diventato tuo da poco, vedi le sue chiamate solo da quando è sul tuo centralino: quelle del titolare precedente non compaiono.
+- **La segreteria non è una risposta.** Una chiamata finita in segreteria risulta **Persa**, salvo quando passa da un servizio interno che la prende in carico: vedi [Esiti delle chiamate](/centralino/monitoraggio/esiti-delle-chiamate).
+- **«Fuori orario» si calcola con gli orari di oggi.** Se hai cambiato orari o ferie dopo quella chiamata, il motivo mostrato può non essere quello di quel giorno. Vedi [Esiti delle chiamate](/centralino/monitoraggio/esiti-delle-chiamate).
+- **La pagina non si aggiorna da sola.** Per vedere le chiamate appena arrivate ricarica la pagina o cambia un filtro.
+- **Ora italiana.** Tutte le date e le ore sono in ora italiana.
+- **Il blocco vale solo dove l'elenco è collegato.** Aggiungere un numero a un elenco non basta: l'elenco deve essere nelle **Regole delle chiamate** del tuo numero.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Una chiamata è andata in segreteria: perché risulta «Persa»?">
+    Perché nessuna persona ha parlato con chi chiamava: la segreteria non conta come risposta. La frase sotto il numero dice «È passata alla segreteria».
+  </Accordion>
+
+  <Accordion title="Vedo «Fuori orario» ma eravamo aperti.">
+    L'esito si calcola con gli orari e le ferie attuali del numero: se li hai cambiati dopo quella chiamata, il motivo può non essere quello di quel giorno. Apri la riga e guarda il **Percorso chiamata** per vedere cosa è successo davvero.
+  </Accordion>
+
+  <Accordion title="Il cliente dice di aver chiamato ma non trovo la chiamata.">
+    Togli i filtri sull'esito e allarga il periodo. Cerca anche solo le ultime cifre del numero. Se la pagina dice «Se il numero è giusto, la chiamata non è arrivata al centralino.», la chiamata non è arrivata ai tuoi numeri: verifica con il cliente il numero composto.
+  </Accordion>
+
+  <Accordion title="Chi chiama ed è in rubrica compare con il nome?">
+    Sì. Se il numero è in **Rubrica** vedi il nome del contatto; altrimenti il nome che il chiamante trasmette, se lo trasmette. Puoi anche cercare per nome in **Cerca numero o nome…**.
+  </Accordion>
+
+  <Accordion title="Vedo «Anonima».">
+    Chi chiamava ha nascosto il numero. Non si può richiamare né salvare in rubrica.
+  </Accordion>
+
+  <Accordion title="Perché non vedo il bottone Richiama?">
+    Serve il permesso **Pannello operatori** (il titolare lo ha sempre) e il numero non deve essere nascosto.
+  </Accordion>
+
+  <Accordion title="Il file Excel non si apre bene.">
+    È un file CSV con i valori separati da punto e virgola. Se il foglio di calcolo mette tutto in una colonna, aprilo con la funzione di importazione e scegli il punto e virgola come separatore.
+  </Accordion>
+
+  <Accordion title="Posso ascoltare la registrazione di una chiamata da qui?">
+    No, in questa pagina non ci sono le registrazioni.
+  </Accordion>
+
+  <Accordion title="Una chiamata dice «Risposta» ma non ha la frase sotto il numero.">
+    Succede quando dai passaggi registrati non si capisce chi ha risposto. Apri la riga e guarda il **Percorso chiamata**.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Esiti delle chiamate" icon="list" href="/centralino/monitoraggio/esiti-delle-chiamate">
+    Ogni esito, ogni frase e ogni passaggio, spiegati.
+  </Card>
+
+  <Card title="Capire una chiamata persa" icon="life-ring" href="/centralino/come-fare/capire-una-chiamata-persa">
+    Dalla chiamata persa alla causa, passo passo.
+  </Card>
+
+  <Card title="Da richiamare" icon="phone-volume" href="/centralino/monitoraggio/da-richiamare">
+    Chi ha riattaccato mentre aspettava in coda.
+  </Card>
+
+  <Card title="Statistiche" icon="chart-line" href="/centralino/monitoraggio/statistiche">
+    I numeri della giornata.
+  </Card>
+
+  <Card title="Rubrica" icon="address-book" href="/centralino/strumenti/rubrica">
+    I contatti del centralino.
+  </Card>
+
+  <Card title="Numeri bloccati" icon="ban" href="/centralino/instradamento/numeri-bloccati">
+    Gli elenchi dei numeri da rifiutare.
+  </Card>
+</CardGroup>

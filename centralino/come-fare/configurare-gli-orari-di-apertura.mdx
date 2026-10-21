@@ -1,0 +1,200 @@
+---
+title: "Configurare gli orari di apertura"
+sidebarTitle: "Orari di apertura"
+description: "Dall'inizio alla fine: crei gli orari della settimana, scegli cosa sente chi chiama quando è chiuso, li colleghi al tuo numero e provi."
+keywords:
+  - "orari di apertura"
+  - "orario ufficio"
+  - "fuori orario"
+  - "chiuso"
+  - "aperto"
+  - "pausa pranzo"
+  - "time condition"
+  - "messaggio di chiusura"
+  - "apertura settimanale"
+---
+
+Questa guida ti porta da zero a un numero che risponde negli orari di apertura e, quando sei chiuso, fa sentire un messaggio e manda la chiamata dove vuoi tu (segreteria, cellulare, fine chiamata).
+
+## Cosa ottieni
+
+- Negli orari di apertura le chiamate seguono il percorso normale: squillano i telefoni, la coda, il menù vocale.
+- Fuori orario chi chiama sente il tuo **Messaggio di chiusura** e poi la chiamata va alla destinazione che hai scelto.
+- Un orario solo può valere per più numeri: se lo cambi, il cambio vale subito per tutti.
+
+## Prima di cominciare
+
+- **Ti serve l'accesso** a **Risorse del centralino** e a **Regole delle chiamate**. Il titolare dell'account li ha sempre; un collaboratore solo se glieli hai concessi.
+- **Il messaggio di chiusura** (consigliato): prepara prima il messaggio che dice gli orari, per esempio «Siamo chiusi. Siamo aperti dal lunedì al venerdì dalle 9 alle 18». Si crea in Menu → Risorse centralino → Audio → **Messaggi audio** (`https://cloud.mycentralino.com/audio`), caricando un file o scrivendo il testo che una voce legge. Vedi [Messaggi audio](/centralino/audio/messaggi-audio).
+- **La destinazione di chiusura**, se non è «fine chiamata»: la segreteria, la coda, il numero di inoltro o il menù vocale devono esistere già. Se nell'elenco non trovi nulla, compare «Nessuna opzione disponibile per questo tipo di azione.» e va creata prima la risorsa.
+- **Decidi le fasce**: al massimo **due fasce al giorno** (mattina e pomeriggio). Un orario continuato è una fascia sola.
+
+<Note>
+  I giorni di ferie e le festività non si mettono negli orari: hanno la loro pagina. Vedi [Chiudere per ferie o festività](/centralino/come-fare/chiudere-per-ferie-o-festivita).
+</Note>
+
+## Come fare
+
+Esempio usato nei passi: aperti dal lunedì al venerdì 09:00–13:00 e 14:30–18:30, il sabato 09:00–12:30, la domenica chiusi.
+
+### 1 · Crea gli orari
+
+**Dove si trova:** Menu → Risorse centralino → Orari e chiusure → **Orari** · `https://cloud.mycentralino.com/orari`
+
+<Steps>
+  <Step title="Apri Orari e premi Nuovo orario">
+    Si apre la pagina **Nuovi orari**. Un orario nuovo parte con tutti i giorni chiusi.
+  </Step>
+  <Step title="Scrivi il nome">
+    In **Nome** scrivi per esempio `Orario ufficio`. Sono ammessi lettere senza accenti, numeri, spazi, trattino e trattino basso, al massimo 50 caratteri: niente apostrofi e niente lettere accentate. Il nome **non si può cambiare** dopo il salvataggio. Usa un nome che non c'è già nell'elenco **Orari**: un orario nuovo con lo stesso nome di uno esistente lo sostituisce, senza avviso.
+  </Step>
+  <Step title="Scegli il messaggio di chiusura">
+    In **Messaggio di chiusura** scegli il messaggio audio che sente chi chiama quando sei chiuso. Se lo lasci su «Nessun messaggio audio», chi chiama fuori orario non sente nessun avviso e la chiamata va subito alla destinazione di chiusura. Se compare «Nessun file audio. Carica prima un file.», crea prima il messaggio in **Messaggi audio**.
+  </Step>
+  <Step title="Apri il lunedì">
+    Nella fila di interruttori sotto il calendario clicca **Lunedì** finché non dice **Aperto**. Se nessun altro giorno è aperto, il pannello propone 09:00–13:00 e 14:00–18:00.
+  </Step>
+  <Step title="Correggi le fasce del lunedì">
+    Nella sezione **Modifica a mano · gli orari scritti ora per ora**, riga Lunedì, correggi la seconda fascia: 14:30 → 18:30. In alternativa disegna e trascina le fasce sul calendario (si agganciano ai quarti d'ora). Per una fascia che finisce a fine giornata scrivi 23:59 nella riga **Modifica a mano**: trascinata fino in fondo al calendario, la fascia non viene presa.
+  </Step>
+  <Step title="Copia il lunedì sugli altri giorni">
+    Premi **Copia giorno…**. In **Copia da** scegli **LUN**, in **Incolla su** spunta Martedì, Mercoledì, Giovedì e Venerdì, poi **Copia orari**.
+  </Step>
+  <Step title="Sistema il sabato e lascia chiusa la domenica">
+    Clicca **Sabato** finché dice **Aperto**. Nella riga Sabato di **Modifica a mano** scrivi 09:00 → 12:30 nella prima fascia e metti 00:00 → 00:00 nella seconda (vuol dire «nessuna fascia»). Lascia **Domenica** su **Chiuso**. In fondo al riquadro leggi **Giorni aperti 6 / 7**.
+  </Step>
+  <Step title="Scegli cosa succede quando sei chiuso">
+    Nel riquadro **Quando il centralino è chiuso** scegli una sola voce: **Termina la chiamata** (è quella proposta), **Segreteria**, **Un interno**, **Una coda**, **Inoltro a un numero**, **Menù vocale (IVR)**, **Servizio interno**, **Conferenza** o **Chiamata diretta (DISA)**. Se l'azione la chiede, la **Destinazione** è obbligatoria: senza, **Salva** risponde «Scegli dove va la chiamata dall'elenco.». Il **Riepilogo** sotto dice in una riga cosa succederà, per esempio «Quando è chiuso si sente messaggio_chiusura, poi → Segreteria · 201».
+  </Step>
+  <Step title="Salva">
+    Premi **Salva** in alto (oppure Ctrl S, su Mac ⌘S). Compare «Orari «Orario ufficio» salvati.» e torni all'elenco.
+  </Step>
+</Steps>
+
+<Frame caption="Gli orari settimanali: si disegnano le fasce sul calendario">
+  <img
+    src="/images/guida/orari-modifica.webp"
+    alt="Gli orari settimanali: si disegnano le fasce sul calendario"
+  />
+</Frame>
+
+<Warning>
+  Finché non lo colleghi a un numero, nell'elenco **Orari** la colonna **Usato da** dice «Non collegato · non ha effetto»: il centralino continua a rispondere a qualsiasi ora.
+</Warning>
+
+### 2 · Collega gli orari al tuo numero
+
+**Dove si trova:** Menu → **Regole chiamate** → **Numeri di telefono** · `https://cloud.mycentralino.com/regole`
+
+<Steps>
+  <Step title="Apri il numero">
+    Nell'elenco clicca il numero che deve seguire gli orari. Si apre lo schema delle sue regole, che parte da **Chiamata in arrivo**.
+  </Step>
+  <Step title="Aggiungi la regola in cima">
+    Passa con il mouse sulla linea subito sotto **Chiamata in arrivo** e premi il **\+** («Inserisci qui»): la regola verrà messa in cima. Se il numero non ha ancora regole, premi **Aggiungi la prima regola**.
+  </Step>
+  <Step title="Scegli Apertura settimanale">
+    Nella finestra **Aggiungi regola** apri l'argomento **Orari e chiusure** (la trovi anche in **Regole più usate**) e scegli **Apertura settimanale**.
+  </Step>
+  <Step title="Seleziona i tuoi orari">
+    Nell'elenco **Gestione aperture** scegli `Orario ufficio` (sotto il nome leggi quanti giorni sono configurati, per esempio «6 / 7 giorni configurati») e premi **Aggiungi regola**.
+  </Step>
+  <Step title="Controlla la posizione">
+    La regola **Apertura settimanale** deve stare sopra le regole che fanno squillare i telefoni. Se non è così, passa sulla scheda e usa **Sposta su**, oppure clicca il numerino della posizione e scegli **In cima**. Se nel numero ci sono anche numeri bloccati, interruttori o ferie, quelli vanno sopra gli orari: l'ordine completo è in [Editor delle regole](/centralino/regole/editor), sezione «In che ordine metto i passaggi».
+  </Step>
+</Steps>
+
+Le modifiche alle regole valgono subito: in questa pagina non c'è un bottone da premere per salvare.
+
+Nello schema la regola mostra due strade: il ramo **Chiusi** (messaggio di chiusura e destinazione) e, sulla linea che scende, **Aperti** (la chiamata prosegue con la regola successiva). La strada evidenziata in verde è quella che farebbe una chiamata in questo momento.
+
+<Tip>
+  Puoi creare gli orari anche da qui: nel passaggio **Apertura settimanale** premi **Nuovo** (oppure **Crea la prima gestione**, se non hai ancora orari: compare con «Nessuna gestione aperture configurata per questo centralino.»), compila l'orario nella finestra che si apre e premi **Salva**. Torni all'elenco con il nuovo orario già selezionato: resta da premere **Aggiungi regola**. Anche qui usa un nome che non c'è già in **Orari**: un orario con lo stesso nome lo sostituirebbe.
+</Tip>
+
+### 3 · Controlla e prova
+
+<Steps>
+  <Step title="Guarda l'elenco Orari">
+    In **Orari** la colonna **Usato da** ora dice «1 numero» e la colonna **Oggi** mostra lo stato adesso: **Aperto**, **Chiuso adesso** o **Chiuso tutto il giorno**, con le fasce di oggi.
+  </Step>
+  <Step title="Guarda come risponde adesso">
+    In Menu → Monitoraggio → **In tempo reale** il riquadro **Come risponde adesso** dice, numero per numero, se in questo momento è aperto o fuori orario e con quale orario.
+  </Step>
+  <Step title="Chiama il numero">
+    Chiama il tuo numero da un cellulare in un orario di apertura e poi fuori orario: nel secondo caso devi sentire il messaggio di chiusura e finire alla destinazione scelta.
+  </Step>
+</Steps>
+
+## Da sapere
+
+- **Massimo due fasce al giorno.** Un orario continuato (08:00–19:00) è una fascia sola: lascia la seconda a 00:00 → 00:00.
+- **Una fascia non può superare la mezzanotte.** L'ultimo orario possibile è 23:59. Per un'apertura 20:00–02:00 usa 20:00–23:59 sul primo giorno e 00:00–02:00 sul giorno dopo.
+- **Scrivi gli orari in ora italiana.** Lo stato **Aperto / Chiuso adesso** nel pannello è calcolato sull'ora italiana.
+- **Dopo la chiusura la chiamata non torna indietro.** Fuori orario chi chiama sente il messaggio, va alla destinazione di chiusura e non arriva alle regole che stanno sotto **Apertura settimanale**.
+- **Un orario, più numeri.** Puoi collegare lo stesso orario a più numeri: una modifica vale per tutti. Per orari diversi crea più orari (per esempio `Orario negozio` e `Orario assistenza`).
+- **Orario estivo.** Apri l'orario, premi **Duplica**, scrivi il nome della copia (per esempio `Orario estivo`) e premi **Crea copia**. La copia non è collegata a nessun numero: quando serve, nelle regole del numero sostituisci **Apertura settimanale** con quella estiva.
+- **Prima di eliminare un orario** toglilo dalle regole di tutti i numeri che lo usano: se un numero lo usa ancora, le sue chiamate si chiudono senza risposta.
+- **Su telefono e tablet** è più comodo usare gli interruttori **Aperto/Chiuso** e le righe **Modifica a mano** che trascinare sul calendario.
+- **Pausa pranzo con una destinazione diversa** (per esempio la segreteria dalle 13 alle 14): oltre agli orari puoi usare un interruttore a orario. Vedi [Interruttori a orario](/centralino/orari-e-chiusure/interruttori-a-orario).
+- **Chiusura improvvisa** (oggi chiudiamo prima): usa un interruttore che accendi e spegni tu. Vedi [Interruttori](/centralino/orari-e-chiusure/interruttori).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Ho creato gli orari ma il centralino risponde sempre. Perché?">
+    Quasi sempre l'orario non è collegato al numero: in **Orari** la colonna **Usato da** dice «Non collegato · non ha effetto». Aggiungi la regola **Apertura settimanale** nelle regole del numero (parte 2 di questa guida). Se è collegato, controlla che sopra **Apertura settimanale** non ci sia una regola che porta la chiamata altrove.
+  </Accordion>
+
+  <Accordion title="Fuori orario la chiamata cade senza dire niente.">
+    Nell'orario non è scelto un **Messaggio di chiusura** e la destinazione è **Termina la chiamata**. Apri l'orario, scegli il messaggio (ed eventualmente un'altra destinazione) e premi **Salva**.
+  </Accordion>
+
+  <Accordion title="Posso cambiare il nome di un orario?">
+    No, il nome è fisso dopo la creazione. Usa **Duplica** per crearne una copia con il nome nuovo, sostituisci nelle regole di ogni numero **Apertura settimanale** con la copia e solo dopo elimina quella vecchia. Non eliminare mai un orario ancora usato da un numero: quel numero smetterebbe di rispondere.
+  </Accordion>
+
+  <Accordion title="Ho cambiato gli orari: devo fare altro?">
+    No. Dopo **Salva** il cambio vale subito per tutti i numeri collegati a quell'orario.
+  </Accordion>
+
+  <Accordion title="Come chiudo il sabato?">
+    Apri l'orario, clicca **Sabato** finché dice **Chiuso** e premi **Salva**.
+  </Accordion>
+
+  <Accordion title="Posso avere orari diversi per numeri diversi?">
+    Sì: crea un orario per ogni esigenza e collega a ogni numero quello giusto, con la regola **Apertura settimanale**.
+  </Accordion>
+
+  <Accordion title="Il nome non viene accettato.">
+    Togli apostrofi e lettere accentate (per esempio scrivi `Orario Lunedi` invece di `Orario Lunedì`) e resta entro 50 caratteri.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Tutti i campi della pagina Orari, uno per uno.
+  </Card>
+
+  <Card title="Chiudere per ferie o festività" icon="calendar" href="/centralino/come-fare/chiudere-per-ferie-o-festivita">
+    Natale, agosto, il ponte: i giorni di chiusura.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere, spostare ed eliminare le regole di un numero.
+  </Card>
+
+  <Card title="Passaggi: orari, filtri e messaggi" icon="list" href="/centralino/regole/passaggi-filtri">
+    Apertura settimanale e gli altri passaggi che controllano la chiamata.
+  </Card>
+
+  <Card title="Messaggi audio" icon="microphone" href="/centralino/audio/messaggi-audio">
+    Creare il messaggio di chiusura.
+  </Card>
+
+  <Card title="In tempo reale" icon="chart-line" href="/centralino/monitoraggio/in-tempo-reale">
+    Come risponde adesso ogni numero.
+  </Card>
+</CardGroup>

@@ -1,0 +1,325 @@
+---
+title: "Dopo la chiamata: riassunti, dati e collegamenti"
+sidebarTitle: "Dopo la chiamata"
+description: "Ricevere il riassunto di ogni chiamata dell'agente AI per email o WhatsApp, scegliere i dati da raccogliere, usare il tuo server email, inviare i dati al tuo gestionale e collegare i tuoi sistemi."
+keywords:
+  - "riassunto chiamata"
+  - "riepilogo email agente"
+  - "riepilogo whatsapp agente"
+  - "post-chiamata"
+  - "raccolta dati"
+  - "dati estratti"
+  - "server email"
+  - "smtp"
+  - "mittente email"
+  - "webhook"
+  - "custom api"
+  - "collegare gestionale"
+  - "whatsapp durante la chiamata"
+  - "invio dati fine chiamata"
+---
+
+Questa pagina spiega cosa fa l'agente AI con le informazioni di una chiamata: il **riassunto** che ti arriva per email o WhatsApp a chiamata finita, i **dati** che l'agente estrae da ogni conversazione, l'invio automatico al tuo gestionale e i collegamenti con i tuoi sistemi durante la chiamata. Riguarda le sezioni **Post-chiamata**, **Raccolta dati**, **WhatsApp** e **Custom API** della configurazione dell'agente.
+
+**Dove si trova:** menu degli Agenti AI → Gestione → **Agenti** → **Configura** sull'agente → sezioni **Post-chiamata**, **Raccolta dati**, **WhatsApp**, **Custom API** · `https://cloud.mycentralino.com/wave/agenti`
+
+**Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)), quando gli Agenti AI sono attivi.
+
+<Note>
+  Queste impostazioni valgono solo dopo **Salva agente**, tranne il **Server email**, che si salva subito dalla sua finestra. Sono impostazioni **del singolo agente**: se hai più agenti, vanno fatte su ognuno.
+</Note>
+
+## Post-chiamata
+
+«Cosa succede appena la chiamata finisce: riepiloghi e invio dati.» La sezione ha due parti: **Notifiche** (riepilogo via WhatsApp e via email) e **Webhook**.
+
+### Riepilogo via email
+
+«Riassunto e trascrizione della chiamata.» Accendi l'interruttore e scrivi gli indirizzi.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Indirizzi destinatari** | Chi riceve l'email | Uno o più indirizzi. «Più indirizzi separati da virgola.» |
+| **Mittente** | Da quale indirizzo parte l'email | **MyCentralino** `no-reply@mycentralino.com` — «Le email partono dal nostro server.», oppure il tuo mittente se hai impostato il tuo server email |
+
+L'email ha come oggetto il numero di chi ha chiamato (con il nome, se il numero è nella tua [Rubrica](/centralino/strumenti/rubrica)), il nome dell'agente e «Riassunto chiamata». Dentro trovi:
+
+- numero e nome di chi ha chiamato, agente, durata, direzione (in entrata o in uscita) ed esito;
+- il **Riassunto** della conversazione, in italiano;
+- i **Dati Estratti**: i campi della **Raccolta dati** con il loro valore, e la riga **Risposta** dopo un trasferimento (vedi sotto);
+- la **Trascrizione completa**, frase per frase, con il minuto;
+- in fondo il codice della conversazione.
+
+### Riepilogo via WhatsApp
+
+«Un messaggio con il riassunto della chiamata.» Accendi l'interruttore e compila:
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Numeri destinatari** | I numeri WhatsApp che ricevono il messaggio | Uno o più, es. `+393331234567`. «Più numeri separati da virgola.» I numeri italiani si possono scrivere anche senza `+39` |
+| **Profilo WhatsApp** | Da quale numero WhatsApp parte il messaggio | **MyCentralino (predefinito)**, cioè il numero di MyCentralino, oppure uno dei profili WhatsApp collegati al tuo centralino |
+
+Il messaggio contiene il numero di chi ha chiamato (con il nome, se è in rubrica), il nome dell'agente, il riassunto e i dati estratti. Il messaggio non contiene la trascrizione.
+
+Per scegliere un tuo profilo serve il modulo **WhatsApp** collegato al centralino (vedi [WhatsApp](/centralino/moduli/whatsapp)). Se scegli un profilo che non è di questo centralino leggi «Per i riassunti scegli un numero WhatsApp di questo centralino.».
+
+### La riga «Risposta» dopo un trasferimento
+
+Quando l'agente ha passato la chiamata a un numero e l'esito si può verificare, i dati del riassunto hanno una riga in più, **Risposta**:
+
+- «Sì» seguito dal numero che ha risposto;
+- «No» seguito dai numeri provati e dal motivo (per esempio occupato o nessuna risposta).
+
+Se l'esito non si può verificare, per esempio quando la chiamata va a una coda, la riga non compare. Se hai già un campo della **Raccolta dati** chiamato «Risposta», resta il tuo.
+
+### Come ricevo il riassunto di ogni chiamata via email
+
+<Steps>
+  <Step title="Apri Post-chiamata">
+    Nella configurazione dell'agente apri la sezione **Post-chiamata**.
+  </Step>
+  <Step title="Accendi il riepilogo">
+    Accendi **Riepilogo via email**.
+  </Step>
+  <Step title="Scrivi gli indirizzi">
+    In **Indirizzi destinatari** scrivi uno o più indirizzi separati da virgola, per esempio `segreteria@tuodominio.it, titolare@tuodominio.it`.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva agente**. Dalla chiamata successiva ricevi il riassunto appena la telefonata finisce.
+  </Step>
+</Steps>
+
+### Come ricevo il riassunto su WhatsApp
+
+<Steps>
+  <Step title="Accendi il riepilogo">
+    In **Post-chiamata** accendi **Riepilogo via WhatsApp**.
+  </Step>
+  <Step title="Scrivi i numeri">
+    In **Numeri destinatari** scrivi il tuo cellulare, per esempio `+393331234567`. Per più persone separa i numeri con una virgola.
+  </Step>
+  <Step title="Scegli il profilo">
+    Lascia **MyCentralino (predefinito)** oppure scegli un profilo WhatsApp del tuo centralino.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva agente**.
+  </Step>
+</Steps>
+
+## Il tuo server email
+
+Senza impostazioni i riassunti arrivano da `no-reply@mycentralino.com`. Se vuoi che partano dalla casella della tua azienda, con il tuo nome come mittente, configura il tuo server di posta. Nel riquadro **Mittente** di **Riepilogo via email** premi **Usa il tuo server email** (oppure **Modifica**, se l'hai già impostato).
+
+Si apre la finestra **Server email**, con la scritta «Vale per tutti i tuoi agenti AI»: il mittente è uno solo per tutto il centralino, anche se la finestra si apre dalla configurazione di un agente.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Server di posta in uscita** | Il server che spedisce le email | Es. `smtp.tuodominio.it` |
+| **Porta** | La porta del server | **587** (proposta), **465**, **25**, **2525** |
+| **Cifratura** | Come si protegge la connessione | **STARTTLS** (proposta), **SSL/TLS**, **Nessuna** |
+| **Utente** | Il nome utente della casella | «Vuoto se il server non chiede autenticazione.» |
+| **Password** | La password della casella | Se è già salvata: «Lascia vuoto per tenere quella salvata.» |
+| **Nome del mittente** | Il nome che vede chi riceve | Es. «Studio Rossi» |
+| **Indirizzo del mittente** | L'indirizzo da cui parte l'email | Es. `info@tuodominio.it` |
+| **Collaudo** | Un indirizzo a cui mandare una prova | Proposto il primo dei tuoi destinatari |
+
+Sotto i campi l'avviso: «L'indirizzo del mittente deve essere una casella del dominio che il server è autorizzato a spedire. Se non lo è, le email arrivano ma finiscono nella posta indesiderata.»
+
+I dati del server (nome, porta, cifratura, utente, password) li trovi nelle impostazioni della tua casella o li chiedi a chi gestisce la tua posta.
+
+### Come faccio partire i riassunti dalla mia casella
+
+<Steps>
+  <Step title="Apri la finestra">
+    In **Post-chiamata**, con **Riepilogo via email** acceso, premi **Usa il tuo server email**.
+  </Step>
+  <Step title="Compila i dati">
+    Scrivi **Server di posta in uscita**, scegli **Porta** e **Cifratura**, poi **Utente**, **Password**, **Nome del mittente** e **Indirizzo del mittente**.
+  </Step>
+  <Step title="Fai la prova">
+    In **Collaudo** scrivi un tuo indirizzo e premi **Invia una prova**. «La prova salva la configurazione e spedisce subito, così vedi l'esito vero.» Se va bene leggi «Email di prova inviata a …».
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Leggi «Server email salvato. I riassunti partiranno da …». Nel riquadro **Mittente** compare il tuo mittente con «Spedito dal tuo server …».
+  </Step>
+</Steps>
+
+**Salva** controlla che i dati siano scritti bene, ma non spedisce niente: per sapere se il server accetta davvero le email usa **Invia una prova**.
+
+Anche se la prova non riesce, la configurazione resta salvata e attiva: correggi i dati e riprova, oppure torna al mittente MyCentralino (vedi qui sotto). Nel frattempo, quando il tuo server rifiuta l'invio, i riassunti partono comunque da `no-reply@mycentralino.com`.
+
+Per tornare al mittente di MyCentralino apri la finestra e premi **Torna al mittente MyCentralino**: leggi «Le email tornano al mittente MyCentralino.». I dati che avevi inserito restano salvati, nel caso tu voglia riattivarli.
+
+### Messaggi del server email
+
+| Messaggio | Cosa fare |
+| --- | --- |
+| «Indica il server di posta in uscita.» | Scrivi il nome del server. |
+| «Questo server non risulta al DNS: controlla il nome.» | Il nome del server è sbagliato: ricontrollalo. |
+| «Porta non ammessa: usa 25, 465, 587 o 2525.» | Scegli una delle porte in elenco. |
+| «Indirizzo del mittente non valido.» | Correggi l'indirizzo del mittente. |
+| «Indica la password della casella.» | Con un utente serve anche la password. |
+| «Utente o password non accettati dal server.» | Ricontrolla utente e password della casella. |
+| «Il certificato del server non è valido, o la cifratura scelta non è quella giusta.» | Prova l'altra cifratura: di solito **SSL/TLS** con la porta 465, **STARTTLS** con la 587. |
+| «Il server non ha risposto in tempo: controlla indirizzo e porta.» | Controlla nome del server e porta. |
+| «Connessione rifiutata: controlla indirizzo e porta.» | Controlla nome del server e porta. |
+| «Il server ha rifiutato il mittente: di norma deve essere una casella del tuo dominio.» | Usa come mittente una casella del tuo dominio. |
+
+<Note>
+  Se un giorno il tuo server rifiuta l'invio, il riassunto non va perso: parte comunque dal mittente `no-reply@mycentralino.com`. Nel riquadro **Mittente** compare in rosso «Ultimo invio non riuscito.» con il motivo: correggi i dati e fai una nuova prova.
+</Note>
+
+## Webhook: i dati al tuo gestionale
+
+«A fine chiamata inviamo al tuo endpoint riassunto, dati raccolti e trascrizione.» Serve se hai un gestionale o un CRM che può ricevere dati da internet: appena la telefonata finisce, gli arrivano da soli numero di chi ha chiamato, riassunto, dati raccolti e trascrizione. Di solito lo imposta il tuo tecnico o il fornitore del gestionale.
+
+Prima di accenderlo premi **Come funziona**: si apre la guida **Cosa riceve il tuo endpoint**, in 5 pagine (**Indietro**, **Avanti**, **Ho capito**), con tutti i dettagli tecnici da dare al tuo tecnico.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **URL del webhook** | L'indirizzo che riceve i dati | Deve iniziare con `https://`. «Una richiesta POST per chiamata, senza reinvii in caso di errore.» |
+| **Chiave API (facoltativa)** | Una parola segreta che il tuo sistema usa per riconoscere i nostri invii | «Inviata nell'intestazione X-Api-Key.» |
+
+Se accendi il webhook ma lasci vuoto **URL del webhook**, al salvataggio non viene registrato niente e alla riapertura l'interruttore risulta spento.
+
+Cose da sapere, scritte anche nella guida **Come funziona**:
+
+- l'invio è uno solo per chiamata e non viene ripetuto se il tuo sistema non risponde entro 15 secondi: i dati restano comunque nello [Storico chiamate](/agenti-ai/storico-chiamate);
+- vale per questo agente: per collegare più agenti, accendilo su ognuno (anche verso lo stesso indirizzo);
+- se la chiamata passa da un agente a un altro, l'invio è uno solo e lo fa l'agente che ha chiuso la conversazione.
+
+Se l'indirizzo non va bene, al salvataggio leggi «Webhook dopo la chiamata:» seguito dal motivo, per esempio «L'indirizzo deve iniziare con https://», «Indirizzo non trovato. Controlla di averlo scritto bene.» oppure «Indirizzo non ammesso: deve essere raggiungibile da internet.».
+
+## Raccolta dati
+
+«Campi che l'agente estrae da ogni conversazione (li ritrovi nel dettaglio chiamata).» Servono per avere sempre le stesse informazioni da ogni chiamata, già pronte: il motivo, se va richiamato, se ha fissato un appuntamento.
+
+Premi **\+ Campo** per ogni informazione:
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| Nome del campo | Come si chiama l'informazione | Es. `motivo_chiamata` |
+| Tipo | Che tipo di valore ti aspetti | **Testo**, **Numero**, **Intero**, **Sì/No** |
+| **Cosa deve estrarre** | La spiegazione per l'agente | Es. «Il motivo principale della chiamata, in poche parole» |
+
+**Rimuovi** toglie il campo. Senza campi leggi «Nessun campo: l'agente non estrae dati aggiuntivi.». I campi senza nome non vengono salvati.
+
+I valori li ritrovi:
+
+- nel dettaglio della chiamata, nello [Storico chiamate](/agenti-ai/storico-chiamate), alla voce **Dati raccolti**, con il valore («Sì», «No», un testo o «Non rilevato») e la motivazione;
+- nei **Dati Estratti** dei riepiloghi via email e WhatsApp;
+- nei dati inviati dal **Webhook**.
+
+### Esempi di campi utili
+
+| Nome | Tipo | Cosa deve estrarre |
+| --- | --- | --- |
+| `motivo_chiamata` | Testo | Il motivo principale della chiamata, in poche parole |
+| `da_richiamare` | Sì/No | Sì se il chiamante ha chiesto di essere richiamato |
+| `appuntamento_fissato` | Sì/No | Sì se durante la chiamata è stato fissato un appuntamento |
+| `nome_cliente` | Testo | Nome e cognome detti dal chiamante |
+| `numero_persone` | Intero | Per quante persone è la prenotazione |
+
+Il nome del campo compare così com'è nelle email e nei messaggi: sceglilo leggibile, in minuscolo con il trattino basso al posto degli spazi, come negli esempi. Usa nomi diversi per ogni campo. Nella colonna **Cosa deve estrarre** spiega bene cosa vuoi e quando la risposta è «Sì».
+
+## WhatsApp durante la chiamata
+
+«L'agente può inviare messaggi WhatsApp al chiamante durante la conversazione.» Per esempio l'indirizzo dello studio, un link o un riepilogo di quanto detto. L'interruttore in alto a destra della sezione lo accende; spento leggi «Attiva l'invio per scegliere il profilo WhatsApp da usare.».
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Profilo WhatsApp Business** | Da quale numero WhatsApp parte il messaggio | «Scegli il profilo…» e i profili WhatsApp del tuo centralino. «Richiede il modulo WhatsApp attivo sul tuo centralino.» |
+
+- Scegli sempre il profilo: con l'interruttore acceso ma senza profilo, l'invio non viene attivato e alla riapertura risulta spento.
+- Scrivi nel copione quando mandare il messaggio e cosa scriverci, per esempio «Se il cliente chiede dove siamo, mandagli su WhatsApp l'indirizzo e il link della mappa».
+- Se il profilo non è di questo centralino leggi «Scegli un numero WhatsApp di questo centralino.».
+- Ogni messaggio inviato compare nella trascrizione dello Storico chiamate come «Invio messaggio WhatsApp».
+
+## Custom API: collegare i tuoi sistemi durante la chiamata
+
+«Collega i tuoi endpoint: l'agente li chiama durante la conversazione.» Serve a chi ha un gestionale o un sito con un'interfaccia di collegamento (API): l'agente può, per esempio, controllare lo stato di un ordine o registrare una richiesta mentre parla con il cliente. Va configurata da un tecnico o da uno sviluppatore.
+
+Premi **\+ Nuovo strumento**. Senza strumenti leggi «Nessuno strumento collegato.». Per ogni strumento:
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome strumento** | Il nome del collegamento | Es. `verifica_ordine` |
+| **Metodo** | Il tipo di richiesta | **POST** (proposto), **GET**, **PUT**, **PATCH**, **DELETE** |
+| **Risposta** | Se l'agente aspetta il risultato | **Attende il risultato**: «l'agente resta in silenzio finché l'endpoint risponde (fino a 20 secondi) e parla solo con i dati veri». **In background** (proposto): «l'agente prosegue subito e riceve il risultato poco dopo — adatto a endpoint lenti, ma è più facile che dica qualcosa prima di avere la risposta» |
+| **URL dell'endpoint** | L'indirizzo da chiamare | Deve iniziare con `https://` ed essere raggiungibile da internet |
+| **Quando usarlo (per l'agente)** | In quale situazione usarlo | Es. «Quando il cliente chiede lo stato di un ordine» |
+| **Parametri** | «Dati che l'agente ricava dalla conversazione e invia all'endpoint.» Con **\+ Parametro**: nome, tipo (**Testo**, **Numero**, **Intero**, **Sì/No**), «Cosa contiene (per l'agente)», casella **Obbligatorio** | Senza parametri: «Nessun parametro: l'endpoint viene chiamato senza dati aggiuntivi.» |
+| **Intestazioni HTTP** | «Inviate a ogni chiamata verso il tuo endpoint (es. chiavi API).» Con **\+ Intestazione**: chiave e valore | Senza intestazioni: «Nessuna intestazione aggiuntiva.» |
+
+**Rimuovi strumento** lo toglie. Uno strumento senza nome o senza indirizzo non viene salvato.
+
+Per il tecnico:
+
+- con **GET**, **POST**, **PUT** e **PATCH**, oltre ai parametri arrivano sempre il numero di chi chiama (`phone`) e il codice della conversazione (`conversation_id`): l'agente non li chiede a voce;
+- con **GET** i dati arrivano nell'indirizzo, con **POST**, **PUT** e **PATCH** nel corpo della richiesta in formato JSON; con **DELETE** non arriva nessun dato: l'indirizzo viene chiamato così com'è;
+- il tuo endpoint deve rispondere entro 15 secondi: oltre, la richiesta viene interrotta e l'agente riceve un errore (anche se nella sezione c'è scritto «fino a 20 secondi»);
+- se il tuo sistema non trova niente, l'agente lo dice con semplicità e chiede come procedere; è istruito a non inventare risultati.
+
+Errori possibili al salvataggio, preceduti dal nome dello strumento: «L'indirizzo deve iniziare con https://», «Indirizzo non ammesso: deve essere raggiungibile da internet.», «Indirizzo non trovato. Controlla di averlo scritto bene.».
+
+## Da sapere
+
+- Dopo un **Passaggio a un altro agente**, riepiloghi e webhook partono solo dall'ultimo agente della chiamata, con le sue impostazioni. Se l'ultimo agente non ha destinatari, non parte niente. Vedi [Trasferimenti](/agenti-ai/agente/trasferimenti).
+- Riepiloghi e dati raccolti restano consultabili nello [Storico chiamate](/agenti-ai/storico-chiamate) per il periodo di **Conservazione delle conversazioni** scelto nell'agente.
+- Il riassunto è generato dall'intelligenza artificiale: per le decisioni importanti controlla la trascrizione o riascolta la registrazione.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Non mi arriva l'email con il riassunto.">
+    Controlla che **Riepilogo via email** sia acceso, che gli indirizzi siano scritti bene e separati da virgola e di aver premuto **Salva agente**. Guarda anche nella posta indesiderata. Se la chiamata è passata da un agente a un altro, il riassunto lo manda l'ultimo agente: accendi il riepilogo anche su di lui.
+  </Accordion>
+
+  <Accordion title="Posso far arrivare i riassunti dalla mia email aziendale?">
+    Sì: in **Post-chiamata** premi **Usa il tuo server email**, compila i dati della tua casella, fai **Invia una prova** e **Salva**. Vale per tutti i tuoi agenti.
+  </Accordion>
+
+  <Accordion title="Nel riquadro Mittente vedo «Ultimo invio non riuscito».">
+    Il tuo server ha rifiutato l'ultimo invio, per il motivo scritto accanto. Quel riassunto è partito comunque da `no-reply@mycentralino.com`. Apri **Modifica**, correggi i dati e usa **Invia una prova**.
+  </Accordion>
+
+  <Accordion title="Le email del mio server finiscono nella posta indesiderata.">
+    L'**Indirizzo del mittente** deve essere una casella del dominio che il tuo server è autorizzato a spedire. Usa un indirizzo della tua azienda con il server della stessa casella.
+  </Accordion>
+
+  <Accordion title="Il riassunto su WhatsApp da che numero arriva?">
+    Con **MyCentralino (predefinito)** dal numero WhatsApp di MyCentralino. Se hai collegato un tuo profilo WhatsApp al centralino, puoi sceglierlo in **Profilo WhatsApp**.
+  </Accordion>
+
+  <Accordion title="Cosa vuol dire la riga «Risposta» nel riassunto?">
+    Compare dopo un trasferimento a numero: «Sì» con il numero che ha risposto, oppure «No» con i numeri provati e il motivo. Se l'esito non si può verificare (per esempio verso una coda), la riga non c'è.
+  </Accordion>
+
+  <Accordion title="Il mio gestionale non ha ricevuto i dati di una chiamata.">
+    L'invio del webhook è uno solo e non si ripete. Recupera i dati dal dettaglio della chiamata nello [Storico chiamate](/agenti-ai/storico-chiamate) e fai controllare al tecnico che il sistema risponda entro 15 secondi.
+  </Accordion>
+
+  <Accordion title="Un campo della Raccolta dati è sempre «Non rilevato».">
+    L'agente non ha trovato l'informazione nella conversazione. Rendi più chiara la descrizione in **Cosa deve estrarre** e, se serve, scrivi nel copione di chiedere quel dato a chi chiama.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Storico chiamate" icon="list" href="/agenti-ai/storico-chiamate">
+    Riassunti, dati raccolti, registrazioni e trascrizioni.
+  </Card>
+
+  <Card title="Trasferimenti" icon="arrow-right-arrow-left" href="/agenti-ai/agente/trasferimenti">
+    Passaggi a un collega o a un altro agente.
+  </Card>
+
+  <Card title="WhatsApp" icon="phone" href="/centralino/moduli/whatsapp">
+    Collegare un profilo WhatsApp al centralino.
+  </Card>
+
+  <Card title="Istruzioni e voce" icon="microphone" href="/agenti-ai/agente/istruzioni-e-voce">
+    Copione, documenti e Ricerca dati.
+  </Card>
+</CardGroup>

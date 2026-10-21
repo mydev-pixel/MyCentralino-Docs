@@ -1,0 +1,240 @@
+---
+title: "Interruttori a orario"
+sidebarTitle: "Interruttori a orario"
+description: "Deviazioni che si accendono e si spengono da sole: nelle fasce orarie che scegli le chiamate vanno a un'altra destinazione, per esempio in segreteria durante la pausa pranzo."
+keywords:
+  - "interruttore a orario"
+  - "switch temporale"
+  - "pausa pranzo"
+  - "deviazione automatica"
+  - "fascia oraria"
+  - "turno serale"
+  - "deviare le chiamate"
+  - "time switch"
+---
+
+Un **interruttore a orario** devia le chiamate in certe fasce della settimana, da solo. Quando una chiamata arriva **dentro** una delle sue finestre orarie va alla destinazione che hai scelto (per esempio la segreteria dalle 13:00 alle 14:00); **fuori** dalle finestre prosegue con il percorso normale.
+
+**Dove si trova:** Menu → Risorse centralino → Orari e chiusure → **Interruttori a orario** · `https://cloud.mycentralino.com/switch-orari`
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**. Non serve nessun modulo.
+
+<Info>
+  Nelle **Regole delle chiamate** questo passaggio si chiama **Switch temporale**. È la stessa cosa: un interruttore a orario collegato a un numero.
+</Info>
+
+## Interruttore a orario o Orari?
+
+|  | **Orari** | **Interruttori a orario** |
+| --- | --- | --- |
+| Cosa dicono | Quando sei **aperto** | Quando **deviare** le chiamate |
+| Dentro le fasce | La chiamata prosegue normalmente | La chiamata va alla destinazione dell'interruttore |
+| Fuori dalle fasce | Messaggio di chiusura e destinazione di chiusura | La chiamata prosegue normalmente |
+
+Si possono usare insieme. Per esempio: **Orari** dalle 09:00 alle 18:00 e un interruttore a orario dalle 13:00 alle 14:00 che manda le chiamate in segreteria durante la pausa pranzo.
+
+## Cosa trovi nella pagina
+
+### L'elenco
+
+In alto il titolo **Interruttori a orario** con il conteggio, la frase «Interruttori che cambiano stato in automatico su base oraria per deviare il flusso di chiamata.» e il bottone **Nuovo interruttore**.
+
+Se qualche interruttore non è collegato a nessun numero compare un avviso ambra, per esempio «1 interruttore non è collegato a nessun numero: **non scatterà mai**. Si collegano dalle regole del numero.», con il bottone **Mostra quali** (mostra solo quelli da sistemare; **Mostra tutti** torna all'elenco completo).
+
+Sotto, la ricerca **Cerca un interruttore…** e il bottone **A–Z** (cliccandolo diventa **Z–A** e inverte l'ordine). La tabella **Interruttori a orario** ha una riga per interruttore:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Nome** | Il nome. Cliccalo per aprire l'interruttore. |
+| **Stato** | **Devia ora · fino alle 14:00** (adesso siamo dentro una finestra), oppure quando scatterà: «Scatta oggi alle 13:00», «Scatta domani alle 9:00», «Scatta lun alle 13:00». Se non ha finestre: «Nessun orario impostato». Se non è collegato: «Non collegato · non scatta». |
+| **Azione in finestra** | Dove vanno le chiamate dentro le finestre, per esempio «Segreteria: 201». |
+| **Audio** | Il messaggio audio scelto, oppure «—». |
+| **Usato da** | I numeri collegati (i primi due e poi «+N»), oppure «—». «—» non vuol dire per forza che non è collegato: per saperlo fa fede la colonna **Stato**. Se lì non c'è «Non collegato · non scatta», l'interruttore è usato in un altro punto del centralino. |
+| **Giorni** | In quanti giorni ci sono finestre («5 giorni»), oppure «nessun giorno». |
+
+In fondo a ogni riga c'è il cestino **Elimina**. Se non hai ancora interruttori a orario: «Nessun interruttore a orario · Servono a cambiare dove vanno le chiamate in certe fasce orarie, da soli.» con **Nuovo interruttore →**.
+
+<Frame caption="L'elenco degli Interruttori a orario">
+  <img
+    src="/images/guida/interruttori-orario.webp"
+    alt="L'elenco degli Interruttori a orario"
+  />
+</Frame>
+
+### La pagina di un interruttore a orario
+
+Si apre con **Nuovo interruttore** (`https://cloud.mycentralino.com/switch-orari/nuovo`) o cliccando una riga. Dall'alto:
+
+1. **Intestazione** con la frase «Finestre orarie che, quando coincidono con l'ora della chiamata, fanno scattare l'azione.» e i bottoni **Annulla** e **Salva** (scorciatoia **Ctrl S**, su Mac **⌘S**).
+2. Il riquadro **Nome switch** e il riquadro **Messaggio audio (opzionale)**.
+3. Il riquadro **Finestre settimanali**, «Due fasce giornaliere. Se l'orario della chiamata cade in una finestra, scatta l'azione; altrimenti prosegue il flusso normale.», con la legenda **finestra attiva** / **flusso normale** e il bottone **Copia Lun → Ven**. Contiene il calendario della settimana (come negli Orari), una riga per giorno con due finestre («mattina» e «pomeriggio») da scrivere a mano e in fondo **Giorni attivi**, per esempio `5 / 7`.
+4. Il riquadro **Azione quando l'orario coincide**, «Cosa succede se la chiamata arriva dentro una delle finestre orarie.», con **1 · Tipo azione**, **2 · Destinazione** e il **Riepilogo configurazione** (per esempio «Quando l'orario coincide → Segreteria · 201»).
+
+Se cambi qualcosa compare in basso la barra **Modifiche non salvate** con **Annulla** e **Salva**.
+
+## Come fare
+
+### Come mando le chiamate in segreteria durante la pausa pranzo
+
+<Steps>
+  <Step title="Crea l'interruttore">
+    In **Interruttori a orario** premi **Nuovo interruttore**.
+  </Step>
+  <Step title="Scrivi il nome">
+    In **Nome switch** scrivi per esempio `Pausa pranzo`. Lettere senza accenti, numeri, spazi, trattino e trattino basso, al massimo 50 caratteri. Il nome non si potrà più cambiare.
+  </Step>
+  <Step title="Disegna la finestra del lunedì">
+    Sul calendario trascina nella colonna **LUN** dalle 13:00 alle 14:00, oppure scrivi 13:00 → 14:00 nella prima finestra della riga Lunedì.
+  </Step>
+  <Step title="Copia dal lunedì al venerdì">
+    Premi **Copia Lun → Ven**: le finestre del lunedì vengono copiate da martedì a venerdì, e sabato e domenica restano senza finestre.
+  </Step>
+  <Step title="Scegli l'azione">
+    In **1 · Tipo azione** scegli **Segreteria** e in **2 · Destinazione** la casella.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Compare «Switch temporale "Pausa pranzo" salvato.» e torni all'elenco.
+  </Step>
+  <Step title="Collegalo al numero">
+    Apri le **Regole delle chiamate** del numero, premi **Aggiungi regola** (o il **\+** nel punto giusto), apri **Orari e chiusure**, scegli **Switch temporale**, seleziona `Pausa pranzo` e premi **Aggiungi regola**. Mettilo sopra i passaggi che fanno squillare i telefoni.
+  </Step>
+</Steps>
+
+### Come mando al cellulare le chiamate della sera
+
+<Steps>
+  <Step title="Prepara l'inoltro">
+    Se non c'è già, crea l'inoltro verso il cellulare in **Inoltro chiamate**.
+  </Step>
+  <Step title="Crea l'interruttore a orario">
+    **Nuovo interruttore**, nome `Sera al cellulare`, finestre per esempio 18:00 → 20:00 nei giorni che ti servono.
+  </Step>
+  <Step title="Scegli l'inoltro">
+    In **1 · Tipo azione** scegli **Inoltro chiamata** e in **2 · Destinazione** l'inoltro al cellulare. Premi **Salva**.
+  </Step>
+  <Step title="Collegalo al numero">
+    Aggiungi il passaggio **Switch temporale** nelle regole del numero, come sopra.
+  </Step>
+</Steps>
+
+<Note>
+  Se il numero usa anche gli **Orari**, controlla l'ordine dei passaggi: una chiamata che arriva fuori orario va alla chiusura degli Orari e non raggiunge i passaggi che stanno sotto. Metti l'interruttore a orario sopra **Apertura settimanale** se deve scattare anche fuori orario. L'ordine completo dei passaggi è in [Editor delle regole](/centralino/regole/editor), sezione «In che ordine metto i passaggi».
+</Note>
+
+### Come cambio le finestre o l'azione
+
+Apri l'interruttore dall'elenco, cambia le finestre o l'azione e premi **Salva**. Il cambio vale subito per tutti i numeri collegati.
+
+### Come elimino un interruttore a orario
+
+<Steps>
+  <Step title="Premi il cestino">
+    Nell'elenco premi il cestino **Elimina** sulla riga. Si apre la finestra **Elimina interruttore a orario**: «Stai per eliminare l'interruttore «Nome». L'azione non è reversibile.».
+  </Step>
+  <Step title="Leggi chi lo usa">
+    Se è collegato, la finestra elenca i numeri: «Questo interruttore è usato dalle regole di questi numeri. Eliminandolo, i numeri qui sotto non avranno più la finestra oraria configurata.».
+  </Step>
+  <Step title="Conferma">
+    Premi **Elimina**. Compare «Switch temporale "Nome" eliminato.».
+  </Step>
+</Steps>
+
+<Note>
+  Prima di eliminare un interruttore a orario collegato, togli il passaggio **Switch temporale** dalle regole dei numeri che lo usano.
+</Note>
+
+## I campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome switch** | Il nome dell'interruttore. Lo vedi quando lo colleghi a un numero. | Obbligatorio, al massimo 50 caratteri: lettere senza accenti, numeri, spazi, trattino e trattino basso. Non si cambia dopo la creazione. |
+| **Messaggio audio (opzionale)** | Un messaggio scelto tra i tuoi **Messaggi audio**. | Facoltativo; «Nessun messaggio audio» se non lo scegli. |
+| **Finestre** (mattina, pomeriggio) | Gli intervalli in cui l'interruttore devia le chiamate. | Due finestre al giorno al massimo. Sul calendario si agganciano ai quarti d'ora; nelle righe si scrive qualsiasi minuto. 00:00 → 00:00 vuol dire nessuna finestra. Non si supera la mezzanotte: l'ultimo orario è 23:59. |
+| **1 · Tipo azione** | Dove va la chiamata dentro una finestra. | Una scelta, proposta **Termina la chiamata**. Vedi la tabella qui sotto. |
+| **2 · Destinazione** | Quale segreteria, coda, inoltro, interno, menù vocale, servizio interno o sala. | Compare solo per le azioni che la chiedono. «Seleziona destinazione». |
+
+Le scelte di **1 · Tipo azione**:
+
+| Scelta | Cosa succede | Destinazione |
+| --- | --- | --- |
+| **Servizio interno** | La chiamata segue le regole di un servizio interno. | Un servizio interno |
+| **Menù vocale (IVR)** | Chi chiama sceglie con i tasti. | Un menù vocale |
+| **Coda di ricezione** | La chiamata entra in una coda. | Una coda |
+| **Segreteria** | Chi chiama può lasciare un messaggio. | Una casella di segreteria |
+| **Inoltro chiamata** | La chiamata va a un numero esterno. | Uno degli inoltri di **Inoltro chiamate** |
+| **Chiama interno** | Squilla un telefono del centralino. | Un interno |
+| **Conferenza audio** | Chi chiama entra in una sala conferenza. | Una sala |
+| **Termina la chiamata** | La chiamata si chiude. | Nessuna |
+| **Chiamata diretta (DISA)** | Opzione avanzata. | Nessuna |
+
+Se il centralino non ha niente da proporre per la scelta fatta, compare «Nessuna opzione disponibile per questo tipo di azione.»: crea prima la risorsa.
+
+## Da sapere
+
+<Warning>
+  L'azione proposta è **Termina la chiamata**. Se non la cambi, dentro le finestre le chiamate vengono chiuse.
+</Warning>
+
+- **Copia Lun → Ven svuota il fine settimana.** Copia le finestre del lunedì da martedì a venerdì e toglie quelle di sabato e domenica. Se ti servono anche nel fine settimana, aggiungile dopo la copia.
+- **Funziona solo se è collegato.** Finché non è nelle **Regole delle chiamate** di un numero, nella colonna **Stato** c'è «Non collegato · non scatta».
+- **Ora italiana.** Lo stato **Devia ora** e «Scatta oggi alle…» seguono l'ora italiana.
+- **Si scrive con il mouse.** Il calendario si usa trascinando con il mouse; su telefono e tablet scrivi le finestre nelle righe dei giorni.
+- **Nome sempre nuovo.** Se crei un interruttore a orario con il nome di uno esistente, quello esistente viene sostituito.
+- **Crearlo dalle regole.** Nel passaggio **Switch temporale** delle **Regole delle chiamate** il bottone **Nuovo** apre questa pagina in una finestra; dopo **Salva** l'interruttore è pronto da scegliere.
+- **Per una deviazione una tantum**, da accendere e spegnere quando vuoi, usa invece un [Interruttore](/centralino/orari-e-chiusure/interruttori).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Che differenza c'è con gli Orari?">
+    Gli Orari dicono quando sei aperto: fuori dalle fasce la chiamata va alla chiusura. L'interruttore a orario dice quando deviare: dentro le finestre la chiamata va alla destinazione scelta, fuori prosegue normalmente.
+  </Accordion>
+
+  <Accordion title="L'interruttore a orario non scatta.">
+    Guarda la colonna **Stato**: con «Non collegato · non scatta» va aggiunto il passaggio **Switch temporale** nelle regole del numero. Se è collegato, controlla che sopra di lui non ci sia un passaggio che porta la chiamata altrove (per esempio **Apertura settimanale** fuori orario).
+  </Accordion>
+
+  <Accordion title="Dentro la finestra le chiamate cadono.">
+    L'azione è rimasta su **Termina la chiamata**. Apri l'interruttore, scegli un'altra azione e la destinazione, poi premi **Salva**.
+  </Accordion>
+
+  <Accordion title="Posso avere più di due finestre al giorno?">
+    No, al massimo due. Se ti servono più deviazioni con destinazioni diverse, crea più interruttori a orario e mettili uno dopo l'altro nelle regole del numero.
+  </Accordion>
+
+  <Accordion title="Posso cambiare il nome?">
+    No, il nome non si cambia dopo la creazione. Crea un interruttore nuovo, collegalo al posto del vecchio ed elimina il vecchio.
+  </Accordion>
+
+  <Accordion title="Posso usarlo per chiudere un giorno solo, una volta?">
+    Meglio di no: le finestre si ripetono ogni settimana. Per un giorno di chiusura usa [Ferie e festività](/centralino/orari-e-chiusure/ferie-e-festivita); per una chiusura al momento, un [Interruttore](/centralino/orari-e-chiusure/interruttori).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Gli orari di apertura della settimana.
+  </Card>
+
+  <Card title="Interruttori" icon="toggle-on" href="/centralino/orari-e-chiusure/interruttori">
+    Le deviazioni che accendi e spegni tu.
+  </Card>
+
+  <Card title="Ferie e festività" icon="calendar" href="/centralino/orari-e-chiusure/ferie-e-festivita">
+    I giorni di chiusura.
+  </Card>
+
+  <Card title="Passaggi: orari, filtri e messaggi" icon="list" href="/centralino/regole/passaggi-filtri">
+    Il passaggio Switch temporale nelle regole.
+  </Card>
+
+  <Card title="Segreterie" icon="voicemail" href="/centralino/strumenti/segreterie">
+    Le caselle dove lasciare un messaggio.
+  </Card>
+
+  <Card title="Inoltro chiamate" icon="arrow-right-arrow-left" href="/centralino/instradamento/inoltro-chiamate">
+    I numeri esterni a cui passare le chiamate.
+  </Card>
+</CardGroup>

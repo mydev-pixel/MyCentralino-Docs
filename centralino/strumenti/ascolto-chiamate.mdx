@@ -1,0 +1,162 @@
+---
+title: "Ascolto chiamate"
+sidebarTitle: "Ascolto chiamate"
+description: "Ascoltare in silenzio una telefonata in corso di un interno, da un altro telefono del centralino, per formazione e controllo qualità: come si accende per ogni interno, come si usa e cosa tenere presente per la riservatezza."
+keywords:
+  - "ascolto chiamate"
+  - "ascolto silenzioso"
+  - "monitoraggio chiamate"
+  - "ascoltare una telefonata"
+  - "controllo qualità"
+  - "formazione operatori"
+  - "spia"
+  - "call monitoring"
+  - "sussurro"
+  - "intromissione"
+---
+
+**Ascolto chiamate** permette di sentire in silenzio una telefonata in corso di un interno, da un altro telefono del centralino. Serve per la formazione e il controllo qualità. Per ogni interno c'è un interruttore: acceso, l'interno si può ascoltare; spento, no.
+
+**Dove si trova:** Menu → Risorse centralino → Strumenti → **Ascolto chiamate** · `https://cloud.mycentralino.com/monitoraggio-chiamate`
+
+Ci arrivi anche dalla pagina **Risorse del centralino** (`https://cloud.mycentralino.com/configurazione`), nel gruppo **Strumenti**.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**: senza quel permesso la voce non compare nel menu e l'indirizzo risponde con accesso negato. Chi ha quel permesso può accendere e spegnere l'ascolto di qualsiasi interno. Non serve nessun modulo.
+
+<Warning>
+  **Riservatezza.** Quando l'interruttore di un interno è acceso, **chiunque usi un telefono del tuo centralino**, da qualsiasi interno, può ascoltare le telefonate di quell'interno componendo `*` seguito dal numero dell'interno (per esempio `*201`). Non serve nessun PIN, non c'è un elenco di chi può ascoltare e né il collega né la persona all'altro capo sentono che qualcuno è in ascolto.
+
+  Per questo:
+
+  - accendi l'interruttore solo per il tempo che serve e spegnilo subito dopo;
+  - prima di accenderlo avvisa le persone interessate, come chiede la pagina: «Prima di attivarlo, avvisa le persone interessate.»;
+  - rispetta le leggi sulla privacy: «Il monitoraggio delle chiamate deve rispettare le leggi locali sulla privacy. Informa sempre gli interlocutori della possibilità che la chiamata venga monitorata.».
+</Warning>
+
+## Cosa si può fare e cosa no
+
+| Si può | Non si può |
+| --- | --- |
+| Ascoltare in silenzio la telefonata in corso di un interno con l'interruttore acceso | Parlare con il collega senza che senta il cliente (suggerire) |
+| Regolare il volume dell'ascolto con `#` | Entrare nella conversazione e parlare con tutti e due |
+| Smettere riattaccando | Registrare la telefonata da questa pagina |
+
+Esiste solo l'**ascolto silenzioso**: «L'ascolto è passivo: gli interlocutori non sentono la tua presenza.».
+
+## Cosa trovi nella pagina
+
+In alto il titolo **Ascolto chiamate**. Sopra il titolo il conteggio, per esempio «12 interni · 2 ascoltabili». Sotto: «Ascolta una telefonata in corso da un altro telefono, per formazione e controllo qualità. Prima di attivarlo, avvisa le persone interessate.». A destra il bottone **Come funziona**.
+
+Sotto c'è la ricerca **Cerca per interno o nome…**.
+
+L'elenco ha una riga per interno, con:
+
+- il **numero dell'interno**;
+- il **nome** dell'interno (o «Interno 201» se non ha nome);
+- sotto, lo stato: **Ascoltabile · componi `*201`** oppure **Non ascoltabile**. Se l'interno ha più telefoni (per esempio il telefono fisso e l'app) compare anche «· 2 telefoni», e con l'ascolto acceso «· 2 telefoni, si ascolta il primo»;
+- a destra l'**interruttore**: verde = acceso, l'interno si può ascoltare.
+
+Se il centralino non ha interni compare «Nessun interno» con «Quando ci sarà almeno un interno, da qui si potrà renderlo ascoltabile.». Se la ricerca non trova niente compare «Nessun interno per questa ricerca».
+
+### Il riquadro «Come funziona»
+
+Il bottone **Come funziona** apre da destra il riquadro **Ascolto chiamate**, che riassume i passi (accendi l'interruttore, componi `*` e il numero dell'interno, `#` per il volume, riattacca per finire), la **Nota legale** e la frase «L'ascolto è passivo: gli interlocutori non sentono la tua presenza.». Si chiude con la **X** o con un clic fuori dal riquadro.
+
+## Come fare
+
+### Come ascolto la telefonata di un collega
+
+<Steps>
+  <Step title="Apri Ascolto chiamate">
+    Menu → Risorse centralino → Strumenti → **Ascolto chiamate**.
+  </Step>
+  <Step title="Accendi l'interruttore del suo interno">
+    Trova l'interno (puoi usare **Cerca per interno o nome…**) e premi l'interruttore. Diventa verde e sotto il nome compare **Ascoltabile · componi** con il codice da comporre.
+  </Step>
+  <Step title="Componi il codice dal tuo telefono">
+    Dal tuo telefono del centralino componi `*` seguito dal numero dell'interno del collega, per esempio `*201`. Se il collega è al telefono, senti la conversazione.
+  </Step>
+  <Step title="Regola il volume, se serve">
+    Durante l'ascolto premi `#` per regolare il volume.
+  </Step>
+  <Step title="Riattacca per finire">
+    Riattacca il tuo telefono: l'ascolto termina.
+  </Step>
+  <Step title="Spegni l'interruttore">
+    Quando non ti serve più, torna in **Ascolto chiamate** e spegni l'interruttore dell'interno: diventa grigio e la riga dice **Non ascoltabile**.
+  </Step>
+</Steps>
+
+### Come impedisco che un interno venga ascoltato
+
+Spegni il suo interruttore in **Ascolto chiamate**. Da quel momento il codice `*` più il numero dell'interno non serve più ad ascoltarlo. L'interruttore cambia subito, senza altre conferme.
+
+### Come controllo quali interni si possono ascoltare
+
+Svuota la ricerca, poi guarda il conteggio in alto («N interni · M ascoltabili») e, nell'elenco, gli interni con **Ascoltabile** e l'interruttore verde. Spegni quelli che non servono.
+
+## Da sapere
+
+- **L'interruttore vale per l'interno ascoltato, non per chi ascolta.** Non si può scegliere chi può ascoltare: con l'interruttore acceso può farlo qualsiasi telefono del centralino.
+- **Effetto immediato.** Acceso o spento, vale subito; non c'è un bottone **Salva**.
+- **Più telefoni sullo stesso interno.** Se l'interno ha più telefoni (per esempio il fisso e l'app), si ascolta il primo, come indicato nella riga quando l'ascolto è acceso («si ascolta il primo»).
+- **Solo dai telefoni del centralino.** Il codice si compone da un telefono collegato al centralino come interno: telefono fisso, app o programma sul computer.
+- **Si sente solo una telefonata in corso.** Se il collega non sta parlando non c'è niente da ascoltare.
+- **Interni dal 9000 in su.** Non compaiono in questa pagina e non si possono rendere ascoltabili.
+- **Gli interni si gestiscono altrove.** Nomi e telefoni degli interni si cambiano in [Interni](/centralino/telefoni-e-numeri/interni).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il collega o il cliente si accorgono che sto ascoltando?">
+    No, l'ascolto è silenzioso: «gli interlocutori non sentono la tua presenza». Per questo vanno informati prima, come chiede la pagina.
+  </Accordion>
+
+  <Accordion title="Posso suggerire qualcosa al collega durante la chiamata, o intervenire?">
+    No. Esiste solo l'ascolto silenzioso: non si può parlare con il collega né entrare nella conversazione.
+  </Accordion>
+
+  <Accordion title="Chi può ascoltare le chiamate?">
+    Quando l'interruttore di un interno è acceso, chiunque usi un telefono del tuo centralino può ascoltarlo componendo `*` e il numero dell'interno, senza PIN. Accendere e spegnere l'interruttore spetta invece al titolare e ai collaboratori con accesso a **Risorse del centralino**.
+  </Accordion>
+
+  <Accordion title="Posso permettere l'ascolto solo al responsabile?">
+    No, non si può limitare chi ascolta. Accendi l'interruttore solo quando il responsabile deve ascoltare e spegnilo subito dopo.
+  </Accordion>
+
+  <Accordion title="Compongo il codice ma non sento niente.">
+    Controlla che l'interruttore dell'interno sia acceso (riga **Ascoltabile**) e che il collega sia al telefono in quel momento. Se l'interno ha più telefoni, si ascolta solo il primo: se il collega sta parlando da un altro telefono, non lo senti.
+  </Accordion>
+
+  <Accordion title="Posso ascoltare dal mio cellulare?">
+    Solo se sul cellulare usi l'app o un programma collegato al centralino come interno: il codice si compone da un interno, non da una normale chiamata dal cellulare.
+  </Accordion>
+
+  <Accordion title="Posso registrare la chiamata che sto ascoltando?">
+    Non da questa pagina. La registrazione delle chiamate si imposta nelle regole del numero, con le regole dell'argomento **Registrazione chiamate**. Vedi [Notifiche, registrazioni e moduli](/centralino/regole/passaggi-moduli).
+  </Accordion>
+
+  <Accordion title="Un collaboratore non vede Ascolto chiamate nel menu.">
+    Gli serve l'accesso a **Risorse del centralino**. Lo concede il titolare dell'account. Vedi [Utenti e permessi](/centralino/account/utenti-e-permessi).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Interni" icon="phone" href="/centralino/telefoni-e-numeri/interni">
+    I telefoni del centralino e i loro numeri.
+  </Card>
+
+  <Card title="Stato interni" icon="headset" href="/centralino/telefoni-e-numeri/stato-interni">
+    Chi è al telefono adesso.
+  </Card>
+
+  <Card title="In tempo reale" icon="chart-line" href="/centralino/monitoraggio/in-tempo-reale">
+    Le chiamate in corso e le code, adesso.
+  </Card>
+
+  <Card title="Utenti e permessi" icon="users" href="/centralino/account/utenti-e-permessi">
+    Chi può vedere le Risorse del centralino.
+  </Card>
+</CardGroup>

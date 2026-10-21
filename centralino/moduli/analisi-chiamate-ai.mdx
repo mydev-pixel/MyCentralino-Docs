@@ -1,0 +1,414 @@
+---
+title: "Analisi Chiamate AI"
+sidebarTitle: "Analisi Chiamate AI"
+description: "Trascrizione, riassunto e analisi delle chiamate fatte dall'AI: quali chiamate vengono analizzate, le condizioni da accettare, dove leggere i risultati e come mandarli per email o a un tuo programma."
+keywords:
+  - "analisi chiamate ai"
+  - "trascrizione chiamate"
+  - "riassunto chiamata"
+  - "sentiment"
+  - "profilo di analisi"
+  - "kpi"
+  - "webhook"
+  - "conservazione"
+  - "condizioni d'uso"
+  - "analisi conversazioni"
+  - "intelligenza artificiale"
+  - "registrazione chiamate"
+---
+
+L'**Analisi Chiamate AI** trascrive le chiamate, ne scrive un riassunto e, se vuoi, le valuta con un **profilo di analisi** deciso da te (per esempio «Cortesia operatore» o «Problema risolto»). I risultati si leggono nel pannello e possono arrivare anche per email o a un tuo programma (CRM, gestionale).
+
+**Dove si trova:** Menu → **I tuoi moduli** → Chiamate → **Analisi Chiamate AI** · `https://cloud.mycentralino.com/analisi-ai`
+
+Finché il modulo non è attivo la voce non è nel menu: la pagina di presentazione si apre da **I tuoi moduli** → **Si possono aggiungere** → **Scopri cosa aggiunge ›**, oppure dall'indirizzo diretto.
+
+**Chi la vede:** il titolare dell'account. Un collaboratore solo se gli hai dato il permesso **I tuoi moduli**; eliminare una conversazione e cambiare il periodo di conservazione restano al titolare.
+
+<Info>
+  È un modulo a pagamento. Finché non è attivo, all'indirizzo trovi la pagina di presentazione con il bottone **Attiva il modulo**. Il prezzo è indicato nella pagina di attivazione prima della conferma. Come si attiva: [I tuoi moduli](/centralino/moduli/i-tuoi-moduli).
+</Info>
+
+## Quali chiamate vengono analizzate
+
+Il modulo analizza le chiamate che **tu gli indichi**. Attivarlo non basta: dopo l'attivazione scegli quali chiamate far analizzare.
+
+| Chiamate | Come le fai analizzare |
+| --- | --- |
+| **In arrivo** | Aggiungi il passaggio **Analisi chiamata AI** nelle [Regole delle chiamate](/centralino/regole/passaggi-moduli) del numero o del servizio interno che vuoi analizzare. Il centralino registra la chiamata e attiva i servizi AI che hai scelto sul passaggio. |
+| **In uscita** | Nella scheda **Chiamate in uscita** del modulo accendi **Analisi AI abilitata** sulla linea da cui escono le chiamate. |
+
+Su ogni passaggio (o linea) scegli cosa produrre: la trascrizione, il riassunto e, con un profilo, l'analisi.
+
+<Warning>
+  Il passaggio **Analisi chiamata AI** registra la chiamata. Per aggiungerlo devi spuntare la dichiarazione «Dichiaro di essere consapevole e responsabile delle norme vigenti sul mio territorio riguardo la registrazione e diffusione delle telefonate.» Il rispetto delle norme sulla registrazione è responsabilità tua.
+</Warning>
+
+## Le condizioni d'uso da accettare
+
+Il modulo ha condizioni d'uso proprie. Vanno accettate **prima del pagamento**: nella pagina **Attiva Analisi Chiamate AI**, al primo clic su **Attiva il modulo** si apre la finestra delle condizioni. Dopo averle accettate torni alla pagina e premi di nuovo **Attiva il modulo** per pagare.
+
+Se il modulo è già attivo ma le condizioni in vigore non risultano accettate, aprendo **Analisi Chiamate AI** leggi «Per usare il modulo serve prima accettare le condizioni qui sotto.» e vedi solo il documento; anche le altre pagine del modulo riportano lì. Lo stesso succede quando le condizioni cambiano versione: va accettata la nuova.
+
+La finestra contiene:
+
+- il titolo del documento e «Versione … · per attivare e usare il modulo Analisi Chiamate AI serve accettare quanto segue.»;
+- il riquadro **In breve**, con **Che cosa fa**, **I dati** e **Quanto costa**, ognuno con **Leggi ›** che porta al punto del testo;
+- la riga «In fondo: N clausole da approvare una per una e la conferma finale.» con **Vai alle approvazioni ›**;
+- il testo completo delle condizioni;
+- **Approvazione specifica — artt. 1341 e 1342 c.c.**, con il contatore delle caselle spuntate e una casella per ogni clausola («Queste clausole richiedono un'approvazione separata: spunta ciascuna dopo averla letta.»);
+- la dichiarazione finale: «Dichiaro di aver letto e di accettare integralmente l'informativa e le condizioni del modulo Analisi Chiamate AI (versione …). Ho compreso che trascrizioni, riassunti e analisi sono generati da un'intelligenza artificiale e possono contenere errori.»;
+- l'impronta del documento («SHA-256 documento: …»).
+
+### Come accetto le condizioni
+
+<Steps>
+  <Step title="Leggi">
+    Leggi **In breve** e, se vuoi, il testo completo.
+  </Step>
+  <Step title="Approva le clausole">
+    Premi **Vai alle approvazioni ›** e spunta ogni clausola sotto **Approvazione specifica — artt. 1341 e 1342 c.c.**
+  </Step>
+  <Step title="Spunta la dichiarazione finale">
+    Finché manca qualcosa, il bottone **Manca 1 approvazione ›** (o **Mancano N approvazioni ›**) ti porta alla prima casella vuota.
+  </Step>
+  <Step title="Conferma">
+    Premi **Confermo e accetto**. Compare «Accettazione registrata. Grazie.»
+  </Step>
+</Steps>
+
+Dopo l'accettazione ricevi un'email di conferma con la copia del documento. Lo stesso documento resta nel pannello in **Il mio account** → scheda **Documenti**: vedi [Documenti](/centralino/account/documenti). Con **Torna ai moduli** esci senza accettare: senza accettazione il modulo non si attiva e, se è già attivo, le sue pagine mostrano solo il documento.
+
+## Cosa trovi nel modulo
+
+In alto il riquadro verde **Conversazioni elaborate dall'AI**, con il totale «in tutto» e tre numeri: **Oggi**, **Ultimi 7 giorni** e **Ultima chiamata** (l'ora se è di oggi, altrimenti la data). Sotto, la barra delle schede:
+
+| Scheda | A cosa serve | Indirizzo |
+| --- | --- | --- |
+| **Riassunti** | L'elenco delle conversazioni, con il riassunto di ciascuna. | `/analisi-ai` |
+| **Analisi AI** | Le stesse conversazioni con una colonna per ogni informazione di un profilo. | `/analisi-ai?view=analysis` |
+| **Statistiche** | L'andamento delle conversazioni in un periodo. | `/analisi-ai/statistiche` |
+| **Profili di analisi** | Cosa deve cercare l'AI in ogni chiamata. | `/analisi-ai/template` |
+| **Webhook** | Gli indirizzi dei tuoi programmi a cui mandare i risultati. | `/analisi-ai/webhook` |
+| **Chiamate in uscita** | Su quali linee in uscita analizzare le chiamate. | `/analisi-ai/uscita` |
+| **Conservazione** | Per quanto tempo restano le conversazioni. | `/analisi-ai/conservazione` |
+
+Le ultime quattro stanno a destra, sotto la scritta **Impostazioni**.
+
+### Riassunti
+
+Le conversazioni dalla più recente, 50 per pagina. Sopra la tabella:
+
+- la ricerca **Numero o ID chiamata**: con delle cifre cerca tra chiamante e chiamato; con l'ID di una chiamata la trova su tutti i giorni;
+- il selettore del giorno, con le frecce ‹ ›. Senza un giorno scelto, la freccia ‹ porta a oggi; i giorni futuri non si scelgono. Con un giorno scelto compare **Tutti i giorni**;
+- a destra il conteggio «N conversazioni» e, se le pagine sono più di una, «pagina X di Y» con le frecce.
+
+I filtri attivi compaiono come etichette (per esempio «Chiamante …», «Numero … chiamante o chiamato», «ID chiamata … su tutti i giorni») e si tolgono con la ×.
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Quando** | Il giorno; sotto l'ora e la durata. |
+| **Chiamata** | Il numero di chi chiama («Senza numero» se manca); sotto, con una freccia, il numero chiamato. Cliccando un numero vedi solo le chiamate di quel numero. |
+| **Servizio** | Il nome del servizio, per le chiamate in arrivo quello scritto sul passaggio **Analisi chiamata AI**. |
+| **Riassunto** | Le prime righe del riassunto, oppure «Senza riassunto». |
+| **ID** | Il numero della conversazione («#…»). |
+
+Un clic sulla riga apre il dettaglio della conversazione.
+
+### Il dettaglio di una conversazione
+
+In alto la data per esteso con l'ora e il titolo **Conversazione #…**; sotto «Da … a …», **Durata** e **Servizio**. Poi:
+
+- **Riassunto**: il testo completo;
+- **Analisi**: il profilo usato e, per ogni informazione, il valore, quanto l'AI è sicura («sicura al 85%», oppure «poco sicura» in ambra sotto il 60%) e la motivazione. I voti compaiono come «7/10» con una barra; «Non rilevato» quando l'AI non ha trovato l'informazione;
+- **Trascrizione**: a bolle, «Operatore» a sinistra e «Cliente» a destra («Non riconosciuto» se l'AI non sa chi parla), ognuna con il minuto.
+
+Il titolare vede il bottone **Elimina conversazione**.
+
+### Analisi AI
+
+Prima scegli un profilo: la scheda mostra **Scegli un profilo di analisi** («Il profilo decide quali informazioni l'AI cerca in ogni chiamata.») e una tessera per profilo. Senza profili: «Nessun profilo configurato» con **Gestisci i profili**.
+
+Con un profilo scelto, la tabella ha le colonne **Quando**, **Chiamata**, **Servizio**, **Riassunto** (con **Leggi**, che apre il riassunto) e **una colonna per ogni informazione** del profilo:
+
+- «Sì» con la spunta verde, «No» con la ×;
+- i voti con una barretta colorata: verde da 7 in su, ambra da 4 a 6, rossa sotto 4;
+- il testo libero, tagliato;
+- «non rilevato» quando l'AI non ha trovato il dato.
+
+Passando sopra un Sì, un No o un voto leggi la motivazione dell'AI; sul testo libero leggi il testo intero. Sulle colonne Sì/No, un clic sul titolo mostra solo le chiamate con «sì»; con più filtri compare **Rimuovi tutti**. Per cambiare profilo usa la × sull'etichetta **Profilo …**.
+
+### Statistiche
+
+L'andamento nel periodo scelto: **Dal … al …** con **Applica**, oppure **7 giorni**, **14 giorni**, **30 giorni** (di base gli ultimi 7 giorni; al massimo 31 giorni). Trovi:
+
+- **Chiamate**, **Minuti totali** e **Durata media**, ognuno con «vs prec.», la variazione rispetto al periodo precedente della stessa lunghezza;
+- **Media/giorno** e **Servizi**;
+- **Giorno record** e **Chiamata più lunga**;
+- i grafici **Trend giornaliero**, **Distribuzione oraria** e **Distribuzione settimanale**;
+- **Top servizi** e **Top chiamanti**.
+
+### Profili di analisi
+
+«Ogni profilo dice all'AI quali informazioni cercare nelle chiamate.» La tabella ha le colonne **Profilo** e **Informazioni** (quante voci). Con **Nuovo profilo** ne crei uno; con il cestino lo elimini («L'operazione è irreversibile, ma le analisi già effettuate restano archiviate.»).
+
+Un profilo si usa scegliendolo sul passaggio **Analisi chiamata AI** (campo **Analisi AI avanzata**) o su una linea in **Chiamate in uscita**.
+
+### Webhook
+
+«Destinazioni HTTP a cui inviamo trascrizioni e analisi al termine delle chiamate.» Servono a far arrivare i risultati in automatico a un tuo programma. **Come funziona** apre una guida in quattro pagine; **Nuovo** crea un webhook; il cestino lo elimina.
+
+In breve, dalla guida a video: al termine di ogni chiamata elaborata parte **un invio**, in POST con il contenuto in JSON (si consiglia un indirizzo HTTPS). Il tuo programma deve rispondere con un esito positivo entro 30 secondi. L'invio non viene ripetuto: se il tuo programma non risponde, trascrizione e analisi restano comunque consultabili nel modulo. I dettagli tecnici sono nella guida **Come funziona l'invio**.
+
+### Chiamate in uscita
+
+«Scegli su quali linee in uscita analizzare le chiamate e dove mandare i risultati.» In alto «N su M linee con l'analisi attiva». Ogni riga **Linea …** ha lo stato **Analisi attiva** o **Non attiva**; un clic la apre. Ogni linea si salva per conto suo con **Salva configurazione**: compare «Salvato. Le nuove impostazioni sono già attive.» Una modifica non salvata si perde se lasci la pagina.
+
+### Conservazione
+
+«Per quanto tempo restano trascrizioni, riassunti e analisi delle chiamate.» Alla scadenza le conversazioni vengono cancellate in automatico, ogni notte. Il riquadro **Nell'archivio oggi** mostra **Conversazioni conservate** e **La più vecchia**.
+
+<Note>
+  L'audio delle chiamate non viene conservato nel modulo: restano il testo e i risultati dell'AI.
+</Note>
+
+## Come fare
+
+### Come comincio ad analizzare le chiamate di un numero
+
+<Steps>
+  <Step title="Attiva il modulo">
+    Se non l'hai ancora fatto: **Aggiungi funzionalità** → **Attiva l'analisi**, accetta le condizioni e completa il pagamento.
+  </Step>
+  <Step title="Crea un profilo (facoltativo)">
+    Se vuoi l'analisi oltre a trascrizione e riassunto, crea un profilo in **Profili di analisi** (vedi sotto).
+  </Step>
+  <Step title="Apri le regole del numero">
+    Menu → **Regole chiamate** → **Numeri di telefono** (o **Servizi interni**) → clicca il numero o il servizio da analizzare.
+  </Step>
+  <Step title="Aggiungi il passaggio">
+    **Aggiungi regola** → argomento **AI** → **Analisi chiamata AI**. Scrivi il **Nome del servizio** (spazi, virgole e punti e virgola diventano «\_»: è così che il nome compare nella colonna **Servizio**), spunta **Trascrizione** e, se vuoi, **Summary**, e in **Analisi AI avanzata** scegli il profilo. Per ricevere i risultati per email accendi **Ricevi report via email** e scrivi l'indirizzo; per un tuo programma accendi **Invia a webhook**.
+  </Step>
+  <Step title="Conferma">
+    Spunta la dichiarazione sulla registrazione e premi **Aggiungi regola**.
+  </Step>
+</Steps>
+
+I campi del passaggio sono descritti in [Passaggi: notifiche e moduli](/centralino/regole/passaggi-moduli).
+
+### Come creo un profilo di analisi
+
+<Steps>
+  <Step title="Nuovo profilo">
+    Analisi Chiamate AI → **Profili di analisi** → **Nuovo profilo**.
+  </Step>
+  <Step title="Dai un titolo">
+    Scrivi il **Titolo profilo**, per esempio «Qualità chiamate».
+  </Step>
+  <Step title="Aggiungi le informazioni da cercare">
+    In **Informazioni da cercare** premi **Aggiungi**. Scrivi il **Nome parametro** (diventa il titolo della colonna, con le iniziali maiuscole), una **Descrizione per l'AI** che spiega cosa cercare e il **Tipo di risposta**. Premi **Aggiungi**. Ripeti per ogni informazione.
+  </Step>
+  <Step title="Salva">
+    Premi **Crea profilo**. Aggiunte e modifiche alle informazioni diventano definitive solo con **Crea profilo** o **Salva modifiche**.
+  </Step>
+</Steps>
+
+### Come vedo solo le chiamate in cui un'informazione è «Sì»
+
+<Steps>
+  <Step title="Scegli il profilo">
+    Apri la scheda **Analisi AI** e scegli il profilo.
+  </Step>
+  <Step title="Filtra la colonna">
+    Clicca il titolo della colonna (per esempio «Problema Risolto»): restano le chiamate con «sì». Si filtra solo sulle colonne con risposte Sì/No.
+  </Step>
+  <Step title="Togli il filtro">
+    Clicca di nuovo il titolo, oppure la × sull'etichetta del filtro.
+  </Step>
+</Steps>
+
+### Come ritrovo tutte le chiamate di un cliente
+
+<Steps>
+  <Step title="Cerca il numero">
+    In **Riassunti** scrivi il numero, o parte di esso, in **Numero o ID chiamata**.
+  </Step>
+  <Step title="Oppure clicca il numero">
+    In una riga clicca il numero di chi chiama: restano solo le sue chiamate.
+  </Step>
+  <Step title="Torna a tutto">
+    Togli il filtro con la × sull'etichetta.
+  </Step>
+</Steps>
+
+### Come mando trascrizioni e analisi al mio CRM
+
+<Steps>
+  <Step title="Crea il webhook">
+    Analisi Chiamate AI → **Webhook** → **Nuovo**. Scrivi una **Descrizione**, l'indirizzo in **Webhook URL** e, se il tuo programma lo richiede, il **Token**. Premi **Crea webhook**.
+  </Step>
+  <Step title="Collegalo alle chiamate in arrivo">
+    Nelle Regole delle chiamate, sul passaggio **Analisi chiamata AI**, spunta **Invia a webhook** e scegli il webhook.
+  </Step>
+  <Step title="Collegalo alle chiamate in uscita (se serve)">
+    Nella scheda **Chiamate in uscita** apri la linea, accendi **Webhook**, scegli il webhook e premi **Salva configurazione**.
+  </Step>
+</Steps>
+
+### Come analizzo le chiamate che escono da una linea
+
+<Steps>
+  <Step title="Apri la linea">
+    Analisi Chiamate AI → **Chiamate in uscita** → clicca la riga **Linea …**.
+  </Step>
+  <Step title="Accendi l'analisi">
+    Accendi **Analisi AI abilitata** e scegli **Cosa produrre**. Con **Trascrizione, riassunto e analisi** scegli anche il **Profilo di analisi**.
+  </Step>
+  <Step title="Scegli dove mandare i risultati">
+    Se vuoi, accendi **Notifica email** (con **Indirizzo email** e **Nome servizio**) e/o **Webhook**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva configurazione**.
+  </Step>
+</Steps>
+
+### Come elimino una conversazione
+
+<Steps>
+  <Step title="Apri la conversazione">
+    Clicca la riga nell'elenco.
+  </Step>
+  <Step title="Elimina">
+    Premi **Elimina conversazione** e conferma con **Elimina**. Compare «Conversazione eliminata.»
+  </Step>
+</Steps>
+
+<Warning>
+  L'eliminazione è definitiva: «La trascrizione e tutto ciò che l'AI ha prodotto per questa chiamata vengono cancellati definitivamente. Sui nostri server resta solo il registro della chiamata (chiamante, chiamato e durata), come previsto dalla legge.» Solo il titolare dell'account può eliminare una conversazione.
+</Warning>
+
+### Come tengo le conversazioni per meno tempo
+
+<Steps>
+  <Step title="Apri Conservazione">
+    Analisi Chiamate AI → **Conservazione**.
+  </Step>
+  <Step title="Scegli il periodo">
+    In **Conserva le conversazioni per** scegli il nuovo periodo. Se ci sono conversazioni più vecchie compare subito l'avviso «Con …, N conversazioni precedenti al … verranno cancellate entro la prossima notte.»
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Se l'avviso c'era, conferma con **Confermo: cancella N conversazioni** (oppure **Annulla**). Compare «Salvato.»
+  </Step>
+</Steps>
+
+## I campi
+
+### Profilo di analisi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Titolo profilo** | Il nome del profilo. Esempio nel campo: «es: Analisi qualità chiamate». | Obbligatorio |
+| **Nome parametro** | L'informazione da cercare; è anche il titolo della colonna. Esempio: «es: Cortesia operatore». | Obbligatorio |
+| **Descrizione per l'AI** | Spiega all'AI cosa cercare. Esempio: «es: Valuta la gentilezza dell'operatore». | Facoltativo |
+| **Tipo di risposta** | Che forma ha la risposta. | **Voto numerico** (con **Scala di valutazione**, di base da 0 a 10) · **Sì o no** · **Scelta da lista** (con **Opzioni disponibili**: scrivi un'opzione e premi Invio) · **Testo descrittivo** |
+
+### Webhook
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Descrizione** | Un nome per riconoscerlo. Esempio: «es: Notifica CRM vendite». | Obbligatorio |
+| **Webhook URL** | L'indirizzo del tuo programma: «A ogni chiamata elaborata riceve una richiesta POST con trascrizione e analisi in JSON.» | Un indirizzo web |
+| **Token** | «Facoltativo. Lo inviamo nell'header Authorization: Bearer per farci riconoscere dal tuo server.» | Facoltativo |
+
+### Linea in uscita
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Analisi AI abilitata** | «Analizza le chiamate che escono da questa linea». | Acceso · spento |
+| **Cosa produrre** | Cosa fa l'AI su queste chiamate. | **Solo trascrizione** · **Trascrizione e riassunto** · **Trascrizione, riassunto e analisi** |
+| **Profilo di analisi** | Il profilo da usare (solo con l'analisi). | Un tuo profilo |
+| **Notifica email** | «Ricevi i risultati via email»: con **Indirizzo email** e **Nome servizio**. | Acceso · spento |
+| **Webhook** | «Invia i risultati a un endpoint HTTP»: con la scelta del webhook. | Acceso · spento |
+
+### Conservazione
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Conserva le conversazioni per** | Dopo quanto tempo le conversazioni vengono cancellate. Lo cambia solo il titolare. | **12 mesi** (di base) · **6 mesi** · **3 mesi** · **2 mesi** · **1 mese** |
+
+## Da sapere
+
+- **L'AI può sbagliare.** Trascrizioni, riassunti e analisi sono generati da un'intelligenza artificiale e possono contenere errori. Quando l'AI è «poco sicura» conviene leggere la trascrizione.
+- **La ricerca lavora sui numeri.** Nella ricerca dell'elenco si cercano numeri di telefono e ID chiamata, non le parole dette in chiamata: «La ricerca lavora sui numeri: digita almeno una cifra del chiamante o del chiamato, oppure l'ID della chiamata.»
+- **Accorciare la conservazione** cancella entro la notte le conversazioni più vecchie del nuovo periodo, in modo definitivo. Se non ce ne sono, il periodo più breve vale per le chiamate future.
+- **Un collaboratore** con il permesso **I tuoi moduli** consulta le conversazioni ma non vede **Elimina conversazione** e non può cambiare la conservazione («Il periodo lo può cambiare solo il titolare dell'account.»).
+- **Profilo eliminato.** Le analisi già fatte con un profilo eliminato restano archiviate.
+- **Disattivazione.** Il modulo si disattiva con una richiesta all'assistenza. Con il modulo attivo la pagina di attivazione non ha un collegamento nel pannello: apri `https://cloud.mycentralino.com/moduli/attiva/call_insight` (risulta **Modulo già attivo**), premi **Richiedi disattivazione** e poi **Invia richiesta**. In alternativa apri una [richiesta di assistenza](/centralino/assistenza/richieste-di-assistenza). Vedi [I tuoi moduli](/centralino/moduli/i-tuoi-moduli).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Ho attivato il modulo ma non vedo nessuna conversazione. Perché?">
+    Il modulo analizza solo le chiamate che passano dal passaggio **Analisi chiamata AI** nelle Regole delle chiamate e quelle delle linee in uscita su cui hai acceso l'analisi. Controlla di averlo aggiunto al numero giusto. Finché non arriva nessuna conversazione l'elenco dice «Nessuna chiamata analizzata».
+  </Accordion>
+
+  <Accordion title="Non vedo una chiamata appena fatta.">
+    La conversazione compare quando l'elaborazione è finita. Controlla anche che il numero o la linea abbiano l'analisi attiva.
+  </Accordion>
+
+  <Accordion title="Posso cercare una parola detta durante la chiamata?">
+    Dall'elenco no: la ricerca lavora solo su numeri di telefono e ID chiamata.
+  </Accordion>
+
+  <Accordion title="Si può riascoltare l'audio?">
+    No. Nel modulo restano il testo e i risultati dell'AI: l'audio delle chiamate non viene conservato.
+  </Accordion>
+
+  <Accordion title="Cosa vuol dire «poco sicura»?">
+    L'AI ha dato una risposta, ma con una sicurezza sotto il 60%. Conviene leggere la trascrizione.
+  </Accordion>
+
+  <Accordion title="Devo avvisare chi chiama che la chiamata è registrata?">
+    Il rispetto delle norme sulla registrazione è responsabilità tua: il passaggio **Analisi chiamata AI** chiede una dichiarazione esplicita prima di essere aggiunto.
+  </Accordion>
+
+  <Accordion title="Dove ritrovo le condizioni che ho accettato?">
+    Nell'email di conferma che arriva dopo l'accettazione e nel pannello in **Il mio account** → scheda **Documenti**.
+  </Accordion>
+
+  <Accordion title="Perché si è riaperto il documento delle condizioni?">
+    Le condizioni sono cambiate versione: finché non accetti la nuova, le pagine del modulo mostrano il documento.
+  </Accordion>
+
+  <Accordion title="Un collaboratore può cancellare le conversazioni?">
+    No. Eliminare conversazioni e cambiare la conservazione spetta solo al titolare dell'account.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Passaggi: notifiche e moduli" icon="list" href="/centralino/regole/passaggi-moduli">
+    Il passaggio Analisi chiamata AI, campo per campo.
+  </Card>
+
+  <Card title="I tuoi moduli" icon="gear" href="/centralino/moduli/i-tuoi-moduli">
+    Attivare e disattivare un modulo.
+  </Card>
+
+  <Card title="Aggiungi funzionalità" icon="gear" href="/centralino/moduli/aggiungi-funzionalita">
+    Dove si attiva l'analisi.
+  </Card>
+
+  <Card title="Documenti" icon="file-invoice" href="/centralino/account/documenti">
+    Le condizioni accettate.
+  </Card>
+
+  <Card title="Integrazioni" icon="arrow-right-arrow-left" href="/centralino/moduli/integrazioni">
+    AlfaDocs: il riassunto nella scheda del paziente.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Come si aggiunge un passaggio.
+  </Card>
+</CardGroup>

@@ -1,0 +1,225 @@
+---
+title: "Accesso con PIN"
+sidebarTitle: "Accesso con PIN"
+description: "Clienti che entrano in un servizio digitando un PIN personale, ciascuno con il suo saldo di minuti: come si crea un PIN, come si ricarica il saldo e come si fa chiedere il PIN al telefono."
+keywords:
+  - "accesso con pin"
+  - "pin"
+  - "codice personale"
+  - "saldo minuti"
+  - "ricarica minuti"
+  - "servizi basati su pin"
+  - "consulenza a pagamento"
+  - "pacchetto minuti"
+  - "pin services"
+  - "minuti disponibili"
+---
+
+L'**Accesso con PIN** è l'elenco dei tuoi clienti che entrano in un servizio digitando un **PIN personale**. Ogni cliente ha un saldo di minuti che il centralino scala a ogni chiamata, e nell'elenco vedi quanto gli resta e quando ha chiamato l'ultima volta. Serve per esempio per una linea di consulenza a pacchetti di minuti o per una coda riservata ai clienti che hanno un abbonamento con te.
+
+**Dove si trova:** Menu → Risorse centralino → A consumo → **Accesso con PIN** · `https://cloud.mycentralino.com/accesso-pin`
+
+Ci arrivi anche dalla pagina **Risorse del centralino** (`https://cloud.mycentralino.com/configurazione`), nel gruppo **Servizi a consumo**.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**. Non serve nessun modulo.
+
+<Warning>
+  I PIN da soli non cambiano niente. Perché il centralino chieda il PIN a chi chiama, nelle **Regole delle chiamate** del numero va aggiunto il passaggio **Servizi basati su PIN**, con il servizio interno in cui entra chi ha un PIN valido. Vedi «Come faccio chiedere il PIN al telefono» più sotto.
+</Warning>
+
+## Come funziona
+
+1. Aggiungi il cliente con il suo nome e i minuti iniziali. Il pannello gli propone un PIN libero.
+2. Comunichi il PIN al cliente.
+3. Sul numero che riceve le chiamate c'è il passaggio **Servizi basati su PIN**: chi chiama digita il PIN ed entra nel servizio interno scelto nel passaggio.
+4. A ogni chiamata il centralino scala il tempo dal saldo e registra data, numero e durata dell'ultima chiamata.
+5. Quando i minuti finiscono, ricarichi il saldo modificando il cliente.
+
+## Cosa trovi nella pagina
+
+In alto il titolo **Accesso con PIN** con il conteggio (per esempio «8 clienti»; durante una ricerca «N risultati») e la frase «Clienti che entrano in un servizio digitando un PIN personale (solo cifre, fino a 8), ciascuno con il suo saldo di minuti.». A destra due bottoni:
+
+- **Cos'è?** (l'icona con la **i**), che apre un pannello laterale con «Come funziona», «Stato del saldo» e il riquadro «PIN univoco»;
+- **Nuovo accesso**, che apre la pagina per aggiungere un cliente.
+
+Sotto c'è la ricerca **Cerca cliente, PIN, nota o ultimo chiamante…**, che filtra mentre scrivi.
+
+La tabella ha una riga per cliente, dal più recente:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Cliente** | Il nome, con la nota sotto in piccolo. Cliccandolo apri la modifica. |
+| **PIN** | Il PIN del cliente. |
+| **Saldo** | Il tempo che resta (per esempio «45 min» o «2 h 10 min») con lo stato: **Disponibile**, **In esaurimento** o **Esaurito**. |
+| **Ultima chiamata** | Quando ha chiamato l'ultima volta (per esempio «oggi · 10:53»), sotto «da» con il numero da cui ha chiamato e la durata. «Mai chiamato» se non ha ancora usato il PIN. |
+
+In fondo alla riga c'è il cestino **Elimina**. Un clic in un punto qualsiasi della riga apre la modifica.
+
+**Sul telefono** ogni riga diventa una scheda con il nome, «PIN» con il numero, il saldo con il suo stato, il cestino e una freccia. La nota si vede aprendo il cliente, nel campo **Note**. L'ultima chiamata si vede solo su uno schermo più largo (computer o tablet), nella colonna **Ultima chiamata**.
+
+Se l'elenco è vuoto vedi «Nessun cliente con accesso PIN» con «Crea un accesso e il cliente entrerà nel servizio digitando un PIN, scalando i minuti dal suo saldo.» e il link **Nuovo accesso →**. Se la ricerca non trova niente: «Nessun cliente per questa ricerca».
+
+### Gli stati del saldo
+
+| Stato | Quando |
+| --- | --- |
+| **Disponibile** (verde) | 10 minuti o più |
+| **In esaurimento** (ambra) | Meno di 10 minuti |
+| **Esaurito** (rosso) | Saldo a zero: il PIN non fa più entrare |
+
+## Come fare
+
+### Come do un PIN a un nuovo cliente
+
+<Steps>
+  <Step title="Apri Accesso con PIN">
+    Menu → Risorse centralino → A consumo → **Accesso con PIN**.
+  </Step>
+  <Step title="Premi Nuovo accesso">
+    Si apre la pagina **Nuovo cliente PIN**.
+  </Step>
+  <Step title="Compila Cliente">
+    Scrivi il nome, per esempio `Mario Rossi`. Lo vedi solo tu, nell'elenco.
+  </Step>
+  <Step title="Controlla il PIN">
+    Il pannello propone un PIN libero di 4 cifre (può cominciare con 0). Puoi tenerlo o scriverne un altro: solo cifre, al massimo 8.
+  </Step>
+  <Step title="Scrivi i Minuti disponibili">
+    Il saldo iniziale in minuti interi, per esempio `60`.
+  </Step>
+  <Step title="Salva">
+    Se vuoi aggiungi una nota, poi premi **Aggiungi cliente**. Torni all'elenco e compare «Cliente "Mario Rossi" creato.».
+  </Step>
+  <Step title="Comunica il PIN">
+    Dai il PIN al cliente: è quello che digiterà al telefono.
+  </Step>
+</Steps>
+
+### Come ricarico i minuti di un cliente
+
+<Steps>
+  <Step title="Apri il cliente">
+    Clicca la sua riga nell'elenco. Il titolo della pagina è il nome del cliente.
+  </Step>
+  <Step title="Scrivi il nuovo saldo">
+    In **Minuti disponibili** c'è il saldo attuale. Scrivi il **totale** che deve risultare, non solo i minuti da aggiungere: se restano 5 minuti e ne vendi 60, scrivi `65`.
+  </Step>
+  <Step title="Salva">
+    Appena cambi un campo compare in basso la barra **Modifiche non salvate**. Premi **Salva modifiche** in alto (oppure **Salva** nella barra). Compare «Cliente "…" aggiornato.».
+  </Step>
+</Steps>
+
+Se cambi idea, **Annulla** nella barra rimette i valori di prima. Se provi ad aprire un'altra pagina del pannello senza salvare, compare «Ci sono modifiche non salvate. Uscire senza salvarle?». Se chiudi la scheda del browser, l'avviso è quello del browser.
+
+### Come faccio chiedere il PIN al telefono
+
+<Steps>
+  <Step title="Apri le regole del numero">
+    Menu → **Regole chiamate** e clicca il numero che riceve le chiamate. Vedi [Editor delle regole](/centralino/regole/editor).
+  </Step>
+  <Step title="Aggiungi il passaggio">
+    Premi **Aggiungi regola** (o il **\+** nel punto giusto). Nell'argomento **Menù vocali (IVR)**, oppure scrivendo in **Cerca una regola…**, clicca **Servizi basati su PIN**.
+  </Step>
+  <Step title="Scegli il Servizio interno">
+    Scegli il servizio interno in cui entra chi digita un PIN valido. Puoi cercarlo con **Cerca servizio interno…**.
+  </Step>
+  <Step title="Conferma">
+    Premi **Aggiungi regola**. Il passaggio compare nello schema.
+  </Step>
+</Steps>
+
+Se nella finestra vedi «Nessun servizio interno configurato.», il centralino non ha ancora servizi interni: vedi [Servizi interni](/centralino/regole/servizi-interni).
+
+### Come blocco un cliente
+
+Hai due strade:
+
+- **Temporaneamente:** apri il cliente, porta **Minuti disponibili** a `0` e salva. Il saldo diventa **Esaurito** e il PIN non fa più entrare. Per riattivarlo basta ricaricare i minuti.
+- **Per sempre:** elimina il cliente, come spiegato qui sotto.
+
+### Come elimino un cliente
+
+<Steps>
+  <Step title="Premi il cestino">
+    Nella riga del cliente premi **Elimina** (il cestino).
+  </Step>
+  <Step title="Conferma">
+    Nella finestra **Eliminare il cliente?** («Stai per eliminare il cliente «Mario Rossi». L'azione non è reversibile.») premi **Elimina**. Il cliente sparisce dall'elenco e da quel momento il PIN non fa più entrare.
+  </Step>
+</Steps>
+
+## I campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Cliente** | Il nome che vedi nell'elenco. «Non visibile al cliente.» Esempio nel campo: «es. Mario Rossi, Studio Legale Bianchi». | Obbligatorio, al massimo 200 caratteri |
+| **PIN** | Il codice che il cliente digita. Alla creazione il pannello ne propone uno libero di 4 cifre. | Obbligatorio, solo cifre, da 1 a 8; unico nel centralino |
+| **Minuti disponibili** | Il saldo in minuti. «Saldo iniziale (o ricarica). Decresce a ogni chiamata.» | Obbligatorio, numero intero da 0 a 99999 (proposto 0) |
+| **Note** (opzionale) | Un appunto per te, per esempio «Cliente VIP, accesso solo serale». | Al massimo 200 caratteri |
+
+Messaggi che puoi vedere salvando:
+
+- «Il PIN deve contenere solo cifre (max 8).»
+- «Questo PIN è già usato da un altro cliente. Scegline un altro.»
+
+## Da sapere
+
+- **Il campo dei minuti è il saldo, non la ricarica.** Quello che scrivi diventa il saldo del cliente.
+- **Il saldo è in minuti interi.** Nell'elenco lo vedi come «45 min» o «2 h 10 min».
+- **Ogni PIN è unico** nel centralino. Due clienti non possono avere lo stesso PIN.
+- **Il nome resta tuo.** **Cliente** e **Note** servono solo a te: chi chiama non li vede.
+- **Apostrofi e punti e virgola** in **Cliente** e **Note** vengono sostituiti da un trattino quando salvi.
+- **È un saldo che gestisci tu.** Caricare o togliere minuti dal pannello non comporta addebiti: sono i minuti che hai venduto ai tuoi clienti.
+- **Il PIN funziona solo dove c'è il passaggio.** Il cliente può usarlo sui numeri le cui regole contengono **Servizi basati su PIN**.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il cliente digita il PIN ma non entra. Perché?">
+    Controlla tre cose: che il saldo non sia **Esaurito**; che il PIN sia scritto giusto (apri il cliente e confrontalo); che nelle regole del numero che ha chiamato ci sia il passaggio **Servizi basati su PIN**.
+  </Accordion>
+
+  <Accordion title="Come ricarico un cliente?">
+    Apri il cliente, scrivi in **Minuti disponibili** il totale che deve risultare (il saldo attuale più i minuti nuovi) e premi **Salva modifiche**.
+  </Accordion>
+
+  <Accordion title="Il cliente vede il nome che ho scritto?">
+    No. **Cliente** e **Note** si vedono solo nell'elenco del pannello.
+  </Accordion>
+
+  <Accordion title="Il PIN può cominciare con 0?">
+    Sì. Il PIN proposto è di 4 cifre e può cominciare con 0, per esempio `0427`.
+  </Accordion>
+
+  <Accordion title="Posso dare lo stesso PIN a due clienti?">
+    No. Salvando compare «Questo PIN è già usato da un altro cliente. Scegline un altro.».
+  </Accordion>
+
+  <Accordion title="Ricaricare i minuti dal pannello costa qualcosa?">
+    No. Il saldo dei PIN lo gestisci tu per i tuoi clienti: cambiarlo dal pannello non comporta addebiti.
+  </Accordion>
+
+  <Accordion title="Che differenza c'è con i Servizi prepagati?">
+    Con l'Accesso con PIN il cliente si identifica digitando il suo PIN, da qualsiasi telefono. Con i [Servizi prepagati](/centralino/servizi-a-consumo/servizi-prepagati) il centralino lo riconosce dal numero da cui chiama, senza che debba digitare niente.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Servizi prepagati" icon="credit-card" href="/centralino/servizi-a-consumo/servizi-prepagati">
+    Saldo di minuti riconosciuto dal numero di chi chiama.
+  </Card>
+
+  <Card title="Codici servizio" icon="list" href="/centralino/servizi-a-consumo/codici-servizio">
+    Codici brevi per arrivare dritti a un servizio, senza saldo.
+  </Card>
+
+  <Card title="Servizi interni" icon="sitemap" href="/centralino/regole/servizi-interni">
+    Il servizio in cui entra chi ha un PIN valido.
+  </Card>
+
+  <Card title="Passaggi che instradano la chiamata" icon="arrow-right-arrow-left" href="/centralino/regole/passaggi-chiamata">
+    Il passaggio Servizi basati su PIN.
+  </Card>
+</CardGroup>

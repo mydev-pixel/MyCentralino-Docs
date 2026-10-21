@@ -1,0 +1,239 @@
+---
+title: "Chiavi API"
+sidebarTitle: "Chiavi API"
+description: "La sezione Chiavi API del tuo account: creare la chiave con cui un programma esterno parla con il centralino, controllare quante richieste usi, revocare, riattivare ed eliminare le chiavi, e chi può gestirle."
+keywords:
+  - "chiavi API"
+  - "chiave API"
+  - "API key"
+  - "X-API-Key"
+  - "sk_mycentralino"
+  - "nuova chiave"
+  - "revoca chiave"
+  - "elimina chiave"
+  - "riattiva chiave"
+  - "limiti richieste"
+  - "utilizzo API"
+  - "integrazione"
+  - "CRM"
+  - "gestionale"
+  - "sviluppatore"
+  - "Gestione API"
+  - "api.mycentralino.com"
+---
+
+Una **chiave API** è una «password per programmi»: la dai a un gestionale, a un CRM o a chi sviluppa per te, e il programma può parlare con il tuo centralino attraverso le API di MyCentralino. Nella sezione **Chiavi API** crei le chiavi, vedi quando sono state usate, controlli quante richieste stai facendo e le blocchi quando serve.
+
+**Dove si trova:** barra in alto → icona con l'omino (**Il tuo account**) → **Il mio account** → scheda **Accessi e sicurezza** → sezione **Chiavi API**, in fondo · `https://cloud.mycentralino.com/account/profile?tab=api`
+
+L'indirizzo apre la scheda **Accessi e sicurezza** e scorre fino alla sezione.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se il titolare gli ha concesso **Gestione API** («La scheda API nella pagina account: creare, revocare ed eliminare le chiavi con cui i programmi esterni parlano col centralino.»); senza quel permesso la sezione non compare. Non serve nessun modulo.
+
+<Info>
+  Cosa si può fare con le API (le funzioni disponibili, i parametri, le risposte, gli errori e i limiti) è spiegato nella [documentazione API](/mycentralino-api/introduction). Questa pagina spiega solo come gestire le chiavi nel pannello.
+</Info>
+
+## Cosa trovi nella pagina
+
+La sezione ha quattro card: sugli schermi larghi **Le tue chiavi API** e **Documentazione API** stanno a sinistra, **Utilizzo** e **Informazioni** a destra. Sugli schermi più stretti (telefono, tablet, portatili piccoli) si mettono una sotto l'altra e la tabella delle chiavi scorre in orizzontale.
+
+### Le tue chiavi API
+
+In testa il conteggio «N/5 chiavi attive» e il bottone **Nuova chiave**, grigio quando le chiavi attive sono già 5.
+
+La tabella ha una riga per chiave:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Chiave** | Solo l'inizio della chiave, seguito da «…». La chiave intera si vede una volta sola, quando la crei. |
+| **Nome** | Il nome che le hai dato, per riconoscerla. |
+| **Stato** | Pallino verde e **Attiva**, oppure pallino grigio e **Revocata**. |
+| **Ultimo utilizzo** | Data e ora dell'ultima richiesta fatta con quella chiave, oppure «Mai utilizzata». |
+| **Azioni** | **Revoca** (sulle chiavi attive) oppure **Riattiva** (sulle revocate), ed **Elimina**. |
+
+Se non hai ancora chiavi: «Nessuna API Key · Crea la tua prima chiave per iniziare a utilizzare le API di MyCentralino.».
+
+<Frame caption="Le tue chiavi API e l'utilizzo">
+  <img
+    src="/images/guida/chiavi-api.webp"
+    alt="Le tue chiavi API e l'utilizzo"
+  />
+</Frame>
+
+### Documentazione API
+
+«Includi la tua API Key nell'header X-API-Key di ogni richiesta.», un esempio pronto da copiare e il riquadro **Documentazione completa** «Endpoint, esempi e guide dettagliate» con il bottone **Vai alla documentazione**, che apre la [documentazione API](/mycentralino-api/introduction) in una nuova scheda.
+
+```bash
+curl -X GET "https://api.mycentralino.com/v1/extensions" \
+  -H "X-API-Key: sk_mycentralino_la_tua_chiave"
+```
+
+### Utilizzo
+
+- **Richieste / minuto** e **Richieste / giorno**: quante richieste hai fatto «di» quante ne puoi fare, ognuna con una barra che è verde, poi gialla oltre la metà e rossa quando sei vicino al limite.
+- **Il tuo piano**: le richieste al minuto e al giorno del tuo centralino, «condivise tra tutte le chiavi attive».
+- «Hai bisogno di più richieste? **Contattaci**»: il link apre la pagina contatti del sito.
+
+I limiti del tuo centralino sono quelli scritti in questa card.
+
+### Informazioni
+
+Tre promemoria:
+
+- **Sicurezza** — «Le chiavi API sono mostrate una sola volta al momento della creazione. Non è possibile recuperarle in seguito.»
+- **Limiti condivisi** — «I limiti di richieste sono condivisi tra tutte le tue chiavi API.»
+- **Revoca vs Elimina** — «Revocare una chiave la disattiva temporaneamente: puoi sempre riattivarla. Eliminarla la rimuove definitivamente.»
+
+## Come fare
+
+### Come creo una chiave
+
+<Steps>
+  <Step title="Apri Chiavi API">
+    Barra in alto → **Il tuo account** → **Il mio account** → scheda **Accessi e sicurezza** → scorri fino a **Chiavi API**.
+  </Step>
+  <Step title="Premi Nuova chiave">
+    Si apre la finestra **Crea nuova API Key**: «Un nome descrittivo aiuta a identificare in seguito dove la chiave è utilizzata.»
+  </Step>
+  <Step title="Scrivi un nome">
+    In **Nome della chiave** scrivi dove la userai, per esempio `Gestionale` o `CRM`. Se lo lasci vuoto la chiave si chiama «Chiave API». La finestra ricorda: «La chiave sarà visibile una sola volta dopo la creazione. Conservala in un luogo sicuro.»
+  </Step>
+  <Step title="Premi Crea chiave">
+    In cima alla sezione compare il riquadro **La tua nuova API Key** con la chiave completa e il messaggio «Chiave creata. Copiala ora: per sicurezza non sarà più visibile.».
+  </Step>
+  <Step title="Copia la chiave e chiudi il riquadro">
+    Premi **Copia** e incolla la chiave nel programma che la userà, o in un posto sicuro. Poi chiudi il riquadro con la X («Ho copiato la chiave»).
+  </Step>
+</Steps>
+
+<Warning>
+  Dopo aver chiuso il riquadro la chiave non si può più vedere né recuperare: nella tabella resta solo il suo inizio. Se la perdi, crea una chiave nuova.
+</Warning>
+
+### Come uso la chiave nel programma
+
+Il programma manda la chiave in ogni richiesta, nell'intestazione `X-API-Key`, all'indirizzo `https://api.mycentralino.com`. L'esempio è nella card **Documentazione API**. Tutto il resto è nella [documentazione API](/mycentralino-api/introduction): è la pagina da dare a chi sviluppa.
+
+Per controllare che la chiave funzioni, fai una richiesta di prova, ricarica la pagina e guarda la tabella: **Ultimo utilizzo** non dice più «Mai utilizzata» ma la data e l'ora della richiesta.
+
+### Come blocco subito una chiave
+
+<Steps>
+  <Step title="Premi Revoca">
+    Sulla riga della chiave premi **Revoca**. Si apre la finestra **Revoca chiave**: «La chiave «…» verrà disattivata. Le richieste con questa chiave smetteranno di funzionare, ma potrai riattivarla in qualsiasi momento.»
+  </Step>
+  <Step title="Conferma">
+    Premi **Revoca**. Compare «Chiave revocata.» e lo stato diventa **Revocata**.
+  </Step>
+</Steps>
+
+### Come riattivo una chiave revocata
+
+Sulla riga della chiave **Revocata** premi **Riattiva**: la chiave torna **Attiva** subito, senza conferma. Compare «Chiave riattivata.».
+
+### Come elimino una chiave per sempre
+
+<Steps>
+  <Step title="Premi Elimina">
+    Sulla riga della chiave premi **Elimina**. Si apre **Elimina chiave definitivamente**: «Stai per eliminare «…». L'azione è irreversibile. Se vuoi solo disattivare la chiave temporaneamente, usa Revoca.»
+  </Step>
+  <Step title="Conferma">
+    Premi **Elimina definitivamente**. Compare «Chiave eliminata definitivamente.» e la riga sparisce.
+  </Step>
+</Steps>
+
+### Come sostituisco una chiave persa o finita in mani sbagliate
+
+<Steps>
+  <Step title="Revoca la vecchia">
+    **Revoca** sulla riga della chiave: smette di funzionare subito.
+  </Step>
+  <Step title="Crea la nuova">
+    **Nuova chiave**, copiala e mettila nel programma al posto della vecchia.
+  </Step>
+  <Step title="Elimina la vecchia">
+    Quando sei sicuro che tutto funziona con la nuova, **Elimina** sulla vecchia → **Elimina definitivamente**.
+  </Step>
+</Steps>
+
+### Come faccio gestire le chiavi a un collaboratore
+
+Barra in alto → **Il tuo account** → **Il mio account** → **Accessi e sicurezza** → **Utenti** → **Modifica** sul suo utente → spunta **Gestione API** in **Sezioni consentite** → **Salva modifiche**. Vedi [Utenti e permessi](/centralino/account/utenti-e-permessi).
+
+## I campi
+
+| Dove | Campo | Cosa indica | Valori |
+| --- | --- | --- | --- |
+| Finestra **Crea nuova API Key** | **Nome della chiave** | Un nome per riconoscere dove usi la chiave | Facoltativo, fino a 100 caratteri. Esempi nel campo: «Produzione, App Mobile, Integrazione CRM…». Vuoto = «Chiave API». |
+
+## Da sapere
+
+- **Si vede una volta sola.** La chiave completa compare solo nel riquadro **La tua nuova API Key**, subito dopo la creazione. Il pannello non può mostrartela di nuovo.
+- **Al massimo 5 chiavi attive.** Le chiavi revocate non contano nel «N/5»: per crearne una nuova basta revocarne o eliminarne una.
+- **I limiti sono del centralino, non della chiave.** Tutte le chiavi attive condividono le richieste al minuto e al giorno scritte nella card **Utilizzo**. Se ne servono di più, usa **Contattaci** nella stessa card.
+- **Una chiave, un centralino.** La chiave vale solo per il centralino su cui l'hai creata. Se gestisci più centralini, crea una chiave su ciascuno.
+- **Trattala come una password.** Con una chiave un programma può anche far partire chiamate (che consumano credito) e modificare **Rubrica**, **Interruttori** e **Numeri bloccati**. Non metterla in pagine web, email o documenti condivisi.
+- **Non scade da sola.** Resta valida finché non la revochi o la elimini. Usa **Ultimo utilizzo** per capire se una vecchia chiave serve ancora prima di eliminarla.
+- **Una chiave per programma.** Con un nome chiaro per ciascun programma puoi bloccarne uno senza fermare gli altri.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Ho perso la chiave: posso rivederla?">
+    No, per sicurezza si vede solo quando la crei. Crea una **Nuova chiave**, mettila nel programma e poi revoca o elimina quella persa.
+  </Accordion>
+
+  <Accordion title="Il bottone Nuova chiave è grigio.">
+    Hai già 5 chiavi attive. Revocane o eliminane una che non usi più.
+  </Accordion>
+
+  <Accordion title="Non vedo la sezione Chiavi API.">
+    Sei un collaboratore senza il permesso **Gestione API**: chiedi al titolare di aggiungerlo al tuo utente.
+  </Accordion>
+
+  <Accordion title="Qual è la differenza tra Revoca ed Elimina?">
+    **Revoca** ferma la chiave ma la tiene: con **Riattiva** torna a funzionare. **Elimina** la cancella per sempre.
+  </Accordion>
+
+  <Accordion title="Il programma dice che la chiave non è valida.">
+    Controlla in **Chiavi API** che la chiave sia **Attiva** e che il programma la mandi nell'intestazione `X-API-Key`, copiata per intero. Una chiave revocata o eliminata non funziona più. I codici di errore sono spiegati nella [documentazione API](/mycentralino-api/introduction).
+  </Accordion>
+
+  <Accordion title="Il programma dice che ha superato il limite di richieste.">
+    Le richieste al minuto o al giorno del centralino sono finite, e valgono per tutte le chiavi insieme. Controlla la card **Utilizzo**; il programma va rallentato. Se te ne servono di più, usa **Contattaci**.
+  </Accordion>
+
+  <Accordion title="Una chiave vale per tutti i miei centralini?">
+    No, solo per quello su cui l'hai creata.
+  </Accordion>
+
+  <Accordion title="Come capisco se una vecchia chiave è ancora usata?">
+    Guarda **Ultimo utilizzo**: se dice «Mai utilizzata» o una data lontana, probabilmente non serve più. Revocala per qualche giorno: se nessun programma smette di funzionare, puoi eliminarla.
+  </Accordion>
+
+  <Accordion title="Dove trovo l'elenco delle funzioni disponibili?">
+    Nella [documentazione API](/mycentralino-api/introduction), che si apre anche dal bottone **Vai alla documentazione** nel pannello.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Creare la chiave API" icon="key" href="/centralino/come-fare/creare-la-chiave-api">
+    La guida breve, dalla creazione alla prova.
+  </Card>
+
+  <Card title="Documentazione API" icon="file-invoice" href="/mycentralino-api/introduction">
+    Funzioni, parametri, risposte, errori e limiti delle API.
+  </Card>
+
+  <Card title="Utenti e permessi" icon="users" href="/centralino/account/utenti-e-permessi">
+    Dare il permesso Gestione API a un collaboratore.
+  </Card>
+
+  <Card title="Il mio account" icon="user" href="/centralino/account/il-mio-account">
+    La scheda Accessi e sicurezza.
+  </Card>
+</CardGroup>

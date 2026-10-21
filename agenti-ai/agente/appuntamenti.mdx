@@ -1,0 +1,248 @@
+---
+title: "Appuntamenti fissati dall'agente"
+sidebarTitle: "Appuntamenti"
+description: "Come collegare l'agente AI a un calendario perché proponga gli orari liberi e prenoti al telefono: Calendario MyCentralino, Cal.com o agenda AlfaDocs."
+keywords:
+  - "agente prenota appuntamenti"
+  - "prenotazione telefonica ai"
+  - "calendario agente ai"
+  - "cal.com"
+  - "event type id"
+  - "api key cal.com"
+  - "alfadocs agenda"
+  - "prenotare visite al telefono"
+  - "spostare appuntamento"
+  - "annullare appuntamento"
+  - "tipi di appuntamento"
+  - "agenda medici"
+---
+
+Nella sezione **Appuntamenti** colleghi l'agente AI a un calendario: durante la telefonata l'agente controlla gli orari davvero liberi, li propone a chi chiama e fissa l'appuntamento. A seconda del calendario può anche riconoscere chi ha già un appuntamento e spostarlo o annullarlo.
+
+**Dove si trova:** menu degli Agenti AI → Gestione → **Agenti** → **Configura** sull'agente → sezione **Appuntamenti** · `https://cloud.mycentralino.com/wave/agenti`
+
+**Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)), quando gli Agenti AI sono attivi.
+
+## I calendari che puoi collegare
+
+L'agente lavora con **un solo calendario alla volta**. Quando ne accendi uno, gli altri si spengono da soli.
+
+| Calendario | Quando compare | Cosa fa l'agente |
+| --- | --- | --- |
+| **Calendario MyCentralino** | Solo se il Calendario MyCentralino è disponibile sul tuo account | Propone gli orari liberi dei tuoi calendari, prenota, riconosce chi ha già un appuntamento, lo sposta o lo annulla. Gestisce più servizi e più persone |
+| **Cal.com** | Sempre | Controlla le disponibilità di un tipo di evento del tuo account Cal.com e prenota |
+| **Agenda AlfaDocs** | Solo se lo studio ha collegato AlfaDocs (vedi [Integrazioni](/centralino/moduli/integrazioni)) | Riconosce il paziente dal numero, propone gli orari liberi dei medici, fissa, sposta o annulla le visite in AlfaDocs |
+
+In testa alla sezione leggi «L'agente consulta le disponibilità del calendario Cal.com e prenota per te.», oppure, se il Calendario MyCentralino è disponibile, «L'agente consulta le disponibilità del tuo calendario e prenota per te. Cal.com resta disponibile in alternativa.».
+
+<Note>
+  L'interruttore in alto a destra della sezione, accanto a **Attivo** / **Spento**, accende **Cal.com**, non l'intera sezione. Il Calendario MyCentralino e l'agenda AlfaDocs hanno il loro interruttore nel proprio riquadro, più in basso.
+</Note>
+
+Tutto quello che cambi qui vale solo dopo **Salva agente**.
+
+## Calendario MyCentralino
+
+<Info>
+  Questo riquadro compare solo se il Calendario MyCentralino è disponibile sul tuo account. Se non lo vedi, usa Cal.com o, per gli studi che lavorano con AlfaDocs, l'agenda AlfaDocs.
+</Info>
+
+«L'agente legge le disponibilità dei tuoi calendari e prenota direttamente lì, senza servizi esterni. Attivandolo, Cal.com viene disattivato.»
+
+Con l'interruttore acceso scegli **Cosa può prenotare l'agente**:
+
+| Scelta | Testo a video | Cosa succede |
+| --- | --- | --- |
+| **Tutti i tipi di appuntamento** | «Anche quelli che creerai in futuro.» | L'agente può prenotare ogni tipo di appuntamento prenotabile. Sotto leggi «Oggi:» con l'elenco attuale |
+| **Solo alcuni** | «Scegli qui sotto quali.» | Compare un elenco di caselle: nome del tipo, durata in minuti e «con» chi lo riceve (con la sede, se c'è). Spunta quelli che l'agente può prenotare |
+
+<Warning>
+  Con **Solo alcuni**, spunta almeno un tipo di appuntamento: se non ne spunti nessuno, l'agente può prenotare **tutti** i tipi, come con **Tutti i tipi di appuntamento**.
+</Warning>
+
+Se nel Calendario non c'è ancora nessun tipo di appuntamento prenotabile leggi «Non c'è ancora nessun tipo di appuntamento prenotabile: creane uno nel Calendario, collegato a un calendario con i suoi orari, poi torna qui.». Un tipo di appuntamento compare solo se è collegato ad almeno un calendario attivo. I tipi che occupano più calendari insieme non si prenotano dall'agente e non compaiono qui.
+
+In fondo al riquadro: «L'agente conosce servizi e professionisti all'inizio della chiamata, propone solo orari davvero liberi e salva il numero del chiamante sulla prenotazione. Gli avvisi partono agli indirizzi del calendario prenotato.»
+
+### Come lavora l'agente con il Calendario MyCentralino
+
+- **Propone solo orari liberi**, riassunti per fasce («dalle 9 alle 13»), e non conferma niente prima che la prenotazione sia andata a buon fine.
+- **Chiede con chi**, se il tipo di appuntamento lo prevede e lo offrono più persone; altrimenti assegna lui il primo libero.
+- **Chiede nome e cognome** e salva sulla prenotazione il numero da cui chiama la persona e il motivo della chiamata.
+- **Dice la sede**, se hai più sedi, prima di prenotare e nella conferma.
+- Se il tipo di appuntamento va confermato dallo studio, dice che la richiesta è registrata e che verrà confermata, non «confermato».
+- **Riconosce chi richiama**: se il numero ha già appuntamenti, l'agente li conosce e può spostarli o annullarli. Annulla solo dopo un «sì» esplicito; per spostare propone un orario libero e chiede conferma.
+- **Rispetta il preavviso.** Se il tipo di appuntamento chiede un preavviso per annullare o spostare (**Fino a quante ore prima**, di serie 24 ore) e l'appuntamento è più vicino di così, l'agente non lo sposta e non lo annulla: dice che per questo caso bisogna parlare con lo studio e che la persona verrà richiamata. Il preavviso vale anche quando **Chi prenota può annullare o spostare da solo** è spento.
+- Se non c'è nessun tipo di appuntamento prenotabile, non propone appuntamenti: prende nome e numero e dice che la persona verrà richiamata.
+- La prenotazione compare nel Calendario come presa dall'agente AI. Gli avvisi via email partono agli indirizzi del calendario prenotato.
+
+### Come faccio fissare appuntamenti all'agente nel Calendario MyCentralino
+
+<Steps>
+  <Step title="Prepara il Calendario">
+    Nel Calendario MyCentralino crea almeno un calendario con i suoi orari e un tipo di appuntamento collegato a quel calendario.
+  </Step>
+  <Step title="Apri la sezione Appuntamenti">
+    Nella configurazione dell'agente apri **Appuntamenti** e accendi l'interruttore del riquadro **Calendario MyCentralino**.
+  </Step>
+  <Step title="Scegli cosa può prenotare">
+    Lascia **Tutti i tipi di appuntamento** oppure scegli **Solo alcuni** e spunta i tipi.
+  </Step>
+  <Step title="Aggiorna il copione">
+    Nel copione scrivi quando proporre un appuntamento, per esempio «Se il cliente vuole venire in negozio, fissa un appuntamento».
+  </Step>
+  <Step title="Salva e prova">
+    Premi **Salva agente** e fai una telefonata di prova chiedendo un appuntamento.
+  </Step>
+</Steps>
+
+## Cal.com
+
+Per collegare un calendario Cal.com accendi l'interruttore in alto a destra della sezione. Spento, leggi «Attiva la prenotazione per collegare il tuo calendario Cal.com.».
+
+| Campo | Cosa indica | Esempio |
+| --- | --- | --- |
+| **API key Cal.com** | La chiave che permette all'agente di leggere e prenotare nel tuo account Cal.com | Inizia di solito con `cal_live_` |
+| **Event Type ID** | Il numero che identifica in Cal.com il tipo di evento da prenotare | `123456` |
+
+Entrambi si trovano nel tuo account Cal.com. L'agente prenota un solo tipo di evento: quello indicato in **Event Type ID**.
+
+### Come lavora l'agente con Cal.com
+
+- Controlla le disponibilità del tipo di evento e propone solo gli orari restituiti da Cal.com.
+- Conferma data, ora e nome con chi chiama, poi prenota. Sulla prenotazione mette il nome detto da chi chiama e il suo numero.
+- Con Cal.com l'agente **prenota soltanto**: non sposta e non annulla appuntamenti già presi.
+
+### Come collego Cal.com
+
+<Steps>
+  <Step title="Prendi i dati da Cal.com">
+    Nel tuo account Cal.com crea una chiave API e annota il numero del tipo di evento da far prenotare.
+  </Step>
+  <Step title="Accendi Cal.com">
+    Nella configurazione dell'agente apri **Appuntamenti** e accendi l'interruttore in alto a destra.
+  </Step>
+  <Step title="Compila i campi">
+    Incolla la chiave in **API key Cal.com** e scrivi il numero in **Event Type ID**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva agente** e fai una telefonata di prova.
+  </Step>
+</Steps>
+
+<Note>
+  Se salvi con l'interruttore acceso ma **API key Cal.com** vuota, il collegamento non viene registrato e alla riapertura l'interruttore è di nuovo spento.
+</Note>
+
+## Agenda AlfaDocs
+
+<Info>
+  Questo riquadro compare solo se lo studio ha collegato AlfaDocs al centralino. Come si collega: [Integrazioni](/centralino/moduli/integrazioni).
+</Info>
+
+«L'agente riconosce il paziente dal numero, propone gli orari liberi dell'agenda AlfaDocs e fissa, sposta o annulla le visite direttamente lì. Attivandolo, gli altri calendari vengono disattivati.»
+
+Con l'interruttore acceso compaiono:
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Medici che ricevono prenotazioni dall'agente** | I medici per cui l'agente può prenotare | Caselle, una per medico. Alla prima accensione sono tutte spuntate |
+| **Tipi di visita prenotabili** | Le visite che l'agente può fissare | **Tutti i motivi di prenotazione** («Anche quelli che aggiungerai in AlfaDocs.») oppure **Solo alcuni** («Scegli qui sotto quali.»), con nome e durata di ogni visita |
+
+Sotto i medici: «Gli orari li prende dall'agenda di ciascun medico in AlfaDocs: un medico senza orari non avrà mai posti liberi. Chi non è spuntato non compare al telefono.»
+
+In fondo: «Con chiamata anonima l'agente non prenota e lo dice al chiamante. Il paziente nuovo viene creato in AlfaDocs con nome, cognome e numero; la visita nasce già confermata in agenda.»
+
+Se in AlfaDocs non ci sono medici attivi leggi «Nessun medico attivo in AlfaDocs: aggiungi gli operatori e i loro orari nel gestionale, poi torna qui.».
+
+<Warning>
+  Lascia spuntato almeno un medico e, con **Solo alcuni**, almeno un tipo di visita: se togli tutte le spunte, l'agente può prenotare per tutti i medici e tutte le visite.
+</Warning>
+
+### Come lavora l'agente con AlfaDocs
+
+- Riconosce il paziente dal numero da cui chiama e conosce le sue visite già in agenda: può spostarle o annullarle, sempre dopo un «sì» esplicito.
+- Chiede il tipo di visita e, se più medici la fanno, con quale medico.
+- Per un paziente nuovo chiede nome e cognome: la scheda viene creata in AlfaDocs con questi dati e il numero.
+- Con un numero nascosto non prenota: spiega che le prenotazioni al telefono si fanno chiamando con il numero visibile.
+
+### Come faccio prenotare le visite in AlfaDocs
+
+<Steps>
+  <Step title="Controlla AlfaDocs">
+    In AlfaDocs verifica che i medici abbiano i loro orari in agenda.
+  </Step>
+  <Step title="Accendi l'agenda">
+    Nella configurazione dell'agente apri **Appuntamenti** e accendi l'interruttore del riquadro **Agenda AlfaDocs**.
+  </Step>
+  <Step title="Scegli medici e visite">
+    Togli la spunta ai medici che non devono ricevere prenotazioni dal telefono. In **Tipi di visita prenotabili** lascia **Tutti i motivi di prenotazione** o scegli **Solo alcuni**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva agente** e fai una telefonata di prova.
+  </Step>
+</Steps>
+
+## Da sapere
+
+- **Un calendario alla volta.** Accendere Calendario MyCentralino, Cal.com o agenda AlfaDocs spegne gli altri due.
+- L'agente non chiede l'indirizzo email a chi chiama: chi prenota al telefono non riceve un'email di conferma dall'agente.
+- Nel menu delle sezioni, **Appuntamenti** mostra **Attivo** quando sono accesi Cal.com o il Calendario MyCentralino. Con l'agenda AlfaDocs la scritta non compare: per sapere se è accesa, apri la sezione e guarda l'interruttore del riquadro.
+- Per prenotare bene serve il modello **Claude Haiku 4.5 (consigliato)** in **Identità e copione**: i modelli più leggeri a volte confermano senza aver controllato il calendario. Vedi [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce).
+- Ogni prenotazione presa dall'agente si ritrova anche nella trascrizione della chiamata, nello [Storico chiamate](/agenti-ai/storico-chiamate), con le azioni «Verifica disponibilità calendario» e «Prenotazione appuntamento».
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Posso collegare due calendari allo stesso agente?">
+    No, uno solo alla volta. Se ti servono due calendari diversi (per esempio due sedi con strumenti diversi), crea due agenti.
+  </Accordion>
+
+  <Accordion title="L'agente può proporre un orario già occupato?">
+    L'agente è istruito a proporre solo gli orari che il calendario gli restituisce come liberi e a confermare solo quando la prenotazione è andata a buon fine. Se nel frattempo qualcuno prende quell'orario, la prenotazione non va e l'agente propone un'alternativa.
+  </Accordion>
+
+  <Accordion title="Un cliente vuole spostare o annullare l'appuntamento al telefono.">
+    Con il Calendario MyCentralino e con AlfaDocs l'agente lo riconosce dal numero e può spostare o annullare, dopo una conferma esplicita. Con Cal.com no: l'agente prenota soltanto. Con il Calendario MyCentralino l'agente rispetta il preavviso del tipo di appuntamento: un appuntamento troppo vicino non lo sposta e non lo annulla.
+  </Accordion>
+
+  <Accordion title="Chi riceve l'avviso della nuova prenotazione?">
+    Con il Calendario MyCentralino gli avvisi partono agli indirizzi email del calendario prenotato. Se vuoi anche il riassunto della chiamata, accendi **Riepilogo via email** in **Post-chiamata** (vedi [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata)).
+  </Accordion>
+
+  <Accordion title="Non vedo il riquadro «Calendario MyCentralino».">
+    Il Calendario MyCentralino non è disponibile sul tuo account. Puoi usare Cal.com.
+  </Accordion>
+
+  <Accordion title="Non vedo il riquadro «Agenda AlfaDocs».">
+    Lo studio non ha collegato AlfaDocs, oppure il collegamento non è più valido. Controlla in [Integrazioni](/centralino/moduli/integrazioni).
+  </Accordion>
+
+  <Accordion title="L'agente dice che non ci sono posti liberi, ma l'agenda è vuota.">
+    Controlla gli orari: l'agente propone solo orari dentro gli orari del calendario (o dell'agenda del medico in AlfaDocs). Un calendario o un medico senza orari non ha mai posti liberi.
+  </Accordion>
+
+  <Accordion title="Ho acceso Cal.com ma dopo il salvataggio risulta spento.">
+    Manca la **API key Cal.com**: scrivila, insieme all'**Event Type ID**, e salva di nuovo.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Istruzioni e voce" icon="microphone" href="/agenti-ai/agente/istruzioni-e-voce">
+    Modello AI e copione per prenotare bene.
+  </Card>
+
+  <Card title="Integrazioni" icon="gear" href="/centralino/moduli/integrazioni">
+    Collegare AlfaDocs al centralino.
+  </Card>
+
+  <Card title="Dopo la chiamata" icon="envelope" href="/agenti-ai/agente/dopo-la-chiamata">
+    Ricevere il riassunto di ogni chiamata.
+  </Card>
+
+  <Card title="Storico chiamate" icon="list" href="/agenti-ai/storico-chiamate">
+    Controllare cosa ha prenotato l'agente.
+  </Card>
+</CardGroup>

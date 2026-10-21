@@ -1,0 +1,170 @@
+---
+title: "WhatsApp con il QR"
+sidebarTitle: "WhatsApp"
+description: "Per chi usa già il WhatsApp collegato con il QR: ricollegare il numero, preparare i messaggi automatici e usarli nelle Regole delle chiamate. Il modulo non si attiva più."
+keywords:
+  - "whatsapp"
+  - "whatsapp business"
+  - "qr"
+  - "qr code"
+  - "collegare whatsapp"
+  - "istanza"
+  - "messaggio automatico"
+  - "messaggio dopo la chiamata"
+  - "dispositivi collegati"
+  - "whatsapp legacy"
+---
+
+Questa pagina è per chi ha già il modulo **WhatsApp** collegato con il QR. Con questo modulo un numero WhatsApp viene collegato al centralino inquadrando un codice QR, e su quel numero si preparano dei messaggi pronti (nella pagina il campo del testo si chiama **Messaggio inviato al cliente**). Il centralino li manda su WhatsApp quando la chiamata arriva al passaggio **Invio messaggio WhatsApp Legacy** delle Regole delle chiamate.
+
+<Warning>
+  Il collegamento con il QR è in dismissione e non si attiva più. Chi lo ha continua a usarlo. Nella pagina un avviso lo ricorda: «Il collegamento con il QR è in dismissione.» con il bottone **Passa a WhatsApp API ›**. WhatsApp: guida in arrivo.
+</Warning>
+
+**Dove si trova:** Menu → **I tuoi moduli** → Comunicazione → **WhatsApp** · `https://cloud.mycentralino.com/whatsapp`. Il titolo della pagina è **WhatsApp Business**.
+
+**Chi la vede:** solo chi ha il modulo WhatsApp attivo. Un collaboratore la vede se gli hai dato il permesso **Solo WhatsApp** oppure **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
+
+Chi non ha il modulo e apre l'indirizzo legge «Questo modulo non è più attivabile» e «Se ti serve gestire WhatsApp dal centralino, scrivici: ti diciamo qual è la strada giusta oggi.», con il bottone **Apri un ticket**.
+
+## Cosa trovi nella pagina
+
+Nel pannello il numero collegato si chiama **istanza**. Ogni centralino ne può avere una sola.
+
+La card dell'istanza mostra la foto e il nome del profilo WhatsApp e la pill **WhatsApp**. Sotto il nome c'è una riga con il numero collegato o il nome che gli hai dato con **Etichetta** (per un collegamento nuovo è «Nuovo WhatsApp»). Poi lo stato e i bottoni.
+
+| Stato | Cosa vuol dire | Bottone |
+| --- | --- | --- |
+| **● Attivo** (verde) | Il numero è collegato e funziona. | **Configura**, **Logout** |
+| **● Qr** (giallo) | Il collegamento si è interrotto: va inquadrato di nuovo il QR. | **QR Code** |
+| **● Qr - Migrazione richiesta** (giallo), o un'altra voce che inizia con «Qr - Migrazione» | Il collegamento va rifatto una volta sola. | **Riassocia** |
+| **● Errore** (rosso) | C'è un problema: in alto compare «Una o più istanze sono in errore.» | Nessuno: contatta l'assistenza |
+
+Su ogni card c'è anche **Etichetta**. Il bottone con la **i** in alto spiega la pagina.
+
+Se non c'è ancora nessuna istanza compare «Nessuna istanza WhatsApp configurata» con il bottone **Aggiungi istanza**, che crea il collegamento e apre la pagina del QR.
+
+## Come fare
+
+### Come ricollego il numero quando lo stato è «Qr»
+
+<Steps>
+  <Step title="Apri la pagina del QR">
+    Sulla card premi **QR Code** (oppure **Riassocia**, se lo stato è di migrazione). Si apre **Collega WhatsApp**.
+  </Step>
+  <Step title="Apri WhatsApp sul telefono">
+    Apri WhatsApp Business (o WhatsApp) sul telefono del numero collegato e vai in **Dispositivi collegati**: su Android dai tre puntini in alto a destra, su iPhone da **Impostazioni**.
+  </Step>
+  <Step title="Inquadra il codice">
+    Tocca **Collega un dispositivo** e inquadra il QR mostrato nel pannello.
+  </Step>
+  <Step title="Aspetta il ritorno">
+    La pagina si aggiorna da sola ogni 3 secondi. Quando il collegamento riesce, torni all'elenco e lo stato diventa **Attivo**.
+  </Step>
+</Steps>
+
+Mentre il codice si prepara leggi «Preparazione QR…» o «In attesa del QR…». Se compare **La sessione non risponde** («Il collegamento non è partito. Riavvia la sessione e riprova.»), premi **Riavvia la sessione**. Per uscire senza collegare c'è **Annulla e torna alle istanze**.
+
+### Come preparo un messaggio automatico
+
+Nel pannello i messaggi pronti si chiamano **moduli**.
+
+<Steps>
+  <Step title="Apri Configura">
+    Sulla card del numero, con stato **Attivo**, premi **Configura**. Si apre **Configura WhatsApp**, con l'elenco dei messaggi.
+  </Step>
+  <Step title="Crea il messaggio">
+    Premi **Aggiungi modulo**, scrivi il **Nome modulo** (per esempio «Conferma appuntamento») e premi **Crea e configura**.
+  </Step>
+  <Step title="Scrivi il testo">
+    In **Configura modulo WhatsApp** scrivi il **Messaggio inviato al cliente** e, se vuoi, l'**URL immagine (opzionale)**. A destra l'**Anteprima chat** si aggiorna mentre scrivi.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva modulo**. Compare «Modulo aggiornato.» e torni all'elenco.
+  </Step>
+</Steps>
+
+### Come faccio partire il messaggio durante una chiamata
+
+<Steps>
+  <Step title="Apri le Regole delle chiamate">
+    Nel menu apri **Regole delle chiamate** e scegli il numero o il servizio interno che vuoi usare (vedi [Editor delle regole](/centralino/regole/editor)).
+  </Step>
+  <Step title="Aggiungi il passaggio">
+    Premi **Aggiungi regola**, apri l'argomento **Notifiche** e scegli **Invio messaggio WhatsApp Legacy**.
+  </Step>
+  <Step title="Scegli il messaggio">
+    Seleziona il **Modulo WhatsApp** da mandare e premi **Aggiungi regola**. Il passaggio si salva subito.
+  </Step>
+</Steps>
+
+Nell'elenco di **Configura WhatsApp** la colonna **Utilizzato in** mostra i numeri e i servizi interni che usano ogni messaggio, oppure **Non utilizzato**.
+
+### Come scollego il numero
+
+Sulla card premi **Logout** e conferma con **Disconnetti**. Per ricollegarlo va inquadrato di nuovo il QR.
+
+## I campi
+
+| Campo | Dove | Cosa indica | Limiti |
+| --- | --- | --- | --- |
+| **Nome istanza** | **Etichetta** → **Rinomina istanza** | Un nome interno per riconoscere il numero (es. «Reception»). Prende il posto della riga sotto il nome del profilo. Dopo un **Logout** torna «Nuovo WhatsApp». | Obbligatorio, massimo 50 caratteri |
+| **Nome modulo** | **Aggiungi modulo** e **Configura modulo WhatsApp** | Il nome con cui scegli il messaggio nelle Regole delle chiamate. | Obbligatorio, massimo 50 caratteri, servono lettere o numeri |
+| **Messaggio inviato al cliente** | **Configura modulo WhatsApp** | Il testo che compare in chat. Il contatore mostra «N / 3000». | Massimo 3000 caratteri |
+| **URL immagine (opzionale)** | **Configura modulo WhatsApp** | L'indirizzo web di un'immagine mandata insieme al messaggio (logo, foto prodotto, mappa). | Indirizzo pubblico che inizia con `https://`, massimo 500 caratteri |
+
+## Da sapere
+
+- **Una sola istanza per centralino.** Se ne esiste già una: «C'è già un'istanza WhatsApp configurata per questo centralino.»
+- **Con il numero scollegato i messaggi non partono.** Lo dice anche la finestra di **Logout**: «I messaggi automatici configurati non verranno inviati finché l'istanza resterà disconnessa.»
+- **Segni nel testo.** Nel **Messaggio inviato al cliente** l'apostrofo viene salvato come trattino e il punto e virgola come punto. Nel **Nome modulo** sono ammessi lettere, numeri, spazi, punto, trattino e trattino basso: gli altri segni diventano trattini bassi.
+- **Condizioni del modulo.** La prima volta, e quando le condizioni cambiano, si apre la finestra per accettarle: si spuntano le clausole una per una, la dichiarazione finale e si preme **Confermo e accetto**. Se le condizioni cambiano quando il numero è già collegato, un avviso giallo dà 14 giorni di tempo («Hai ancora N giorni per farlo.», bottone **Leggi e accetta**); dopo la finestra diventa obbligatoria.
+- **Cambiare il nome di un messaggio già usato.** Dopo il cambio, in **Configura WhatsApp** la colonna **Utilizzato in** non riconosce più le regole che lo usano e mostra **Non utilizzato**. Anche **Elimina** non avvisa più che il messaggio è in uso. Prima di eliminare un messaggio rinominato, controlla le regole dei tuoi numeri.
+
+<Warning>
+  **Elimina** (il cestino nell'elenco dei messaggi) cancella il messaggio per sempre. Per confermare va scritto il nome esatto del messaggio e premuto **Elimina definitivamente**. Se il messaggio è usato nelle regole, la finestra avvisa «Attenzione: modulo in uso»: quei numeri o servizi interni non manderanno più il messaggio.
+</Warning>
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Posso attivare oggi WhatsApp con il QR?">
+    No, il collegamento con il QR non si attiva più. Se ti serve WhatsApp sul centralino, apri una [richiesta di assistenza](/centralino/assistenza/richieste-di-assistenza). WhatsApp: guida in arrivo.
+  </Accordion>
+
+  <Accordion title="Il messaggio automatico non parte più. Cosa controllo?">
+    Prima di tutto lo stato del numero in **WhatsApp**: deve essere **Attivo**. Se è **Qr**, ricollegalo inquadrando il QR. Poi controlla in **Configura WhatsApp** che il messaggio risulti **Utilizzato in** sul numero giusto. Se nel frattempo hai cambiato il nome del messaggio, la colonna non è più affidabile: controlla direttamente nelle **Regole delle chiamate** del numero che ci sia il passaggio **Invio messaggio WhatsApp Legacy**.
+  </Accordion>
+
+  <Accordion title="Perché la pagina dice «Modulo» se è un messaggio?">
+    Nella pagina WhatsApp ogni messaggio pronto si chiama «modulo». Non è un modulo del centralino da attivare: è solo il testo da mandare.
+  </Accordion>
+
+  <Accordion title="Posso collegare un secondo numero WhatsApp?">
+    No, ogni centralino ha una sola istanza.
+  </Accordion>
+
+  <Accordion title="Come disattivo il modulo WhatsApp?">
+    Apri `https://cloud.mycentralino.com/moduli/attiva/whatsapp`: la pagina dice «Modulo già attivo». Premi **Richiedi disattivazione**, scrivi un motivo se vuoi e premi **Invia richiesta**. L'assistenza ti ricontatta per tempi e dettagli.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Passaggi dei moduli" icon="sitemap" href="/centralino/regole/passaggi-moduli">
+    Il passaggio Invio messaggio WhatsApp Legacy.
+  </Card>
+
+  <Card title="Editor delle regole" icon="list" href="/centralino/regole/editor">
+    Aggiungere un passaggio a un numero.
+  </Card>
+
+  <Card title="I tuoi moduli" icon="list" href="/centralino/moduli/i-tuoi-moduli">
+    I moduli del centralino e come si disattivano.
+  </Card>
+
+  <Card title="Utenti e permessi" icon="user" href="/centralino/account/utenti-e-permessi">
+    Il permesso Solo WhatsApp.
+  </Card>
+</CardGroup>

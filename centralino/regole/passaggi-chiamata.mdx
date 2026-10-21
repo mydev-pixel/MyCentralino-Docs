@@ -1,0 +1,312 @@
+---
+title: "Passaggi che instradano la chiamata"
+sidebarTitle: "Passaggi: instradare"
+description: "Catalogo dei passaggi che rispondono, fanno squillare o portano altrove la chiamata: interni, code, servizi interni, inoltro al cellulare, conferenza, segreteria, menù vocali, PIN e codici, agente AI."
+keywords:
+  - "fai squillare interni"
+  - "coda di ricezione"
+  - "inoltra al cellulare"
+  - "inoltro numero esterno"
+  - "segreteria"
+  - "menù vocale"
+  - "ivr"
+  - "disa"
+  - "termina chiamata"
+  - "prendo in carico"
+  - "agente ai"
+  - "conferenza"
+  - "servizio interno"
+  - "pin"
+  - "codice cliente"
+---
+
+Questa pagina descrive, uno per uno, i passaggi della finestra **Aggiungi regola** che rispondono alla chiamata, la fanno squillare o la portano altrove. Per ciascuno trovi il nome esatto, l'argomento in cui si trova, a cosa serve e i campi da compilare.
+
+**Dove si trova:** Menu → **Regole chiamate** → clic su un numero o servizio interno → **Aggiungi regola** · `https://cloud.mycentralino.com/regole`
+
+**Chi la vede:** chi può modificare le **Regole delle chiamate**.
+
+Come si apre la finestra e come si usa sono spiegati in [Editor delle regole](/centralino/regole/editor). Gli altri passaggi sono in [Orari, filtri e dettagli](/centralino/regole/passaggi-filtri) e in [Notifiche, registrazioni e moduli](/centralino/regole/passaggi-moduli).
+
+## In sintesi
+
+| Passaggio | Argomento | Etichetta sulla scheda | Cosa fa |
+| --- | --- | --- | --- |
+| **Prendo in carico la chiamata** | Regole più usate | RISPONDI | Risponde subito alla chiamata |
+| **Fai squillare uno o più interni VoIP** | Inoltra la chiamata | INTERNI | Fa squillare insieme i telefoni scelti |
+| **Inoltra la chiamata a una coda di ricezione** | Inoltra la chiamata · Regole più usate | CODA | Mette chi chiama in coda, con l'attesa |
+| **Inoltra la chiamata a un servizio interno** | Inoltra la chiamata | SERVIZIO INTERNO | Passa la chiamata ai passaggi di un servizio interno |
+| **Inoltra a numero telefonico esterno** | Inoltra la chiamata | INOLTRO | Gira la chiamata a un cellulare o a un altro numero |
+| **Servizio MySegretaria** | Inoltra la chiamata | MYSEGRETARIA | Si attiva tramite l'assistenza |
+| **Conferenza telefonica** | Inoltra la chiamata | CONFERENZA | Porta chi chiama in una stanza di conferenza |
+| **Interno diretto DISA** | Inoltra la chiamata | DISA | Chi chiama digita l'interno che vuole |
+| **Termina chiamata** | Inoltra la chiamata | CHIUDI | Chiude la chiamata |
+| **Segreteria telefonica** | Notifiche | SEGRETERIA | Chi chiama lascia un messaggio |
+| **Menù vocale (IVR)** | Menù vocali (IVR) · Regole più usate | IVR | «Premi 1 per…» |
+| **Menù vocale (IVR) a 2 cifre** | Menù vocali (IVR) | IVR2 | Chi chiama digita due cifre |
+| **Servizi basati su PIN** | Menù vocali (IVR) | PIN SERVICES | Serve un PIN per entrare |
+| **Filtro per codice numerico** | Menù vocali (IVR) | CODICE CLIENTE | Chi chiama digita un codice di 4 cifre |
+| **Servizi basati su CallerID** | Impostazioni avanzate | VERIFICA CALLER ID | Riconosce chi chiama per i servizi a consumo |
+| **Agente AI realtime** | AI | AGENTE AI | Risponde un agente AI |
+
+## Prendo in carico la chiamata
+
+**Argomento:** Regole più usate · **Si aggiunge subito**
+
+Risponde subito alla chiamata, così i passaggi successivi possono parlare con chi chiama: un messaggio, un menù vocale, una registrazione. Da quel momento la chiamata risulta risposta e per chi chiama comincia a essere a pagamento: usalo solo se ti serve «prendere la linea» subito.
+
+Non ha campi. Se aggiungi una coda come prima regola di un numero ancora vuoto, questo passaggio viene messo da solo sopra la coda.
+
+## Fai squillare uno o più interni VoIP
+
+**Argomento:** Inoltra la chiamata
+
+Fa squillare **contemporaneamente** gli interni scelti: il primo che risponde prende la chiamata. Se nessuno risponde entro il tempo scelto, la chiamata passa alla regola successiva (di solito una segreteria). Non ha musica d'attesa né modi di squillo diversi: per quelli c'è la coda.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Interni da far squillare** | Chi deve squillare. Tessere da spuntare, con la ricerca **Cerca interno…** e il contatore «scelti/totali». Il pallino dice lo stato adesso; passandoci sopra leggi **Libero** (verde), **Al telefono** (rosso, o ambra lampeggiante se sta chiamando), **Squilla** (ambra lampeggiante) o **Non collegato** (grigio). | Almeno un interno |
+| **Fai squillare per** | Quanto a lungo squillano | 1 secondo, 10, 20, 30, **45 secondi (consigliato)** (proposto), 60, 90, 180 secondi |
+
+Sotto l'elenco: «Eventuali follow-me (cellulari o secondi dispositivi associati allo stesso interno) verranno aggiunti automaticamente al gruppo di squillo.»
+
+- Senza interni: «Nessun interno VoIP configurato per questo centralino.». Gli interni si creano in [Interni](/centralino/telefoni-e-numeri/interni).
+- Errori: «Seleziona almeno un interno.», «Nessun interno valido trovato.».
+- Per cambiare gli interni dopo, elimina il passaggio e aggiungilo di nuovo.
+
+## Inoltra la chiamata a una coda di ricezione
+
+**Argomento:** Inoltra la chiamata (anche in Regole più usate)
+
+Mette chi chiama nella coda scelta: gli operatori squillano come previsto dalla coda e chi aspetta sente la musica d'attesa. Tempo massimo di attesa, musica, operatori e modo di squillo si impostano **nella coda**, non qui. Se nessuno risponde entro il tempo della coda, la chiamata passa alla regola successiva.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Coda di ricezione** | La coda in cui entra la chiamata. Per ognuna vedi il modo di squillo (con il suo nome tecnico, per esempio ringall = squillano tutti insieme), quanti operatori ha e l'attesa massima («attesa max Ns»). Ricerca **Cerca coda…**; **Nuovo** crea una coda. | Una coda |
+
+- Senza code: «Nessuna coda di ricezione configurata per questo centralino.» con **Crea la prima coda**.
+- Errori: «Seleziona una coda di ricezione.», «Coda non trovata per questo centralino.».
+- Se cambi la coda (operatori, attesa, musica) il passaggio usa subito le impostazioni nuove. Vedi [Code di ricezione](/centralino/instradamento/code-di-ricezione).
+
+## Inoltra la chiamata a un servizio interno
+
+**Argomento:** Inoltra la chiamata
+
+Passa la chiamata a un servizio interno, che continua con i suoi passaggi. La chiamata non torna indietro: i passaggi messi sotto questo, di norma, non vengono raggiunti.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Servizio interno** | Dove va la chiamata. Schede con numero e nome; ricerca **Cerca servizio interno…**. | Un servizio interno |
+
+- Senza servizi interni la finestra dice «Nessun servizio interno configurato per questo centralino.». Si aggiungono da **Aggiungi funzionalità**: vedi [Servizi interni](/centralino/regole/servizi-interni).
+- Errori: «Seleziona un servizio interno.», «Servizio interno non trovato.».
+- **Dopo:** nella finestra di dettaglio puoi cambiare il **Servizio interno**; sotto vedi l'anteprima **Regole del servizio** («Questo servizio non ha ancora regole configurate.» se è vuoto) e **Apri il servizio interno**. Nello schema, «apri il servizio» sotto la scheda apre i suoi passaggi.
+
+## Inoltra a numero telefonico esterno
+
+**Argomento:** Inoltra la chiamata
+
+Gira la chiamata a un numero esterno (un cellulare, un'altra sede, un altro centralino), passando da una linea in uscita del centralino. Se il numero non risponde entro il tempo scelto, la chiamata passa alla regola successiva.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Numero a cui inoltrare** | Il numero, scelto dalla rubrica di [Inoltro chiamate](/centralino/instradamento/inoltro-chiamate). Non si scrive un numero a mano. Ricerca **Cerca numero…**; **Nuovo** aggiunge un numero alla rubrica. | Un numero della rubrica |
+| **Squilla per** | Quanto a lungo squilla il numero esterno | 5, 10, 15, 20, 25, 30, 35, 40, **45** (proposto), 60, 90, 180 secondi |
+| **Provider di uscita** | La linea da cui parte la chiamata. Quella principale è indicata «(PRINCIPALE)» ed è già proposta. «— non configurato» segnala una linea da completare. | Una delle tue linee in uscita |
+| **Inoltro avanzato** | «Prova a contattare il numero per tre volte con intervalli di 30 secondi. Utile quando il cellulare è temporaneamente non raggiungibile o occupato.» | Spuntato / non spuntato |
+
+- Senza numeri in rubrica: «Nessun numero in rubrica di inoltro.» con **Aggiungi il primo numero**.
+- Senza linee in uscita: «Nessun provider di uscita configurato per questo centralino.» con **Configura un provider**, che apre [Numeri in uscita](/centralino/telefoni-e-numeri/numeri-in-uscita).
+- Errori: «Seleziona il numero a cui inoltrare.», «Seleziona un provider di uscita.», «Numero non trovato in rubrica.», «Numero in rubrica non valido.», «Provider non trovato per questo centralino.».
+
+<Note>
+  La chiamata inoltrata verso l'esterno è una chiamata in uscita del centralino e viene addebitata come le altre chiamate in uscita.
+</Note>
+
+Guida completa: [Inoltrare al cellulare](/centralino/come-fare/inoltrare-al-cellulare).
+
+## Servizio MySegretaria
+
+**Argomento:** Inoltra la chiamata
+
+Il servizio di segretariato remoto: un team di segretarie risponde alle chiamate al posto tuo. Questo passaggio si attiva tramite l'assistenza. Senza il modulo la tessera è grigia con **Modulo non attivo**; con il modulo la finestra dice «La regola di instradamento verso MySegretaria viene configurata dal nostro staff: se è la prima volta che la attivi, contattaci telefonicamente o apri un ticket di assistenza.» e c'è solo **Torna al catalogo**. Vedi [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza).
+
+## Conferenza telefonica
+
+**Argomento:** Inoltra la chiamata
+
+Porta chi chiama nella stanza di conferenza scelta. PIN, amministratori e messaggio di benvenuto sono quelli impostati sulla stanza.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Stanza di conferenza** | La stanza. Ricerca **Cerca stanza…**. | Una stanza |
+
+- Senza stanze: «Nessuna stanza di conferenza configurata per questo centralino.» con **Crea una stanza**, che apre [Conferenze](/centralino/strumenti/conferenze).
+- Errori: «Seleziona una conferenza.», «Conferenza non trovata per questo centralino.».
+
+## Interno diretto DISA
+
+**Argomento:** Inoltra la chiamata · **Si aggiunge subito**
+
+Chi chiama digita il numero di un interno e parla direttamente con lui. Si raggiungono solo gli interni del centralino: niente numeri esterni né cellulari, nessun PIN. Se il numero digitato non è un interno, o l'interno non risponde entro 25 secondi, la chiamata passa alla regola successiva.
+
+Utile per clienti e fornitori che conoscono l'interno della persona e vogliono saltare il menù.
+
+## Termina chiamata
+
+**Argomento:** Inoltra la chiamata · **Si aggiunge subito**
+
+Chiude la chiamata: i passaggi sotto vengono ignorati. Si usa come ultimo passaggio, per esempio dopo un messaggio «siamo chiusi», così la chiamata non finisce in coda o in segreteria.
+
+## Segreteria telefonica
+
+**Argomento:** Notifiche
+
+Chi chiama sente il saluto della casella e lascia un messaggio, che arriva per email all'indirizzo impostato sulla casella. Dopo la segreteria la chiamata è chiusa: i passaggi sotto non vengono raggiunti.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Casella vocale** | La segreteria che riceve il messaggio: numero della casella, interno, nome ed email. Ricerca **Cerca per mailbox, interno, nome o email…**. | Una casella |
+
+- Sotto l'elenco: «Per configurare email di recapito o greeting apri la sezione caselle vocali».
+- Senza caselle: «Nessuna casella vocale configurata per questo centralino.» con **Configura segreterie**.
+- Errori: «Seleziona una casella vocale.», «Casella non trovata per questo centralino.».
+- **Dopo:** nella finestra di dettaglio puoi cambiare la **Casella vocale**. Email e saluto si cambiano in [Segreterie](/centralino/strumenti/segreterie).
+
+## Menù vocale (IVR)
+
+**Argomento:** Menù vocali (IVR) (anche in Regole più usate) · **Divide la chiamata**
+
+Risponde, fa sentire il messaggio del menù e aspetta che chi chiama prema un tasto da 0 a 9: la chiamata va alla destinazione di quel tasto. Messaggio e destinazioni dei tasti si impostano nel menù, in [Menù vocali (IVR)](/centralino/instradamento/menu-vocali). Come indica la pagina del menù, se chi chiama non preme nessun tasto entro 10 secondi, o preme un tasto non usato, la chiamata si chiude. I passaggi messi sotto il menù di norma non vengono raggiunti.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **IVR disponibili** | Il menù da usare: nome, quanti tasti ha e il messaggio. Ricerca **Cerca per nome o audio…**; **Nuovo** crea un menù. | Un menù |
+
+- Senza menù: «Nessun IVR configurato per questo centralino.» con **Crea il primo IVR**.
+- Errori: «Seleziona un IVR.», «IVR non trovato per questo centralino.».
+- Nello schema la scheda elenca i tasti e dove portano; nella finestra di dettaglio trovi **Messaggio di benvenuto** e **Tasti del menù**.
+
+Guida completa: [Creare un menù vocale](/centralino/come-fare/creare-un-menu-vocale).
+
+## Menù vocale (IVR) a 2 cifre
+
+**Argomento:** Menù vocali (IVR) · **Divide la chiamata**
+
+Chi chiama digita **due cifre** e la chiamata va al servizio interno formato dal prefisso più le due cifre. Esempio: prefisso 4, chi chiama digita 12 → servizio interno 412. Utile per reparti numerati («digita il numero del reparto»).
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **IVR** | Il menù di cui si usa il messaggio. Ricerca **Cerca IVR…**; **Nuovo** crea un menù. | Un menù |
+| **Prefisso destinazione** | La prima cifra dei servizi interni di arrivo | **4xx** (proposto), **5xx**, **6xx**, **7xx** |
+
+- Errori: «Seleziona un IVR.», «IVR non trovato.».
+- I servizi interni di arrivo devono esistere e avere i loro passaggi.
+
+## Servizi basati su PIN
+
+**Argomento:** Menù vocali (IVR)
+
+Chi chiama deve inserire un PIN valido per entrare nel servizio interno scelto. I PIN si gestiscono in [Accesso con PIN](/centralino/servizi-a-consumo/accesso-con-pin).
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Servizio interno** | Dove entra chi ha un PIN valido. Ricerca **Cerca servizio interno…**. | Un servizio interno |
+
+- Errori: «Seleziona un servizio interno.», «Servizio interno non trovato.».
+
+## Filtro per codice numerico
+
+**Argomento:** Menù vocali (IVR) · **Si aggiunge subito**
+
+Chiede a chi chiama un codice di 4 cifre e manda la chiamata alla destinazione associata a quel codice. I codici si impostano in [Codici servizio](/centralino/servizi-a-consumo/codici-servizio).
+
+## Servizi basati su CallerID
+
+**Argomento:** Impostazioni avanzate
+
+Pensato per i servizi a consumo: riconosce chi chiama dal suo numero su un profilo e, se è valido, porta la chiamata al servizio interno scelto scalando i secondi di conversazione a chi chiama. Nello schema la scheda dice «Verifica il chiamante sul profilo …» e «Se valido, inoltra la chiamata al servizio interno scalando i secondi di conversazione al chiamante». Vedi [Servizi prepagati](/centralino/servizi-a-consumo/servizi-prepagati).
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Profilo** | Il profilo su cui si verifica chi chiama. **NA** = nessuna differenziazione. | NA, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 |
+| **Servizio interno** | Dove va la chiamata se la verifica va bene. Ricerca **Cerca servizio interno…**. | Un servizio interno |
+
+- Errori: «Seleziona un servizio interno.», «Servizio interno non trovato.».
+
+## Agente AI realtime
+
+**Argomento:** AI
+
+Passa la chiamata a un agente AI (modulo **Agenti AI**), che risponde e parla con chi chiama in linguaggio naturale.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Connessione VoIP** | Il collegamento telefonico degli Agenti AI verso cui va la chiamata. Compaiono solo i collegamenti con un agente assegnato; senza nome compaiono come «Connessione senza nome». | Un collegamento |
+
+- Senza collegamenti: «Nessun collegamento telefonico configurato negli Agenti AI.» e «Crealo prima dalla sezione Agenti AI.»; con collegamenti ma senza agente: «Le connessioni VoIP esistono ma nessuna ha un agente assegnato.» e «Assegna un agente ad almeno un collegamento dalla sezione Agenti AI.». In tutti e due i casi **Apri Agenti AI** apre la pagina dei collegamenti in una nuova scheda.
+- Errori: «Seleziona una connessione VoIP.», «Connessione VoIP non trovata.», «La connessione non ha un agente assegnato.».
+- **Dopo:** nella finestra di dettaglio c'è **Connessione AI** con **Apri l'agente**, che apre l'agente in una nuova scheda.
+
+Guida completa: [Collegare un numero all'agente AI](/agenti-ai/collegare-un-numero).
+
+## Da sapere
+
+- **Dopo questi passaggi la sequenza spesso si ferma.** Segreteria, Termina chiamata, servizio interno e menù vocale chiudono o portano altrove la chiamata. Interni, coda, inoltro esterno e DISA, se nessuno risponde, passano invece alla regola successiva: mettici sotto la segreteria.
+- **Cambiare i valori dopo.** Per **Fai squillare uno o più interni VoIP**, **Inoltra a numero telefonico esterno** e i passaggi con i PIN o i codici: elimina il passaggio e aggiungilo di nuovo. Coda, menù vocale e conferenza si cambiano nella loro pagina.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Meglio «Fai squillare uno o più interni VoIP» o la coda?">
+    Per un ufficio piccolo basta **Fai squillare uno o più interni VoIP**: squillano tutti insieme. La coda serve se vuoi la musica d'attesa, attese lunghe, modi di squillo diversi (a rotazione, a caso) e le statistiche. Confronto completo in [Far squillare più telefoni](/centralino/come-fare/far-squillare-piu-telefoni).
+  </Accordion>
+
+  <Accordion title="Come mando in segreteria chi non trova risposta?">
+    Sotto il passaggio che fa squillare (interni, coda o inoltro) aggiungi **Segreteria telefonica** con **Aggiungi regola in coda**.
+  </Accordion>
+
+  <Accordion title="Posso scrivere a mano il numero del cellulare a cui inoltrare?">
+    No: il numero si sceglie dalla rubrica di **Inoltro chiamate**. Se non c'è, premi **Nuovo** nella finestra del passaggio e aggiungilo: dopo il salvataggio è già scelto.
+  </Accordion>
+
+  <Accordion title="Il cellulare a volte è irraggiungibile: posso far riprovare?">
+    Sì: spunta **Inoltro avanzato**. Il centralino prova il numero tre volte, con 30 secondi tra un tentativo e l'altro.
+  </Accordion>
+
+  <Accordion title="Non vedo nessun servizio interno da scegliere.">
+    Non ne hai ancora: si aggiungono da **Aggiungi funzionalità** → **Servizi interni**. Vedi [Servizi interni](/centralino/regole/servizi-interni).
+  </Accordion>
+
+  <Accordion title="Il passaggio Agente AI realtime non mi fa scegliere niente.">
+    Ti serve un collegamento telefonico negli **Agenti AI** con un agente assegnato. Premi **Apri Agenti AI**, crea il collegamento o assegnagli l'agente, poi riapri **Aggiungi regola**.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Come si aggiungono e si spostano i passaggi.
+  </Card>
+
+  <Card title="Orari, filtri e dettagli" icon="clock" href="/centralino/regole/passaggi-filtri">
+    Il secondo catalogo dei passaggi.
+  </Card>
+
+  <Card title="Notifiche, registrazioni e moduli" icon="bell" href="/centralino/regole/passaggi-moduli">
+    Il terzo catalogo dei passaggi.
+  </Card>
+
+  <Card title="Code di ricezione" icon="users" href="/centralino/instradamento/code-di-ricezione">
+    Operatori, attesa e musica di una coda.
+  </Card>
+
+  <Card title="Menù vocali (IVR)" icon="list" href="/centralino/instradamento/menu-vocali">
+    Messaggio e tasti del menù.
+  </Card>
+
+  <Card title="Inoltro chiamate" icon="arrow-right-arrow-left" href="/centralino/instradamento/inoltro-chiamate">
+    La rubrica dei numeri esterni.
+  </Card>
+</CardGroup>

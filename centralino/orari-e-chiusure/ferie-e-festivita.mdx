@@ -1,0 +1,307 @@
+---
+title: "Ferie e festività"
+sidebarTitle: "Ferie e festività"
+description: "I giorni di chiusura del centralino: festività che tornano ogni anno, ferie di un anno solo, chiusure da una certa ora. L'elenco dei gruppi di chiusure e la pagina di un gruppo, campo per campo."
+keywords:
+  - "ferie"
+  - "festività"
+  - "giorni festivi"
+  - "chiusura"
+  - "chiuso per ferie"
+  - "natale"
+  - "agosto"
+  - "ponte"
+  - "pasquetta"
+  - "gruppo ferie"
+  - "holiday"
+  - "vigilia"
+---
+
+In **Ferie e festività** metti in calendario i giorni in cui l'azienda è chiusa. I giorni si raccolgono in **gruppi di chiusure**: ogni gruppo ha un elenco di date, un messaggio e un'azione comuni. Nei giorni del gruppo chi chiama sente il messaggio e la chiamata va all'azione scelta; negli altri giorni il centralino risponde come sempre.
+
+**Dove si trova:** Menu → Risorse centralino → Orari e chiusure → **Ferie e festività** · `https://cloud.mycentralino.com/ferie`
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**. Non serve nessun modulo.
+
+<Warning>
+  Un gruppo funziona solo se è collegato a un numero nelle **Regole delle chiamate**, con il passaggio **Ferie e festività**. Finché non è collegato, nell'elenco la colonna **Usato da** dice «Non collegato · non ha effetto».
+</Warning>
+
+## Cosa trovi nella pagina
+
+### L'elenco dei gruppi
+
+In alto il titolo **Ferie e festività** con il conteggio (per esempio «2 gruppi di chiusure»), la frase «I giorni di chiusura straordinaria: in queste date il centralino segue il flusso di chiusura.» e il bottone **Nuovo gruppo**. Sotto, la ricerca **Cerca…** e il bottone **A–Z** (cliccandolo diventa **Z–A** e inverte l'ordine).
+
+La tabella **Gruppi di chiusure** ha una riga per gruppo:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Gruppo** | Il nome. Cliccalo per aprire il gruppo. |
+| **Prossima chiusura** | **Chiuso oggi** (in ambra; se la chiusura continua nei giorni dopo, «Chiuso oggi, fino al dom 23 ago»; se la tessera di oggi ha un'ora di inizio, la scritta compare già dal mattino, ma il centralino chiude solo da quell'ora), oppure la prossima data, per esempio «Prossima: ven 25 dic», oppure «Nessuna nei prossimi mesi». Sotto, quanti giorni ci sono nel gruppo. Se il gruppo è vuoto: **Nessun giorno**. |
+| **Quando è chiuso** | L'azione dei giorni di chiusura, per esempio «Termina la chiamata». Se è un servizio interno, il testo è un collegamento che apre le sue regole. |
+| **Audio** | Il messaggio di chiusura, oppure «—». |
+| **Usato da** | I numeri collegati (i primi due e poi «+N»). Se lo usa un servizio interno o un'altra chiusura, compare il suo nome. Se non lo usa nessuno: «Non collegato · non ha effetto». |
+
+In fondo a ogni riga c'è il cestino **Elimina**. Un clic sulla riga apre il gruppo.
+
+Se non hai ancora gruppi: «Nessuna festività configurata · Crea il primo gruppo di chiusura per gestire le chiamate nei giorni festivi.» con **Nuovo gruppo →**.
+
+<Frame caption="L'elenco dei gruppi di Ferie e festività">
+  <img
+    src="/images/guida/ferie-elenco.webp"
+    alt="L'elenco dei gruppi di Ferie e festività"
+  />
+</Frame>
+
+### La pagina di un gruppo
+
+Si apre cliccando un gruppo (`https://cloud.mycentralino.com/ferie/NOME/modifica`). Dall'alto:
+
+1. **Intestazione** con il nome del gruppo, la frase «Elenca i giorni di chiusura e decidi cosa succede alle chiamate in quei giorni.» e i bottoni **Annulla** e **Salva**. Sul **Salva** un numerino dice quante modifiche aspettano di essere salvate.
+2. Il riquadro **Nome gruppo** e il riquadro **Messaggio di chiusura (audio)**.
+3. Il riquadro **Giorni di chiusura**, con il totale («N totali») e la spiegazione «Una ricorrenza annua (senza anno) o un'eccezione legata a un anno specifico. Se specifichi l'orario, la festività inizierà a partire dall'orario indicato; altrimenti la chiusura vale per l'intera giornata.». Contiene:
+   - la **riga per aggiungere**: **Data inizio**, **Data fine (opzionale)**, **Descrizione**, la scelta **Ogni anno** / **Solo nel** seguito dall'anno in corso (per esempio **Solo nel 2026**) e il bottone **Aggiungi**. All'apertura è scelto **Ogni anno**; dopo **Aggiungi** resta la scelta che hai usato. Sotto, il promemoria «“Ogni anno” per le festività che tornano (25 dicembre); “Solo nel” per le ferie di un anno. I giorni aggiunti valgono dopo il Salva.»;
+   - una **tessera per ogni giorno**: la data (per esempio «15 Agosto»), sotto **ogni anno** (barra verde) oppure **solo 2026** (barra grigia), il cestino **Rimuovi**, il campo **Descrizione…** e il campo dell'ora di inizio con accanto «tutto il giorno» oppure **azzera**. Le tessere non ancora salvate hanno l'etichetta **da salvare**;
+   - in fondo **totale giorni**. Se il gruppo è vuoto: «Nessun giorno nel gruppo · Aggiungi il primo giorno di chiusura con il form qui sopra.».
+4. Il riquadro **Azione nei giorni di chiusura**, «Cosa succede dopo il messaggio di chiusura.», con **1 · Tipo azione**, **2 · Destinazione** e il **Riepilogo configurazione** (per esempio «Giorno di chiusura → riproduci Messaggio ferie → Segreteria · 201»).
+
+Se ci sono modifiche, in basso compare la barra «N modifiche da salvare · restano solo in questa pagina finché non salvi» con **Annulla** e **Salva**.
+
+<Frame caption="La pagina di un gruppo di chiusura con i giorni inseriti">
+  <img
+    src="/images/guida/ferie-gruppo.webp"
+    alt="La pagina di un gruppo di chiusura con i giorni inseriti"
+  />
+</Frame>
+
+## Come fare
+
+### Come creo un gruppo di chiusure
+
+<Steps>
+  <Step title="Premi Nuovo gruppo">
+    In **Ferie e festività** premi **Nuovo gruppo**. Si apre la finestra **Nuovo gruppo ferie**: «Assegna un nome al gruppo. Potrai aggiungere i giorni e l'azione subito dopo.».
+  </Step>
+  <Step title="Scrivi il nome">
+    In **Nome gruppo** scrivi per esempio `Chiusure`. Lettere senza accenti, numeri, spazi, trattino e trattino basso, al massimo 50 caratteri, diverso dagli altri gruppi.
+  </Step>
+  <Step title="Crea e configura">
+    Premi **Crea e configura**. Il gruppo viene creato subito, vuoto e con l'azione **Termina la chiamata**, e si apre la sua pagina.
+  </Step>
+  <Step title="Aggiungi i giorni, il messaggio e l'azione">
+    Segui i passi qui sotto, poi premi **Salva**.
+  </Step>
+  <Step title="Collega il gruppo ai numeri">
+    Nelle **Regole delle chiamate** di ogni numero aggiungi il passaggio **Ferie e festività** con questo gruppo. Tutti i passi sono nella guida [Chiudere per ferie o festività](/centralino/come-fare/chiudere-per-ferie-o-festivita).
+  </Step>
+</Steps>
+
+<Tip>
+  Di solito basta **un gruppo solo** per tutto l'anno, con festività e ferie insieme, collegato a tutti i numeri. Servono più gruppi solo se vuoi messaggi o azioni diversi (per esempio un messaggio per Natale e uno per agosto): ognuno va collegato con un suo passaggio nelle regole.
+</Tip>
+
+### Come aggiungo una festività che torna ogni anno
+
+<Steps>
+  <Step title="Data e descrizione">
+    In **Data inizio** scegli il giorno (per esempio 25 dicembre 2026), lascia vuota **Data fine** e scrivi la **Descrizione** (`Natale`).
+  </Step>
+  <Step title="Scegli Ogni anno">
+    Scegli **Ogni anno**: conta solo giorno e mese, e il giorno si ripete tutti gli anni.
+  </Step>
+  <Step title="Aggiungi">
+    Premi **Aggiungi**: compare la tessera «25 Dicembre» con **ogni anno** e l'etichetta **da salvare**. Ripeti per le altre festività (1 gennaio, 6 gennaio, 25 aprile, 1 maggio, 2 giugno, 15 agosto, 1 novembre, 8 dicembre, 26 dicembre, il patrono).
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Compare «Gruppo ferie "Chiusure" salvato.».
+  </Step>
+</Steps>
+
+### Come aggiungo le ferie di quest'anno
+
+<Steps>
+  <Step title="Date e descrizione">
+    **Data inizio** 10/08/2026, **Data fine** 23/08/2026, **Descrizione** `Ferie estive`.
+  </Step>
+  <Step title="Scegli Solo nel">
+    Scegli **Solo nel** (accanto c'è l'anno in corso). All'apertura della pagina è scelto **Ogni anno**, e dopo un'aggiunta resta l'ultima scelta usata: controllala sempre prima di premere **Aggiungi**. Passato il periodo, togli le tessere (vedi «Da sapere» più sotto).
+  </Step>
+  <Step title="Aggiungi">
+    Premi **Aggiungi**: compare una tessera per ogni giorno, da «10 Agosto» a «23 Agosto», con **solo 2026**.
+  </Step>
+  <Step title="Messaggio e azione">
+    Se non l'hai già fatto, scegli il **Messaggio di chiusura (audio)** (per esempio «Siamo in ferie, riapriamo il 24 agosto») e l'azione in **1 · Tipo azione**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**.
+  </Step>
+</Steps>
+
+### Come chiudo un giorno da una certa ora
+
+Per esempio la vigilia di Natale dalle 13:00.
+
+<Steps>
+  <Step title="Aggiungi il giorno">
+    Aggiungi il 24 dicembre con **Ogni anno** (o **Solo nel** se ti serve solo quest'anno: passato il giorno, togli la tessera).
+  </Step>
+  <Step title="Scrivi l'ora nella tessera">
+    Nella tessera del 24 dicembre scrivi l'ora di inizio, 13:00. Al posto di «tutto il giorno» compare **azzera**, che toglie l'ora.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Prima delle 13:00 il centralino risponde normalmente; dalle 13:00 il giorno è chiuso.
+  </Step>
+</Steps>
+
+### Come aggiungo Pasqua e Pasquetta
+
+Le feste mobili cambiano data ogni anno. Aggiungi la data di quest'anno con **Solo nel …** e la descrizione (`Pasquetta`), premi **Aggiungi** e **Salva**. L'anno dopo aggiungi la nuova data.
+
+### Come tolgo un giorno
+
+Nella tessera del giorno premi il cestino **Rimuovi**, poi **Salva**. Finché non salvi, il giorno resta in vigore.
+
+### Come scelgo cosa succede nei giorni di chiusura
+
+<Steps>
+  <Step title="Messaggio">
+    In **Messaggio di chiusura (audio)** scegli il messaggio, «Riprodotto nei giorni di chiusura prima dell'azione finale».
+  </Step>
+  <Step title="Tipo azione">
+    In **1 · Tipo azione** scegli cosa succede dopo il messaggio (vedi la tabella qui sotto).
+  </Step>
+  <Step title="Destinazione">
+    Se compare, scegli in **2 · Destinazione** la segreteria, l'inoltro, la coda o altro. Leggi il **Riepilogo configurazione**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**.
+  </Step>
+</Steps>
+
+### Come elimino un gruppo
+
+<Steps>
+  <Step title="Premi il cestino">
+    Nell'elenco premi il cestino **Elimina** sulla riga del gruppo. Si apre la finestra **Elimina gruppo ferie**: «Stai per eliminare il gruppo «Nome». L'azione non è reversibile.».
+  </Step>
+  <Step title="Leggi chi lo usa">
+    Se il gruppo è collegato, la finestra elenca i numeri e avvisa: «Eliminandolo, i numeri qui sotto non applicheranno più le chiusure previste e risponderanno normalmente anche nei giorni festivi.».
+  </Step>
+  <Step title="Conferma">
+    Premi **Elimina**. Compare «Gruppo ferie "Nome" eliminato.».
+  </Step>
+</Steps>
+
+<Note>
+  Prima di eliminare un gruppo collegato, togli il passaggio **Ferie e festività** dalle regole dei numeri che lo usano, oppure sostituiscilo con un altro gruppo.
+</Note>
+
+## I campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome gruppo** | Il nome del gruppo. Lo vedi quando colleghi il gruppo a un numero. | Obbligatorio, al massimo 50 caratteri: lettere senza accenti, numeri, spazi, trattino e trattino basso. Non si cambia dopo la creazione. |
+| **Messaggio di chiusura (audio)** | Il messaggio che si sente nei giorni di chiusura, prima dell'azione. | Facoltativo. Uno dei tuoi **Messaggi audio**, oppure «Nessun messaggio audio». |
+| **Data inizio** | Il giorno da aggiungere, o il primo giorno di un periodo. | Obbligatoria per aggiungere. |
+| **Data fine (opzionale)** | L'ultimo giorno di un periodo. | Se la compili si aggiungono tutti i giorni dall'inizio alla fine, compresi. Se inverti le date il pannello le scambia. I giorni già presenti non vengono duplicati. |
+| **Descrizione** | Un promemoria per te (per esempio «Ferie estive»). | Facoltativa, al massimo 50 caratteri. Vale per tutti i giorni aggiunti insieme; poi si cambia tessera per tessera. |
+| **Ogni anno / Solo nel …** | Se il giorno è una ricorrenza o è legato a un anno. | All'apertura è scelto **Ogni anno**. **Ogni anno**: solo giorno e mese, ogni anno. **Solo nel …**: la tessera mostra «solo» e l'anno della data scelta. Passato il periodo, togli la tessera. |
+| Campo dell'ora sulla tessera (senza etichetta) | Da che ora il giorno è chiuso. | Facoltativo. Vuoto = accanto c'è «tutto il giorno». Con un'ora, il giorno è chiuso da quell'ora in poi. **azzera** la toglie. |
+| **1 · Tipo azione** | Cosa succede dopo il messaggio. | Una scelta, proposta **Termina la chiamata**. Vedi la tabella qui sotto. |
+| **2 · Destinazione** | Dove va la chiamata. | Compare solo per le azioni che la chiedono. «Seleziona destinazione». |
+
+Le scelte di **1 · Tipo azione**:
+
+| Scelta | Cosa succede | Destinazione |
+| --- | --- | --- |
+| **Termina la chiamata** | La chiamata si chiude. | Nessuna |
+| **Segreteria** | Chi chiama può lasciare un messaggio. | Una casella di segreteria |
+| **Inoltro chiamata** | La chiamata va a un numero esterno, per esempio un cellulare. | Uno degli inoltri creati in **Inoltro chiamate** |
+| **Coda di ricezione** | La chiamata entra in una coda. | Una coda |
+| **Menù vocale (IVR)** | Chi chiama sceglie con i tasti. | Un menù vocale |
+| **Chiama interno** | Squilla un telefono del centralino. | Un interno |
+| **Servizio interno** | La chiamata segue le regole di un servizio interno. | Un servizio interno |
+| **Conferenza audio** | Chi chiama entra in una sala conferenza. | Una sala |
+| **Chiamata diretta (DISA)** | Opzione avanzata. | Nessuna |
+
+Se il centralino non ha niente da proporre per la scelta fatta, compare «Nessuna opzione disponibile per questo tipo di azione.»: crea prima la risorsa, poi torna qui.
+
+## Da sapere
+
+<Warning>
+  Niente vale finché non premi **Salva**: né i giorni aggiunti, né quelli tolti, né le descrizioni, le ore, il messaggio o l'azione. Se lasci la pagina da un collegamento del pannello senza salvare, il pannello chiede «Ci sono modifiche non salvate. Uscire senza salvarle?»; se chiudi la scheda, è il browser a chiederti conferma.
+</Warning>
+
+<Warning>
+  **Dopo le ferie, togli le tessere «solo».** Passato il periodo, le tessere restano nel gruppo. Premi **Rimuovi** su ognuna e poi **Salva**: così nel gruppo restano solo le date in cui vuoi davvero chiudere.
+</Warning>
+
+- **Dopo Salva vale subito** per tutti i numeri collegati al gruppo.
+- **Un periodo diventa tanti giorni.** Un intervallo 10–23 agosto diventa una tessera per ogni giorno: puoi togliere o cambiare un giorno solo.
+- **Non c'è un'ora di fine.** Un giorno è chiuso tutto il giorno, oppure dall'ora di inizio in poi. Per chiudere solo una mattina, o una fascia che si ripete, usa un [Interruttore a orario](/centralino/orari-e-chiusure/interruttori-a-orario).
+- **Chiusura improvvisa, adesso** (un imprevisto, uno sciopero): usa un [Interruttore](/centralino/orari-e-chiusure/interruttori) che accendi e spegni tu.
+- **Gli orari della settimana non si toccano.** Nei giorni del gruppo la chiusura la decide il passaggio **Ferie e festività**; negli altri giorni valgono gli [Orari](/centralino/orari-e-chiusure/orari).
+- **Dove mettere il passaggio nelle regole.** Mettilo sopra **Apertura settimanale**: così nei giorni di chiusura chi chiama sente sempre il messaggio delle ferie, a qualsiasi ora.
+- **Creare il gruppo dalle regole.** Nel passaggio **Ferie e festività** delle **Regole delle chiamate** c'è il bottone **Nuovo**, che apre la pagina del gruppo in una finestra. Lì scegli un nome nuovo: se usi il nome di un gruppo che esiste già, quel gruppo viene sostituito.
+- **Dove vedo le chiusure.** La colonna **Prossima chiusura** di questa pagina, il riquadro **Ferie** in cima a **Risorse del centralino** e il riquadro **Come risponde adesso** in **Monitoraggio** → **In tempo reale**.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Ho aggiunto i giorni ma il centralino risponde lo stesso.">
+    Controlla tre cose: hai premuto **Salva** nella pagina del gruppo? Il gruppo è collegato al numero (colonna **Usato da**)? Nella tessera di quel giorno c'è un'ora di inizio non ancora passata?
+  </Accordion>
+
+  <Accordion title="Conviene un gruppo per le festività e uno per le ferie?">
+    Si può fare, ma ogni gruppo va collegato con il suo passaggio nelle regole di ogni numero. Un gruppo solo è più semplice, a meno che tu non voglia messaggi diversi.
+  </Accordion>
+
+  <Accordion title="Posso chiudere dalle 9 alle 12 e poi riaprire?">
+    Non con le ferie, che chiudono dall'ora di inizio in poi. Per una fascia che si ripete usa un interruttore a orario; per una volta sola, un interruttore da accendere e spegnere a mano.
+  </Accordion>
+
+  <Accordion title="Pasqua cambia ogni anno: come faccio?">
+    Aggiungi Pasqua e Pasquetta con **Solo nel …** e la data di quest'anno. Passata la festa togli le tessere, e l'anno dopo aggiungi le date nuove.
+  </Accordion>
+
+  <Accordion title="Ho scelto Ogni anno per le ferie di agosto per sbaglio.">
+    Togli le tessere con **Rimuovi**, aggiungi di nuovo il periodo scegliendo **Solo nel …**, premi **Salva** e, passate le ferie, togli anche le tessere nuove.
+  </Accordion>
+
+  <Accordion title="Posso cambiare il nome del gruppo?">
+    No, il nome non si cambia dopo la creazione. Crea un gruppo nuovo, aggiungi i giorni, collegalo ai numeri al posto del vecchio ed elimina il vecchio.
+  </Accordion>
+
+  <Accordion title="Cosa sente chi chiama nei giorni di chiusura?">
+    Il **Messaggio di chiusura (audio)**, se l'hai scelto, poi la chiamata va all'azione del gruppo: si chiude, va in segreteria, a un inoltro, in coda, a un menù vocale, a un interno, a un servizio interno o in conferenza.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Chiudere per ferie o festività" icon="calendar" href="/centralino/come-fare/chiudere-per-ferie-o-festivita">
+    La guida completa, dal gruppo al collegamento ai numeri.
+  </Card>
+
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Gli orari di apertura della settimana.
+  </Card>
+
+  <Card title="Interruttori" icon="toggle-on" href="/centralino/orari-e-chiusure/interruttori">
+    La chiusura improvvisa che accendi e spegni tu.
+  </Card>
+
+  <Card title="Interruttori a orario" icon="clock" href="/centralino/orari-e-chiusure/interruttori-a-orario">
+    Deviazioni automatiche in certe fasce orarie.
+  </Card>
+
+  <Card title="Passaggi: orari, filtri e messaggi" icon="list" href="/centralino/regole/passaggi-filtri">
+    Il passaggio Ferie e festività nelle regole.
+  </Card>
+
+  <Card title="Messaggi audio" icon="microphone" href="/centralino/audio/messaggi-audio">
+    Creare il messaggio delle ferie.
+  </Card>
+</CardGroup>

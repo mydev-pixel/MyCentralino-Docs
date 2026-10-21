@@ -1,0 +1,348 @@
+---
+title: "Utenti e permessi"
+sidebarTitle: "Utenti e permessi"
+description: "Dare accesso al pannello ai collaboratori, ognuno con username e password propri: la sezione Utenti, la creazione con il link per scegliere la password, ogni permesso che puoi concedere e cosa vede un collaboratore senza permesso."
+keywords:
+  - "utenti"
+  - "utente secondario"
+  - "collaboratore"
+  - "permessi"
+  - "sezioni consentite"
+  - "nuovo utente"
+  - "modifica utente"
+  - "disattiva utente"
+  - "elimina utente"
+  - "accesso dipendente"
+  - "operatore"
+  - "non sei autorizzato"
+  - "errore 403"
+  - "sotto-utente"
+  - "multiutente"
+---
+
+Nella sezione **Utenti** il titolare dell'account crea gli accessi per i collaboratori: ognuno entra nel pannello con la sua username e la sua password, e vede e usa solo le sezioni che gli concedi. Qui trovi l'elenco degli utenti, come crearli e modificarli, ogni permesso che puoi concedere e cosa vede un collaboratore quando apre una pagina che non gli hai concesso.
+
+**Dove si trova:** barra in alto → icona con l'omino (**Il tuo account**) → **Il mio account** → scheda **Accessi e sicurezza** → sezione **Utenti** · `https://cloud.mycentralino.com/account/profile?tab=utenti`
+
+Anche l'indirizzo `https://cloud.mycentralino.com/utenti` porta qui. La pagina per creare un utente è `https://cloud.mycentralino.com/utenti/nuovo`.
+
+**Chi la vede:** solo il titolare dell'account, cioè chi ha registrato il centralino. Un collaboratore non vede la sezione **Utenti**: se apre `https://cloud.mycentralino.com/account/profile?tab=utenti` vede solo il resto di **Accessi e sicurezza**; se apre `https://cloud.mycentralino.com/utenti` o `https://cloud.mycentralino.com/utenti/nuovo` vede la pagina «Non sei autorizzato a visualizzare questa pagina». Non serve nessun modulo.
+
+<Tip>
+  Se vuoi solo una guida veloce, dall'inizio alla fine, per aggiungere una persona, vedi [Aggiungere un collaboratore](/centralino/come-fare/aggiungere-un-collaboratore).
+</Tip>
+
+## Cosa trovi nella pagina
+
+### L'intestazione
+
+In alto a sinistra il conteggio, per esempio «3 utenti secondari» (se qualcuno è disattivato, anche «· 2 attivi»), e la frase «Persone che accedono a questo centralino con credenziali proprie. Ogni utente vede solo le sezioni che gli concedi.». A destra il bottone **Nuovo utente**.
+
+Sotto c'è la ricerca «Cerca per username, nome o email…».
+
+### L'elenco degli utenti
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Username** | Il nome con cui il collaboratore entra. |
+| **Nome** | Nome e cognome. |
+| **Email** | Dove arrivano il link per la password e i codici di verifica. |
+| **Sezioni** | Le prime due sezioni concesse, più «+N» se ce ne sono altre (passa con il mouse per vederle tutte). Per il **Pannello operatori** compare anche l'interno, per esempio «Pannello operatori · interno 201» o «· interni 201, 202». |
+| **Ultimo accesso** | Data e ora dell'ultimo ingresso, oppure «mai» se non è ancora entrato. |
+| **Stato** | **Attivo** oppure **Disattivato**. |
+| (ultima colonna, senza titolo) | **Modifica** e il menu **…** con le altre azioni. |
+
+Se non hai ancora collaboratori compare «Nessun utente secondario — Crea un utente per dare accesso al centralino a un collaboratore, con permessi limitati alle sezioni che scegli.». Se la ricerca non trova nessuno: «Nessun utente corrispondente alla ricerca».
+
+<Frame caption="Gli utenti secondari in Accessi e sicurezza">
+  <img
+    src="/images/guida/account-utenti.webp"
+    alt="Gli utenti secondari in Accessi e sicurezza"
+  />
+</Frame>
+
+### Le azioni su ogni utente
+
+| Azione | Dove | Cosa fa |
+| --- | --- | --- |
+| **Modifica** | Sulla riga | Apre la pagina **Modifica utente**: cambi nome, email, sezioni e interni dell'operatore. |
+| **Manda il link per una nuova password** | Menu **…** | Dopo la conferma («Mandare a «…» il link per scegliere una nuova password? Finché non la sceglie, resta valida quella di oggi.») il collaboratore riceve un'email con un link per scegliere una nuova password. Compare «Link per una nuova password inviato a …». |
+| **Disattiva l'accesso** | Menu **…** | Il collaboratore non può più entrare. Lo **Stato** diventa **Disattivato**. |
+| **Riattiva l'accesso** | Menu **…** (solo sugli utenti disattivati) | Il collaboratore può di nuovo entrare con la sua password. |
+| **Elimina utente** | Menu **…** | Si apre la finestra **Elimina utente**: «Stai per eliminare l'utente «…». L'azione non è reversibile.» Con **Elimina** l'utente viene cancellato; con **Annulla** non succede niente. |
+
+### La pagina «Nuovo utente» / «Modifica utente»
+
+Si apre con **Nuovo utente** o con **Modifica**. Ha due riquadri:
+
+- **Dati utente**: **Nome e cognome**, **Email** e, solo alla creazione, **Username**. In modifica, sotto il titolo c'è «Username … — la username non è modificabile.».
+- **Sezioni consentite**: «L'utente vede e usa solo le sezioni selezionate. Home e il proprio profilo sono sempre accessibili.» Una casella per ogni sezione, con una riga che spiega cosa comprende.
+
+In fondo il bottone **Crea utente e invia credenziali** (creazione) oppure **Salva modifiche** (modifica). Per tornare all'elenco senza salvare usa la freccia nella barra in alto.
+
+<Frame caption="Nuovo utente: dati e sezioni consentite">
+  <img
+    src="/images/guida/utente-nuovo.webp"
+    alt="Nuovo utente: dati e sezioni consentite"
+  />
+</Frame>
+
+## Come fare
+
+### Come creo un collaboratore
+
+<Steps>
+  <Step title="Apri la sezione Utenti">
+    Barra in alto → **Il tuo account** → **Il mio account** → scheda **Accessi e sicurezza** → sezione **Utenti**.
+  </Step>
+  <Step title="Premi Nuovo utente">
+    Si apre la pagina **Nuovo utente**.
+  </Step>
+  <Step title="Compila Dati utente">
+    Scrivi **Nome e cognome** (per esempio `Mario Rossi`), l'**Email** del collaboratore e la **Username** con cui entrerà (per esempio `mario.rossi`).
+  </Step>
+  <Step title="Spunta le Sezioni consentite">
+    Spunta almeno una sezione. Le trovi tutte spiegate in «I permessi che puoi concedere», qui sotto.
+  </Step>
+  <Step title="Se risponde al telefono, scegli i suoi interni">
+    Se spunti **Pannello operatori** compare **Interni dell'operatore**: spunta il suo interno, o tutti quelli che gestisce.
+  </Step>
+  <Step title="Crea l'utente">
+    Premi **Crea utente e invia credenziali**. Torni alla sezione **Utenti** e compare «Utente «mario.rossi» creato: a … è arrivato il link per scegliere la password.».
+  </Step>
+</Steps>
+
+Il collaboratore **non riceve una password**: riceve l'email **Il tuo accesso a MyCentralino** con la sua username e il bottone **Scegli la tua password**. Il link vale 7 giorni (la data esatta è scritta nell'email). Dal link sceglie la password, preme **Salva ed entra** ed entra subito nel pannello; quel browser resta memorizzato per 30 giorni. Le volte successive entra dalla pagina di accesso con username e password, e da un browser nuovo gli viene chiesto il codice di verifica che arriva alla sua email.
+
+<Note>
+  Se l'email non parte, l'utente **non** viene creato e compare «Invio email non riuscito: utente NON creato. Verifica l'indirizzo e riprova.».
+</Note>
+
+### Come cambio i permessi di un collaboratore
+
+<Steps>
+  <Step title="Apri Modifica">
+    Nella sezione **Utenti** clicca **Modifica** sulla sua riga.
+  </Step>
+  <Step title="Cambia le Sezioni consentite">
+    Spunta le sezioni da aggiungere e togli la spunta da quelle da togliere. Deve restarne almeno una.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva modifiche**. Torni all'elenco con «Utente «…» aggiornato.». Il collaboratore vede il cambiamento dalla prossima pagina che apre.
+  </Step>
+</Steps>
+
+Nella stessa pagina puoi correggere anche **Nome e cognome** ed **Email**. Se cambi l'email, i prossimi codici di verifica e link arrivano al nuovo indirizzo.
+
+### Un collaboratore ha dimenticato la password
+
+Due strade, a scelta:
+
+- **Tu**: menu **…** sulla sua riga → **Manda il link per una nuova password** → conferma. Riceve l'email **Scegli una nuova password per MyCentralino** con un link valido 7 giorni. Finché non sceglie la nuova password, resta valida quella di oggi.
+- **Lui**: nella pagina di accesso usa **Non ricordi la password?** e scrive la sua username. Vedi [Primo accesso](/centralino/inizia/primo-accesso).
+
+### Come blocco un collaboratore per un periodo
+
+Menu **…** sulla sua riga → **Disattiva l'accesso**. Lo **Stato** diventa **Disattivato** e non può più entrare. Per farlo tornare: menu **…** → **Riattiva l'accesso**. Le sezioni concesse restano quelle di prima.
+
+### Come elimino un collaboratore
+
+<Steps>
+  <Step title="Apri il menu della riga">
+    Nella sezione **Utenti** clicca **…** sulla sua riga → **Elimina utente**.
+  </Step>
+  <Step title="Conferma">
+    Nella finestra **Elimina utente** clicca **Elimina**. Compare «Utente «…» eliminato.».
+  </Step>
+</Steps>
+
+<Warning>
+  L'eliminazione non si può annullare. Il collaboratore non può più entrare e i browser in cui era memorizzato vengono scollegati. Se pensi che possa tornare, usa **Disattiva l'accesso**.
+</Warning>
+
+### Il mio collaboratore vede «Non sei autorizzato»: come gli do accesso
+
+<Steps>
+  <Step title="Capisci quale sezione gli manca">
+    Chiedigli quale pagina stava aprendo. La tabella «I permessi che puoi concedere» ti dice in quale sezione sta.
+  </Step>
+  <Step title="Aggiungi la sezione">
+    **Modifica** sulla sua riga → spunta la sezione nelle **Sezioni consentite** → **Salva modifiche**.
+  </Step>
+  <Step title="Fagli ricaricare la pagina">
+    Il collaboratore ricarica la pagina: la voce compare nel suo menu laterale.
+  </Step>
+</Steps>
+
+## I permessi che puoi concedere
+
+Sono le caselle del riquadro **Sezioni consentite**. Ogni casella apre al collaboratore la voce di menu e tutte le pagine che contiene.
+
+| Casella | Cosa può vedere e usare il collaboratore |
+| --- | --- |
+| **Regole delle chiamate** | Le **Regole delle chiamate**: cosa succede quando qualcuno chiama, per ogni numero e ogni servizio interno. |
+| **Risorse del centralino** | La pagina **Risorse del centralino** e tutto ciò che contiene: **Orari e chiusure** (Orari, Ferie e festività, Interruttori a orario, Interruttori), **Audio** (Messaggi audio, Musica d'attesa), **Instradamento chiamate** (Code di ricezione, Menù vocali (IVR), Inoltro chiamate, Numeri bloccati), **Strumenti** (Segreterie, Rubrica, Conferenze, Ascolto chiamate) e **Servizi a consumo** (Codici servizio, Accesso con PIN, Servizi prepagati). |
+| **Telefoni e numeri** | **Interni**, **I tuoi numeri**, **Numeri in uscita** e **Richieste di numeri**. |
+| **Monitoraggio** | **Statistiche**, **In tempo reale**, **Stato interni**, **Chiamate ricevute**, **Chiamate effettuate**, **Da richiamare**, **Analisi chiamate code**, **Costi numero verde**, **Log attività**. |
+| **Pannello operatori** | Il pannello di chi risponde al telefono: colleghi liberi e occupati, il proprio stato e la segreteria, le ultime chiamate, la rubrica e le chiamate dal pannello. Va scelto almeno un interno in **Interni dell'operatore**. |
+| **I tuoi moduli** | La pagina **I tuoi moduli** e le pagine dei moduli attivi sul tuo centralino, compresi gli **Agenti AI** e **WhatsApp**. Non comprende il Calendario e il canale WhatsApp per aziende, che hanno una casella a parte. |
+| **Assistenza** | **Le tue richieste** (aprire e seguire le richieste all'assistenza) e **Prenota una call**. |
+| **Solo WhatsApp** | Solo la messaggistica WhatsApp, senza gli altri moduli. È già compresa in **I tuoi moduli**. Compare solo se WhatsApp è attivo. |
+| **Calendario** | Agenda e prenotazioni. Va concesso a parte perché contiene nomi, telefoni e motivi degli appuntamenti. Cosa può fare (vedere, prenotare, configurare) e su quali calendari si decide nelle impostazioni del Calendario. Compare solo se il Calendario è incluso nel tuo centralino. |
+| **MyFlow WhatsApp per Aziende** | Il canale WhatsApp per aziende. Compare solo se il servizio è attivo e collegato. WhatsApp: guida in arrivo. |
+| **Aggiungi Funzionalità** | Il negozio del centralino: chi ce l'ha può fare acquisti (interni, numeri, minuti, canali) che entrano nel tuo abbonamento. Compare solo se il negozio **Aggiungi Funzionalità** è disponibile per il tuo centralino. |
+| **Abbonamento e pagamenti** | Nel suo **Il mio account**, le schede **Abbonamento e pagamenti**, **Fatture** e **Documenti**, il riepilogo con credito, rinnovo e pagamento, e nel menu **Il tuo account** le voci **Credito e ricariche** e **Fatture**. Può ricaricare il credito, gestire i metodi di pagamento, scaricare le fatture e correggere i dati di fatturazione. |
+| **Gestione API** | La sezione **Chiavi API** in **Accessi e sicurezza**: creare, revocare ed eliminare le chiavi con cui i programmi esterni parlano con il centralino. Vedi [Chiavi API](/centralino/account/chiavi-api). |
+
+Per i centralini che hanno servizi particolari possono comparire altre caselle dedicate. Ogni casella legata a un modulo compare solo se quel modulo è attivo.
+
+### Sempre accessibili, senza permesso
+
+- La **Home**.
+- Il proprio **Il mio account** con la scheda **Accessi e sicurezza**: cambio della propria password e dei propri browser memorizzati.
+- **Novità** (ma l'interruttore per le email delle novità lo cambia solo il titolare).
+- **Segnala un problema** e **Le tue segnalazioni**.
+
+### Mai concedibili a un collaboratore
+
+- La gestione degli **Utenti**: solo il titolare crea, modifica ed elimina i collaboratori.
+- **Cancella abbonamento**: anche con **Abbonamento e pagamenti** il collaboratore non vede il bottone. Vedi [Eliminare l'account](/centralino/account/eliminare-l-account).
+- L'eliminazione degli **Agenti AI** dall'abbonamento: il collaboratore con **Abbonamento e pagamenti** vede il bottone **Gestisci** sulla riga **Assistente telefonico AI**, ma cliccandolo compare «Non sei autorizzato a visualizzare questa pagina». Lo può fare solo il titolare.
+- L'accettazione delle condizioni contrattuali: le accetta il titolare.
+
+### Esempi di permessi
+
+| Chi | Cosa spuntare |
+| --- | --- |
+| Segretaria che risponde al telefono | **Pannello operatori** con il suo interno. Aggiungi **Monitoraggio** se deve vedere lo storico di tutte le chiamate. |
+| Chi cambia orari e messaggi | **Risorse del centralino**. Aggiungi **Regole delle chiamate** se deve anche decidere dove vanno le chiamate. |
+| Commercialista o amministrazione | **Abbonamento e pagamenti**. |
+| Responsabile che controlla le chiamate | **Monitoraggio**. |
+| Tecnico che collega un gestionale | **Gestione API**. |
+
+## Cosa vede un collaboratore senza permesso
+
+- **Nel menu laterale** compaiono solo le sezioni concesse. Nel selettore dei prodotti vede solo i prodotti a cui ha accesso.
+- **Se apre l'indirizzo di una pagina non concessa** (da un link salvato, da un link ricevuto da un collega o scritto a mano) vede la pagina **Errore 403** con il lucchetto: titolo «Non sei autorizzato a visualizzare questa pagina» e il testo «Il tuo utente non ha accesso a questa sezione del centralino. Se hai necessità di accedervi, chiedi al tuo amministratore di concederti il permesso.». I bottoni sono **Torna alla Home** e **Pagina precedente**. Non è un guasto: manca il permesso, e lo concede il titolare.
+- **Nel suo account**, senza **Abbonamento e pagamenti** vede solo la scheda **Accessi e sicurezza** e nel menu **Il tuo account** non compaiono **Credito e ricariche** e **Fatture**. Senza **Gestione API** non vede la sezione **Chiavi API**. Qui non compare la pagina di errore: le schede semplicemente non ci sono.
+- **Il menu Il tuo account** mostra comunque la voce **Assistenza**: se il collaboratore non ha il permesso **Assistenza**, cliccandola vede la pagina «Non sei autorizzato a visualizzare questa pagina».
+- **Con il solo Pannello operatori** (eventualmente insieme ad **Abbonamento e pagamenti** o **Gestione API**), quando apre la **Home** viene portato direttamente al **Pannello operatori**.
+- **Se il titolare non ha ancora accettato le condizioni contrattuali**, al posto del pannello il collaboratore vede **Accettazione in sospeso**: «Il titolare dell'account non ha ancora completato l'accettazione delle condizioni contrattuali. Chiedi al titolare di accedere e completarla: subito dopo potrai usare il pannello normalmente.» con il bottone **Esci**.
+
+## I campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome e cognome** | Il nome del collaboratore. | Obbligatorio, al massimo 120 caratteri. |
+| **Email** | «Qui arrivano credenziali e PIN di verifica al login.»: il link per scegliere la password e i codici di verifica. | Obbligatoria, un indirizzo valido. Deve essere un indirizzo che legge lui. |
+| **Username** | Il nome con cui entra nel pannello. | Solo alla creazione. Da 6 a 50 caratteri: lettere, numeri, punto, trattino e underscore. Viene salvata in minuscolo. Deve essere libera in tutto MyCentralino. Non si cambia più. |
+| **Sezioni consentite** | Cosa può vedere e usare. | Almeno una casella. |
+| **Interni dell'operatore** | Gli interni di cui vede stato, segreteria e ultime chiamate nel Pannello operatori, e da cui chiama. | Compare solo con **Pannello operatori**. Almeno uno, tra gli interni del centralino. |
+
+### Messaggi
+
+| Messaggio | Cosa fare |
+| --- | --- |
+| «Concedi almeno una sezione.» | Spunta almeno una casella in **Sezioni consentite**. |
+| «Sono ammessi lettere, numeri, punto, trattino e underscore.» | Togli spazi, accenti e altri simboli dalla username. |
+| «Questa username è già in uso.» | La username è già usata in MyCentralino, anche da un altro cliente: scegline un'altra. |
+| «Questa username è appena stata registrata da qualcun altro: scegline una diversa.» | Scegli un'altra username e riprova. |
+| «Scegli almeno un interno dell'operatore.» | Con **Pannello operatori** spunta almeno un interno. |
+| «Uno degli interni scelti non esiste nel centralino.» | L'interno è stato eliminato nel frattempo: ricarica la pagina e scegli di nuovo. |
+| «Invio email non riuscito: utente NON creato. Verifica l'indirizzo e riprova.» | Controlla l'email e premi di nuovo **Crea utente e invia credenziali**. |
+| «Invio email non riuscito: riprova tra poco.» | Il link per la nuova password non è partito: riprova più tardi. |
+
+## Da sapere
+
+<Note>
+  - **Credenziali personali.** Ogni collaboratore ha la sua username e la sua password: non dare a nessuno le tue. Tu non vedi mai la password di un collaboratore.
+  - **I permessi valgono subito**: il collaboratore li vede dalla prossima pagina che apre.
+  - **Un utente disattivato** non può entrare e non può usare un link per la password: prima riattivalo con **Riattiva l'accesso**, poi, se serve, mandagli il link.
+  - **Il codice di verifica** del collaboratore arriva alla sua email, non alla tua.
+  - **Il registro delle modifiche.** Le modifiche fatte da un collaboratore nel centralino compaiono in [Log attività](/centralino/monitoraggio/log-attivita), con il suo nome utente.
+  - **Eliminare l'account** chiude l'accesso anche a tutti i collaboratori.
+</Note>
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Perché il mio collaboratore non vede una voce del menu?">
+    Non gli hai concesso la sezione che la contiene. Trova la sezione nella tabella «I permessi che puoi concedere» e aggiungila con **Modifica**. Se la voce appartiene a un modulo, controlla anche che il modulo sia attivo in **I tuoi moduli**.
+  </Accordion>
+
+  <Accordion title="Il collaboratore non vede le Chiamate ricevute.">
+    Gli manca la sezione **Monitoraggio**: con il solo **Pannello operatori** vede soltanto le ultime chiamate del suo interno. Apri **Utenti**, premi **Modifica** sul collaboratore, spunta **Monitoraggio** e premi **Salva modifiche**. Il collaboratore la vede dalla pagina successiva che apre.
+  </Accordion>
+
+  <Accordion title="Ho concesso «I tuoi moduli» ma il collaboratore non vede il Calendario.">
+    Il Calendario si concede a parte, con la sua casella, perché contiene dati riservati dei clienti. Anche **Aggiungi Funzionalità** va concessa a parte, perché permette acquisti.
+  </Accordion>
+
+  <Accordion title="Il collaboratore ha il Calendario ma non riesce a prenotare o a cambiare le impostazioni.">
+    Cosa può fare dentro il Calendario si decide nelle impostazioni del Calendario, non nella scheda utente.
+  </Accordion>
+
+  <Accordion title="Il collaboratore non ha ricevuto l'email con il link.">
+    Fagli controllare la posta indesiderata. Verifica l'email con **Modifica**. Poi menu **…** → **Manda il link per una nuova password**.
+  </Accordion>
+
+  <Accordion title="Il link dell'invito è scaduto.">
+    Il link vale 7 giorni. Menu **…** → **Manda il link per una nuova password**, oppure il collaboratore usa **Non ricordi la password?** nella pagina di accesso.
+  </Accordion>
+
+  <Accordion title="Posso vedere o scegliere io la password di un collaboratore?">
+    No. La sceglie lui dal link che riceve per email.
+  </Accordion>
+
+  <Accordion title="Posso cambiare la username di un collaboratore?">
+    No. Se è sbagliata, elimina l'utente e creane uno nuovo con la username giusta.
+  </Accordion>
+
+  <Accordion title="Un collaboratore può creare altri utenti?">
+    No. La sezione **Utenti** è solo del titolare e non si può concedere.
+  </Accordion>
+
+  <Accordion title="Un collaboratore può cancellare l'abbonamento?">
+    No, mai, nemmeno con il permesso **Abbonamento e pagamenti**.
+  </Accordion>
+
+  <Accordion title="Un collaboratore può vedere le fatture?">
+    Sì, se gli concedi **Abbonamento e pagamenti**. Vedrà anche credito, pagamenti e documenti accettati.
+  </Accordion>
+
+  <Accordion title="Il titolare può vedere la pagina «Non sei autorizzato»?">
+    Per le sezioni del pannello no: il titolare vede tutto. Se ti succede, apri una richiesta all'assistenza.
+  </Accordion>
+
+  <Accordion title="Quanti collaboratori posso creare?">
+    Il pannello non indica un numero massimo di collaboratori.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Aggiungere un collaboratore" icon="user" href="/centralino/come-fare/aggiungere-un-collaboratore">
+    La guida veloce, dall'inizio alla fine.
+  </Card>
+
+  <Card title="Il mio account" icon="gear" href="/centralino/account/il-mio-account">
+    Password, browser memorizzati e schede dell'account.
+  </Card>
+
+  <Card title="Pannello operatori" icon="headset" href="/centralino/pannello-operatori">
+    Cosa vede chi risponde al telefono.
+  </Card>
+
+  <Card title="Chiavi API" icon="key" href="/centralino/account/chiavi-api">
+    Cosa può fare chi ha Gestione API.
+  </Card>
+
+  <Card title="Errori e pagine bloccate" icon="shield" href="/centralino/assistenza/errori-e-pagine-bloccate">
+    «Non sei autorizzato», «Pagina non trovata» e gli altri avvisi.
+  </Card>
+
+  <Card title="Primo accesso" icon="key" href="/centralino/inizia/primo-accesso">
+    Come entra il collaboratore: password e codice di verifica.
+  </Card>
+</CardGroup>

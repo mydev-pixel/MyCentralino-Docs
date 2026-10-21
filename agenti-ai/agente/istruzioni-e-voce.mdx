@@ -1,0 +1,304 @@
+---
+title: "Istruzioni e voce dell'agente"
+sidebarTitle: "Istruzioni e voce"
+description: "Come si scrivono il copione e la frase di apertura, come si sceglie la voce e quali documenti ed elenchi dare all'agente perché risponda bene."
+keywords:
+  - "copione agente"
+  - "prompt agente"
+  - "istruzioni agente ai"
+  - "frase di apertura"
+  - "voce agente"
+  - "modello ai"
+  - "knowledge base"
+  - "documenti agente"
+  - "ricerca dati"
+  - "csv agente"
+  - "memoria delle chiamate"
+  - "conservazione conversazioni"
+  - "reattività"
+  - "chiusura per silenzio"
+  - "lingua agente"
+---
+
+Questa pagina spiega quattro sezioni della configurazione di un agente: **Identità e copione** (chi è e cosa deve fare), **Voce** (come parla), **Knowledge Base** (i documenti da cui prende le informazioni) e **Ricerca dati** (un elenco che consulta durante la chiamata). In fondo trovi i consigli per scrivere un copione che funziona.
+
+**Dove si trova:** menu degli Agenti AI → Gestione → **Agenti** → **Configura** sull'agente (o **\+ Nuovo agente**) → sezioni **Identità e copione**, **Voce**, **Knowledge Base**, **Ricerca dati** · `https://cloud.mycentralino.com/wave/agenti`
+
+**Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)), quando gli Agenti AI sono attivi.
+
+<Note>
+  Quello che cambi in **Identità e copione** e in **Voce** vale solo dopo **Salva agente** (o **Crea agente** per un agente nuovo). I documenti della **Knowledge Base** invece si caricano subito. In **Ricerca dati** il file sostituisce subito l'elenco precedente, ma l'agente lo usa solo dopo **Salva agente**. Come funziona il salvataggio: [Crea un agente](/agenti-ai/agente/crea-un-agente).
+</Note>
+
+## Identità e copione
+
+«Chi è l'agente, come si presenta e le istruzioni che segue al telefono.»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome agente** | Il nome dell'agente: lo vedi negli elenchi, nello storico e nei riassunti. Per farlo presentare con questo nome, scrivilo nella frase di apertura | Obbligatorio, da 2 a 100 caratteri. Es. «Sofia» |
+| **Lingua** | La lingua in cui l'agente parla | Italiano (proposta), Inglese, Spagnolo, Francese, Tedesco, Portoghese, Olandese, Polacco, Rumeno |
+| **Frase di apertura** | La prima frase che l'agente dice quando risponde | Obbligatoria, fino a 1.000 caratteri. Es. «Buongiorno, sono Sofia di …, come posso aiutarla?» |
+| **Copione dell'agente** | Le istruzioni che l'agente segue: chi è, cosa fa l'azienda, come comportarsi | Obbligatorio, fino a 50.000 caratteri. Sotto il campo il contatore «N caratteri» e l'aiuto «Le istruzioni di sistema (date, stile telefonico, strumenti) vengono aggiunte automaticamente: scrivi solo il copione.» |
+| **Modello AI** | Il «cervello» che capisce chi chiama e decide cosa rispondere | Gruppo **Consigliati**: **Claude Haiku 4.5 (consigliato)** (proposto), **Gemini 2.5 Flash (economico)**, **Gemini 2.5 Flash Lite (il più economico)**, **GPT-5.4 Mini**. Sotto, altri modelli divisi in **Google Gemini**, **OpenAI GPT**, **Anthropic Claude** |
+| **Chiusura automatica** | «L'agente può chiudere la chiamata da solo.» | Interruttore, acceso di serie |
+| **Memoria delle chiamate** | «Ricorda le chiamate precedenti dello stesso numero.» | Interruttore, spento di serie |
+| **Conservazione delle conversazioni** | «Registrazioni e trascrizioni restano disponibili per questo periodo, poi vengono cancellate.» | 1 giorno, 7 giorni, 30 giorni, 3 mesi, 6 mesi, 12 mesi (proposto per gli agenti nuovi) |
+
+### Il modello AI
+
+Se l'agente usa il calendario, i trasferimenti o altri strumenti, lascia **Claude Haiku 4.5 (consigliato)**: è il modello scelto per usarli in modo affidabile. I modelli più leggeri a volte saltano questi passaggi, per esempio annunciano «un attimo» e non controllano davvero il calendario. Se cambi modello, fai qualche telefonata di prova e rileggi le trascrizioni.
+
+Se un agente usa un modello che non è più in elenco, lo trovi nel gruppo **Attuale**. Se è un modello non più ammesso, al primo **Salva agente** diventa **Claude Haiku 4.5 (consigliato)**.
+
+### La memoria delle chiamate
+
+Con **Memoria delle chiamate** accesa, quando richiama lo stesso numero l'agente conosce i riassunti delle chiamate precedenti: ricorda il nome, gli argomenti e le richieste, e può riprendere il discorso da lì. Non dà per scontato che la richiesta di oggi sia la stessa di allora. Per gli agenti nuovi la memoria è spenta: accendila solo se ti serve davvero.
+
+Quando elimini una conversazione dallo [Storico chiamate](/agenti-ai/storico-chiamate), l'agente se ne dimentica.
+
+### La conservazione delle conversazioni
+
+Registrazioni e trascrizioni restano disponibili per il periodo scelto, poi vengono cancellate. Su un agente già creato, quando cambi il periodo compare l'avviso «Al salvataggio le conversazioni più vecchie di questo periodo verranno cancellate.»: se l'hai accorciato, con **Salva agente** vengono cancellate anche quelle già esistenti più vecchie del nuovo periodo.
+
+Sugli agenti creati prima che esistesse questa scelta può comparire anche **Senza limite**. Una volta scelto un periodo, **Senza limite** non torna disponibile.
+
+<Warning>
+  Le conversazioni cancellate per la conservazione non si possono recuperare.
+</Warning>
+
+## Voce
+
+«La voce con cui l'agente risponde e il suo comportamento in conversazione.»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Voce dell'agente** | La voce con cui parla | Obbligatoria. Schede con nome e caratteristiche (Maschile o Femminile, Giovane, Adulta o Matura, accento). Campo **Cerca per nome o caratteristica…** e tasto play per l'anteprima |
+| **Qualità della voce** | Come viene prodotta la voce | **Flash v2.5** «La più veloce (consigliata)» (proposta) · **Turbo v2.5** «Veloce, resa più curata» · **Multilingual v2** «Qualità massima, più lenta» |
+| **Stabilità** | Quanto la voce resta uniforme da una frase all'altra | Da 0 a 1, proposto 0,75 |
+| **Fedeltà voce** | Quanto la voce resta vicina a quella dell'anteprima | Da 0 a 1, proposto 0,90 |
+| **Velocità** | La velocità con cui parla | Da 0,70× a 1,50×, proposto 1,10× |
+| **Reattività** | Quanto aspetta prima di rispondere quando chi chiama fa una pausa | **Rapida (consigliata)** (proposta) · **Normale** · **Paziente (attende di più)** |
+| **Trascrizione** | Come viene capito chi parla | **In tempo reale** (proposta) · **Standard (rileva la lingua)** |
+| **Chiusura per silenzio (secondi)** | Dopo quanti secondi di silenzio la chiamata si chiude | Da 0 a 120, proposto 10. «0 = non chiude mai da sola.» |
+| **Filtro dei rumori** | «Ignora le voci di sottofondo.» | Interruttore, acceso di serie |
+
+- Se la scheda delle voci mostra «Voci non disponibili al momento: riprova tra poco.», ricarica la pagina dopo qualche minuto.
+- **Flash v2.5** è la qualità più veloce: chi chiama aspetta meno tra una frase e l'altra. Se non hai esigenze particolari, lascia **Flash v2.5** e i valori proposti.
+- Se chi chiama si lamenta di essere interrotto (per esempio clienti anziani o che dettano dati), prova **Normale** o **Paziente (attende di più)** in **Reattività**.
+
+## Knowledge Base
+
+«Documenti, pagine web e testi da cui l'agente attinge per rispondere.» È il posto giusto per listini, orari dettagliati, schede dei servizi, domande frequenti: tutto ciò che sarebbe troppo lungo da mettere nel copione.
+
+Su un agente nuovo la sezione mostra «Serve prima salvare l'agente.» — «Crea l'agente, poi torna qui per caricare i documenti.»: premi prima **Crea agente**.
+
+Ci sono tre modi per aggiungere un documento, in tre schede:
+
+| Scheda | Campi | Limiti |
+| --- | --- | --- |
+| **File** | «Trascina un file o clicca per sceglierlo». Il file si carica appena lo scegli («Caricamento del documento…») | PDF, Word, TXT, HTML, EPUB, CSV o Markdown · fino a 20 MB |
+| **URL** | **Indirizzo della pagina web** (es. `https://…`) e **Nome del documento** (facoltativo, es. «Listino sul sito»), poi **Aggiungi** | Indirizzo fino a 500 caratteri, nome fino a 100 |
+| **Testo** | **Titolo** (es. «Listino prezzi») e **Contenuto** («Incolla il testo…»), poi **Aggiungi** | Titolo obbligatorio fino a 100 caratteri, contenuto di almeno 10 caratteri |
+
+Sotto compare l'elenco dei documenti, con nome, tipo, data, dimensione e il bottone **Rimuovi**. Se non ce ne sono: «Nessun documento: l'agente risponde solo col copione.». Dopo ogni aggiunta o rimozione leggi «Knowledge base aggiornata.».
+
+<Note>
+  Aggiungere o togliere un documento vale subito, senza **Salva agente**, e salva anche le altre modifiche che avevi fatto nell'editor fino a quel momento. Questo vale anche per un periodo di **Conservazione delle conversazioni** appena cambiato: se l'hai accorciato, le conversazioni più vecchie vengono cancellate già in quel momento. **Rimuovi** non chiede conferma.
+</Note>
+
+### Come do all'agente il mio listino
+
+<Steps>
+  <Step title="Apri la Knowledge Base">
+    Nella configurazione dell'agente apri **Knowledge Base**.
+  </Step>
+  <Step title="Scegli come caricarlo">
+    Se hai il listino in PDF o Word, resta su **File** e trascina il file nel riquadro. Se è una pagina del tuo sito usa **URL**. Se vuoi scriverlo a mano usa **Testo**, dai un **Titolo** e incolla il **Contenuto**, poi premi **Aggiungi**.
+  </Step>
+  <Step title="Controlla l'elenco">
+    Il documento compare nell'elenco sotto e leggi «Knowledge base aggiornata.».
+  </Step>
+  <Step title="Richiamalo nel copione">
+    Scrivi nel copione quando usarlo, per esempio «Per i prezzi usa solo il listino che hai nei documenti; se un servizio non c'è, di' che ti informi e fai richiamare».
+  </Step>
+</Steps>
+
+### Consigli per i documenti
+
+- Documenti brevi e ordinati funzionano meglio di un unico file enorme: un documento per argomento (listino, orari e chiusure, domande frequenti).
+- Scrivi le informazioni in frasi chiare, come le diresti a voce. Le tabelle complicate e le immagini si capiscono male.
+- Quando un'informazione cambia (prezzi, orari), togli il documento vecchio con **Rimuovi** e carica quello nuovo: due versioni diverse confondono l'agente.
+
+## Ricerca dati
+
+«Carica un elenco (CSV) — zone, servizi, tecnici — che l'agente consulta in chiamata.» Serve quando la risposta dipende da un dato di chi chiama: il costo per CAP, il tecnico di zona, il servizio disponibile in una città. A differenza della Knowledge Base, qui l'agente cerca la riga esatta che corrisponde al dato detto da chi chiama e usa solo quella.
+
+L'interruttore in alto a destra accende la ricerca (**Attivo** / **Spento**). Spenta, leggi «Attiva la ricerca per caricare un elenco e scegliere le colonne chiave.».
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| Caricamento del file | «Trascina il CSV o clicca per sceglierlo» | File CSV · fino a 5 MB. Solo su un agente già creato |
+| **Nome dell'elenco** | Come l'agente chiama l'elenco | Es. «Listino zone» |
+| **Cosa contiene (per l'agente)** | Una frase che spiega all'agente a cosa serve | Es. «I costi di intervento per ogni zona» |
+| **Colonne rilevate** | Le colonne trovate nella prima riga del file | Solo lettura |
+| **Colonna chiave 1** + **Etichetta** | La colonna in cui cercare il dato detto da chi chiama, e come si chiama quel dato | Es. colonna «CAP», etichetta «il CAP» |
+| **Colonna chiave 2 (opzionale)** + **Etichetta** | Una seconda colonna per restringere la ricerca | Es. etichetta «il servizio» |
+| **Colonna priorità (opzionale)** | Una colonna con un numero che decide l'ordine dei risultati | Il numero più basso viene prima |
+
+Quando ci sono righe caricate, sotto il titolo leggi «Attualmente N righe caricate.».
+
+### Come preparo e carico l'elenco
+
+<Steps>
+  <Step title="Prepara il file">
+    In Excel o in un altro foglio di calcolo metti nella prima riga i nomi delle colonne (es. `CAP`, `Zona`, `Servizio`, `Costo`, `Tecnico`) e sotto una riga per ogni voce. Salva come CSV: va bene sia con la virgola sia con il punto e virgola.
+  </Step>
+  <Step title="Accendi la ricerca">
+    Nella configurazione dell'agente apri **Ricerca dati** e accendi l'interruttore.
+  </Step>
+  <Step title="Carica il CSV">
+    Trascina il file nel riquadro. Leggi «CSV caricato: N righe. Configura le colonne chiave e salva.».
+  </Step>
+  <Step title="Scegli le colonne">
+    Scrivi **Nome dell'elenco** e **Cosa contiene (per l'agente)**, scegli **Colonna chiave 1** con la sua **Etichetta** e, se serve, **Colonna chiave 2** e **Colonna priorità**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva agente**: solo ora l'agente usa l'elenco con le colonne scelte.
+  </Step>
+</Steps>
+
+### Come lavora l'agente con l'elenco
+
+- Cerca il valore detto da chi chiama nella colonna chiave senza badare a maiuscole, accenti, trattini e punteggiatura: «Monza-Brianza» e «monza brianza» sono la stessa cosa. Per il resto il valore deve corrispondere: un CAP sbagliato non trova niente.
+- Con due colonne chiave lavora in due passi: prima chiede il dato della chiave 1, poi sceglie il valore giusto della chiave 2 tra quelli trovati.
+- Se ci sono più righe valide usa la prima secondo la **Colonna priorità** e tiene le altre come alternative.
+- Non legge mai l'elenco intero a chi chiama e non inventa valori che non trova: chiede di precisare.
+- Caricare un nuovo CSV **sostituisce subito** l'elenco precedente: da quel momento, finché non premi **Salva agente**, l'agente non trova niente nell'elenco. Dopo ogni caricamento salva.
+
+Su un agente nuovo, al posto del riquadro di caricamento leggi «Serve prima salvare l'agente.» — «Crea l'agente, poi torna qui per caricare il CSV.»: premi prima **Crea agente**. Se il file non va bene leggi «Il CSV deve avere intestazione e almeno una riga.».
+
+## Come scrivere un buon copione
+
+Il copione è il foglio di istruzioni che daresti a un collaboratore nuovo il primo giorno al telefono. Più è chiaro, meno l'agente improvvisa.
+
+### Quello che non serve scrivere
+
+Il pannello aggiunge da solo, a ogni chiamata, alcune istruzioni. Non ripeterle nel copione:
+
+- **la data e l'ora di oggi**: l'agente le conosce e calcola da solo «domani» o «martedì prossimo»;
+- **il numero di chi chiama**: l'agente lo conosce, non lo chiede e non lo legge per intero; se chi chiama gli domanda da che numero sta chiamando, conferma solo le prime tre cifre;
+- **lo stile telefonico**: frasi brevi, una informazione per volta, niente elenchi;
+- **come usare gli strumenti** che accendi nelle altre sezioni (calendario, trasferimenti con presentazione, ricerca dati, collegamenti Custom API);
+- con **Memoria delle chiamate** accesa, i riassunti delle chiamate precedenti dello stesso numero.
+
+### Quello che serve scrivere
+
+1. **Chi è l'agente e per chi lavora**: nome, azienda, che tipo di attività è.
+2. **Cosa deve fare, in ordine**: per esempio capire il motivo della chiamata, raccogliere nome e recapito, rispondere alle domande più comuni, fissare un appuntamento o far richiamare.
+3. **Le informazioni essenziali**: orari, indirizzo, servizi principali. Le cose lunghe (listini, schede) vanno nella **Knowledge Base**.
+4. **Cosa non deve fare**: non dare prezzi che non sono nei documenti, non promettere tempi, non dare consigli tecnici, medici o legali, non prendere impegni a nome tuo.
+5. **Quando passare la chiamata**: con le stesse parole che usi nella sezione **Trasferimento** (vedi [Trasferimenti](/agenti-ai/agente/trasferimenti)).
+6. **Come chiudere**: cosa dire a fine chiamata e quando salutare.
+
+### Consigli pratici
+
+- Usa frasi semplici e dirette, all'imperativo: «Chiedi sempre nome e cognome».
+- Scegli tra «Lei» e «tu» e usa lo stesso tono nella **Frase di apertura** e nel copione.
+- Dai esempi di frasi quando conta il modo: «Se chiedono un preventivo, rispondi: "Il preventivo lo fa il tecnico dopo il sopralluogo, posso fissarle un appuntamento?"».
+- Scrivi cosa fare quando l'agente non sa rispondere: «Se non trovi l'informazione, dillo con semplicità e proponi di far richiamare».
+- Se vuoi che chi chiama sappia subito che parla con un assistente virtuale, dillo nella **Frase di apertura** (es. «Buongiorno, sono Sofia, l'assistente virtuale dello Studio Rossi. Come posso aiutarla?»).
+- Tieni la **Frase di apertura** breve: nome dell'azienda, chi parla, una domanda.
+- Dopo le prime telefonate rileggi le trascrizioni in [Storico chiamate](/agenti-ai/storico-chiamate) e correggi il copione dove l'agente ha esitato o sbagliato. È il modo più rapido per migliorarlo.
+
+### Un esempio
+
+```text
+Sei Sofia, la receptionist dello Studio Dentistico Rossi di Firenze.
+Rispondi alle chiamate quando la segreteria non può.
+
+Cosa devi fare:
+- Capisci il motivo della chiamata.
+- Se il paziente vuole un appuntamento, chiedi nome e cognome e fissalo nel calendario.
+- Se chiede informazioni su prezzi o servizi, usa solo i documenti che hai.
+- Se ha un'urgenza o dolore forte, passa la chiamata alla segreteria.
+- Per tutto il resto prendi nome e motivo e di' che verrà richiamato in giornata.
+
+Informazioni utili:
+- Lo studio è in Via Roma 12, Firenze, al primo piano.
+- È aperto dal lunedì al venerdì, dalle 09:00 alle 19:00.
+
+Cosa non devi fare:
+- Non dare consigli medici e non fare diagnosi.
+- Non dare prezzi che non trovi nei documenti.
+
+Alla fine ripeti in breve cosa è stato deciso e saluta cordialmente.
+```
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Quale modello AI scelgo?">
+    **Claude Haiku 4.5 (consigliato)**, soprattutto se l'agente prenota appuntamenti, trasferisce chiamate o usa altri strumenti. I modelli segnati «economico» funzionano per conversazioni semplici, ma con gli strumenti sono meno affidabili.
+  </Accordion>
+
+  <Accordion title="Devo scrivere nel copione la data di oggi o gli orari di oggi?">
+    La data e l'ora di oggi no: le aggiunge il pannello a ogni chiamata. Gli orari di apertura della tua attività invece sì, nel copione o in un documento della Knowledge Base.
+  </Accordion>
+
+  <Accordion title="L'agente dà risposte sbagliate o inventate.">
+    Le risposte sono generate dall'intelligenza artificiale e possono contenere errori. Per ridurli: metti le informazioni giuste nella **Knowledge Base**, scrivi nel copione di usare solo quelle e cosa dire quando non trova la risposta, e controlla le trascrizioni nello [Storico chiamate](/agenti-ai/storico-chiamate).
+  </Accordion>
+
+  <Accordion title="L'agente interrompe chi chiama.">
+    In **Voce** → **Reattività** scegli **Normale** o **Paziente (attende di più)** e salva.
+  </Accordion>
+
+  <Accordion title="La chiamata si chiude da sola mentre chi chiama cerca un documento.">
+    Aumenta **Chiusura per silenzio (secondi)** nella sezione **Voce** (fino a 120). Con 0 la chiamata non si chiude mai per silenzio.
+  </Accordion>
+
+  <Accordion title="L'agente non chiude mai la chiamata.">
+    Controlla che **Chiusura automatica** sia accesa in **Identità e copione** e scrivi nel copione quando salutare e chiudere.
+  </Accordion>
+
+  <Accordion title="Posso far parlare l'agente in inglese?">
+    Sì: scegli **Inglese** in **Lingua** e scrivi in inglese anche la **Frase di apertura**. Per un'attività con chiamate in lingue diverse puoi creare un agente per ogni lingua.
+  </Accordion>
+
+  <Accordion title="L'agente si ricorda di chi ha già chiamato?">
+    Solo con **Memoria delle chiamate** accesa. Per gli agenti nuovi è spenta.
+  </Accordion>
+
+  <Accordion title="Ho ridotto la conservazione: cosa succede alle conversazioni vecchie?">
+    Con **Salva agente** vengono cancellate registrazioni e trascrizioni più vecchie del nuovo periodo, anche quelle già esistenti. Non si possono recuperare.
+  </Accordion>
+
+  <Accordion title="La Ricerca dati non trova il valore che chi chiama ha detto.">
+    Controlla di aver scelto la **Colonna chiave 1** giusta e di aver premuto **Salva agente** dopo il caricamento. Il valore deve corrispondere a quello del file, a parte maiuscole, accenti e punteggiatura. Scrivi nel copione quando consultare l'elenco, per esempio «Quando il cliente ti ha detto il CAP, cerca nel listino zone».
+  </Accordion>
+
+  <Accordion title="Ho aggiornato il listino nel CSV: come lo sostituisco?">
+    Carica di nuovo il file in **Ricerca dati**: il nuovo elenco sostituisce quello precedente. Controlla le colonne chiave e premi **Salva agente**.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Crea un agente" icon="robot" href="/agenti-ai/agente/crea-un-agente">
+    L'elenco degli agenti e come si salva la configurazione.
+  </Card>
+
+  <Card title="Trasferimenti" icon="arrow-right-arrow-left" href="/agenti-ai/agente/trasferimenti">
+    Quando e a chi passare la chiamata.
+  </Card>
+
+  <Card title="Appuntamenti" icon="calendar" href="/agenti-ai/agente/appuntamenti">
+    Far prenotare l'agente nel tuo calendario.
+  </Card>
+
+  <Card title="Storico chiamate" icon="list" href="/agenti-ai/storico-chiamate">
+    Rileggere le trascrizioni per migliorare il copione.
+  </Card>
+</CardGroup>

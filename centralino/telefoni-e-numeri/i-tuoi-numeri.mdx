@@ -1,0 +1,310 @@
+---
+title: "I tuoi numeri"
+sidebarTitle: "I tuoi numeri"
+description: "I numeri su cui il centralino riceve le chiamate: se funzionano, dove va ognuno, come collegare un numero che hai con un altro operatore, spegnerlo, riaccenderlo, usarlo anche per chiamare o eliminarlo."
+keywords:
+  - "i tuoi numeri"
+  - "numeri"
+  - "numerazioni"
+  - "DID"
+  - "numero geografico"
+  - "numero di telefono"
+  - "collegare un numero"
+  - "altro operatore"
+  - "numero non risponde"
+  - "nessuna regola"
+  - "non collegato"
+  - "spegnere numero"
+  - "eliminare numero"
+  - "credenziali SIP operatore"
+  - "chiamate in uscita con lo stesso numero"
+  - "numero senza operatore"
+---
+
+In **I tuoi numeri** trovi i numeri di telefono su cui il centralino riceve le chiamate: i numeri MyCentralino e quelli che hai con un altro operatore e hai collegato al centralino. Per ognuno vedi se funziona e **dove va**, cioè quante regole decidono cosa succede quando qualcuno lo chiama.
+
+**Dove si trova:** Menu → Telefoni e numeri → **I tuoi numeri** · `https://cloud.mycentralino.com/numeri-voip`
+
+Ci arrivi anche dalla pagina della sezione **Telefoni e numeri** (`https://cloud.mycentralino.com/parametri-voip`): la scheda **I tuoi numeri** dice, per esempio, «Tutti i 3 numeri hanno le loro regole» oppure, in ambra, «1 numero senza regole: non risponde».
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Telefoni e numeri**. Non serve nessun modulo.
+
+<Warning>
+  **Un numero senza regole non risponde.** Dopo aver collegato un numero, o se nella colonna **Dove va** leggi «Nessuna regola · non risponde», crea le sue regole: vedi [Regole delle chiamate](/centralino/regole/panoramica).
+</Warning>
+
+## Cosa trovi nella pagina
+
+### In alto
+
+Il titolo **I tuoi numeri** con la frase «I numeri su cui ricevi le chiamate e dove va ognuno.». Sopra, una riga di conteggi: quanti numeri hai sul massimo previsto dal piano (per esempio «3 numeri / 10»), quanti sono attivi e quanti hanno problemi.
+
+A destra:
+
+- **ⓘ** (**Come funziona**): una breve spiegazione e quanti numeri consente il tuo piano («Il tuo piano consente fino a N numerazioni: ne hai configurate M.»);
+- **Collega un numero di un altro operatore**: apre il modulo per collegare un numero che resta con il tuo operatore. Quando hai raggiunto i numeri compresi nel piano, al suo posto compare **Numeri del piano esauriti**;
+- **Richiedi un numero**: apre la richiesta di un numero nuovo MyCentralino. Vedi [Richieste di numeri](/centralino/telefoni-e-numeri/richieste-di-numeri).
+
+Sotto: la ricerca **Cerca un numero o un nome…** e l'ordine **Numero A–Z** / **Nome A–Z**. A limite raggiunto compare anche l'avviso «Limite numerazioni del piano raggiunto».
+
+### La tabella «Numeri»
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Numero** | Il numero, con il tasto **Copia telefono**. |
+| **Nome** | La descrizione che hai dato al numero. |
+| **Dove va** | Quante regole ha il numero, per esempio «3 regole ›»: un clic apre le sue regole. Se non ne ha, in ambra: **Nessuna regola · non risponde**, anche questo cliccabile. |
+| **Stato** | Se il numero funziona (vedi la tabella qui sotto). |
+| **Azioni** | **Modifica**, **Riaccendi** o «gestito da noi», più il menu **…** con le altre azioni. |
+
+Sul telefono ogni riga diventa una scheda.
+
+Se non hai ancora numeri compare «Nessuna numerazione VoIP configurata» con «Aggiungi una numerazione per ricevere chiamate sul centralino.».
+
+<Frame caption="I tuoi numeri e dove va ognuno">
+  <img
+    src="/images/guida/i-tuoi-numeri.webp"
+    alt="I tuoi numeri e dove va ognuno"
+  />
+</Frame>
+
+### Gli stati di un numero
+
+| Stato | Pallino | Cosa significa |
+| --- | --- | --- |
+| **Attivo** | verde | Il numero funziona e riceve le chiamate. |
+| **Non collegato: le chiamate non arrivano** | rosso | Il centralino non riesce a collegarsi all'operatore del numero: le chiamate non arrivano. |
+| **Da sistemare** | rosso | Mancano dati del numero o sono sbagliati. |
+| **Stato non disponibile** | grigio | In questo momento lo stato non si riesce a leggere. Riprova più tardi. |
+| **Spento** | grigio | Il numero è stato spento. |
+| **In verifica** | ambra | Lo stato è in corso di verifica. |
+
+### Le azioni su un numero
+
+Le azioni dipendono dal tipo di numero.
+
+| Azione | Dove | Su quali numeri |
+| --- | --- | --- |
+| **Modifica** | Nella riga | Numeri di altri operatori e numeri senza operatore. |
+| «gestito da noi» | Nella riga, al posto di **Modifica** | Numeri MyCentralino: «Lo gestiamo noi: per cambiarlo apri una richiesta di assistenza.» |
+| **Riaccendi** | Nella riga, al posto di **Modifica** | Numeri spenti dal pannello. |
+| **Usalo anche per le chiamate in uscita** | Menu **…** | Numeri da cui si può anche chiamare: compare solo se il numero lo permette e il centralino ha almeno una linea in uscita. |
+| **Spegni il numero** | Menu **…** | Numeri di altri operatori. |
+| **Elimina il numero** | Menu **…**, in rosso | Numeri di altri operatori, numeri senza operatore, numeri spenti e alcuni numeri MyCentralino. |
+
+## Come fare
+
+### Come vedo dove va una chiamata a un mio numero
+
+<Steps>
+  <Step title="Apri I tuoi numeri">
+    Menu → Telefoni e numeri → **I tuoi numeri**.
+  </Step>
+  <Step title="Apri le regole">
+    Nella colonna **Dove va** del numero clicca «N regole ›»: si aprono le **Regole delle chiamate** di quel numero.
+  </Step>
+</Steps>
+
+### Il numero dice «Nessuna regola · non risponde»: come lo sistemo
+
+Clicca l'avviso: si aprono le regole del numero, vuote. Aggiungi almeno i passaggi che fanno squillare i telefoni (per esempio: in orario squillano gli interni, fuori orario un messaggio o la segreteria) e salva. Vedi [L'editor delle regole](/centralino/regole/editor) e [Far squillare più telefoni](/centralino/come-fare/far-squillare-piu-telefoni).
+
+### Come collego un numero che ho con un altro operatore
+
+Il numero resta con il tuo operatore: tu inserisci i dati che ti ha dato e le chiamate arrivano al centralino. Ti servono **server**, **username** e **password** forniti dall'operatore.
+
+<Steps>
+  <Step title="Apri il modulo">
+    In **I tuoi numeri** premi **Collega un numero di un altro operatore**.
+  </Step>
+  <Step title="Scegli il tipo">
+    In **Tipo di numero** scegli **Numero di un altro operatore**.
+  </Step>
+  <Step title="Inserisci i dati dell'operatore">
+    Compila **Numero di telefono**, **Username SIP**, **Password SIP** e **SIP server** con i dati dell'operatore. Se vuoi, scrivi una **Descrizione** (per esempio «Linea principale ufficio»).
+  </Step>
+  <Step title="Crea">
+    Premi **Crea numerazione**. Torni all'elenco con «Numerazione 0212345678 aggiunta.». La configurazione si applica da sola nel giro di qualche minuto.
+  </Step>
+  <Step title="Crea le regole">
+    Il numero appena collegato non ha regole e quindi non risponde: nella colonna **Dove va** clicca **Nessuna regola · non risponde** e crea le sue regole.
+  </Step>
+</Steps>
+
+### Come cambio la password o i dati di un numero di un altro operatore
+
+<Steps>
+  <Step title="Apri la modifica">
+    Nella riga del numero premi **Modifica**.
+  </Step>
+  <Step title="Cambia i dati">
+    Per cambiare la password cancella gli asterischi in **Password SIP** e scrivi quella nuova. Per lasciarla com'è, lascia `********`. Puoi cambiare anche **Username SIP**, **SIP server** e **Descrizione**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva modifiche**: «Numerazione 0212345678 aggiornata.».
+  </Step>
+</Steps>
+
+### Come do un nome a un numero
+
+**Modifica** → **Descrizione** → **Salva modifiche**. Il nome serve a riconoscere il numero nella lista e non compare sui telefoni.
+
+Vale per i numeri con **Modifica**: il nome dei numeri «gestito da noi» si cambia con una richiesta di assistenza.
+
+### Come spengo per un po' un numero di un altro operatore
+
+<Steps>
+  <Step title="Spegni">
+    Nel menu **…** della riga scegli **Spegni il numero**.
+  </Step>
+  <Step title="Conferma">
+    Nella finestra «Disattiva numerazione» («Il numero … si scollega dal provider e smette di ricevere chiamate entro qualche minuto. Credenziali e regole restano salvate: si può riattivare quando serve.») premi **Disattiva**.
+  </Step>
+</Steps>
+
+Per riaccenderlo premi **Riaccendi** nella riga e poi **Riattiva** nella finestra «Riattiva numerazione»: il numero riprende a ricevere chiamate entro qualche minuto, con i dati e le regole di prima.
+
+<Note>
+  Se le stesse credenziali sono usate anche da altri tuoi numeri attivi, la finestra avvisa: «Le stesse credenziali sono in uso su altri numeri attivi. L'account resta collegato tramite questi numeri: il provider potrebbe continuare a consegnare chiamate.», con l'elenco dei numeri.
+</Note>
+
+### Come chiamo fuori con lo stesso numero su cui ricevo
+
+<Steps>
+  <Step title="Apri la copia">
+    Nel menu **…** della riga scegli **Usalo anche per le chiamate in uscita**. Si apre la finestra «Copia su provider in uscita».
+  </Step>
+  <Step title="Scegli la linea">
+    In **Provider in uscita di destinazione** scegli la linea su cui copiare i dati del numero: **PRINCIPALE** o **Provider #7**, **#8**… (con il loro nome, oppure «Vuoto»).
+  </Step>
+  <Step title="Conferma">
+    Conferma («Confermi la copia su …? Sovrascriverà la configurazione attuale del provider.»). Compare «Configurazione di … copiata sul trunk in uscita …».
+  </Step>
+</Steps>
+
+<Warning>
+  La copia **sostituisce** i dati che la linea scelta aveva prima. Se la linea è già in uso per altri interni, anche le loro chiamate in uscita useranno i dati nuovi. La linea **PRINCIPALE** gestita da MyCentralino compare nell'elenco ma non si può sovrascrivere: se la scegli compare «Il provider PRINCIPALE è gestito da MyCentralino: scegli un altro provider in uscita.».
+</Warning>
+
+Le linee e quali interni le usano sono in [Numeri in uscita](/centralino/telefoni-e-numeri/numeri-in-uscita).
+
+### Come elimino un numero
+
+<Steps>
+  <Step title="Elimina">
+    Nel menu **…** della riga scegli **Elimina il numero**.
+  </Step>
+  <Step title="Conferma">
+    Nella finestra «Elimina numerazione» («Stai per eliminare la numerazione «…». L'azione non è reversibile.») premi **Elimina**. Compare «Numerazione eliminata.».
+  </Step>
+</Steps>
+
+<Warning>
+  L'eliminazione è **definitiva**: insieme al numero si cancellano anche le sue **regole delle chiamate**. Un numero MyCentralino eliminato non è più assegnato al tuo centralino: se pensi di volerlo riavere, apri prima una richiesta di assistenza. Un numero di un altro operatore resta tuo presso quell'operatore: smette solo di arrivare al centralino.
+</Warning>
+
+## Il modulo «Collega un numero» / «Modifica»
+
+Si apre con **Collega un numero di un altro operatore** (`https://cloud.mycentralino.com/numeri-voip/nuovo`) o con **Modifica** su una riga. In creazione il titolo è «Collega un numero di un altro operatore» («Hai un numero con un altro operatore e vuoi tenerlo lì? Inserisci i dati che ti ha dato: le chiamate arriveranno al centralino.»). In modifica il titolo è il numero («Cambia il nome del numero o i dati che ti ha dato l'operatore. Il numero non si cambia.»).
+
+In alto **Annulla** e **Crea numerazione** (in modifica **Salva modifiche**). Quando cambi qualcosa compare in basso la barra **Modifiche non salvate**.
+
+### Tipo di numero
+
+| Scelta | Quando usarla |
+| --- | --- |
+| **Numero di un altro operatore** | «Ti servono server, utente e password che ti ha dato l'operatore.» È la scelta normale. |
+| **Numero senza operatore** | «Non riceve chiamate da fuori: serve per provare le regole.» |
+| **Altro operatore, rinnovo frequente** | «Come il primo, per gli operatori che lo richiedono (GNR). Usalo solo se te lo indichiamo noi.» |
+
+In modifica compare la nota «Se cambi tipo, reinserisci la password».
+
+### Dati dell'operatore
+
+| Campo | Cosa mettere | Regole |
+| --- | --- | --- |
+| **Numero di telefono** | Il numero, per esempio 0212345678. | Obbligatorio, solo in creazione. Da 3 a 20 cifre attaccate; il + è ammesso solo all'inizio (numeri esteri). Il prefisso +39 o 0039 viene tolto da solo. In modifica non si cambia: «Per cambiare il numero, elimina la numerazione e ricreala.» |
+| **Username SIP** | Lo username dato dall'operatore. Spesso coincide con il numero. | Obbligatorio, fino a 80 caratteri. Solo lettere, cifre e i simboli `. _ + - @`, senza spazi; deve iniziare con una lettera, una cifra o il +. |
+| **Password SIP** | La password data dall'operatore. Il tasto con l'occhio la mostra. | Obbligatoria, fino a 120 caratteri, senza virgole. In modifica: «Lascia `********` per non cambiarla.» |
+| **SIP server — obbligatorio** | L'indirizzo del server dell'operatore, con la porta se te l'ha data, per esempio `sip.provider.it:5060`. | Compare per **Numero di un altro operatore** e **Altro operatore, rinnovo frequente**. Solo l'indirizzo, senza `sip:` o altro. |
+| **Descrizione (facoltativo)** | Un nome per riconoscere il numero, per esempio «Linea principale ufficio». | Fino a 200 caratteri. Non compare sui telefoni. |
+
+### I messaggi
+
+| Messaggio | Cosa fare |
+| --- | --- |
+| «Seleziona un provider.» | Scegli una voce in **Tipo di numero**. |
+| «Username obbligatoria.» / «Password obbligatoria.» | Compila **Username SIP** e **Password SIP**. |
+| «Questo numero è già configurato altrove sulla piattaforma. Verifica il provider o contattaci.» | Il numero è già collegato a un centralino. Controlla di averlo scritto bene; se è giusto, apri una richiesta di assistenza. |
+| «Questo username è già in uso su un altro centralino. Controlla i dati che ti ha dato l'operatore o contattaci.» | Ricontrolla lo username con l'operatore. |
+| «Numero non valido: almeno 3 cifre attaccate, con l'eventuale + solo all'inizio.» | Togli spazi, punti e trattini. |
+| «Lo username può contenere solo lettere, cifre e . \_ + - @, senza spazi, e deve iniziare con una lettera o una cifra.» | Copia di nuovo lo username, senza spazi. |
+| «La password non può contenere virgole o caratteri invisibili.» | Ricopia la password a mano; se contiene una virgola, chiedine un'altra all'operatore. |
+| «Per Custom / CustomGNR il SIP server è obbligatorio (es. sip.provider.it:5060).» | Compila **SIP server**. |
+| «Scrivi solo l'indirizzo del server, con l'eventuale porta (es. sip.provider.it:5060).» | Togli dal campo tutto ciò che non è indirizzo e porta. |
+| «Cambiando il tipo di numero serve la password SIP: reinseriscila.» | Scrivi di nuovo la password in **Password SIP**. |
+
+## Da sapere
+
+- **Un numero si collega a un solo centralino.**
+- **Le modifiche hanno effetto entro qualche minuto**: collegare, modificare, spegnere o riaccendere un numero non è immediato.
+- **I numeri MyCentralino** non si modificano dal pannello: per cambiarli apri una richiesta di assistenza.
+- **Il numero di numeri collegabili** dipende dal piano: lo dice la finestra **ⓘ**. Per averne di più passa da [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita).
+- **Un numero nuovo MyCentralino** o la **portabilità** di un numero che hai già si chiedono da [Richieste di numeri](/centralino/telefoni-e-numeri/richieste-di-numeri).
+- **Il numero con cui escono le chiamate** degli interni si gestisce in [Numeri in uscita](/centralino/telefoni-e-numeri/numeri-in-uscita).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il numero è «Non collegato: le chiamate non arrivano».">
+    Il centralino non riesce a collegarsi all'operatore del numero. Se è un numero di un altro operatore, apri **Modifica** e controlla che **SIP server**, **Username SIP** e **Password SIP** siano esattamente quelli che ti ha dato l'operatore (la password potrebbe essere cambiata). Dopo il salvataggio aspetta qualche minuto. Se è un numero MyCentralino («gestito da noi»), apri una richiesta di assistenza.
+  </Accordion>
+
+  <Accordion title="Il numero risulta Attivo ma le chiamate non arrivano a nessuno.">
+    Guarda la colonna **Dove va**: se dice «Nessuna regola · non risponde», il numero non ha regole. Se le regole ci sono, controlla che facciano squillare interni collegati: vedi [Capire una chiamata persa](/centralino/come-fare/capire-una-chiamata-persa).
+  </Accordion>
+
+  <Accordion title="Non vedo «Modifica» ma «gestito da noi».">
+    È un numero MyCentralino: per cambiarlo serve l'assistenza.
+  </Accordion>
+
+  <Accordion title="Non riesco ad aggiungere numeri.">
+    Hai raggiunto i numeri compresi nel piano: al posto del bottone compare **Numeri del piano esauriti**. Altri numeri si aggiungono da **Aggiungi funzionalità**.
+  </Accordion>
+
+  <Accordion title="Ho sbagliato il numero di telefono quando l'ho collegato.">
+    Il numero non si modifica. Elimina la numerazione e ricreala con il numero giusto, poi ricrea le sue regole (si cancellano insieme al numero).
+  </Accordion>
+
+  <Accordion title="Ho spento un numero: le regole si perdono?">
+    No. «Credenziali e regole restano salvate»: con **Riaccendi** il numero torna come prima.
+  </Accordion>
+
+  <Accordion title="A cosa serve un «Numero senza operatore»?">
+    A provare le regole: non riceve chiamate da fuori.
+  </Accordion>
+
+  <Accordion title="Posso chiamare fuori mostrando il numero su cui ricevo?">
+    Sì, se il numero lo permette: menu **…** → **Usalo anche per le chiamate in uscita** e scegli la linea. Poi controlla in **Numeri in uscita** quale linea usano i tuoi interni.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Regole delle chiamate" icon="sitemap" href="/centralino/regole/panoramica">
+    Cosa succede quando qualcuno chiama un tuo numero.
+  </Card>
+
+  <Card title="Richieste di numeri" icon="phone" href="/centralino/telefoni-e-numeri/richieste-di-numeri">
+    Un numero nuovo o la portabilità.
+  </Card>
+
+  <Card title="Numeri in uscita" icon="arrow-right-arrow-left" href="/centralino/telefoni-e-numeri/numeri-in-uscita">
+    Le linee con cui chiamano gli interni.
+  </Card>
+
+  <Card title="Aggiungi funzionalità" icon="gear" href="/centralino/moduli/aggiungi-funzionalita">
+    Più numeri nel piano.
+  </Card>
+</CardGroup>

@@ -1,0 +1,308 @@
+---
+title: "Interni"
+sidebarTitle: "Interni"
+description: "I telefoni dei tuoi colleghi: chi è collegato adesso, come collegare un telefono, il computer o il cellulare, come cambiare nome, linea in uscita e password di un interno."
+keywords:
+  - "interni"
+  - "interno"
+  - "extension"
+  - "estensione"
+  - "telefoni dei colleghi"
+  - "numero breve"
+  - "interno assoluto"
+  - "utente SIP"
+  - "password SIP"
+  - "rigenera password"
+  - "telefono nel browser"
+  - "WebRTC"
+  - "secondo telefono"
+  - "follow me"
+  - "chiamate in uscita"
+  - "provider in uscita"
+  - "app aziendale"
+  - "eliminare interno"
+  - "togliere un interno"
+  - "ridurre gli interni"
+---
+
+Ogni collega ha un **interno**: un numero breve (per esempio 201) su cui squilla il suo telefono, che sia un telefono da scrivania, l'app sul cellulare, un programma sul computer o il telefono nel browser. Nella pagina **Interni** vedi chi è collegato in questo momento, colleghi un dispositivo a un interno e ne cambi le impostazioni.
+
+**Dove si trova:** Menu → Telefoni e numeri → **Interni** · `https://cloud.mycentralino.com/interni`
+
+Ci arrivi anche dalla pagina della sezione **Telefoni e numeri** (`https://cloud.mycentralino.com/parametri-voip`), dove la scheda **Interni** riporta quanti sono collegati adesso (per esempio «3 di 5 collegati adesso»).
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Telefoni e numeri**. Non serve nessun modulo.
+
+<Info>
+  Gli interni **non si creano e non si eliminano** da questa pagina. Gli interni in più si aggiungono da **Aggiungi funzionalità**: vedi [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita).
+</Info>
+
+## Cosa trovi nella pagina
+
+### In alto
+
+Il titolo **Interni** con la frase «I telefoni dei tuoi colleghi: chi è collegato e come associare un telefono, un computer o il cellulare.». Sopra il titolo una riga di conteggi, per esempio «5 interni configurati · 3 liberi · 1 in chiamata · 1 secondo telefono» (le parti «in chiamata» e «secondi telefoni» compaiono solo se non sono zero).
+
+A destra:
+
+- il bottone **ⓘ** (**Come funziona**), che apre la finestra «Come funzionano gli interni»;
+- il bottone verde **Associa dispositivo VoIP**, che apre la finestra «A quale interno vuoi associare un dispositivo?»: scegli l'interno dall'elenco (numero, nome e stato) e parte la procedura guidata. Compare solo se hai almeno un interno.
+
+### La card verde «Adesso»
+
+Se hai almeno un interno, una card verde riassume la situazione del momento: «Adesso · si aggiorna da sola», quanti interni sono liberi sul totale (per esempio «3 / 5 interni liberi») e i contatori **Al telefono** e **Non collegati**. Se il tuo piano comprende il telefono nel browser c'è anche **Nel browser**, per esempio «1/2»: quanti telefoni nel browser sono accesi rispetto al massimo previsto.
+
+### La ricerca
+
+La casella **Cerca un interno o un nome…** filtra le schede per numero breve, nome o interno assoluto. Se non trova niente compare «Nessun interno con questo nome o numero» con «Prova con un'altra parola.».
+
+Quando tutti i telefoni nel browser previsti dal piano sono accesi, accanto alla ricerca compare l'avviso «Telefoni nel browser al massimo: spegnine uno per accenderne un altro».
+
+### Le schede degli interni
+
+Una scheda per interno (una colonna sul telefono, due o tre sugli schermi più larghi). Ogni scheda mostra:
+
+| Elemento | Cosa indica |
+| --- | --- |
+| **Interno** oppure **Secondo telefono dell'interno** | Che cosa è la scheda: un interno, o un secondo apparecchio che squilla insieme a un interno che esiste già. |
+| Numero grande | Il **numero breve**: quello che i colleghi compongono per chiamare questo telefono. |
+| Pastiglia di stato | **Libero**, **Al telefono**, **Squilla** oppure **Non collegato**, con un pallino colorato. Vedi la tabella qui sotto. |
+| Nome | La descrizione dell'interno (per esempio «Mario Rossi · Vendite»). Per un secondo telefono: «Secondo telefono di …». |
+| **Interno assoluto** | Il codice univoco dell'interno, per esempio 22473. È il nome utente da mettere nel telefono quando lo configuri a mano. |
+| **Telefono nel browser (WebRTC)** · Acceso / Spento | L'interruttore del telefono nel browser. C'è solo se il tuo piano lo comprende. |
+| **Associa dispositivo VoIP** | Apre la procedura guidata per collegare un dispositivo a questo interno. |
+| **Modifica** | Apre la pagina di modifica dell'interno. |
+
+Lo stato si aggiorna da solo ogni 10 secondi, finché la pagina è aperta.
+
+Se non hai ancora interni compare «Nessun interno» con «Gli interni li aggiungi da «Aggiungi funzionalità».».
+
+<Frame caption="La pagina Interni con lo stato di ogni telefono">
+  <img
+    src="/images/guida/interni.webp"
+    alt="La pagina Interni con lo stato di ogni telefono"
+  />
+</Frame>
+
+### Gli stati di un interno
+
+| Stato | Pallino | Cosa significa |
+| --- | --- | --- |
+| **Libero** | verde | Il telefono è collegato al centralino ed è pronto a ricevere. |
+| **Al telefono** | ambra | Il telefono è in conversazione. |
+| **Squilla** | ambra | Il telefono sta suonando in questo momento. |
+| **Non collegato** | grigio | Nessun dispositivo di questo interno è collegato al centralino: è spento, senza internet, configurato male o mai configurato. |
+
+## Come fare
+
+### Come vedo se il telefono di un collega è collegato
+
+<Steps>
+  <Step title="Apri Interni">
+    Menu → Telefoni e numeri → **Interni**.
+  </Step>
+  <Step title="Cerca il collega">
+    Scrivi il nome o il numero dell'interno in **Cerca un interno o un nome…**.
+  </Step>
+  <Step title="Guarda la pastiglia">
+    **Libero** = collegato e disponibile. **Al telefono** o **Squilla** = impegnato adesso. **Non collegato** = il telefono non è collegato al centralino: vedi le domande frequenti più sotto.
+  </Step>
+</Steps>
+
+### Come collego un telefono, il computer o il cellulare a un interno
+
+<Steps>
+  <Step title="Apri la procedura guidata">
+    Sulla scheda dell'interno premi **Associa dispositivo VoIP** (oppure il bottone verde in alto e poi scegli l'interno).
+  </Step>
+  <Step title="Scegli il dispositivo">
+    **Cellulare**, **Computer**, **VoIP** (cordless o telefono da scrivania) oppure **WebRTC** (browser), poi **Avanti** e segui i passi.
+  </Step>
+</Steps>
+
+La procedura, passo per passo per ogni dispositivo, è in [Collegare un dispositivo](/centralino/telefoni-e-numeri/collegare-un-dispositivo).
+
+### Come cambio il nome di un interno
+
+<Steps>
+  <Step title="Apri la modifica">
+    In **Interni** premi **Modifica** sulla scheda dell'interno.
+  </Step>
+  <Step title="Scrivi il nome">
+    Nel campo **Descrizione** scrivi il nome, per esempio «Mario Rossi · Vendite». Se lo compili servono almeno 3 caratteri.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva** in alto a destra. Torni all'elenco con il messaggio «Interno 201 aggiornato.».
+  </Step>
+</Steps>
+
+Il nome compare nella rubrica e nelle pagine di stato.
+
+### Come impedisco a un interno di chiamare all'esterno
+
+<Steps>
+  <Step title="Apri la modifica">
+    **Modifica** sulla scheda dell'interno.
+  </Step>
+  <Step title="Scegli Nessuno">
+    In **Provider in uscita** scegli **Nessuno · questo interno non può chiamare fuori**. Compare l'avviso «Da questo interno non si potranno più fare chiamate verso l'esterno. Le chiamate interne e quelle in arrivo restano attive.».
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**.
+  </Step>
+</Steps>
+
+Per ridargli le chiamate verso l'esterno rimetti **Provider 6 · principale (predefinito)** (o un'altra linea) e salva.
+
+### Come scelgo con quale linea chiama fuori un interno
+
+Se il tuo centralino ha più linee per le chiamate in uscita (le vedi in **Numeri in uscita**), in **Modifica** → **Provider in uscita** scegli la linea per questo interno e premi **Salva**. **Provider 6 · principale (predefinito)** è la linea principale, quella che in **Numeri in uscita** si chiama **PRINCIPALE**. Le altre linee compaiono come «Provider 7», «Provider 8»… con il loro nome; quelle ancora vuote sono segnate «· da configurare».
+
+Vedi [Numeri in uscita](/centralino/telefoni-e-numeri/numeri-in-uscita).
+
+### Come nascondo un interno dall'app aziendale
+
+In **Modifica** togli la spunta da **Mostra interno nell'app mobile** («Se disattivato, l'interno non appare tra i contatti dell'app aziendale.») e premi **Salva**.
+
+### Come cambio la password di un interno
+
+Serve quando un telefono è stato perso o rubato, o quando un ex collega conosce la password.
+
+<Steps>
+  <Step title="Apri la modifica">
+    **Modifica** sulla scheda dell'interno.
+  </Step>
+  <Step title="Rigenera">
+    Nel riquadro **Password SIP** premi **Rigenera** e conferma («Rigenero la password SIP? Tutti i dispositivi configurati con quella vecchia smetteranno di funzionare…»).
+  </Step>
+  <Step title="Riconfigura i dispositivi">
+    Compare «Password SIP rigenerata. Riconfigura i dispositivi con la nuova credenziale.» e, sotto, «Nuova password SIP: …». Configura di nuovo ogni dispositivo di quell'interno: con il QR (app sul cellulare), con il file di configurazione automatica (MicroSIP) o inserendo a mano la nuova password.
+  </Step>
+</Steps>
+
+<Warning>
+  Dopo **Rigenera** la vecchia password non vale più: i telefoni, le app e i programmi di quell'interno non riescono più a collegarsi e risultano **Non collegato** finché non li configuri con la password nuova.
+</Warning>
+
+### Come accendo il telefono nel browser su un interno
+
+Solo se il tuo piano comprende il **Telefono nel browser (WebRTC)**.
+
+<Steps>
+  <Step title="Accendi l'interruttore">
+    Sulla scheda dell'interno accendi **Telefono nel browser (WebRTC)**. Compare «Telefono nel browser acceso.».
+  </Step>
+  <Step title="Prendi i parametri">
+    Premi **Associa dispositivo VoIP**: la procedura propone solo **WebRTC** e mostra i parametri per il collegamento dal browser.
+  </Step>
+</Steps>
+
+Il telefono nel browser si accende su un numero limitato di interni (la finestra **ⓘ** dice quanti). Quando sono tutti accesi, l'interruttore degli altri interni è disattivato e sotto compare «Tutti in uso: spegnine uno per accendere questo.»: spegnilo su un altro interno e riprova. Per spegnerlo premi di nuovo l'interruttore («Telefono nel browser spento.»).
+
+### Come aggiungo un interno
+
+Da **Aggiungi funzionalità**. Dalla pagina Interni non si può. Vedi [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita).
+
+## La pagina «Modifica interno»
+
+Si apre con **Modifica** sulla scheda (`https://cloud.mycentralino.com/interni/INTERNO-ASSOLUTO/modifica`). Il titolo è «Interno 201», con l'interno assoluto in una pastiglia sopra. In alto a destra il bottone **Salva**.
+
+Quando cambi qualcosa compare in basso la barra **Modifiche non salvate** con **Annulla** e **Salva**. Se esci senza salvare il pannello chiede «Ci sono modifiche non salvate. Uscire senza salvarle?».
+
+### I campi
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Numero breve** | Il numero che gli altri interni compongono per chiamare questo telefono. | Solo lettura. |
+| **Identificativo SIP** | Il nome utente che il telefono usa per collegarsi: è l'interno assoluto. | Solo lettura. |
+| **Descrizione** | Il nome dell'interno. Compare nella rubrica e nelle pagine di stato. | Facoltativo; se compilato, almeno 3 caratteri. Le virgolette doppie, i simboli minore e maggiore e la barra rovesciata vengono tolti da soli. |
+| **Provider in uscita** | La linea con cui l'interno chiama verso l'esterno. | **Provider 6 · principale (predefinito)**, le altre linee del centralino («Provider N · nome»), **Scelta manuale (l'operatore sceglie a ogni chiamata)**, **Nessuno · questo interno non può chiamare fuori**. |
+| **Mostra interno nell'app mobile** | Se l'interno compare tra i contatti dell'app aziendale. | Attivo all'inizio. |
+| **Password SIP del telefono** | La password con cui telefoni, app e programmi si collegano al centralino. | Nascosta; **Mostra** / **Nascondi**, **Copia**, **Rigenera**. |
+
+Per alcuni centralini compaiono anche campi in più, legati a integrazioni particolari (per esempio **Nome web**). Se non li vedi, non ti servono.
+
+### I messaggi
+
+| Messaggio | Cosa fare |
+| --- | --- |
+| «La descrizione deve essere di almeno 3 caratteri.» | Allunga il nome o lascia il campo vuoto. |
+| «Scegli una voce dall'elenco dei provider.» | Scegli di nuovo una voce in **Provider in uscita**. |
+| «Password SIP non rigenerata.» | La password non è cambiata: riprova. Se si ripete, apri una richiesta di assistenza. |
+
+## Da sapere
+
+- **Numero breve e interno assoluto non si cambiano** dal pannello.
+- **Il secondo telefono di un interno** (una scheda «Secondo telefono dell'interno») è un altro apparecchio con un suo accesso, che squilla insieme all'interno a cui è legato. Nell'elenco compare, ma non si conta tra gli interni. Si collega con il suo **Associa dispositivo VoIP**, sulla sua scheda. Non si crea dal pannello.
+- **Segreteria, inoltro al cellulare e destinazione delle chiamate** non si impostano qui: vedi [Segreterie](/centralino/strumenti/segreterie), [Inoltro chiamate](/centralino/instradamento/inoltro-chiamate) e le [Regole delle chiamate](/centralino/regole/panoramica).
+- **Un interno collegato non squilla da solo** quando chiamano il tuo numero: deve essere nelle regole di quel numero. Vedi [Far squillare più telefoni](/centralino/come-fare/far-squillare-piu-telefoni).
+- **Dopo «Rigenera»** la password nuova resta visibile con **Mostra**, sia in questa pagina sia nella procedura guidata.
+- Monitoraggio → **Stato interni** mostra in più l'indirizzo di rete e il modello del dispositivo collegato. Vedi [Stato interni](/centralino/telefoni-e-numeri/stato-interni).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il telefono risulta «Non collegato»: cosa controllo?">
+    Il dispositivo non è collegato al centralino. Controlla che sia acceso e connesso a internet (per l'app: che sia aperta o attiva in sottofondo). Poi apri **Associa dispositivo VoIP** → scheda **Impostazioni SIP interno** e verifica che server, utente e password nel dispositivo siano esattamente quelli mostrati. Se hai premuto **Rigenera** da poco, il dispositivo va configurato con la password nuova. Lo stato si aggiorna da solo entro 10 secondi.
+  </Accordion>
+
+  <Accordion title="Come aggiungo un interno?">
+    Da **Aggiungi funzionalità**. Dalla pagina Interni non si possono creare né eliminare interni.
+  </Accordion>
+
+  <Accordion title="Come tolgo un interno che non uso più e smetto di pagarlo?">
+    Dal pannello no: gli interni non si eliminano da questa pagina, e il pannello **Interni per il tuo centralino** di **Aggiungi funzionalità** serve solo ad aggiungerne. Per togliere un interno dall'abbonamento se ne occupa il nostro team: apri una richiesta di assistenza da Menu → **Assistenza** → **Le tue richieste**, scrivendo quale interno togliere (numero breve e nome). Vedi [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza). Intanto puoi toglierlo dalle regole delle chiamate e dalle code, così non squilla più.
+  </Accordion>
+
+  <Accordion title="Posso cambiare il numero breve di un interno?">
+    Non dal pannello. Apri una richiesta di assistenza.
+  </Accordion>
+
+  <Accordion title="Dopo «Rigenera» il telefono non funziona più.">
+    È normale: la vecchia password non vale più. Configura di nuovo il dispositivo con la password nuova (QR, file di configurazione automatica o a mano).
+  </Accordion>
+
+  <Accordion title="Non riesco ad accendere il telefono nel browser.">
+    Hai raggiunto il numero di telefoni nel browser previsto dal piano: l'interruttore è disattivato, sotto compare «Tutti in uso: spegnine uno per accendere questo.» e accanto alla ricerca «Telefoni nel browser al massimo: spegnine uno per accenderne un altro». Spegnilo su un altro interno e riprova.
+  </Accordion>
+
+  <Accordion title="Nella procedura le scelte Cellulare, Computer e VoIP sono grigie.">
+    Su quell'interno è acceso il **Telefono nel browser (WebRTC)**. Spegni l'interruttore sulla scheda dell'interno e riapri la procedura.
+  </Accordion>
+
+  <Accordion title="Perché vedo più schede che interni?">
+    Le schede «Secondo telefono dell'interno» sono apparecchi in più di un interno che esiste già: compaiono nell'elenco ma non si contano tra gli interni.
+  </Accordion>
+
+  <Accordion title="Un collega non deve più poter chiamare all'esterno.">
+    **Modifica** → **Provider in uscita** → **Nessuno · questo interno non può chiamare fuori** → **Salva**. Le chiamate interne e quelle in arrivo restano attive.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Collegare un dispositivo" icon="phone" href="/centralino/telefoni-e-numeri/collegare-un-dispositivo">
+    La procedura guidata per ogni dispositivo e i parametri.
+  </Card>
+
+  <Card title="Collegare un telefono" icon="headset" href="/centralino/come-fare/collegare-un-telefono">
+    La guida dall'inizio alla fine.
+  </Card>
+
+  <Card title="Stato interni" icon="chart-line" href="/centralino/telefoni-e-numeri/stato-interni">
+    Quali telefoni sono collegati, con indirizzo e modello.
+  </Card>
+
+  <Card title="Numeri in uscita" icon="arrow-right-arrow-left" href="/centralino/telefoni-e-numeri/numeri-in-uscita">
+    Le linee per le chiamate verso l'esterno.
+  </Card>
+
+  <Card title="Segreterie" icon="voicemail" href="/centralino/strumenti/segreterie">
+    La segreteria di ogni interno.
+  </Card>
+
+  <Card title="Aggiungi funzionalità" icon="gear" href="/centralino/moduli/aggiungi-funzionalita">
+    Dove si aggiungono gli interni.
+  </Card>
+</CardGroup>

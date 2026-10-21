@@ -1,0 +1,151 @@
+---
+title: "Connessioni VoIP degli Agenti AI"
+sidebarTitle: "Connessioni VoIP"
+description: "Le connessioni VoIP sono gli interni dedicati che collegano il centralino agli agenti AI: come si creano, come si sceglie l'agente che risponde, come si rinominano e si eliminano."
+keywords:
+  - "connessioni voip"
+  - "connessione agente ai"
+  - "interno 9000"
+  - "collegare agente al centralino"
+  - "assegnare agente"
+  - "cambiare agente"
+  - "provider in uscita"
+  - "nuova connessione"
+  - "eliminare connessione"
+  - "collegamento telefonico agenti ai"
+---
+
+Una **connessione VoIP** è un interno dedicato del tuo centralino, con un numero da 9000 in su, collegato al servizio degli Agenti AI. A ogni connessione assegni un agente: le chiamate che arrivano su quella connessione le gestisce quell'agente. Le chiamate di un tuo numero ci arrivano con il passaggio **Agente AI realtime** delle Regole delle chiamate, e le campagne in uscita partono da lì.
+
+**Dove si trova:** menu degli Agenti AI → Gestione → **Connessioni VoIP** · `https://cloud.mycentralino.com/wave/connessioni`
+
+Ci arrivi anche dal bottone **Apri Agenti AI** del passaggio **Agente AI realtime**, nelle Regole delle chiamate.
+
+**Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
+
+<Info>
+  Puoi creare tante connessioni quanti agenti permette il tuo piano. Il numero è scritto in alto: «N / M connessioni del piano». Per crearne di più serve un piano più grande: vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani).
+</Info>
+
+## Cosa trovi nella pagina
+
+In alto «N / M connessioni del piano», il titolo **Connessioni VoIP**, la frase «Ogni connessione è un interno dedicato del centralino: inoltra le chiamate al suo agente AI.» e il bottone **\+ Nuova connessione**, spento quando hai raggiunto il limite del piano.
+
+Ogni connessione è una riga con:
+
+| Elemento | Cosa indica |
+| --- | --- |
+| Nome | Il nome che hai dato alla connessione, per esempio «Linea principale». Se non ne hai dato uno: «Connessione AI» seguito dal numero |
+| **interno** | Il numero dell'interno dedicato, per esempio `9000` |
+| Stato | Pallino verde con «Risponde» e il nome dell'agente, oppure pallino ambra con «Nessun agente assegnato» |
+| Primo elenco della riga | L'agente che risponde su questa connessione, oppure «— nessun agente —». Si cambia da qui |
+| Secondo elenco della riga (provider in uscita) | Di solito dice **Principale (default)**; passandoci sopra con il mouse compare «Provider in uscita». È la linea usata per le chiamate verso l'esterno che partono da questa connessione. **Principale (default)** è la linea normale del centralino; altre voci compaiono solo se il tuo centralino ha altre linee disponibili per questa scelta |
+| **Rinomina** · **Elimina** | Cambiano il nome o eliminano la connessione |
+
+Se non hai connessioni: «Nessuna connessione» e «Crea la prima connessione per collegare un agente AI al centralino.» con il bottone **Crea la prima connessione**.
+
+## Come fare
+
+### Come collego un agente al centralino
+
+<Steps>
+  <Step title="Crea la connessione">
+    In **Connessioni VoIP** premi **\+ Nuova connessione**. La finestra **Nuova connessione VoIP** spiega: «Creiamo un interno dedicato del centralino (serie 9000) e lo colleghiamo al servizio AI. Poi gli assegni un agente.»
+  </Step>
+  <Step title="Dai un nome">
+    In **Nome (facoltativo)** scrivi un nome che ti aiuti a riconoscerla, per esempio «Linea principale» o «Fuori orario». Premi **Crea connessione**. Compare «Connessione creata: interno 9000 pronto.» (con il numero assegnato).
+  </Step>
+  <Step title="Assegna l'agente">
+    Nella riga della nuova connessione, nell'elenco che dice «— nessun agente —», scegli l'agente. Compare «Agente assegnato.» e lo stato diventa «Risponde» con il nome dell'agente.
+  </Step>
+  <Step title="Manda le chiamate alla connessione">
+    Nel Centralino, nelle **Regole chiamate** del tuo numero, aggiungi il passaggio **Agente AI realtime** e scegli questa connessione. Vedi [Collegare un numero](/agenti-ai/collegare-un-numero).
+  </Step>
+</Steps>
+
+### Come cambio l'agente che risponde
+
+Nella riga della connessione scegli un altro agente dall'elenco. Vale subito per le chiamate successive, su tutti i numeri che usano quella connessione. Non serve toccare le Regole delle chiamate.
+
+### Come rinomino una connessione
+
+Premi **Rinomina**, scrivi il nuovo nome (da 2 a 100 caratteri) e premi **Salva**. Compare «Nome aggiornato.» Il nuovo nome compare anche nelle Regole delle chiamate.
+
+### Come elimino una connessione
+
+<Steps>
+  <Step title="Controlla dove è usata">
+    Prima di eliminarla, controlla nelle **Regole chiamate** quali numeri o servizi interni hanno un passaggio **Agente AI realtime** con questa connessione: dopo l'eliminazione quei passaggi non funzionano più.
+  </Step>
+  <Step title="Elimina">
+    Premi **Elimina**. La finestra «Eliminare la connessione?» avvisa che la connessione «verrà scollegata dal servizio AI e l'interno dedicato cancellato dal centralino.» Premi **Elimina**. Compare «Connessione eliminata.»
+  </Step>
+  <Step title="Sistema le regole">
+    Nei numeri che la usavano elimina il passaggio **Agente AI realtime** oppure aggiungilo di nuovo scegliendo un'altra connessione.
+  </Step>
+</Steps>
+
+<Warning>
+  L'eliminazione di una connessione è definitiva: l'interno dedicato viene cancellato. I passaggi delle Regole delle chiamate che la usavano non vengono tolti da soli: vanno sistemati a mano, altrimenti le chiamate di quei numeri non trovano nessuno che risponda.
+</Warning>
+
+## I messaggi
+
+| Messaggio | Cosa vuol dire |
+| --- | --- |
+| «Connessione creata: interno … pronto.» | La connessione è pronta: assegnale un agente |
+| «Agente assegnato.» · «Agente rimosso dalla connessione.» | Hai cambiato l'agente della connessione |
+| «Provider aggiornato.» | Hai cambiato la linea in uscita (il secondo elenco della riga) |
+| «Nome aggiornato.» | Hai rinominato la connessione |
+| «Connessione eliminata.» | La connessione e il suo interno non ci sono più |
+| «Hai raggiunto il limite di N connessioni del tuo piano.» | Hai già tutte le connessioni che il piano permette |
+| «Nessun piano attivo: attiva un piano per creare connessioni.» | Senza un piano attivo non si creano connessioni |
+| Un messaggio che dice che il servizio Receptionist AI non è ancora supportato per il tuo centralino | Il tuo centralino non può ancora usare le connessioni AI: scrivi all'assistenza da [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza) |
+
+## Da sapere
+
+- **Un agente per connessione.** Su ogni connessione risponde un solo agente. Per avere agenti diversi su numeri diversi crea più connessioni.
+- **Una connessione, tanti numeri.** La stessa connessione può ricevere le chiamate di più numeri e servizi interni.
+- **Le campagne partono dalla connessione dell'agente.** Un agente senza connessione non può fare chiamate in uscita: le sue esecuzioni restano in bozza. Vedi [Campagne in uscita](/agenti-ai/campagne-in-uscita).
+- **Se elimini un agente**, la sua connessione resta, senza agente: assegnane un altro, altrimenti le chiamate che arrivano lì non trovano risposta.
+- **Gli interni delle connessioni** (da 9000 in su) non compaiono nell'elenco **Interni** del centralino e non servono a collegare telefoni.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il bottone «+ Nuova connessione» è spento.">
+    Hai raggiunto il numero massimo di connessioni del piano, che è uguale al numero di agenti. Elimina una connessione che non usi oppure passa a un piano più grande in **Crediti**.
+  </Accordion>
+
+  <Accordion title="Ho creato la connessione ma l'agente non risponde.">
+    Controlla tre cose: la connessione deve avere un agente («Risponde» con il nome); il numero deve avere il passaggio **Agente AI realtime** con questa connessione; il servizio non deve essere sospeso (lo vedi nella Home degli Agenti AI).
+  </Accordion>
+
+  <Accordion title="Posso usare lo stesso agente su due connessioni?">
+    Sì, l'elenco di ogni connessione propone tutti i tuoi agenti. Di solito però basta una connessione per agente: la stessa connessione può servire tutti i numeri che vuoi.
+  </Accordion>
+
+  <Accordion title="Cosa scelgo nel secondo elenco della riga («Provider in uscita»)?">
+    Nella maggior parte dei casi lascia **Principale (default)**, la linea normale del centralino. Se nell'elenco vedi altre voci e non sai quale usare, chiedi all'assistenza prima di cambiarla.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Collegare un numero" icon="sitemap" href="/agenti-ai/collegare-un-numero">
+    Il passaggio Agente AI realtime nelle Regole delle chiamate.
+  </Card>
+
+  <Card title="Crea un agente" icon="robot" href="/agenti-ai/agente/crea-un-agente">
+    Creare l'agente da assegnare alla connessione.
+  </Card>
+
+  <Card title="Campagne in uscita" icon="phone-volume" href="/agenti-ai/campagne-in-uscita">
+    Le chiamate che l'agente fa da questa connessione.
+  </Card>
+
+  <Card title="Attivazione e piani" icon="credit-card" href="/agenti-ai/attivazione-e-piani">
+    Quante connessioni permette il tuo piano.
+  </Card>
+</CardGroup>

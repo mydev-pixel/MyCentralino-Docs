@@ -1,0 +1,254 @@
+---
+title: "Contact Center"
+sidebarTitle: "Contact Center"
+description: "Gli account degli operatori del Contact Center: chi entra nell'app operatori, con quale interno, con che ruolo e a quali code risponde. Come si richiede il modulo."
+keywords:
+  - "contact center"
+  - "call center"
+  - "operatori"
+  - "supervisore"
+  - "app operatori"
+  - "code assegnate"
+  - "account operatore"
+  - "password operatore"
+  - "limite operatori"
+  - "agenti call center"
+  - "pause motivate"
+---
+
+Il **Contact Center** è il modulo per chi ha un call center. Gli operatori lavorano da un'**app dedicata**, con stato in tempo reale e pause motivate. Nel pannello prepari i loro account: quale interno usa ciascuno, il nome che compare, il ruolo, la password e le code a cui può rispondere.
+
+**Dove si trova:** Menu → **I tuoi moduli** → Comunicazione → **Contact Center** · `https://cloud.mycentralino.com/contact-center`
+
+**Chi la vede:** il titolare dell'account. Un collaboratore solo se gli hai dato il permesso **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
+
+<Info>
+  Il Contact Center è un modulo **su quotazione**: si dimensiona sul tuo centralino, a partire da quanti operatori ti servono. Il prezzo esatto ti arriva prima dell'attivazione. Il numero massimo di operatori lo fissa il piano concordato.
+</Info>
+
+## Cosa trovi nella pagina
+
+### Se il modulo non è attivo
+
+La pagina presenta il modulo: «Suite per call center: dashboard agenti in tempo reale, supervisione code, pause motivate e statistiche per operatore.», la pill **Modulo attivabile** e il titolo «Il Contact Center non è incluso nel tuo piano attuale.».
+
+- **Richiedi attivazione** apre la pagina **Attiva Contact Center**, dove chiedi la quotazione.
+- **Tutti i moduli** torna a [I tuoi moduli](/centralino/moduli/i-tuoi-moduli).
+
+### Se il modulo è attivo
+
+In alto il titolo **Contact Center**, il contatore «N / M operatori attivabili» (operatori creati su quelli consentiti dal piano) e la frase «Gli account con cui gli operatori accedono all'app del Contact Center, e le code a cui possono rispondere.».
+
+A destra due bottoni:
+
+- **App operatori** apre l'app del Contact Center in una nuova scheda del browser;
+- **Nuovo operatore** apre la finestra di creazione. È spento quando hai raggiunto il numero massimo di operatori.
+
+Sotto c'è la tabella **Operatori**.
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Interno** | Il numero dell'interno legato all'operatore. |
+| **Nome** | Il nome visualizzato dell'operatore. |
+| **Ruolo** | **Operatore** oppure **Supervisore**. |
+| **Code assegnate** | Le code a cui l'operatore può rispondere, una etichetta per coda. «—» se non ne ha. |
+| **Stato** | **Attivo** (pallino verde) oppure **Disattivato** (pallino grigio). |
+| **Azioni** | **Code**, **Modifica**, **Disattiva** (o **Attiva**), **Elimina**. |
+
+Senza operatori la tabella mostra «Nessun operatore configurato» con «Crea il primo operatore per dargli accesso all'app del Contact Center.».
+
+## Come fare
+
+### Come richiedo il Contact Center
+
+<Steps>
+  <Step title="Apri la richiesta">
+    In [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita) premi **Richiedi il Contact Center**. In alternativa apri `https://cloud.mycentralino.com/contact-center` e premi **Richiedi attivazione**.
+  </Step>
+  <Step title="Scrivi cosa ti serve">
+    Nella pagina **Attiva Contact Center** usa il campo **Note (facoltative)**: per esempio quanti operatori servono e da quando.
+  </Step>
+  <Step title="Invia">
+    Premi **Richiedi una quotazione**. Compare la conferma, per esempio «Richiesta aperta con il ticket N. Ti rispondiamo lì e via email.». La segui in [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza).
+  </Step>
+</Steps>
+
+Serve un metodo di pagamento salvato nell'account: senza, il bottone resta spento e compare il riquadro **Serve un metodo di pagamento**.
+
+### Come creo un operatore
+
+Prima di iniziare: l'operatore usa un [interno](/centralino/telefoni-e-numeri/interni) del centralino. Ogni interno può avere un solo operatore.
+
+<Steps>
+  <Step title="Apri la finestra">
+    In **Contact Center** premi **Nuovo operatore**.
+  </Step>
+  <Step title="Scegli l'interno">
+    In **Interno** scegli dal menu **Scegli un interno…**. Compaiono solo gli interni che non hanno ancora un operatore. Se premi **Crea operatore** senza scegliere l'interno o senza password, l'operatore non viene creato: compila i campi e riprova.
+  </Step>
+  <Step title="Nome e ruolo">
+    Scrivi il **Nome visualizzato** e scegli il **Ruolo**: **Operatore** oppure **Supervisore**.
+  </Step>
+  <Step title="Password">
+    Scrivi una **Password** di almeno 8 caratteri, oppure premi **Genera** per crearne una casuale di 12 caratteri. Annotala subito: dopo il salvataggio non si rivede. **Il nome utente è il numero dell'interno:** il pannello lo imposta da solo quando crei l'operatore. All'operatore comunica il numero del suo interno e la password.
+  </Step>
+  <Step title="Salva">
+    Premi **Crea operatore**. Compare «Operatore creato.» e la riga si aggiunge alla tabella con lo stato **Attivo**.
+  </Step>
+  <Step title="Dagli le code">
+    Nella riga dell'operatore premi **Code** e spunta le code a cui deve rispondere (vedi sotto).
+  </Step>
+</Steps>
+
+### Come scelgo a quali code risponde un operatore
+
+<Steps>
+  <Step title="Apri le code dell'operatore">
+    Nella riga dell'operatore premi **Code**. Si apre la finestra «Code di …» con la nota «L'operatore può rispondere solo alle code selezionate.».
+  </Step>
+  <Step title="Spunta le code">
+    Compare una casella per ogni [coda di ricezione](/centralino/instradamento/code-di-ricezione) del centralino. Spunta quelle giuste e togli la spunta alle altre.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Compare «Code assegnate.» e la colonna **Code assegnate** si aggiorna.
+  </Step>
+</Steps>
+
+Se il centralino non ha code, la finestra dice «Non ci sono code di ricezione configurate.». Le code si creano in **Code di ricezione**.
+
+### Come cambio la password di un operatore
+
+<Steps>
+  <Step title="Apri la modifica">
+    Nella riga dell'operatore premi **Modifica**.
+  </Step>
+  <Step title="Scrivi la nuova password">
+    Nel campo **Nuova password (vuota = invariata)** scrivi la nuova password, oppure premi **Genera**. Se lasci il campo vuoto la password resta quella di prima.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Compare «Operatore aggiornato.». Comunica la nuova password all'operatore: il nome utente resta il numero dell'interno.
+  </Step>
+</Steps>
+
+Dalla stessa finestra cambi anche **Nome visualizzato**, **Ruolo** e **PIN (opzionale)**. L'interno invece non si cambia: per spostare un operatore su un altro interno eliminalo e crealo di nuovo.
+
+### Come disattivo o riattivo un operatore
+
+Nella riga dell'operatore premi **Disattiva**: lo stato diventa subito **Disattivato**. Per riattivarlo premi **Attiva** nella stessa riga. Non c'è una finestra di conferma.
+
+### Come elimino un operatore
+
+<Steps>
+  <Step title="Premi Elimina">
+    Nella riga dell'operatore premi **Elimina**.
+  </Step>
+  <Step title="Conferma">
+    La finestra «Eliminare l'operatore?» avvisa: «… perderà l'accesso all'app del Contact Center e le code assegnate.». Premi **Elimina**. Compare «Operatore eliminato.».
+  </Step>
+</Steps>
+
+## I campi
+
+### Finestra «Nuovo operatore» / «Modifica operatore»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Interno** | L'interno del centralino legato all'operatore. | Obbligatorio alla creazione. Solo interni senza operatore. Non si cambia dopo. |
+| **Nome visualizzato** | Il nome dell'operatore, come compare nella tabella. | Obbligatorio, da 2 a 100 caratteri. |
+| **Ruolo** | Il ruolo nell'app. | **Operatore** (già scelto) oppure **Supervisore**. |
+| **PIN (opzionale)** | Un PIN dell'operatore. | Facoltativo, al massimo 20 caratteri. |
+| **Password** | La password con cui l'operatore entra nell'app. In modifica il campo si chiama **Nuova password (vuota = invariata)**. | Obbligatoria alla creazione, da 8 a 64 caratteri. **Genera** ne crea una di 12 caratteri, senza i caratteri che si confondono (come 0 e O, 1 e l). |
+
+I bottoni in fondo sono **Annulla** e **Crea operatore** (in modifica **Salva**).
+
+### Finestra «Code di …»
+
+Una casella per ogni coda di ricezione del centralino, con il nome della coda. Bottoni **Annulla** e **Salva**.
+
+## Messaggi che puoi vedere
+
+| Messaggio | Cosa significa |
+| --- | --- |
+| «Hai raggiunto il limite di M operatori.» (a volte seguito da «Contatta il supporto per ampliarlo.») | Hai già creato tutti gli operatori che il piano consente. |
+| «Inserisci il nome da mostrare.» | Manca il **Nome visualizzato**. |
+| «La password deve avere almeno 8 caratteri.» | La password è troppo corta. |
+| «Interno non valido.» | L'interno scelto non esiste sul centralino. |
+| «Questo interno è già abilitato al Contact Center.» | Quell'interno ha già un operatore. |
+| «Operatore creato.» · «Operatore aggiornato.» · «Code assegnate.» · «Operatore eliminato.» | Operazione riuscita. |
+
+## Da sapere
+
+- **Il limite di operatori.** Il contatore «N / M operatori attivabili» conta **tutti** gli operatori creati, anche quelli **Disattivato**. Per liberare un posto bisogna eliminare un operatore.
+- **Un interno, un operatore.** Lo stesso interno non può avere due operatori.
+- **Il nome utente è il numero dell'interno.** Il pannello lo imposta da solo quando crei l'operatore e non si cambia: all'operatore servono il numero del suo interno e la password.
+- **Le code vengono dal centralino.** Nella finestra **Code** trovi le code di ricezione che hai già creato. Una coda nuova si crea in [Code di ricezione](/centralino/instradamento/code-di-ricezione) e poi compare qui.
+- **La password non si rivede.** Dopo il salvataggio non c'è modo di leggerla dal pannello: se l'operatore la dimentica, impostane una nuova con **Modifica**.
+- **Il lavoro si fa nell'app.** Stato in tempo reale, pause e supervisione sono nell'app operatori, che si apre con **App operatori**. Questa pagina gestisce solo gli account.
+
+<Warning>
+  **Elimina** non si può annullare: l'operatore perde l'accesso all'app e le code che aveva. Se vuoi solo metterlo da parte senza perdere interno, nome e code, usa **Disattiva**: resta in tabella con lo stato **Disattivato** e continua a contare nel limite.
+</Warning>
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il bottone «Nuovo operatore» è spento. Perché?">
+    Hai raggiunto il numero massimo di operatori del tuo piano: il contatore in alto lo mostra, per esempio «5 / 5 operatori attivabili». Elimina un operatore che non serve più, oppure chiedi di ampliare il piano con una [richiesta di assistenza](/centralino/assistenza/richieste-di-assistenza).
+  </Accordion>
+
+  <Accordion title="Ho disattivato un operatore: il posto si libera?">
+    No. Anche gli operatori disattivati contano nel limite. Per liberare il posto devi eliminarlo.
+  </Accordion>
+
+  <Accordion title="Nel menu «Interno» non trovo l'interno che mi serve.">
+    Il menu mostra solo gli interni che non hanno già un operatore. Se l'interno è già in tabella, quell'operatore esiste già. Se l'interno non esiste ancora, crealo prima in [Interni](/centralino/telefoni-e-numeri/interni).
+  </Accordion>
+
+  <Accordion title="Nella finestra «Code» non c'è nessuna coda.">
+    Il centralino non ha ancora code di ricezione: la finestra dice «Non ci sono code di ricezione configurate.». Creale in [Code di ricezione](/centralino/instradamento/code-di-ricezione) e torna qui.
+  </Accordion>
+
+  <Accordion title="Un operatore ha dimenticato la password.">
+    Apri **Modifica** sulla sua riga, scrivi una nuova password nel campo **Nuova password (vuota = invariata)** o premi **Genera**, poi **Salva**. La password vecchia non si può recuperare.
+  </Accordion>
+
+  <Accordion title="Posso cambiare l'interno di un operatore?">
+    No, l'interno si sceglie solo alla creazione. Elimina l'operatore e crealo di nuovo sull'interno giusto, poi riassegna le code.
+  </Accordion>
+
+  <Accordion title="Quanto costa il Contact Center?">
+    Il prezzo si stabilisce su misura, in base al tuo centralino e agli operatori che servono. Lo ricevi con la quotazione, prima di qualsiasi attivazione.
+  </Accordion>
+
+  <Accordion title="Come disattivo il modulo?">
+    Apri `https://cloud.mycentralino.com/moduli/attiva/contact_center`: la pagina **Attiva Contact Center** mostra **Modulo già attivo**. In fondo, accanto a «Non usi più questo modulo?», premi **Richiedi disattivazione**, scrivi se vuoi il motivo e premi **Invia richiesta**. Compare «Richiesta di disattivazione inviata: ti ricontatteremo al più presto.» e ricevi un'email di conferma. La disattivazione la gestisce l'assistenza, che ti ricontatta per tempi e dettagli. Vedi [I tuoi moduli](/centralino/moduli/i-tuoi-moduli).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Code di ricezione" icon="users" href="/centralino/instradamento/code-di-ricezione">
+    Le code a cui rispondono gli operatori.
+  </Card>
+
+  <Card title="Interni" icon="phone" href="/centralino/telefoni-e-numeri/interni">
+    Gli interni da legare agli operatori.
+  </Card>
+
+  <Card title="Analisi chiamate code" icon="chart-line" href="/centralino/monitoraggio/analisi-chiamate-code">
+    Come vanno le code del centralino.
+  </Card>
+
+  <Card title="I tuoi moduli" icon="gear" href="/centralino/moduli/i-tuoi-moduli">
+    Attivare, richiedere e disattivare un modulo.
+  </Card>
+
+  <Card title="Aggiungi funzionalità" icon="gear" href="/centralino/moduli/aggiungi-funzionalita">
+    Dove si richiede il Contact Center.
+  </Card>
+
+  <Card title="Utenti e permessi" icon="user" href="/centralino/account/utenti-e-permessi">
+    Dare a un collaboratore l'accesso ai moduli.
+  </Card>
+</CardGroup>

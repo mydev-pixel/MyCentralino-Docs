@@ -1,0 +1,176 @@
+---
+title: "Servizi interni"
+sidebarTitle: "Servizi interni"
+description: "Cosa sono i servizi interni, come si aggiungono, come si configurano e come si collegano a un numero, a un menù vocale o a un orario."
+keywords:
+  - "servizi interni"
+  - "servizio interno"
+  - "numeri brevi"
+  - "risorse locali"
+  - "posto libero"
+  - "400"
+  - "401"
+  - "sotto-flusso"
+  - "smistamento"
+  - "menù vocale tasto"
+  - "aggiungi servizi interni"
+---
+
+Un **servizio interno** è un numero breve del centralino (per esempio 401, 402) con una sequenza di passaggi tutta sua. Non si chiama da fuori: la chiamata ci arriva da un numero o da un altro passaggio, e da lì segue i passaggi del servizio. Serve a costruire il centralino a mattoni: un reparto, un messaggio fuori orario usato da più numeri, la destinazione di un tasto del menù vocale.
+
+**Dove si trova:** Menu → **Regole chiamate** → **Servizi interni** · `https://cloud.mycentralino.com/regole?kind=internal`
+
+**Chi la vede:** il titolare dell'account e i collaboratori con la sezione **Regole delle chiamate**. Per aggiungere servizi interni serve anche l'accesso ad **Aggiungi funzionalità**.
+
+## Come funziona
+
+- Ogni servizio interno ha il suo [editor delle regole](/centralino/regole/editor), uguale a quello di un numero: si aggiungono, si spostano e si eliminano i passaggi allo stesso modo.
+- Quando una chiamata arriva a un servizio interno **non torna indietro**: continua con i passaggi del servizio. I passaggi che stavano sotto, nella sequenza di partenza, di norma non vengono raggiunti.
+- Un servizio interno può mandare la chiamata a un altro servizio interno: nell'editor, in alto, il percorso (per esempio «Centralino › Commerciale › 402») ti dice dove sei e ti riporta indietro.
+
+### Da dove ci arriva una chiamata
+
+Un servizio interno si usa come destinazione in molti punti:
+
+| Dove | Come |
+| --- | --- |
+| Nei passaggi di un numero | **Inoltra la chiamata a un servizio interno** |
+| In un menù vocale | Come destinazione di un tasto, in [Menù vocali (IVR)](/centralino/instradamento/menu-vocali) |
+| Negli orari e nelle ferie | Come destinazione di chiusura, in [Orari](/centralino/orari-e-chiusure/orari) e [Ferie e festività](/centralino/orari-e-chiusure/ferie-e-festivita) |
+| Negli interruttori | Come destinazione, in [Interruttori a orario](/centralino/orari-e-chiusure/interruttori-a-orario) e [Interruttori](/centralino/orari-e-chiusure/interruttori) |
+| Nei filtri | **Filtra per numero chiamante**, **Filtra fissi / mobili**, **Filtra per prefisso** |
+| Nei servizi a consumo | **Servizi basati su PIN**, **Servizi basati su CallerID** |
+| In un menù a due cifre | **Menù vocale (IVR) a 2 cifre**: prefisso più le due cifre digitate |
+
+I passaggi sono descritti in [Passaggi che instradano la chiamata](/centralino/regole/passaggi-chiamata) e [Orari, filtri e dettagli](/centralino/regole/passaggi-filtri).
+
+## Cosa trovi nella pagina
+
+Con il filtro **Servizi interni** la tabella mostra, per ogni servizio:
+
+- il **Numero** (cliccabile: apre i suoi passaggi);
+- la **Descrizione**: il nome che gli hai dato. Un servizio comprato e mai usato compare come «Posto libero · dagli un nome e aggiungi le regole»;
+- sotto la descrizione, **Ci arriva da: …** (da quale numero, tasto di menù, coda, orario o interruttore passa la chiamata per arrivarci) oppure, in ambra, **Nessun numero ci arriva · non ha effetto**;
+- le **Regole**: quante ne ha, oppure **Nessuna regola** in ambra.
+
+## Come fare
+
+### Come aggiungo servizi interni
+
+<Steps>
+  <Step title="Apri Aggiungi funzionalità">
+    Menu → **Aggiungi funzionalità** · `https://cloud.mycentralino.com/aggiungi-funzionalita`. Trova la tessera **Servizi interni** («I numeri brevi che decidono dove va una chiamata.») e premi **Aggiungi servizi**.
+  </Step>
+  <Step title="Scegli quanti">
+    In **Quanti servizi ti servono** usa **\+** e **−**: si aggiungono a gruppi di 5. Sotto vedi quanti ne avrai in tutto, il canone che si aggiunge all'abbonamento e la parte da pagare fino al rinnovo.
+  </Step>
+  <Step title="Scegli come pagare">
+    In **Come vuoi pagare la parte proporzionale** scegli tra le possibilità proposte (per esempio **Carta salvata** o **Credito del centralino**). Il prezzo è indicato nella pagina prima della conferma.
+  </Step>
+  <Step title="Conferma">
+    Premi **Aggiungi al centralino**. I nuovi servizi compaiono subito in **Regole delle chiamate** → **Servizi interni**, come «Posto libero».
+  </Step>
+</Steps>
+
+Per aggiungere qualcosa al centralino serve un metodo di pagamento salvato. Tutti i dettagli in [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita).
+
+### Come configuro un servizio interno
+
+<Steps>
+  <Step title="Aprilo">
+    Menu → **Regole chiamate** → **Servizi interni** → clicca il servizio.
+  </Step>
+  <Step title="Dagli un nome">
+    Premi la matita **Rinomina il servizio**, scrivi un nome che lo descriva (per esempio «Commerciale», al massimo 150 caratteri) e premi **Invio**.
+  </Step>
+  <Step title="Aggiungi i passaggi">
+    Premi **Aggiungi la prima regola** e costruisci la sequenza, per esempio **Fai squillare uno o più interni VoIP** e sotto **Segreteria telefonica**.
+  </Step>
+</Steps>
+
+### Come lo collego a un numero
+
+<Steps>
+  <Step title="Apri il numero">
+    Menu → **Regole chiamate** → **Numeri di telefono** → clicca il numero.
+  </Step>
+  <Step title="Aggiungi il passaggio">
+    **Aggiungi regola** → argomento **Inoltra la chiamata** → **Inoltra la chiamata a un servizio interno** → scegli il servizio → **Aggiungi regola**.
+  </Step>
+  <Step title="Controlla">
+    Nello schema compare la scheda **SERVIZIO INTERNO** con «apri il servizio». Nell'elenco, sotto il servizio, ora c'è **Ci arriva da:** con il numero.
+  </Step>
+</Steps>
+
+In alternativa scegli il servizio come destinazione di un tasto del menù vocale o come destinazione di chiusura di un orario.
+
+### Come costruisco un menù «premi 1 per…» con un servizio per ogni reparto
+
+<Steps>
+  <Step title="Prepara un servizio per reparto">
+    Per esempio 401 «Commerciale» e 402 «Assistenza», ognuno con i suoi passaggi.
+  </Step>
+  <Step title="Crea il menù">
+    In Menu → Risorse centralino → Instradamento → **Menù vocali (IVR)** crea il menù e scegli come destinazione del tasto 1 il servizio 401, del tasto 2 il 402.
+  </Step>
+  <Step title="Mettilo sul numero">
+    Nell'editor del numero aggiungi **Menù vocale (IVR)** e scegli il menù.
+  </Step>
+</Steps>
+
+Guida completa: [Creare un menù vocale](/centralino/come-fare/creare-un-menu-vocale).
+
+## Da sapere
+
+- **Quando un servizio non ha effetto.** Se non ha passaggi (**Nessuna regola**, contato in **Da sistemare**) le sue regole non vengono mai usate. **Nessun numero ci arriva · non ha effetto** vuol dire che il servizio non si raggiunge da un numero, da un tasto di un menù vocale, da una coda, da un orario, dalle ferie, da un interruttore o dai filtri. I servizi raggiunti solo con **Servizi basati su PIN**, **Servizi basati su CallerID**, **Menù vocale (IVR) a 2 cifre**, i codici servizio o da una campagna del Power Dialer compaiono così anche se funzionano: prima di cancellarli o cambiarli controlla da dove li usi.
+- **«Ci arriva da»** si aggiorna da solo: dopo un collegamento nuovo può servire fino a un paio di minuti. Lo vedi con i filtri **Tutti**, **Servizi interni** o **Da sistemare**.
+- **Copiare le regole.** Puoi copiare i passaggi di un numero su un servizio interno e viceversa con **Copia configurazione**: le regole della destinazione vengono sostituite. Vedi [Regole delle chiamate](/centralino/regole/panoramica).
+- **Un nome, un uso.** Dai a ogni servizio un nome chiaro: compare nell'elenco, nei menu di scelta, nel percorso dell'editor e in «Ci arriva da».
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Non vedo nessun servizio interno da scegliere nei passaggi.">
+    Non ne hai ancora: si aggiungono da **Aggiungi funzionalità** → **Servizi interni** → **Aggiungi servizi**. In alcune finestre trovi scritto che i servizi interni li crea l'amministratore: oggi li aggiungi tu, da quella pagina.
+  </Accordion>
+
+  <Accordion title="Cos'è «Posto libero»?">
+    Un servizio interno che hai a disposizione ma non hai ancora usato. Dagli un nome e aggiungi i suoi passaggi.
+  </Accordion>
+
+  <Accordion title="Il mio servizio dice «Nessun numero ci arriva · non ha effetto».">
+    Nessun numero, tasto di menù, coda, orario, ferie, interruttore o filtro manda chiamate a quel servizio. Se il servizio lo usi con un PIN, un codice servizio, il menù vocale a 2 cifre, **Servizi basati su CallerID** o il Power Dialer, la scritta compare lo stesso: in quel caso il servizio funziona. Altrimenti collegalo da un numero con **Inoltra la chiamata a un servizio interno**, oppure come destinazione di un tasto o di un orario.
+  </Accordion>
+
+  <Accordion title="Si può chiamare un servizio interno da fuori?">
+    No, non direttamente: da fuori si chiama un tuo numero, e i suoi passaggi portano la chiamata al servizio interno.
+  </Accordion>
+
+  <Accordion title="Dopo il servizio interno la chiamata torna ai passaggi del numero?">
+    No. È un trasferimento: la chiamata continua con i passaggi del servizio interno e non torna indietro.
+  </Accordion>
+
+  <Accordion title="Come torno al numero da cui sono partito?">
+    Usa il percorso in alto nell'editor (per esempio «Centralino › Commerciale › 402»), oppure **Cambia numero**.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Regole delle chiamate" icon="sitemap" href="/centralino/regole/panoramica">
+    L'elenco di numeri e servizi interni.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    I passaggi di un servizio interno.
+  </Card>
+
+  <Card title="Aggiungi funzionalità" icon="gear" href="/centralino/moduli/aggiungi-funzionalita">
+    Dove si aggiungono i servizi interni.
+  </Card>
+
+  <Card title="Menù vocali (IVR)" icon="list" href="/centralino/instradamento/menu-vocali">
+    I tasti che portano ai servizi interni.
+  </Card>
+</CardGroup>

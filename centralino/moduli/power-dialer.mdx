@@ -1,0 +1,328 @@
+---
+title: "Power Dialer"
+sidebarTitle: "Power Dialer"
+description: "Campagne di chiamate in uscita automatiche: carichi una lista di numeri da file CSV, il centralino li chiama da solo e passa chi risponde ai tuoi operatori. Creare, configurare, avviare e seguire una campagna."
+keywords:
+  - "power dialer"
+  - "campagna"
+  - "campagne in uscita"
+  - "chiamate automatiche"
+  - "outbound"
+  - "lista numeri"
+  - "csv"
+  - "telemarketing"
+  - "richiamo clienti"
+  - "chiamate simultanee"
+  - "composizione automatica"
+  - "dialer"
+  - "esiti campagna"
+---
+
+Il **Power Dialer** chiama in automatico un elenco di numeri. Carichi la lista da un file CSV, scegli la linea da cui chiamare e il servizio che deve gestire chi risponde: il centralino compone i numeri da solo, anche più di uno alla volta (fino alle **Chiamate simultanee** scelte), e passa le risposte ai tuoi operatori.
+
+**Dove si trova:** Menu → **I tuoi moduli** → Chiamate → **Power Dialer** · `https://cloud.mycentralino.com/power-dialer`
+
+**Chi la vede:** il titolare dell'account. Un collaboratore solo se gli hai dato il permesso **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
+
+<Info>
+  Il Power Dialer è un modulo **su quotazione**: si dimensiona sul tuo centralino e il prezzo esatto ti arriva prima dell'attivazione. Il numero massimo di **chiamate simultanee** lo fissa il piano concordato.
+</Info>
+
+## Come funziona
+
+- Una **campagna** è un elenco di numeri da chiamare, caricato da un file CSV.
+- Quando la campagna è **In esecuzione**, il centralino chiama i numeri della lista, al massimo tanti alla volta quante sono le **Chiamate simultanee** scelte, dalla linea indicata in **Provider in uscita**.
+- Chi risponde passa al **servizio interno di destinazione**: sono le sue [Regole delle chiamate](/centralino/regole/editor) a decidere cosa succede, per esempio mettere la chiamata in una [coda di ricezione](/centralino/instradamento/code-di-ricezione) con i tuoi operatori.
+- Se i tuoi operatori rispondono da una coda di ricezione, puoi indicarla in **Coda monitorata (opzionale)**.
+- Nella pagina **Live** segui la campagna mentre lavora.
+
+## Cosa trovi nella pagina
+
+### Se il modulo non è attivo
+
+La pagina presenta il modulo: «Composizione automatica per campagne outbound: carichi la lista numeri, il centralino chiama e passa le risposte ai tuoi operatori.», la pill **Modulo attivabile** e il titolo «Il Power Dialer non è incluso nel tuo piano attuale.». I bottoni sono **Richiedi attivazione**, che apre la richiesta di quotazione, e **Tutti i moduli**.
+
+### Se il modulo è attivo: l'elenco delle campagne
+
+In alto il titolo **Power Dialer**, il numero di campagne («N campagne»), la frase «Campagne di chiamate automatiche: il centralino compone i numeri della lista e passa le risposte al servizio scelto.» e il bottone **Nuova campagna**.
+
+Ogni campagna è una scheda con:
+
+- il nome e lo stato: **In esecuzione** (pallino verde) oppure **Ferma** (pallino grigio);
+- la riga dei numeri: «N simultanee · da chiamare N · chiamati N». Se ci sono numeri esclusi compare anche «· blacklist N». Se mancano linea o servizio compare **da configurare** in ambra;
+- i bottoni **Avvia** (o **Ferma**), **Live**, **Configura**, **Export** ed **Elimina**.
+
+**Avvia** resta spento finché manca qualcosa. Sul computer accanto è scritto il motivo: «Prima configura linea e servizio» oppure «Nessun numero da chiamare».
+
+Senza campagne: «Nessuna campagna» con «Crea la prima campagna e carica la lista dei numeri da chiamare.».
+
+### La pagina «Configura · …»
+
+Si apre con **Configura**, oppure subito dopo la creazione · `https://cloud.mycentralino.com/power-dialer/…/configura`
+
+Sotto il titolo: «Scegli con quale provider chiamare, dove far atterrare le risposte e carica la lista dei numeri.». Due riquadri:
+
+- **Instradamento**: linea, servizio di destinazione, coda monitorata e chiamate simultanee, con il bottone **Salva configurazione**;
+- **Lista numeri**: il caricamento del file CSV e l'elenco **Da chiamare**.
+
+### La pagina «Live · …»
+
+Si apre con **Live** · `https://cloud.mycentralino.com/power-dialer/…/live`
+
+In alto lo stato, «in esecuzione · dati dal vivo» oppure «campagna ferma», e i bottoni **Export log** e **Avvia campagna** (o **Ferma campagna**). Se non ci sono numeri da chiamare il bottone è spento e dice **Nessun numero da chiamare**.
+
+I dati si aggiornano da soli ogni 10 secondi, mentre la pagina è aperta e visibile.
+
+| Riquadro | Cosa mostra |
+| --- | --- |
+| **Da chiamare** | I numeri della lista non ancora chiamati, senza quelli esclusi (blacklist). |
+| **Chiamati** | I numeri già chiamati. |
+| **Risposte** | Le chiamate a cui qualcuno ha risposto. |
+| **% di risposta** | Le risposte sul totale delle chiamate partite. «—» se non è ancora partita nessuna chiamata. |
+| **Ultimi eventi** | Gli ultimi 25 eventi, dal più recente: data e ora, numero ed esito (**Chiamata**, **Risposta**, **Esito** con la nota, **Numero non valido**). Senza eventi: «Ancora nessuna chiamata.». |
+| **Esiti registrati** | Gli esiti scritti dalla regola **Log chiamata Power Dialer**, raggruppati per testo, con quante volte compare ciascuno. «(senza nota)» se il testo manca. Senza esiti: «Nessun esito personalizzato registrato.». |
+
+## Come fare
+
+### Come richiedo il Power Dialer
+
+<Steps>
+  <Step title="Apri la richiesta">
+    In [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita) premi **Richiedi il Power Dialer**. In alternativa apri `https://cloud.mycentralino.com/power-dialer` e premi **Richiedi attivazione**.
+  </Step>
+  <Step title="Scrivi cosa ti serve">
+    Nella pagina **Attiva Power Dialer** usa il campo **Note (facoltative)**: per esempio quante chiamate insieme vuoi fare, quanti operatori rispondono e da quando ti serve.
+  </Step>
+  <Step title="Invia">
+    Premi **Richiedi una quotazione**. Compare la conferma, per esempio «Richiesta aperta con il ticket N. Ti rispondiamo lì e via email.». La segui in [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza).
+  </Step>
+</Steps>
+
+Serve un metodo di pagamento salvato nell'account: senza, il bottone resta spento e compare il riquadro **Serve un metodo di pagamento**.
+
+### Come preparo e avvio una campagna
+
+Prima di iniziare: prepara il [servizio interno](/centralino/regole/servizi-interni) che deve gestire chi risponde, per esempio con una regola che mette la chiamata nella coda dei tuoi operatori.
+
+<Steps>
+  <Step title="Crea la campagna">
+    In **Power Dialer** premi **Nuova campagna**. Scrivi il **Nome campagna** (per esempio «Richiamo clienti maggio»), scegli le **Chiamate simultanee** e premi **Crea e configura**. Si apre la pagina **Configura**.
+  </Step>
+  <Step title="Scegli la linea">
+    In **Provider in uscita** scegli la linea da cui partono le chiamate.
+  </Step>
+  <Step title="Scegli dove arrivano le risposte">
+    In **Servizio interno di destinazione** scegli il servizio che gestisce chi risponde.
+  </Step>
+  <Step title="Coda monitorata (facoltativa)">
+    Se gli operatori rispondono da una coda, sceglila in **Coda monitorata (opzionale)**. Altrimenti lascia **Nessuna**.
+  </Step>
+  <Step title="Salva la configurazione">
+    Premi **Salva configurazione**. Compare «Configurazione salvata.».
+  </Step>
+  <Step title="Carica i numeri">
+    Nel riquadro **Lista numeri** premi **Carica CSV** e scegli il file. Compare l'anteprima: «Anteprima: N numeri da importare», con i numeri scartati se ce ne sono. Controlla e premi **Importa**. Compare «Importati N numeri.».
+  </Step>
+  <Step title="Avvia">
+    Torna a **Power Dialer** e premi **Avvia** sulla campagna, oppure apri **Live** e premi **Avvia campagna**. Lo stato diventa **In esecuzione**.
+  </Step>
+</Steps>
+
+### Come preparo il file CSV
+
+<Steps>
+  <Step title="Una riga per numero">
+    In Excel, o in un altro foglio di calcolo, metti nella colonna A i numeri da chiamare e nella colonna B, se vuoi, il nome del contatto.
+  </Step>
+  <Step title="Niente intestazione">
+    Non mettere una riga di titoli in cima: verrebbe scartata come numero non valido.
+  </Step>
+  <Step title="Salva come CSV">
+    Salva il file in formato CSV. Il separatore può essere la virgola o il punto e virgola.
+  </Step>
+</Steps>
+
+### Come seguo una campagna mentre lavora
+
+Premi **Live** sulla campagna. I quattro numeri in alto, **Ultimi eventi** ed **Esiti registrati** si aggiornano da soli ogni 10 secondi.
+
+### Come fermo una campagna
+
+Premi **Ferma** sulla scheda della campagna, oppure **Ferma campagna** nella pagina **Live**. Lo stato diventa **Ferma**. Per ripartire premi di nuovo **Avvia**.
+
+### Come tolgo un numero dalla lista
+
+In **Configura**, nell'elenco **Da chiamare**, premi **Rimuovi** accanto al numero. Il numero sparisce subito, senza conferma.
+
+### Come aggiungo altri numeri a una campagna
+
+In **Configura** premi di nuovo **Carica CSV** con il nuovo file e poi **Importa**. I numeri già presenti nella campagna vengono saltati. Se dopo il caricamento non compare l'anteprima, il file non conteneva numeri nuovi e validi.
+
+### Come scarico il registro di una campagna
+
+Premi **Export** sulla scheda della campagna, oppure **Export log** nella pagina **Live**. Scarichi un file CSV con tutti gli eventi della campagna (vedi «Il file del registro» più sotto).
+
+### Come elimino una campagna
+
+Premi **Elimina** sulla scheda. La finestra «Eliminare la campagna?» avvisa: «… e tutti i numeri caricati verranno eliminati. L'operazione non si può annullare.». Premi **Elimina**: compare «Campagna eliminata.».
+
+## I campi
+
+### Finestra «Nuova campagna»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome campagna** | Il nome della campagna. Esempio nel campo: «Richiamo clienti maggio». | Obbligatorio, da 2 a 100 caratteri. |
+| **Chiamate simultanee** | Quante chiamate la campagna fa nello stesso momento. Sotto: «Il tuo piano ne prevede fino a N.». | Da 1 al massimo del tuo piano. |
+
+Bottoni **Annulla** e **Crea e configura**.
+
+### Riquadro «Instradamento»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Provider in uscita** | La linea da cui partono le chiamate della campagna. | Obbligatorio. Le linee del centralino, ognuna con il nome che le hai dato nella colonna **Nome** di [Numeri in uscita](/centralino/telefoni-e-numeri/numeri-in-uscita) (non come **PRINCIPALE** o **Provider #7**). Una linea senza nome compare con una sigla che finisce con il suo numero: per riconoscerla subito, dalle un nome in Numeri in uscita. |
+| **Servizio interno di destinazione** | «Chi risponde alla chiamata viene gestito dalle regole di questo servizio.» | Obbligatorio. Un servizio interno, mostrato come «numero — descrizione». |
+| **Coda monitorata (opzionale)** | La coda di ricezione da cui rispondono i tuoi operatori, se ce n'è una. | **Nessuna** oppure una coda del centralino. |
+| **Chiamate simultanee** | Come nella creazione: si può cambiare qui. | Da 1 al massimo del tuo piano. |
+
+### Riquadro «Lista numeri»
+
+In testa: «CSV con una riga per contatto: numero,nome (il nome è facoltativo). I numeri già presenti nella campagna vengono saltati.»
+
+| Elemento | Cosa fa |
+| --- | --- |
+| **Carica CSV** | Sceglie il file da caricare: `.csv` o `.txt`, al massimo 5 MB. Durante la lettura compare «Lettura…». |
+| Anteprima | «Anteprima: N numeri da importare · M scartati (non validi o duplicati)», con i primi 50 numeri e «… e altri N». Bottoni **Importa** e **Annulla**. |
+| **Da chiamare (N)** | I numeri non ancora chiamati, compresi quelli esclusi (blacklist), con il nome e il bottone **Rimuovi**. Per questo il numero può essere più alto di «da chiamare» sulla scheda e in **Live**, che non contano gli esclusi. Se sono 500 o più ne mostra 500 e il conteggio diventa «500+». Lista vuota: «Nessun numero in coda.». |
+
+### Come viene letto il file CSV
+
+- Una riga per contatto: prima il numero, poi, se c'è, il nome.
+- Il separatore è la virgola; una riga senza virgole e con il punto e virgola usa il punto e virgola.
+- Del numero si tengono solo le cifre: spazi, trattini, parentesi e anche il **\+** iniziale vengono tolti.
+- Un numero deve avere da 6 a 15 cifre: gli altri vengono scartati.
+- Righe vuote e numeri doppi, nel file o già presenti nella campagna, vengono scartati.
+- Nel nome, spazi, virgole, punti, apostrofi e virgolette diventano `_`. Un nome più lungo di 30 caratteri viene accorciato a 25.
+
+## Il file del registro
+
+**Export** ed **Export log** scaricano un file CSV, con il punto e virgola come separatore, dal più recente al più vecchio. Le colonne sono **Data**, **Numero**, **Esito** e **Nota**. Nella colonna **Esito** l'evento è scritto con un codice:
+
+| Codice nel file | Come appare in Live | Cosa significa |
+| --- | --- | --- |
+| `calling` | **Chiamata** | Il centralino ha chiamato il numero. |
+| `answer` | **Risposta** | Qualcuno ha risposto. |
+| `custom_log` | **Esito** | Un esito scritto dalla regola **Log chiamata Power Dialer**; il testo è nella colonna **Nota**. |
+| `no_number` | **Numero non valido** | Il centralino ha segnato il numero come non valido. |
+
+## Le regole delle chiamate del Power Dialer
+
+Con il modulo attivo, in **Aggiungi regola** compare l'argomento **Power Dialer** con tre passaggi da usare nel servizio interno di destinazione:
+
+| Passaggio | A cosa serve |
+| --- | --- |
+| **Prendo in carico Power Dialer** | «Prende in carico la chiamata con la logica del modulo Power Dialer.» |
+| **Log chiamata Power Dialer** | «Registra la chiamata nel log del modulo Power Dialer con la descrizione indicata.» Il testo del campo **Descrizione log** è quello che vedi in **Esiti registrati**: spazi e segni di punteggiatura, salvo punto e trattino, diventano `_` («Da richiamare» compare come «Da_richiamare»), al massimo 60 caratteri. |
+| **Blacklist Power Dialer** | Usa la lista dei numeri esclusi del modulo Power Dialer. |
+
+I campi sono descritti in [Notifiche, registrazioni e moduli](/centralino/regole/passaggi-moduli).
+
+## Messaggi che puoi vedere
+
+| Messaggio | Cosa significa |
+| --- | --- |
+| «Dai un nome alla campagna.» | Manca il **Nome campagna**. |
+| «Il tuo piano prevede fino a N chiamate simultanee.» | Hai scelto più chiamate simultanee di quelle del tuo piano. |
+| «Scegli il provider con cui chiamare.» · «Provider non valido.» | Manca la linea, o quella scelta non è più disponibile. |
+| «Scegli il servizio interno di destinazione.» · «Servizio non valido.» | Manca il servizio, o quello scelto non esiste più. |
+| «Coda non valida.» | La coda scelta non esiste più. |
+| «Carica un file CSV (numero,nome — una riga per contatto).» | Il file non è un CSV o un testo. |
+| «Configura provider e servizio interno prima di avviare la campagna.» | Prima di avviare scegli linea e servizio in **Configura**. |
+| «Non ci sono numeri da chiamare: caricali da «Configura».» | La lista è vuota o tutti i numeri sono già stati chiamati. |
+| «Configurazione salvata.» · «Importati N numeri.» · «Campagna eliminata.» | Operazione riuscita. |
+
+## Da sapere
+
+- **Configura prima di avviare.** Prima di avviare scegli **Provider in uscita** e **Servizio interno di destinazione** in **Configura** e premi **Salva configurazione**. Nell'elenco il bottone **Avvia** resta spento finché manca qualcosa e dice il perché. **Avvia campagna** nella pagina **Live** invece controlla solo che ci siano numeri da chiamare: avvia la campagna dall'elenco, oppure controlla prima che sulla scheda non compaia **da configurare**.
+- **Se dopo aver scelto il file non compare l'anteprima**, nel file non c'è nessun numero nuovo e valido: controlla che ogni riga cominci con un numero da 6 a 15 cifre e che non sia già nella campagna.
+- **Il servizio di destinazione decide tutto.** Il Power Dialer chiama; cosa succede a chi risponde lo stabiliscono le regole del servizio interno scelto. Provalo prima di avviare una campagna grande.
+- **Le chiamate simultanee** non possono superare il massimo del tuo piano. Per alzarlo, chiedi con una [richiesta di assistenza](/centralino/assistenza/richieste-di-assistenza).
+- **Ricaricare lo stesso file** non crea doppioni: i numeri già presenti nella campagna vengono saltati.
+- **Le chiamate della campagna** escono dalla linea scelta, come le altre chiamate in uscita del centralino.
+
+<Warning>
+  **Elimina** cancella la campagna e tutti i suoi numeri, e non si può annullare. Se ti serve il registro, scaricalo prima con **Export**.
+</Warning>
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Perché il bottone «Avvia» è spento?">
+    Sul computer il motivo è scritto accanto al bottone. «Prima configura linea e servizio»: apri **Configura**, scegli **Provider in uscita** e **Servizio interno di destinazione** e premi **Salva configurazione**. «Nessun numero da chiamare»: carica un CSV e premi **Importa**.
+  </Accordion>
+
+  <Accordion title="Quante chiamate posso fare insieme?">
+    Fino al massimo del tuo piano, che vedi sotto il campo: «Il tuo piano ne prevede fino a N.». Per aumentarlo apri una [richiesta di assistenza](/centralino/assistenza/richieste-di-assistenza).
+  </Accordion>
+
+  <Accordion title="Ho caricato lo stesso file due volte: ci sono doppioni?">
+    No. I numeri già presenti nella campagna vengono saltati e contati tra gli scartati nell'anteprima («M scartati (non validi o duplicati)»). Se nel file non c'è nessun numero nuovo e valido, l'anteprima non compare e resta il bottone **Carica CSV**: non c'era niente da importare.
+  </Accordion>
+
+  <Accordion title="Perché alcuni numeri del file sono stati scartati?">
+    Sono scartati i numeri con meno di 6 o più di 15 cifre, le righe vuote, la riga di intestazione e i numeri doppi, nel file o già nella campagna. L'anteprima dice quanti sono: «M scartati (non validi o duplicati)». Se sono scartati tutti, l'anteprima non compare.
+  </Accordion>
+
+  <Accordion title="Il menu «Provider in uscita» è vuoto o non trovo la linea che voglio.">
+    Il menu elenca le linee del centralino, ognuna con il nome che ha nella colonna **Nome** di Numeri in uscita; una linea senza nome compare con una sigla che finisce con il suo numero. Controlla in [Numeri in uscita](/centralino/telefoni-e-numeri/numeri-in-uscita) quali linee hai; se ti serve una linea in più apri una [richiesta di assistenza](/centralino/assistenza/richieste-di-assistenza).
+  </Accordion>
+
+  <Accordion title="Nel file del registro l'esito è scritto in inglese.">
+    Il file usa dei codici: `calling` è la chiamata partita, `answer` la risposta, `custom_log` un esito scritto dalla regola **Log chiamata Power Dialer** (il testo è nella colonna **Nota**), `no_number` un numero non valido.
+  </Accordion>
+
+  <Accordion title="Come registro l'esito di ogni chiamata, per esempio «Interessato» o «Da richiamare»?">
+    Nel servizio interno di destinazione aggiungi il passaggio **Log chiamata Power Dialer** e scrivi il testo in **Descrizione log**, per esempio «Interessato». Spazi e segni di punteggiatura, salvo punto e trattino, diventano `_`: «Da richiamare» compare come «Da_richiamare». Al massimo 60 caratteri. Gli esiti compaiono in **Esiti registrati** nella pagina **Live** e nella colonna **Nota** del registro.
+  </Accordion>
+
+  <Accordion title="Posso vedere la campagna dal vivo?">
+    Sì: premi **Live**. I dati si aggiornano da soli ogni 10 secondi mentre la pagina è aperta.
+  </Accordion>
+
+  <Accordion title="Quanto costa il Power Dialer?">
+    Il prezzo si stabilisce su misura, in base al tuo centralino e alle chiamate simultanee che servono. Lo ricevi con la quotazione, prima di qualsiasi attivazione.
+  </Accordion>
+
+  <Accordion title="Come disattivo il modulo?">
+    Apri `https://cloud.mycentralino.com/moduli/attiva/power_dialer`: la pagina **Attiva Power Dialer** mostra **Modulo già attivo**. In fondo, accanto a «Non usi più questo modulo?», premi **Richiedi disattivazione**, scrivi se vuoi il motivo e premi **Invia richiesta**. Compare «Richiesta di disattivazione inviata: ti ricontatteremo al più presto.» e ricevi un'email di conferma. La disattivazione la gestisce l'assistenza. Vedi [I tuoi moduli](/centralino/moduli/i-tuoi-moduli).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Servizi interni" icon="sitemap" href="/centralino/regole/servizi-interni">
+    Il servizio che gestisce chi risponde.
+  </Card>
+
+  <Card title="Code di ricezione" icon="users" href="/centralino/instradamento/code-di-ricezione">
+    La coda dei tuoi operatori.
+  </Card>
+
+  <Card title="Notifiche, registrazioni e moduli" icon="sitemap" href="/centralino/regole/passaggi-moduli">
+    I passaggi del Power Dialer nel dettaglio.
+  </Card>
+
+  <Card title="Numeri in uscita" icon="arrow-right-arrow-left" href="/centralino/telefoni-e-numeri/numeri-in-uscita">
+    Le linee da cui partono le chiamate.
+  </Card>
+
+  <Card title="Contact Center" icon="headset" href="/centralino/moduli/contact-center">
+    Gli account degli operatori del call center.
+  </Card>
+
+  <Card title="I tuoi moduli" icon="gear" href="/centralino/moduli/i-tuoi-moduli">
+    Richiedere e disattivare un modulo.
+  </Card>
+</CardGroup>

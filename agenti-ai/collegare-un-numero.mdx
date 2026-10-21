@@ -1,0 +1,184 @@
+---
+title: "Collegare un numero all'agente AI"
+sidebarTitle: "Collegare un numero"
+description: "Come far arrivare le chiamate di un tuo numero all'agente AI con il passaggio «Agente AI realtime» delle Regole delle chiamate: sempre, quando nessuno risponde o fuori orario."
+keywords:
+  - "collegare numero agente ai"
+  - "agente ai realtime"
+  - "far rispondere l'agente"
+  - "regole delle chiamate agente"
+  - "agente fuori orario"
+  - "agente se nessuno risponde"
+  - "connessione voip"
+  - "apri agenti ai"
+  - "apri l'agente"
+  - "agente non riceve chiamate"
+---
+
+Un agente AI risponde solo alle chiamate che gli mandi tu. Il collegamento si fa nelle **Regole delle chiamate** del centralino, con il passaggio **Agente AI realtime**: la chiamata che arriva a quel passaggio va alla **connessione VoIP** scelta, e risponde l'agente assegnato a quella connessione.
+
+**Dove si trova:**
+
+- Percorso: Centralino → Menu → **Regole chiamate** → clic sul numero (o sul servizio interno) → **Aggiungi regola** → argomento **AI** → **Agente AI realtime**
+- Indirizzo di un numero: `https://cloud.mycentralino.com/regole/did/NUMERO/modifica` · di un servizio interno: `https://cloud.mycentralino.com/regole/internal/NUMERO/modifica`
+
+**Chi la vede:** il passaggio è nel catalogo di tutti i clienti, ma si può usare solo se negli Agenti AI c'è almeno una connessione con un agente assegnato. Per modificare le regole serve la sezione **Regole delle chiamate** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
+
+## Prima di cominciare
+
+Ti servono, negli Agenti AI:
+
+1. un **agente** creato (vedi [Crea un agente](/agenti-ai/agente/crea-un-agente));
+2. una **connessione VoIP** con quell'agente assegnato (vedi [Connessioni VoIP](/agenti-ai/connessioni)).
+
+Se manca qualcosa, il passaggio te lo dice e ti offre il bottone **Apri Agenti AI**, che apre la pagina delle connessioni in una nuova scheda: così l'editor delle regole resta aperto dov'era.
+
+## Cosa trovi nella finestra del passaggio
+
+Il testo in alto dice: «Trasferisce la chiamata a un agente AI (modulo Agenti AI), che risponde e parla con il chiamante in linguaggio naturale. Scegli la connessione VoIP verso cui inoltrare la chiamata.»
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Connessione VoIP** | La connessione a cui va la chiamata: risponde l'agente assegnato a quella connessione. Compaiono solo le connessioni con un agente; quelle senza nome compaiono come «Connessione senza nome». Accanto c'è quante ne puoi scegliere. | Una connessione |
+
+Se non puoi scegliere niente, la finestra mostra uno di questi due messaggi:
+
+| Messaggio | Cosa fare |
+| --- | --- |
+| «Nessun collegamento telefonico configurato negli Agenti AI.» «Crealo prima dalla sezione Agenti AI.» | Non hai ancora connessioni: premi **Apri Agenti AI** e crea la connessione. |
+| «Le connessioni VoIP esistono ma nessuna ha un agente assegnato.» «Assegna un agente ad almeno un collegamento dalla sezione Agenti AI.» | Premi **Apri Agenti AI** e, nella riga della connessione, scegli l'agente. |
+
+In fondo ci sono **Annulla** e **Aggiungi regola**. All'apertura è già scelta la prima connessione dell'elenco, quindi **Aggiungi regola** è subito attivo: se hai più connessioni, controlla di scegliere quella giusta.
+
+### Dopo averlo aggiunto
+
+Nello schema delle regole il passaggio compare con l'etichetta **AGENTE AI**, il nome della connessione e la riga «Risponde un agente AI». Cliccandolo si apre la finestra di dettaglio con **Connessione AI**, il nome della connessione e il link **Apri l'agente**, che apre la configurazione dell'agente in una nuova scheda.
+
+## Come fare
+
+### Come faccio rispondere sempre l'agente su un numero
+
+<Steps>
+  <Step title="Apri le regole del numero">
+    Nel Centralino apri **Regole chiamate** e clicca il numero.
+  </Step>
+  <Step title="Aggiungi il passaggio">
+    Premi **Aggiungi regola**. Se il numero ha già dei passaggi, usa il **\+** subito sotto **Chiamata in arrivo** per mettere l'agente al primo posto. Nella finestra scegli l'argomento **AI** e poi **Agente AI realtime**.
+  </Step>
+  <Step title="Scegli la connessione">
+    In **Connessione VoIP** la prima connessione dell'elenco è già selezionata: controlla che sia quella con l'agente che deve rispondere, altrimenti scegli l'altra.
+  </Step>
+  <Step title="Conferma">
+    Premi **Aggiungi regola**. Il passaggio vale subito per le chiamate successive: non c'è altro da salvare.
+  </Step>
+  <Step title="Prova">
+    Chiama il numero da un cellulare: deve rispondere l'agente con la sua frase di apertura.
+  </Step>
+</Steps>
+
+Se nel numero ci sono altri passaggi che rispondono prima dell'agente (per esempio interni o una coda), la chiamata arriva all'agente solo se supera quei passaggi. Controlla l'ordine nello schema. Se vuoi che i numeri bloccati restino bloccati, lascia **Numeri bloccati** sopra l'agente. L'ordine consigliato di tutti i passaggi è in [Editor delle regole](/centralino/regole/editor), sezione «In che ordine metto i passaggi».
+
+### Come faccio rispondere l'agente solo se nessuno risponde
+
+<Steps>
+  <Step title="Fai squillare prima i telefoni">
+    Nelle regole del numero metti **Fai squillare uno o più interni VoIP** (oppure una coda) con il tempo di squillo che preferisci, per esempio 20 o 30 secondi.
+  </Step>
+  <Step title="Metti l'agente subito sotto">
+    Aggiungi **Agente AI realtime** dopo quel passaggio, con **Aggiungi regola in coda** o con il **\+** nel punto giusto.
+  </Step>
+  <Step title="Prova">
+    Chiama il numero e non rispondere: finito lo squillo, risponde l'agente.
+  </Step>
+</Steps>
+
+Funziona perché interni e code, se nessuno risponde, passano la chiamata al passaggio successivo. Vedi [Passaggi che fanno squillare](/centralino/regole/passaggi-chiamata).
+
+### Come faccio rispondere l'agente fuori orario
+
+Fuori orario la chiamata va alla destinazione di chiusura scelta nell'orario, non ai passaggi successivi del numero. Per farla arrivare all'agente si usa un servizio interno.
+
+<Steps>
+  <Step title="Prepara un servizio interno con l'agente">
+    In **Regole chiamate** → **Servizi interni**, apri un servizio interno libero, dagli un nome (per esempio «Agente fuori orario») e aggiungi il passaggio **Agente AI realtime** con la connessione dell'agente.
+  </Step>
+  <Step title="Mandaci le chiamate quando sei chiuso">
+    In **Orari** apri l'orario usato dal numero. In **Quando il centralino è chiuso** scegli **Servizio interno** e, in **Destinazione**, il servizio appena preparato. Salva.
+  </Step>
+  <Step title="Controlla il numero">
+    Nelle regole del numero deve esserci il passaggio **Apertura settimanale** con quell'orario, in cima (etichetta **ORARIO** sulla scheda).
+  </Step>
+  <Step title="Prova fuori orario">
+    Chiama il numero quando sei chiuso: dopo l'eventuale messaggio di chiusura risponde l'agente.
+  </Step>
+</Steps>
+
+Se non hai servizi interni liberi si aggiungono da **Aggiungi funzionalità** → **Servizi interni**. Vedi [Servizi interni](/centralino/regole/servizi-interni) e [Orari](/centralino/orari-e-chiusure/orari).
+
+### Come cambio l'agente che risponde su un numero
+
+Non serve toccare le regole. In **Connessioni VoIP**, nella riga della connessione usata dal numero, scegli un altro agente dall'elenco: vale subito. Vedi [Connessioni VoIP](/agenti-ai/connessioni).
+
+### Come tolgo l'agente da un numero
+
+Nelle regole del numero passa con il mouse sulla scheda **Agente AI realtime**, premi **Elimina** e, nella finestra **Elimina regola**, conferma con **Elimina**. Assicurati che sotto ci sia un altro passaggio che gestisce la chiamata, per esempio la segreteria. Vedi [Editor delle regole](/centralino/regole/editor).
+
+## Da sapere
+
+- **Una connessione può servire più numeri.** Puoi aggiungere **Agente AI realtime** con la stessa connessione su tutti i numeri e i servizi interni che vuoi: risponde sempre lo stesso agente.
+- **Per cambiare connessione** su un numero, elimina il passaggio e aggiungilo di nuovo scegliendo l'altra connessione.
+- **Se elimini una connessione**, i passaggi **Agente AI realtime** che la usavano restano nelle regole ma non funzionano più. Eliminali o sostituiscili con una connessione esistente.
+- **Se togli l'agente da una connessione** («— nessun agente —»), le chiamate che arrivano lì non trovano nessuno che risponda.
+- **Se il servizio Agenti AI è sospeso** (crediti finiti o pagamento non riuscito), gli agenti non rispondono. Vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il passaggio Agente AI realtime non mi fa scegliere niente.">
+    Nessuna connessione ha un agente assegnato, oppure non hai ancora connessioni. Premi **Apri Agenti AI**, crea la connessione o assegnale l'agente, poi riapri **Aggiungi regola**.
+  </Accordion>
+
+  <Accordion title="Ho aggiunto il passaggio ma risponde ancora la segreteria (o squillano i telefoni).">
+    La chiamata segue i passaggi dall'alto verso il basso. Se prima dell'agente c'è un passaggio che risponde o porta altrove la chiamata (segreteria, menù vocale, orario chiuso), all'agente non arriva. Sposta **Agente AI realtime** più in alto o rivedi l'ordine.
+  </Accordion>
+
+  <Accordion title="Ho eliminato una connessione e le chiamate non arrivano più.">
+    Il passaggio **Agente AI realtime** del numero punta ancora alla connessione eliminata. Eliminalo e aggiungilo di nuovo scegliendo una connessione esistente.
+  </Accordion>
+
+  <Accordion title="Posso far rispondere agenti diversi su numeri diversi?">
+    Sì. Crea una connessione per ogni agente e, nelle regole di ciascun numero, scegli la connessione dell'agente giusto. Il numero di connessioni che puoi creare è uguale al numero di agenti del tuo piano.
+  </Accordion>
+
+  <Accordion title="Il passaggio compare anche se non ho gli Agenti AI.">
+    Sì, è nel catalogo di tutti. Senza connessioni mostra il messaggio «Nessun collegamento telefonico configurato negli Agenti AI.» Per usarlo attiva prima gli Agenti AI: vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Connessioni VoIP" icon="phone" href="/agenti-ai/connessioni">
+    Creare le connessioni e assegnare gli agenti.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere, spostare ed eliminare i passaggi.
+  </Card>
+
+  <Card title="Passaggi che fanno squillare" icon="phone-volume" href="/centralino/regole/passaggi-chiamata">
+    Il catalogo dei passaggi, Agente AI realtime compreso.
+  </Card>
+
+  <Card title="Servizi interni" icon="list" href="/centralino/regole/servizi-interni">
+    Cosa sono e come si usano.
+  </Card>
+
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Cosa succede alle chiamate quando sei chiuso.
+  </Card>
+
+  <Card title="Panoramica Agenti AI" icon="robot" href="/agenti-ai/panoramica">
+    I passi per far rispondere un agente.
+  </Card>
+</CardGroup>

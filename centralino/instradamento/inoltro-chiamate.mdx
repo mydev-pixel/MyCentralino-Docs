@@ -1,0 +1,288 @@
+---
+title: "Inoltro chiamate"
+sidebarTitle: "Inoltro chiamate"
+description: "L'elenco dei numeri esterni (cellulari, altre sedi, un collega reperibile) a cui il centralino può passare le chiamate: come aggiungerli, correggerli, eliminarli e usarli nelle regole, negli orari e negli interruttori."
+keywords:
+  - "inoltro chiamate"
+  - "inoltro"
+  - "inoltrare al cellulare"
+  - "deviare le chiamate"
+  - "deviazione di chiamata"
+  - "trasferimento di chiamata"
+  - "call forwarding"
+  - "numero esterno"
+  - "cellulare"
+  - "altra sede"
+  - "reperibile"
+  - "chiama numero esterno"
+---
+
+**Inoltro chiamate** è l'elenco dei numeri esterni a cui il centralino può passare una chiamata: il tuo cellulare, quello di un collega, un'altra sede, l'assistenza di un fornitore. Qui salvi ogni numero con una descrizione che riconosci; poi lo scegli nelle **Regole delle chiamate**, negli **Orari**, nelle **Ferie e festività** o negli **Interruttori**.
+
+**Dove si trova:** Menu → Risorse centralino → Instradamento → **Inoltro chiamate** · `https://cloud.mycentralino.com/inoltro-chiamate`
+
+Ci arrivi anche dalla pagina **Risorse del centralino** (`https://cloud.mycentralino.com/configurazione`), nel gruppo **Instradamento chiamate**.
+
+**Chi la vede:** il titolare dell'account, sempre. Un collaboratore solo se gli hai dato accesso a **Risorse del centralino**: senza quel permesso la voce non compare nel menu e l'indirizzo risponde con accesso negato. Non serve nessun modulo.
+
+<Warning>
+  Un numero salvato qui **non fa niente da solo**. Le chiamate arrivano al cellulare solo quando lo scegli da qualche parte: di solito con la regola **Inoltra a numero telefonico esterno** nelle regole del tuo numero. Guida passo passo: [Inoltrare al cellulare](/centralino/come-fare/inoltrare-al-cellulare).
+</Warning>
+
+## Cosa trovi nella pagina
+
+### L'elenco dei numeri
+
+In alto il titolo **Inoltro chiamate** con il conteggio («1 inoltro», «4 inoltri», oppure «Nessun inoltro ancora»; durante una ricerca «N risultati»), la frase «Le regole di inoltro delle chiamate verso numeri esterni o cellulari.» e due bottoni:
+
+- l'icona **ⓘ** («Cos'è?»), che apre un riquadro di spiegazione;
+- **Nuovo inoltro**, che apre la pagina per aggiungere un numero.
+
+Sotto c'è la ricerca **Cerca per numero o descrizione…**: trova i numeri che contengono le cifre scritte o la cui descrizione contiene le parole scritte.
+
+La tabella **Inoltri** (con il totale a destra) ha una riga per numero, in ordine di numero:
+
+| Colonna | Cosa mostra |
+| --- | --- |
+| **Numero** | Il numero esterno, in verde. Un clic sul numero o in qualsiasi punto della riga apre il numero per modificarlo. |
+| **Descrizione** | Il nome che hai dato al numero, per esempio «Cellulare Mario». |
+| (a destra) | Il cestino **Elimina** e la freccia che apre il numero. |
+
+Sul telefono ogni riga diventa una scheda con numero, descrizione e cestino.
+
+Se l'elenco è vuoto compare «Nessun inoltro configurato» con «Aggiungi il primo numero esterno da usare come destinazione nelle regole.» e il collegamento **Nuovo inoltro →**. Se la ricerca non trova niente compare «Nessun inoltro per questa ricerca» con «Prova con altri termini.».
+
+### Il riquadro «Cos'è?»
+
+L'icona **ⓘ** apre da destra il riquadro **Inoltro chiamate**, che riassume:
+
+- a cosa serve l'elenco («Anagrafica di numeri esterni (cellulari aziendali, altre sedi, supporto tecnico) usabili come destinazione nelle regole delle chiamate.»);
+- **Come si usa**: aggiungi il numero con una descrizione; serve una linea per le chiamate in uscita («se manca, la configura l'assistenza»); poi scegli il numero nelle regole;
+- **Formato numero**: il `+39` viene tolto da solo, per i numeri esteri si usa `00`;
+- **Costi**: l'inoltro comporta costi di traffico secondo il tuo piano.
+
+Nel riquadro la regola è chiamata «Chiama numero esterno»: nell'elenco delle regole la trovi come **Inoltra a numero telefonico esterno**. Si chiude con la **X** in alto o con un clic fuori dal riquadro.
+
+### La pagina del numero
+
+Si apre con **Nuovo inoltro** (`https://cloud.mycentralino.com/inoltro-chiamate/nuovo`) o con un clic su una riga dell'elenco. Il titolo è **Nuovo numero di inoltro** per un numero nuovo, oppure la descrizione del numero quando lo modifichi. Sotto il titolo: «Registra un numero esterno (cellulare, altra sede, supporto) referenziabile dalle regole come destinazione «Chiama numero esterno».».
+
+Ci sono due riquadri affiancati, **Numero di telefono** e **Descrizione**, e in alto i bottoni **Annulla** (torna all'elenco senza salvare) e **Salva**.
+
+Appena cambi qualcosa compare in basso la barra **Modifiche non salvate** («· restano solo in questa pagina finché non salvi») con **Annulla** e **Salva**. Se provi a uscire senza salvare, il pannello chiede «Ci sono modifiche non salvate. Uscire senza salvarle?».
+
+<Frame caption="Nuovo numero di inoltro">
+  <img
+    src="/images/guida/inoltro-nuovo.webp"
+    alt="Nuovo numero di inoltro"
+  />
+</Frame>
+
+## Come fare
+
+### Come aggiungo un numero
+
+<Steps>
+  <Step title="Apri Inoltro chiamate">
+    Menu → Risorse centralino → Instradamento → **Inoltro chiamate**.
+  </Step>
+  <Step title="Premi Nuovo inoltro">
+    Si apre la pagina **Nuovo numero di inoltro**.
+  </Step>
+  <Step title="Scrivi il numero">
+    In **Numero di telefono** scrivi il numero, per esempio `3351234567` o `0212345678`. Se scrivi `+39` davanti viene tolto da solo, e anche gli spazi vengono tolti. Per un numero estero metti `00` davanti, per esempio `0041791234567`.
+  </Step>
+  <Step title="Scrivi la descrizione">
+    In **Descrizione** scrivi un nome che riconosci quando sceglierai il numero, per esempio `Cellulare Mario`, `Ufficio Milano`, `Supporto H24`.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Torni all'elenco e compare «Numero "Cellulare Mario" aggiunto.».
+  </Step>
+</Steps>
+
+Ora il numero si può scegliere nelle regole: vedi «Come uso il numero» più sotto.
+
+### Come aggiungo un numero senza uscire dalle regole
+
+Se stai già lavorando sulle regole di un numero non serve passare da questa pagina.
+
+<Steps>
+  <Step title="Apri la regola di inoltro">
+    Nella finestra **Aggiungi regola** scegli **Inoltra a numero telefonico esterno** (argomento **Inoltra la chiamata**).
+  </Step>
+  <Step title="Premi Nuovo">
+    Accanto a **Cerca numero…** premi **Nuovo**. Se l'elenco è ancora vuoto il bottone si chiama **Aggiungi il primo numero**. Si apre una finestra con gli stessi campi **Numero di telefono** e **Descrizione**.
+  </Step>
+  <Step title="Compila e salva">
+    Scrivi numero e descrizione e premi **Salva**. La finestra si chiude e il numero nuovo è già scelto in **Numero a cui inoltrare**.
+  </Step>
+</Steps>
+
+### Come uso il numero
+
+Il numero salvato si sceglie in queste pagine, con questi nomi:
+
+| Dove | Quando squilla il numero esterno | Voce da scegliere |
+| --- | --- | --- |
+| **Regole delle chiamate** (di un tuo numero o di un servizio interno) | Nel punto della sequenza in cui metti la regola | **Inoltra a numero telefonico esterno** |
+| **Orari**, riquadro **Quando il centralino è chiuso** | Fuori orario | **Inoltro a un numero** |
+| **Ferie e festività** | Nei giorni di chiusura | **Inoltro chiamata** |
+| **Interruttori** | Quando l'interruttore è acceso | **Inoltro a numero** |
+| **Interruttori a orario** | Nelle fasce orarie stabilite | **Inoltro chiamata** |
+
+I tasti di un **Menù vocale (IVR)** non portano direttamente a un numero esterno: crea un servizio interno con la regola **Inoltra a numero telefonico esterno** e collega il tasto a quel servizio interno. Vedi [Servizi interni](/centralino/regole/servizi-interni).
+
+### Come cambio un numero o la sua descrizione
+
+<Steps>
+  <Step title="Apri il numero">
+    In **Inoltro chiamate** clicca la riga del numero.
+  </Step>
+  <Step title="Correggi">
+    Modifica **Numero di telefono** o **Descrizione**.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva**. Torni all'elenco e compare «Numero "…" aggiornato.».
+  </Step>
+  <Step title="Aggiorna dove lo usi">
+    Se hai cambiato il **numero**, sceglilo di nuovo dove lo usi: le regole, gli orari e gli interruttori in cui l'hai scelto conservano il numero com'era quando l'hai scelto (vedi «Da sapere»). Nelle regole del numero elimina la scheda dell'inoltro e aggiungila di nuovo scegliendo il numero corretto.
+  </Step>
+</Steps>
+
+### Come elimino un numero
+
+<Steps>
+  <Step title="Premi il cestino">
+    Nella riga del numero premi il cestino **Elimina**.
+  </Step>
+  <Step title="Conferma">
+    Si apre la finestra **Elimina numero di inoltro**: «Stai per eliminare il numero «Cellulare Mario». L'azione non è reversibile.». Premi **Elimina** (oppure **Annulla**). La riga sparisce dall'elenco.
+  </Step>
+</Steps>
+
+<Warning>
+  Eliminare il numero dall'elenco **non ferma l'inoltro** dove lo hai già scelto, e la finestra non ti dice se il numero è usato. Per smettere di inoltrare, togli la regola **Inoltra a numero telefonico esterno** dalle regole del numero (e l'inoltro da orari, ferie o interruttori, se lo avevi scelto lì).
+</Warning>
+
+### Come cerco un numero
+
+Scrivi in **Cerca per numero o descrizione…** una parte del numero (per esempio `335`) o della descrizione (per esempio `mario`). Per tornare all'elenco completo svuota la ricerca.
+
+## I campi
+
+### Numero di inoltro
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Numero di telefono** | Il numero esterno da far squillare | Obbligatorio. Cifre, spazi e un `+` iniziale, al massimo 50 caratteri. Il `+39` iniziale e gli spazi vengono tolti. Per l'estero `00` davanti. Esempio: «es. 3351234567 oppure 0212345678» |
+| **Descrizione** | Il nome con cui riconosci il numero quando lo scegli | Obbligatoria, al massimo 150 caratteri. Esempio: «es. Ufficio Milano, Cellulare Mario, Supporto H24» |
+
+Messaggi che puoi vedere al salvataggio: «Inserisci il numero di destinazione.», «Il numero può contenere solo cifre, spazi e il + iniziale.», «Inserisci una descrizione.».
+
+### Regola «Inoltra a numero telefonico esterno»
+
+È la regola che usa i numeri di questo elenco. Si aggiunge dall'editor delle regole, argomento **Inoltra la chiamata**. Fa squillare un numero esterno (un cellulare, un'altra sede, un altro centralino) usando una delle linee per le chiamate in uscita.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Numero a cui inoltrare** | Il numero da chiamare | Uno dei numeri di **Inoltro chiamate**, con la ricerca **Cerca numero…** e il bottone **Nuovo**. Non si scrive un numero a mano |
+| **Squilla per** | Quanto squilla il numero esterno prima di passare alla regola successiva | 5, 10, 15, 20, 25, 30, 35, 40, **45** (proposto), 60, 90, 180 secondi |
+| **Provider di uscita** | La linea da cui parte la chiamata | Le linee del tuo centralino. È proposta quella segnata **(PRINCIPALE)**; «— non configurato» indica una linea non pronta |
+| **Inoltro avanzato** | «Prova a contattare il numero per tre volte con intervalli di 30 secondi. Utile quando il cellulare è temporaneamente non raggiungibile o occupato.» | Spenta di base |
+
+Il bottone **Aggiungi regola** si attiva quando hai scelto il numero e la linea. Se manca qualcosa:
+
+- senza numeri nell'elenco: «Nessun numero in rubrica di inoltro.» con **Aggiungi il primo numero**;
+- senza linee per le chiamate in uscita: «Nessun provider di uscita configurato per questo centralino.» con **Configura un provider**, che apre [Numeri in uscita](/centralino/telefoni-e-numeri/numeri-in-uscita) in una nuova scheda. Da lì la linea non si aggiunge: la attiva l'assistenza;
+- altri messaggi: «Seleziona il numero a cui inoltrare.», «Seleziona un provider di uscita.», «Numero non trovato in rubrica.».
+
+Tutti i dettagli della regola sono in [Passaggi che instradano la chiamata](/centralino/regole/passaggi-chiamata).
+
+## Da sapere
+
+- **Il numero viene copiato dove lo scegli.** Quando aggiungi la regola (o scegli l'inoltro in un orario o in un interruttore), il centralino si segna il numero di telefono, non la voce dell'elenco. Se poi correggi il numero in **Inoltro chiamate**, lì resta quello vecchio: va scelto di nuovo.
+- **L'ordine delle regole conta.** Le regole si eseguono dall'alto verso il basso. Se il numero esterno non risponde entro **Squilla per**, la chiamata passa alla regola successiva: conviene mettere sotto l'inoltro una **Segreteria telefonica** o un altro numero.
+- **Costi.** L'inoltro è una chiamata in uscita dal centralino verso il numero esterno: consuma traffico secondo il tuo piano, come le altre chiamate in uscita, e serve credito. Vedi [Credito e ricariche](/centralino/account/credito-e-ricariche).
+- **Serve una linea per le chiamate in uscita.** Di norma c'è già. Se la regola dice «Nessun provider di uscita configurato per questo centralino.», chiedi all'assistenza: la configura lei.
+- **Formato dei numeri.** Italiani senza prefisso (`3351234567`), esteri con `00` davanti (`0041791234567`). Il `+39` e gli spazi vengono tolti da soli.
+- **Più numeri in fila.** Puoi mettere più regole **Inoltra a numero telefonico esterno** una sotto l'altra: se il primo numero non risponde, squilla il secondo.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Ho aggiunto il numero ma le chiamate non arrivano sul cellulare. Perché?">
+    Il numero salvato qui va anche scelto da qualche parte: di solito con la regola **Inoltra a numero telefonico esterno** nelle regole del numero che ricevi. Se la regola c'è già, controlla che sopra non ci sia una regola che porta la chiamata altrove, e che ci sia credito. Guida completa: [Inoltrare al cellulare](/centralino/come-fare/inoltrare-al-cellulare).
+  </Accordion>
+
+  <Accordion title="Ho cambiato il numero ma squilla ancora quello vecchio.">
+    Le regole, gli orari e gli interruttori conservano il numero che avevano quando l'hai scelto. Nelle regole del numero elimina la scheda dell'inoltro e aggiungila di nuovo scegliendo il numero corretto; negli orari, nelle ferie o negli interruttori scegli di nuovo l'inoltro e salva.
+  </Accordion>
+
+  <Accordion title="Ho eliminato il numero dall'elenco ma l'inoltro funziona ancora.">
+    Eliminare il numero da **Inoltro chiamate** non tocca le regole già create. Per smettere di inoltrare togli la regola **Inoltra a numero telefonico esterno** dalle regole del numero (o l'inoltro da orari, ferie e interruttori).
+  </Accordion>
+
+  <Accordion title="Il cellulare non risponde: cosa succede alla chiamata?">
+    Dopo i secondi impostati in **Squilla per** la chiamata passa alla regola successiva. Per questo conviene mettere sotto l'inoltro una **Segreteria telefonica** o un altro numero.
+  </Accordion>
+
+  <Accordion title="Il cellulare a volte è irraggiungibile: posso far riprovare il centralino?">
+    Sì: nella regola spunta **Inoltro avanzato**. Il centralino prova a contattare il numero per tre volte, a 30 secondi di distanza.
+  </Accordion>
+
+  <Accordion title="Posso inoltrare a un numero estero?">
+    Sì: scrivilo con `00` davanti, per esempio `0041791234567`.
+  </Accordion>
+
+  <Accordion title="Posso scrivere il numero direttamente nella regola?">
+    No: nella regola il numero si sceglie da questo elenco. Puoi però crearne uno nuovo senza uscire dalle regole, con il bottone **Nuovo**.
+  </Accordion>
+
+  <Accordion title="Quanto costa l'inoltro?">
+    È una chiamata in uscita dal centralino verso il numero esterno e si paga secondo il tuo piano, come le altre chiamate in uscita.
+  </Accordion>
+
+  <Accordion title="Posso inoltrare solo fuori orario o solo quando lo decido io?">
+    Sì. Fuori orario: in **Orari**, quando il centralino è chiuso, scegli **Inoltro a un numero**. Quando lo decidi tu: crea un interruttore con **Inoltro a numero** e accendilo o spegnilo quando serve. Vedi [Orari](/centralino/orari-e-chiusure/orari) e [Interruttori](/centralino/orari-e-chiusure/interruttori).
+  </Accordion>
+
+  <Accordion title="Nella regola compare «Nessun provider di uscita configurato per questo centralino.»">
+    Manca la linea per le chiamate in uscita. Apri una richiesta all'assistenza: la configura lei. Vedi [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza).
+  </Accordion>
+
+  <Accordion title="Il bottone Aggiungi regola è grigio.">
+    Il bottone si attiva solo quando hai scelto un numero in **Numero a cui inoltrare**: fai clic su un numero dell'elenco. Se al posto dell'elenco vedi «Nessun numero in rubrica di inoltro.», aggiungi prima un numero con **Aggiungi il primo numero**. Se vedi «Nessun provider di uscita configurato per questo centralino.», manca la linea per le chiamate in uscita: chiedi all'assistenza.
+  </Accordion>
+
+  <Accordion title="Un collaboratore non vede Inoltro chiamate nel menu.">
+    Gli serve l'accesso a **Risorse del centralino**. Lo concede il titolare dell'account. Vedi [Utenti e permessi](/centralino/account/utenti-e-permessi).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Inoltrare al cellulare" icon="arrow-right-arrow-left" href="/centralino/come-fare/inoltrare-al-cellulare">
+    La guida dall'inizio alla fine, con un esempio di sequenza.
+  </Card>
+
+  <Card title="Passaggi che instradano la chiamata" icon="phone" href="/centralino/regole/passaggi-chiamata">
+    La regola Inoltra a numero telefonico esterno e le altre.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Aggiungere, spostare ed eliminare le regole di un numero.
+  </Card>
+
+  <Card title="Orari" icon="clock" href="/centralino/orari-e-chiusure/orari">
+    Inoltrare al cellulare solo fuori orario.
+  </Card>
+
+  <Card title="Interruttori" icon="toggle-on" href="/centralino/orari-e-chiusure/interruttori">
+    Accendere e spegnere l'inoltro quando serve.
+  </Card>
+
+  <Card title="Numeri in uscita" icon="phone-volume" href="/centralino/telefoni-e-numeri/numeri-in-uscita">
+    Le linee da cui partono le chiamate in uscita.
+  </Card>
+</CardGroup>

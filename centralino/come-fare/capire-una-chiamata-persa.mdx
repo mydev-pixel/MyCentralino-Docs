@@ -1,0 +1,220 @@
+---
+title: "Capire perché una chiamata è andata persa"
+sidebarTitle: "Capire una chiamata persa"
+description: "Dall'inizio alla fine: trovi la chiamata in Chiamate ricevute, leggi l'esito e il percorso, capisci dove si è fermata, sistemi la causa e richiami il cliente."
+keywords:
+  - "chiamata persa"
+  - "chiamata non arrivata"
+  - "non squilla"
+  - "nessuno ha risposto"
+  - "perché"
+  - "esito chiamata"
+  - "percorso chiamata"
+  - "fuori orario"
+  - "storico chiamate"
+  - "registro chiamate"
+  - "richiamare"
+  - "avviso chiamata persa"
+  - "email chiamata persa"
+  - "notifica chiamata persa"
+---
+
+Un cliente dice «vi ho chiamato e non ha risposto nessuno». Questa guida ti aiuta a ritrovare quella chiamata, capire esattamente dove si è fermata e sistemare la causa, poi a richiamarlo.
+
+## Cosa ottieni
+
+- Sai se la chiamata è arrivata al centralino, e quando.
+- Sai cosa è successo: chi ha squillato, se era fuori orario, se è finita in segreteria, se chi chiamava ha riattaccato in attesa.
+- Sai dove intervenire perché non succeda più, e puoi richiamare il cliente dal pannello.
+
+## Prima di cominciare
+
+- **Ti serve l'accesso** a **Monitoraggio**. Il titolare dell'account lo ha sempre; un collaboratore solo se glielo hai concesso. Per richiamare dal pannello serve anche il **Pannello operatori** e un interno con il telefono collegato.
+- **Chiedi al cliente** da che numero ha chiamato e più o meno quando. Ti basta anche una parte del numero.
+- Tutte le date e le ore del pannello sono in ora italiana.
+
+## Come fare
+
+### 1 · Trova la chiamata
+
+**Dove si trova:** Menu → Monitoraggio → **Chiamate ricevute** · `https://cloud.mycentralino.com/chiamate-in`
+
+<Steps>
+  <Step title="Apri Chiamate ricevute">
+    Vedi le chiamate degli **Ultimi 7 gg**, dalla più recente.
+  </Step>
+  <Step title="Cerca il numero di chi ha chiamato">
+    Scrivilo in **Cerca numero o nome…**. Puoi scriverlo anche con spazi, trattini o `+39`. Se il numero è in **Rubrica** puoi cercare anche il nome.
+  </Step>
+  <Step title="Allarga il periodo, se serve">
+    Se la chiamata è più vecchia, scegli **Ultimi 30 gg** o **Mese corrente**, oppure imposta le date a mano in **Periodo**.
+  </Step>
+  <Step title="Restringi, se le chiamate sono tante">
+    In **Esito** attiva **Perse** (e, se vuoi, **Ha riattaccato in attesa**). Con più numeri, in **Tutte le numerazioni** scegli quello chiamato dal cliente.
+  </Step>
+</Steps>
+
+Sul telefono restano visibili solo la ricerca e il bottone **Filtri (N)**, che apre gli altri filtri.
+
+<Warning>
+  Se compare «Nessuna chiamata da «…» in questo periodo», prima fai quello che suggerisce la pagina: allarga il periodo (per esempio **Ultimi 30 gg**) e togli i filtri su **Esito** e su **Tutte le numerazioni**. Se anche così non compare nulla, la chiamata non è arrivata ai tuoi numeri: controlla con il cliente il numero che ha composto. Se è giusto e il problema si ripete, apri una richiesta all'assistenza.
+</Warning>
+
+### 2 · Leggi l'esito e la frase
+
+Ogni riga ha un **esito** (pallino e parola) e, sotto il numero di chi ha chiamato, **una frase che dice cosa è successo**.
+
+| Esito | Cosa vuol dire |
+| --- | --- |
+| **Risposta** | Qualcuno ha risposto: una persona a un interno, un operatore di una coda, il numero esterno a cui è stata inoltrata, oppure un agente AI. |
+| **Persa** | Nessuno ha risposto. La frase dice dove si è fermata. |
+| **Ha riattaccato in attesa** | Chi chiamava ha chiuso mentre aspettava, prima di parlare con qualcuno. |
+| **Fuori orario** | In quel momento il numero era chiuso per gli **Orari** o per un giorno di **Ferie e festività**, e nessun telefono ha squillato. |
+
+### 3 · Apri il percorso
+
+Clicca la riga: si apre **Percorso chiamata · N passaggi**, l'elenco in ordine di tempo di tutto ciò che la chiamata ha fatto dentro il centralino. Ogni passaggio ha un'etichetta, l'ora, l'esito del passaggio (**Risposta**, **Non risposta**, **Occupato**, **Fallita**) e, se si è parlato, la durata.
+
+| Etichetta | Cosa è successo |
+| --- | --- |
+| **Regola** | È passata da una regola, per esempio «Apertura settimanale · Orario ufficio» o «Numeri bloccati». |
+| **Squilla** | Hanno squillato uno o più interni. Se qualcuno ha risposto vedi chi. |
+| **Coda** | È entrata in una coda di ricezione. |
+| **Menu vocale** | È passata da un menù vocale («premi 1 per…»). |
+| **Audio** | Ha sentito un messaggio. |
+| **Segreteria** | È andata in segreteria. |
+| **Inoltro** | È stata inoltrata a un numero esterno. |
+| **Agente AI** | È passata a un agente AI. |
+| **Passa a** | È passata da un servizio interno. |
+| **Conferenza** | È entrata in una stanza di conferenza. |
+| **Passaggio** | Un altro passaggio automatico (per esempio la musica di attesa). |
+
+Se compare «Nessun passaggio da mostrare: la chiamata si è chiusa prima di raggiungere un interno, una coda o un messaggio.», chi chiamava ha chiuso subito, prima di qualunque passaggio.
+
+### 4 · Sistema la causa
+
+Cerca nella tabella la frase che leggi sotto il numero.
+
+| Frase a video | Cosa è successo | Cosa fare |
+| --- | --- | --- |
+| «Nessuno ha risposto: ha squillato …» | I telefoni hanno squillato ma nessuno ha risposto in tempo. | In Menu → Monitoraggio → **Stato interni** premi il filtro **Non collegati**: quei telefoni non squillano. Valuta più tempo in **Fai squillare per**, più interni o una coda. Metti una **Segreteria telefonica** dopo. |
+| «Occupato: …» | Il telefono era occupato. | Fai squillare più interni insieme o usa una **Coda di ricezione**, così chi chiama aspetta invece di trovare occupato. |
+| «Nessuno ha risposto nella coda …» | La chiamata è rimasta in coda finché il tempo è scaduto. | Controlla gli operatori della coda e il **Tempo massimo in attesa**. Vedi [Analisi chiamate code](/centralino/monitoraggio/analisi-chiamate-code). |
+| «È passata alla segreteria …» | Nessuno ha risposto e la chiamata è andata in segreteria. La segreteria non conta come risposta. | Controlla se il cliente ha lasciato un messaggio: arriva all'email indicata in **Segreterie**. |
+| «Inoltrata a …, ma non ha risposto nessuno.» | Il numero esterno (per esempio il cellulare) non ha risposto. | Valuta **Inoltro avanzato** nella regola o una regola dopo l'inoltro. Vedi [Inoltrare al cellulare](/centralino/come-fare/inoltrare-al-cellulare). |
+| «L'agente AI … non ha risposto.» | La chiamata è passata all'agente AI, che non ha risposto. | Controlla l'agente in **Agenti AI**. |
+| «È passata al servizio interno …, ma non ha risposto nessuno.» | La chiamata è passata a un servizio interno e lì nessuno ha risposto. | Apri le regole di quel servizio interno in **Regole chiamate** → **Servizi interni**. |
+| «Si è chiusa con il messaggio «…».» | Chi chiamava ha sentito un messaggio e la chiamata è finita. | Se non era voluto, nelle regole del numero metti dopo il messaggio una regola che fa squillare o la segreteria. |
+| «Si è chiusa nel menu vocale …» | Chi chiamava non ha scelto un tasto, o ha chiuso nel menù. | Controlla le opzioni del menù vocale e cosa succede se non si preme niente. |
+| «Bloccata: il numero è in un elenco di numeri bloccati.» | Il numero è in un elenco di **Numeri bloccati** collegato al tuo numero. | Se è un errore, togli il numero dall'elenco. Vedi [Bloccare un numero](/centralino/come-fare/bloccare-un-numero). Se chi chiamava risulta «Anonima», la chiamata è stata fermata perché aveva il numero nascosto: per ricevere queste chiamate spunta **Ammetti numeri anonimi** nella regola **Numeri bloccati**. |
+| «Il centralino era chiuso secondo «…»», a volte seguita da «: ha sentito il messaggio «…».» o «: è passata alla segreteria.» | Esito **Fuori orario**: a quell'ora gli orari dicevano chiuso. | Controlla le fasce in **Orari**. |
+| «Giorno di chiusura (ferie «…»)», a volte seguita da «: ha sentito il messaggio «…».» o «: è passata alla segreteria.» | Esito **Fuori orario**: era un giorno di chiusura. | Controlla le date in **Ferie e festività**. |
+| «Ha riattaccato mentre aspettava nella coda …» | Chi chiamava ha chiuso mentre aspettava. | Richiamalo da **Da richiamare** (parte 5). Valuta più operatori nella coda. |
+| «Ha riattaccato mentre aspettava che qualcuno rispondesse.» | Chi chiamava ha chiuso mentre i telefoni squillavano o mentre aspettava. | Richiamalo con **Richiama** (parte 5). Se succede spesso, valuta meno attesa prima che squillino i telefoni o più interni insieme. |
+| «Si è chiusa alla regola …» o «Si è chiusa a un passaggio automatico.» | La chiamata si è fermata su una regola. | Apri le regole del numero e guarda cosa c'è in quel punto. Se non è chiaro, chiedi all'assistenza. |
+| «Si è chiusa prima di arrivare a un telefono o a un messaggio.» | Di solito chi chiamava ha chiuso subito. | Se succede spesso, controlla in **In tempo reale** che il numero non dica «Nessuna regola: non risponde». |
+
+<Tip>
+  Per capire come risponde un numero **adesso**, apri Menu → Monitoraggio → **In tempo reale**: il riquadro **Come risponde adesso** dice per ogni numero se è aperto, fuori orario, chiuso per ferie, o «Nessuna regola: non risponde». Vedi [In tempo reale](/centralino/monitoraggio/in-tempo-reale).
+</Tip>
+
+### 5 · Richiama il cliente
+
+<Steps>
+  <Step title="Premi Richiama sulla riga">
+    In **Chiamate ricevute** premi l'icona **Richiama** sulla riga della chiamata. Se hai più interni, nella finestra «Da quale interno vuoi chiamare?» scegli il tuo (i telefoni non collegati non si possono scegliere) e premi **Chiama**.
+  </Step>
+  <Step title="Rispondi al tuo telefono">
+    Squilla prima il telefono del tuo interno: quando rispondi, parte la chiamata al cliente.
+  </Step>
+</Steps>
+
+Chi ha riattaccato mentre aspettava in coda compare anche in Menu → Monitoraggio → **Da richiamare** (`https://cloud.mycentralino.com/chiamate-abbandono`). Lì premi **Richiama**; se il cliente risponde, la riga passa da sola fra le **Gestite**. Se lo hai richiamato da un altro telefono, premi **Gestita** (spunta). Vedi [Da richiamare](/centralino/monitoraggio/da-richiamare).
+
+## Un colpo d'occhio sulla giornata
+
+In Menu → Monitoraggio → **Statistiche** (`https://cloud.mycentralino.com/statistiche-centralino`) il riquadro **Senza risposta oggi** dice quante chiamate non hanno avuto risposta, e l'elenco **Perse di oggi** mostra le ultime, con dove si sono fermate. Se accanto a una chiamata leggi in verde «poi risposta alle …», lo stesso numero ha richiamato più tardi ed è stato servito: non serve richiamarlo. Per i giorni passati usa le frecce o il campo data. Vedi [Statistiche](/centralino/monitoraggio/statistiche).
+
+## Da sapere
+
+- **La segreteria non conta come risposta.** Una chiamata finita in segreteria risulta **Persa**, anche se il cliente ha lasciato un messaggio.
+- **«Fuori orario» si calcola con gli orari di oggi.** Se hai cambiato gli orari o le ferie dopo quella chiamata, il motivo mostrato può non corrispondere a quello di quel giorno. Vale solo per le chiamate in cui nessun telefono ha squillato.
+- **Il filtro Perse comprende anche le chiamate Fuori orario.** Anche nel file **Excel** e nel **PDF** queste chiamate risultano «Persa».
+- **Le chiamate fra interni non compaiono**: qui ci sono solo le chiamate arrivate sui tuoi numeri dall'esterno.
+- **Numero attivato da poco**: vedi le sue chiamate solo da quando è tuo.
+- **Numero nascosto**: chi ha chiamato con il numero nascosto compare come «Anonima» e non si può richiamare.
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Il cliente dice di aver chiamato ma non trovo la chiamata.">
+    Allarga il periodo e togli i filtri su **Esito** e su **Tutte le numerazioni**. Se anche così compare «Nessuna chiamata da «…» in questo periodo», la chiamata non è arrivata ai tuoi numeri: verifica con il cliente il numero composto e, se è giusto, apri una richiesta all'assistenza.
+  </Accordion>
+
+  <Accordion title="La chiamata è andata in segreteria: perché risulta Persa?">
+    Perché nessuna persona ha parlato con chi chiamava. La segreteria non conta come risposta.
+  </Accordion>
+
+  <Accordion title="Vedo «Fuori orario» ma eravamo aperti.">
+    L'esito si calcola con gli orari attuali del numero: se li hai cambiati dopo quella chiamata, il motivo può non essere quello di quel giorno. Apri il **Percorso chiamata** per vedere cosa è successo davvero.
+  </Accordion>
+
+  <Accordion title="Hanno squillato i telefoni ma nessuno li ha sentiti.">
+    In Menu → Monitoraggio → **Stato interni** premi il filtro **Non collegati**: un telefono spento o scollegato (nella scheda leggi «non registrato») non squilla. Vedi [Stato interni](/centralino/telefoni-e-numeri/stato-interni).
+  </Accordion>
+
+  <Accordion title="Perché non vedo il bottone Richiama?">
+    Serve il permesso **Pannello operatori** (il titolare lo ha sempre) e il numero non deve essere nascosto. Se vedi «Non hai un interno da cui chiamare: chiedi al titolare di assegnartene uno.», al tuo utente non è assegnato un interno.
+  </Accordion>
+
+  <Accordion title="Una chiamata persa dice «poi risposta alle 10:42». Devo richiamare?">
+    No: lo stesso numero ha richiamato più tardi ed è stato servito. La chiamata resta contata come persa.
+  </Accordion>
+
+  <Accordion title="Ci sono chiamate perse che in Da richiamare non compaiono.">
+    In **Da richiamare** finisce solo chi ha riattaccato mentre aspettava in coda. Tutte le altre chiamate perse sono in **Chiamate ricevute** e in **Statistiche**.
+  </Accordion>
+
+  <Accordion title="Posso ricevere un avviso o un'email quando perdo una chiamata?">
+    Non c'è un avviso unico per ogni chiamata persa. Ci sono tre email, ognuna per un punto diverso del percorso, più un avviso sui telefoni:
+
+    - **Chi riattacca mentre aspetta in coda.** Apri la coda in Menu → Risorse centralino → Instradamento → **Code di ricezione**, apri **Impostazioni avanzate**, scrivi un indirizzo in **Email notifica abbandono** e premi **Salva**. Queste chiamate compaiono anche in **Da richiamare**.
+    - **Chi lascia un messaggio in segreteria.** In Menu → Risorse centralino → Strumenti → **Segreterie** apri la casella, in **Recapito via email** spunta **Spedisci via email**, scrivi l'indirizzo in **Email a cui mandarli** e premi **Salva**. Vedi [Segreterie](/centralino/strumenti/segreterie).
+    - **Chi arriva a un certo punto delle regole.** Il passaggio **Notifica email** manda un'email ogni volta che una chiamata arriva lì, che poi abbia risposta o no: è un avviso di passaggio, non di chiamata persa. Vedi [Notifiche, registrazioni e moduli](/centralino/regole/passaggi-moduli).
+    - **Sui telefoni della coda.** Con **Segnala le chiamate perse sui telefoni** acceso (nelle **Impostazioni avanzate** della coda, acceso di base) i telefoni della coda mostrano la chiamata non risposta quando nessuno risponde.
+
+    Le email di notifica hanno un tetto giornaliero: quando lo raggiungi la Home avvisa «Limite email giornaliere raggiunto» e le email riprendono dopo la mezzanotte. Il tetto si alza in [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita) → **Email di notifica**, se la tessera compare per il tuo centralino. Per tutte le altre chiamate perse controlla **Chiamate ricevute** con il filtro **Perse**, o **Statistiche**.
+  </Accordion>
+
+  <Accordion title="Posso mandare l'elenco delle chiamate perse a qualcuno?">
+    Sì. In **Chiamate ricevute** imposta il periodo e attiva **Perse**, poi premi **Excel** per il file o **PDF** per il report da stampare.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Chiamate ricevute" icon="phone" href="/centralino/monitoraggio/chiamate-ricevute">
+    Filtri, esportazioni e dettaglio di ogni chiamata.
+  </Card>
+
+  <Card title="Esiti delle chiamate" icon="list" href="/centralino/monitoraggio/esiti-delle-chiamate">
+    Ogni esito e ogni frase, spiegati uno per uno.
+  </Card>
+
+  <Card title="Da richiamare" icon="phone-volume" href="/centralino/monitoraggio/da-richiamare">
+    Chi ha riattaccato in coda, da richiamare.
+  </Card>
+
+  <Card title="Statistiche" icon="chart-line" href="/centralino/monitoraggio/statistiche">
+    Ricevute e perse di una giornata.
+  </Card>
+
+  <Card title="Stato interni" icon="headset" href="/centralino/telefoni-e-numeri/stato-interni">
+    Quali telefoni sono collegati adesso.
+  </Card>
+
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Dove sistemare il percorso di un numero.
+  </Card>
+</CardGroup>

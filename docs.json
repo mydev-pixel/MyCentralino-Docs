@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "MyCentralino API",
+  "name": "MyCentralino · Documentazione",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -11,12 +11,205 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "API Centralino",
+        "tab": "Guida al centralino",
         "groups": [
           {
             "group": "Inizia",
             "pages": [
               "index",
+              "centralino/inizia/primo-accesso",
+              "centralino/inizia/il-pannello",
+              "centralino/inizia/home",
+              "centralino/inizia/glossario"
+            ]
+          },
+          {
+            "group": "Come fare",
+            "pages": [
+              "centralino/come-fare/configurare-gli-orari-di-apertura",
+              "centralino/come-fare/chiudere-per-ferie-o-festivita",
+              "centralino/come-fare/messaggio-di-benvenuto",
+              "centralino/come-fare/creare-un-menu-vocale",
+              "centralino/come-fare/far-squillare-piu-telefoni",
+              "centralino/come-fare/collegare-un-telefono",
+              "centralino/come-fare/inoltrare-al-cellulare",
+              "centralino/come-fare/bloccare-un-numero",
+              "centralino/come-fare/capire-una-chiamata-persa",
+              "centralino/come-fare/aggiungere-un-collaboratore",
+              "centralino/come-fare/ricaricare-il-credito",
+              "centralino/come-fare/creare-la-chiave-api"
+            ]
+          },
+          {
+            "group": "Regole delle chiamate",
+            "pages": [
+              "centralino/regole/panoramica",
+              "centralino/regole/editor",
+              "centralino/regole/passaggi-chiamata",
+              "centralino/regole/passaggi-filtri",
+              "centralino/regole/passaggi-moduli",
+              "centralino/regole/servizi-interni"
+            ]
+          },
+          {
+            "group": "Orari e chiusure",
+            "pages": [
+              "centralino/orari-e-chiusure/orari",
+              "centralino/orari-e-chiusure/ferie-e-festivita",
+              "centralino/orari-e-chiusure/interruttori-a-orario",
+              "centralino/orari-e-chiusure/interruttori"
+            ]
+          },
+          {
+            "group": "Audio",
+            "pages": [
+              "centralino/audio/messaggi-audio",
+              "centralino/audio/musica-di-attesa"
+            ]
+          },
+          {
+            "group": "Instradamento chiamate",
+            "pages": [
+              "centralino/instradamento/code-di-ricezione",
+              "centralino/instradamento/menu-vocali",
+              "centralino/instradamento/inoltro-chiamate",
+              "centralino/instradamento/numeri-bloccati"
+            ]
+          },
+          {
+            "group": "Telefoni e numeri",
+            "pages": [
+              "centralino/telefoni-e-numeri/interni",
+              "centralino/telefoni-e-numeri/collegare-un-dispositivo",
+              "centralino/telefoni-e-numeri/stato-interni",
+              "centralino/telefoni-e-numeri/i-tuoi-numeri",
+              "centralino/telefoni-e-numeri/numeri-in-uscita",
+              "centralino/telefoni-e-numeri/richieste-di-numeri"
+            ]
+          },
+          {
+            "group": "Monitoraggio",
+            "pages": [
+              "centralino/monitoraggio/statistiche",
+              "centralino/monitoraggio/in-tempo-reale",
+              "centralino/monitoraggio/chiamate-ricevute",
+              "centralino/monitoraggio/esiti-delle-chiamate",
+              "centralino/monitoraggio/chiamate-effettuate",
+              "centralino/monitoraggio/da-richiamare",
+              "centralino/monitoraggio/analisi-chiamate-code",
+              "centralino/monitoraggio/costi-numero-verde",
+              "centralino/monitoraggio/log-attivita"
+            ]
+          },
+          {
+            "group": "Strumenti",
+            "pages": [
+              "centralino/strumenti/segreterie",
+              "centralino/strumenti/rubrica",
+              "centralino/strumenti/conferenze",
+              "centralino/strumenti/ascolto-chiamate"
+            ]
+          },
+          {
+            "group": "Servizi a consumo",
+            "pages": [
+              "centralino/servizi-a-consumo/codici-servizio",
+              "centralino/servizi-a-consumo/accesso-con-pin",
+              "centralino/servizi-a-consumo/servizi-prepagati"
+            ]
+          },
+          {
+            "group": "Pannello operatori",
+            "pages": [
+              "centralino/pannello-operatori"
+            ]
+          },
+          {
+            "group": "Moduli",
+            "pages": [
+              "centralino/moduli/i-tuoi-moduli",
+              "centralino/moduli/aggiungi-funzionalita",
+              "centralino/moduli/analisi-chiamate-ai",
+              "centralino/moduli/analisi-utilizzo-flat",
+              "centralino/moduli/contact-center",
+              "centralino/moduli/reperibilita",
+              "centralino/moduli/power-dialer",
+              "centralino/moduli/videoconferenza",
+              "centralino/moduli/whatsapp",
+              "centralino/moduli/mycrm",
+              "centralino/moduli/integrazioni"
+            ]
+          },
+          {
+            "group": "Account e pagamenti",
+            "pages": [
+              "centralino/account/il-mio-account",
+              "centralino/account/utenti-e-permessi",
+              "centralino/account/abbonamento",
+              "centralino/account/credito-e-ricariche",
+              "centralino/account/fatture-e-pagamenti",
+              "centralino/account/documenti",
+              "centralino/account/chiavi-api",
+              "centralino/account/eliminare-l-account"
+            ]
+          },
+          {
+            "group": "Assistenza e aiuto",
+            "pages": [
+              "centralino/assistenza/richieste-di-assistenza",
+              "centralino/assistenza/prenota-una-call",
+              "centralino/assistenza/assistenza-remota",
+              "centralino/assistenza/segnala-un-problema",
+              "centralino/assistenza/novita",
+              "centralino/assistenza/email-che-ricevi",
+              "centralino/assistenza/errori-e-pagine-bloccate"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Agenti AI",
+        "groups": [
+          {
+            "group": "Inizia",
+            "pages": [
+              "agenti-ai/panoramica",
+              "agenti-ai/attivazione-e-piani"
+            ]
+          },
+          {
+            "group": "Il tuo agente",
+            "pages": [
+              "agenti-ai/agente/crea-un-agente",
+              "agenti-ai/agente/istruzioni-e-voce",
+              "agenti-ai/agente/trasferimenti",
+              "agenti-ai/agente/appuntamenti",
+              "agenti-ai/agente/dopo-la-chiamata"
+            ]
+          },
+          {
+            "group": "Numeri e chiamate",
+            "pages": [
+              "agenti-ai/collegare-un-numero",
+              "agenti-ai/storico-chiamate",
+              "agenti-ai/campagne-in-uscita",
+              "agenti-ai/connessioni"
+            ]
+          },
+          {
+            "group": "Domande frequenti",
+            "pages": [
+              "agenti-ai/domande-frequenti"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Centralino",
+        "groups": [
+          {
+            "group": "Inizia",
+            "pages": [
               "mycentralino-api/introduction",
               "mycentralino-api/ping",
               "mycentralino-api/account"
@@ -131,7 +324,7 @@
     "links": [
       {
         "label": "Accedi",
-        "href": "https://mycentralino.com"
+        "href": "https://cloud.mycentralino.com/login"
       }
     ],
     "primary": {

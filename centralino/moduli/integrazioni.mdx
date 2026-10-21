@@ -1,0 +1,173 @@
+---
+title: "Integrazioni: AlfaDocs"
+sidebarTitle: "Integrazioni"
+description: "Collegare il gestionale AlfaDocs dello studio medico o dentistico al centralino, per riconoscere i pazienti che chiamano e lasciare in scheda il riassunto delle telefonate."
+keywords:
+  - "alfadocs"
+  - "integrazione alfadocs"
+  - "collegamento alfadocs"
+  - "gestionale studio"
+  - "studio dentistico"
+  - "studio medico"
+  - "riconosci paziente"
+  - "scheda paziente"
+  - "riassunto chiamata"
+  - "marketplace alfadocs"
+  - "integrazioni"
+---
+
+Oggi l'integrazione disponibile dal pannello è quella con **AlfaDocs**, il gestionale per studi medici e dentistici. Collegando AlfaDocs al centralino:
+
+- il centralino **riconosce i pazienti che chiamano**: con il passaggio **AlfaDocs · Riconosci Paziente** delle Regole delle chiamate, sul telefono di chi risponde compaiono nome e cognome del paziente al posto del numero;
+- l'**Analisi Chiamate AI** può **scrivere il riassunto della telefonata nella scheda del paziente**.
+
+**Dove si trova:** la pagina **Collegamento AlfaDocs** non ha una voce nel menu. Ci arrivi dal link **MyCentralino** nel marketplace di AlfaDocs oppure dall'indirizzo diretto `https://cloud.mycentralino.com/integrazioni/alfadocs`. Se non hai ancora fatto l'accesso al pannello, dopo l'accesso torni su questa pagina.
+
+**Chi la vede:** è pensata per gli studi che hanno MyCentralino e usano AlfaDocs come gestionale.
+
+## Cosa trovi nella pagina
+
+In alto «Integrazione con il gestionale dello studio», il titolo **Collegamento AlfaDocs** e una riga che cambia con lo stato del collegamento.
+
+La card **AlfaDocs** («Gestionale per studi medici e dentistici») mostra lo stato:
+
+| Stato | Cosa vuol dire | Riga in alto |
+| --- | --- | --- |
+| **● Non collegato** | Lo studio non è ancora stato collegato. | «Collega il gestionale dello studio per riconoscere i pazienti che chiamano e lasciare in scheda il riassunto delle telefonate.» |
+| **● Collegato** | Il collegamento funziona. | «Lo studio è collegato: il centralino può leggere l'anagrafica pazienti e l'agenda di AlfaDocs.» |
+| **● Da ricollegare** | AlfaDocs ha ritirato l'autorizzazione: il collegamento non vale più. | «Il collegamento non è più valido: AlfaDocs ha ritirato l'autorizzazione. Basta ricollegare lo studio.» |
+
+Quando lo studio è stato collegato almeno una volta, la card mostra anche:
+
+- **Studio e archivio**: i codici dello studio e dell'archivio su AlfaDocs;
+- **Autorizzato da**: l'email di chi ha autorizzato il collegamento su AlfaDocs;
+- **Collegato il**: data e ora del collegamento;
+- **Ultimo rinnovo**: data e ora dell'ultimo rinnovo automatico dell'autorizzazione. Subito dopo il collegamento, finché non c'è stato il primo rinnovo, compare «— · in ritardo»: è normale. Se «· in ritardo» resta accanto a una data, l'ultimo rinnovo non è andato a buon fine. Nello stato **Da ricollegare** al suo posto c'è **Autorizzazione ritirata il**.
+
+Sotto, due note: «Il collegamento si autorizza sul sito di AlfaDocs con le credenziali dello studio. MyCentralino non conserva la password.» e «Una volta collegato, nelle regole del centralino compare «AlfaDocs · Riconosci Paziente» e l'analisi AI delle chiamate può scrivere il riassunto in scheda paziente.»
+
+In fondo il bottone **Collega AlfaDocs** (**Ricollega AlfaDocs** se lo studio è già collegato) e **Torna ai moduli**.
+
+## Come fare
+
+### Come collego AlfaDocs
+
+<Steps>
+  <Step title="Apri la pagina">
+    Apri `https://cloud.mycentralino.com/integrazioni/alfadocs`, oppure il link **MyCentralino** nel marketplace di AlfaDocs, ed entra nel pannello.
+  </Step>
+  <Step title="Avvia il collegamento">
+    Premi **Collega AlfaDocs**. Si apre il sito di AlfaDocs.
+  </Step>
+  <Step title="Autorizza su AlfaDocs">
+    Accedi con le credenziali dello studio e autorizza l'accesso di MyCentralino.
+  </Step>
+  <Step title="Controlla l'esito">
+    Torni sulla pagina **Collegamento AlfaDocs**. Se è andato tutto bene leggi «Collegamento ad AlfaDocs riuscito. Da ora il centralino riconosce i pazienti dello studio.» e lo stato è **● Collegato**.
+  </Step>
+</Steps>
+
+### Come faccio riconoscere i pazienti che chiamano
+
+<Steps>
+  <Step title="Apri le regole del numero">
+    Nel menu apri **Regole delle chiamate** e scegli il numero dello studio (vedi [Editor delle regole](/centralino/regole/editor)).
+  </Step>
+  <Step title="Aggiungi il passaggio">
+    Premi **Aggiungi regola**, apri l'argomento **Dettagli chiamata** e scegli **AlfaDocs · Riconosci Paziente**. Il passaggio non ha campi: si aggiunge subito.
+  </Step>
+  <Step title="Mettilo al posto giusto">
+    Se serve, spostalo prima dei passaggi che fanno squillare i telefoni.
+  </Step>
+</Steps>
+
+### Come faccio scrivere il riassunto nella scheda del paziente
+
+Serve il modulo [Analisi Chiamate AI](/centralino/moduli/analisi-chiamate-ai).
+
+<Steps>
+  <Step title="Apri il passaggio dell'analisi">
+    Nelle regole del numero aggiungi (o apri) il passaggio **Analisi chiamata AI**, nell'argomento **AI**.
+  </Step>
+  <Step title="Scegli AlfaDocs">
+    Spunta **Invia a webhook** e scegli **AlfaDocs — Invia riassunto su scheda paziente**. La voce c'è solo con AlfaDocs collegato.
+  </Step>
+  <Step title="Completa e aggiungi">
+    Compila il **Nome del servizio**, spunta la dichiarazione sulle norme di registrazione e premi **Aggiungi regola** (se il passaggio c'era già, cambia il valore nella finestra di dettaglio e premi **Salva**).
+  </Step>
+</Steps>
+
+Il passaggio è spiegato per intero in [Passaggi dei moduli](/centralino/regole/passaggi-moduli).
+
+### Come ricollego lo studio
+
+Se lo stato è **● Da ricollegare**, premi **Collega AlfaDocs** e ripeti l'autorizzazione sul sito di AlfaDocs. Con lo studio collegato il bottone si chiama **Ricollega AlfaDocs**: la pagina avverte che «Ricollegare serve solo se AlfaDocs ha esteso i permessi dell'integrazione o se lo studio ha cambiato amministratore.»
+
+## Messaggi di esito
+
+Al ritorno da AlfaDocs, in cima alla pagina compare l'esito:
+
+| Messaggio | Cosa fare |
+| --- | --- |
+| «Collegamento ad AlfaDocs riuscito. Da ora il centralino riconosce i pazienti dello studio.» | Niente: il collegamento è fatto. |
+| «Il collegamento è scaduto o era già stato usato. Avvia di nuovo il collegamento.» | Premi di nuovo **Collega AlfaDocs**. |
+| «AlfaDocs non ha confermato lo scambio delle credenziali. Riprova il collegamento.» | Premi di nuovo **Collega AlfaDocs**. |
+| «Il consenso su AlfaDocs è stato rifiutato. Per collegare lo studio serve autorizzare l'accesso.» | Ripeti il collegamento e, su AlfaDocs, autorizza l'accesso. |
+| «AlfaDocs ha rifiutato il collegamento. Verifica le credenziali e riprova.» | Controlla le credenziali dello studio su AlfaDocs e riprova. |
+| «Non è stato possibile leggere studio e archivio dall'account AlfaDocs.» | Riprova; se si ripete, contatta l'assistenza. |
+| «Errore tecnico nel salvataggio del collegamento. Riprova; se il problema persiste, contatta il supporto.» | Riprova più tardi. |
+| «Configurazione del collegamento incompleta sul server. Contatta il supporto MyCentralino.» | Contatta l'assistenza. |
+| «Il collegamento non è stato completato. Riprova oppure contatta il supporto.» | Riprova. |
+
+Sotto ogni messaggio di errore compare anche un codice: se scrivi all'assistenza, indicalo.
+
+## Da sapere
+
+- **La password di AlfaDocs resta tua.** L'autorizzazione si dà sul sito di AlfaDocs: MyCentralino non conserva la password dello studio.
+- **Il passaggio compare solo con lo studio collegato.** Se nelle Regole delle chiamate non trovi **AlfaDocs · Riconosci Paziente**, controlla che lo stato sia **● Collegato**.
+- **Il riassunto in scheda richiede l'Analisi Chiamate AI.** Senza quel modulo il collegamento serve solo a riconoscere i pazienti.
+- **Bottone spento.** Se **Collega AlfaDocs** non si può premere e sotto compare «Configurazione del collegamento incompleta sul server: contatta il supporto MyCentralino.», il problema non dipende dallo studio: apri una [richiesta di assistenza](/centralino/assistenza/richieste-di-assistenza).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="MyCentralino conosce la mia password di AlfaDocs?">
+    No. L'autorizzazione si dà sul sito di AlfaDocs con le credenziali dello studio: MyCentralino non conserva la password.
+  </Accordion>
+
+  <Accordion title="Non trovo la pagina nel menu.">
+    È normale: la pagina non ha una voce nel menu. Apri `https://cloud.mycentralino.com/integrazioni/alfadocs` oppure il link **MyCentralino** dal marketplace di AlfaDocs.
+  </Accordion>
+
+  <Accordion title="Lo stato dice «Da ricollegare». Cosa faccio?">
+    AlfaDocs ha ritirato l'autorizzazione. Premi **Collega AlfaDocs** e autorizza di nuovo sul sito di AlfaDocs.
+  </Accordion>
+
+  <Accordion title="Lo studio è collegato ma sul telefono vedo ancora il numero.">
+    Controlla che nelle regole del numero ci sia **AlfaDocs · Riconosci Paziente** e che stia prima dei passaggi che fanno squillare. Il nome compare solo se il numero di chi chiama è nell'anagrafica pazienti dello studio.
+  </Accordion>
+
+  <Accordion title="Come scollego AlfaDocs?">
+    Nella pagina non c'è un bottone per scollegare. Apri una [richiesta di assistenza](/centralino/assistenza/richieste-di-assistenza).
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Passaggi dei moduli" icon="sitemap" href="/centralino/regole/passaggi-moduli">
+    AlfaDocs · Riconosci Paziente e Analisi chiamata AI.
+  </Card>
+
+  <Card title="Analisi Chiamate AI" icon="robot" href="/centralino/moduli/analisi-chiamate-ai">
+    Trascrizioni, riassunti e analisi delle chiamate.
+  </Card>
+
+  <Card title="Editor delle regole" icon="list" href="/centralino/regole/editor">
+    Aggiungere un passaggio a un numero.
+  </Card>
+
+  <Card title="I tuoi moduli" icon="list" href="/centralino/moduli/i-tuoi-moduli">
+    Tutti i moduli del centralino.
+  </Card>
+</CardGroup>

@@ -1,0 +1,377 @@
+---
+title: "Notifiche, registrazioni e moduli"
+sidebarTitle: "Passaggi: notifiche e moduli"
+description: "Catalogo dei passaggi che avvisano per email, registrano le chiamate, le fanno analizzare dall'AI, parlano con i tuoi gestionali via API o usano un modulo: Reperibilità, Power Dialer, MyCRM, AlfaDocs, WhatsApp."
+keywords:
+  - "registra chiamata"
+  - "registrazione chiamate"
+  - "registrare le telefonate"
+  - "registrare le chiamate"
+  - "registrazione chiamate in uscita"
+  - "notifica email"
+  - "analisi chiamata ai"
+  - "trascrizione"
+  - "riassunto"
+  - "webhook"
+  - "api"
+  - "custom api"
+  - "reperibilità"
+  - "power dialer"
+  - "mycrm"
+  - "alfadocs"
+  - "whatsapp"
+  - "cloudsoftphone"
+  - "gdpr"
+---
+
+Questa pagina descrive, uno per uno, i passaggi della finestra **Aggiungi regola** che mandano avvisi, registrano o analizzano le chiamate, scambiano dati con un tuo servizio via API, oppure appartengono a un modulo. Per ciascuno trovi il nome esatto, l'argomento, a cosa serve e i campi.
+
+**Dove si trova:** Menu → **Regole chiamate** → clic su un numero o servizio interno → **Aggiungi regola** · `https://cloud.mycentralino.com/regole`
+
+**Chi la vede:** chi può modificare le **Regole delle chiamate**. Alcuni passaggi compaiono solo con il modulo attivo (indicato per ognuno).
+
+Come si apre la finestra e come si usa è spiegato in [Editor delle regole](/centralino/regole/editor).
+
+## In sintesi
+
+| Passaggio | Argomento | Quando lo vedi | Etichetta sulla scheda |
+| --- | --- | --- | --- |
+| **Notifica email** | Notifiche | Sempre | NOTIFICA EMAIL |
+| **Log CloudSoftphone** | Notifiche | Sempre | LOG CLOUD |
+| **Invio messaggio WhatsApp Legacy** | Notifiche | In grigio senza il modulo WhatsApp | NOTIFICA WHATSAPP |
+| **Registra chiamata** | Registrazione chiamate | Sempre | REGISTRAZIONE |
+| **Registra chiamata (solo operatore)** | Registrazione chiamate | Sempre | REGISTRAZIONE OP |
+| **Analisi chiamata AI** | AI | In grigio senza Analisi Chiamate AI | REGISTRAZIONE AI |
+| **Gestione reperibilità** | Orari e chiusure | Solo con il modulo Reperibilità | ADVANCED AVAILABILITY |
+| **Invia dettagli chiamata via API** | Impostazioni avanzate | Sempre | NOTIFICA API |
+| **Custom CALLERID via API** | Impostazioni avanzate | Sempre | RUBRICA API |
+| **Invia API alla risposta di coda** | Impostazioni avanzate | Sempre | NOTIFICA URL |
+| **AlfaDocs · Riconosci Paziente** | Dettagli chiamata | Solo con AlfaDocs collegato | ALFADOCS |
+| Sette passaggi di **MyCRM** | CRM | Solo con MyCRM | LOG CRM, RUBRICA CRM, NOTIFICA WEB, API CRM, VOCE CRM, TASK CRM |
+| Tre passaggi del **Power Dialer** | Power Dialer | Solo con il modulo Power Dialer | RISPONDI PD, LOG PD, BLACKLIST PD |
+
+## Notifiche
+
+### Notifica email
+
+**Argomento:** Notifiche
+
+Ogni volta che la chiamata arriva a questo passaggio parte un'email con i dettagli (chi chiama, data e ora, descrizione del servizio); la chiamata prosegue subito, senza aspettare. Utile quando uno stesso numero serve più servizi: metti una notifica con un nome diverso su ogni ramo, così sai sempre cosa è arrivato.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Indirizzo email** | Dove arriva l'email. Si sceglie tra le email delle tue segreterie; ricerca **Cerca email…**. | Un indirizzo |
+| **Descrizione servizio** | Il nome che compare nell'email. È già proposto il numero. | Testo, al massimo 60 caratteri: restano lettere, numeri, spazi e i segni . \_ -; gli altri caratteri diventano \_. |
+
+- Senza email nelle segreterie: «Nessun indirizzo email impostato sulle caselle vocali.» con **Configura email segreterie**.
+- Errori: «Seleziona un indirizzo email.», «Email non trovata per questo centralino.».
+- **Dopo:** nella finestra di dettaglio cambi **Email di recapito** (qui puoi scrivere un indirizzo qualsiasi) e **Nome servizio**, poi **Salva**. Un indirizzo non valido dà «Scrivi un indirizzo email valido, per esempio [nome@azienda.it](mailto:nome@azienda.it).».
+
+### Log CloudSoftphone
+
+**Argomento:** Notifiche
+
+Registra le chiamate nella sezione Log Chiamate dell'app CloudSoftphone. Serve solo a chi usa CloudSoftphone.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Descrizione servizio** | Il nome con cui la chiamata compare nel log. «Se vuota viene usato "Serv." seguito dal numero.» | Testo, al massimo 60 caratteri: restano lettere, numeri, spazi e i segni . \_ -; gli altri caratteri diventano \_. |
+
+**Dopo:** nella finestra di dettaglio lo cambi nel campo **Dettaglio**.
+
+### Invio messaggio WhatsApp Legacy
+
+**Argomento:** Notifiche · in grigio con **Modulo non attivo** se non hai il modulo WhatsApp
+
+Manda su WhatsApp il messaggio pronto scelto (testo ed eventuale immagine), preparato nella pagina WhatsApp. È il WhatsApp collegato con il QR.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Modulo WhatsApp** | Il messaggio pronto da mandare («prefisso: …» sotto il nome). Ricerca **Cerca modulo WhatsApp…**. | Un modulo |
+
+- Senza moduli: «Nessun modulo di notifica WhatsApp configurato.» con **Configura un modulo**.
+- Errori: «Seleziona un modulo WhatsApp.», «Modulo WhatsApp non trovato.».
+- I messaggi si preparano in [WhatsApp](/centralino/moduli/whatsapp).
+
+## Registrazione chiamate
+
+<Warning>
+  Registrare le telefonate è soggetto alle norme del territorio in cui lavori (GDPR, informativa a chi chiama, conservazione dei file). Il rispetto delle norme è responsabilità di chi registra: verifica di essere in regola prima di aggiungere questi passaggi.
+</Warning>
+
+### Registra chiamata
+
+**Argomento:** Registrazione chiamate
+
+Registra la conversazione, con la voce di chi chiama e di chi risponde, e alla fine manda il file audio. La registrazione parte quando qualcuno risponde: una chiamata che ascolta solo un messaggio dà un file vuoto. **Sul centralino non resta nessuna copia**: l'archivio è la tua email o il tuo servizio esterno.
+
+Mettilo prima dei passaggi che fanno squillare.
+
+In testa alla finestra c'è l'avviso: «Attenzione: registrare le chiamate è soggetto alle norme del territorio in cui lavori (GDPR, informativa a chi chiama, conservazione dei file). Verifica di essere in regola prima di attivare questa regola.».
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Come vuoi ricevere le registrazioni** | Dove arriva il file. Compare solo sui centralini dove è disponibile l'invio a un servizio esterno; altrove i file arrivano solo per email. | **Per email** («Il file audio arriva come allegato.») · **Servizio esterno (API)** («Il file va al tuo gestionale. Se non risponde, arriva all'email di riserva.») · **Email e servizio esterno** («Il file arriva in tutti e due i posti.») |
+| **Email a cui arrivano le registrazioni** | L'indirizzo che riceve i file. È proposta l'email con cui ti sei registrato («È l'email con cui ti sei registrato: puoi scriverne un'altra.»). Con **Servizio esterno (API)** diventa **Email di riserva**: «Le registrazioni arrivano qui solo se il servizio esterno non risponde.» | Un indirizzo email |
+| **Nome del servizio** | «Compare nel nome del file e nell'email. Se lo lasci vuoto si usa il numero.» | Testo, al massimo 60 caratteri: restano lettere, numeri e i segni . \_ -; spazi e altri caratteri diventano \_. |
+| **Indirizzo API** | Solo con l'API: dove mandare il file, per esempio `https://gestionale.it/registrazioni`. «Solo indirizzi https raggiungibili da internet.» | Indirizzo https |
+| **Token** | Solo con l'API: la chiave del tuo servizio. «Arriva al servizio nell'intestazione Authorization: Bearer.» | Al massimo 255 caratteri, senza spazi |
+| Dichiarazione | «Conosco le norme del mio territorio su informativa, registrazione e diffusione delle telefonate, e me ne assumo la responsabilità.» | Obbligatoria: senza, **Aggiungi regola** resta spento |
+
+Per chi sviluppa il servizio esterno: riceve una richiesta POST multipart con il file mp3 (campo `file`) e i campi `event`, `call_id`, `caller`, `called`, `service`, `started_at` e `duration`. Con la sola API, se il servizio non risponde o va in errore, il file arriva all'email di riserva.
+
+Messaggi che puoi vedere: «Devi confermare di conoscere le norme sulla registrazione.», «Scegli come ricevere le registrazioni.», «Su questo centralino le registrazioni arrivano solo per email.», «Scrivi un indirizzo email valido, per esempio [nome@azienda.it](mailto:nome@azienda.it).», «Scrivi un'email di riserva valida, per esempio [nome@azienda.it](mailto:nome@azienda.it).», «Inserisci l'indirizzo API.», «L'indirizzo deve iniziare con https://», «Indirizzo non ammesso: deve essere raggiungibile da internet.», «Inserisci il token.», «Il token non può contenere spazi.».
+
+**Dopo:** nella finestra di dettaglio cambi **Come arrivano** (**Per email**, **Servizio esterno (API)**, **Tutti e due**), l'email, il **Nome servizio**, l'**Indirizzo API** e il **Token**. Il token salvato non si rivede: il campo dice «Salvato: lascia vuoto se l'indirizzo non cambia». Se cambi l'indirizzo, riscrivi anche il token («Con un indirizzo nuovo scrivi anche il token.»).
+
+### Registra chiamata (solo operatore)
+
+**Argomento:** Registrazione chiamate
+
+Registra **solo la voce dell'operatore**, mai quella di chi chiama: per formazione, qualità e controlli interni. Si registra quello che sente chi chiama, quindi anche messaggi e musica d'attesa. In testa: «Alla fine della chiamata arriva il file audio con la sola voce dell'operatore.». La sequenza continua normalmente.
+
+Ha gli stessi campi di **Registra chiamata** (come ricevere i file, email, nome del servizio, indirizzo API e token), **senza** la dichiarazione da spuntare.
+
+### Come registro le chiamate di un numero
+
+Il passaggio va messo **dopo** **Prendo in carico la chiamata** (scheda **RISPONDI**), se il numero lo usa, e **prima** dei passaggi che fanno squillare: interni, coda, inoltro al cellulare. L'ordine completo dei passaggi è in [Editor delle regole](/centralino/regole/editor), sezione «In che ordine metto i passaggi».
+
+<Steps>
+  <Step title="Apri il numero">
+    Menu → **Regole chiamate** → clicca il numero (o il servizio interno) di cui vuoi registrare le chiamate.
+  </Step>
+  <Step title="Scegli il punto">
+    Nello schema passa con il mouse sulla linea subito sotto la scheda **RISPONDI** e premi il **\+** (**Inserisci qui**). Se la scheda **RISPONDI** non c'è, usa il **\+** subito sopra la prima scheda che fa squillare (**INTERNI**, **CODA** o **INOLTRO**). In testata la finestra conferma dove andrà il passaggio, per esempio «Dopo lo step 1».
+  </Step>
+  <Step title="Scegli il passaggio">
+    Apri l'argomento **Registrazione chiamate** e clicca **Registra chiamata**. Se vuoi registrare solo la voce di chi risponde, scegli invece **Registra chiamata (solo operatore)**.
+  </Step>
+  <Step title="Scegli dove arrivano i file">
+    Se vedi **Come vuoi ricevere le registrazioni**, scegli **Per email**, **Servizio esterno (API)** o **Email e servizio esterno**; se non lo vedi, i file arrivano per email. In **Email a cui arrivano le registrazioni** controlla l'indirizzo proposto e, se vuoi, scrivi un **Nome del servizio** (per esempio `Centralino`).
+  </Step>
+  <Step title="Conferma">
+    Per **Registra chiamata** spunta la dichiarazione «Conosco le norme del mio territorio…»: senza, **Aggiungi regola** resta spento. Premi **Aggiungi regola**. Il passaggio vale subito per le chiamate successive: non c'è altro da salvare.
+  </Step>
+  <Step title="Prova">
+    Chiama il numero da un cellulare, rispondi da un telefono dell'ufficio, parla qualche secondo e riattacca. A fine chiamata arriva l'email con il file audio allegato.
+  </Step>
+</Steps>
+
+Se il numero ha un menù vocale, metti la registrazione **sopra** il menù: i passaggi sotto un menù vocale di norma non vengono raggiunti. Per registrare le chiamate di più numeri, ripeti i passi su ognuno.
+
+## Analisi chiamata AI
+
+**Argomento:** AI · in grigio con **Modulo non attivo** se non hai [Analisi Chiamate AI](/centralino/moduli/analisi-chiamate-ai)
+
+«Il centralino registra la chiamata e attiva automaticamente i servizi AI selezionati.» I risultati si leggono in **Analisi Chiamate AI** e, se lo scegli, arrivano anche per email o a un tuo servizio esterno. È il modo per analizzare le chiamate in arrivo su un numero o un servizio interno.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Nome del servizio** | «Appare nel nome del file e nelle notifiche.» È anche il nome con cui ritrovi le chiamate in Analisi Chiamate AI. Per esempio «Assistenza Clienti». | Obbligatorio, al massimo 60 caratteri: restano lettere, numeri e i segni . \_ -; spazi e altri caratteri diventano \_ (per esempio «Assistenza_Clienti»). |
+| **Funzionalità da attivare** | **Trascrizione** («Converte l'audio della chiamata in testo.») e **Summary** («Genera un riepilogo della conversazione.»). | Trascrizione è già spuntata; Summary no |
+| **Analisi AI avanzata** | Il profilo di analisi da applicare. Senza profili: «Nessuna analisi configurata. Crea un profilo dalla sezione Analisi Chiamate AI.» | **Nessuna analisi AI** oppure un tuo profilo |
+| **Ricevi report via email** | «Riceverai trascrizione e analisi nella casella indicata.» Spuntandolo compare il campo email. | Facoltativo |
+| **Invia a webhook** | «Invia i risultati a un servizio esterno.» Spuntandolo compare **Seleziona webhook…**. Con AlfaDocs collegato c'è anche «AlfaDocs — Invia riassunto su scheda paziente». | Facoltativo |
+| Dichiarazione | «Dichiaro di essere consapevole e responsabile delle norme vigenti sul mio territorio riguardo la registrazione e diffusione delle telefonate.» | Obbligatoria |
+
+- **Aggiungi regola** resta spento senza **Nome del servizio** o senza la dichiarazione.
+- Errori: «Scrivi un nome per il servizio.», «Devi confermare di conoscere le norme sulla registrazione.», «Email non valida.», «Profilo di analisi non trovato.», «Webhook non trovato.», «Integrazione AlfaDocs non attiva.».
+- Nello schema la scheda riassume cosa è acceso, per esempio «✓ trascrizione · ✗ riassunto · ✓ analisi AI (nome del profilo)».
+- **Dopo:** nella finestra di dettaglio cambi **Email di recapito (opzionale)**, **Nome servizio**, le **Funzioni** (**Trascrizione**, **Riassunto**, **Chiamate in uscita**), il **Profilo di analisi** (**Nessuna** o un tuo profilo) e il **Webhook** (**Nessuno** o un tuo webhook).
+- Profili e webhook si creano in **Analisi Chiamate AI**.
+
+### Come comincio ad analizzare le chiamate di un numero
+
+<Steps>
+  <Step title="Apri il numero">
+    Menu → **Regole chiamate** → clicca il numero (o il servizio interno) che risponde alle chiamate da analizzare.
+  </Step>
+  <Step title="Aggiungi il passaggio">
+    **Aggiungi regola** → argomento **AI** → **Analisi chiamata AI**.
+  </Step>
+  <Step title="Compila">
+    Scrivi il **Nome del servizio**, scegli le funzionalità e, se l'hai creato, il profilo in **Analisi AI avanzata**.
+  </Step>
+  <Step title="Conferma">
+    Spunta la dichiarazione e premi **Aggiungi regola**. Il passaggio è già attivo: non c'è altro da salvare.
+  </Step>
+</Steps>
+
+## Gestione reperibilità
+
+**Argomento:** Orari e chiusure · compare solo con il modulo [Reperibilità](/centralino/moduli/reperibilita)
+
+Chiama uno dopo l'altro i reperibili del gruppo scelto, secondo i turni del modulo Reperibilità, usando la linea in uscita indicata. Se nessuno risponde, la chiamata passa alla regola successiva.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Modulo di reperibilità** | Il gruppo di reperibilità. Ricerca **Cerca modulo…**. | Un gruppo |
+| **Provider di uscita** | La linea da cui partono le chiamate ai reperibili. Quella principale è già proposta. | Una delle tue linee in uscita |
+
+- Senza gruppi: «Nessun modulo di reperibilità configurato.». I gruppi si creano in **I tuoi moduli** → **Reperibilità**.
+- Senza linee: «Nessun provider di uscita.» con **Configura un provider**, che apre [Numeri in uscita](/centralino/telefoni-e-numeri/numeri-in-uscita) in una nuova scheda.
+- Errori: «Seleziona un modulo di reperibilità.», «Seleziona un provider di uscita.», «Modulo reperibilità non trovato.», «Provider non trovato.».
+- **Dopo:** nella finestra di dettaglio vedi lo **Stato**, i **Reperibili oggi** (o «nessun operatore in turno») e il **Provider uscita**, e puoi cambiare **Modulo reperibilità** e **Provider di uscita**.
+- Le chiamate ai numeri esterni dei reperibili sono chiamate in uscita del centralino.
+
+## Passaggi con le API
+
+Hanno l'etichetta **API** sulla tessera: servono a chi ha un gestionale o un CRM che riceve o dà dati via internet. Gli indirizzi devono cominciare con `http://` o `https://`; le chiavi possono contenere solo lettere, numeri e i segni - . \_ ~ + / = :.
+
+### Invia dettagli chiamata via API
+
+**Argomento:** Impostazioni avanzate · **API**
+
+A ogni chiamata il centralino fa una richiesta GET al tuo indirizzo con i dati della chiamata. La risposta non viene letta: la chiamata prosegue subito.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **URL** | L'indirizzo del tuo servizio | Obbligatorio |
+| **API Key** | La chiave che il tuo servizio riceve come `key` | Obbligatoria |
+| **Marcatore 1**, **Marcatore 2**, **Marcatore 3** | Etichette libere che arrivano come `remark`, `remark2`, `remark3` (per esempio «Custom1») | Facoltativi, al massimo 40 caratteri: restano lettere, numeri e i segni . \_ -; spazi e altri caratteri diventano \_. |
+
+Nel riquadro **Cosa riceve il tuo endpoint** la finestra mostra un esempio: `https://miosito.com?key=a1s2d3f4g5&callerid=3351234567&calledid=061234567&uniqueid=162432567.32&remark=Custom1&remark2=Custom2&remark3=Custom3&date=22-09-2026_15:42:10`
+
+- Errori: «Scrivi un URL.», «Scrivi una API key.», «Scrivi un indirizzo web valido, per esempio [https://gestionale.it/chiamate.»](https://gestionale.it/chiamate.»), «La chiave può contenere solo lettere, numeri e i segni - . \_ ~ + / = :».
+- **Dopo:** nella finestra di dettaglio cambi **URL dell'endpoint**, **API key** e i marcatori.
+
+### Custom CALLERID via API
+
+**Argomento:** Impostazioni avanzate · **API**
+
+Chiede al tuo servizio il nome di chi chiama, da mostrare sul display al posto del numero; poi la chiamata prosegue.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **URL** | L'indirizzo del tuo servizio | Obbligatorio |
+| **API Key** | La chiave che il tuo servizio riceve come `key` | Obbligatoria |
+
+- Il servizio riceve una richiesta GET con `key`, `callerid`, `calledid`, `uniqueid` e `date`, e risponde con un JSON come `{"callerid": "Mario Rossi"}`.
+- Se nella risposta aggiunge `"InternalService": "409"`, oltre a mostrare il nome la chiamata viene trasferita a quel servizio interno.
+- Errori: come per **Invia dettagli chiamata via API**.
+- **Dopo:** nella finestra di dettaglio cambi **URL dell'endpoint** e **API key**.
+
+### Invia API alla risposta di coda
+
+**Argomento:** Impostazioni avanzate · **API**
+
+Quando un operatore della coda che viene dopo risponde, il centralino chiama il tuo indirizzo con i campi che imposti (per esempio per aprire la scheda del cliente nel CRM). Mettilo **subito prima** del passaggio della coda.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **URL** | L'indirizzo da chiamare | Obbligatorio |
+| **Campi query string** #1…#5 | Coppie nome = valore aggiunte all'indirizzo | Il primo nome e il primo valore sono obbligatori, gli altri facoltativi |
+
+- La finestra ricorda di attivare un'opzione sulla coda: nella pagina della coda è **Invia segnale alla risposta** (in [Code di ricezione](/centralino/instradamento/code-di-ricezione)).
+- Non usarlo nello stesso percorso di **Notifica web alla risposta** di MyCRM: i due passaggi usano lo stesso segnale e uno sostituisce l'altro.
+- Errori: «Scrivi un URL.», «Il primo campo (nome + valore) è obbligatorio.», «Scrivi un indirizzo web valido, per esempio [https://gestionale.it/chiamate.»](https://gestionale.it/chiamate.»).
+- **Dopo:** nella finestra di dettaglio cambi l'**URL di notifica**.
+
+## AlfaDocs · Riconosci Paziente
+
+**Argomento:** Dettagli chiamata · **Si aggiunge subito** · compare solo con AlfaDocs collegato
+
+Per gli studi medici e dentistici che usano AlfaDocs: a ogni chiamata il centralino cerca il numero nell'anagrafica pazienti dello studio e, se lo trova, sul display di chi risponde compaiono nome e cognome al posto del numero. Non ha campi: usa il collegamento con AlfaDocs dello studio. Mettilo prima dei passaggi che fanno squillare.
+
+Il collegamento si fa nella pagina **Collegamento AlfaDocs**: vedi [Integrazioni](/centralino/moduli/integrazioni).
+
+## MyCRM
+
+**Argomento:** CRM · compaiono solo se hai [MyCRM](/centralino/moduli/mycrm)
+
+| Passaggio | Cosa fa | Campi |
+| --- | --- | --- |
+| **Notifica chiamata a MyCRM** | Registra ogni chiamata ricevuta nel log di MyCRM, associandola a una tipologia di servizio. | **Nome servizio**, obbligatorio, al massimo 60 caratteri: «Appare nel log di MyCRM accanto a ogni chiamata.». Errore: «Inserisci il nome del servizio.». |
+| **Verifica rubrica MyCRM** | Cerca il numero di chi chiama nella rubrica di MyCRM e mostra il nome sul display di chi risponde. | Nessuno: **Si aggiunge subito** |
+| **Notifica web alla risposta** | Quando un operatore di una coda di ricezione risponde, MyCRM apre da solo la scheda del cliente. Funziona solo se la coda che segue ha attivo **Invia segnale alla risposta** (in [Code di ricezione](/centralino/instradamento/code-di-ricezione)); mettilo prima del passaggio della coda e non usarlo insieme a **Invia API alla risposta di coda**. | Nessuno: **Si aggiunge subito** |
+| **Popola registro via API** | A ogni chiamata interroga il tuo indirizzo (GET con i parametri `key` e `num`) e compila il registro di MyCRM con la risposta JSON: `name` (obbligatorio), `surname`, `company`, `email`, `api_field`. Ha l'etichetta **API**. | **URL da interrogare** e **Chiave**, tutti e due obbligatori |
+| **Chiede nome al chiamante** | Chiede a chi chiama di dire nome e cognome e li registra in MyCRM. | Nessuno: **Si aggiunge subito** |
+| **Apri task richiamare** | Apre in MyCRM un task «da richiamare». | Nessuno: **Si aggiunge subito** |
+| **Apri task personalizzato** | A ogni chiamata apre in MyCRM un task con i dati che scegli. | **Titolo del task** (obbligatorio, al massimo 60 caratteri; errore «Inserisci il titolo del task.»), **Assegna a** (**Tutti** o un utente), **Categoria** (**Nessuna categoria** o una), **Template** (**Nessun template** o uno) |
+
+## Power Dialer
+
+**Argomento:** Power Dialer · compaiono solo se hai il modulo [Power Dialer](/centralino/moduli/power-dialer)
+
+Si usano nei passaggi del **servizio interno di destinazione** della campagna, quello che gestisce chi risponde.
+
+| Passaggio | Cosa fa | Campi |
+| --- | --- | --- |
+| **Prendo in carico Power Dialer** | La versione di **Prendo in carico la chiamata** pensata per le chiamate fatte dal Power Dialer. | Nessuno: **Si aggiunge subito** |
+| **Log chiamata Power Dialer** | Registra la chiamata nel log del modulo con la descrizione indicata. Il testo diventa l'esito che vedi in **Esiti registrati** della campagna. | **Descrizione log**, obbligatoria, al massimo 60 caratteri: «Caratteri , ; " e spazio vengono convertiti in \_.». In pratica restano solo lettere, numeri e i segni . \_ -: tutto il resto diventa \_. Errore: «Inserisci la descrizione del log.». |
+| **Blacklist Power Dialer** | Usa la lista di numeri esclusi del modulo Power Dialer. | Nessuno: **Si aggiunge subito** |
+
+## Da sapere
+
+- **Le notifiche non fermano la chiamata.** Notifica email, Log CloudSoftphone, WhatsApp e i passaggi API che inviano dati lasciano proseguire la chiamata subito.
+- **La registrazione parte quando qualcuno risponde.** Metti i passaggi di registrazione e di analisi AI prima di quelli che fanno squillare.
+- **Nessuna copia sul centralino.** Le registrazioni di **Registra chiamata** arrivano solo alla tua email o al tuo servizio esterno.
+- **Un modulo spento.** Se il modulo non è attivo, il passaggio è in grigio con **Modulo non attivo** oppure non compare proprio nel catalogo (MyCRM, Power Dialer, Reperibilità, AlfaDocs).
+
+## Domande frequenti
+
+<AccordionGroup>
+  <Accordion title="Come registro le telefonate?">
+    Aggiungi il passaggio **Registra chiamata** nelle regole del numero, dopo **Prendo in carico la chiamata** e prima dei passaggi che fanno squillare. I passi sono in «Come registro le chiamate di un numero», più sopra in questa pagina.
+  </Accordion>
+
+  <Accordion title="Posso registrare le chiamate in uscita?">
+    I passaggi **Registra chiamata** e **Registra chiamata (solo operatore)** valgono per le chiamate che arrivano sul numero o sul servizio interno in cui li metti, non per quelle che fanno i tuoi interni. Per le chiamate in uscita, dal pannello puoi farle trascrivere e riassumere con il modulo **Analisi Chiamate AI**: nella scheda **Chiamate in uscita** apri la linea, accendi **Analisi AI abilitata** e premi **Salva configurazione**. In quel modulo restano il testo e i risultati dell'AI, non l'audio. Vedi [Analisi chiamate AI](/centralino/moduli/analisi-chiamate-ai).
+  </Accordion>
+
+  <Accordion title="La registrazione arriva vuota.">
+    Si registra da quando qualcuno risponde. Se la chiamata ha ascoltato solo un messaggio, o nessuno ha risposto, il file è vuoto.
+  </Accordion>
+
+  <Accordion title="Dove trovo le registrazioni vecchie nel pannello?">
+    Il centralino non tiene copie: le registrazioni sono nella casella email scelta o nel tuo servizio esterno.
+  </Accordion>
+
+  <Accordion title="Non vedo la scelta «Servizio esterno (API)».">
+    Su alcuni centralini l'invio a un servizio esterno non è disponibile: le registrazioni arrivano solo per email.
+  </Accordion>
+
+  <Accordion title="Devo avvisare chi chiama che la chiamata è registrata?">
+    Il rispetto delle norme sulla registrazione è responsabilità di chi registra: per questo **Registra chiamata** e **Analisi chiamata AI** chiedono una dichiarazione esplicita. Se non puoi informare chi chiama, valuta **Registra chiamata (solo operatore)**.
+  </Accordion>
+
+  <Accordion title="Analisi chiamata AI è in grigio.">
+    Serve il modulo **Analisi Chiamate AI**. Vedi [Analisi chiamate AI](/centralino/moduli/analisi-chiamate-ai) e [Aggiungi funzionalità](/centralino/moduli/aggiungi-funzionalita).
+  </Accordion>
+
+  <Accordion title="La Notifica email mi fa scegliere solo alcune email.">
+    Quando aggiungi il passaggio puoi scegliere solo le email delle tue segreterie. Dopo averlo aggiunto, aprilo e scrivi l'indirizzo che vuoi in **Email di recapito**, poi premi **Salva**.
+  </Accordion>
+
+  <Accordion title="Ho cambiato l'indirizzo API della registrazione e mi chiede il token.">
+    È voluto: il token salvato non parte mai verso un indirizzo nuovo. Riscrivi il token insieme al nuovo indirizzo.
+  </Accordion>
+</AccordionGroup>
+
+## Pagine collegate
+
+<CardGroup cols={2}>
+  <Card title="Editor delle regole" icon="sitemap" href="/centralino/regole/editor">
+    Come si aggiungono e si spostano i passaggi.
+  </Card>
+
+  <Card title="Passaggi che instradano la chiamata" icon="phone" href="/centralino/regole/passaggi-chiamata">
+    Il primo catalogo dei passaggi.
+  </Card>
+
+  <Card title="Orari, filtri e dettagli" icon="clock" href="/centralino/regole/passaggi-filtri">
+    Il secondo catalogo dei passaggi.
+  </Card>
+
+  <Card title="Analisi chiamate AI" icon="chart-line" href="/centralino/moduli/analisi-chiamate-ai">
+    Profili, webhook e conversazioni.
+  </Card>
+
+  <Card title="Reperibilità" icon="users" href="/centralino/moduli/reperibilita">
+    Turni e reperibili.
+  </Card>
+
+  <Card title="API di MyCentralino" icon="key" href="/mycentralino-api/introduction">
+    La documentazione per sviluppatori.
+  </Card>
+</CardGroup>

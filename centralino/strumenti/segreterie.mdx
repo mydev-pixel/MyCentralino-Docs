@@ -125,6 +125,27 @@ Appena cambi qualcosa compare in basso la barra **Modifiche non salvate** con **
 
 Dopo la segreteria, di norma, la chiamata finisce: le regole messe sotto non vengono raggiunte. Per questo la **Segreteria telefonica** va di solito in fondo.
 
+### Come faccio sentire un messaggio prima della segreteria
+
+La segreteria non fa sentire un messaggio di benvenuto: chi chiama sente subito il segnale acustico e lascia il messaggio. Se vuoi che prima senta un tuo messaggio (per esempio «Siamo momentaneamente occupati, lasciate un messaggio dopo il segnale»), mettilo con la regola **Riproduco audio** subito sopra la **Segreteria telefonica**.
+
+<Steps>
+  <Step title="Apri le regole del numero">
+    Menu → **Regole chiamate** → **Numeri di telefono** (`https://cloud.mycentralino.com/regole`) e clicca il numero.
+  </Step>
+  <Step title="Aggiungi Riproduco audio sotto la regola che fa squillare">
+    Premi il **\+** sotto la regola che fa squillare i telefoni e scegli **Riproduco audio** (argomento **Regole più usate**).
+  </Step>
+  <Step title="Scegli il messaggio">
+    In **File audio disponibili** spunta il messaggio. Se non c'è ancora, premi **Nuovo**: puoi caricare un MP3 o un WAV, oppure farlo leggere alla sintesi vocale. Poi premi **Aggiungi regola**.
+  </Step>
+  <Step title="Aggiungi la segreteria sotto il messaggio">
+    Premi il **\+** sotto **Riproduco audio**, scegli **Segreteria telefonica** (argomento **Notifiche**), spunta la casella e premi **Aggiungi regola**.
+  </Step>
+</Steps>
+
+Chi chiama sente il tuo messaggio, poi il segnale acustico, e lascia il messaggio in segreteria. Il messaggio di benvenuto è uno solo: il tuo.
+
 ### Come ascolto i messaggi dal telefono
 
 <Steps>
@@ -177,7 +198,7 @@ Messaggi che puoi vedere al salvataggio: «Solo cifre, max 5.» (PIN), «Indiriz
 
 ### Regola «Segreteria telefonica»
 
-È la regola che porta le chiamate in una casella. Si aggiunge dall'editor delle regole, argomento **Notifiche**. Introduzione a video: «Il chiamante viene inoltrato alla segreteria telefonica: sente il messaggio di benvenuto e può lasciare un messaggio, inviato poi via email al titolare della casella.».
+È la regola che porta le chiamate in una casella. Si aggiunge dall'editor delle regole, argomento **Notifiche**. Introduzione a video: «Il chiamante viene inoltrato alla segreteria telefonica: sente il messaggio di benvenuto e può lasciare un messaggio, inviato poi via email al titolare della casella.». In pratica la regola non fa sentire nessun messaggio di benvenuto: chi chiama sente il segnale acustico e lascia il messaggio. Per un messaggio prima della segreteria vedi «Come faccio sentire un messaggio prima della segreteria».
 
 | Campo | Cosa indica | Valori |
 | --- | --- | --- |
@@ -192,7 +213,7 @@ Se il centralino non ha caselle compare «Nessuna casella vocale configurata per
 - **Un solo indirizzo per casella.** Se i messaggi devono arrivare a più persone, usa un indirizzo condiviso (per esempio quello dell'ufficio).
 - **Dopo la segreteria, di norma, la chiamata finisce.** Le regole sotto la **Segreteria telefonica** di solito non vengono raggiunte.
 - **I tasti di un Menù vocale (IVR)** non portano direttamente a una segreteria: crea un servizio interno con la regola **Segreteria telefonica** e collega il tasto a quel servizio interno. Vedi [Servizi interni](/centralino/regole/servizi-interni).
-- **Il saluto della segreteria** (quello che sente chi chiama prima di lasciare il messaggio) non si imposta da questa pagina.
+- **La segreteria non ha un messaggio di benvenuto.** Chi chiama sente subito il segnale acustico. Se vuoi un messaggio prima, metti la regola **Riproduco audio** sopra la **Segreteria telefonica**.
 - **Nel Pannello operatori** ogni operatore ha anche un interruttore **Segreteria** per il proprio interno. Vedi [Pannello operatori](/centralino/pannello-operatori).
 
 ## Domande frequenti
@@ -227,7 +248,7 @@ Se il centralino non ha caselle compare «Nessuna casella vocale configurata per
   </Accordion>
 
   <Accordion title="Posso cambiare il messaggio che sente chi chiama prima della segreteria?">
-    Il pannello non ha un'impostazione per il saluto della segreteria. Se ti serve un saluto personalizzato, chiedi all'assistenza.
+    La segreteria non fa sentire un messaggio di benvenuto: chi chiama sente subito il segnale acustico. Per far sentire un tuo messaggio, nelle regole del numero metti **Riproduco audio** con il messaggio scelto subito sopra la **Segreteria telefonica**. Vedi «Come faccio sentire un messaggio prima della segreteria».
   </Accordion>
 
   <Accordion title="Voglio la segreteria solo fuori orario.">

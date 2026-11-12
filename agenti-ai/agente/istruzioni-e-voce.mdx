@@ -13,6 +13,9 @@ keywords:
   - "documenti agente"
   - "ricerca dati"
   - "csv agente"
+  - "righe dell'elenco"
+  - "modificare una riga dell'elenco"
+  - "prova ricerca agente"
   - "memoria delle chiamate"
   - "conservazione conversazioni"
   - "reattività"
@@ -27,7 +30,7 @@ Questa pagina spiega quattro sezioni della configurazione di un agente: **Identi
 **Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)), quando gli Agenti AI sono attivi.
 
 <Note>
-  Quello che cambi in **Identità e copione** e in **Voce** vale solo dopo **Salva agente** (o **Crea agente** per un agente nuovo). I documenti della **Knowledge Base** invece si caricano subito. In **Ricerca dati** il file sostituisce subito l'elenco precedente, ma l'agente lo usa solo dopo **Salva agente**. Come funziona il salvataggio: [Crea un agente](/agenti-ai/agente/crea-un-agente).
+  Quello che cambi in **Identità e copione** e in **Voce** vale solo dopo **Salva agente** (o **Crea agente** per un agente nuovo). I documenti della **Knowledge Base** invece si caricano subito. In **Ricerca dati** il file sostituisce subito l'elenco precedente (quando l'agente comincia a usarlo è spiegato più sotto, in **Quando carico un file nuovo**), mentre le righe che correggi, aggiungi o togli con **Vedi e modifica le righe** valgono subito, senza **Salva agente**. Come funziona il salvataggio: [Crea un agente](/agenti-ai/agente/crea-un-agente).
 </Note>
 
 ## Identità e copione
@@ -146,13 +149,13 @@ L'interruttore in alto a destra accende la ricerca (**Attivo** / **Spento**). Sp
 | **Colonna chiave 2 (opzionale)** + **Etichetta** | Una seconda colonna per restringere la ricerca | Es. etichetta «il servizio» |
 | **Colonna priorità (opzionale)** | Una colonna con un numero che decide l'ordine dei risultati | Il numero più basso viene prima |
 
-Quando ci sono righe caricate, sotto il titolo leggi «Attualmente N righe caricate.».
+Quando ci sono righe caricate, sotto il titolo leggi «Attualmente N righe caricate.». Sotto le colonne chiave c'è il riquadro **Righe dell'elenco** con il bottone **Vedi e modifica le righe**: da lì controlli e correggi l'elenco senza ricaricare il file (vedi più sotto **Righe dell'elenco**).
 
 ### Come preparo e carico l'elenco
 
 <Steps>
   <Step title="Prepara il file">
-    In Excel o in un altro foglio di calcolo metti nella prima riga i nomi delle colonne (es. `CAP`, `Zona`, `Servizio`, `Costo`, `Tecnico`) e sotto una riga per ogni voce. Salva come CSV: va bene sia con la virgola sia con il punto e virgola.
+    In Excel o in un altro foglio di calcolo metti nella prima riga i nomi delle colonne (es. `CAP`, `Zona`, `Servizio`, `Costo`, `Tecnico`) e sotto una riga per ogni voce. Salva come CSV: va bene sia con la virgola sia con il punto e virgola. Se Excel ti propone **CSV UTF-8**, sceglilo: è il formato più sicuro per le lettere accentate.
   </Step>
   <Step title="Accendi la ricerca">
     Nella configurazione dell'agente apri **Ricerca dati** e accendi l'interruttore.
@@ -164,7 +167,10 @@ Quando ci sono righe caricate, sotto il titolo leggi «Attualmente N righe caric
     Scrivi **Nome dell'elenco** e **Cosa contiene (per l'agente)**, scegli **Colonna chiave 1** con la sua **Etichetta** e, se serve, **Colonna chiave 2** e **Colonna priorità**.
   </Step>
   <Step title="Salva">
-    Premi **Salva agente**: solo ora l'agente usa l'elenco con le colonne scelte.
+    Premi **Salva agente**: da ora l'agente usa l'elenco con le colonne scelte. Se in **Ricerca dati** manca la colonna chiave, il salvataggio si ferma e leggi «In «Ricerca dati» scegli la colonna chiave: senza, l'agente non trova niente nell'elenco.».
+  </Step>
+  <Step title="Controlla">
+    Premi **Vedi e modifica le righe**, scrivi in **Prova come cerca l'agente** un valore come lo direbbe un cliente e premi **Prova**: vedi le righe che l'agente riceverebbe. Se c'è il filtro **Da sistemare**, alcune righe l'agente non le troverà mai: correggile.
   </Step>
 </Steps>
 
@@ -174,9 +180,61 @@ Quando ci sono righe caricate, sotto il titolo leggi «Attualmente N righe caric
 - Con due colonne chiave lavora in due passi: prima chiede il dato della chiave 1, poi sceglie il valore giusto della chiave 2 tra quelli trovati.
 - Se ci sono più righe valide usa la prima secondo la **Colonna priorità** e tiene le altre come alternative.
 - Non legge mai l'elenco intero a chi chiama e non inventa valori che non trova: chiede di precisare.
-- Caricare un nuovo CSV **sostituisce subito** l'elenco precedente: da quel momento, finché non premi **Salva agente**, l'agente non trova niente nell'elenco. Dopo ogni caricamento salva.
 
 Su un agente nuovo, al posto del riquadro di caricamento leggi «Serve prima salvare l'agente.» — «Crea l'agente, poi torna qui per caricare il CSV.»: premi prima **Crea agente**. Se il file non va bene leggi «Il CSV deve avere intestazione e almeno una riga.».
+
+### Quando carico un file nuovo
+
+Il file nuovo **sostituisce subito** tutto l'elenco precedente, comprese le righe corrette a mano. Da quando l'agente comincia a usarlo dipende dai nomi delle colonne:
+
+| Caso | Cosa leggi | Cosa fare |
+| --- | --- | --- |
+| Prima volta che carichi un elenco su questo agente | «CSV caricato: N righe. Configura le colonne chiave e salva.» | Scegli le colonne chiave e premi **Salva agente**: fino ad allora l'agente non trova niente |
+| Le colonne chiave già scelte ci sono anche nel file nuovo, con lo stesso nome | «CSV caricato: N righe. Configura le colonne chiave e salva.» | Niente di obbligatorio: l'agente usa subito il nuovo elenco con le colonne di prima |
+| La colonna chiave ha cambiato nome o non c'è più | «Elenco caricato: N righe. Le colonne sono cambiate: scegli di nuovo la colonna chiave e salva.» | Scegli di nuovo **Colonna chiave 1** e premi **Salva agente**: fino ad allora l'agente non trova niente |
+
+<Tip>
+  Quando aggiorni il file, tieni gli stessi nomi di colonna: l'agente usa subito il nuovo elenco e non devi rifare la configurazione. Se cambiano poche righe, non serve ricaricare il file: correggile con **Vedi e modifica le righe**.
+</Tip>
+
+### Righe dell'elenco
+
+Con **Vedi e modifica le righe** si apre la finestra **Righe dell'elenco**: tutte le righe caricate, come le usa l'agente in quel momento. Ciò che correggi, aggiungi o togli qui **vale subito, dalla prossima chiamata**, senza **Salva agente**. Nel riquadro della sezione, accanto al numero di righe, la pill «N righe non si trovano» ti avvisa se ci sono righe che l'agente non troverà mai.
+
+{/* SCHERMATA: finestra Righe dell'elenco con la prova e la tabella — https://cloud.mycentralino.com/wave/agenti */}
+
+| Parte | Cosa fa |
+| --- | --- |
+| **Prova come cerca l'agente** | Scrivi un valore della colonna chiave come lo direbbe chi chiama e premi **Prova**. Vedi le righe che l'agente riceverebbe: «Trovata 1 riga per «…»» oppure «Nessuna riga per «…»: l'agente direbbe che non lo trova e chiederebbe di ripetere». Con più righe sono già in ordine di priorità: l'agente usa la prima. Con due colonne chiave c'è un secondo campo, facoltativo: se lo lasci vuoto vedi i valori tra cui l'agente farebbe scegliere chi chiama («L'agente chiederebbe di scegliere «…» tra N valori») |
+| **Cerca nelle righe…** | Trova le righe che contengono una parola, in qualunque colonna. Maiuscole e accenti non contano |
+| **Tutte** · **Da sistemare** | **Da sistemare** mostra solo le righe che l'agente non troverà mai. Compare solo quando ce ne sono |
+| La tabella | 50 righe per pagina. La colonna chiave è la prima, con l'etichetta «chiave». Le righe da sistemare hanno la pill **Non si trova** e, al posto del nome, il motivo: «Riga illeggibile» oppure «Senza «nome della colonna chiave»» |
+| **Aggiungi riga** | Apre una riga nuova in cima alla tabella |
+| **Modifica** | Apre i campi della riga, uno per colonna |
+| Menu «…» → **Togli la riga** | Toglie la riga, dopo la conferma |
+
+### Come correggo, aggiungo o tolgo una riga
+
+<Steps>
+  <Step title="Apri le righe">
+    In **Ricerca dati** premi **Vedi e modifica le righe**. Trova la riga con **Cerca nelle righe…**, oppure premi **Da sistemare** per vedere solo quelle che l'agente non trova.
+  </Step>
+  <Step title="Correggi o aggiungi">
+    Premi **Modifica** sulla riga, oppure **Aggiungi riga** per una nuova. Compila i campi: la colonna chiave è obbligatoria («è la colonna in cui l'agente cerca»). Premi **Salva riga**: leggi «Riga salvata. L'agente la usa dalla prossima chiamata.» oppure «Riga aggiunta. L'agente la usa dalla prossima chiamata.».
+  </Step>
+  <Step title="Oppure toglila">
+    Apri il menu «…» della riga e scegli **Togli la riga**. Alla domanda «Togliere la riga «…»? L'agente non la troverà più.» premi **Togli la riga**: leggi «Riga tolta. L'agente non la trova più dalla prossima chiamata.».
+  </Step>
+  <Step title="Controlla">
+    Scrivi lo stesso valore in **Prova come cerca l'agente** e premi **Prova**: vedi la riga come la riceverà l'agente.
+  </Step>
+</Steps>
+
+I limiti: ogni valore fino a 500 caratteri, l'elenco fino a 5.000 righe. Una riga senza nessun valore non si salva («La riga è vuota: scrivi almeno un valore.»). **Annulla** o il tasto Esc chiudono la riga aperta senza salvare; **Chiudi** chiude la finestra.
+
+<Note>
+  Le colonne le decide il file: dalla finestra non puoi aggiungere, togliere o rinominare una colonna. Per farlo cambia il file e caricalo di nuovo. Ricorda che un file nuovo sostituisce anche le righe corrette a mano: se hai fatto correzioni qui, riportale anche nel file prima di ricaricarlo.
+</Note>
 
 ## Come scrivere un buon copione
 
@@ -275,11 +333,19 @@ Alla fine ripeti in breve cosa è stato deciso e saluta cordialmente.
   </Accordion>
 
   <Accordion title="La Ricerca dati non trova il valore che chi chiama ha detto.">
-    Controlla di aver scelto la **Colonna chiave 1** giusta e di aver premuto **Salva agente** dopo il caricamento. Il valore deve corrispondere a quello del file, a parte maiuscole, accenti e punteggiatura. Scrivi nel copione quando consultare l'elenco, per esempio «Quando il cliente ti ha detto il CAP, cerca nel listino zone».
+    Premi **Vedi e modifica le righe** e scrivi quel valore in **Prova come cerca l'agente**: vedi subito se l'agente lo trova. Se non lo trova, cercalo con **Cerca nelle righe…** e controlla come è scritto nella colonna chiave: deve corrispondere a parte maiuscole, accenti e punteggiatura. Correggilo con **Modifica**. Controlla anche di aver scelto la **Colonna chiave 1** giusta e di aver premuto **Salva agente**, e scrivi nel copione quando consultare l'elenco, per esempio «Quando il cliente ti ha detto il CAP, cerca nel listino zone».
   </Accordion>
 
   <Accordion title="Ho aggiornato il listino nel CSV: come lo sostituisco?">
-    Carica di nuovo il file in **Ricerca dati**: il nuovo elenco sostituisce quello precedente. Controlla le colonne chiave e premi **Salva agente**.
+    Se cambiano poche righe, correggile con **Vedi e modifica le righe**: valgono subito. Se cambia molto, carica di nuovo il file in **Ricerca dati**: il nuovo elenco sostituisce quello precedente. Con gli stessi nomi di colonna l'agente lo usa subito; se leggi «Le colonne sono cambiate: scegli di nuovo la colonna chiave e salva.», scegli **Colonna chiave 1** e premi **Salva agente**.
+  </Accordion>
+
+  <Accordion title="Ho caricato il file nuovo e l'agente non trova più niente.">
+    Quasi sempre il file nuovo ha nomi di colonna diversi da quello vecchio, per esempio «Codice postale» invece di «CAP». Apri **Ricerca dati**, scegli di nuovo **Colonna chiave 1** e premi **Salva agente**. Poi controlla con **Prova come cerca l'agente**.
+  </Accordion>
+
+  <Accordion title="Alcune righe hanno «Riga illeggibile»: cosa faccio?">
+    Sono righe che non si sono caricate bene e che l'agente non troverà mai. Premi **Da sistemare**, poi per ognuna **Modifica**, riscrivi i valori e premi **Salva riga**. In alternativa carica di nuovo il file.
   </Accordion>
 </AccordionGroup>
 

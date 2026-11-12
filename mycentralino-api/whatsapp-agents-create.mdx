@@ -22,7 +22,7 @@ Solo `name` è obbligatorio. Ogni campo assente prende il valore di partenza del
 | `name` | string | ✅ | Nome dell'agente, da 1 a 80 caratteri, su una riga |
 | `instructions` | string \| null | ❌ | Chi è l'agente e come deve rispondere: tono, cosa può dire, cosa non deve fare. Fino a 16.000 caratteri, anche su più righe. Vuoto o `null` = nessuna istruzione. Nel pannello: **Ruolo e istruzioni** |
 | `handoff_message` | string | ❌ | La frase che l'agente manda al cliente quando passa la conversazione a una persona. Da 1 a 500 caratteri. Di partenza: «Ti passo a un collega, ti risponderà appena possibile.» Nel pannello: **Frase di passaggio a un operatore** |
-| `schedule` | object | ❌ | Quando risponde: vedi [L'orario](#lorario). Di partenza: sempre, cioè **Sempre attivo** |
+| `schedule` | object | ❌ | Quando risponde: vedi [Orari](#orari). Di partenza: sempre, cioè **Sempre attivo** |
 | `max_replies` | int | ❌ | Quante risposte al massimo l'agente dà in una conversazione, poi passa a una persona. Da 1 a 50. Di partenza: 5. Nel pannello: **Interazioni massime** |
 | `reply_delay_seconds` | int | ❌ | Quanti secondi aspetta prima di rispondere, così un cliente che scrive più messaggi di seguito riceve una risposta sola. Da 5 a 600. Di partenza: 20. Nel pannello: **Attesa prima di rispondere** |
 | `human_pause_minutes` | int | ❌ | Per quanti minuti l'agente resta in silenzio in una conversazione dopo che una persona del team ha scritto al cliente. Da 0 a 1440. Di partenza: 30. Nel pannello: **Pausa dopo un operatore** |
@@ -30,7 +30,7 @@ Solo `name` è obbligatorio. Ogni campo assente prende il valore di partenza del
 
 **Tipi stretti:** i numeri sono interi JSON (`5`, non `"5"`) e `enabled` è `true` o `false`. Un campo che non è in tabella viene rifiutato con `unknown_fields`, così un errore di battitura non passa per salvato.
 
-### L'orario
+### Orari
 
 `schedule` ha la stessa forma che restituisce l'[elenco degli agenti](/mycentralino-api/whatsapp-agents-list):
 
@@ -157,7 +157,7 @@ print(response.json())
 }
 ```
 
-I campi sono spiegati nel [dettaglio dell'agente](/mycentralino-api/whatsapp-agents-detail#campi-dellagente).
+I campi sono spiegati nel [dettaglio dell'agente](/mycentralino-api/whatsapp-agents-detail#campi).
 
 ## Dopo la creazione
 

@@ -292,6 +292,10 @@
               "mycentralino-api/calendar-blocks-delete",
               "mycentralino-api/calendar-webhooks"
             ]
+          },
+          {
+            "group": "WhatsApp (MyFlow API)",
+            "pages": []
           }
         ]
       }

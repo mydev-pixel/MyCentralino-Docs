@@ -1,0 +1,326 @@
+---
+title: "Webhook WhatsApp"
+description: "Ricevi nel gestionale i messaggi WhatsApp in arrivo, quelli inviati, gli stati di consegna e l'esito dei template"
+---
+
+# Webhook WhatsApp
+
+Con i webhook è MyFlow ad avvisare il gestionale, senza che il gestionale debba chiedere. Quando un cliente scrive su WhatsApp, il nostro server manda subito un **POST JSON** firmato all'indirizzo del tuo gestionale, con il messaggio e chi l'ha scritto. Se vuoi, lo stesso succede per i messaggi inviati, per gli stati di consegna e per l'esito della revisione dei template.
+
+Gli avvisi si configurano dal pannello, non dall'API.
+
+## Prima di cominciare
+
+- Serve il modulo **MyFlow API** attivo sull'account, come per tutte le rotte `/v1/whatsapp`.
+- Gli indirizzi li aggiunge e li gestisce un **amministratore di MyFlow**.
+- Si possono avere **al massimo 2 indirizzi** per account, per esempio il gestionale e un ambiente di prova.
+- Il server che riceve deve essere raggiungibile da Internet in **https**: le regole sono in fondo a questa pagina.
+
+## Configurazione dal pannello
+
+**Dove si trova:** MyFlow → **Impostazioni** → zona **Collegamento col gestionale** → card **Avvisi al gestionale** · `https://cloud.mycentralino.com/myflow/impostazioni`
+
+<Steps>
+  <Step title="Premi Aggiungi indirizzo">
+    Si apre la finestra **Nuovo indirizzo del gestionale**.
+  </Step>
+  <Step title="Scrivi l'indirizzo">
+    In **Indirizzo (https)** metti l'URL del tuo server che riceve gli avvisi, per esempio `https://gestionale.example.com/webhook/whatsapp`.
+  </Step>
+  <Step title="Scegli gli avvisi">
+    In **Avvisi da ricevere**, **Messaggi in arrivo** c'è sempre. In più puoi spuntare **Messaggi inviati**, **Stati di consegna** ed **Esito dei template**. Con **Escludi le campagne** non ricevi gli avvisi dei messaggi delle Campagne e dei loro stati: con molti destinatari sarebbero migliaia. Le risposte dei clienti alle campagne arrivano comunque.
+  </Step>
+  <Step title="Premi Aggiungi e copia il segreto">
+    Compare il riquadro **Il segreto per la firma**, che inizia con `whsec_`. Premi **Copia** e mettilo nel gestionale: serve a verificare che gli avvisi arrivino da noi. **Si vede una volta sola.**
+  </Step>
+  <Step title="Premi Prova">
+    Parte subito un avviso di prova firmato (evento `message.test`). Il pannello dice com'è andata: «Consegnato: il gestionale ha risposto 200.» oppure «Non consegnato: …» con il motivo.
+  </Step>
+</Steps>
+
+Sulla riga dell'indirizzo ci sono anche:
+- **Ultimi avvisi**: gli ultimi 20 avvisi mandati, ognuno con stato (**Consegnato**, **In attesa**, **In corso**, **Non consegnato**), numero di tentativi, codice di risposta del tuo server, ora del prossimo tentativo ed errore;
+- **Modifica**, per cambiare indirizzo e avvisi. Nella stessa finestra ci sono **Rigenera segreto**, che crea un segreto nuovo mentre quello vecchio smette subito di firmare, ed **Elimina**;
+- l'interruttore per spegnere e riaccendere gli avvisi.
+
+Ogni indirizzo aggiunto resta nel Log attività dell'account, e di norma il titolare riceve un'email di avviso: chi riceve gli avvisi legge i messaggi dei tuoi clienti.
+
+## Eventi
+
+| `event` | Casella nel pannello | Quando |
+|---------|----------------------|--------|
+| `message.received` | **Messaggi in arrivo** (sempre) | Un cliente ha scritto a uno dei tuoi numeri |
+| `message.sent` | **Messaggi inviati** | È partito un messaggio verso un cliente: dall'Inbox, dall'app del telefono, dall'agente AI, da una risposta automatica, da una campagna, dal centralino o dal gestionale con l'API |
+| `message.status` | **Stati di consegna** | Un messaggio inviato è partito, è stato consegnato, è stato letto o non è stato consegnato |
+| `template.status` | **Esito dei template** | Meta ha approvato, rifiutato, sospeso o disattivato un template, anche se è stato creato dal pannello |
+| `message.test` | — | L'avviso di prova del bottone **Prova** |
+
+Non generano avvisi lo storico importato quando il numero è stato collegato né i messaggi tecnici, come modifiche, revoche e avvisi di sistema.
+
+## Payload
+
+Ogni avviso ha `version` (oggi `1`), `event` e `occurred_at`, cioè quando l'avviso è stato preparato, in ISO 8601 con offset. Il resto dipende dall'evento. Ignora i campi che non conosci: potremmo aggiungerne.
+
+### message.received e message.sent
+
+```json
+{
+  "version": 1,
+  "event": "message.received",
+  "occurred_at": "2026-09-07T10:42:05+02:00",
+  "number": { "phone": "+390212345678" },
+  "contact": { "phone": "+393331234567", "name": "Mario Rossi" },
+  "message": {
+    "id": "wamid.HBgMMzkzMzMxMjM0NTY3FQIAEhgUM0E4QjVDMkQxRjk0RTZBNzBCMTIA",
+    "direction": "in",
+    "type": "text",
+    "text": "Buongiorno, posso spostare l'appuntamento di giovedì?",
+    "template": null,
+    "media": null,
+    "author": "customer",
+    "status": "received",
+    "error": null,
+    "timestamp": "2026-09-07T10:42:00+02:00"
+  },
+  "conversation": {
+    "window_open": true,
+    "window_expires_at": "2026-09-08T10:42:00+02:00"
+  }
+}
+```
+
+| Campo | Descrizione |
+|-------|-------------|
+| `number.phone` | Il tuo numero che ha ricevuto o mandato il messaggio |
+| `contact.phone` | Il cliente, in formato +E.164 |
+| `contact.name` | Il nome con cui il cliente compare nelle conversazioni di MyFlow. `null` se non c'è |
+| `message` | Il messaggio, **nello stesso formato dello [storico](/mycentralino-api/whatsapp-conversation-history#campi-del-messaggio)**: `id`, `direction`, `type`, `text`, `template`, `media`, `author`, `status`, `error`, `timestamp` |
+| `conversation` | La finestra delle 24 ore: `window_open` e `window_expires_at`, come nello storico |
+
+In `message.sent`, `direction` è `out` e `author` dice chi l'ha mandato: `operator`, `phone_app`, `ai`, `automation`, `campaign`, `pbx`, `crm` o `other`. Anche i messaggi mandati dal tuo gestionale con l'API tornano come `message.sent`, con `author` `crm`: se non ti servono, scartali.
+
+### message.status
+
+```json
+{
+  "version": 1,
+  "event": "message.status",
+  "occurred_at": "2026-09-07T09:16:40+02:00",
+  "number": { "phone": "+390212345678" },
+  "contact": { "phone": "+393331234567" },
+  "message": {
+    "id": "wamid.HBgMMzkzMzMxMjM0NTY3FQIAERgSNkQ0RTdBMkM5RjFCOEUzQTQ1AA==",
+    "status": "delivered",
+    "author": "crm",
+    "error": null,
+    "timestamp": "2026-09-07T09:15:09+02:00"
+  }
+}
+```
+
+| Campo | Descrizione |
+|-------|-------------|
+| `message.id` | L'ID WhatsApp del messaggio: è il `message_id` dell'[invio](/mycentralino-api/whatsapp-messages-send) |
+| `message.status` | `sent` (partito), `delivered` (consegnato sul telefono), `read` (letto, se il cliente ha le conferme di lettura attive) o `failed` (non consegnato) |
+| `message.author` | Chi aveva mandato il messaggio, come in `message.sent` |
+| `message.error` | Solo con `failed`: `code`, il codice di Meta, e `title`, la spiegazione in italiano. Es. `{"code": "131026", "title": "Il numero non riceve messaggi WhatsApp"}` |
+| `message.timestamp` | Quando è cambiato lo stato, secondo WhatsApp |
+
+Arriva un avviso per ogni stato di ogni messaggio inviato, e lo stesso stato dello stesso messaggio arriva una volta sola.
+
+### template.status
+
+```json
+{
+  "version": 1,
+  "event": "template.status",
+  "occurred_at": "2026-09-07T11:02:13+02:00",
+  "template": {
+    "name": "promemoria_appuntamento",
+    "language": "it",
+    "category": "UTILITY",
+    "status": "APPROVED",
+    "reason": null
+  },
+  "numbers": ["+390212345678"]
+}
+```
+
+| Campo | Descrizione |
+|-------|-------------|
+| `template.name`, `template.language` | Quale template |
+| `template.category` | La categoria decisa da Meta, che può essere diversa da quella chiesta |
+| `template.status` | Il nuovo stato, es. `APPROVED`, `REJECTED`, `PAUSED`, `DISABLED`. Solo `APPROVED` si può inviare |
+| `template.reason` | Il motivo del rifiuto dato da Meta, solo con `REJECTED` (es. `INCORRECT_CATEGORY`) |
+| `numbers` | I tuoi numeri che usano quel template, cioè quelli dello stesso account WhatsApp Business |
+
+### message.test
+
+L'avviso di prova ha la forma di un `message.received`, con dati finti e un campo `note` in più. Il numero in `number.phone` è il primo dei tuoi numeri.
+
+```json
+{
+  "version": 1,
+  "event": "message.test",
+  "occurred_at": "2026-09-07T12:00:00+02:00",
+  "number": { "phone": "+390212345678" },
+  "contact": { "phone": "+393331234567", "name": "Contatto di prova" },
+  "message": {
+    "id": "wamid.prova",
+    "direction": "in",
+    "type": "text",
+    "text": "Messaggio di prova dal pannello MyFlow.",
+    "template": null,
+    "media": null,
+    "author": "customer",
+    "status": "received",
+    "error": null,
+    "timestamp": "2026-09-07T12:00:00+02:00"
+  },
+  "conversation": { "window_open": true, "window_expires_at": "2026-09-08T12:00:00+02:00" },
+  "note": "Invio di prova dal pannello MyCentralino: nessun messaggio vero."
+}
+```
+
+## Header e firma
+
+| Header | Contenuto |
+|--------|-----------|
+| `Content-Type` | `application/json` |
+| `User-Agent` | `MyCentralino-MyFlow/1` |
+| `X-MyCentralino-Event` | L'`event`, es. `message.received` |
+| `X-MyCentralino-Delivery` | L'ID della consegna: resta uguale a ogni nuovo tentativo dello stesso avviso. Serve a scartare i doppioni |
+| `X-MyCentralino-Timestamp` | Il momento dell'invio, in secondi Unix |
+| `X-MyCentralino-Signature` | `sha256=` seguito dall'HMAC-SHA256 esadecimale di `"{timestamp}.{corpo grezzo}"`, calcolato con il segreto dell'indirizzo |
+
+La firma si calcola sul **corpo esattamente come arriva**, byte per byte, prima di decodificare il JSON. Un corpo ricodificato non dà la stessa firma. Il timestamp va controllato: rifiuta gli avvisi più vecchi di 5 minuti, così un avviso intercettato non si può rimandare più tardi.
+
+<Warning>
+Per riconoscerci usa la firma, non l'indirizzo IP di provenienza: gli IP dei nostri server possono cambiare senza preavviso.
+</Warning>
+
+## Verifica della firma
+
+<CodeGroup>
+```php PHP
+<?php
+$secret = 'whsec_...';
+$body = file_get_contents('php://input');
+$ts = $_SERVER['HTTP_X_MYCENTRALINO_TIMESTAMP'] ?? '';
+$sig = $_SERVER['HTTP_X_MYCENTRALINO_SIGNATURE'] ?? '';
+$expected = 'sha256=' . hash_hmac('sha256', $ts . '.' . $body, $secret);
+
+if (! ctype_digit($ts) || abs(time() - (int) $ts) > 300 || ! hash_equals($expected, $sig)) {
+    http_response_code(401);
+    exit;
+}
+
+$delivery = $_SERVER['HTTP_X_MYCENTRALINO_DELIVERY'] ?? '';
+$payload = json_decode($body, true);
+// salva $delivery e $payload in una coda, poi rispondi subito
+http_response_code(200);
+```
+
+```javascript Node.js
+const crypto = require('crypto');
+const express = require('express');
+
+const app = express();
+const SECRET = 'whsec_...';
+
+// Il corpo grezzo serve alla firma: niente express.json() su questa rotta.
+app.post('/webhook/whatsapp', express.raw({ type: 'application/json' }), (req, res) => {
+  const ts = req.get('X-MyCentralino-Timestamp') || '';
+  const sig = req.get('X-MyCentralino-Signature') || '';
+  const expected = 'sha256=' + crypto.createHmac('sha256', SECRET)
+    .update(ts + '.')
+    .update(req.body)
+    .digest('hex');
+
+  const fresh = /^\d+$/.test(ts) && Math.abs(Date.now() / 1000 - Number(ts)) <= 300;
+  const valid = sig.length === expected.length
+    && crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected));
+  if (!fresh || !valid) {
+    return res.sendStatus(401);
+  }
+
+  res.sendStatus(200); // rispondi subito, elabora dopo
+  const payload = JSON.parse(req.body.toString('utf8'));
+  const delivery = req.get('X-MyCentralino-Delivery');
+  // ...
+});
+
+app.listen(3000);
+```
+
+```python Python
+import hmac, hashlib, time
+from flask import Flask, request, abort
+
+app = Flask(__name__)
+SECRET = b'whsec_...'
+
+@app.post('/webhook/whatsapp')
+def whatsapp():
+    ts = request.headers.get('X-MyCentralino-Timestamp', '')
+    sig = request.headers.get('X-MyCentralino-Signature', '')
+    body = request.get_data()  # il corpo grezzo, prima di qualunque decodifica
+    expected = 'sha256=' + hmac.new(SECRET, ts.encode() + b'.' + body, hashlib.sha256).hexdigest()
+    if not ts.isdigit() or abs(time.time() - int(ts)) > 300 or not hmac.compare_digest(expected, sig):
+        abort(401)
+    payload = request.get_json()
+    delivery = request.headers.get('X-MyCentralino-Delivery')
+    # metti l'avviso in coda e rispondi subito
+    return '', 200
+```
+</CodeGroup>
+
+## Cosa deve rispondere il gestionale
+
+- **Un codice 2xx entro 8 secondi.** Il corpo della risposta non conta. La connessione deve aprirsi entro 3 secondi.
+- **Rispondi prima di elaborare.** Salva l'avviso, rispondi 200, poi fai il lavoro lungo: aggiornare il CRM, chiamare altri servizi.
+- **Qualunque altra risposta è un errore e l'avviso si ritenta.** Valgono come errore i codici 3xx (i redirect non si seguono), 4xx e 5xx, il timeout e la connessione rifiutata.
+
+## Ritentativi
+
+Un avviso non consegnato si ritenta dopo **1 minuto**, **5 minuti**, **30 minuti**, **2 ore** e **6 ore**: sei tentativi in tutto, in circa otto ore e mezza. Dopo l'ultimo l'avviso è **Non consegnato** e non riparte più. L'avviso di prova non si ritenta.
+
+### La pausa
+
+Dopo **5 tentativi falliti di fila**, anche di avvisi diversi, l'indirizzo va **in pausa**. Nel pannello compare «In pausa: il tuo gestionale non risponde. Riproviamo ogni 5 minuti; «Prova» per controllare subito».
+
+In pausa:
+- gli avvisi nuovi non si perdono, restano **In attesa**;
+- si prova una consegna alla volta, la più vecchia in attesa, mentre le altre aspettano senza consumare tentativi;
+- alla prima consegna riuscita, anche quella di **Prova**, la pausa finisce e gli avvisi in attesa ripartono.
+
+Così un gestionale fermo per qualche ora riceve, quando torna, gli avvisi del periodo in cui era giù. Restano esclusi quelli che hanno finito i sei tentativi.
+
+### Spento e disattivato
+
+- **Con l'interruttore spento** gli avvisi non partono e quelli in attesa si fermano. Gli eventi del periodo spento non vengono recuperati quando lo riaccendi: per ricostruirli usa lo [storico](/mycentralino-api/whatsapp-conversation-history).
+- **Se il modulo MyFlow API non è più attivo** non parte più nessun avviso, nemmeno quelli già in attesa.
+
+## Ordine, doppioni e ritardi
+
+- **L'ordine non è garantito.** Gli avvisi partono in parallelo e un ritentativo può arrivare dopo avvisi più recenti. Per ordinarli usa `message.timestamp`.
+- **Possono arrivare doppioni.** Lo stesso evento non genera due avvisi per lo stesso indirizzo. Se però il tuo server elabora l'avviso e risponde dopo gli 8 secondi, l'avviso risulta non consegnato e si ritenta. Tieni traccia di `X-MyCentralino-Delivery` e scarta quelli già visti. Per i messaggi va bene anche `message.id`, insieme a `event` e, per gli stati, a `message.status`.
+- **Non è tempo reale al millisecondo.** Gli avvisi dei messaggi partono di norma entro pochi secondi. Gli stati di consegna partono di proposito con circa mezzo minuto di ritardo, così arrivano dopo la risposta dell'invio che li riguarda.
+- **Se un avviso manca,** lo [storico](/mycentralino-api/whatsapp-conversation-history) di quel cliente ha tutti i messaggi.
+
+## Regole dell'indirizzo
+
+L'indirizzo si controlla quando lo salvi e di nuovo a ogni consegna, sull'IP a cui risolve in quel momento.
+
+| Regola | Messaggio nel pannello |
+|--------|------------------------|
+| Obbligatorio, al massimo 500 caratteri | «Serve l'indirizzo a cui mandare gli avvisi.» |
+| Un URL valido | «L'indirizzo non è un URL valido.» |
+| Solo `https://` | «L'indirizzo deve iniziare con https://» |
+| Niente nome utente e password nell'URL: per riconoscerci c'è la firma | «Niente credenziali nell'indirizzo: usa la firma per riconoscerci.» |
+| Raggiungibile da Internet: niente `localhost`, reti private o indirizzi locali | «L'indirizzo deve essere raggiungibile da Internet.» |
+| La porta standard di https (443), senza un numero di porta diverso | «Usa l'indirizzo https standard, senza un numero di porta.» |
+| Non un indirizzo di MyCentralino | «Questo indirizzo non si può usare: inserisci quello del tuo gestionale.» |
+| Al massimo 2 indirizzi per account | «Puoi avere al massimo 2 indirizzi. Elimina quello che non usi.» |
+
+I redirect non si seguono: l'indirizzo deve essere quello finale. Se un indirizzo diventa non ammesso dopo il salvataggio, per esempio perché il dominio ora punta a una rete privata, l'avviso è **Non consegnato** con il motivo.

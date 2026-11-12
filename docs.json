@@ -296,7 +296,25 @@
           {
             "group": "WhatsApp (MyFlow API)",
             "pages": [
-              "mycentralino-api/whatsapp-introduction"
+              "mycentralino-api/whatsapp-introduction",
+              "mycentralino-api/whatsapp-numbers",
+              {
+                "group": "Messaggi e template",
+                "pages": []
+              },
+              {
+                "group": "Contatti",
+                "pages": []
+              },
+              {
+                "group": "Campagne",
+                "pages": []
+              },
+              {
+                "group": "Agenti AI",
+                "pages": []
+              },
+              "mycentralino-api/whatsapp-webhooks"
             ]
           }
         ]

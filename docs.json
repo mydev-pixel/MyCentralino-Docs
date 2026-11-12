@@ -309,7 +309,14 @@
               },
               {
                 "group": "Contatti",
-                "pages": []
+                "pages": [
+                  "mycentralino-api/whatsapp-contacts-list",
+                  "mycentralino-api/whatsapp-contacts-detail",
+                  "mycentralino-api/whatsapp-contacts-update",
+                  "mycentralino-api/whatsapp-contacts-bulk",
+                  "mycentralino-api/whatsapp-contacts-delete",
+                  "mycentralino-api/whatsapp-contacts-fields"
+                ]
               },
               {
                 "group": "Campagne",

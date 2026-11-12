@@ -1,0 +1,99 @@
+---
+title: "Elimina la scheda di un contatto"
+description: "Toglie la scheda contatto di un numero: conversazioni e messaggi restano"
+---
+
+# DELETE /v1/whatsapp/contacts/\{phone\}
+
+Elimina la **scheda contatto** di un numero di telefono. Usala quando nel gestionale un cliente viene cancellato e non vuoi più i suoi dati anagrafici in MyFlow.
+
+Che cosa viene eliminato e che cosa resta:
+
+| Si elimina | Resta |
+|------------|-------|
+| Nome della scheda, azienda, codice cliente, email | Le conversazioni WhatsApp e tutti i messaggi |
+| Compleanno e date personalizzate | Il nome del profilo WhatsApp della persona |
+| I tag della scheda, con la data in cui erano stati messi | La persona tra i contatti, se ha scritto almeno una volta |
+
+Se la persona ha scritto almeno una volta a uno dei tuoi numeri, continua quindi a comparire nell'[elenco contatti](/mycentralino-api/whatsapp-contacts-list), con il nome del profilo WhatsApp e `has_card: false`: la risposta lo dice con `still_listed: true`. Se aveva solo la scheda, sparisce dall'elenco.
+
+<Warning>
+L'eliminazione non si annulla. Per ricreare la scheda serve un nuovo [PUT /v1/whatsapp/contacts/\{phone\}](/mycentralino-api/whatsapp-contacts-update) con tutti i dati, e i tag rimessi contano come nuovi per gli Automatismi.
+</Warning>
+
+## Parametri
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `phone` | string (path) | ✅ | Il telefono, con sole cifre (da 8 a 15), con o senza `+`. Il `+` nell'indirizzo va scritto `%2B`, oppure lo puoi omettere |
+
+Non serve un body.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X DELETE "https://api.mycentralino.com/v1/whatsapp/contacts/%2B393331234567" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/contacts/' . rawurlencode('+393331234567'));
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'DELETE',
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+from urllib.parse import quote
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+phone = quote('+393331234567', safe='')
+response = requests.delete(f'https://api.mycentralino.com/v1/whatsapp/contacts/{phone}', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": {
+    "phone": "+393331234567",
+    "deleted": true,
+    "still_listed": true
+  }
+}
+```
+
+## Campi della risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `phone` | string | Il telefono della scheda eliminata, in `+E.164` |
+| `deleted` | bool | Sempre `true` quando la richiesta riesce |
+| `still_listed` | bool | `true` se la persona resta nell'elenco contatti perché ha scritto almeno una volta; `false` se aveva solo la scheda |
+
+Ogni eliminazione lascia una riga nel **Log attività** del pannello.
+
+## Errori
+
+### 400 - invalid_phone
+Il numero nel percorso non è riconoscibile. Usa il formato internazionale, per esempio `+393331234567`.
+
+### 404 - contact_not_found
+Questo numero non ha una scheda da eliminare. Succede anche se la persona ha scritto ma nessuno le ha mai creato una scheda: non c'è niente da togliere.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

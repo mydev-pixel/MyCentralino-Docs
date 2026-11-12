@@ -1,0 +1,100 @@
+---
+title: "Dettaglio contatto"
+description: "Un contatto per numero di telefono, con compleanno e date personalizzate"
+---
+
+# GET /v1/whatsapp/contacts/\{phone\}
+
+Restituisce un contatto: gli stessi campi dell'[elenco](/mycentralino-api/whatsapp-contacts-list), più il **compleanno** e le **date personalizzate** della scheda. Usala quando il gestionale apre la scheda di un cliente e vuole sapere che cosa sa MyFlow di quel numero.
+
+## Parametri
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `phone` | string (path) | ✅ | Il telefono del contatto, con sole cifre (da 8 a 15), con o senza `+` davanti. Il `+` nell'indirizzo va scritto `%2B`, oppure lo puoi omettere: `%2B393331234567` e `393331234567` sono lo stesso contatto |
+
+Il numero viene letto come negli altri campi telefono dell'API: con il prefisso internazionale (consigliato), oppure un numero italiano senza prefisso (un cellulare che inizia per `3`, un fisso che inizia per `0`), a cui viene aggiunto il `39`.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/whatsapp/contacts/%2B393331234567" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$phone = rawurlencode('+393331234567');
+
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/contacts/' . $phone);
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+from urllib.parse import quote
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+phone = quote('+393331234567', safe='')
+response = requests.get(f'https://api.mycentralino.com/v1/whatsapp/contacts/{phone}', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": {
+    "phone": "+393331234567",
+    "name": "Mario Rossi",
+    "whatsapp_name": "Mario",
+    "has_card": true,
+    "company": "Rossi Impianti srl",
+    "customer_code": "C-00412",
+    "email": "mario.rossi@example.com",
+    "tags": ["VIP", "Cliente"],
+    "last_message_at": "2026-11-10T09:12:44+01:00",
+    "numbers": ["+390212345678"],
+    "birthday": "1978-03-14",
+    "dates": {
+      "Scadenza contratto": "2027-01-31"
+    }
+  }
+}
+```
+
+## Campi del contatto
+
+I campi da `phone` a `numbers` sono descritti nell'[elenco contatti](/mycentralino-api/whatsapp-contacts-list#campi-del-contatto). In più:
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `birthday` | string \| null | Solo se c'è una scheda. Il compleanno: `YYYY-MM-DD` se si conosce l'anno, `DD/MM` se si conoscono solo giorno e mese. `null` se non c'è |
+| `dates` | object | Solo se c'è una scheda. Le date personalizzate valorizzate: la chiave è il nome della data (come in [GET /v1/whatsapp/contacts/fields](/mycentralino-api/whatsapp-contacts-fields)), il valore è `YYYY-MM-DD`. Le date vuote non compaiono. Se nessuna data è valorizzata arriva un elenco vuoto, `[]`, non un oggetto vuoto: trattali allo stesso modo |
+
+<Note>
+Una persona che ha scritto ma non ha una scheda risponde comunque `200`, con `has_card: false`. In quel caso `birthday` e `dates` non ci sono proprio, perché sono campi della scheda. Per darle una scheda usa [PUT /v1/whatsapp/contacts/\{phone\}](/mycentralino-api/whatsapp-contacts-update).
+</Note>
+
+## Errori
+
+### 400 - invalid_phone
+Il numero non è riconoscibile. Usa il formato internazionale, per esempio `+393331234567`.
+
+### 404 - contact_not_found
+Nessun contatto con questo numero: non ha mai scritto ai tuoi numeri WhatsApp e non ha una scheda. Puoi crearla con [PUT /v1/whatsapp/contacts/\{phone\}](/mycentralino-api/whatsapp-contacts-update).
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

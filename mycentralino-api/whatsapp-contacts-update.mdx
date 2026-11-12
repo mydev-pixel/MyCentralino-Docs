@@ -1,0 +1,191 @@
+---
+title: "Crea o aggiorna un contatto"
+description: "Crea la scheda di un contatto o ne aggiorna i campi: nome, azienda, codice cliente, email, compleanno, tag e date"
+---
+
+# PUT /v1/whatsapp/contacts/\{phone\}
+
+Crea la **scheda contatto** di un numero di telefono, o la aggiorna se esiste già. È la rotta con cui il gestionale porta in MyFlow quello che sa dei suoi clienti: il team vede il nome giusto in Inbox, e le Campagne e gli Automatismi possono usare tag e date.
+
+La scheda si può creare anche per un numero che non ha mai scritto: da quel momento compare tra i [contatti](/mycentralino-api/whatsapp-contacts-list), con `numbers` vuoto finché non scrive.
+
+**Aggiornamento parziale:**
+
+- un campo **assente** dal body resta com'è;
+- un campo a `null` (o stringa vuota) **viene svuotato**;
+- un campo con un valore lo **sostituisce**.
+
+Per cambiare solo l'email, quindi, basta mandare `{"email": "…"}`.
+
+## Parametri
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `phone` | string (path) | ✅ | Il telefono, con sole cifre (da 8 a 15), con o senza `+`. Il `+` nell'indirizzo va scritto `%2B`, oppure lo puoi omettere. Un numero italiano senza prefisso (cellulare che inizia per `3`, fisso che inizia per `0`) riceve il `39` davanti |
+
+## Request Body
+
+Un oggetto JSON. Tutti i campi sono facoltativi; `{}` crea una scheda vuota se non c'è, e non cambia niente se c'è già.
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `name` | string \| null | ❌ | Nome e cognome, fino a 120 caratteri. In MyFlow prende il posto del nome del profilo WhatsApp |
+| `company` | string \| null | ❌ | Azienda, fino a 120 caratteri |
+| `customer_code` | string \| null | ❌ | Codice cliente, fino a 40 caratteri: è il posto per l'identificativo del tuo gestionale |
+| `email` | string \| null | ❌ | Email valida, fino a 190 caratteri |
+| `birthday` | string \| null | ❌ | Compleanno in uno di questi formati: `DD/MM` (senza anno), `DD/MM/YYYY`, `YYYY-MM-DD`. Giorno e mese con una o due cifre nel formato con le barre (`3/7` va bene). L'anno, se c'è, va dal 1900 all'anno in corso. `null` lo toglie |
+| `dates` | object | ❌ | Le date personalizzate: `{"Nome della data": "YYYY-MM-DD"}`. La chiave è il nome (senza distinzione tra maiuscole e minuscole) o l'`id` di una data che esiste già. Cambiano solo le date indicate; `null` o `""` toglie quella data |
+| `tags` | string[] | ❌ | **L'elenco completo** dei tag della scheda, per nome (senza distinzione tra maiuscole e minuscole) o per `id`. Sostituisce i tag di prima: quelli non elencati vengono tolti; `[]` li toglie tutti. I tag devono esistere già |
+
+I campi di testo (`name`, `company`, `customer_code`, `email`) accettano una stringa o un numero intero. Gli spazi all'inizio e alla fine vengono tolti, gli a capo e gli altri caratteri di controllo diventano spazi. Un valore che dopo la pulizia resta vuoto svuota il campo.
+
+<Note>
+Tag e date personalizzate non si creano dall'API: si definiscono in **MyFlow → Impostazioni** e si leggono con [GET /v1/whatsapp/contacts/fields](/mycentralino-api/whatsapp-contacts-fields). Un nome sconosciuto fa rifiutare l'intera richiesta, con l'elenco dei nomi sconosciuti in `error.unknown`: niente viene salvato a metà.
+</Note>
+
+<Tip>
+I tag che restano sulla scheda non vengono toccati: conservano la data in cui sono stati messi la prima volta. Gli Automatismi di MyFlow che partono quando si mette un tag non ripartono a ogni aggiornamento del gestionale.
+</Tip>
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X PUT "https://api.mycentralino.com/v1/whatsapp/contacts/%2B393331234567" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Mario Rossi",
+      "company": "Rossi Impianti srl",
+      "customer_code": "C-00412",
+      "email": "mario.rossi@example.com",
+      "birthday": "14/03/1978",
+      "tags": ["VIP", "Cliente"],
+      "dates": {"Scadenza contratto": "2027-01-31"}
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'name' => 'Mario Rossi',
+    'company' => 'Rossi Impianti srl',
+    'customer_code' => 'C-00412',
+    'email' => 'mario.rossi@example.com',
+    'birthday' => '14/03/1978',
+    'tags' => ['VIP', 'Cliente'],
+    'dates' => ['Scadenza contratto' => '2027-01-31']
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/contacts/' . rawurlencode('+393331234567'));
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'PUT',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+from urllib.parse import quote
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+data = {
+    "name": "Mario Rossi",
+    "company": "Rossi Impianti srl",
+    "customer_code": "C-00412",
+    "email": "mario.rossi@example.com",
+    "birthday": "14/03/1978",
+    "tags": ["VIP", "Cliente"],
+    "dates": {"Scadenza contratto": "2027-01-31"}
+}
+phone = quote('+393331234567', safe='')
+response = requests.put(f'https://api.mycentralino.com/v1/whatsapp/contacts/{phone}', headers=headers, json=data)
+print(response.status_code, response.json())
+```
+</CodeGroup>
+
+Per svuotare un campo, mandalo a `null`:
+
+```json
+{ "email": null, "dates": { "Scadenza contratto": null } }
+```
+
+## Risposta
+
+`201 Created` se la scheda è nuova (`"created": true`), `200 OK` se esisteva già (`"created": false`). Il contatto torna com'è dopo il salvataggio, nello stesso formato di [GET /v1/whatsapp/contacts/\{phone\}](/mycentralino-api/whatsapp-contacts-detail).
+
+```json
+{
+  "success": true,
+  "data": {
+    "phone": "+393331234567",
+    "name": "Mario Rossi",
+    "whatsapp_name": "Mario",
+    "has_card": true,
+    "company": "Rossi Impianti srl",
+    "customer_code": "C-00412",
+    "email": "mario.rossi@example.com",
+    "tags": ["VIP", "Cliente"],
+    "last_message_at": "2026-11-10T09:12:44+01:00",
+    "numbers": ["+390212345678"],
+    "birthday": "1978-03-14",
+    "dates": {
+      "Scadenza contratto": "2027-01-31"
+    },
+    "created": false
+  }
+}
+```
+
+Il compleanno torna sempre nel formato `YYYY-MM-DD` se c'è l'anno, `DD/MM` se non c'è, qualunque formato tu abbia usato per scriverlo.
+
+## Campi della risposta
+
+Quelli del [dettaglio contatto](/mycentralino-api/whatsapp-contacts-detail#campi-del-contatto), più:
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `created` | bool | `true` se la richiesta ha creato la scheda, `false` se ne ha aggiornata una che c'era |
+
+Ogni creazione e ogni modifica lascia una riga nel **Log attività** del pannello, così il titolare vede che cosa ha cambiato il gestionale.
+
+## Errori
+
+### 400 - invalid_phone
+Il numero nel percorso non è riconoscibile. Usa il formato internazionale, per esempio `+393331234567`.
+
+### 422 - invalid_name / invalid_company / invalid_customer_code
+Il campo non è un testo (per esempio è un booleano, un oggetto o un elenco) o supera la lunghezza massima. Il messaggio dice quale.
+
+### 422 - invalid_email
+L'email non è un testo, supera i 190 caratteri o non è un indirizzo valido.
+
+### 422 - invalid_birthday
+Il compleanno non è in uno dei tre formati, la data non esiste (per esempio `31/04`) o l'anno è fuori dall'intervallo che va dal 1900 all'anno in corso.
+
+### 422 - invalid_dates
+`dates` non è un oggetto, una data non è nel formato `YYYY-MM-DD` o non esiste, oppure una chiave non corrisponde a nessuna data dell'account. In quest'ultimo caso `error.unknown` elenca le chiavi sconosciute:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "invalid_dates",
+    "message": "Campi data inesistenti: si creano dal pannello (MyFlow → Impostazioni).",
+    "unknown": ["Scadenza garanzia"]
+  }
+}
+```
+
+### 422 - invalid_tags
+`tags` non è un elenco, oppure contiene tag che non esistono sull'account. `error.unknown` elenca quelli sconosciuti.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

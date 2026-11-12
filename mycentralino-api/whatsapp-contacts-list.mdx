@@ -1,0 +1,156 @@
+---
+title: "Elenco contatti"
+description: "Le persone che hanno scritto ai tuoi numeri WhatsApp e le schede contatto, con ricerca, tag e paginazione"
+---
+
+# GET /v1/whatsapp/contacts
+
+Restituisce i contatti di MyFlow: le stesse persone della pagina **MyFlow → Contatti** del pannello. Serve al gestionale per allineare la propria anagrafica con chi scrive su WhatsApp, per esempio per un primo confronto tra i clienti del CRM e quelli di MyFlow, o per trovare chi ha un certo tag.
+
+Nell'elenco ci sono:
+
+- **chi ha scritto almeno una volta** a uno dei numeri WhatsApp collegati a MyFlow;
+- **chi ha una scheda contatto**, creata dal pannello o con [PUT /v1/whatsapp/contacts/\{phone\}](/mycentralino-api/whatsapp-contacts-update), anche se non ha mai scritto.
+
+Chi ha solo **ricevuto** messaggi (una campagna, una notifica) e non ha mai risposto non compare, a meno che non abbia una scheda. La rubrica del telefono su cui gira l'app WhatsApp Business **non** viene esposta: contiene anche contatti personali che non sono mai diventati clienti.
+
+Ogni persona compare **una volta sola**, anche se ha scritto a più numeri dell'azienda: i numeri sono elencati in `numbers`.
+
+## Parametri
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `search` | string | ❌ | Cerca nel nome che si vede (`name`), nell'azienda e nelle cifre del telefono. Senza distinzione tra maiuscole e minuscole, per parte di testo: `ross` trova «Mario Rossi», `4567` trova `+393331234567` |
+| `tag` | string | ❌ | Solo i contatti con questo tag. Accetta il nome (senza distinzione tra maiuscole e minuscole) o l'`id`, come restituiti da [GET /v1/whatsapp/contacts/fields](/mycentralino-api/whatsapp-contacts-fields). Un tag alla volta |
+| `view` | string | ❌ | `all` (predefinito) tutti; `named` solo chi ha un nome, dalla scheda o dal profilo WhatsApp (la vista **Rubrica** del pannello); `unnamed` solo chi è un numero senza nome (la vista **Solo numero**) |
+| `limit` | int | ❌ | Quanti contatti per pagina, da 1 a 200. Predefinito 50. Un valore oltre 200 vale 200; un valore non numerico vale 50 |
+| `before` | string | ❌ | Il cursore per la pagina successiva: il valore di `pagination.next_before` della risposta precedente |
+
+<Note>
+Il valore di ogni parametro può essere lungo al massimo 64 caratteri: uno più lungo viene ignorato come se non ci fosse.
+</Note>
+
+## Paginazione
+
+I contatti sono ordinati per numero di telefono, in ordine crescente delle cifre. L'ordine è stabile, così le pagine non si sovrappongono anche se nel frattempo arrivano messaggi.
+
+1. Chiama senza `before`.
+2. Se `pagination.has_more` è `true`, richiama con `before` uguale a `pagination.next_before`, mantenendo gli stessi `search`, `tag` e `view`.
+3. Ti fermi quando `has_more` è `false` (in quel caso `next_before` è `null`).
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/whatsapp/contacts?view=named&tag=VIP&limit=50" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$query = http_build_query(['view' => 'named', 'tag' => 'VIP', 'limit' => 50]);
+
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/contacts?' . $query);
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+params = {'view': 'named', 'tag': 'VIP', 'limit': 50}
+contacts = []
+while True:
+    r = requests.get('https://api.mycentralino.com/v1/whatsapp/contacts', headers=headers, params=params).json()
+    contacts += r['data']
+    if not r['pagination']['has_more']:
+        break
+    params['before'] = r['pagination']['next_before']
+print(len(contacts))
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "phone": "+393331234567",
+      "name": "Mario Rossi",
+      "whatsapp_name": "Mario",
+      "has_card": true,
+      "company": "Rossi Impianti srl",
+      "customer_code": "C-00412",
+      "email": "mario.rossi@example.com",
+      "tags": ["VIP", "Cliente"],
+      "last_message_at": "2026-11-10T09:12:44+01:00",
+      "numbers": ["+390212345678"]
+    },
+    {
+      "phone": "+393337654321",
+      "name": "Giulia Bianchi",
+      "whatsapp_name": "Giulia Bianchi",
+      "has_card": false,
+      "company": null,
+      "customer_code": null,
+      "email": null,
+      "tags": [],
+      "last_message_at": "2026-11-08T17:40:02+01:00",
+      "numbers": ["+390212345678", "+390212345679"]
+    }
+  ],
+  "pagination": {
+    "next_before": "393337654321",
+    "has_more": true
+  }
+}
+```
+
+## Campi del contatto
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `phone` | string | Il telefono in formato internazionale `+E.164`. È la chiave del contatto in tutte le rotte |
+| `name` | string \| null | Il nome che si vede in MyFlow: quello della scheda se c'è, altrimenti quello del profilo WhatsApp. `null` se non c'è nessuno dei due |
+| `whatsapp_name` | string \| null | Il nome che arriva da WhatsApp: di solito quello del profilo della persona; se sullo stesso numero usi anche l'app WhatsApp Business, può essere il nome con cui l'hai salvata nella rubrica dell'app |
+| `has_card` | bool | `true` se esiste una scheda contatto (creata dal pannello o via API) |
+| `company` | string \| null | Azienda, dalla scheda |
+| `customer_code` | string \| null | Codice cliente, dalla scheda: è il campo pensato per il codice del tuo gestionale |
+| `email` | string \| null | Email, dalla scheda |
+| `tags` | string[] | I nomi dei tag della scheda. Vuoto se non c'è scheda |
+| `last_message_at` | string \| null | Data e ora dell'ultimo messaggio con questa persona, su qualunque numero, in ISO 8601 con offset. `null` per una scheda senza conversazioni |
+| `numbers` | string[] | I numeri WhatsApp dell'azienda a cui la persona ha scritto, in `+E.164`. Vuoto per una scheda senza conversazioni |
+
+Compleanno e date personalizzate non sono nell'elenco: si leggono con [GET /v1/whatsapp/contacts/\{phone\}](/mycentralino-api/whatsapp-contacts-detail).
+
+## Campi della paginazione
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `has_more` | bool | `true` se ci sono altri contatti dopo questa pagina |
+| `next_before` | string \| null | Da passare come `before` per la pagina successiva. `null` sull'ultima pagina |
+
+## Errori
+
+### 400 - invalid_view
+`view` non è `all`, `named` o `unnamed`.
+
+### 400 - invalid_tag
+Il tag non esiste su questo account. I tag esistenti sono in [GET /v1/whatsapp/contacts/fields](/mycentralino-api/whatsapp-contacts-fields); quelli nuovi si creano dal pannello.
+
+### 400 - invalid_cursor
+`before` non è un valore di `pagination.next_before` (deve essere fatto di sole cifre, da 8 a 15). Riparti dalla prima pagina.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

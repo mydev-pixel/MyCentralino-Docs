@@ -16,6 +16,7 @@ keywords:
   - "righe dell'elenco"
   - "modificare una riga dell'elenco"
   - "prova ricerca agente"
+  - "scaricare elenco csv"
   - "memoria delle chiamate"
   - "conservazione conversazioni"
   - "reattività"
@@ -194,7 +195,7 @@ Il file nuovo **sostituisce subito** tutto l'elenco precedente, comprese le righ
 | La colonna chiave ha cambiato nome o non c'è più | «Elenco caricato: N righe. Le colonne sono cambiate: scegli di nuovo la colonna chiave e salva.» | Scegli di nuovo **Colonna chiave 1** e premi **Salva agente**: fino ad allora l'agente non trova niente |
 
 <Tip>
-  Quando aggiorni il file, tieni gli stessi nomi di colonna: l'agente usa subito il nuovo elenco e non devi rifare la configurazione. Se cambiano poche righe, non serve ricaricare il file: correggile con **Vedi e modifica le righe**.
+  Quando aggiorni il file, tieni gli stessi nomi di colonna: l'agente usa subito il nuovo elenco e non devi rifare la configurazione. Se cambiano poche righe, non serve ricaricare il file: correggile con **Vedi e modifica le righe**. Per un aggiornamento più grande parti dal file scaricato con **Scarica CSV**: contiene già le correzioni fatte a mano.
 </Tip>
 
 ### Righe dell'elenco
@@ -209,6 +210,7 @@ Con **Vedi e modifica le righe** si apre la finestra **Righe dell'elenco**: tutt
 | **Cerca nelle righe…** | Trova le righe che contengono una parola, in qualunque colonna. Maiuscole e accenti non contano |
 | **Tutte** · **Da sistemare** | **Da sistemare** mostra solo le righe che l'agente non troverà mai. Compare solo quando ce ne sono |
 | La tabella | 50 righe per pagina. La colonna chiave è la prima, con l'etichetta «chiave». Le righe da sistemare hanno la pill **Non si trova** e, al posto del nome, il motivo: «Riga illeggibile» oppure «Senza «nome della colonna chiave»» |
+| **Scarica CSV** | Scarica tutte le righe in un file CSV che si apre con Excel e si può ricaricare così com'è. Contiene anche le righe corrette a mano; le righe illeggibili non ci sono |
 | **Aggiungi riga** | Apre una riga nuova in cima alla tabella |
 | **Modifica** | Apre i campi della riga, uno per colonna |
 | Menu «…» → **Togli la riga** | Toglie la riga, dopo la conferma |
@@ -233,7 +235,7 @@ Con **Vedi e modifica le righe** si apre la finestra **Righe dell'elenco**: tutt
 I limiti: ogni valore fino a 500 caratteri, l'elenco fino a 5.000 righe. Una riga senza nessun valore non si salva («La riga è vuota: scrivi almeno un valore.»). **Annulla** o il tasto Esc chiudono la riga aperta senza salvare; **Chiudi** chiude la finestra.
 
 <Note>
-  Le colonne le decide il file: dalla finestra non puoi aggiungere, togliere o rinominare una colonna. Per farlo cambia il file e caricalo di nuovo. Ricorda che un file nuovo sostituisce anche le righe corrette a mano: se hai fatto correzioni qui, riportale anche nel file prima di ricaricarlo.
+  Le colonne le decide il file: dalla finestra non puoi aggiungere, togliere o rinominare una colonna. Per farlo cambia il file e caricalo di nuovo. Ricorda che un file nuovo sostituisce anche le righe corrette a mano: prima di ricaricare premi **Scarica CSV**, modifica il file scaricato e carica quello, così le correzioni restano.
 </Note>
 
 ## Come scrivere un buon copione
@@ -337,7 +339,7 @@ Alla fine ripeti in breve cosa è stato deciso e saluta cordialmente.
   </Accordion>
 
   <Accordion title="Ho aggiornato il listino nel CSV: come lo sostituisco?">
-    Se cambiano poche righe, correggile con **Vedi e modifica le righe**: valgono subito. Se cambia molto, carica di nuovo il file in **Ricerca dati**: il nuovo elenco sostituisce quello precedente. Con gli stessi nomi di colonna l'agente lo usa subito; se leggi «Le colonne sono cambiate: scegli di nuovo la colonna chiave e salva.», scegli **Colonna chiave 1** e premi **Salva agente**.
+    Se cambiano poche righe, correggile con **Vedi e modifica le righe**: valgono subito. Se cambia molto, premi **Scarica CSV**, aggiorna il file scaricato e caricalo di nuovo in **Ricerca dati**: il nuovo elenco sostituisce quello precedente. Con gli stessi nomi di colonna l'agente lo usa subito; se leggi «Le colonne sono cambiate: scegli di nuovo la colonna chiave e salva.», scegli **Colonna chiave 1** e premi **Salva agente**.
   </Accordion>
 
   <Accordion title="Ho caricato il file nuovo e l'agente non trova più niente.">

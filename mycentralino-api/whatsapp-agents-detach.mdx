@@ -1,0 +1,113 @@
+---
+title: "Disattiva un agente su un numero"
+description: "Toglie un numero WhatsApp a un Agente AI: su quel numero rispondono solo le persone del team"
+---
+
+# DELETE /v1/whatsapp/agents/\{id\}/numbers/\{phone\}
+
+Disattiva un Agente AI su **un** numero WhatsApp: toglie quel numero all'agente. Da quel momento l'agente non risponde più ai clienti che scrivono a quel numero, e le risposte tornano alle persone del team. Le conversazioni restano dove sono, in Inbox.
+
+L'agente **resta acceso** e continua a rispondere sugli altri suoi numeri. Se era il suo ultimo numero, rimane acceso ma senza numeri (`active_now: false`) e ricomincia a rispondere appena gli [attivi](/mycentralino-api/whatsapp-agents-attach) un numero.
+
+<Note>
+Non c'è una rotta per spegnere un agente. Per fermarlo del tutto togligli tutti i numeri con questa rotta, oppure spegnilo dal pannello, in **MyFlow → Agenti AI**.
+</Note>
+
+<Warning>
+Per riattivare l'agente su questo numero serve il metodo di pagamento su Meta, come per qualunque numero nuovo. Se intanto l'account WhatsApp Business l'ha perso, il numero non si potrà riassegnare finché non viene aggiunto di nuovo. Prima di disattivare un agente che vuoi riattivare più tardi, controlla che il numero sia a posto.
+</Warning>
+
+## Parametri
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `id` | int (path) | ✅ | L'`id` dell'agente, da [GET /v1/whatsapp/agents](/mycentralino-api/whatsapp-agents-list) |
+| `phone` | string (path) | ✅ | Il numero WhatsApp da togliere, con sole cifre (da 8 a 15), con o senza `+`. Il `+` nell'indirizzo va scritto `%2B`, oppure lo puoi omettere |
+
+Non serve un body.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X DELETE "https://api.mycentralino.com/v1/whatsapp/agents/7/numbers/%2B390212345679" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$url = 'https://api.mycentralino.com/v1/whatsapp/agents/7/numbers/' . rawurlencode('+390212345679');
+
+$ch = curl_init($url);
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'DELETE',
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+from urllib.parse import quote
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+phone = quote('+390212345679', safe='')
+response = requests.delete(f'https://api.mycentralino.com/v1/whatsapp/agents/7/numbers/{phone}', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`, con l'agente com'è dopo la modifica.
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 7,
+    "name": "Assistente Studio",
+    "enabled": true,
+    "active_now": true,
+    "schedule": {
+      "mode": "always"
+    },
+    "numbers": [
+      { "phone": "+390212345678", "name": "Studio Rossi" }
+    ],
+    "knowledge_docs": 3,
+    "replies_7d": 42
+  }
+}
+```
+
+I campi sono descritti in [Elenco Agenti AI](/mycentralino-api/whatsapp-agents-list#campi-di-ogni-agente). Dopo la disattivazione il numero compare tra i `free_numbers` di [GET /v1/whatsapp/agents](/mycentralino-api/whatsapp-agents-list).
+
+Ogni disattivazione lascia una riga nel **Log attività** del pannello.
+
+## Errori
+
+### 400 - invalid_number
+Il numero nel percorso non è riconoscibile.
+
+### 404 - agent_not_found
+Non esiste un agente con questo `id` su questo account.
+
+### 404 - number_not_found
+Il numero non è tra quelli WhatsApp collegati a MyFlow su questo account.
+
+### 404 - not_assigned
+L'agente non è attivo su questo numero: non c'è niente da togliere. Se ripeti una disattivazione già riuscita ricevi questo errore, e puoi considerarlo un esito positivo.
+
+### 409 - agent_update_failed
+Il numero è cambiato mentre la richiesta era in corso, per esempio per una modifica fatta nello stesso momento dal pannello. Rileggi con [GET /v1/whatsapp/agents](/mycentralino-api/whatsapp-agents-list) e riprova.
+
+### 403 - agents_not_enabled
+Gli Agenti AI non sono disponibili su questo account.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

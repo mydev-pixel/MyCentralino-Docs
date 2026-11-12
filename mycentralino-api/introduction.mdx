@@ -9,7 +9,7 @@ Le API di MyCentralino permettono di integrare le funzionalità del centralino n
 
 ## Base URL
 
-```
+```text
 https://api.mycentralino.com
 ```
 
@@ -19,6 +19,32 @@ Tutte le richieste (eccetto `/test` e `/v1/ping`) richiedono una API key nell'he
 
 ```bash
 X-API-KEY: sk_mycentralino_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Le chiavi si creano nel pannello, in **Il tuo abbonamento** → **Chiavi API**.
+
+### Cosa può fare la chiave
+
+Ogni chiave ha un ambito, scelto quando la crei:
+
+| Ambito | Rotte del centralino (interni, chiamate, code, rubrica, calendario…) | Rotte WhatsApp (`/v1/whatsapp/*`) |
+| --- | --- | --- |
+| **Centralino** | ✅ | ❌ |
+| **Solo WhatsApp** | ❌ | ✅ |
+| **Centralino e WhatsApp** | ✅ | ✅ |
+
+Le chiavi create prima di questa scelta valgono come **Centralino**. Le due opzioni con WhatsApp compaiono solo con il modulo **MyFlow API** attivo: vedi [WhatsApp: introduzione](/mycentralino-api/whatsapp-introduction).
+
+Una chiave usata fuori dal suo ambito riceve `403`:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "scope_not_allowed",
+    "message": "Questa chiave vale solo per l'API WhatsApp di MyFlow (/v1/whatsapp)."
+  }
+}
 ```
 
 ## Rate Limiting
@@ -34,7 +60,7 @@ I limiti sono applicati **per account**, non per singola chiave API:
 
 Ogni risposta include headers informativi:
 
-```
+```text
 X-RateLimit-Limit-Minute: 20
 X-RateLimit-Remaining-Minute: 19
 X-RateLimit-Limit-Day: 1000
@@ -84,6 +110,7 @@ In caso di errore:
 | 200 | Successo |
 | 400 | Richiesta non valida |
 | 401 | API key mancante o non valida |
+| 403 | La chiave non vale per questa rotta (`scope_not_allowed`) o il servizio non è attivo sull'account |
 | 404 | Risorsa non trovata |
 | 429 | Rate limit superato |
 | 500 | Errore interno |

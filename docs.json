@@ -331,7 +331,11 @@
               },
               {
                 "group": "Agenti AI",
-                "pages": []
+                "pages": [
+                  "mycentralino-api/whatsapp-agents-list",
+                  "mycentralino-api/whatsapp-agents-attach",
+                  "mycentralino-api/whatsapp-agents-detach"
+                ]
               },
               "mycentralino-api/whatsapp-webhooks"
             ]

@@ -1,0 +1,170 @@
+---
+title: "Elenco campagne"
+description: "Le campagne WhatsApp dell'account, dalla più recente, con stato e conteggi"
+---
+
+# GET /v1/whatsapp/campaigns
+
+Restituisce le campagne marketing dell'account, dalla più recente alla più vecchia: quelle create dal tuo gestionale e quelle create nel pannello (MyFlow → **Campagne**). Per ognuna ci sono lo stato, il numero che invia, il template e i conteggi principali. Usalo per mostrare nel gestionale l'elenco delle campagne o per ritrovare una campagna di cui hai perso l'`id`.
+
+Le campagne generate dagli **Automatismi** (auguri di compleanno, promemoria di scadenza) non compaiono: si gestiscono solo dal pannello.
+
+## Parametri
+
+| Parametro | Tipo | Obbligatorio | Descrizione |
+|-----------|------|--------------|-------------|
+| `limit` | int | ❌ | Quante campagne per pagina, da 1 a 100. Predefinito `50`. Un valore non numerico vale `50`, uno oltre i limiti viene riportato a 1 o a 100 |
+| `before` | string | ❌ | Cursore per la pagina successiva: il valore di `pagination.next_before` della risposta precedente. Restituisce le campagne con `id` più piccolo di questo |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/whatsapp/campaigns?limit=20" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/campaigns?limit=20');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => ['X-API-KEY: sk_mycentralino_your_api_key']
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get('https://api.mycentralino.com/v1/whatsapp/campaigns', headers=headers, params={'limit': 20})
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 48,
+      "name": "Offerta di primavera",
+      "status": "sending",
+      "reason": "Fuori dalla fascia di invio (09:00-20:00): riprende da sola all'apertura.",
+      "from": "+390212345678",
+      "template": {
+        "name": "offerta_primavera",
+        "language": "it"
+      },
+      "created_by": "api",
+      "scheduled_at": null,
+      "started_at": "2026-11-19T19:58:02+01:00",
+      "finished_at": null,
+      "created_at": "2026-11-19T19:40:11+01:00",
+      "counts": {
+        "total": 1250,
+        "sent": 310,
+        "delivered": 298,
+        "read": 201,
+        "replied": 12,
+        "failed": 4,
+        "skipped": 18
+      }
+    },
+    {
+      "id": 41,
+      "name": "Saldi di novembre",
+      "status": "completed",
+      "reason": null,
+      "from": "+390212345678",
+      "template": {
+        "name": "saldi_novembre",
+        "language": "it"
+      },
+      "created_by": "panel",
+      "scheduled_at": "2026-11-03T10:00:00+01:00",
+      "started_at": "2026-11-03T10:00:04+01:00",
+      "finished_at": "2026-11-03T10:21:37+01:00",
+      "created_at": "2026-10-30T16:12:45+01:00",
+      "counts": {
+        "total": 830,
+        "sent": 812,
+        "delivered": 805,
+        "read": 640,
+        "replied": 37,
+        "failed": 6,
+        "skipped": 12
+      }
+    }
+  ],
+  "pagination": {
+    "next_before": "41",
+    "has_more": true
+  }
+}
+```
+
+Per la pagina successiva ripeti la chiamata con `before=41`. Quando `has_more` è `false`, `next_before` è `null` e l'elenco è finito.
+
+<Note>
+L'elenco arriva fino alle **500 campagne più recenti** dell'account. Se una campagna più vecchia ti serve, leggila direttamente con il suo `id` in [`GET /v1/whatsapp/campaigns/{id}`](/mycentralino-api/whatsapp-campaigns-detail).
+</Note>
+
+## Campi della campagna
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `id` | int | ID della campagna |
+| `name` | string | Nome della campagna |
+| `status` | string | Stato: vedi la tabella sotto |
+| `reason` | string \| null | Perché la campagna è ferma o sta aspettando, in italiano: per esempio fuori dalla fascia di invio, limite giornaliero di Meta raggiunto, template disattivato. `null` quando non c'è niente da segnalare |
+| `from` | string \| null | Il numero WhatsApp che invia, in formato `+E.164` |
+| `template` | object \| null | Il template usato: `name` e `language` |
+| `created_by` | string | `api` se l'ha creata un gestionale, `panel` se è stata creata nel pannello |
+| `scheduled_at` | string \| null | L'ora di partenza programmata. `null` se è partita (o partirà) subito |
+| `started_at` | string \| null | Quando è partito il primo invio |
+| `finished_at` | string \| null | Quando è finita o è stata annullata |
+| `created_at` | string | Quando è stata creata la bozza |
+| `counts` | object | I conteggi principali, vedi sotto |
+
+Tutte le date sono in ISO 8601 con l'offset dell'ora italiana (`+01:00` d'inverno, `+02:00` d'estate).
+
+### Stati
+
+| `status` | Significato |
+|----------|-------------|
+| `draft` | Bozza: si possono ancora aggiungere destinatari, poi va lanciata |
+| `scheduled` | Lanciata, in attesa dell'ora di partenza (o del primo giro di invio, se è partita subito) |
+| `sending` | In invio. Se è fuori dalla fascia di invio o ha raggiunto il limite di Meta resta in questo stato e `reason` dice perché sta aspettando |
+| `paused` | Messa in pausa dal pannello. Si riprende solo dal pannello |
+| `completed` | Tutti i destinatari sono stati trattati |
+| `stopped` | Fermata da sola per un problema che riguarda tutta la campagna (template disattivato da Meta, numero scollegato, troppi invii non riusciti…): `reason` dice quale. Si riprende dal pannello, dopo aver risolto |
+| `cancelled` | Annullata: chi era ancora in coda non riceve nulla |
+
+### Conteggi (`counts`)
+
+| Campo | Descrizione |
+|-------|-------------|
+| `total` | Tutti i destinatari, compresi gli esclusi |
+| `sent` | Messaggi accettati da Meta e non finiti in errore |
+| `delivered` | Consegnati sul telefono (compresi quelli già letti) |
+| `read` | Letti |
+| `replied` | Destinatari che hanno risposto entro 72 ore dall'invio |
+| `failed` | Invii non riusciti |
+| `skipped` | Esclusi: hanno chiesto di non ricevere più promozioni (STOP), hanno già ricevuto una promozione da poco, oppure erano ancora in coda quando la campagna è stata annullata |
+
+Per il dettaglio completo (in coda, incerti, STOP arrivati dopo l'invio) usa [`GET /v1/whatsapp/campaigns/{id}`](/mycentralino-api/whatsapp-campaigns-detail).
+
+## Errori
+
+### 400 - invalid_cursor
+`before` non è un numero. Usa il valore di `pagination.next_before`, senza modificarlo.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

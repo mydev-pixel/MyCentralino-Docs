@@ -1,0 +1,187 @@
+---
+title: "Lancia una campagna"
+description: "Lancia una bozza di campagna, subito o a un'ora stabilita, con le due dichiarazioni obbligatorie"
+---
+
+# POST /v1/whatsapp/campaigns/\{id\}/launch
+
+Lancia una campagna in **bozza**, subito o a un'ora stabilita. Da questo momento la campagna non si modifica più: si può solo seguire e, se serve, [annullare](/mycentralino-api/whatsapp-campaigns-cancel).
+
+Una campagna manda messaggi promozionali a molte persone, e Meta li fa pagare. Per questo il lancio chiede **due dichiarazioni esplicite**, le stesse che il pannello fa spuntare prima dell'invio: il consenso dei destinatari e la presa visione dei costi. Il gestionale deve mostrarle a chi lancia la campagna e mandarle solo se quella persona le ha accettate.
+
+## Parametri
+
+| Parametro | Tipo | Obbligatorio | Descrizione |
+|-----------|------|--------------|-------------|
+| `id` | int | ✅ | ID della campagna (nel percorso) |
+
+## Request Body
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `consent` | boolean | ✅ | Deve essere `true`: dichiarazione sul consenso dei destinatari (testo sotto) |
+| `costs` | boolean | ✅ | Deve essere `true`: dichiarazione sui costi di Meta (testo sotto) |
+| `scheduled_at` | string | ❌ | Ora di partenza nel formato `YYYY-MM-DD HH:MM`, **ora italiana**, per esempio `2026-11-20 10:00`. Deve essere nel futuro ed entro 60 giorni. Senza questo campo (o con `null`) la campagna parte subito |
+
+Valgono solo i valori booleani `true`: `"true"` tra virgolette o `1` non bastano.
+
+## Le due dichiarazioni
+
+Questi sono i testi esatti che vengono registrati sulla campagna al momento del lancio.
+
+**Consenso dei destinatari** (`consent`):
+
+> Dichiaro che tutti i destinatari di questa campagna hanno dato il consenso a ricevere messaggi su WhatsApp da **Studio Rossi Srl**, come richiesto dal Regolamento UE 2016/679 (GDPR, artt. 6 e 7), dall'art. 130 del Codice Privacy (D.Lgs. 196/2003) e dalle regole di WhatsApp Business, e di poterlo dimostrare su richiesta.
+
+Al posto di «Studio Rossi Srl» c'è la ragione sociale dei dati di fatturazione dell'account. Se manca, c'è il nome del numero WhatsApp che invia; se manca anche quello, «la mia azienda».
+
+**Costi di Meta** (`costs`):
+
+> So che ogni messaggio inviato ha un costo stabilito da Meta, addebitato da Meta sul metodo di pagamento collegato al mio account WhatsApp Business, e che MyCentralino non lo stabilisce né lo fattura.
+
+<Tip>
+Per mostrare all'utente i testi con il nome giusto dell'azienda, chiama il lancio **senza** le dichiarazioni (body `{}`). Ricevi `422 declarations_required` con i due testi in `error.consent_text` ed `error.costs_text`, e non parte niente. Poi, quando l'utente ha accettato, richiama con `"consent": true` e `"costs": true`.
+</Tip>
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.mycentralino.com/v1/whatsapp/campaigns/48/launch" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "consent": true,
+      "costs": true,
+      "scheduled_at": "2026-11-20 10:00"
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'consent' => true,
+    'costs' => true,
+    'scheduled_at' => '2026-11-20 10:00'
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/campaigns/48/launch');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+data = {"consent": True, "costs": True, "scheduled_at": "2026-11-20 10:00"}
+response = requests.post('https://api.mycentralino.com/v1/whatsapp/campaigns/48/launch', headers=headers, json=data)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`. La campagna passa allo stato `scheduled`, anche quando parte subito.
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 48,
+    "name": "Offerta di primavera",
+    "status": "scheduled",
+    "reason": null,
+    "from": "+390212345678",
+    "template": {
+      "name": "offerta_primavera",
+      "language": "it"
+    },
+    "created_by": "api",
+    "scheduled_at": "2026-11-20T10:00:00+01:00",
+    "started_at": null,
+    "finished_at": null,
+    "created_at": "2026-11-19T19:40:11+01:00",
+    "declarations": {
+      "consent_text": "Dichiaro che tutti i destinatari di questa campagna hanno dato il consenso a ricevere messaggi su WhatsApp da Studio Rossi Srl, come richiesto dal Regolamento UE 2016/679 (GDPR, artt. 6 e 7), dall'art. 130 del Codice Privacy (D.Lgs. 196/2003) e dalle regole di WhatsApp Business, e di poterlo dimostrare su richiesta.",
+      "costs_text": "So che ogni messaggio inviato ha un costo stabilito da Meta, addebitato da Meta sul metodo di pagamento collegato al mio account WhatsApp Business, e che MyCentralino non lo stabilisce né lo fattura."
+    }
+  }
+}
+```
+
+I campi della campagna sono spiegati in [Elenco campagne](/mycentralino-api/whatsapp-campaigns-list#campi-della-campagna). `declarations` riporta i testi registrati.
+
+## Cosa succede dopo il lancio
+
+- **Partenza.** Senza `scheduled_at` la campagna parte entro un paio di minuti, all'ora indicata se è programmata. A quel punto lo stato diventa `sending`.
+- **Fascia di invio.** I messaggi partono solo nei giorni e negli orari della **Fascia di invio** dell'account (MyFlow → **Impostazioni** → **Regole di invio**, ora italiana). Fuori fascia la campagna resta `sending`, aspetta, e `reason` lo dice. Una campagna programmata alle 22:00 con la fascia 09:00-20:00 parte quindi il primo giorno utile alle 09:00.
+- **Ritmo e limiti.** L'invio procede a ritmo prudente e rispetta il limite giornaliero che Meta assegna al numero: con molti destinatari può durare più di un giorno.
+- **Esclusioni al momento dell'invio.** Prima di ogni messaggio si ricontrolla chi ha chiesto di non ricevere promozioni (STOP) e la regola **Limite per contatto**. Gli esclusi finiscono in `skipped`.
+- **Fermate automatiche.** Se Meta disattiva il template, il numero si scollega o troppi invii non riescono, la campagna passa a `stopped` con il motivo in `reason`. I casi sono elencati in [Dettaglio campagna](/mycentralino-api/whatsapp-campaigns-detail).
+- **Avviso al titolare.** Il titolare dell'account riceve un'email con il nome della campagna, il numero di destinatari, quando parte e il nome della chiave API usata. La campagna compare in MyFlow → **Campagne**, dove si può mettere in pausa o annullare, e una riga va nel Log attività.
+- **STOP dei clienti.** Chi risponde con STOP (o con parole come BASTA, CANCELLAMI, UNSUBSCRIBE) o tocca il pulsante di opt-out non riceve più promozioni da nessuno dei tuoi numeri, in nessuna campagna.
+
+### Cosa resta registrato
+
+Sulla campagna resta la prova del lancio:
+
+- i due testi esatti delle dichiarazioni, con il nome dell'azienda;
+- chi le ha fatte: `api:` seguito dal nome della chiave API usata;
+- data e ora;
+- l'indirizzo IP da cui il gestionale ha chiamato;
+- una copia del template così com'era al lancio.
+
+<Warning>
+Dichiarare il consenso è una responsabilità di chi lancia la campagna. Manda `"consent": true` solo se i destinatari hanno davvero accettato di ricevere promozioni su WhatsApp dalla tua azienda e puoi dimostrarlo.
+</Warning>
+
+## Errori
+
+### 404 - campaign_not_found
+Non c'è una campagna con questo `id` su questo account.
+
+### 409 - campaign_not_draft
+La campagna è già stata lanciata o annullata. Si lancia solo una bozza: una seconda chiamata di lancio non fa niente e risponde così.
+
+### 503 - campaigns_disabled
+L'invio delle campagne è momentaneamente sospeso. La bozza resta com'è: riprova più tardi.
+
+### 409 - number_not_found
+Il numero che doveva inviare non è più collegato a MyFlow. Annulla la bozza e creane una nuova con un numero collegato.
+
+### 422 - declarations_required
+Manca `"consent": true` o `"costs": true`. L'errore porta i due testi da mostrare all'utente:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "declarations_required",
+    "message": "Per lanciare servono le due dichiarazioni: \"consent\": true e \"costs\": true.",
+    "consent_text": "Dichiaro che tutti i destinatari di questa campagna hanno dato il consenso a ricevere messaggi su WhatsApp da Studio Rossi Srl, …",
+    "costs_text": "So che ogni messaggio inviato ha un costo stabilito da Meta, …"
+  }
+}
+```
+
+### 422 - invalid_scheduled_at
+`scheduled_at` non è nel formato `YYYY-MM-DD HH:MM` (niente secondi, niente `T`, niente fuso), è nel passato o oltre 60 giorni da adesso.
+
+### 422 - no_recipients
+La campagna non ha destinatari a cui inviare: nessuno, oppure sono tutti esclusi. Aggiungili con [`POST /v1/whatsapp/campaigns/{id}/recipients`](/mycentralino-api/whatsapp-campaigns-recipients).
+
+### 422 - template_not_usable
+Il template non è più approvato da Meta come promozionale, oppure è cambiato dopo la creazione della bozza e le variabili non corrispondono più. Annulla la bozza e creane una nuova.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

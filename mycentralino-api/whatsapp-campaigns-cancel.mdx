@@ -1,0 +1,108 @@
+---
+title: "Annulla una campagna"
+description: "Elimina una bozza oppure annulla una campagna programmata, in invio, in pausa o fermata"
+---
+
+# POST /v1/whatsapp/campaigns/\{id\}/cancel
+
+Ferma una campagna per sempre. Cosa succede dipende dallo stato:
+
+| Stato della campagna | Effetto |
+|----------------------|---------|
+| `draft` | La bozza viene **eliminata** con i suoi destinatari. Non resta traccia nell'elenco |
+| `scheduled`, `sending`, `paused`, `stopped` | La campagna diventa `cancelled`. Chi era ancora in coda non riceve nulla e risulta tra gli esclusi (`skipped`). I messaggi già partiti restano consegnati e le loro statistiche continuano ad aggiornarsi |
+| `completed`, `cancelled` | Non si può annullare: errore `409 campaign_not_cancellable` |
+
+L'annullamento non si può disfare. Per rimandare la stessa campagna, creane una nuova.
+
+<Note>
+Per fermarla solo per un po' usa la **pausa** dal pannello, in MyFlow → **Campagne**: via API non c'è una pausa. Da lì la campagna si può anche riprendere.
+</Note>
+
+## Parametri
+
+| Parametro | Tipo | Obbligatorio | Descrizione |
+|-----------|------|--------------|-------------|
+| `id` | int | ✅ | ID della campagna (nel percorso) |
+
+Non serve un body. Se il tuo client ne manda uno, manda `{}`.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.mycentralino.com/v1/whatsapp/campaigns/48/cancel" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/campaigns/48/cancel');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_HTTPHEADER => ['X-API-KEY: sk_mycentralino_your_api_key']
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.post('https://api.mycentralino.com/v1/whatsapp/campaigns/48/cancel', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`. Per una campagna lanciata, la campagna aggiornata:
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 48,
+    "name": "Offerta di primavera",
+    "status": "cancelled",
+    "reason": null,
+    "from": "+390212345678",
+    "template": {
+      "name": "offerta_primavera",
+      "language": "it"
+    },
+    "created_by": "api",
+    "scheduled_at": "2026-11-20T10:00:00+01:00",
+    "started_at": "2026-11-20T10:00:03+01:00",
+    "finished_at": "2026-11-20T10:07:41+01:00",
+    "created_at": "2026-11-19T19:40:11+01:00"
+  }
+}
+```
+
+Per una bozza, solo la conferma dell'eliminazione:
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 48,
+    "status": "deleted"
+  }
+}
+```
+
+Dopo l'eliminazione di una bozza, `GET /v1/whatsapp/campaigns/48` risponde `404 campaign_not_found`. Una campagna annullata, invece, resta nell'elenco con le sue statistiche. I campi sono spiegati in [Elenco campagne](/mycentralino-api/whatsapp-campaigns-list#campi-della-campagna).
+
+## Errori
+
+### 404 - campaign_not_found
+Non c'è una campagna con questo `id` su questo account, oppure era una bozza già eliminata.
+
+### 409 - campaign_not_cancellable
+La campagna è già conclusa (`completed`) o già annullata (`cancelled`).
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

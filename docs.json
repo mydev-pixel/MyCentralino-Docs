@@ -320,7 +320,14 @@
               },
               {
                 "group": "Campagne",
-                "pages": []
+                "pages": [
+                  "mycentralino-api/whatsapp-campaigns-create",
+                  "mycentralino-api/whatsapp-campaigns-recipients",
+                  "mycentralino-api/whatsapp-campaigns-launch",
+                  "mycentralino-api/whatsapp-campaigns-detail",
+                  "mycentralino-api/whatsapp-campaigns-list",
+                  "mycentralino-api/whatsapp-campaigns-cancel"
+                ]
               },
               {
                 "group": "Agenti AI",

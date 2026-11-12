@@ -10,14 +10,14 @@ Restituisce gli **Agenti AI** di MyFlow, quelli che rispondono ai clienti su Wha
 Usala per mostrare nel gestionale chi risponde su ogni numero, e prima di [attivare](/mycentralino-api/whatsapp-agents-attach) o [disattivare](/mycentralino-api/whatsapp-agents-detach) un agente su un numero.
 
 <Note>
-Dall'API si leggono gli agenti e si sceglie su quali numeri rispondono. Istruzioni, conoscenza, modello e regole di risposta non escono dall'API e non si cambiano da qui: si gestiscono nel pannello, in **MyFlow → Agenti AI**. Anche gli agenti si creano ed eliminano solo da lì.
+L'elenco è un riassunto. Istruzioni, frase di passaggio e regole di risposta sono nel [dettaglio](/mycentralino-api/whatsapp-agents-detail), e la conoscenza in [Conoscenza dell'agente](/mycentralino-api/whatsapp-agents-knowledge). Dall'API un agente si [crea](/mycentralino-api/whatsapp-agents-create) e si [modifica](/mycentralino-api/whatsapp-agents-update). Si elimina e riceve file di conoscenza solo dal pannello, in **MyFlow → Agenti AI**. Il modello non si vede e non si sceglie.
 </Note>
 
 ## Come funziona un agente
 
 - **Un numero ha al massimo un agente.** Un agente invece può rispondere su più numeri.
 - **Un agente risponde davvero** su un numero solo se è acceso (`enabled`), ha quel numero tra i suoi (`numbers`) ed è in orario: sempre, oppure dentro una delle sue fasce (`schedule`). È quello che riassume `active_now`.
-- **Anche con `active_now: true` l'agente si fa da parte**, conversazione per conversazione, quando c'è una persona: se qualcuno del team ha scritto al cliente da poco (dal pannello, dall'app WhatsApp Business o dal gestionale con [POST /v1/whatsapp/messages](/mycentralino-api/whatsapp-messages-send)), se la conversazione è stata presa in carico da un collega, o se ha già dato il numero massimo di risposte in quella conversazione. Queste regole si impostano nel pannello.
+- **Anche con `active_now: true` l'agente si fa da parte**, conversazione per conversazione, quando c'è una persona: se qualcuno del team ha scritto al cliente da poco (dal pannello, dall'app WhatsApp Business o dal gestionale con [POST /v1/whatsapp/messages](/mycentralino-api/whatsapp-messages-send)), se la conversazione è stata presa in carico da un collega, o se ha già dato il numero massimo di risposte in quella conversazione. Queste regole si impostano nel pannello o con [`PATCH /v1/whatsapp/agents/{id}`](/mycentralino-api/whatsapp-agents-update).
 - **Per aggiungere un numero a un agente** serve un metodo di pagamento sull'account WhatsApp Business, su Meta: è la stessa regola del pannello. `free_numbers[].payment_method_ok` lo dice in anticipo.
 
 ## Parametri

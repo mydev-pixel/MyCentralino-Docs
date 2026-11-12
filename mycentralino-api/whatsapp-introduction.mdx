@@ -13,7 +13,7 @@ Con **MyFlow API** il tuo gestionale o CRM lavora sullo stesso WhatsApp di MyFlo
 - **creare template** e sapere quando Meta li approva o li rifiuta;
 - **lanciare campagne** marketing verso molti contatti;
 - **tenere allineati i contatti**: nomi, etichette e campi personalizzati;
-- **accendere e spegnere gli Agenti AI** di MyFlow su un numero.
+- **gestire gli Agenti AI** di MyFlow: crearli, cambiarne istruzioni, orari e conoscenza, accenderli e spegnerli su un numero.
 
 È tutto lo stesso MyFlow, non una copia. Un messaggio mandato dal gestionale compare nella conversazione in MyFlow con la nota «inviato dal gestionale (API)». Un contatto modificato via API è già modificato in MyFlow → Contatti. Una campagna lanciata via API si vede, si mette in pausa e si annulla da MyFlow → Campagne.
 
@@ -58,7 +58,7 @@ Al gestionale che usa solo WhatsApp dai una chiave **Solo WhatsApp**. Se la chia
 
 Come tutta l'API:
 
-```
+```text
 https://api.mycentralino.com
 ```
 
@@ -123,6 +123,13 @@ Le pone Meta e valgono per tutti, dal pannello come dall'API:
 | GET | [`/v1/whatsapp/agents`](/mycentralino-api/whatsapp-agents-list) | Gli Agenti AI e i numeri su cui rispondono |
 | POST | [`/v1/whatsapp/agents/{id}/numbers`](/mycentralino-api/whatsapp-agents-attach) | Attiva un agente su un numero |
 | DELETE | [`/v1/whatsapp/agents/{id}/numbers/{phone}`](/mycentralino-api/whatsapp-agents-detach) | Disattiva un agente su un numero |
+| GET | [`/v1/whatsapp/agents/{id}`](/mycentralino-api/whatsapp-agents-detail) | Un agente, con istruzioni e regole di risposta |
+| POST | [`/v1/whatsapp/agents`](/mycentralino-api/whatsapp-agents-create) | Crea un agente |
+| PATCH | [`/v1/whatsapp/agents/{id}`](/mycentralino-api/whatsapp-agents-update) | Modifica un agente, lo accende o lo spegne |
+| GET | [`/v1/whatsapp/agents/{id}/knowledge`](/mycentralino-api/whatsapp-agents-knowledge) | La conoscenza dell'agente, e un documento con `/{doc}` |
+| POST | [`/v1/whatsapp/agents/{id}/knowledge`](/mycentralino-api/whatsapp-agents-knowledge-add) | Aggiunge un testo o una domanda frequente |
+| PUT | [`/v1/whatsapp/agents/{id}/knowledge/{doc}`](/mycentralino-api/whatsapp-agents-knowledge-update) | Riscrive un testo o una domanda frequente |
+| DELETE | [`/v1/whatsapp/agents/{id}/knowledge/{doc}`](/mycentralino-api/whatsapp-agents-knowledge-delete) | Toglie un documento |
 
 I messaggi in arrivo, gli esiti di consegna e gli esiti dei template li spedisce MyFlow al gestionale con i [webhook](/mycentralino-api/whatsapp-webhooks). L'indirizzo si imposta nel pannello.
 
@@ -145,7 +152,8 @@ I messaggi in arrivo, gli esiti di consegna e gli esiti dei template li spedisce
 Quando nel gestionale cambia un cliente, aggiornalo con [`PUT /v1/whatsapp/contacts/{phone}`](/mycentralino-api/whatsapp-contacts-update). Per il primo allineamento usa [POST /v1/whatsapp/contacts/bulk](/mycentralino-api/whatsapp-contacts-bulk).
 
 ### L'agente AI fuori orario
-Il gestionale può [attivare](/mycentralino-api/whatsapp-agents-attach) un Agente AI di MyFlow su un numero a fine giornata e [disattivarlo](/mycentralino-api/whatsapp-agents-detach) la mattina. Istruzioni e conoscenza dell'agente si preparano nel pannello, in MyFlow → **Agenti AI**.
+
+Il gestionale può [attivare](/mycentralino-api/whatsapp-agents-attach) un Agente AI di MyFlow su un numero a fine giornata e [disattivarlo](/mycentralino-api/whatsapp-agents-detach) la mattina. L'agente stesso si può [creare](/mycentralino-api/whatsapp-agents-create) e tenere aggiornato dal gestionale: istruzioni, orari e [conoscenza](/mycentralino-api/whatsapp-agents-knowledge-add), per esempio le domande frequenti o il listino del momento.
 
 ## Codici di errore
 

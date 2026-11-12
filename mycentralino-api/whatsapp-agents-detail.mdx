@@ -1,0 +1,106 @@
+---
+title: "Dettaglio agente"
+description: "Un Agente AI di MyFlow con istruzioni, frase di passaggio, orari e regole di risposta"
+---
+
+# GET /v1/whatsapp/agents/\{id\}
+
+Restituisce un **Agente AI** con tutto ciò che si può impostare dall'API. Oltre ai campi dell'[elenco](/mycentralino-api/whatsapp-agents-list) ci sono le istruzioni, la frase di passaggio e le regole di risposta.
+
+Usala per mostrare nel gestionale la configurazione dell'agente, e prima di una [modifica](/mycentralino-api/whatsapp-agents-update) per partire da quello che c'è.
+
+<Note>
+Il modello di intelligenza artificiale non compare: è lo stesso per tutti gli agenti e non si sceglie.
+</Note>
+
+## Parametri
+
+| Parametro | Tipo | Obbligatorio | Descrizione |
+|-----------|------|--------------|-------------|
+| `id` | int | ✅ | ID dell'agente, nel percorso. Lo trovi nell'[elenco](/mycentralino-api/whatsapp-agents-list) |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl "https://api.mycentralino.com/v1/whatsapp/agents/7" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/agents/7');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => ['X-API-KEY: sk_mycentralino_your_api_key']
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get('https://api.mycentralino.com/v1/whatsapp/agents/7', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 7,
+    "name": "Assistente Studio",
+    "enabled": true,
+    "active_now": true,
+    "schedule": {
+      "mode": "always"
+    },
+    "numbers": [
+      {"phone": "+390212345678", "name": "Studio Rossi"}
+    ],
+    "knowledge_docs": 4,
+    "replies_7d": 37,
+    "instructions": "Sei l'assistente dello Studio Rossi. Rispondi in modo cortese e breve. Dai informazioni su orari, servizi e prezzi indicati nella conoscenza. Non prendere appuntamenti: per quelli passa a un collega.",
+    "handoff_message": "Ti passo a un collega dello Studio, ti risponderà appena possibile.",
+    "max_replies": 8,
+    "reply_delay_seconds": 20,
+    "human_pause_minutes": 30,
+    "created_at": "2026-11-12T18:20:05+01:00",
+    "updated_at": "2026-11-14T09:02:41+01:00"
+  }
+}
+```
+
+## Campi dell'agente
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `id` | int | ID dell'agente |
+| `name` | string | Nome dell'agente |
+| `enabled` | boolean | Acceso o spento |
+| `active_now` | boolean | `true` se in questo momento risponde davvero: acceso, con almeno un numero e in orario |
+| `schedule` | object | Quando risponde: vedi [L'orario](/mycentralino-api/whatsapp-agents-list) nell'elenco |
+| `numbers` | object[] | I numeri su cui risponde: `phone` (+E.164) e `name` |
+| `knowledge_docs` | int | Quanti documenti di conoscenza ha. L'elenco è in [Conoscenza dell'agente](/mycentralino-api/whatsapp-agents-knowledge) |
+| `replies_7d` | int | Risposte mandate ai clienti negli ultimi 7 giorni |
+| `instructions` | string | Le istruzioni: chi è l'agente e come deve rispondere. Nel pannello: **Ruolo e istruzioni** |
+| `handoff_message` | string | La frase mandata al cliente quando l'agente passa la conversazione a una persona. Nel pannello: **Frase di passaggio a un operatore** |
+| `max_replies` | int | Risposte massime in una conversazione, poi passa a una persona. Nel pannello: **Interazioni massime** |
+| `reply_delay_seconds` | int | Secondi di attesa prima di rispondere. Nel pannello: **Attesa prima di rispondere** |
+| `human_pause_minutes` | int | Minuti di silenzio in una conversazione dopo che una persona del team ha scritto al cliente. Nel pannello: **Pausa dopo un operatore** |
+| `created_at`, `updated_at` | string | Date in ISO 8601 con fuso |
+
+## Errori
+
+### 404 - agent_not_found
+Non c'è un agente con questo `id` su questo account.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

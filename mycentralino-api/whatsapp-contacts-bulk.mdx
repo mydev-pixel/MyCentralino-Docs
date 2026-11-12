@@ -1,0 +1,135 @@
+---
+title: "Carica contatti a blocchi"
+description: "Crea o aggiorna fino a 500 schede contatto in una chiamata, con l'esito riga per riga"
+---
+
+# POST /v1/whatsapp/contacts/bulk
+
+Crea o aggiorna fino a **500 schede contatto** in una sola chiamata. È pensata per il primo allineamento tra il gestionale e MyFlow, o per una sincronizzazione notturna: ogni elemento è trattato esattamente come un [PUT /v1/whatsapp/contacts/\{phone\}](/mycentralino-api/whatsapp-contacts-update), con le stesse regole e gli stessi limiti.
+
+Gli elementi sono indipendenti:
+
+- un elemento sbagliato viene **scartato** e finisce in `invalid`, con la sua posizione e il motivo;
+- tutti gli altri vengono **salvati**, prima e dopo quello sbagliato.
+
+Non è quindi un «tutto o niente»: dopo la chiamata correggi solo gli elementi in `invalid` e rimandali.
+
+## Request Body
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `contacts` | object[] | ✅ | Da 1 a 500 contatti |
+| `contacts[].phone` | string | ✅ | Il telefono, come stringa: formato internazionale consigliato (`+393331234567`). Valgono anche `0039…` e i numeri italiani senza prefisso (cellulare che inizia per `3`, fisso che inizia per `0`). Spazi e trattini vengono ignorati |
+| `contacts[].name` | string \| null | ❌ | Fino a 120 caratteri |
+| `contacts[].company` | string \| null | ❌ | Fino a 120 caratteri |
+| `contacts[].customer_code` | string \| null | ❌ | Fino a 40 caratteri |
+| `contacts[].email` | string \| null | ❌ | Email valida, fino a 190 caratteri |
+| `contacts[].birthday` | string \| null | ❌ | `DD/MM`, `DD/MM/YYYY` o `YYYY-MM-DD` |
+| `contacts[].dates` | object | ❌ | `{"Nome della data": "YYYY-MM-DD"}`, solo date che esistono già |
+| `contacts[].tags` | string[] | ❌ | L'elenco completo dei tag, solo tag che esistono già |
+
+Il significato dei campi, la pulizia dei testi e la regola «assente = resta com'è, `null` = svuota» sono spiegati in [Crea o aggiorna un contatto](/mycentralino-api/whatsapp-contacts-update#request-body). I tag e le date dell'account si leggono con [GET /v1/whatsapp/contacts/fields](/mycentralino-api/whatsapp-contacts-fields).
+
+<Tip>
+Per caricare più di 500 contatti, dividili in blocchi da 500 e mandali uno dopo l'altro, tenendo conto del [limite di richieste al minuto](/mycentralino-api/introduction#rate-limiting). Il body di una richiesta può essere al massimo di 64 KB: con molti campi pieni, un blocco da 500 può superarlo, e in quel caso usa blocchi più piccoli.
+</Tip>
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.mycentralino.com/v1/whatsapp/contacts/bulk" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "contacts": [
+          {"phone": "+393331234567", "name": "Mario Rossi", "customer_code": "C-00412", "tags": ["VIP"]},
+          {"phone": "+393337654321", "name": "Giulia Bianchi", "email": "giulia.bianchi@example.com"},
+          {"phone": "12345", "name": "Numero sbagliato"}
+      ]
+  }'
+```
+
+```php PHP
+<?php
+$data = ['contacts' => [
+    ['phone' => '+393331234567', 'name' => 'Mario Rossi', 'customer_code' => 'C-00412', 'tags' => ['VIP']],
+    ['phone' => '+393337654321', 'name' => 'Giulia Bianchi', 'email' => 'giulia.bianchi@example.com'],
+    ['phone' => '12345', 'name' => 'Numero sbagliato'],
+]];
+
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/contacts/bulk');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+data = {"contacts": [
+    {"phone": "+393331234567", "name": "Mario Rossi", "customer_code": "C-00412", "tags": ["VIP"]},
+    {"phone": "+393337654321", "name": "Giulia Bianchi", "email": "giulia.bianchi@example.com"},
+    {"phone": "12345", "name": "Numero sbagliato"},
+]}
+r = requests.post('https://api.mycentralino.com/v1/whatsapp/contacts/bulk', headers=headers, json=data).json()
+for bad in r['data']['invalid']:
+    print('da correggere:', data['contacts'][bad['index']]['phone'], bad['reason'])
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`, anche quando alcuni elementi sono stati scartati: controlla sempre `invalid`.
+
+```json
+{
+  "success": true,
+  "data": {
+    "created": 1,
+    "updated": 1,
+    "invalid": [
+      {
+        "index": 2,
+        "code": "invalid_phone",
+        "reason": "Numero di telefono non valido. Esempio: +393331234567."
+      }
+    ]
+  }
+}
+```
+
+## Campi della risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `created` | int | Schede create da questa chiamata |
+| `updated` | int | Schede che esistevano già e sono state aggiornate |
+| `invalid` | object[] | Gli elementi scartati; vuoto se è andato tutto bene |
+| `invalid[].index` | int | La posizione dell'elemento in `contacts`, contando da 0 |
+| `invalid[].code` | string | Il codice dell'errore, lo stesso che darebbe [PUT /v1/whatsapp/contacts/\{phone\}](/mycentralino-api/whatsapp-contacts-update#errori): `invalid_phone`, `invalid_name`, `invalid_company`, `invalid_customer_code`, `invalid_email`, `invalid_birthday`, `invalid_dates`, `invalid_tags` |
+| `invalid[].reason` | string | Il motivo in italiano. Per tag e date sconosciuti dice che vanno creati dal pannello, ma non elenca i nomi: per saperli confronta con [GET /v1/whatsapp/contacts/fields](/mycentralino-api/whatsapp-contacts-fields) |
+
+Se lo stesso telefono compare due volte nel blocco, gli elementi vengono applicati in ordine: il primo crea (o aggiorna) la scheda, il secondo la aggiorna di nuovo e conta in `updated`.
+
+Una chiamata che salva almeno un contatto lascia una riga nel **Log attività** del pannello, con quante schede sono state create e quante aggiornate.
+
+## Errori
+
+### 422 - invalid_contacts
+`contacts` manca, non è un elenco, è vuoto o ha più di 500 elementi. In questo caso non viene salvato niente.
+
+### Elementi scartati
+Gli errori di un singolo elemento non fanno fallire la richiesta: finiscono in `invalid`. Un elemento senza `phone`, o con `phone` che non è una stringa (per esempio un numero JSON), viene scartato con `invalid_phone` e il motivo `manca "phone"`.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

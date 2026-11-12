@@ -1,0 +1,159 @@
+---
+title: "Elenco Agenti AI"
+description: "Gli Agenti AI di MyFlow che rispondono su WhatsApp: se sono accesi, su quali numeri e in quali orari"
+---
+
+# GET /v1/whatsapp/agents
+
+Restituisce gli **Agenti AI** di MyFlow, quelli che rispondono ai clienti su WhatsApp quando nessuno del team lo sta facendo. Per ognuno dice se è acceso, se in questo momento sta rispondendo, su quali numeri e in quali orari. In più elenca i numeri WhatsApp che non hanno un agente.
+
+Usala per mostrare nel gestionale chi risponde su ogni numero, e prima di [attivare](/mycentralino-api/whatsapp-agents-attach) o [disattivare](/mycentralino-api/whatsapp-agents-detach) un agente su un numero.
+
+<Note>
+Dall'API si leggono gli agenti e si sceglie su quali numeri rispondono. Istruzioni, conoscenza, modello e regole di risposta non escono dall'API e non si cambiano da qui: si gestiscono nel pannello, in **MyFlow → Agenti AI**. Anche gli agenti si creano ed eliminano solo da lì.
+</Note>
+
+## Come funziona un agente
+
+- **Un numero ha al massimo un agente.** Un agente invece può rispondere su più numeri.
+- **Un agente risponde davvero** su un numero solo se è acceso (`enabled`), ha quel numero tra i suoi (`numbers`) ed è in orario: sempre, oppure dentro una delle sue fasce (`schedule`). È quello che riassume `active_now`.
+- **Anche con `active_now: true` l'agente si fa da parte**, conversazione per conversazione, quando c'è una persona: se qualcuno del team ha scritto al cliente da poco (dal pannello, dall'app WhatsApp Business o dal gestionale con [POST /v1/whatsapp/messages](/mycentralino-api/whatsapp-messages-send)), se la conversazione è stata presa in carico da un collega, o se ha già dato il numero massimo di risposte in quella conversazione. Queste regole si impostano nel pannello.
+- **Per aggiungere un numero a un agente** serve un metodo di pagamento sull'account WhatsApp Business, su Meta: è la stessa regola del pannello. `free_numbers[].payment_method_ok` lo dice in anticipo.
+
+## Parametri
+
+Nessuno.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/whatsapp/agents" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/agents');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+r = requests.get('https://api.mycentralino.com/v1/whatsapp/agents', headers=headers).json()
+for a in r['data']['agents']:
+    print(a['name'], 'risponde adesso' if a['active_now'] else 'non risponde adesso', [n['phone'] for n in a['numbers']])
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": {
+    "agents": [
+      {
+        "id": 7,
+        "name": "Assistente Studio",
+        "enabled": true,
+        "active_now": true,
+        "schedule": {
+          "mode": "always"
+        },
+        "numbers": [
+          { "phone": "+390212345678", "name": "Studio Rossi" }
+        ],
+        "knowledge_docs": 3,
+        "replies_7d": 42
+      },
+      {
+        "id": 9,
+        "name": "Segreteria",
+        "enabled": true,
+        "active_now": false,
+        "schedule": {
+          "mode": "slots",
+          "slots": {
+            "mon": [{ "from": "09:00", "to": "13:00" }, { "from": "14:00", "to": "18:00" }],
+            "tue": [{ "from": "09:00", "to": "13:00" }, { "from": "14:00", "to": "18:00" }],
+            "wed": [{ "from": "09:00", "to": "13:00" }, { "from": "14:00", "to": "18:00" }],
+            "thu": [{ "from": "09:00", "to": "13:00" }, { "from": "14:00", "to": "18:00" }],
+            "fri": [{ "from": "09:00", "to": "13:00" }],
+            "sat": [],
+            "sun": []
+          }
+        },
+        "numbers": [],
+        "knowledge_docs": 1,
+        "replies_7d": 0
+      }
+    ],
+    "free_numbers": [
+      { "phone": "+390212345679", "name": "Studio Rossi Assistenza", "payment_method_ok": true }
+    ]
+  }
+}
+```
+
+Se sull'account non ci sono agenti, `agents` è un elenco vuoto.
+
+## Campi di ogni agente
+
+Gli agenti sono in ordine alfabetico di nome.
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `id` | int | Identificativo dell'agente: è quello da usare in `/agents/{id}/numbers` |
+| `name` | string | Il nome dato all'agente nel pannello |
+| `enabled` | bool | L'interruttore dell'agente: `true` acceso, `false` spento. Un agente spento non risponde su nessun numero |
+| `active_now` | bool | `true` se in questo momento l'agente può rispondere: è acceso, ha almeno un numero ed è in orario |
+| `schedule` | object | Quando risponde, vedi sotto |
+| `numbers` | object[] | I numeri WhatsApp su cui risponde. Vuoto se non ne ha |
+| `numbers[].phone` | string | Il numero in `+E.164` |
+| `numbers[].name` | string \| null | Il nome WhatsApp Business del numero |
+| `knowledge_docs` | int | Quanti documenti ha nella sua conoscenza |
+| `replies_7d` | int | Quante risposte ha mandato ai clienti negli ultimi 7 giorni |
+
+## L'orario (`schedule`)
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `mode` | string | `always`: risponde a qualunque ora. `slots`: risponde solo dentro le fasce |
+| `slots` | object | Solo con `mode: "slots"`. Una chiave per giorno, da `mon` (lunedì) a `sun` (domenica), sempre tutte e sette |
+| `slots.<giorno>[]` | object[] | Le fasce del giorno, in ordine di inizio. Elenco vuoto = quel giorno non risponde |
+| `slots.<giorno>[].from` | string | Inizio della fascia, `HH:MM`, compreso |
+| `slots.<giorno>[].to` | string | Fine della fascia, `HH:MM`, escluso |
+
+Gli orari sono sempre in **ora italiana** (`Europe/Rome`).
+
+## Numeri senza agente (`free_numbers`)
+
+I numeri WhatsApp collegati a MyFlow su cui non risponde nessun agente. Un numero condiviso con un altro account MyCentralino su cui un agente c'è già non compare qui, e non si può usare.
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `phone` | string | Il numero in `+E.164` |
+| `name` | string \| null | Il nome WhatsApp Business del numero |
+| `payment_method_ok` | bool \| null | `true` se Meta ha un metodo di pagamento sull'account WhatsApp Business del numero: si può attivare un agente. `false` se manca: va aggiunto su Meta prima. `null` se in questo momento Meta non ha risposto: riprova fra qualche minuto |
+
+I numeri sono in ordine: prima quelli con il metodo di pagamento a posto.
+
+## Errori
+
+### 403 - agents_not_enabled
+Gli Agenti AI non sono disponibili su questo account.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

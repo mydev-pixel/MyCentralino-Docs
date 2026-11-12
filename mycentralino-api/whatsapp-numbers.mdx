@@ -1,0 +1,80 @@
+---
+title: "Numeri WhatsApp"
+description: "I numeri WhatsApp collegati a MyFlow, da usare come mittente"
+---
+
+# GET /v1/whatsapp/numbers
+
+Restituisce i numeri WhatsApp collegati a MyFlow su questo account, cioè i numeri da cui il gestionale può mandare messaggi. È di solito la prima chiamata da fare: il numero che leggi qui è il valore da mettere in `from` nelle altre rotte.
+
+<Note>
+Se l'account ha **un solo numero**, `from` si può omettere ovunque: viene usato quello. Con **due o più numeri** `from` è obbligatorio. Se manca, la rotta risponde `400` `number_required` con l'elenco dei numeri in `error.numbers`.
+</Note>
+
+## Parametri
+
+Nessuno.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/whatsapp/numbers" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/numbers');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => ['X-API-KEY: sk_mycentralino_your_api_key']
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get('https://api.mycentralino.com/v1/whatsapp/numbers', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "phone": "+390212345678",
+      "name": "Studio Rossi"
+    },
+    {
+      "phone": "+390212345679",
+      "name": "Studio Rossi Assistenza"
+    }
+  ]
+}
+```
+
+## Campi del numero
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `phone` | string | Il numero in formato +E.164, senza spazi. È il valore da usare in `from` |
+| `name` | string \| null | Il nome verificato da Meta, quello che vedono i clienti su WhatsApp. `null` se Meta non l'ha ancora assegnato |
+
+I numeri sono in ordine di collegamento: il primo è quello collegato per primo.
+
+## Errori
+
+Questa rotta non ha errori propri. Se sull'account non c'è nessun numero collegato, la risposta è `403` `whatsapp_not_linked`, come per tutte le rotte.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

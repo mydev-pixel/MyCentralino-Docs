@@ -1,0 +1,242 @@
+---
+title: "Crea una campagna"
+description: "Crea la bozza di una campagna marketing WhatsApp: nome, numero che invia, template e variabili"
+---
+
+# POST /v1/whatsapp/campaigns
+
+Crea la **bozza** di una campagna: un messaggio promozionale da mandare a molti clienti con un template approvato da Meta. La bozza non manda niente. Dopo averla creata [aggiungi i destinatari](/mycentralino-api/whatsapp-campaigns-recipients) e poi [lanciala](/mycentralino-api/whatsapp-campaigns-launch) con le due dichiarazioni obbligatorie.
+
+La campagna creata via API è identica a una creata nel pannello: compare in MyFlow → **Campagne**, ne segue le regole di invio e lì si può mettere in pausa, riprendere o annullare.
+
+<Note>
+Le campagne usano **solo template promozionali** (categoria `MARKETING`) già **approvati** da Meta, senza immagine, video o documento nell'intestazione. Per un messaggio di servizio a un solo cliente (conferma, promemoria, avviso) usa [POST /v1/whatsapp/messages](/mycentralino-api/whatsapp-messages-send).
+</Note>
+
+## Request Body
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `name` | string | ✅ | Nome della campagna, fino a 120 caratteri. Serve a riconoscerla nel pannello e nell'email di avviso al titolare |
+| `from` | string | dipende | Il numero WhatsApp che invia, in formato `+E.164` (es. `+390212345678`). **Obbligatorio** se l'account ha più numeri collegati; con un numero solo si può omettere. I numeri sono in [GET /v1/whatsapp/numbers](/mycentralino-api/whatsapp-numbers) |
+| `template` | object | ✅ | Il template: `{"name": "offerta_primavera", "language": "it"}`. `language` serve solo se esiste lo stesso nome in più lingue |
+| `variables` | object | dipende | Il contenuto di ogni variabile del template. **Obbligatorio** se il template ha variabili. Vedi sotto |
+
+### Le variabili
+
+Ogni variabile del template si indica con la sua **chiave**, la stessa che trovi in `variables[].key` di [GET /v1/whatsapp/templates](/mycentralino-api/whatsapp-templates-list):
+
+| Chiave | Dove sta |
+|--------|----------|
+| `body.1`, `body.2`, … | Le variabili `{{1}}`, `{{2}}`… del testo |
+| `header.1` | La variabile dell'intestazione di testo |
+| `button.0.1` | La parte finale del link di un pulsante URL dinamico: `0` è la posizione del pulsante nel template (da 0), `1` la variabile |
+
+Per ogni chiave scegli uno dei due modi:
+
+| Modo | Come si scrive | Quando usarlo |
+|------|----------------|---------------|
+| **Testo fisso** | `"body.2": "20%"` | Lo stesso valore per tutti i destinatari. Fino a 1024 caratteri |
+| **Valore per destinatario** | `"body.1": {"per_recipient": true, "fallback": "Cliente"}` | Un valore diverso per ognuno (nome, codice sconto, scadenza…), che mandi insieme ai destinatari. `fallback` (obbligatorio, fino a 120 caratteri) è il testo usato per chi non ha un valore |
+
+Vanno indicate **tutte** le variabili del template, e solo quelle. I testi diventano una riga sola: gli a capo e i caratteri di controllo diventano spazi, e più di tre spazi di fila si riducono a tre, perché Meta li rifiuta.
+
+<Tip>
+Con il valore per destinatario il nome del cliente non si riempie da solo: se il template dice `Ciao {{1}}`, manda il nome come valore di `body.1` per ogni destinatario, e metti un `fallback` come «Cliente» per chi non ce l'ha.
+</Tip>
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.mycentralino.com/v1/whatsapp/campaigns" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Offerta di primavera",
+      "from": "+390212345678",
+      "template": {"name": "offerta_primavera", "language": "it"},
+      "variables": {
+          "body.1": {"per_recipient": true, "fallback": "Cliente"},
+          "body.2": "20%"
+      }
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'name' => 'Offerta di primavera',
+    'from' => '+390212345678',
+    'template' => ['name' => 'offerta_primavera', 'language' => 'it'],
+    'variables' => [
+        'body.1' => ['per_recipient' => true, 'fallback' => 'Cliente'],
+        'body.2' => '20%'
+    ]
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/campaigns');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+data = {
+    "name": "Offerta di primavera",
+    "from": "+390212345678",
+    "template": {"name": "offerta_primavera", "language": "it"},
+    "variables": {
+        "body.1": {"per_recipient": True, "fallback": "Cliente"},
+        "body.2": "20%"
+    }
+}
+response = requests.post('https://api.mycentralino.com/v1/whatsapp/campaigns', headers=headers, json=data)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`201 Created`
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 48,
+    "name": "Offerta di primavera",
+    "status": "draft",
+    "reason": null,
+    "from": "+390212345678",
+    "template": {
+      "name": "offerta_primavera",
+      "language": "it"
+    },
+    "created_by": "api",
+    "scheduled_at": null,
+    "started_at": null,
+    "finished_at": null,
+    "created_at": "2026-11-19T19:40:11+01:00"
+  }
+}
+```
+
+I campi sono spiegati in [Elenco campagne](/mycentralino-api/whatsapp-campaigns-list#campi-della-campagna). Conserva l'`id`: serve per tutte le chiamate successive.
+
+<Warning>
+Questa chiamata non accetta `Idempotency-Key`: se la ripeti nasce una **seconda bozza**. Se non sai se la prima è andata a buon fine, controlla con [GET /v1/whatsapp/campaigns](/mycentralino-api/whatsapp-campaigns-list) prima di riprovare. Una bozza in più non manda niente e si elimina con [`cancel`](/mycentralino-api/whatsapp-campaigns-cancel).
+</Warning>
+
+## Il flusso completo
+
+<Steps>
+  <Step title="Crea la bozza">
+    `POST /v1/whatsapp/campaigns` con nome, numero, template e variabili. Ricevi l'`id`.
+  </Step>
+  <Step title="Aggiungi i destinatari">
+    [`POST /v1/whatsapp/campaigns/{id}/recipients`](/mycentralino-api/whatsapp-campaigns-recipients), a blocchi di fino a 1000, con i valori per destinatario. Chi ha chiesto di non ricevere promozioni viene escluso da solo.
+  </Step>
+  <Step title="Lancia">
+    [`POST /v1/whatsapp/campaigns/{id}/launch`](/mycentralino-api/whatsapp-campaigns-launch) con `"consent": true` e `"costs": true`, subito o con un'ora di partenza. Il titolare dell'account riceve un'email.
+  </Step>
+  <Step title="Segui l'andamento">
+    [`GET /v1/whatsapp/campaigns/{id}`](/mycentralino-api/whatsapp-campaigns-detail) per stato e statistiche, oppure i [webhook](/mycentralino-api/whatsapp-webhooks) `message.status` per l'esito di ogni messaggio. Le risposte dei clienti arrivano come `message.received`.
+  </Step>
+</Steps>
+
+Un esempio dall'inizio alla fine, con la campagna `48` creata qui sopra:
+
+```bash
+# 1 · Bozza (risposta: "id": 48)
+curl -X POST "https://api.mycentralino.com/v1/whatsapp/campaigns" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" -H "Content-Type: application/json" \
+  -d '{"name": "Offerta di primavera", "from": "+390212345678",
+       "template": {"name": "offerta_primavera", "language": "it"},
+       "variables": {"body.1": {"per_recipient": true, "fallback": "Cliente"}, "body.2": "20%"}}'
+
+# 2 · Destinatari
+curl -X POST "https://api.mycentralino.com/v1/whatsapp/campaigns/48/recipients" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" -H "Content-Type: application/json" \
+  -d '{"recipients": [
+        {"phone": "+393331234567", "name": "Mario Rossi", "variables": {"body.1": "Mario"}},
+        {"phone": "+393337654321", "name": "Giulia Bianchi", "variables": {"body.1": "Giulia"}}
+      ]}'
+
+# 3 · Lancio, domani alle 10:00 ora italiana
+curl -X POST "https://api.mycentralino.com/v1/whatsapp/campaigns/48/launch" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" -H "Content-Type: application/json" \
+  -d '{"consent": true, "costs": true, "scheduled_at": "2026-11-20 10:00"}'
+
+# 4 · Andamento
+curl "https://api.mycentralino.com/v1/whatsapp/campaigns/48" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+<Note>
+Meta fa pagare i messaggi promozionali, sul metodo di pagamento collegato all'account WhatsApp Business. Il costo lo stabilisce Meta, non MyCentralino. Per questo il lancio chiede una dichiarazione esplicita.
+</Note>
+
+## Errori
+
+### 422 - invalid_name
+Manca `name`, è vuoto o supera i 120 caratteri.
+
+### 400 - number_required
+L'account ha più numeri collegati e manca `from`. La risposta elenca i numeri in `error.numbers`.
+
+### 400 - invalid_from
+`from` non è un numero valido. Usa il formato `+E.164`, per esempio `+390212345678`.
+
+### 404 - number_not_found
+`from` non è un numero collegato a MyFlow su questo account.
+
+### 422 - invalid_template
+Manca `template`, oppure non è un oggetto con `name`.
+
+### 422 - template_language_required
+Il template esiste in più lingue: indica `language`. La risposta elenca le lingue disponibili in `error.languages`.
+
+### 422 - template_not_found
+Su quel numero non c'è un template promozionale (`MARKETING`) approvato con questo nome e lingua. Controlla nome, lingua, categoria e stato in [GET /v1/whatsapp/templates](/mycentralino-api/whatsapp-templates-list): un template di servizio (`UTILITY`) o ancora in revisione non si può usare.
+
+### 422 - template_not_usable
+Il template ha un'immagine, un video o un documento nell'intestazione, oppure parti che via API non si possono riempire: una posizione nell'intestazione, un carosello, un'offerta a tempo, pulsanti di tipo diverso da risposta rapida, link o telefono. Scegli un altro template.
+
+### 422 - campaign_variables
+Le variabili non corrispondono al template. L'errore aggiunge:
+
+| Campo | Contenuto |
+|-------|-----------|
+| `expected` | Tutte le chiavi che il template vuole |
+| `missing` | Le chiavi che mancano |
+| `unknown` | Le chiavi mandate che il template non ha |
+| `invalid` | Le chiavi con un valore non valido: testo vuoto o oltre 1024 caratteri, `fallback` vuoto o oltre 120 caratteri |
+
+Capita anche se `variables` non è un oggetto.
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "campaign_variables",
+    "message": "Le variabili non corrispondono al template. Ogni variabile vuole un testo, o \"per_recipient\": true con un \"fallback\" (al massimo 120 caratteri).",
+    "expected": ["body.1", "body.2"],
+    "missing": ["body.2"]
+  }
+}
+```
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

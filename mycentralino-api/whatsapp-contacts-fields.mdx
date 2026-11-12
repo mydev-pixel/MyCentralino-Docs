@@ -1,0 +1,97 @@
+---
+title: "Tag e date dei contatti"
+description: "I tag e le date personalizzate che puoi assegnare ai contatti"
+---
+
+# GET /v1/whatsapp/contacts/fields
+
+Restituisce i **tag** e le **date personalizzate** definiti sull'account. Sono gli unici valori che puoi usare nei campi `tags` e `dates` di [PUT /v1/whatsapp/contacts/\{phone\}](/mycentralino-api/whatsapp-contacts-update) e di [POST /v1/whatsapp/contacts/bulk](/mycentralino-api/whatsapp-contacts-bulk), e nel filtro `tag` di [GET /v1/whatsapp/contacts](/mycentralino-api/whatsapp-contacts-list).
+
+Leggila prima di scrivere i contatti, e ogni volta che un aggiornamento risponde `invalid_tags` o `invalid_dates`.
+
+<Note>
+L'API non crea tag né date: si definiscono nel pannello, in **MyFlow → Impostazioni**, nelle card **Tag contatti** e **Date dei contatti**. Così l'elenco resta quello che il team usa davvero in Inbox, Campagne e Automatismi.
+</Note>
+
+## Parametri
+
+Nessuno.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/whatsapp/contacts/fields" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/contacts/fields');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get('https://api.mycentralino.com/v1/whatsapp/contacts/fields', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": {
+    "tags": [
+      { "id": 11, "name": "VIP" },
+      { "id": 12, "name": "Cliente" },
+      { "id": 15, "name": "Da richiamare" }
+    ],
+    "dates": [
+      { "id": 3, "name": "Scadenza contratto" },
+      { "id": 4, "name": "Ultima revisione" }
+    ]
+  }
+}
+```
+
+Se sull'account non è stato definito niente, `tags` e `dates` sono elenchi vuoti.
+
+## Campi
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `tags` | object[] | I tag, nell'ordine in cui sono stati creati |
+| `tags[].id` | int | Identificativo del tag |
+| `tags[].name` | string | Nome del tag, fino a 40 caratteri |
+| `dates` | object[] | Le date personalizzate (al massimo 5 per account), nell'ordine in cui sono state create |
+| `dates[].id` | int | Identificativo della data |
+| `dates[].name` | string | Nome della data, fino a 40 caratteri, per esempio «Scadenza contratto» |
+
+## Come si usano
+
+- **Tag:** nelle scritture e nel filtro puoi indicare il **nome** (senza distinzione tra maiuscole e minuscole) o l'**id**. Il nome è più leggibile; l'id non cambia se qualcuno rinomina il tag nel pannello.
+- **Date:** in `dates` la chiave è il **nome** della data (senza distinzione tra maiuscole e minuscole) o il suo **id**, e il valore è una data `YYYY-MM-DD`. Le date personalizzate servono soprattutto agli Automatismi di MyFlow, per esempio un messaggio qualche giorno prima di una scadenza.
+- Il **compleanno** non è una data personalizzata: ha un campo suo, `birthday`.
+
+Se un tag viene eliminato dal pannello, i contatti lo perdono. Se viene rinominato, le schede restano collegate e nelle letture compare il nome nuovo.
+
+## Errori
+
+Questa rotta non ha errori propri.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

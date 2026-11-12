@@ -1,0 +1,186 @@
+---
+title: "Storico di una conversazione"
+description: "I messaggi WhatsApp scambiati con un cliente, dal più recente, a pagine"
+---
+
+# GET /v1/whatsapp/conversations/\{phone\}/messages
+
+Restituisce i messaggi WhatsApp scambiati tra un tuo numero e un cliente, dal più recente al più vecchio, 50 alla volta. Ci sono i messaggi del cliente e tutti quelli partiti verso di lui: dall'Inbox, dall'app WhatsApp Business sul telefono, dall'agente AI, dalle risposte automatiche, dalle Campagne, dal centralino e dal gestionale. Per ognuno `author` dice chi l'ha scritto.
+
+Serve a mostrare nel gestionale la conversazione di un cliente, anche quella passata, o a recuperare i messaggi persi se il tuo server non ha ricevuto qualche [webhook](/mycentralino-api/whatsapp-webhooks). La risposta dice anche se la finestra delle 24 ore è aperta, cioè se adesso puoi rispondere con un testo libero.
+
+## Parametri
+
+| Parametro | Dove | Tipo | Obbligatorio | Descrizione |
+|-----------|------|------|--------------|-------------|
+| `phone` | path | string | ✅ | Il numero del cliente, da 8 a 15 cifre con o senza `+` davanti (es. `+393331234567` oppure `393331234567`). Nell'indirizzo il `+` si può scrivere anche come `%2B` |
+| `from` | query | string | dipende | Il tuo numero, in formato +E.164. **Obbligatorio** se l'account ha più numeri: ogni numero ha le sue conversazioni |
+| `before` | query | string | ❌ | Il cursore per la pagina successiva: il valore di `pagination.next_before` della risposta precedente |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/whatsapp/conversations/%2B393331234567/messages?from=%2B390212345678" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$phone = rawurlencode('+393331234567');
+$query = http_build_query(['from' => '+390212345678']);
+$ch = curl_init("https://api.mycentralino.com/v1/whatsapp/conversations/{$phone}/messages?{$query}");
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => ['X-API-KEY: sk_mycentralino_your_api_key']
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+url = 'https://api.mycentralino.com/v1/whatsapp/conversations/%2B393331234567/messages'
+params = {'from': '+390212345678'}
+messages = []
+while True:
+    page = requests.get(url, headers=headers, params=params).json()
+    messages += page['data']
+    if not page['pagination']['has_more']:
+        break
+    params['before'] = page['pagination']['next_before']
+print(len(messages))
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": "wamid.HBgMMzkzMzMxMjM0NTY3FQIAEhgUM0E4QjVDMkQxRjk0RTZBNzBCMTIA",
+      "direction": "in",
+      "type": "text",
+      "text": "Perfetto, grazie. A giovedì.",
+      "template": null,
+      "media": null,
+      "author": "customer",
+      "status": "received",
+      "error": null,
+      "timestamp": "2026-09-07T10:42:00+02:00"
+    },
+    {
+      "id": "wamid.HBgMMzkzMzMxMjM0NTY3FQIAERgSNkQ0RTdBMkM5RjFCOEUzQTQ1AA==",
+      "direction": "out",
+      "type": "template",
+      "text": "Gentile Mario Rossi, le ricordiamo l'appuntamento di giovedì 17 settembre alle 10:00 presso Studio Rossi.",
+      "template": "promemoria_appuntamento",
+      "media": null,
+      "author": "crm",
+      "status": "read",
+      "error": null,
+      "timestamp": "2026-09-07T09:15:03+02:00"
+    },
+    {
+      "id": "wamid.HBgMMzkzMzMxMjM0NTY3FQIAEhgUM0VCMEQ1QTk4QzE3RjI2NDQ5ODEA",
+      "direction": "in",
+      "type": "image",
+      "text": "[immagine] La ricetta del medico",
+      "template": null,
+      "media": {
+        "type": "image",
+        "mime": "image/jpeg",
+        "filename": null
+      },
+      "author": "customer",
+      "status": "received",
+      "error": null,
+      "timestamp": "2026-09-01T17:03:41+02:00"
+    }
+  ],
+  "conversation": {
+    "window_open": true,
+    "window_expires_at": "2026-09-08T10:42:00+02:00"
+  },
+  "pagination": {
+    "next_before": "184213",
+    "has_more": true
+  }
+}
+```
+
+Se con quel cliente non c'è nessuna conversazione da questo numero, la risposta è `200` con `data` vuoto e `conversation` `null`:
+
+```json
+{
+  "success": true,
+  "data": [],
+  "conversation": null,
+  "pagination": { "next_before": null, "has_more": false }
+}
+```
+
+## Campi del messaggio
+
+Il messaggio ha lo stesso formato dentro i [webhook](/mycentralino-api/whatsapp-webhooks) `message.received` e `message.sent`.
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `id` | string \| null | L'ID WhatsApp del messaggio (`wamid.…`). È il `message_id` dell'[invio](/mycentralino-api/whatsapp-messages-send) e l'`id` degli stati di consegna. `null` se WhatsApp non ha assegnato un ID al messaggio |
+| `direction` | string | `in` (dal cliente) oppure `out` (verso il cliente) |
+| `type` | string | Il tipo di messaggio. I più comuni: `text`, `template`, `image`, `video`, `audio`, `document`, `sticker`, `media` (un allegato di cui non c'è il file), `location`, `contacts`, `interactive` (risposta a un bottone o a un elenco). Possono comparire anche `order`, `unsupported` (un tipo che WhatsApp non inoltra) e `unknown`: trattali come messaggi da guardare nel pannello |
+| `text` | string \| null | Il testo del messaggio. Per un template è il testo con le variabili già riempite. Per allegati e altri tipi è una descrizione tra parentesi quadre, seguita dalla didascalia o dal nome del file se ci sono: `[immagine] La ricetta del medico`, `[audio]`, `[documento] referto.pdf`, `[posizione]`, `[contatto]`. Per la risposta a un bottone è il testo del bottone. `null` se non c'è testo |
+| `template` | string \| null | Il nome del template, solo per i messaggi di tipo `template` |
+| `media` | object \| null | Per immagini, video, audio, documenti, sticker e `media`: `type`, `mime` (es. `image/jpeg`) e `filename` (il nome del file, per i documenti). Il file non si scarica dall'API |
+| `author` | string | Chi l'ha scritto (vedi sotto) |
+| `status` | string | `received` per i messaggi del cliente. Per quelli inviati: `sent` (partito), `delivered` (consegnato sul telefono), `read` (letto), `failed` (non consegnato) |
+| `error` | object \| null | Solo per gli invii non riusciti: `code` (il codice di Meta) e `title` (la spiegazione in italiano) |
+| `timestamp` | string | Data e ora del messaggio in ISO 8601 con offset, ora italiana |
+
+## Chi ha scritto: `author`
+
+| `author` | Chi è |
+|----------|-------|
+| `customer` | Il cliente |
+| `operator` | Una persona dall'Inbox di MyFlow |
+| `phone_app` | Una persona dall'app WhatsApp Business sul telefono |
+| `ai` | L'agente AI di MyFlow |
+| `automation` | Una risposta automatica di MyFlow, per esempio fuori orario o un automatismo |
+| `campaign` | Una campagna di MyFlow |
+| `pbx` | Il centralino: una sua notifica automatica |
+| `crm` | Il gestionale, con questa API |
+| `other` | Altro: messaggi inviati fuori da MyCentralino, o importati dallo storico quando il numero è stato collegato |
+
+## Campi di `conversation`
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `window_open` | bool | `true` se il cliente ha scritto nelle ultime 24 ore: adesso puoi rispondere con `type` `text` |
+| `window_expires_at` | string \| null | Quando la finestra si chiude: 24 ore dopo l'ultimo messaggio del cliente, in ISO 8601 con offset. Se è nel passato la finestra è chiusa. `null` se il cliente non ha mai scritto |
+
+## Paginazione
+
+- Le pagine sono di 50 messaggi, dal più recente.
+- Se `pagination.has_more` è `true`, ci sono messaggi più vecchi. Per leggerli ripeti la chiamata con `before` uguale a `pagination.next_before`.
+- `next_before` è un cursore opaco: usalo così com'è, senza calcolarlo.
+- I messaggi tecnici (modifiche, revoche, avvisi di sistema) non compaiono.
+
+## Errori
+
+### 400 - invalid_phone
+Il numero del cliente nell'indirizzo non è valido.
+
+### 400 - invalid_cursor
+`before` non è un cursore valido oppure appartiene a un'altra conversazione. Usa il valore di `pagination.next_before` restituito per questo stesso cliente e numero.
+
+### 400 - number_required / invalid_from · 404 - number_not_found
+`from` manca con più numeri, non è valido o non è collegato all'account. Vedi l'[elenco dei template](/mycentralino-api/whatsapp-templates-list#errori).
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

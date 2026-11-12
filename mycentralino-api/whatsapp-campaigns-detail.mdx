@@ -1,0 +1,127 @@
+---
+title: "Dettaglio campagna"
+description: "Stato e statistiche di una campagna WhatsApp: in coda, inviati, consegnati, letti, risposte, errori, esclusi"
+---
+
+# GET /v1/whatsapp/campaigns/\{id\}
+
+Restituisce una campagna con il suo stato e le statistiche complete. Usalo dopo il [lancio](/mycentralino-api/whatsapp-campaigns-launch) per seguire l'andamento, o per capire perché una campagna sta aspettando o si è fermata (`reason`).
+
+I numeri si aggiornano mentre la campagna invia e anche dopo: consegne, letture, risposte e richieste di STOP arrivano nei minuti e nei giorni successivi. Per non interrogare di continuo, rileggi ogni qualche minuto mentre è `sending` e più di rado dopo. Per l'esito di ogni singolo messaggio usa i [webhook](/mycentralino-api/whatsapp-webhooks) `message.status`.
+
+## Parametri
+
+| Parametro | Tipo | Obbligatorio | Descrizione |
+|-----------|------|--------------|-------------|
+| `id` | int | ✅ | ID della campagna (nel percorso) |
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/whatsapp/campaigns/48" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/campaigns/48');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => ['X-API-KEY: sk_mycentralino_your_api_key']
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+response = requests.get('https://api.mycentralino.com/v1/whatsapp/campaigns/48', headers=headers)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 48,
+    "name": "Offerta di primavera",
+    "status": "sending",
+    "reason": null,
+    "from": "+390212345678",
+    "template": {
+      "name": "offerta_primavera",
+      "language": "it"
+    },
+    "created_by": "api",
+    "scheduled_at": "2026-11-20T10:00:00+01:00",
+    "started_at": "2026-11-20T10:00:03+01:00",
+    "finished_at": null,
+    "created_at": "2026-11-19T19:40:11+01:00",
+    "stats": {
+      "total": 1250,
+      "queued": 912,
+      "sent": 318,
+      "delivered": 298,
+      "read": 201,
+      "replied": 12,
+      "failed": 4,
+      "skipped": 18,
+      "opted_out": 2,
+      "uncertain": 0
+    }
+  }
+}
+```
+
+I campi della campagna (`status`, `reason`, date…) sono spiegati in [Elenco campagne](/mycentralino-api/whatsapp-campaigns-list#campi-della-campagna), con la tabella degli [stati](/mycentralino-api/whatsapp-campaigns-list#stati).
+
+## Statistiche (`stats`)
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `total` | int | Tutti i destinatari della campagna, compresi gli esclusi |
+| `queued` | int | Ancora da inviare |
+| `sent` | int | Accettati da Meta: è il primo passo, comprende anche quelli finiti poi in errore di consegna |
+| `delivered` | int | Arrivati sul telefono (compresi quelli già letti) |
+| `read` | int | Letti. Se il cliente ha disattivato le conferme di lettura su WhatsApp, il messaggio resta solo consegnato |
+| `replied` | int | Destinatari che hanno scritto entro 72 ore dall'invio |
+| `failed` | int | Non riusciti: numero senza WhatsApp, rifiuto di Meta, errore di consegna |
+| `skipped` | int | Esclusi senza invio: avevano chiesto di non ricevere promozioni (STOP), avevano già ricevuto una promozione da poco (regola **Limite per contatto**), oppure erano in coda quando la campagna è stata annullata |
+| `opted_out` | int | Destinatari che, dopo aver ricevuto questa campagna, hanno chiesto di non ricevere più promozioni |
+| `uncertain` | int | Invii di cui Meta non ha confermato l'esito in tempo. Non vengono ripetuti, per non mandare lo stesso messaggio due volte |
+
+<Note>
+In [Elenco campagne](/mycentralino-api/whatsapp-campaigns-list) `counts.sent` conta solo i messaggi accettati e non finiti in errore. Qui `stats.sent` conta tutti quelli accettati da Meta. Per questo i due numeri possono differire di qualche unità.
+</Note>
+
+## Perché una campagna aspetta o si ferma
+
+Quando una campagna è `sending` ma non invia, o è `stopped`, il campo `reason` lo spiega in italiano. I casi più comuni:
+
+| Situazione | Stato | Cosa succede |
+|------------|-------|--------------|
+| Fuori dalla **fascia di invio** dell'account | `sending` | Aspetta e riparte da sola all'apertura. La fascia (giorni e orari, ora italiana) si imposta in MyFlow → **Impostazioni** → **Regole di invio** |
+| Raggiunto il **limite giornaliero di Meta** del numero | `sending` | Riprende da sola quando si libera |
+| Meta momentaneamente non risponde | `sending` | Riprova da sola poco dopo |
+| Template disattivato, sospeso o non più approvato da Meta | `stopped` | Va ripresa dal pannello dopo aver risolto, oppure annullata |
+| Numero che invia scollegato o senza permessi | `stopped` | Ricollega il numero, poi riprendi dal pannello |
+| Problema con il metodo di pagamento dell'account WhatsApp | `stopped` | Sistemalo su Meta, poi riprendi dal pannello |
+| Troppi invii non riusciti | `stopped` | Controlla numeri e messaggio prima di riprendere |
+
+La ripresa e la pausa si fanno solo dal pannello, in MyFlow → **Campagne**. Via API una campagna ferma si può solo [annullare](/mycentralino-api/whatsapp-campaigns-cancel).
+
+## Errori
+
+### 404 - campaign_not_found
+Non c'è una campagna con questo `id` su questo account. Le campagne degli **Automatismi** non sono raggiungibili via API e rispondono allo stesso modo.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

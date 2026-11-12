@@ -292,6 +292,53 @@
               "mycentralino-api/calendar-blocks-delete",
               "mycentralino-api/calendar-webhooks"
             ]
+          },
+          {
+            "group": "WhatsApp (MyFlow API)",
+            "pages": [
+              "mycentralino-api/whatsapp-introduction",
+              "mycentralino-api/whatsapp-numbers",
+              {
+                "group": "Messaggi e template",
+                "pages": [
+                  "mycentralino-api/whatsapp-messages-send",
+                  "mycentralino-api/whatsapp-conversation-history",
+                  "mycentralino-api/whatsapp-templates-list",
+                  "mycentralino-api/whatsapp-templates-create"
+                ]
+              },
+              {
+                "group": "Contatti",
+                "pages": [
+                  "mycentralino-api/whatsapp-contacts-list",
+                  "mycentralino-api/whatsapp-contacts-detail",
+                  "mycentralino-api/whatsapp-contacts-update",
+                  "mycentralino-api/whatsapp-contacts-bulk",
+                  "mycentralino-api/whatsapp-contacts-delete",
+                  "mycentralino-api/whatsapp-contacts-fields"
+                ]
+              },
+              {
+                "group": "Campagne",
+                "pages": [
+                  "mycentralino-api/whatsapp-campaigns-create",
+                  "mycentralino-api/whatsapp-campaigns-recipients",
+                  "mycentralino-api/whatsapp-campaigns-launch",
+                  "mycentralino-api/whatsapp-campaigns-detail",
+                  "mycentralino-api/whatsapp-campaigns-list",
+                  "mycentralino-api/whatsapp-campaigns-cancel"
+                ]
+              },
+              {
+                "group": "Agenti AI",
+                "pages": [
+                  "mycentralino-api/whatsapp-agents-list",
+                  "mycentralino-api/whatsapp-agents-attach",
+                  "mycentralino-api/whatsapp-agents-detach"
+                ]
+              },
+              "mycentralino-api/whatsapp-webhooks"
+            ]
           }
         ]
       }

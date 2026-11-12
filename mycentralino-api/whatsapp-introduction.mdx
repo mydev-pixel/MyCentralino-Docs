@@ -1,0 +1,172 @@
+---
+title: "WhatsApp: introduzione"
+description: "MyFlow API: il tuo gestionale o CRM manda messaggi WhatsApp, riceve quelli dei clienti, legge lo storico e gestisce template, campagne, contatti e Agenti AI di MyFlow"
+---
+
+# WhatsApp via API (MyFlow API)
+
+Con **MyFlow API** il tuo gestionale o CRM lavora sullo stesso WhatsApp di MyFlow, quello che i tuoi operatori usano nel pannello. Il gestionale può:
+
+- **mandare messaggi** ai clienti dai numeri WhatsApp dell'azienda: testo libero per rispondere, template per scrivere per primo;
+- **ricevere i messaggi** dei clienti appena arrivano, con i [webhook](/mycentralino-api/whatsapp-webhooks), insieme agli esiti di consegna e lettura;
+- **leggere lo storico** della conversazione con un cliente, anche quella passata;
+- **creare template** e sapere quando Meta li approva o li rifiuta;
+- **lanciare campagne** marketing verso molti contatti;
+- **tenere allineati i contatti**: nomi, etichette e campi personalizzati;
+- **accendere e spegnere gli Agenti AI** di MyFlow su un numero.
+
+È tutto lo stesso MyFlow, non una copia. Un messaggio mandato dal gestionale compare nella conversazione in MyFlow con la nota «inviato dal gestionale (API)». Un contatto modificato via API è già modificato in MyFlow → Contatti. Una campagna lanciata via API si vede, si mette in pausa e si annulla da MyFlow → Campagne.
+
+## Cosa serve
+
+<Steps>
+  <Step title="Il piano MyFlow">
+    MyFlow API si aggiunge a **MyFlow** e non funziona senza.
+  </Step>
+  <Step title="Il modulo MyFlow API">
+    Si attiva da MyFlow → **Impostazioni** → zona **Collegamento col gestionale** → **Attiva MyFlow API** (`https://cloud.mycentralino.com/myflow/impostazioni`). Lo attiva un amministratore di MyFlow.
+  </Step>
+  <Step title="Un numero WhatsApp collegato e le condizioni accettate">
+    Serve almeno un numero WhatsApp collegato a MyFlow, con le condizioni del servizio WhatsApp accettate dal pannello. Lo stesso vale per usare MyFlow dal pannello.
+  </Step>
+  <Step title="Una chiave API con WhatsApp">
+    Vai su **Il tuo abbonamento** → **Chiavi API** (`https://cloud.mycentralino.com/account/chiavi-api`) → **Nuova chiave**. In **Cosa può fare la chiave** scegli **Solo WhatsApp** oppure **Centralino e WhatsApp**, poi premi **Crea chiave**.
+  </Step>
+</Steps>
+
+<Note>
+**Cosa può fare la chiave** compare solo quando il modulo MyFlow API è attivo, e solo al titolare o a un amministratore di MyFlow: una chiave con WhatsApp legge le conversazioni dei clienti. Quando ne nasce una, il titolare dell'account riceve un'email.
+</Note>
+
+## Le chiavi e cosa possono fare
+
+Ogni chiave ha un ambito, scelto quando la crei. Non si cambia dopo: per un ambito diverso si crea una chiave nuova.
+
+| Scelta nel pannello | `/v1/whatsapp/*` | Tutte le altre rotte (interni, chiamate, rubrica, calendario…) |
+|---|---|---|
+| **Centralino** | ❌ `403 scope_not_allowed` | ✅ |
+| **Solo WhatsApp** | ✅ | ❌ `403 scope_not_allowed` |
+| **Centralino e WhatsApp** | ✅ | ✅ |
+
+Tutte le chiavi create prima di MyFlow API valgono come **Centralino**: non aprono WhatsApp.
+
+<Tip>
+Al gestionale che usa solo WhatsApp dai una chiave **Solo WhatsApp**. Se la chiave finisce nelle mani sbagliate, almeno non serve a far partire chiamate.
+</Tip>
+
+## Base URL e autenticazione
+
+Come tutta l'API:
+
+```
+https://api.mycentralino.com
+```
+
+La chiave va nell'header `X-API-KEY` di ogni richiesta. Il body, quando c'è, è JSON con `Content-Type: application/json` e al massimo 64 KB.
+
+```bash
+curl "https://api.mycentralino.com/v1/whatsapp/numbers" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+## Limiti di richieste
+
+Valgono i [limiti dell'API](/mycentralino-api/introduction#rate-limiting): sono **per account** e li condividono tutte le chiavi, anche quelle **Centralino**. Gli header `X-RateLimit-*` di ogni risposta dicono quante richieste restano. Oltre il limite si riceve `429` con l'header `Retry-After`.
+
+Per i messaggi c'è anche un **tetto giornaliero di invii via API** per account: oltre il tetto [POST /v1/whatsapp/messages](/mycentralino-api/whatsapp-messages-send) risponde `429 daily_send_limit`. Per scrivere a molti contatti si usano le [campagne](/mycentralino-api/whatsapp-campaigns-create), che hanno i loro limiti e la loro fascia di invio.
+
+## Convenzioni
+
+- **Risposte:** `{"success": true, "data": …}`, a volte con campi in più accanto a `data` (`pagination`, `duplicate`, `conversation`…). Gli errori hanno la forma `{"success": false, "error": {"code": "…", "message": "…"}}` e possono portare altri campi utili dentro `error`, per esempio l'elenco dei numeri quando manca `from`.
+- **`code` è stabile, `message` no.** Il programma decide guardando `code`. `message` è in italiano piano e si può mostrare all'operatore così com'è.
+- **Numeri di telefono.** Nelle risposte sono sempre in formato internazionale con il `+`, senza spazi: `+393331234567`. In ingresso il formato consigliato è lo stesso. Sono accettati anche:
+  - il prefisso `00`;
+  - i numeri italiani senza prefisso (`3331234567`, `0212345678`), a cui si aggiunge `+39`.
+
+  Spazi e trattini nel body vengono ignorati. Nei percorsi (`/contacts/{phone}`) il numero è di sole cifre, con o senza `+` davanti (`+` oppure `%2B`).
+- **Il numero mittente (`from`).** Se l'account ha un solo numero WhatsApp collegato, `from` si può omettere. Con più numeri va indicato: senza, la risposta è `400 number_required` con l'elenco dei numeri in `error.numbers`. I numeri sono in [GET /v1/whatsapp/numbers](/mycentralino-api/whatsapp-numbers).
+- **Paginazione.** Gli elenchi lunghi sono a cursore: la risposta porta `pagination.next_before`. Lo passi come `before` nella richiesta successiva finché `has_more` non è `false`.
+- **`Idempotency-Key`.** È un header facoltativo, da 1 a 200 caratteri stampabili, senza spazi. Su [POST /v1/whatsapp/messages](/mycentralino-api/whatsapp-messages-send) ripetere la stessa chiamata con la stessa chiave restituisce lo stesso invio, con `duplicate: true`, invece di mandare un secondo messaggio. Mettila sempre se il tuo programma ripete le richieste dopo un errore di rete.
+
+## Le regole di WhatsApp
+
+Le pone Meta e valgono per tutti, dal pannello come dall'API:
+
+- **La finestra di 24 ore.** Puoi scrivere testo libero a un cliente solo entro 24 ore dal suo ultimo messaggio. Fuori finestra, o se il cliente non ti ha mai scritto, serve un **template** approvato da Meta.
+- **I template** sono messaggi con un testo fisso e variabili (`{{1}}`, `{{2}}`…), approvati da Meta prima dell'uso. Possono essere:
+  - `UTILITY`: avvisi e promemoria legati a un servizio già in corso;
+  - `MARKETING`: offerte e promozioni.
+- **I costi.** Meta fa pagare i messaggi template, e soprattutto i `MARKETING`, sull'account WhatsApp Business dell'azienda. Il metodo di pagamento si imposta su Meta.
+- **STOP.** Chi ha chiesto di non ricevere messaggi promozionali non riceve template `MARKETING`: l'invio diretto risponde `403 opted_out` e le campagne lo saltano.
+
+## Endpoint
+
+| Metodo | Endpoint | Cosa fa |
+|--------|----------|---------|
+| GET | [`/v1/whatsapp/numbers`](/mycentralino-api/whatsapp-numbers) | I numeri WhatsApp collegati a MyFlow |
+| GET | [`/v1/whatsapp/templates`](/mycentralino-api/whatsapp-templates-list) | I template di un numero |
+| POST | [`/v1/whatsapp/templates`](/mycentralino-api/whatsapp-templates-create) | Crea un template e lo manda in approvazione a Meta |
+| POST | [`/v1/whatsapp/messages`](/mycentralino-api/whatsapp-messages-send) | Manda un testo o un template a un cliente |
+| GET | [`/v1/whatsapp/conversations/{phone}/messages`](/mycentralino-api/whatsapp-conversation-history) | Lo storico della conversazione con un cliente |
+| GET | [`/v1/whatsapp/contacts`](/mycentralino-api/whatsapp-contacts-list) | I contatti, con ricerca e filtri |
+| GET | [`/v1/whatsapp/contacts/fields`](/mycentralino-api/whatsapp-contacts-fields) | Etichette e campi personalizzati disponibili |
+| GET | [`/v1/whatsapp/contacts/{phone}`](/mycentralino-api/whatsapp-contacts-detail) | Un contatto |
+| PUT | [`/v1/whatsapp/contacts/{phone}`](/mycentralino-api/whatsapp-contacts-update) | Crea o aggiorna un contatto |
+| DELETE | [`/v1/whatsapp/contacts/{phone}`](/mycentralino-api/whatsapp-contacts-delete) | Elimina la scheda di un contatto |
+| POST | [`/v1/whatsapp/contacts/bulk`](/mycentralino-api/whatsapp-contacts-bulk) | Crea o aggiorna molti contatti in una chiamata |
+| GET | [`/v1/whatsapp/campaigns`](/mycentralino-api/whatsapp-campaigns-list) | Le campagne |
+| POST | [`/v1/whatsapp/campaigns`](/mycentralino-api/whatsapp-campaigns-create) | Crea una campagna in bozza |
+| GET | [`/v1/whatsapp/campaigns/{id}`](/mycentralino-api/whatsapp-campaigns-detail) | Stato e numeri di una campagna |
+| POST | [`/v1/whatsapp/campaigns/{id}/recipients`](/mycentralino-api/whatsapp-campaigns-recipients) | Aggiunge i destinatari |
+| POST | [`/v1/whatsapp/campaigns/{id}/launch`](/mycentralino-api/whatsapp-campaigns-launch) | Lancia la campagna, subito o a una data |
+| POST | [`/v1/whatsapp/campaigns/{id}/cancel`](/mycentralino-api/whatsapp-campaigns-cancel) | Elimina la bozza o annulla la campagna |
+| GET | [`/v1/whatsapp/agents`](/mycentralino-api/whatsapp-agents-list) | Gli Agenti AI e i numeri su cui rispondono |
+| POST | [`/v1/whatsapp/agents/{id}/numbers`](/mycentralino-api/whatsapp-agents-attach) | Attiva un agente su un numero |
+| DELETE | [`/v1/whatsapp/agents/{id}/numbers/{phone}`](/mycentralino-api/whatsapp-agents-detach) | Disattiva un agente su un numero |
+
+I messaggi in arrivo, gli esiti di consegna e gli esiti dei template li spedisce MyFlow al gestionale con i [webhook](/mycentralino-api/whatsapp-webhooks). L'indirizzo si imposta nel pannello.
+
+## I casi più comuni
+
+### Rispondere ai clienti dal gestionale
+1. Imposta un [webhook](/mycentralino-api/whatsapp-webhooks) con l'evento `message.received`: a ogni messaggio di un cliente il gestionale riceve testo, numero e nome.
+2. Rispondi con [POST /v1/whatsapp/messages](/mycentralino-api/whatsapp-messages-send) e `"type": "text"`, entro 24 ore dall'ultimo messaggio del cliente.
+3. Per mostrare la conversazione intera leggi lo [storico](/mycentralino-api/whatsapp-conversation-history).
+
+### Mandare avvisi e promemoria
+1. Scegli un template `UTILITY` approvato con [GET /v1/whatsapp/templates](/mycentralino-api/whatsapp-templates-list), oppure [creane uno](/mycentralino-api/whatsapp-templates-create).
+2. Mandalo con [POST /v1/whatsapp/messages](/mycentralino-api/whatsapp-messages-send) e `"type": "template"`, riempiendo le variabili. Usa una `Idempotency-Key` legata al tuo appuntamento o ordine.
+3. Segui consegna e lettura con l'evento webhook `message.status`.
+
+### Una campagna a molti clienti
+[Crea la bozza](/mycentralino-api/whatsapp-campaigns-create), [aggiungi i destinatari](/mycentralino-api/whatsapp-campaigns-recipients), poi [lanciala](/mycentralino-api/whatsapp-campaigns-launch) dichiarando il consenso dei destinatari e la presa visione dei costi di Meta. L'andamento si legge con [`GET /v1/whatsapp/campaigns/{id}`](/mycentralino-api/whatsapp-campaigns-detail).
+
+### Tenere allineata l'anagrafica
+Quando nel gestionale cambia un cliente, aggiornalo con [`PUT /v1/whatsapp/contacts/{phone}`](/mycentralino-api/whatsapp-contacts-update). Per il primo allineamento usa [POST /v1/whatsapp/contacts/bulk](/mycentralino-api/whatsapp-contacts-bulk).
+
+### L'agente AI fuori orario
+Il gestionale può [attivare](/mycentralino-api/whatsapp-agents-attach) un Agente AI di MyFlow su un numero a fine giornata e [disattivarlo](/mycentralino-api/whatsapp-agents-detach) la mattina. Istruzioni e conoscenza dell'agente si preparano nel pannello, in MyFlow → **Agenti AI**.
+
+## Codici di errore
+
+Questi errori possono arrivare da qualsiasi rotta `/v1/whatsapp/*`. Gli errori propri di ogni rotta sono nella sua pagina.
+
+| `code` | HTTP | Quando | Cosa fare |
+|--------|------|--------|-----------|
+| `missing_api_key` | 401 | Manca l'header `X-API-KEY` | Manda la chiave in ogni richiesta |
+| `invalid_api_key` | 401 | Chiave sbagliata, revocata o eliminata | Controlla in **Chiavi API** che sia **Attiva** |
+| `scope_not_allowed` | 403 | La chiave non vale per WhatsApp: è **Centralino**, oppure è una chiave di prima | Crea una chiave **Solo WhatsApp** o **Centralino e WhatsApp** |
+| `myflow_required` | 403 | Il piano MyFlow non è attivo sull'account | Va attivato MyFlow |
+| `myflow_api_required` | 403 | Il modulo MyFlow API non è attivo | Si attiva da MyFlow → **Impostazioni** |
+| `account_blocked` | 403 | Il centralino è disattivato o sospeso | Va risolto dal pannello o con l'assistenza |
+| `whatsapp_not_linked` | 403 | Nessun numero WhatsApp collegato a MyFlow | Collega un numero dal pannello |
+| `terms_not_accepted` | 403 | Le condizioni del servizio WhatsApp non sono state accettate | Vanno accettate dal pannello |
+| `agents_not_enabled` | 403 | Solo sulle rotte `/agents`: gli Agenti AI non sono attivi sull'account | — |
+| `not_found` | 404 | Rotta inesistente | Controlla metodo e percorso |
+| `missing_body` | 400 | La rotta vuole un body JSON e non c'è | Manda un oggetto JSON, anche `{}` |
+| `invalid_json` | 400 | Il body non è un oggetto JSON valido (per esempio è una lista) | Correggi il JSON |
+| `body_too_large` | 413 | Body oltre i 64 KB | Dividi la richiesta: per esempio i destinatari a blocchi |
+| `minute_limit_exceeded`, `daily_limit_exceeded` | 429 | Troppe richieste per l'account | Aspetta i secondi di `Retry-After` |
+| `not_enabled` | 503 | MyFlow API momentaneamente sospesa | Riprova più tardi |
+| `internal_error` | 500 | Guasto nostro | Riprova fra poco. Per i messaggi usa la stessa `Idempotency-Key` |
+| `myflow_unavailable` | 502 | MyFlow non ha risposto in tempo | Riprova fra poco, come sopra |

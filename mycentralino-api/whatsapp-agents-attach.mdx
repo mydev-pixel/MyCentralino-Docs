@@ -1,0 +1,175 @@
+---
+title: "Attiva un agente su un numero"
+description: "Fa rispondere un Agente AI su un numero WhatsApp e, se era spento, lo accende"
+---
+
+# POST /v1/whatsapp/agents/\{id\}/numbers
+
+Attiva un Agente AI su un numero WhatsApp:
+
+1. aggiunge il numero a quelli dell'agente, e i numeri che aveva già restano;
+2. se l'agente era **spento**, lo **accende**.
+
+Da quel momento l'agente risponde ai clienti che scrivono a quel numero, nei suoi orari e con le sue regole. Serve, per esempio, al gestionale che vuole passare un numero all'agente la sera o durante le ferie, e riprenderlo con [DELETE /v1/whatsapp/agents/\{id\}/numbers/\{phone\}](/mycentralino-api/whatsapp-agents-detach).
+
+<Warning>
+Se l'agente era spento e aveva già altri numeri, accendendolo torna a rispondere **anche su quelli**. Controlla `numbers` con [GET /v1/whatsapp/agents](/mycentralino-api/whatsapp-agents-list) prima di attivarlo.
+</Warning>
+
+<Note>
+Un numero ha al massimo un agente. Se il numero è già servito da un altro agente dell'account, la richiesta viene rifiutata con `number_taken`, a meno che tu non chieda di spostarlo con `"move": true`.
+</Note>
+
+## Parametri
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `id` | int (path) | ✅ | L'`id` dell'agente, da [GET /v1/whatsapp/agents](/mycentralino-api/whatsapp-agents-list) |
+
+## Request Body
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `number` | string | ✅ | Uno dei numeri WhatsApp collegati a MyFlow, in formato internazionale (`+390212345678`), come in [GET /v1/whatsapp/numbers](/mycentralino-api/whatsapp-numbers) o in `free_numbers` |
+| `move` | bool | ❌ | `true` per spostare il numero su questo agente se oggi lo serve un altro agente dell'account. Predefinito `false`. Vale solo il booleano `true`: `"true"` o `1` contano come `false` |
+
+## Che cosa succede
+
+| Situazione | Esito |
+|------------|-------|
+| Numero libero, agente acceso | Il numero si aggiunge all'agente. `changed: true`, `switched_on: false` |
+| Numero libero, agente spento | Il numero si aggiunge e l'agente si accende. `changed: true`, `switched_on: true` |
+| Il numero è già di questo agente, acceso | Non cambia niente. `changed: false`, `switched_on: false` |
+| Il numero è già di questo agente, spento | L'agente si accende. `changed: true`, `switched_on: true` |
+| Il numero è di un altro agente, senza `move` | Rifiutato: `409 number_taken`, con il nome dell'altro agente |
+| Il numero è di un altro agente, con `"move": true` | Il numero passa a questo agente. L'altro agente perde solo quel numero e resta acceso o spento com'era |
+| Il numero è servito da un agente di un altro account MyCentralino | Rifiutato: `409 number_unavailable` |
+
+La richiesta si può ripetere senza effetti doppi: se l'agente è già attivo su quel numero risponde `changed: false`.
+
+Il metodo di pagamento su Meta si controlla solo quando il numero **si aggiunge** all'agente, anche quando lo sposti da un altro agente con `move`. Se il numero era già suo, non serve.
+
+Ogni attivazione che cambia qualcosa lascia una riga nel **Log attività** del pannello.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.mycentralino.com/v1/whatsapp/agents/7/numbers" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "number": "+390212345679"
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'number' => '+390212345679'
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/agents/7/numbers');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+url = 'https://api.mycentralino.com/v1/whatsapp/agents/7/numbers'
+r = requests.post(url, headers=headers, json={"number": "+390212345679"})
+if r.status_code == 409 and r.json()['error']['code'] == 'number_taken':
+    # il numero è di un altro agente: spostalo solo se è quello che vuoi
+    r = requests.post(url, headers=headers, json={"number": "+390212345679", "move": True})
+print(r.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`, con l'agente com'è dopo la modifica.
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 7,
+    "name": "Assistente Studio",
+    "enabled": true,
+    "active_now": true,
+    "schedule": {
+      "mode": "always"
+    },
+    "numbers": [
+      { "phone": "+390212345678", "name": "Studio Rossi" },
+      { "phone": "+390212345679", "name": "Studio Rossi Assistenza" }
+    ],
+    "knowledge_docs": 3,
+    "replies_7d": 42,
+    "switched_on": false,
+    "changed": true
+  }
+}
+```
+
+## Campi della risposta
+
+I campi dell'agente sono descritti in [Elenco Agenti AI](/mycentralino-api/whatsapp-agents-list#campi-di-ogni-agente). In più:
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `switched_on` | bool | `true` se l'agente era spento e questa richiesta l'ha acceso |
+| `changed` | bool | `true` se la richiesta ha cambiato qualcosa (numero aggiunto, agente acceso o tutti e due); `false` se era già tutto così |
+
+`active_now` può essere `false` anche subito dopo un'attivazione riuscita: succede quando l'agente ha delle fasce orarie e in questo momento è fuori orario. Comincerà a rispondere alla prossima fascia.
+
+## Errori
+
+### 400 - invalid_number
+`number` manca, non è una stringa o non è un numero di telefono riconoscibile. Esempio valido: `+390612345678`.
+
+### 404 - agent_not_found
+Non esiste un agente con questo `id` su questo account.
+
+### 404 - number_not_found
+Il numero non è tra quelli WhatsApp collegati a MyFlow su questo account. L'elenco è in [GET /v1/whatsapp/numbers](/mycentralino-api/whatsapp-numbers).
+
+### 409 - number_taken
+Il numero è già servito da un altro agente dell'account. Il messaggio ne dice il nome e `error.agent` lo identifica. Per spostarlo su questo agente, ripeti la richiesta con `"move": true`.
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "number_taken",
+    "message": "Il numero è servito dall'agente «Segreteria»: per spostarlo su questo agente manda \"move\": true.",
+    "agent": { "id": 9, "name": "Segreteria" }
+  }
+}
+```
+
+### 409 - number_unavailable
+Il numero è condiviso con un altro account MyCentralino, che ci ha già messo un suo agente. Da questo account non si può usare finché lì non viene tolto.
+
+### 409 - agent_update_failed
+Il numero è cambiato mentre la richiesta era in corso, per esempio perché qualcuno lo stava assegnando dal pannello nello stesso momento. Rileggi con [GET /v1/whatsapp/agents](/mycentralino-api/whatsapp-agents-list) e riprova.
+
+### 422 - payment_method_required
+Sull'account WhatsApp Business del numero manca il metodo di pagamento su Meta: va aggiunto da Meta prima di attivare l'agente. Lo stesso codice, con un messaggio diverso, arriva quando Meta non ha confermato il metodo di pagamento perché in quel momento non risponde: riprova fra qualche minuto. Dopo aver aggiunto il metodo di pagamento su Meta, può servire una decina di minuti prima che l'attivazione passi.
+
+### 403 - agents_not_enabled
+Gli Agenti AI non sono disponibili su questo account.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

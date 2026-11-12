@@ -333,8 +333,15 @@
                 "group": "Agenti AI",
                 "pages": [
                   "mycentralino-api/whatsapp-agents-list",
+                  "mycentralino-api/whatsapp-agents-detail",
+                  "mycentralino-api/whatsapp-agents-create",
+                  "mycentralino-api/whatsapp-agents-update",
                   "mycentralino-api/whatsapp-agents-attach",
-                  "mycentralino-api/whatsapp-agents-detach"
+                  "mycentralino-api/whatsapp-agents-detach",
+                  "mycentralino-api/whatsapp-agents-knowledge",
+                  "mycentralino-api/whatsapp-agents-knowledge-add",
+                  "mycentralino-api/whatsapp-agents-knowledge-update",
+                  "mycentralino-api/whatsapp-agents-knowledge-delete"
                 ]
               },
               "mycentralino-api/whatsapp-webhooks"

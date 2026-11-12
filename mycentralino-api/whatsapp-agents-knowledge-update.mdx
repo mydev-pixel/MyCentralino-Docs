@@ -1,0 +1,118 @@
+---
+title: "Modifica conoscenza"
+description: "Riscrive un testo o una domanda frequente della conoscenza di un Agente AI di MyFlow"
+---
+
+# PUT /v1/whatsapp/agents/\{id\}/knowledge/\{doc\}
+
+Riscrive un documento della [conoscenza](/mycentralino-api/whatsapp-agents-knowledge): un testo o una domanda frequente. Manda tutti i campi del suo tipo, anche quelli che non cambiano. L'agente usa la versione nuova dal messaggio successivo.
+
+Il tipo di un documento non cambia: per trasformare un testo in una FAQ, togli il testo e aggiungi la FAQ. Un **file** non si riscrive. Puoi [toglierlo](/mycentralino-api/whatsapp-agents-knowledge-delete) e caricarlo di nuovo dal pannello, oppure aggiungerne il contenuto come testo.
+
+## Parametri
+
+| Parametro | Tipo | Obbligatorio | Descrizione |
+|-----------|------|--------------|-------------|
+| `id` | int | ✅ | ID dell'agente, nel percorso |
+| `doc` | int | ✅ | ID del documento, nel percorso |
+
+## Request Body
+
+| Tipo del documento | Campi obbligatori |
+|--------------------|-------------------|
+| `text` | `title` (da 1 a 160 caratteri), `text` |
+| `faq` | `question` (da 1 a 500 caratteri), `answer` (da 1 a 4.000 caratteri) |
+
+`type` si può mandare, ma deve essere quello del documento.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X PUT "https://api.mycentralino.com/v1/whatsapp/agents/7/knowledge/31" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "question": "Che orari fate?",
+      "answer": "Dal lunedì al venerdì dalle 9 alle 19, il sabato dalle 9 alle 13."
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'question' => 'Che orari fate?',
+    'answer' => 'Dal lunedì al venerdì dalle 9 alle 19, il sabato dalle 9 alle 13.',
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/agents/7/knowledge/31');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'PUT',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+data = {
+    "question": "Che orari fate?",
+    "answer": "Dal lunedì al venerdì dalle 9 alle 19, il sabato dalle 9 alle 13."
+}
+response = requests.put('https://api.mycentralino.com/v1/whatsapp/agents/7/knowledge/31', headers=headers, json=data)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK` con il documento aggiornato, nella forma di [un documento](/mycentralino-api/whatsapp-agents-knowledge#un-documento).
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 31,
+    "type": "faq",
+    "title": "Che orari fate?",
+    "chars": 98,
+    "file_name": null,
+    "created_at": "2026-11-12T18:25:10+01:00",
+    "question": "Che orari fate?",
+    "answer": "Dal lunedì al venerdì dalle 9 alle 19, il sabato dalle 9 alle 13."
+  }
+}
+```
+
+Ogni modifica lascia una riga nel Log attività del pannello, con il titolo del documento.
+
+## Errori
+
+### 404 - agent_not_found / knowledge_not_found
+L'agente non esiste su questo account, oppure il documento non è di questo agente.
+
+### 409 - not_editable
+Il documento è un file: non si riscrive dall'API.
+
+### 422 - invalid_type
+`type` è diverso dal tipo del documento.
+
+### 422 - invalid_title / invalid_text / invalid_question / invalid_answer
+Campo mancante, vuoto o troppo lungo.
+
+### 422 - unknown_fields
+Un campo che non appartiene al tipo del documento.
+
+### 409 - knowledge_limit
+Con il nuovo testo la conoscenza dell'agente supererebbe i 200.000 caratteri.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

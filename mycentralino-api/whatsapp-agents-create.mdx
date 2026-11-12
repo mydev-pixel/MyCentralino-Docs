@@ -1,0 +1,193 @@
+---
+title: "Crea un agente"
+description: "Crea un Agente AI di MyFlow con nome, istruzioni, orari e regole di risposta"
+---
+
+# POST /v1/whatsapp/agents
+
+Crea un nuovo **Agente AI** di MyFlow, lo stesso che si crea dal pannello in **MyFlow → Agenti AI**. Gli dai un nome, le istruzioni su come rispondere ai clienti, gli orari e le regole di risposta.
+
+L'agente nasce **spento e senza numeri**: non risponde a nessuno finché non lo attivi su un numero con [`POST /v1/whatsapp/agents/{id}/numbers`](/mycentralino-api/whatsapp-agents-attach). Prima puoi dargli la [conoscenza](/mycentralino-api/whatsapp-agents-knowledge-add), cioè testi e domande frequenti.
+
+<Note>
+Il modello di intelligenza artificiale non si sceglie: è lo stesso per tutti gli agenti. Un campo `provider` o `model` nel body viene rifiutato con `unknown_fields`.
+</Note>
+
+## Request Body
+
+Solo `name` è obbligatorio. Ogni campo assente prende il valore di partenza del pannello.
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `name` | string | ✅ | Nome dell'agente, da 1 a 80 caratteri, su una riga |
+| `instructions` | string \| null | ❌ | Chi è l'agente e come deve rispondere: tono, cosa può dire, cosa non deve fare. Fino a 16.000 caratteri, anche su più righe. Vuoto o `null` = nessuna istruzione. Nel pannello: **Ruolo e istruzioni** |
+| `handoff_message` | string | ❌ | La frase che l'agente manda al cliente quando passa la conversazione a una persona. Da 1 a 500 caratteri. Di partenza: «Ti passo a un collega, ti risponderà appena possibile.» Nel pannello: **Frase di passaggio a un operatore** |
+| `schedule` | object | ❌ | Quando risponde: vedi [L'orario](#lorario). Di partenza: sempre, cioè **Sempre attivo** |
+| `max_replies` | int | ❌ | Quante risposte al massimo l'agente dà in una conversazione, poi passa a una persona. Da 1 a 50. Di partenza: 5. Nel pannello: **Interazioni massime** |
+| `reply_delay_seconds` | int | ❌ | Quanti secondi aspetta prima di rispondere, così un cliente che scrive più messaggi di seguito riceve una risposta sola. Da 5 a 600. Di partenza: 20. Nel pannello: **Attesa prima di rispondere** |
+| `human_pause_minutes` | int | ❌ | Per quanti minuti l'agente resta in silenzio in una conversazione dopo che una persona del team ha scritto al cliente. Da 0 a 1440. Di partenza: 30. Nel pannello: **Pausa dopo un operatore** |
+| `enabled` | boolean | ❌ | `true` per crearlo già acceso. Di partenza: `false`. Anche acceso, risponde solo sui numeri che gli assegni |
+
+**Tipi stretti:** i numeri sono interi JSON (`5`, non `"5"`) e `enabled` è `true` o `false`. Un campo che non è in tabella viene rifiutato con `unknown_fields`, così un errore di battitura non passa per salvato.
+
+### L'orario
+
+`schedule` ha la stessa forma che restituisce l'[elenco degli agenti](/mycentralino-api/whatsapp-agents-list):
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `mode` | string | `always`: risponde a qualunque ora. `slots`: risponde solo dentro le fasce |
+| `slots` | object | Le fasce della settimana: una chiave per giorno, da `mon` (lunedì) a `sun` (domenica). Un giorno assente o con elenco vuoto non ha fasce |
+| `slots.<giorno>[]` | object[] | Fino a 10 fasce al giorno, ognuna `{"from": "HH:MM", "to": "HH:MM"}`, con l'inizio prima della fine |
+
+- Gli orari sono in **ora italiana** e a 24 ore con due cifre: `09:00`, non `9:00`. L'inizio è compreso, la fine esclusa.
+- Con `mode: "slots"` serve almeno una fascia.
+- Con `mode: "always"` le fasce mandate vengono salvate ma non usate. Restano pronte per quando passerai a `slots`.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.mycentralino.com/v1/whatsapp/agents" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "Assistente Studio",
+      "instructions": "Sei l'\''assistente dello Studio Rossi. Rispondi in modo cortese e breve. Dai informazioni su orari, servizi e prezzi indicati nella conoscenza. Non prendere appuntamenti: per quelli passa a un collega.",
+      "handoff_message": "Ti passo a un collega dello Studio, ti risponderà appena possibile.",
+      "schedule": {
+        "mode": "slots",
+        "slots": {
+          "mon": [{"from": "18:00", "to": "23:59"}],
+          "sat": [{"from": "00:00", "to": "23:59"}],
+          "sun": [{"from": "00:00", "to": "23:59"}]
+        }
+      },
+      "max_replies": 8
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'name' => 'Assistente Studio',
+    'instructions' => "Sei l'assistente dello Studio Rossi. Rispondi in modo cortese e breve.",
+    'handoff_message' => 'Ti passo a un collega dello Studio, ti risponderà appena possibile.',
+    'schedule' => [
+        'mode' => 'slots',
+        'slots' => [
+            'mon' => [['from' => '18:00', 'to' => '23:59']],
+            'sat' => [['from' => '00:00', 'to' => '23:59']],
+            'sun' => [['from' => '00:00', 'to' => '23:59']],
+        ],
+    ],
+    'max_replies' => 8,
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/agents');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+data = {
+    "name": "Assistente Studio",
+    "instructions": "Sei l'assistente dello Studio Rossi. Rispondi in modo cortese e breve.",
+    "handoff_message": "Ti passo a un collega dello Studio, ti risponderà appena possibile.",
+    "schedule": {"mode": "slots", "slots": {
+        "mon": [{"from": "18:00", "to": "23:59"}],
+        "sat": [{"from": "00:00", "to": "23:59"}],
+        "sun": [{"from": "00:00", "to": "23:59"}]
+    }},
+    "max_replies": 8
+}
+response = requests.post('https://api.mycentralino.com/v1/whatsapp/agents', headers=headers, json=data)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`201 Created` con l'agente appena creato, nella stessa forma del [dettaglio](/mycentralino-api/whatsapp-agents-detail).
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 7,
+    "name": "Assistente Studio",
+    "enabled": false,
+    "active_now": false,
+    "schedule": {
+      "mode": "slots",
+      "slots": {
+        "mon": [{"from": "18:00", "to": "23:59"}],
+        "tue": [],
+        "wed": [],
+        "thu": [],
+        "fri": [],
+        "sat": [{"from": "00:00", "to": "23:59"}],
+        "sun": [{"from": "00:00", "to": "23:59"}]
+      }
+    },
+    "numbers": [],
+    "knowledge_docs": 0,
+    "replies_7d": 0,
+    "instructions": "Sei l'assistente dello Studio Rossi. Rispondi in modo cortese e breve. Dai informazioni su orari, servizi e prezzi indicati nella conoscenza. Non prendere appuntamenti: per quelli passa a un collega.",
+    "handoff_message": "Ti passo a un collega dello Studio, ti risponderà appena possibile.",
+    "max_replies": 8,
+    "reply_delay_seconds": 20,
+    "human_pause_minutes": 30,
+    "created_at": "2026-11-12T18:20:05+01:00",
+    "updated_at": "2026-11-12T18:20:05+01:00"
+  }
+}
+```
+
+I campi sono spiegati nel [dettaglio dell'agente](/mycentralino-api/whatsapp-agents-detail#campi-dellagente).
+
+## Dopo la creazione
+
+1. Aggiungi la conoscenza con [`POST /v1/whatsapp/agents/{id}/knowledge`](/mycentralino-api/whatsapp-agents-knowledge-add): orari, servizi, domande frequenti.
+2. Attivalo su un numero con [`POST /v1/whatsapp/agents/{id}/numbers`](/mycentralino-api/whatsapp-agents-attach), che lo accende anche.
+3. Per provarlo prima di attivarlo, apri l'agente nel pannello, in **MyFlow → Agenti AI**, e usa la card **Prova**.
+
+Ogni creazione lascia una riga nel Log attività del pannello, con il nome dell'agente. Il testo delle istruzioni non viene scritto.
+
+## Errori
+
+### 422 - invalid_name
+Manca `name`, oppure è vuoto, oltre gli 80 caratteri o su più righe.
+
+### 422 - invalid_instructions / invalid_handoff_message
+Testo non valido o troppo lungo: istruzioni fino a 16.000 caratteri, frase di passaggio da 1 a 500.
+
+### 422 - invalid_schedule
+`schedule` non ha la forma giusta. Il messaggio dice cosa correggere: un giorno sconosciuto, un orario non `HH:MM`, una fascia che finisce prima di cominciare, più di 10 fasce in un giorno, `mode: "slots"` senza fasce.
+
+### 422 - invalid_max_replies / invalid_reply_delay_seconds / invalid_human_pause_minutes
+Numero fuori dall'intervallo o non intero. L'errore porta `min` e `max`.
+
+### 422 - invalid_enabled
+`enabled` non è `true` o `false`.
+
+### 422 - unknown_fields
+Un campo che non esiste, `provider` e `model` compresi. L'errore elenca i campi sbagliati in `fields` e quelli ammessi in `allowed`.
+
+### 409 - agent_limit
+L'account ha già il numero massimo di agenti (10). Per crearne uno nuovo eliminane uno dal pannello.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

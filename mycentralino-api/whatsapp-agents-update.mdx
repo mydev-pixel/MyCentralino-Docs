@@ -1,0 +1,146 @@
+---
+title: "Modifica un agente"
+description: "Cambia nome, istruzioni, orari, regole di risposta di un Agente AI di MyFlow, o lo accende e lo spegne"
+---
+
+# PATCH /v1/whatsapp/agents/\{id\}
+
+Modifica un **Agente AI**. Manda solo i campi da cambiare: quelli assenti restano come sono. La risposta è l'agente aggiornato, con l'elenco dei campi cambiati davvero.
+
+Con `"enabled": false` spegni l'agente su tutti i suoi numeri in una volta. Con `"enabled": true` lo riaccendi. Per sceglierne i numeri ci sono le rotte di [attivazione](/mycentralino-api/whatsapp-agents-attach) e [disattivazione](/mycentralino-api/whatsapp-agents-detach).
+
+<Warning>
+L'agente risponde da solo ai tuoi clienti. Una modifica alle istruzioni vale dal messaggio successivo, anche nelle conversazioni già aperte. Fai le prove prima con un agente spento o senza numeri, con la card **Prova** del pannello.
+</Warning>
+
+## Parametri
+
+| Parametro | Tipo | Obbligatorio | Descrizione |
+|-----------|------|--------------|-------------|
+| `id` | int | ✅ | ID dell'agente, nel percorso |
+
+## Request Body
+
+Gli stessi campi della [creazione](/mycentralino-api/whatsapp-agents-create#request-body), tutti facoltativi. Almeno uno è necessario.
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `name` | string | Da 1 a 80 caratteri, su una riga |
+| `instructions` | string \| null | Fino a 16.000 caratteri. `""` o `null` le svuota |
+| `handoff_message` | string | Da 1 a 500 caratteri |
+| `schedule` | object | `{"mode": "always"}` oppure `{"mode": "slots", "slots": {…}}`. Vedi sotto |
+| `max_replies` | int | Da 1 a 50 |
+| `reply_delay_seconds` | int | Da 5 a 600 |
+| `human_pause_minutes` | int | Da 0 a 1440 |
+| `enabled` | boolean | Accende o spegne l'agente su tutti i suoi numeri |
+
+### Cambiare l'orario
+
+- `schedule.mode` è sempre obbligatorio dentro `schedule`.
+- `schedule.slots`, se c'è, **sostituisce tutta la settimana**: un giorno che non mandi resta senza fasce. Per cambiare un giorno solo, leggi prima le fasce con il [dettaglio](/mycentralino-api/whatsapp-agents-detail) e rimandale tutte.
+- Senza `slots` le fasce salvate restano come sono. Così `{"schedule": {"mode": "always"}}` mette l'agente sempre attivo senza perdere le fasce, e `{"schedule": {"mode": "slots"}}` lo rimette sulle fasce che aveva, se ne ha almeno una.
+
+Le regole di ogni fascia sono in [Crea un agente](/mycentralino-api/whatsapp-agents-create).
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X PATCH "https://api.mycentralino.com/v1/whatsapp/agents/7" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "instructions": "Sei l'\''assistente dello Studio Rossi. Rispondi in modo cortese e breve. Dal 20 al 31 dicembre lo Studio è chiuso: dillo a chi chiede un appuntamento.",
+      "human_pause_minutes": 60
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'instructions' => "Sei l'assistente dello Studio Rossi. Dal 20 al 31 dicembre lo Studio è chiuso.",
+    'human_pause_minutes' => 60,
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/agents/7');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'PATCH',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+data = {
+    "instructions": "Sei l'assistente dello Studio Rossi. Dal 20 al 31 dicembre lo Studio è chiuso.",
+    "human_pause_minutes": 60
+}
+response = requests.patch('https://api.mycentralino.com/v1/whatsapp/agents/7', headers=headers, json=data)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK` con l'agente aggiornato, nella forma del [dettaglio](/mycentralino-api/whatsapp-agents-detail), più `changed`.
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 7,
+    "name": "Assistente Studio",
+    "enabled": true,
+    "active_now": true,
+    "schedule": {"mode": "always"},
+    "numbers": [{"phone": "+390212345678", "name": "Studio Rossi"}],
+    "knowledge_docs": 4,
+    "replies_7d": 37,
+    "instructions": "Sei l'assistente dello Studio Rossi. Rispondi in modo cortese e breve. Dal 20 al 31 dicembre lo Studio è chiuso: dillo a chi chiede un appuntamento.",
+    "handoff_message": "Ti passo a un collega dello Studio, ti risponderà appena possibile.",
+    "max_replies": 8,
+    "reply_delay_seconds": 20,
+    "human_pause_minutes": 60,
+    "created_at": "2026-11-12T18:20:05+01:00",
+    "updated_at": "2026-12-15T10:12:30+01:00",
+    "changed": ["instructions", "human_pause_minutes"]
+  }
+}
+```
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `changed` | string[] | I campi cambiati davvero. Un campo mandato con lo stesso valore di prima non c'è. Elenco vuoto = non è cambiato niente, e la chiamata non lascia traccia |
+
+Ogni modifica lascia una riga nel Log attività del pannello, con i nomi dei campi cambiati. Il testo delle istruzioni non viene scritto.
+
+## Errori
+
+### 404 - agent_not_found
+Non c'è un agente con questo `id` su questo account.
+
+### 422 - empty_update
+Il body non ha campi da modificare.
+
+### 422 - invalid_schedule
+`schedule` non ha la forma giusta, oppure `mode: "slots"` senza fasce né mandate né già salvate. Il messaggio dice cosa correggere.
+
+### 422 - invalid_name / invalid_instructions / invalid_handoff_message / invalid_max_replies / invalid_reply_delay_seconds / invalid_human_pause_minutes / invalid_enabled
+Un campo non valido: le regole sono in [Crea un agente](/mycentralino-api/whatsapp-agents-create#request-body). Gli errori sui numeri portano `min` e `max`.
+
+### 422 - unknown_fields
+Un campo che non esiste, `provider` e `model` compresi. L'errore elenca i campi sbagliati in `fields` e quelli ammessi in `allowed`.
+
+Se il body ha un errore, non si salva niente: nemmeno i campi giusti.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

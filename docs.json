@@ -300,7 +300,12 @@
               "mycentralino-api/whatsapp-numbers",
               {
                 "group": "Messaggi e template",
-                "pages": []
+                "pages": [
+                  "mycentralino-api/whatsapp-messages-send",
+                  "mycentralino-api/whatsapp-conversation-history",
+                  "mycentralino-api/whatsapp-templates-list",
+                  "mycentralino-api/whatsapp-templates-create"
+                ]
               },
               {
                 "group": "Contatti",

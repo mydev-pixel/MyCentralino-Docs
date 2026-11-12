@@ -1,0 +1,228 @@
+---
+title: "Crea un template"
+description: "Crea un template WhatsApp e mandalo a Meta per l'approvazione"
+---
+
+# POST /v1/whatsapp/templates
+
+Crea un template WhatsApp sull'account WhatsApp Business del numero e lo manda a Meta per la revisione. È lo stesso template che si crea dal pannello, in MyFlow → Template, con le stesse regole.
+
+Un template appena creato **non si può ancora inviare**: nasce di norma in revisione (`PENDING`), e Meta decide dopo, di solito in pochi minuti, a volte in qualche ora. Per sapere com'è andata ci sono due strade:
+- l'evento webhook [`template.status`](/mycentralino-api/whatsapp-webhooks#payload), che arriva quando Meta approva o rifiuta;
+- [GET /v1/whatsapp/templates?status=all](/mycentralino-api/whatsapp-templates-list), che mostra lo stato di ogni template e il motivo di un eventuale rifiuto.
+
+Solo con `status` `APPROVED` il template si può usare nell'[invio](/mycentralino-api/whatsapp-messages-send).
+
+<Note>
+Il template si crea sull'**account WhatsApp Business** del numero: vale per tutti i numeri di quell'account. Si possono creare solo template di testo, cioè senza immagini, video o documenti nell'intestazione, e solo nelle categorie `UTILITY` e `MARKETING`.
+</Note>
+
+## Request Body
+
+| Campo | Tipo | Obbligatorio | Descrizione |
+|-------|------|--------------|-------------|
+| `from` | string | dipende | Il numero in formato +E.164 sul cui account creare il template. **Obbligatorio** se l'account ha più numeri |
+| `name` | string | ✅ | Da 1 a 60 caratteri: solo lettere minuscole, numeri e trattino basso (`_`). Es. `promemoria_appuntamento` |
+| `language` | string | ✅ | `it`, `en`, `es`, `fr` o `de` |
+| `category` | string | ✅ | `UTILITY` (servizio: promemoria, conferme, avvisi su un ordine o un appuntamento) o `MARKETING` (promozionale). Maiuscole o minuscole indifferenti |
+| `header` | string | ❌ | Intestazione: una riga di testo da 1 a 60 caratteri, **senza variabili** |
+| `body` | string | ✅ | Il corpo, da 1 a 1024 caratteri. Può andare a capo. Le variabili sono `{{1}}`, `{{2}}`… numerate da 1 senza salti |
+| `examples` | array of string | dipende | **Obbligatorio se il corpo ha variabili**: un esempio per ogni variabile, nell'ordine (`examples[0]` per `{{1}}`). Ogni esempio da 1 a 200 caratteri. Meta li usa per l'approvazione |
+| `footer` | string | ❌ | Piè di pagina: una riga di testo da 1 a 60 caratteri, **senza variabili** |
+| `buttons` | array | ❌ | Fino a 3 bottoni (vedi sotto) |
+
+### I bottoni
+
+Ogni elemento di `buttons` è un oggetto con `type` e `text`. Il `text` è l'etichetta del bottone: una riga da 1 a 25 caratteri, senza variabili.
+
+| `type` | Campi in più | Regole |
+|--------|--------------|--------|
+| `QUICK_REPLY` | — | Risposta rapida: il cliente la tocca e la risposta arriva come messaggio |
+| `URL` | `url` | Apre un link. `url` è un indirizzo `https://` completo, fino a 2000 caratteri, **senza variabili**. Al massimo 2 bottoni `URL` |
+| `PHONE_NUMBER` | `phone_number` | Chiama un numero, in formato +E.164. Al massimo 1 bottone `PHONE_NUMBER` |
+
+### Pulizia del testo
+
+Prima dei controlli di lunghezza i caratteri di controllo vengono tolti e gli spazi in testa e in coda eliminati. Nel corpo restano gli a capo. Negli esempi, a capo e tabulazioni diventano spazi.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.mycentralino.com/v1/whatsapp/templates" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "from": "+390212345678",
+      "name": "promemoria_appuntamento",
+      "language": "it",
+      "category": "UTILITY",
+      "header": "Promemoria appuntamento",
+      "body": "Gentile {{1}}, le ricordiamo l'\''appuntamento di {{2}} alle {{3}} presso Studio Rossi.",
+      "examples": ["Mario Rossi", "giovedì 17 settembre", "10:00"],
+      "footer": "Studio Rossi",
+      "buttons": [
+          {"type": "QUICK_REPLY", "text": "Confermo"},
+          {"type": "QUICK_REPLY", "text": "Devo spostarlo"},
+          {"type": "PHONE_NUMBER", "text": "Chiama lo studio", "phone_number": "+390212345678"}
+      ]
+  }'
+```
+
+```php PHP
+<?php
+$data = [
+    'from' => '+390212345678',
+    'name' => 'promemoria_appuntamento',
+    'language' => 'it',
+    'category' => 'UTILITY',
+    'header' => 'Promemoria appuntamento',
+    'body' => "Gentile {{1}}, le ricordiamo l'appuntamento di {{2}} alle {{3}} presso Studio Rossi.",
+    'examples' => ['Mario Rossi', 'giovedì 17 settembre', '10:00'],
+    'footer' => 'Studio Rossi',
+    'buttons' => [
+        ['type' => 'QUICK_REPLY', 'text' => 'Confermo'],
+        ['type' => 'QUICK_REPLY', 'text' => 'Devo spostarlo'],
+        ['type' => 'PHONE_NUMBER', 'text' => 'Chiama lo studio', 'phone_number' => '+390212345678']
+    ]
+];
+
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/templates');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        'X-API-KEY: sk_mycentralino_your_api_key',
+        'Content-Type: application/json'
+    ]
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+data = {
+    "from": "+390212345678",
+    "name": "promemoria_appuntamento",
+    "language": "it",
+    "category": "UTILITY",
+    "header": "Promemoria appuntamento",
+    "body": "Gentile {{1}}, le ricordiamo l'appuntamento di {{2}} alle {{3}} presso Studio Rossi.",
+    "examples": ["Mario Rossi", "giovedì 17 settembre", "10:00"],
+    "footer": "Studio Rossi",
+    "buttons": [
+        {"type": "QUICK_REPLY", "text": "Confermo"},
+        {"type": "QUICK_REPLY", "text": "Devo spostarlo"},
+        {"type": "PHONE_NUMBER", "text": "Chiama lo studio", "phone_number": "+390212345678"}
+    ]
+}
+response = requests.post('https://api.mycentralino.com/v1/whatsapp/templates', headers=headers, json=data)
+print(response.json())
+```
+</CodeGroup>
+
+Un template promozionale con un bottone link:
+
+```json
+{
+  "name": "offerta_primavera",
+  "language": "it",
+  "category": "MARKETING",
+  "body": "Ciao {{1}}, fino al {{2}} hai il 20% di sconto su tutti i trattamenti.",
+  "examples": ["Mario", "30 aprile"],
+  "buttons": [
+    {"type": "URL", "text": "Scopri l'offerta", "url": "https://www.studiorossi.example.com/primavera"}
+  ]
+}
+```
+
+## Risposta
+
+`201 Created`
+
+```json
+{
+  "success": true,
+  "data": {
+    "name": "promemoria_appuntamento",
+    "language": "it",
+    "category": "UTILITY",
+    "status": "PENDING",
+    "category_note": null
+  }
+}
+```
+
+## Campi della risposta
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `name` | string | Il nome del template |
+| `language` | string | La lingua |
+| `category` | string | La categoria assegnata da Meta. Meta può cambiarla: un template chiesto come `UTILITY` ma con contenuto promozionale diventa `MARKETING` |
+| `status` | string | Lo stato appena dopo la creazione, quasi sempre `PENDING` (in revisione). Meta può anche approvarlo subito (`APPROVED`) |
+| `category_note` | string \| null | Valorizzato solo se Meta ha cambiato la categoria, es. «Meta ha assegnato la categoria MARKETING invece di UTILITY.» |
+
+## Da sapere
+
+- **Nome e lingua sono la chiave del template.** Lo stesso nome si può usare in un'altra lingua. Con un nome e una lingua già presenti sull'account la creazione risponde `409` `template_exists`, in qualunque stato sia il template esistente, anche rifiutato. Per riprovare un template rifiutato, crealo con un nome nuovo oppure eliminalo prima dal pannello.
+- **Non si modifica via API.** Per cambiare un template esistente si usa il pannello, in MyFlow → Template.
+- **C'è un tetto giornaliero** di template nuovi per ogni account WhatsApp Business. Contano anche quelli creati lo stesso giorno dal pannello. Oltre il tetto la creazione risponde `429` `daily_template_limit` fino a mezzanotte, ora italiana. L'API serve a creare qualche template quando serve, non a crearne in serie.
+- **I controlli di Meta restano di Meta.** Questa rotta controlla la forma del template prima di mandarlo. Il contenuto lo valuta Meta: una richiesta corretta per l'API può essere respinta subito (`422` `meta_rejected`) o rifiutata più tardi durante la revisione (`status` `REJECTED`).
+- **Ogni creazione resta nel Log attività** dell'account, con il nome della chiave API usata.
+
+## Errori
+
+### 422 - invalid_name
+Manca il nome, oppure non rispetta il formato: da 1 a 60 caratteri, solo lettere minuscole, numeri e `_`.
+
+### 422 - invalid_language
+Lingua diversa da `it`, `en`, `es`, `fr`, `de`.
+
+### 422 - invalid_category
+Categoria diversa da `UTILITY` o `MARKETING`.
+
+### 422 - invalid_header
+L'intestazione non è testo, va a capo, contiene `{{` oppure, dopo la pulizia, è vuota o supera i 60 caratteri.
+
+### 422 - invalid_body
+Il corpo è vuoto o supera i 1024 caratteri, contiene variabili non numerate (es. `{{nome}}`), oppure le variabili hanno salti (es. `{{1}}` e `{{3}}` senza `{{2}}`).
+
+### 422 - invalid_examples
+Il corpo ha variabili ma `examples` manca, non è un elenco, ha un numero di elementi diverso dalle variabili, oppure un esempio è vuoto o supera i 200 caratteri. `error.expected` dice quanti esempi servono.
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "invalid_examples",
+    "message": "Serve un esempio per ogni variabile, in ordine: Meta li chiede per l'approvazione.",
+    "expected": 3
+  }
+}
+```
+
+### 422 - invalid_footer
+Il piè di pagina non è testo, va a capo, contiene `{{` oppure, dopo la pulizia, è vuoto o supera i 60 caratteri.
+
+### 422 - invalid_buttons
+`buttons` non è un elenco o ha più di 3 elementi, oppure un bottone non è valido: tipo sconosciuto, testo vuoto, testo oltre i 25 caratteri o con variabili, più di 2 link, link non `https` o con variabili, più di 1 telefono, telefono non valido. Il messaggio dice quale bottone (da 1) e cosa non va. `error.index` è la sua posizione nell'elenco, da 0.
+
+### 409 - template_exists
+Esiste già un template con questo nome e questa lingua sull'account WhatsApp Business del numero.
+
+### 429 - daily_template_limit
+Raggiunto il tetto giornaliero di template nuovi sull'account WhatsApp Business del numero, contando anche quelli creati dal pannello. Riprova dopo mezzanotte, ora italiana.
+
+### 422 - meta_rejected
+Meta ha respinto la richiesta di creazione. Il messaggio riporta il motivo dato da Meta, es. «Meta non ha accettato il template: …». Correggi il contenuto e riprova.
+
+### 400 - number_required / invalid_from · 404 - number_not_found
+Come nell'[elenco dei template](/mycentralino-api/whatsapp-templates-list#errori): `from` manca con più numeri, non è valido o non è collegato all'account.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

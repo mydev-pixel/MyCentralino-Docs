@@ -1,0 +1,177 @@
+---
+title: "Elenco dei template"
+description: "I template WhatsApp di un numero, con le variabili da riempire e se si possono inviare"
+---
+
+# GET /v1/whatsapp/templates
+
+Restituisce i template WhatsApp di un numero. Un template è un messaggio già approvato da Meta. Serve a scrivere a un cliente che non ti ha scritto nelle ultime 24 ore: fuori da quella finestra WhatsApp non accetta testo libero. Per ogni template l'elenco dice quali variabili riempire e se l'API può inviarlo.
+
+Senza parametri restituisce **solo i template approvati**, cioè quelli che si possono inviare. Con `status=all` restituisce **tutti**, compresi quelli in revisione o rifiutati, con il motivo del rifiuto. Serve a seguire l'esito dei template creati con [POST /v1/whatsapp/templates](/mycentralino-api/whatsapp-templates-create).
+
+<Note>
+I template appartengono all'account WhatsApp Business del numero, non al singolo numero. Se due numeri sono sullo stesso account WhatsApp Business, l'elenco è lo stesso.
+</Note>
+
+## Parametri
+
+| Parametro | Tipo | Obbligatorio | Descrizione |
+|-----------|------|--------------|-------------|
+| `from` | string | dipende | Il numero di cui vuoi i template, in formato +E.164 (es. `+390212345678`), come in [GET /v1/whatsapp/numbers](/mycentralino-api/whatsapp-numbers). **Obbligatorio** se l'account ha più numeri |
+| `status` | string | ❌ | `all` per avere tutti i template, in qualunque stato. Nessun altro valore è ammesso |
+
+Nell'indirizzo il `+` va codificato come `%2B`: `?from=%2B390212345678`.
+
+## Richiesta
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://api.mycentralino.com/v1/whatsapp/templates?from=%2B390212345678" \
+  -H "X-API-KEY: sk_mycentralino_your_api_key"
+```
+
+```php PHP
+<?php
+$query = http_build_query(['from' => '+390212345678']);
+$ch = curl_init('https://api.mycentralino.com/v1/whatsapp/templates?' . $query);
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER => ['X-API-KEY: sk_mycentralino_your_api_key']
+]);
+$response = curl_exec($ch);
+curl_close($ch);
+print_r(json_decode($response, true));
+```
+
+```python Python
+import requests
+
+headers = {'X-API-KEY': 'sk_mycentralino_your_api_key'}
+params = {'from': '+390212345678'}
+response = requests.get('https://api.mycentralino.com/v1/whatsapp/templates', headers=headers, params=params)
+print(response.json())
+```
+</CodeGroup>
+
+## Risposta
+
+`200 OK`. I template sono in ordine di nome, poi di lingua.
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "name": "offerta_primavera",
+      "language": "it",
+      "category": "MARKETING",
+      "status": "APPROVED",
+      "rejection_reason": null,
+      "body": "Ciao {{1}}, fino al {{2}} hai il 20% di sconto su tutti i trattamenti. Scopri di più dal link qui sotto.",
+      "variables": [
+        { "key": "body.1", "where": "body", "example": "Mario" },
+        { "key": "body.2", "where": "body", "example": "30 aprile" },
+        { "key": "button.0.1", "where": "button", "example": "primavera2026" }
+      ],
+      "usable": true,
+      "not_usable_reason": null
+    },
+    {
+      "name": "promemoria_appuntamento",
+      "language": "it",
+      "category": "UTILITY",
+      "status": "APPROVED",
+      "rejection_reason": null,
+      "body": "Gentile {{1}}, le ricordiamo l'appuntamento di {{2}} alle {{3}} presso Studio Rossi.",
+      "variables": [
+        { "key": "body.1", "where": "body", "example": "Mario Rossi" },
+        { "key": "body.2", "where": "body", "example": "giovedì 17 settembre" },
+        { "key": "body.3", "where": "body", "example": "10:00" }
+      ],
+      "usable": true,
+      "not_usable_reason": null
+    }
+  ]
+}
+```
+
+Con `status=all` compaiono anche template come questo:
+
+```json
+{
+  "name": "saldi_estate",
+  "language": "it",
+  "category": "MARKETING",
+  "status": "REJECTED",
+  "rejection_reason": "INCORRECT_CATEGORY",
+  "body": "Saldi {{1}}",
+  "variables": [
+    { "key": "body.1", "where": "body", "example": "estivi" }
+  ],
+  "usable": false,
+  "not_usable_reason": "non è approvato da Meta (stato: REJECTED)"
+}
+```
+
+## Campi del template
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `name` | string | Il nome del template, da usare in `template.name` nell'[invio](/mycentralino-api/whatsapp-messages-send) |
+| `language` | string | Il codice della lingua (es. `it`, `en`). Lo stesso nome può esistere in più lingue |
+| `category` | string | `UTILITY` (servizio: promemoria, conferme, avvisi), `MARKETING` (promozionale) o `AUTHENTICATION` (codici di accesso). È la categoria decisa da Meta, che può essere diversa da quella chiesta |
+| `status` | string | Lo stato della revisione di Meta: `APPROVED` (approvato, si può inviare), `PENDING` (in revisione), `REJECTED` (rifiutato), `PAUSED` (sospeso da Meta per segnalazioni dei destinatari), `DISABLED` (disattivato). Meta può usare anche altri valori: tratta come non inviabile tutto ciò che non è `APPROVED` |
+| `rejection_reason` | string \| null | Il motivo del rifiuto indicato da Meta, solo con `status` `REJECTED` (es. `INCORRECT_CATEGORY`, `INVALID_FORMAT`). `null` negli altri casi o se Meta non l'ha indicato |
+| `body` | string | Il testo del corpo, con i segnaposto delle variabili così come sono nel template (`{{1}}`, `{{2}}`…) |
+| `variables` | array | Le variabili da riempire all'invio, nell'ordine in cui compaiono. Vuoto se il template non ha variabili |
+| `usable` | bool | `true` se l'API può inviare questo template adesso |
+| `not_usable_reason` | string \| null | Perché non si può inviare, in italiano: non approvato, intestazione con un file, carosello o offerta a tempo, bottoni di un tipo non gestito |
+
+## Campi della variabile
+
+| Campo | Tipo | Descrizione |
+|-------|------|-------------|
+| `key` | string | La chiave da usare in `template.variables` nell'invio: `header.N` per l'intestazione, `body.N` per il corpo, `button.I.N` per la parte finale del link del bottone in posizione `I` (da 0) |
+| `where` | string | `header`, `body` o `button` |
+| `example` | string \| null | L'esempio dato a Meta per l'approvazione, utile per capire cosa va messo. `null` se non c'è |
+
+<Tip>
+Le variabili si riempiono con le chiavi `key` esattamente come le restituisce questo elenco: `{"body.1": "Mario", "body.2": "30 aprile"}`. Un template creato fuori dall'API (per esempio nel pannello di Meta) può avere variabili con nome invece che con numero. In quel caso la chiave è `body.nome`.
+</Tip>
+
+## Template che l'API non può inviare
+
+`usable` è `false`, e l'invio risponde `template_not_usable`, quando il template:
+- **non è approvato** (`status` diverso da `APPROVED`);
+- **ha un'intestazione con un file** (immagine, video o documento): l'API per ora non allega file;
+- **è un carosello o un'offerta a tempo**;
+- **ha un'intestazione con una posizione**, oppure bottoni diversi da risposta rapida, link e telefono.
+
+Questi template si inviano dal pannello di MyFlow.
+
+## Errori
+
+### 400 - number_required
+L'account ha più numeri e manca `from`. In `error.numbers` c'è l'elenco dei numeri ammessi.
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "number_required",
+    "message": "Ci sono più numeri collegati: indica il mittente in \"from\".",
+    "numbers": ["+390212345678", "+390212345679"]
+  }
+}
+```
+
+### 400 - invalid_from
+`from` non è un numero di telefono valido.
+
+### 404 - number_not_found
+`from` è un numero valido, ma non è collegato a MyFlow su questo account.
+
+### 400 - invalid_status
+`status` ha un valore diverso da `all`.
+
+Gli errori comuni a tutte le rotte sono nell'[introduzione](/mycentralino-api/whatsapp-introduction#codici-di-errore).

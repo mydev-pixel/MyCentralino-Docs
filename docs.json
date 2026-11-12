@@ -295,7 +295,9 @@
           },
           {
             "group": "WhatsApp (MyFlow API)",
-            "pages": []
+            "pages": [
+              "mycentralino-api/whatsapp-introduction"
+            ]
           }
         ]
       }

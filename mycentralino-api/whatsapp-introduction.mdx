@@ -21,10 +21,7 @@ Con **MyFlow API** il tuo gestionale o CRM lavora sullo stesso WhatsApp di MyFlo
 
 <Steps>
   <Step title="Il piano MyFlow">
-    MyFlow API si aggiunge a **MyFlow** e non funziona senza.
-  </Step>
-  <Step title="Il modulo MyFlow API">
-    Si attiva da MyFlow → **Impostazioni** → zona **Collegamento col gestionale** → **Attiva MyFlow API** (`https://cloud.mycentralino.com/myflow/impostazioni`). Lo attiva un amministratore di MyFlow.
+    MyFlow API è compresa in **MyFlow**: con MyFlow attivo non serve nessun altro modulo. Senza MyFlow l'API non è disponibile.
   </Step>
   <Step title="Un numero WhatsApp collegato e le condizioni accettate">
     Serve almeno un numero WhatsApp collegato a MyFlow, con le condizioni del servizio WhatsApp accettate dal pannello. Lo stesso vale per usare MyFlow dal pannello.
@@ -35,7 +32,7 @@ Con **MyFlow API** il tuo gestionale o CRM lavora sullo stesso WhatsApp di MyFlo
 </Steps>
 
 <Note>
-**Cosa può fare la chiave** compare solo quando il modulo MyFlow API è attivo, e solo al titolare o a un amministratore di MyFlow: una chiave con WhatsApp legge le conversazioni dei clienti. Quando ne nasce una, il titolare dell'account riceve un'email.
+**Cosa può fare la chiave** compare solo con MyFlow attivo, e solo al titolare o a un amministratore di MyFlow: una chiave con WhatsApp legge le conversazioni dei clienti. Quando ne nasce una, il titolare dell'account riceve un'email.
 </Note>
 
 ## Le chiavi e cosa possono fare
@@ -165,7 +162,6 @@ Questi errori possono arrivare da qualsiasi rotta `/v1/whatsapp/*`. Gli errori p
 | `invalid_api_key` | 401 | Chiave sbagliata, revocata o eliminata | Controlla in **Chiavi API** che sia **Attiva** |
 | `scope_not_allowed` | 403 | La chiave non vale per WhatsApp: è **Centralino**, oppure è una chiave di prima | Crea una chiave **Solo WhatsApp** o **Centralino e WhatsApp** |
 | `myflow_required` | 403 | Il piano MyFlow non è attivo sull'account | Va attivato MyFlow |
-| `myflow_api_required` | 403 | Il modulo MyFlow API non è attivo | Si attiva da MyFlow → **Impostazioni** |
 | `account_blocked` | 403 | Il centralino è disattivato o sospeso | Va risolto dal pannello o con l'assistenza |
 | `whatsapp_not_linked` | 403 | Nessun numero WhatsApp collegato a MyFlow | Collega un numero dal pannello |
 | `terms_not_accepted` | 403 | Le condizioni del servizio WhatsApp non sono state accettate | Vanno accettate dal pannello |

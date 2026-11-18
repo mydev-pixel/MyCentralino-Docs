@@ -1,0 +1,74 @@
+---
+title: "Rubrica per MicroSIP"
+description: "La rubrica degli interni che MicroSIP scarica da solo, con interno e password SIP"
+keywords: ["MicroSIP", "rubrica", "users directory", "rubrica remota", "interni", "remote_address_book"]
+---
+
+# GET /v1/microsip/rubrica
+
+Restituisce gli interni del tuo centralino nel formato della **Users Directory** di MicroSIP. MicroSIP la scarica da solo all'avvio e poi ogni ora: nella sua rubrica compaiono i colleghi, da chiamare con un clic.
+
+<Note>
+Questa rotta **non usa la chiave API**. Si accede con l'interno e la password SIP del telefono, gli stessi che MicroSIP usa per collegarsi al centralino. La rubrica contiene solo gli interni del centralino di quell'interno.
+</Note>
+
+## Configurare MicroSIP
+
+Il file **Auto-config .bat** che scarichi dal pannello imposta già questo indirizzo. Per configurarlo a mano, in MicroSIP apri **Impostazioni** e scrivi nel campo **Users Directory**:
+
+```text
+https://api.mycentralino.com/v1/microsip/rubrica?exten={username}&password={password}
+```
+
+`{username}` e `{password}` si scrivono così, con le graffe: MicroSIP li sostituisce da solo con i dati dell'account configurato.
+
+## Parametri
+
+| Parametro | Tipo | Descrizione |
+| --- | --- | --- |
+| `exten` | string | Nome dell'interno SIP (lo username dell'account) |
+| `password` | string | Password SIP dell'interno |
+
+Altri parametri che MicroSIP aggiunge (per esempio `sequence`) vengono ignorati.
+
+## Richiesta
+
+```bash cURL
+curl "https://api.mycentralino.com/v1/microsip/rubrica?exten=22123&password=LA_PASSWORD_SIP"
+```
+
+## Risposta
+
+`Content-Type: application/xml; charset=UTF-8`
+
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<contacts refresh='3600'>
+  <contact name="Mario Rossi" number="22123" phone="" mobile="" info="201" />
+  <contact name="Anna Bianchi" number="22124" phone="" mobile="" info="202" />
+</contacts>
+```
+
+## Campi risposta
+
+| Campo | Descrizione |
+| --- | --- |
+| `refresh` | Ogni quanti secondi MicroSIP ricarica la rubrica (`3600`, un'ora) |
+| `name` | Nome dell'interno; se manca, «Interno» seguito dal numero |
+| `number` | Nome tecnico dell'interno: è il numero che MicroSIP chiama |
+| `info` | Numero interno (caller ID) |
+
+Sono esclusi gli interni di servizio (numero interno oltre `8999`) e i telefoni aggiuntivi dello stesso interno.
+
+## Codici HTTP
+
+In caso di errore la risposta è comunque un XML valido, con la rubrica vuota.
+
+| Codice | Significato |
+| --- | --- |
+| 200 | Rubrica restituita |
+| 400 | Manca `exten` o `password` |
+| 401 | Interno o password non validi |
+| 403 | Il centralino non è attivo |
+| 429 | Troppi tentativi sbagliati: riprova fra qualche minuto |
+| 500 | Errore interno |

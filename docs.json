@@ -220,7 +220,8 @@
             "pages": [
               "mycentralino-api/extensions-list",
               "mycentralino-api/extensions-detail",
-              "mycentralino-api/extensions-status"
+              "mycentralino-api/extensions-status",
+              "mycentralino-api/extensions-microsip-directory"
             ]
           },
           {

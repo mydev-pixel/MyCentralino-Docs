@@ -1,7 +1,7 @@
 ---
 title: "Crea un agente"
 sidebarTitle: "Crea un agente"
-description: "L'elenco dei tuoi agenti AI, come si crea un agente nuovo, com'è fatta la pagina di configurazione, come si salva, si duplica e si elimina."
+description: "I tuoi agenti AI con il loro andamento, come si crea un agente nuovo, la sua pagina con Andamento, Impostazioni e Versioni, come si salva, si ripristina, si duplica e si elimina."
 keywords:
   - "creare agente ai"
   - "nuovo agente"
@@ -15,97 +15,133 @@ keywords:
   - "crea agente"
   - "limite agenti"
   - "editor agente"
+  - "andamento agente"
+  - "versioni agente"
+  - "ripristina versione"
+  - "ritratto voce"
+  - "storico modifiche"
 ---
 
 Un **agente** è il centralinista AI che risponde al telefono per te: ha un nome, una voce, una lingua, una frase con cui si presenta e un **copione**, cioè le istruzioni che segue durante la chiamata. In questa pagina trovi l'elenco degli agenti, come se ne crea uno nuovo e com'è fatta la pagina in cui lo configuri.
 
-**Dove si trova:** menu degli Agenti AI → Gestione → **Agenti** · `https://cloud.mycentralino.com/wave/agenti` Agente nuovo: `https://cloud.mycentralino.com/wave/agenti/nuovo`
+**Dove si trova:** menu degli Agenti AI → **I tuoi agenti** · `https://cloud.mycentralino.com/wave/agenti` Agente nuovo: `https://cloud.mycentralino.com/wave/agenti/nuovo`
 
 **Chi la vede:** il titolare dell'account, quando gli Agenti AI sono attivi sul centralino. Un collaboratore solo se gli è stata concessa la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
 
 <Info>
-  Per aprire questa pagina servono un piano Agenti AI attivo e le condizioni d'uso di AI Receptionist accettate: finché non le accetti, il pannello ti riporta alla Home degli Agenti AI. Vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani).
+  Per aprire questa pagina servono un piano Agenti AI attivo e le condizioni d'uso di AI Receptionist accettate: finché non le accetti, il pannello ti riporta alla Panoramica degli Agenti AI. Vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani).
 </Info>
 
-## Cosa trovi nella pagina Agenti
+## Cosa trovi in I tuoi agenti
 
-In alto il conteggio «**N / M agenti del piano**» (quanti agenti hai e quanti ne permette il tuo piano), il titolo **I tuoi agenti AI** e il bottone **\+ Nuovo agente**. Quando hai raggiunto il numero massimo di agenti del piano, il bottone è spento.
+In alto «**N agenti su M del piano**», il titolo **I tuoi agenti AI** e una frase sullo stato (per esempio «Tutti e 3 rispondono regolarmente.»). A destra **Connessioni VoIP**, che apre le connessioni (vedi [Connessioni VoIP](/agenti-ai/connessioni)), e **Nuovo agente**, spento quando hai raggiunto il numero massimo di agenti del piano.
 
-La tabella ha una riga per agente:
+Ogni agente ha una scheda:
 
-| Colonna | Cosa indica |
+| Parte della scheda | Cosa mostra |
 | --- | --- |
-| **Agente** | Il nome e, sotto, lingua e voce (per Olandese, Polacco e Rumeno la lingua compare come sigla: NL, PL, RO). Se il servizio AI non riesce a leggere l'agente, al posto del nome compare il suo codice (`agent_…`) e sotto **Errore** in rosso. |
-| **Risponde su** | Pallino verde con il nome e il numero della connessione su cui risponde, oppure pallino ambra **Nessuna connessione**: l'agente esiste ma nessuna chiamata gli arriva. |
-| **Crediti (mese)** | I crediti consumati da questo agente nel mese, la percentuale sui crediti mensili del piano e una barra (ambra dall'80%, rossa oltre il 100%). Un trattino se non ha ancora consumato niente. |
-| **Azioni** | **Configura**, **Chiamate**, **Duplica**, **Elimina**. |
+| **Ritratto** | Il volto della voce scelta, per riconoscere l'agente a colpo d'occhio. Il pallino verde vuol dire che risponde al telefono; il ritratto è in bianco e nero se non risponde. |
+| **Nome e numero** | Il nome dell'agente, «Risponde su» con il numero della connessione e la voce. «Nessun numero collegato» se non ha una connessione. |
+| **Stato** | **Attivo** (risponde), **Da sistemare** con «Collega un numero per farlo rispondere», **Errore** o **Non raggiungibile al momento**. |
+| **Settimana** | Sette barre, una per giorno: le chiamate degli ultimi 7 giorni, con oggi in blu. |
+| **Tre numeri** | **chiamate · 7 gg**, percentuale di **risolte** e **umore** dei clienti (**Buono**, **Neutro** o **Da curare**). |
+| **In fondo** | «Parlano di» con l'argomento più frequente e quando è arrivata l'ultima chiamata. Per un agente senza numero, **Collega un numero →**. |
 
-Un clic sulla riga apre la configurazione dell'agente, come **Configura**. **Chiamate** apre lo [Storico chiamate](/agenti-ai/storico-chiamate) già filtrato su quell'agente.
+Clicca la scheda (o il nome) per aprire la pagina dell'agente. Il menu **…** in alto a destra ha **Conversazioni** (l'elenco già filtrato su quell'agente), **Duplica** ed **Elimina**.
 
-Se non hai ancora agenti leggi «**Nessun agente**» — «Crea il primo agente AI: gli dai un nome, una voce e un copione.» e il bottone **Crea il primo agente**.
+L'ultima tessera, **Aggiungi un agente**, dice quanti agenti puoi ancora creare con il tuo piano. Se non hai ancora agenti leggi «Crea il primo agente: gli dai un nome, una voce e un copione.»
 
-## La pagina di configurazione dell'agente
+{/* SCHERMATA: I tuoi agenti con le schede e i ritratti delle voci — https://cloud.mycentralino.com/wave/agenti */}
 
-Si apre con **\+ Nuovo agente** (titolo **Nuovo agente**) oppure con **Configura** su un agente esistente (titolo = nome dell'agente). In alto trovi:
+## La pagina dell'agente
 
-- il link **‹ Agenti** per tornare all'elenco;
-- il nome dell'agente, con accanto la lingua; sotto, per un agente già creato, il suo **codice** (una sigla che inizia con `agent_`: utile se scrivi all'assistenza);
-- un solo bottone di salvataggio: **Crea agente** per un agente nuovo, **Salva agente** per uno esistente.
+Si apre cliccando un agente, oppure con **Nuovo agente** (titolo **Nuovo agente**). In alto trovi:
 
-A sinistra c'è l'elenco delle **10 sezioni**. Sul telefono le sezioni diventano una fila di pulsanti che scorre in orizzontale. Accanto a una sezione configurata compare **Attivo**, oppure un numero (quanti documenti, strumenti o campi contiene).
+- il link **‹ I tuoi agenti** per tornare all'elenco;
+- il ritratto della voce, il nome dell'agente e, sotto, lingua, voce e modo di ragionare (**Intelligente** o **Veloce**);
+- per un agente già creato, tre schede: **Andamento**, **Impostazioni** e **Versioni**. Un agente nuovo ha solo le impostazioni.
 
-| Sezione | A cosa serve | Dove è spiegata |
-| --- | --- | --- |
-| **Identità e copione** | Nome, lingua, frase di apertura, copione, modello AI, chiusura della chiamata, memoria, conservazione delle conversazioni | [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce) |
-| **Voce** | La voce dell'agente e come si comporta in conversazione | [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce) |
-| **Trasferimento** | Quando e a chi passa la chiamata a una persona o a un altro agente | [Trasferimenti](/agenti-ai/agente/trasferimenti) |
-| **Knowledge Base** | Documenti, pagine web e testi da cui prende le informazioni | [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce) |
-| **Custom API** | Collegamenti ai sistemi della tua azienda, per chi ha un tecnico | [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata) |
-| **Appuntamenti** | Il calendario in cui l'agente prenota | [Appuntamenti](/agenti-ai/agente/appuntamenti) |
-| **WhatsApp** | Messaggi WhatsApp al chiamante durante la conversazione | [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata) |
-| **Ricerca dati** | Un elenco (zone, servizi, tecnici) che l'agente consulta in chiamata | [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce) |
-| **Raccolta dati** | Le informazioni che l'agente estrae da ogni conversazione | [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata) |
-| **Post-chiamata** | Riassunto per email o WhatsApp e invio dei dati a fine chiamata | [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata) |
+### Andamento
 
-### Come si salva
+Come lavora l'agente negli ultimi 30 giorni. È la scheda che si apre per prima.
+
+| Riquadro | Cosa mostra |
+| --- | --- |
+| **Numeri** | **Chiamate · 30 giorni** (con quanto sono cambiate rispetto ai 30 giorni prima), **Risolte dall'agente**, **Passate a una persona**, **Clienti soddisfatti**, **Durata media** |
+| **Mappa degli argomenti** | Di cosa parlano i clienti di questo agente: bolle grandi quanto le chiamate, colorate per umore. Tocca una bolla per i dettagli. Si aggiorna ogni notte |
+| **Com'è finita** | Quante chiamate **Risolte**, **Passate a una persona**, con **Nessuno ha risposto**, **Non risolte** e **Interrotte**, con la percentuale di risolte al centro |
+| **Ore di punta** | Le chiamate per ora del giorno, dalle 7 alle 22. In ambra le ore in cui arrivano soprattutto a ufficio chiuso |
+| **Umore nel tempo** | L'umore medio giorno per giorno: sopra la linea soddisfatti, sotto scontenti |
+| **Ultime conversazioni** | Le 6 più recenti con esito e umore. **Tutte →** apre le conversazioni dell'agente |
+
+Cosa significano esito e umore è spiegato in [Conversazioni](/agenti-ai/storico-chiamate).
+
+### Impostazioni
+
+La configurazione dell'agente. In alto a destra c'è il bottone di salvataggio: **Crea agente** per un agente nuovo, **Salva agente** per uno esistente. A sinistra le sezioni, divise in quattro gruppi (sul telefono diventano una fila di pulsanti che scorre in orizzontale). Accanto a una sezione configurata compare **Attivo**, oppure un numero (quanti documenti, strumenti o campi contiene).
+
+| Gruppo | Sezione | A cosa serve | Dove è spiegata |
+| --- | --- | --- | --- |
+| Chi è | **Identità e copione** | Nome, lingua, frase di apertura, copione, modello AI, chiusura della chiamata, memoria, conservazione delle conversazioni | [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce) |
+| Chi è | **Voce** | La voce dell'agente e come si comporta in conversazione | [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce) |
+| Cosa sa | **Documenti** | Documenti, pagine web e testi da cui prende le informazioni | [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce) |
+| Cosa sa | **Elenchi da consultare** | Un elenco (zone, servizi, tecnici) che l'agente consulta in chiamata | [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce) |
+| Cosa fa | **Passaggio a una persona** | Quando e a chi passa la chiamata a una persona o a un altro agente | [Trasferimenti](/agenti-ai/agente/trasferimenti) |
+| Cosa fa | **Collegamenti ai tuoi programmi** | Collegamenti ai sistemi della tua azienda, per chi ha un tecnico | [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata) |
+| Cosa fa | **Appuntamenti** | Il calendario in cui l'agente prenota | [Appuntamenti](/agenti-ai/agente/appuntamenti) |
+| Cosa fa | **WhatsApp** | Messaggi WhatsApp al chiamante durante la conversazione | [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata) |
+| Dopo la chiamata | **Dati da raccogliere** | Le informazioni che l'agente estrae da ogni conversazione | [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata) |
+| Dopo la chiamata | **Riassunto e notifiche** | Riassunto per email o WhatsApp e invio dei dati a fine chiamata | [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata) |
+
+#### Come si salva
 
 - Le modifiche valgono solo quando premi **Salva agente** (o **Crea agente** per un agente nuovo). Puoi passare da una sezione all'altra e salvare una volta sola alla fine.
-- Se manca un campo obbligatorio, il pannello apre da solo la sezione giusta e mostra il messaggio in alto: «Dai un nome all'agente.», «Serve la frase di apertura.», «Il copione (prompt) è obbligatorio.» oppure «Scegli una voce.». Con la **Ricerca dati** accesa e un elenco caricato serve anche la colonna chiave: senza, leggi «In «Ricerca dati» scegli la colonna chiave: senza, l'agente non trova niente nell'elenco.».
-- Dopo il salvataggio leggi «**Agente salvato.**». Un agente nuovo invece, con **Crea agente**, si riapre da solo nella sua configurazione: ora ha il codice e si aprono le sezioni che prima erano chiuse.
-- I documenti della **Knowledge Base** e il **Server email** di **Post-chiamata** si salvano subito, senza premere **Salva agente**. In **Ricerca dati** il file caricato sostituisce subito l'elenco precedente: se le colonne chiave già salvate ci sono anche nel file nuovo l'agente lo usa subito, altrimenti solo dopo che hai scelto le colonne e premuto **Salva agente**. Le righe corrette, aggiunte o tolte con **Vedi e modifica le righe** valgono subito. Dettagli in [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce).
+- Se manca un campo obbligatorio, il pannello apre da solo la sezione giusta e mostra il messaggio in alto: «Dai un nome all'agente.», «Serve la frase di apertura.», «Il copione (prompt) è obbligatorio.» oppure «Scegli una voce.». Con l'elenco da consultare acceso e caricato serve anche la colonna chiave: senza, leggi «In «Elenchi da consultare» scegli la colonna chiave: senza, l'agente non trova niente nell'elenco.».
+- Dopo il salvataggio leggi «**Agente salvato.**». Un agente nuovo invece, con **Crea agente**, si riapre da solo nella sua pagina: ora si aprono le sezioni che prima erano chiuse.
+- I **Documenti** e il **Server email** di **Riassunto e notifiche** si salvano subito, senza premere **Salva agente**. In **Elenchi da consultare** il file caricato sostituisce subito l'elenco precedente: se le colonne chiave già salvate ci sono anche nel file nuovo l'agente lo usa subito, altrimenti solo dopo che hai scelto le colonne e premuto **Salva agente**. Le righe corrette, aggiunte o tolte con **Vedi e modifica le righe** valgono subito. Dettagli in [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce).
 
 <Warning>
-  Se chiudi la pagina o torni agli **Agenti** senza salvare, le modifiche fatte nell'editor si perdono. Il pannello non ti chiede conferma.
+  Se chiudi la pagina o torni a **I tuoi agenti** senza salvare, le modifiche fatte nelle impostazioni si perdono. Il pannello non ti chiede conferma.
 </Warning>
+
+### Versioni
+
+Ogni salvataggio crea una versione: la scheda **Versioni** mostra chi ha cambiato cosa e quando, dalla più recente.
+
+- Ogni versione ha un titolo con le sezioni toccate (per esempio «Modifica: copione, voce»), la data e l'ora, chi l'ha salvata e l'elenco delle modifiche, con il valore vecchio barrato e quello nuovo accanto. Le modifiche fatte dall'assistenza di MyCentralino compaiono «da Staff MyCentralino».
+- La versione in uso ha **In uso adesso**; le altre hanno **Ripristina questa**.
+- Le versioni si registrano dal 20 nov 2026: se l'agente non è più stato salvato da allora leggi «Ancora nessuna versione».
+
+{/* SCHERMATA: la scheda Versioni di un agente — https://cloud.mycentralino.com/wave/agenti */}
 
 ## Come fare
 
 ### Come creo il mio primo agente
 
 <Steps>
-  <Step title="Apri Agenti">
-    Nel menu degli Agenti AI apri **Agenti** e premi **\+ Nuovo agente** (o **Crea il primo agente** se l'elenco è vuoto).
+  <Step title="Apri I tuoi agenti">
+    Nel menu degli Agenti AI apri **I tuoi agenti** e premi **Nuovo agente** (o la tessera **Aggiungi un agente**).
   </Step>
   <Step title="Scrivi chi è">
     Nella sezione **Identità e copione** scrivi il **Nome agente** (es. «Sofia»), scegli la **Lingua**, scrivi la **Frase di apertura** (es. «Buongiorno, sono Sofia dello Studio Rossi, come posso aiutarla?») e il **Copione dell'agente**. Consigli per scrivere un buon copione in [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce).
   </Step>
   <Step title="Scegli la voce">
-    Apri la sezione **Voce**, ascolta le anteprime con il tasto play e seleziona una voce.
+    Apri la sezione **Voce**, ascolta le anteprime con il tasto play e seleziona una voce: il suo ritratto sarà il volto dell'agente in tutte le pagine.
   </Step>
   <Step title="Crea l'agente">
-    Premi **Crea agente**. Si riapre la configurazione dell'agente appena creato: sotto il nome compare il suo codice.
+    Premi **Crea agente**. Si riapre la pagina dell'agente appena creato, con le schede **Andamento**, **Impostazioni** e **Versioni**.
   </Step>
   <Step title="Dagli le informazioni">
-    Ora puoi aprire **Knowledge Base** e caricare listino, orari, domande frequenti: prima della creazione la sezione è chiusa.
+    In **Impostazioni** apri **Documenti** e carica listino, orari, domande frequenti: prima della creazione la sezione è chiusa.
   </Step>
   <Step title="Aggiungi quello che serve">
     Se vuoi, imposta trasferimenti, appuntamenti e riassunto a fine chiamata nelle altre sezioni, poi premi **Salva agente**.
   </Step>
   <Step title="Collegalo al telefono">
-    Assegna l'agente a una connessione in **Connessioni VoIP** e manda le chiamate del tuo numero a quella connessione con il passaggio **Agente AI realtime** delle Regole delle chiamate. Vedi [Connessioni VoIP](/agenti-ai/connessioni) e [Collegare un numero](/agenti-ai/collegare-un-numero).
+    Assegna l'agente a una connessione (in **I tuoi agenti** → **Connessioni VoIP**) e manda le chiamate del tuo numero a quella connessione con il passaggio **Agente AI realtime** delle Regole delle chiamate. Vedi [Connessioni VoIP](/agenti-ai/connessioni) e [Collegare un numero](/agenti-ai/collegare-un-numero).
   </Step>
   <Step title="Prova con una telefonata">
-    Chiama il tuo numero, parla con l'agente e poi rileggi la trascrizione in [Storico chiamate](/agenti-ai/storico-chiamate). Correggi il copione dove l'agente ha esitato o sbagliato.
+    Chiama il tuo numero, parla con l'agente e poi rileggi la trascrizione in [Conversazioni](/agenti-ai/storico-chiamate). Correggi il copione dove l'agente ha esitato o sbagliato.
   </Step>
 </Steps>
 
@@ -113,34 +149,50 @@ A sinistra c'è l'elenco delle **10 sezioni**. Sul telefono le sezioni diventano
 
 <Steps>
   <Step title="Apri l'agente">
-    In **Agenti** clicca la riga dell'agente o **Configura**.
+    In **I tuoi agenti** clicca la scheda dell'agente, poi la scheda **Impostazioni**.
   </Step>
   <Step title="Cambia ciò che serve">
     Apri la sezione che ti interessa e modifica i campi.
   </Step>
   <Step title="Salva">
-    Premi **Salva agente** e attendi «Agente salvato.». Le chiamate successive usano la nuova configurazione.
+    Premi **Salva agente** e attendi «Agente salvato.». Le chiamate successive usano la nuova configurazione, e in **Versioni** compare la modifica.
   </Step>
 </Steps>
+
+### Come torno a una versione precedente
+
+<Steps>
+  <Step title="Apri Versioni">
+    Nella pagina dell'agente apri la scheda **Versioni** e trova la versione che vuoi recuperare: le modifiche sono scritte sotto ognuna.
+  </Step>
+  <Step title="Premi Ripristina questa">
+    La versione si carica nelle impostazioni e leggi «Versione del … alle … caricata: controlla e premi «Salva agente» per rimetterla in uso.». Finché non salvi, l'agente continua a usare la versione attuale.
+  </Step>
+  <Step title="Controlla e salva">
+    Controlla le sezioni e premi **Salva agente**. Il ripristino diventa a sua volta una versione nuova, quindi puoi sempre tornare indietro.
+  </Step>
+</Steps>
+
+Il ripristino non tocca le chiavi e le password dei collegamenti (restano quelle attuali), né il periodo di **Conservazione delle conversazioni**.
 
 ### Come creo un secondo agente simile al primo
 
 <Steps>
   <Step title="Duplica">
-    In **Agenti** premi **Duplica** sulla riga dell'agente da copiare. Si apre la finestra **Duplica agente**.
+    In **I tuoi agenti** apri il menu **…** sulla scheda dell'agente da copiare e premi **Duplica**. Si apre la finestra **Duplica agente**.
   </Step>
   <Step title="Dai un nome alla copia">
     Nel campo **Nome della copia** trovi «Copia di» seguito dal nome: cambialo come preferisci (da 2 a 100 caratteri).
   </Step>
   <Step title="Crea la copia">
-    Premi **Crea la copia**. Si apre la configurazione della copia. La copia non risponde ancora su nessun numero: va assegnata a una connessione.
+    Premi **Crea la copia**. Si apre la pagina della copia. La copia non risponde ancora su nessun numero: va assegnata a una connessione.
   </Step>
   <Step title="Personalizza e collega">
     Cambia ciò che deve essere diverso, premi **Salva agente** e assegna la copia a una connessione in **Connessioni VoIP**.
   </Step>
 </Steps>
 
-La copia ha copione, voce, comportamento, trasferimenti, strumenti, knowledge base e tabella di consultazione identici all'originale. Non porta con sé il numero su cui risponde né lo storico delle chiamate. Fa eccezione la **Conservazione delle conversazioni**: la copia parte sempre da 12 mesi. Se l'originale ha un periodo diverso, cambialo nella copia e salva.
+La copia ha copione, voce, comportamento, trasferimenti, strumenti, documenti ed elenco da consultare identici all'originale. Non porta con sé il numero su cui risponde, le conversazioni né le versioni. Fa eccezione la **Conservazione delle conversazioni**: la copia parte sempre da 12 mesi. Se l'originale ha un periodo diverso, cambialo nella copia e salva.
 
 **Duplica** è spento quando hai raggiunto il numero massimo di agenti del piano e non compare sugli agenti segnati **Errore**.
 
@@ -148,7 +200,7 @@ La copia ha copione, voce, comportamento, trasferimenti, strumenti, knowledge ba
 
 <Steps>
   <Step title="Elimina">
-    In **Agenti** premi **Elimina** sulla riga dell'agente.
+    In **I tuoi agenti** apri il menu **…** sulla scheda dell'agente e premi **Elimina**.
   </Step>
   <Step title="Conferma">
     Nella finestra **Eliminare l'agente?** leggi «… verrà eliminato insieme a knowledge base e configurazioni. Le connessioni assegnate restano, senza agente.» e premi **Elimina agente**. Leggi «Agente eliminato.».
@@ -159,7 +211,7 @@ La copia ha copione, voce, comportamento, trasferimenti, strumenti, knowledge ba
 </Steps>
 
 <Warning>
-  L'eliminazione di un agente non si può annullare: copione, documenti della Knowledge Base e configurazione vanno persi.
+  L'eliminazione di un agente non si può annullare: copione, documenti, configurazione, versioni e conversazioni vanno persi.
 </Warning>
 
 ## I campi della finestra Duplica agente
@@ -176,24 +228,24 @@ Messaggi possibili: «Dai un nome alla copia.», «Il nome è troppo corto.», �
   Un agente da solo non riceve chiamate. Perché risponda servono tre cose: l'agente salvato, una **connessione VoIP** a cui è assegnato e il passaggio **Agente AI realtime** nelle Regole delle chiamate del numero. Il percorso completo è in [Panoramica](/agenti-ai/panoramica).
 </Note>
 
-- Il numero massimo di agenti dipende dal piano. Se provi a crearne uno in più leggi «Hai raggiunto il limite di N agenti del tuo piano.». Per averne di più passa a un piano superiore in **Crediti** (vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani)).
+- Il numero massimo di agenti dipende dal piano. Se provi a crearne uno in più leggi «Hai raggiunto il limite di N agenti del tuo piano.». Per averne di più passa a un piano superiore in **Crediti e piano** (vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani)).
 - Se passi a un piano con meno agenti, quelli che hai restano attivi, ma non ne puoi creare di nuovi finché non torni sotto il limite.
 - **Duplica** crea la copia nello stesso centralino.
-- Aggiungere o togliere un documento nella **Knowledge Base** salva subito anche le altre modifiche che hai fatto nell'editor fino a quel momento.
+- Aggiungere o togliere un documento in **Documenti** salva subito anche le altre modifiche che hai fatto nelle impostazioni fino a quel momento.
 
 ## Domande frequenti
 
 <AccordionGroup>
-  <Accordion title="Il bottone «+ Nuovo agente» è spento.">
-    Hai già il numero massimo di agenti del tuo piano (lo vedi in alto: «N / M agenti del piano»). Elimina un agente che non usi oppure passa a un piano superiore in **Crediti**.
+  <Accordion title="Il bottone «Nuovo agente» è spento.">
+    Hai già il numero massimo di agenti del tuo piano (lo vedi in alto: «N agenti su M del piano»). Elimina un agente che non usi oppure passa a un piano superiore in **Crediti e piano**.
   </Accordion>
 
   <Accordion title="Ho salvato l'agente ma al telefono non risponde.">
-    Controlla in **Agenti** la colonna **Risponde su**: se c'è **Nessuna connessione**, assegna l'agente a una connessione in **Connessioni VoIP**. Poi verifica che nelle Regole delle chiamate del tuo numero ci sia il passaggio **Agente AI realtime** verso quella connessione. Vedi [Collegare un numero](/agenti-ai/collegare-un-numero).
+    Controlla la sua scheda in **I tuoi agenti**: se c'è **Da sistemare** con «Nessun numero collegato», assegna l'agente a una connessione in **Connessioni VoIP**. Poi verifica che nelle Regole delle chiamate del tuo numero ci sia il passaggio **Agente AI realtime** verso quella connessione. Vedi [Collegare un numero](/agenti-ai/collegare-un-numero).
   </Accordion>
 
-  <Accordion title="Non riesco a caricare documenti nella Knowledge Base.">
-    Su un agente nuovo la sezione mostra «Serve prima salvare l'agente.»: premi **Crea agente**, poi torna in **Knowledge Base**.
+  <Accordion title="Non riesco a caricare documenti.">
+    Su un agente nuovo la sezione **Documenti** mostra «Serve prima salvare l'agente.»: premi **Crea agente**, poi torna in **Documenti**.
   </Accordion>
 
   <Accordion title="Ho premuto «Salva agente» e il pannello mi ha portato in un'altra sezione.">
@@ -209,7 +261,15 @@ Messaggi possibili: «Dai un nome alla copia.», «Il nome è troppo corto.», �
   </Accordion>
 
   <Accordion title="Quanto consuma un agente?">
-    Lo vedi nella colonna **Crediti (mese)** dell'elenco: crediti usati nel mese e percentuale sui crediti del piano. Il dettaglio giorno per giorno è nella pagina **Crediti**. Vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani).
+    I crediti consumati giorno per giorno, chiamata per chiamata, sono in **Crediti e piano** → **Movimenti crediti**. Nel dettaglio di ogni conversazione trovi i crediti di quella chiamata. Vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani).
+  </Accordion>
+
+  <Accordion title="Ho fatto una modifica che ha peggiorato l'agente. Come torno indietro?">
+    Apri la scheda **Versioni** dell'agente, premi **Ripristina questa** sulla versione di prima, controlla e premi **Salva agente**.
+  </Accordion>
+
+  <Accordion title="Perché l'umore dell'agente è «Da curare»?">
+    Negli ultimi 7 giorni almeno un cliente su quattro ha chiuso scontento. Apri la scheda **Andamento** per vedere su quali argomenti, poi leggi le conversazioni e migliora copione o documenti.
   </Accordion>
 </AccordionGroup>
 

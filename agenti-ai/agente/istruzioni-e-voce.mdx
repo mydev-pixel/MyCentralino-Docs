@@ -43,16 +43,14 @@ Questa pagina spiega quattro sezioni della configurazione di un agente: **Identi
 | **Lingua** | La lingua in cui l'agente parla | Italiano (proposta), Inglese, Spagnolo, Francese, Tedesco, Portoghese, Olandese, Polacco, Rumeno |
 | **Frase di apertura** | La prima frase che l'agente dice quando risponde | Obbligatoria, fino a 1.000 caratteri. Es. «Buongiorno, sono Sofia di …, come posso aiutarla?» |
 | **Copione dell'agente** | Le istruzioni che l'agente segue: chi è, cosa fa l'azienda, come comportarsi | Obbligatorio, fino a 50.000 caratteri. Sotto il campo il contatore «N caratteri» e l'aiuto «Le istruzioni di sistema (date, stile telefonico, strumenti) vengono aggiunte automaticamente: scrivi solo il copione.» |
-| **Modello AI** | Il «cervello» che capisce chi chiama e decide cosa rispondere | Gruppo **Consigliati**: **Claude Haiku 4.5 (consigliato)** (proposto), **Gemini 2.5 Flash (economico)**, **Gemini 2.5 Flash Lite (il più economico)**, **GPT-5.4 Mini**. Sotto, altri modelli divisi in **Google Gemini**, **OpenAI GPT**, **Anthropic Claude** |
+| **Modello AI** | Il «cervello» che capisce chi chiama e decide cosa rispondere | **Intelligente** «Per compiti complessi» (proposto) · **Veloce** «Per risposte leggermente più rapide» |
 | **Chiusura automatica** | «L'agente può chiudere la chiamata da solo.» | Interruttore, acceso di serie |
 | **Memoria delle chiamate** | «Ricorda le chiamate precedenti dello stesso numero.» | Interruttore, spento di serie |
 | **Conservazione delle conversazioni** | «Registrazioni e trascrizioni restano disponibili per questo periodo, poi vengono cancellate.» | 1 giorno, 7 giorni, 30 giorni, 3 mesi, 6 mesi, 12 mesi (proposto per gli agenti nuovi) |
 
 ### Il modello AI
 
-Se l'agente usa il calendario, i trasferimenti o altri strumenti, lascia **Claude Haiku 4.5 (consigliato)**: è il modello scelto per usarli in modo affidabile. I modelli più leggeri a volte saltano questi passaggi, per esempio annunciano «un attimo» e non controllano davvero il calendario. Se cambi modello, fai qualche telefonata di prova e rileggi le trascrizioni.
-
-Se un agente usa un modello che non è più in elenco, lo trovi nel gruppo **Attuale**. Se è un modello non più ammesso, al primo **Salva agente** diventa **Claude Haiku 4.5 (consigliato)**.
+Ci sono due modelli. **Intelligente** è quello proposto: segue bene i copioni lunghi e le chiamate con più passaggi, come prenotare nel calendario, passare la chiamata o cercare in un elenco. **Veloce** risponde leggermente prima: va bene quando le conversazioni sono semplici. Se cambi modello, fai qualche telefonata di prova e rileggi le trascrizioni.
 
 ### La memoria delle chiamate
 
@@ -290,7 +288,7 @@ Alla fine ripeti in breve cosa è stato deciso e saluta cordialmente.
 
 <AccordionGroup>
   <Accordion title="Quale modello AI scelgo?">
-    **Claude Haiku 4.5 (consigliato)**, soprattutto se l'agente prenota appuntamenti, trasferisce chiamate o usa altri strumenti. I modelli segnati «economico» funzionano per conversazioni semplici, ma con gli strumenti sono meno affidabili.
+    **Intelligente**, quello proposto, soprattutto se l'agente prenota appuntamenti, trasferisce chiamate o ha un copione lungo. **Veloce** se le conversazioni sono semplici e vuoi risposte leggermente più rapide.
   </Accordion>
 
   <Accordion title="Devo scrivere nel copione la data di oggi o gli orari di oggi?">

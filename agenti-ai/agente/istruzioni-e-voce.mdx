@@ -19,7 +19,6 @@ keywords:
   - "scaricare elenco csv"
   - "memoria delle chiamate"
   - "conservazione conversazioni"
-  - "reattività"
   - "chiusura per silenzio"
   - "lingua agente"
 ---
@@ -44,16 +43,14 @@ Questa pagina spiega quattro sezioni della configurazione di un agente: **Identi
 | **Lingua** | La lingua in cui l'agente parla | Italiano (proposta), Inglese, Spagnolo, Francese, Tedesco, Portoghese, Olandese, Polacco, Rumeno |
 | **Frase di apertura** | La prima frase che l'agente dice quando risponde | Obbligatoria, fino a 1.000 caratteri. Es. «Buongiorno, sono Sofia di …, come posso aiutarla?» |
 | **Copione dell'agente** | Le istruzioni che l'agente segue: chi è, cosa fa l'azienda, come comportarsi | Obbligatorio, fino a 50.000 caratteri. Sotto il campo il contatore «N caratteri» e l'aiuto «Le istruzioni di sistema (date, stile telefonico, strumenti) vengono aggiunte automaticamente: scrivi solo il copione.» |
-| **Modello AI** | Il «cervello» che capisce chi chiama e decide cosa rispondere | Gruppo **Consigliati**: **Claude Haiku 4.5 (consigliato)** (proposto), **Gemini 2.5 Flash (economico)**, **Gemini 2.5 Flash Lite (il più economico)**, **GPT-5.4 Mini**. Sotto, altri modelli divisi in **Google Gemini**, **OpenAI GPT**, **Anthropic Claude** |
+| **Modello AI** | Il «cervello» che capisce chi chiama e decide cosa rispondere | **Intelligente** «Per compiti complessi» (proposto) · **Veloce** «Per risposte leggermente più rapide» |
 | **Chiusura automatica** | «L'agente può chiudere la chiamata da solo.» | Interruttore, acceso di serie |
 | **Memoria delle chiamate** | «Ricorda le chiamate precedenti dello stesso numero.» | Interruttore, spento di serie |
 | **Conservazione delle conversazioni** | «Registrazioni e trascrizioni restano disponibili per questo periodo, poi vengono cancellate.» | 1 giorno, 7 giorni, 30 giorni, 3 mesi, 6 mesi, 12 mesi (proposto per gli agenti nuovi) |
 
 ### Il modello AI
 
-Se l'agente usa il calendario, i trasferimenti o altri strumenti, lascia **Claude Haiku 4.5 (consigliato)**: è il modello scelto per usarli in modo affidabile. I modelli più leggeri a volte saltano questi passaggi, per esempio annunciano «un attimo» e non controllano davvero il calendario. Se cambi modello, fai qualche telefonata di prova e rileggi le trascrizioni.
-
-Se un agente usa un modello che non è più in elenco, lo trovi nel gruppo **Attuale**. Se è un modello non più ammesso, al primo **Salva agente** diventa **Claude Haiku 4.5 (consigliato)**.
+Ci sono due modelli. **Intelligente** è quello proposto: segue bene i copioni lunghi e le chiamate con più passaggi, come prenotare nel calendario, passare la chiamata o cercare in un elenco. **Veloce** risponde leggermente prima: va bene quando le conversazioni sono semplici. Se cambi modello, fai qualche telefonata di prova e rileggi le trascrizioni.
 
 ### La memoria delle chiamate
 
@@ -78,18 +75,10 @@ Sugli agenti creati prima che esistesse questa scelta può comparire anche **Sen
 | Campo | Cosa indica | Valori |
 | --- | --- | --- |
 | **Voce dell'agente** | La voce con cui parla | Obbligatoria. Schede con nome e caratteristiche (Maschile o Femminile, Giovane, Adulta o Matura, accento). Campo **Cerca per nome o caratteristica…** e tasto play per l'anteprima |
-| **Qualità della voce** | Come viene prodotta la voce | **Flash v2.5** «La più veloce (consigliata)» (proposta) · **Turbo v2.5** «Veloce, resa più curata» · **Multilingual v2** «Qualità massima, più lenta» |
-| **Stabilità** | Quanto la voce resta uniforme da una frase all'altra | Da 0 a 1, proposto 0,75 |
-| **Fedeltà voce** | Quanto la voce resta vicina a quella dell'anteprima | Da 0 a 1, proposto 0,90 |
 | **Velocità** | La velocità con cui parla | Da 0,70× a 1,50×, proposto 1,10× |
-| **Reattività** | Quanto aspetta prima di rispondere quando chi chiama fa una pausa | **Rapida (consigliata)** (proposta) · **Normale** · **Paziente (attende di più)** |
-| **Trascrizione** | Come viene capito chi parla | **In tempo reale** (proposta) · **Standard (rileva la lingua)** |
 | **Chiusura per silenzio (secondi)** | Dopo quanti secondi di silenzio la chiamata si chiude | Da 0 a 120, proposto 10. «0 = non chiude mai da sola.» |
-| **Filtro dei rumori** | «Ignora le voci di sottofondo.» | Interruttore, acceso di serie |
 
 - Se la scheda delle voci mostra «Voci non disponibili al momento: riprova tra poco.», ricarica la pagina dopo qualche minuto.
-- **Flash v2.5** è la qualità più veloce: chi chiama aspetta meno tra una frase e l'altra. Se non hai esigenze particolari, lascia **Flash v2.5** e i valori proposti.
-- Se chi chiama si lamenta di essere interrotto (per esempio clienti anziani o che dettano dati), prova **Normale** o **Paziente (attende di più)** in **Reattività**.
 
 ## Knowledge Base
 
@@ -299,7 +288,7 @@ Alla fine ripeti in breve cosa è stato deciso e saluta cordialmente.
 
 <AccordionGroup>
   <Accordion title="Quale modello AI scelgo?">
-    **Claude Haiku 4.5 (consigliato)**, soprattutto se l'agente prenota appuntamenti, trasferisce chiamate o usa altri strumenti. I modelli segnati «economico» funzionano per conversazioni semplici, ma con gli strumenti sono meno affidabili.
+    **Intelligente**, quello proposto, soprattutto se l'agente prenota appuntamenti, trasferisce chiamate o ha un copione lungo. **Veloce** se le conversazioni sono semplici e vuoi risposte leggermente più rapide.
   </Accordion>
 
   <Accordion title="Devo scrivere nel copione la data di oggi o gli orari di oggi?">
@@ -311,7 +300,7 @@ Alla fine ripeti in breve cosa è stato deciso e saluta cordialmente.
   </Accordion>
 
   <Accordion title="L'agente interrompe chi chiama.">
-    In **Voce** → **Reattività** scegli **Normale** o **Paziente (attende di più)** e salva.
+    Scrivi nel copione di aspettare che chi chiama abbia finito di parlare, soprattutto quando detta un nome, un numero o un indirizzo. Se succede ancora, apri una [richiesta di assistenza](/centralino/assistenza/richieste-di-assistenza).
   </Accordion>
 
   <Accordion title="La chiamata si chiude da sola mentre chi chiama cerca un documento.">

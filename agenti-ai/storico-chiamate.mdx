@@ -1,26 +1,28 @@
 ---
-title: "Storico chiamate degli Agenti AI"
-sidebarTitle: "Storico chiamate"
-description: "L'elenco delle conversazioni gestite dagli agenti AI e il dettaglio di ogni chiamata: registrazione, trascrizione, azioni dell'agente, riassunto, dati raccolti ed eliminazione."
+title: "Conversazioni degli Agenti AI"
+sidebarTitle: "Conversazioni"
+description: "L'elenco delle conversazioni gestite dagli agenti AI con esito, umore e argomento, e il dettaglio di ogni chiamata: com'è andata, registrazione, trascrizione con le azioni dell'agente, riassunto, dati raccolti ed eliminazione."
 keywords:
+  - "conversazioni agenti ai"
   - "storico chiamate agenti ai"
-  - "conversazioni agente"
+  - "esito chiamata ai"
+  - "umore del cliente"
+  - "clienti scontenti"
+  - "argomento chiamata"
+  - "nessuno ha risposto"
   - "registrazione chiamata ai"
   - "trascrizione"
   - "riassunto chiamata"
   - "dati raccolti"
   - "eliminare conversazione"
-  - "cancellare telefonata"
-  - "chiamata fallita"
-  - "esito chiamata ai"
-  - "id conversazione"
+  - "com'è andata"
 ---
 
-**Storico Chiamate** raccoglie tutte le conversazioni gestite dai tuoi agenti AI, in entrata e in uscita. Da ogni riga apri il dettaglio della chiamata: la registrazione da ascoltare, la trascrizione frase per frase, le azioni che l'agente ha fatto (per esempio un appuntamento o un trasferimento), il riassunto e i dati raccolti.
+**Conversazioni** raccoglie tutte le telefonate gestite dai tuoi agenti AI, in entrata e in uscita. Per ognuna vedi subito com'è finita, com'era l'umore di chi chiamava e di cosa ha parlato. Da ogni riga apri il dettaglio: la valutazione della chiamata, la registrazione, la trascrizione con le azioni dell'agente, il riassunto e i dati raccolti.
 
-**Dove si trova:** menu degli Agenti AI → Attività → **Storico Chiamate** · `https://cloud.mycentralino.com/wave/chiamate`
+**Dove si trova:** menu degli Agenti AI → **Conversazioni** · `https://cloud.mycentralino.com/wave/chiamate`
 
-Ci arrivi anche dalla Home (**Storico →**) e dall'elenco degli agenti (**Chiamate** sulla riga di un agente, che apre lo storico già filtrato su quell'agente).
+Ci arrivi anche dalla **Panoramica** (**Vedi le conversazioni →**, **Tutte (N) →** in «Da guardare», o toccando un argomento), dal menu **…** di un agente in **I tuoi agenti** (**Conversazioni**, già filtrate su quell'agente) e da **Tutte →** nella scheda **Andamento** di un agente.
 
 **Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)). Si vedono solo le conversazioni degli agenti del proprio centralino. **Elimina conversazione** è solo del titolare.
 
@@ -28,46 +30,71 @@ Ci arrivi anche dalla Home (**Storico →**) e dall'elenco degli agenti (**Chiam
   Le chiamate che non passano dagli agenti AI non sono qui: le trovi in [Chiamate ricevute](/centralino/monitoraggio/chiamate-ricevute) e [Chiamate effettuate](/centralino/monitoraggio/chiamate-effettuate).
 </Note>
 
+## Esito e umore: cosa significano
+
+Ogni conversazione viene valutata in automatico a chiamata finita. Le valutazioni sono fatte dall'intelligenza artificiale: sono un'indicazione utile per capire dove guardare, non un giudizio sicuro.
+
+| Esito | Cosa significa |
+| --- | --- |
+| **Risolta** | L'agente ha gestito la richiesta da solo. |
+| **Passata a una persona** | L'agente ha passato la chiamata a un collega e la chiamata è stata trasferita. |
+| **Nessuno ha risposto** | L'agente ha provato a passare la chiamata, ma la persona non ha risposto: era occupata o ha rifiutato. Utile per capire quando i colleghi non riescono a prendere le chiamate. |
+| **Non risolta** | Il cliente non ha avuto ciò che chiedeva, oppure ha chiuso molto frustrato. |
+| **Interrotta** | La chiamata si è chiusa dopo pochi secondi, prima di una vera conversazione. |
+
+| Umore | Cosa significa |
+| --- | --- |
+| **Positivo** | Il cliente ha chiuso soddisfatto. |
+| **Neutro** | Né soddisfatto né scontento. |
+| **Scontento** | Il cliente ha chiuso insoddisfatto. |
+| — | Umore non misurato: la conversazione era troppo breve. |
+
+Nel dettaglio di ogni chiamata trovi anche la **frustrazione**, da «Nessuna» ad «Alta».
+
 ## Cosa trovi nella pagina
 
-In alto il conteggio («N chiamate») e il titolo **Storico chiamate**. La pagina compare subito e l'elenco arriva dopo qualche istante.
+In alto il numero di conversazioni («N conversazioni», con i filtri attivi «N conversazioni con questi filtri») e il titolo **Conversazioni**.
 
 ### I filtri
 
-| Filtro | Cosa fa | Valori |
-| --- | --- | --- |
-| **Agente** | Mostra solo le conversazioni di un agente | **Tutti** o il nome di un agente |
-| **Stato** | Mostra solo un esito | **Tutti**, **Completata**, **Fallita**, **In corso** |
-| **Dal** · **Al** | Limita il periodo | Due date |
-| **Numero chiamante** | Cerca un numero, anche solo una parte | Testo libero, per esempio `3391847` |
-| Righe per pagina | Quante righe per pagina | 20, 50, 100 |
-| **Azzera** | Toglie tutti i filtri |  |
+| Filtro | Cosa fa |
+| --- | --- |
+| **Tutte** · **Risolte** · **Passate a una persona** · **Nessuno ha risposto** · **Non risolte** · **Interrotte** | Mostra solo un esito. Accanto a ognuno c'è quante conversazioni sono. |
+| **Clienti scontenti** | Mostra solo le conversazioni con umore **Scontento**, con il loro numero accanto. Un secondo clic lo spegne. |
+| **Argomento: tutti** | Mostra solo le conversazioni di un argomento. Gli argomenti sono quelli della mappa «Di cosa parlano i tuoi clienti» della [Panoramica](/agenti-ai/panoramica). |
+| **Agente: tutti** | Mostra solo le conversazioni di un agente. |
+| **Dal** · **al** | Limita il periodo. |
+| **Cerca un numero** | Cerca il numero di chi ha chiamato, anche solo una parte (per esempio `3391847`). |
+| **Azzera** | Toglie tutti i filtri. Compare quando ce n'è almeno uno attivo. |
 
-Agente, stato, date e numero restano nell'indirizzo della pagina: puoi salvarlo tra i preferiti o mandarlo a un collega. Le righe per pagina tornano a 20 a ogni apertura.
+I filtri restano nell'indirizzo della pagina: puoi salvarlo tra i preferiti o mandarlo a un collega. Sul telefono argomento, agente e date stanno dietro il bottone **Filtri (N)**.
 
 ### L'elenco
 
 | Colonna | Cosa indica |
 | --- | --- |
-| **Esito** | **Completata**, **In corso** (con un pallino che pulsa), **Fallita** o **Annullata** |
-| **Chiamante** | Il numero di chi ha chiamato. Se non è disponibile compare «—» |
+| **Esito** | **Risolta**, **Passata a una persona**, **Nessuno ha risposto**, **Non risolta** o **Interrotta** |
+| **Chiamante** | Il numero di chi ha chiamato, oppure «Numero nascosto» |
 | **Agente** | L'agente che ha gestito la chiamata |
-| **Data e ora** | Quando è iniziata, per esempio `21/05/2026 14:32` |
+| **Argomento** | L'argomento della conversazione. «—» finché non è assegnato: gli argomenti si assegnano durante la notte |
+| **Umore** | **Positivo**, **Neutro**, **Scontento**, oppure «—» se non misurato |
+| **Quando** | Inizio della chiamata: «oggi 14:32», «ieri 09:10» oppure la data |
 | **Durata** | Minuti e secondi, per esempio `2:41` |
-| **Crediti** | I crediti consumati dalla conversazione |
-| **Riepilogo** | Il titolo breve del riassunto. Passandoci sopra con il mouse si legge tutto |
+| **Riassunto** | Il titolo breve del riassunto |
 
-Clicca una riga per aprire il dettaglio. In fondo **‹ Precedente**, «pagina N di M» e **Successiva ›**. Se non c'è niente: «Nessuna chiamata trovata» e «Le conversazioni gestite dai tuoi agenti compariranno qui.»
+Le conversazioni più recenti sono in cima, 25 per pagina, con **‹ Precedente**, «pagina N di M» e **Successiva ›**. Clicca una riga per aprire il dettaglio. Sul telefono ogni riga mostra numero, data, agente ed esito.
 
-## Il dettaglio della chiamata
+Se non c'è niente: «Ancora nessuna conversazione» oppure, con i filtri, «Nessuna conversazione con questi filtri» e «Prova ad allargare il periodo o a togliere un filtro.»
 
-**Dove si trova:** clic su una riga dello storico, delle **Ultime chiamate** della Home, oppure **Conversazione →** nel dettaglio di una campagna · `https://cloud.mycentralino.com/wave/chiamate/ID`
+## Il dettaglio della conversazione
+
+**Dove si trova:** clic su una riga di **Conversazioni**, di «Da guardare» nella Panoramica, delle **Ultime conversazioni** di un agente, oppure **Conversazione →** nel dettaglio di una campagna · `https://cloud.mycentralino.com/wave/chiamate/ID`
 
 ### In alto
 
-Il link **‹ Storico chiamate**, il numero di chi ha chiamato come titolo (o «Chiamata» se non è noto), l'esito e la riga «agente · data · durata · N crediti». Il titolare vede anche **Elimina conversazione**.
+Il link **‹ Conversazioni**, il numero di chi ha chiamato come titolo (o «Chiamata» se non è noto), lo stato della chiamata e la riga «agente · data · durata · N crediti». Il titolare vede anche **Elimina conversazione**.
 
-Se la chiamata è **Fallita** o **Annullata** compare un riquadro con il motivo:
+Se la chiamata è fallita o è stata annullata compare un riquadro con il motivo:
 
 | Motivo | Cosa vuol dire |
 | --- | --- |
@@ -86,109 +113,138 @@ I primi motivi riguardano soprattutto le chiamate fatte dall'agente nelle [campa
 
 Un lettore con il tasto play/pausa e la barra di avanzamento, che puoi trascinare (con la tastiera, le frecce sinistra e destra spostano di 5 secondi). Sotto lo stato: «Caricamento audio…», «Audio pronto · m:ss» oppure «Audio non disponibile per questa chiamata».
 
+### Com'è andata
+
+Il riquadro **Com'è andata** («Valutazione automatica della conversazione») riassume la chiamata in quattro voci:
+
+| Voce | Cosa mostra |
+| --- | --- |
+| **Esito** | L'esito, con una frase che lo spiega (per esempio «La chiamata è stata passata a un collega») |
+| **Umore del cliente** | **Positivo**, **Neutro** o **Scontento**, con un cursore tra «scontento» e «soddisfatto». «Non misurato: conversazione troppo breve.» se manca |
+| **Frustrazione** | **Nessuna**, **Lieve**, **Media** o **Alta**, con un cursore tra «calmo» e «molto frustrato» |
+| **Argomento** | L'argomento della conversazione e quante altre chiamate ne hanno parlato negli ultimi 30 giorni. Cliccandolo apri le conversazioni di quell'argomento. «Si assegna durante la notte.» se non c'è ancora |
+
 ### Trascrizione
 
-La conversazione a fumetti, con il numero di messaggi e, sotto ogni frase, il minuto in cui è stata detta. Sopra le frasi dell'agente compaiono le **azioni** che ha fatto, con l'esito **OK** o **Errore**:
+La conversazione a fumetti, con il numero di messaggi e, sotto ogni frase, il minuto in cui è stata detta. Sopra le frasi dell'agente compaiono le **azioni** che ha fatto, scritte in parole, con l'esito **OK** o **Errore**:
 
 | Azione | Cosa ha fatto l'agente |
 | --- | --- |
-| **Verifica disponibilità calendario** | Ha controllato gli orari liberi |
-| **Prenotazione appuntamento** | Ha fissato un appuntamento |
-| **Invio messaggio WhatsApp** | Ha mandato un messaggio WhatsApp a chi chiamava |
-| **Ricerca in tabella** | Ha cercato un dato nel tuo elenco (Ricerca dati) |
-| **Trasferimento di chiamata** | Ha passato la chiamata a un numero |
-| **Passaggio a un altro agente** | Ha passato la chiamata a un altro agente AI |
-| **Richiesta di richiamata** | Ha registrato una richiesta di essere richiamati |
-| **Chiusura chiamata** | Ha chiuso la telefonata |
+| **Ha controllato il calendario** | Ha cercato gli orari liberi |
+| **Ha preso l'appuntamento** | Ha fissato un appuntamento |
+| **Ha mandato un messaggio WhatsApp** | Ha scritto su WhatsApp a chi chiamava |
+| **Ha cercato nell'elenco** | Ha cercato un dato nel tuo elenco (sezione **Elenchi da consultare**) |
+| **Ha passato la chiamata a una persona** | Ha trasferito la chiamata a un numero |
+| **Ha presentato la chiamata all'operatore** | Ha annunciato la chiamata al collega prima di passargliela |
+| **Ha passato la chiamata a un altro agente** | Ha passato la chiamata a un altro agente AI |
+| **Ha chiesto di essere richiamato** | Ha registrato una richiesta di richiamata |
+| **Ha chiuso la chiamata** | Ha chiuso la telefonata |
 
-Gli strumenti che hai collegato tu (Custom API) compaiono con il loro nome. **Dettagli** mostra **Parametri inviati**, **Risposta** e, se c'è, **Messaggio all'agente**: servono soprattutto a chi ha configurato quei collegamenti. Se la trascrizione manca: «Trascrizione non disponibile per questa chiamata.»
+Se un'azione non è riuscita la frase diventa «Non è riuscito a …», per esempio «Non è riuscito a passare la chiamata a una persona». I collegamenti ai tuoi programmi compaiono come «Ha usato «nome»». **Dettagli** mostra **Parametri inviati**, **Risposta** e, se c'è, **Messaggio all'agente**: servono soprattutto a chi ha configurato quei collegamenti. Se la trascrizione manca: «Trascrizione non disponibile per questa chiamata.»
 
 ### Riassunto, Dati chiamata e Dati raccolti
 
 - **Riassunto**: il testo che riassume la conversazione (compare solo se c'è).
 - **Dati chiamata**: **Direzione** (In entrata o In uscita), **Agente**, **Messaggi**, **Durata**, **Crediti** e **ID conversazione**, il codice che identifica la conversazione.
-- **Dati raccolti**: compare se nell'agente hai impostato la **Raccolta dati**. Per ogni campo il valore («Sì», «No», un testo o un numero, oppure «Non rilevato») e, sotto, la motivazione data dall'agente.
+- **Dati raccolti**: compare se nell'agente hai impostato i **Dati da raccogliere**. Per ogni campo il valore («Sì», «No», un testo o un numero, oppure «Non rilevato») e, sotto, la motivazione data dall'agente.
 
 ## Come fare
 
 ### Come trovo la chiamata di un cliente
 
 <Steps>
-  <Step title="Apri lo storico">
-    Menu degli Agenti AI → **Storico Chiamate**.
+  <Step title="Apri Conversazioni">
+    Menu degli Agenti AI → **Conversazioni**.
   </Step>
   <Step title="Cerca il numero">
-    In **Numero chiamante** scrivi il numero o una sua parte. Se sai il giorno, impostalo in **Dal** e **Al**.
+    In **Cerca un numero** scrivi il numero o una sua parte. Se sai il giorno, impostalo in **Dal** e **al**.
   </Step>
   <Step title="Apri la chiamata">
-    Clicca la riga: nel dettaglio ascolti la registrazione e leggi trascrizione e riassunto.
+    Clicca la riga: nel dettaglio leggi com'è andata, ascolti la registrazione e leggi trascrizione e riassunto.
   </Step>
 </Steps>
 
-### Come controllo perché l'agente ha passato (o non ha passato) una chiamata
+### Come trovo i clienti rimasti scontenti
 
-Apri il dettaglio e scorri la **Trascrizione**: sopra la frase dell'agente trovi l'azione **Trasferimento di chiamata** o **Passaggio a un altro agente** con l'esito **OK** o **Errore**. Premi **Dettagli** per vedere a quale numero ha provato a passarla. Le regole del trasferimento si cambiano nell'agente: vedi [Trasferimenti](/agenti-ai/agente/trasferimenti).
+<Steps>
+  <Step title="Apri Conversazioni">
+    Menu degli Agenti AI → **Conversazioni**. In alternativa, dalla **Panoramica**, premi **Tutte (N) →** nel riquadro «Da guardare».
+  </Step>
+  <Step title="Premi Clienti scontenti">
+    Restano solo le conversazioni con umore **Scontento**. Puoi combinarlo con un esito (per esempio **Non risolte**) o con un agente.
+  </Step>
+  <Step title="Leggi cosa è successo">
+    Apri le chiamate una per una: la trascrizione mostra dove l'agente ha esitato. Spesso basta una frase in più nel copione: vedi [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce).
+  </Step>
+</Steps>
+
+### Come vedo quando i colleghi non hanno risposto
+
+Premi **Nessuno ha risposto**: sono le chiamate che l'agente ha provato a passare a una persona senza riuscirci. Nel dettaglio, sopra la frase dell'agente, l'azione «Non è riuscito a passare la chiamata a una persona» con **Dettagli** mostra il numero provato. Le regole del passaggio si cambiano nell'agente: vedi [Trasferimenti](/agenti-ai/agente/trasferimenti).
 
 ### Come elimino una conversazione
 
 <Steps>
   <Step title="Apri il dettaglio">
-    Dallo storico clicca la conversazione da eliminare.
+    Da **Conversazioni** clicca la conversazione da eliminare.
   </Step>
   <Step title="Premi Elimina conversazione">
     In alto premi **Elimina conversazione**. Il pannello chiede «Eliminare questa conversazione? Trascrizione e registrazione vengono cancellate per sempre.»
   </Step>
   <Step title="Conferma">
-    Conferma: torni allo storico. La conversazione sparisce dall'elenco entro un minuto.
+    Conferma: torni all'elenco e la conversazione non c'è più.
   </Step>
 </Steps>
 
 <Warning>
-  L'eliminazione è definitiva: cancella registrazione e trascrizione, e anche il ricordo di quella chiamata nella memoria dell'agente. Solo il titolare dell'account può farla: i collaboratori non vedono il bottone. Se l'eliminazione non riesce compare «Eliminazione non riuscita. Riprova tra poco.»
+  L'eliminazione è definitiva: cancella registrazione, trascrizione e valutazione della chiamata, e anche il ricordo di quella chiamata nella memoria dell'agente. Solo il titolare dell'account può farla: i collaboratori non vedono il bottone. Se l'eliminazione non riesce compare «Eliminazione non riuscita. Riprova tra poco.»
 </Warning>
 
 ## Da sapere
 
-- **Ritardo di aggiornamento.** L'elenco può mostrare una chiamata appena conclusa con un ritardo fino a un minuto.
+- **Aggiornamento.** Una chiamata appena conclusa compare nell'elenco entro un paio di minuti. Umore ed esito arrivano qualche istante dopo la fine della chiamata; l'argomento si assegna durante la notte.
 - **Numero e crediti arrivano poco dopo.** Il numero di chi chiama e i crediti consumati compaiono quando la conversazione è stata conteggiata nei crediti: per una chiamata appena finita possono mancare per poco tempo.
-- **Quante conversazioni carica.** Per ogni agente l'elenco carica le 300 conversazioni più recenti (dal giorno scelto in **Dal**, se lo imposti). Il conteggio in alto si riferisce a quelle caricate.
-- **Per quanto tempo restano.** Registrazioni e trascrizioni restano disponibili per il periodo scelto in **Conservazione delle conversazioni** nella configurazione dell'agente (proposto: 12 mesi), poi vengono cancellate. Vedi [Crea un agente](/agenti-ai/agente/crea-un-agente).
-- **Agenti eliminati.** Le conversazioni di un agente eliminato non compaiono più nello storico.
+- **Per quanto tempo restano.** Le conversazioni restano disponibili per il periodo scelto in **Conservazione delle conversazioni** nella configurazione dell'agente (proposto: 12 mesi), poi vengono cancellate. Se l'agente non conserva le conversazioni, in elenco restano solo esito e durata, senza riassunto né umore. Vedi [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce).
+- **Agenti eliminati.** Le conversazioni di un agente eliminato non compaiono più.
 - **Il riassunto via email o WhatsApp** a fine chiamata si imposta nell'agente: vedi [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata).
 
 ## Domande frequenti
 
 <AccordionGroup>
   <Accordion title="Un cliente mi chiede di cancellare la sua telefonata.">
-    Trova la chiamata con **Numero chiamante**, aprila e premi **Elimina conversazione**. Registrazione e trascrizione vengono cancellate per sempre. Serve l'account del titolare.
+    Trova la chiamata con **Cerca un numero**, aprila e premi **Elimina conversazione**. Registrazione, trascrizione e valutazione vengono cancellate per sempre. Serve l'account del titolare.
   </Accordion>
 
-  <Accordion title="Le conversazioni vecchie spariscono?">
-    Sì, dopo il periodo di **Conservazione delle conversazioni** impostato nell'agente. Se riduci quel periodo, al salvataggio le conversazioni più vecchie vengono cancellate.
+  <Accordion title="Come fa a sapere se il cliente era soddisfatto?">
+    Lo valuta l'intelligenza artificiale a chiamata finita, dal tono e dalle parole della conversazione. È un'indicazione per capire dove guardare: per esserne sicuro ascolta la registrazione o leggi la trascrizione.
+  </Accordion>
+
+  <Accordion title="Perché l'umore è «—»?">
+    La conversazione era troppo breve per misurarlo, per esempio una chiamata chiusa dopo il saluto. Succede anche se l'agente è impostato per non conservare le conversazioni.
+  </Accordion>
+
+  <Accordion title="Perché una chiamata passata a un collega è «Nessuno ha risposto»?">
+    L'agente ha provato a passarla, ma il collega era occupato o ha rifiutato, e la conversazione è proseguita con l'agente. Se succede spesso, controlla in **Passaggio a una persona** i numeri usati dall'agente: vedi [Trasferimenti](/agenti-ai/agente/trasferimenti).
   </Accordion>
 
   <Accordion title="La registrazione dice «Audio non disponibile per questa chiamata».">
     Per quella conversazione non c'è una registrazione da ascoltare. Trascrizione, riassunto e dati, se presenti, restano consultabili.
   </Accordion>
 
-  <Accordion title="Vedo una chiamata «In corso» da molto tempo.">
-    Lo stato si aggiorna quando la conversazione si chiude. Ricarica la pagina dopo qualche minuto: l'elenco si aggiorna con un ritardo fino a un minuto.
-  </Accordion>
-
   <Accordion title="Cosa sono i «Dati raccolti»?">
-    Sono i campi che hai chiesto all'agente di ricavare da ogni conversazione (per esempio il motivo della chiamata) nella sezione **Raccolta dati** dell'agente. «Non rilevato» vuol dire che in quella chiamata il dato non è emerso.
+    Sono i campi che hai chiesto all'agente di ricavare da ogni conversazione (per esempio il motivo della chiamata) nella sezione **Dati da raccogliere** dell'agente. «Non rilevato» vuol dire che in quella chiamata il dato non è emerso.
   </Accordion>
 
   <Accordion title="Posso scaricare l'elenco delle chiamate?">
-    Lo storico non ha un'esportazione. I crediti consumati giorno per giorno si scaricano da **Crediti** → **Movimenti crediti** → **Export CSV** (vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani)); i risultati di una campagna con **Report CSV** (vedi [Campagne in uscita](/agenti-ai/campagne-in-uscita)).
+    L'elenco non ha un'esportazione. I crediti consumati giorno per giorno si scaricano da **Crediti e piano** → **Movimenti crediti** → **Export CSV** (vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani)); i risultati di una campagna con **Report CSV** (vedi [Campagne in uscita](/agenti-ai/campagne-in-uscita)).
   </Accordion>
 </AccordionGroup>
 
 ## Pagine collegate
 
 <CardGroup cols={2}>
-  <Card title="Panoramica" icon="robot" href="/agenti-ai/panoramica">
-    La Home degli Agenti AI e le ultime chiamate.
+  <Card title="Panoramica" icon="chart-line" href="/agenti-ai/panoramica">
+    Chiamate in diretta, argomenti, umore e chiamate da guardare.
   </Card>
 
   <Card title="Dopo la chiamata" icon="envelope" href="/agenti-ai/agente/dopo-la-chiamata">

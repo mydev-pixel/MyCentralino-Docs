@@ -21,7 +21,7 @@ keywords:
 
 Con le **campagne** l'agente AI chiama lui una lista di numeri per te: promemoria di appuntamenti, solleciti, ricontatti di preventivi. Una **campagna** stabilisce quale agente chiama e con quali istruzioni; ogni **esecuzione** è un lotto di numeri da chiamare con quella campagna. Una campagna può avere tante esecuzioni.
 
-**Dove si trova:** menu degli Agenti AI → Attività → **Outbound** · `https://cloud.mycentralino.com/wave/outbound`
+**Dove si trova:** menu degli Agenti AI → **Campagne** · `https://cloud.mycentralino.com/wave/outbound`
 
 **Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)).
 
@@ -115,7 +115,7 @@ E nelle **Istruzioni aggiuntive al copione**: `Ricorda a {{cliente}} l'appuntame
     L'agente che chiamerà deve avere una connessione: in **Connessioni VoIP** verifica che compaia «Risponde» con il suo nome su una connessione.
   </Step>
   <Step title="Crea la campagna">
-    In **Outbound** premi **\+ Nuova campagna**. Scrivi il **Nome**, scegli l'**Agente** e, se vuoi, una frase di apertura e le istruzioni per questa campagna. Premi **Crea campagna**. Compare «Campagna creata: ora aggiungi un'esecuzione coi contatti.»
+    In **Campagne** premi **\+ Nuova campagna**. Scrivi il **Nome**, scegli l'**Agente** e, se vuoi, una frase di apertura e le istruzioni per questa campagna. Premi **Crea campagna**. Compare «Campagna creata: ora aggiungi un'esecuzione coi contatti.»
   </Step>
   <Step title="Aggiungi un'esecuzione">
     Sulla campagna premi **\+ Esecuzione**. Incolla i contatti (uno per riga: numero,nome) oppure carica un CSV.
@@ -137,7 +137,7 @@ Se l'agente non ha una connessione, l'esecuzione viene creata ma resta in **Bozz
 
 <Steps>
   <Step title="Apri l'esecuzione">
-    In **Outbound** clicca l'esecuzione conclusa.
+    In **Campagne** clicca l'esecuzione conclusa.
   </Step>
   <Step title="Premi Riprova falliti">
     Il bottone compare se ci sono contatti falliti o finiti in segreteria. Si crea una nuova esecuzione «Retry di …» con solo quei contatti, e si apre il suo dettaglio.
@@ -166,7 +166,7 @@ Nel dettaglio dell'esecuzione premi **Report CSV**: scarica un file con una riga
 
 ## Il dettaglio dell'esecuzione
 
-**Dove si trova:** **Outbound** → clic su un'esecuzione · `https://cloud.mycentralino.com/wave/outbound/esecuzioni/ID`
+**Dove si trova:** **Campagne** → clic su un'esecuzione · `https://cloud.mycentralino.com/wave/outbound/esecuzioni/ID`
 
 ### In alto
 
@@ -198,7 +198,7 @@ I filtri **Tutti**, **Da chiamare**, **Completate**, **Fallite**, **Segreteria**
 | **Durata** | Minuti e secondi |
 | **Crediti** | I crediti consumati |
 
-**Conversazione →** apre il dettaglio della chiamata, con registrazione e trascrizione (vedi [Storico chiamate](/agenti-ai/storico-chiamate)).
+**Conversazione →** apre il dettaglio della chiamata, con registrazione e trascrizione (vedi [Conversazioni](/agenti-ai/storico-chiamate)).
 
 ## Da sapere
 
@@ -239,7 +239,7 @@ I filtri **Tutti**, **Da chiamare**, **Completate**, **Fallite**, **Segreteria**
   </Accordion>
 
   <Accordion title="Dove ascolto le chiamate fatte dalla campagna?">
-    Nella tabella **Contatti** del dettaglio, con **Conversazione →**, oppure in **Storico Chiamate**: nel dettaglio la **Direzione** è «In uscita».
+    Nella tabella **Contatti** del dettaglio, con **Conversazione →**, oppure in **Conversazioni**: nel dettaglio la **Direzione** è «In uscita».
   </Accordion>
 </AccordionGroup>
 
@@ -254,7 +254,7 @@ I filtri **Tutti**, **Da chiamare**, **Completate**, **Fallite**, **Segreteria**
     Copione e voce dell'agente che chiama.
   </Card>
 
-  <Card title="Storico chiamate" icon="list" href="/agenti-ai/storico-chiamate">
+  <Card title="Conversazioni" icon="list" href="/agenti-ai/storico-chiamate">
     Registrazione e trascrizione di ogni chiamata.
   </Card>
 

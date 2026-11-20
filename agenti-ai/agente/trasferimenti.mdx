@@ -17,9 +17,9 @@ keywords:
   - "numeri di inoltro"
 ---
 
-Nella sezione **Trasferimento** della configurazione decidi quando l'agente AI passa la chiamata a una persona (un interno, un servizio interno come una coda, un fisso o un cellulare) e quando la passa a un altro agente AI. Se non imposti niente, l'agente gestisce tutta la chiamata da solo.
+Nella sezione **Passaggio a una persona** della configurazione decidi quando l'agente AI passa la chiamata a una persona (un interno, un servizio interno come una coda, un fisso o un cellulare) e quando la passa a un altro agente AI. Se non imposti niente, l'agente gestisce tutta la chiamata da solo.
 
-**Dove si trova:** menu degli Agenti AI → Gestione → **Agenti** → **Configura** sull'agente → sezione **Trasferimento** · `https://cloud.mycentralino.com/wave/agenti`
+**Dove si trova:** menu degli Agenti AI → **I tuoi agenti** → clic sull'agente → scheda **Impostazioni** → sezione **Passaggio a una persona** · `https://cloud.mycentralino.com/wave/agenti`
 
 **Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)), quando gli Agenti AI sono attivi.
 
@@ -29,7 +29,7 @@ Nella sezione **Trasferimento** della configurazione decidi quando l'agente AI p
 
 ## Cosa trovi nella sezione
 
-Il titolo è **Trasferimento di chiamata** — «Quando e verso chi l'agente passa la chiamata a una persona vera.». Sotto, in quest'ordine:
+Il titolo è **Passaggio a una persona** — «Quando e verso chi l'agente passa la chiamata a una persona vera.». Sotto, in quest'ordine:
 
 1. la **modalità**: **Classico** oppure **Dinamico**;
 2. i numeri (in **Classico**) o la condizione (in **Dinamico**);
@@ -63,7 +63,7 @@ Con due numeri o più compare la posizione (1, 2, 3…) e le frecce **Sposta su*
 
 ### Dinamico: la condizione
 
-In **Dinamico** c'è un solo campo, **Quando trasferire (condizione)**, per esempio «Trasferisci quando il cliente chiede un tecnico per un intervento urgente». Il numero l'agente lo cerca da solo nei suoi dati: nell'elenco della **Ricerca dati** o nei documenti della **Knowledge Base** (vedi [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce)). Quindi i numeri devono essere scritti lì, insieme a quando usarli.
+In **Dinamico** c'è un solo campo, **Quando trasferire (condizione)**, per esempio «Trasferisci quando il cliente chiede un tecnico per un intervento urgente». Il numero l'agente lo cerca da solo nei suoi dati: nell'elenco caricato in **Elenchi da consultare** o nei **Documenti** (vedi [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce)). Quindi i numeri devono essere scritti lì, insieme a quando usarli.
 
 Se il primo numero non risponde e nei dati ce ne sono altri adatti, l'agente è istruito a provarli uno alla volta; quando li ha provati tutti, dice a chi chiama che la richiesta è stata inoltrata e che verrà ricontattato.
 
@@ -110,7 +110,7 @@ Premi **\+ Aggiungi** e compila la riga:
 
 - «L'agente che riceve la chiamata riparte con la propria configurazione: copione, voce e strumenti sono i suoi.» Configura bene anche lui.
 - Le righe senza agente o senza **Quando passare a questo agente** vengono scartate al salvataggio.
-- Se hai un solo agente leggi «Serve almeno un secondo agente: creane un altro e potrai passargli le chiamate.». Crealo da **Agenti** → **\+ Nuovo agente** (vedi [Crea un agente](/agenti-ai/agente/crea-un-agente)).
+- Se hai un solo agente leggi «Serve almeno un secondo agente: creane un altro e potrai passargli le chiamate.». Crealo da **I tuoi agenti** → **Nuovo agente** (vedi [Crea un agente](/agenti-ai/agente/crea-un-agente)).
 - Se l'agente di destinazione è stato eliminato, nella riga compare **Agente non più disponibile**: scegline un altro o togli la riga.
 
 ## Come fare
@@ -119,7 +119,7 @@ Premi **\+ Aggiungi** e compila la riga:
 
 <Steps>
   <Step title="Apri la sezione">
-    Apri la configurazione dell'agente e la sezione **Trasferimento**. Lascia selezionato **Classico**.
+    Apri la configurazione dell'agente e la sezione **Passaggio a una persona**. Lascia selezionato **Classico**.
   </Step>
   <Step title="Aggiungi il numero">
     Premi **\+ Aggiungi** e scrivi il numero del collega: il suo interno (es. `201`) o il cellulare (es. `3331234567`), senza spazi.
@@ -156,7 +156,7 @@ Premi **\+ Aggiungi** e compila la riga:
     Crea un agente che accoglie (es. «Centralino») e uno specializzato (es. «Assistenza tecnica»), ognuno con il suo copione.
   </Step>
   <Step title="Aggiungi il passaggio">
-    Nella configurazione dell'agente che accoglie apri **Trasferimento**, vai a **Passaggio a un altro agente** e premi **\+ Aggiungi**.
+    Nella configurazione dell'agente che accoglie apri **Passaggio a una persona**, vai a **Passaggio a un altro agente** e premi **\+ Aggiungi**.
   </Step>
   <Step title="Compila la riga">
     In **Scegli l'agente…** seleziona «Assistenza tecnica», in **Quando passare a questo agente** scrivi «chiede assistenza su un prodotto già acquistato» e, se vuoi, una **Frase da dire prima di passare** come «Le passo il collega dell'assistenza».
@@ -171,7 +171,7 @@ Premi **\+ Aggiungi** e compila la riga:
 - Scrivi nel copione le stesse situazioni che metti in **Quando trasferire qui**: l'agente decide meglio se le due cose dicono la stessa cosa (vedi [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce)).
 - Con la presentazione accesa o in **Dinamico**, l'agente è istruito a trasferire solo quando chi chiama deve parlare subito con una persona: se basta raccogliere i dati o fissare un appuntamento, completa la chiamata da solo.
 - Dopo un trasferimento a numero, nel riassunto di fine chiamata può comparire la riga **Risposta**: vedi [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata).
-- Dopo un **Passaggio a un altro agente**, il riassunto e i dati di fine chiamata li manda solo l'agente che ha chiuso la conversazione, con le sue impostazioni di **Post-chiamata**.
+- Dopo un **Passaggio a un altro agente**, il riassunto e i dati di fine chiamata li manda solo l'agente che ha chiuso la conversazione, con le sue impostazioni di **Riassunto e notifiche**.
 
 ## Domande frequenti
 
@@ -197,7 +197,7 @@ Premi **\+ Aggiungi** e compila la riga:
   </Accordion>
 
   <Accordion title="Dove trova l'agente i numeri in modalità Dinamico?">
-    Nell'elenco della **Ricerca dati** o nei documenti della **Knowledge Base**. Per esempio un CSV con le colonne `Zona`, `Tecnico`, `Telefono`, `Priorità`, con la zona come colonna chiave.
+    Nell'elenco caricato in **Elenchi da consultare** o nei **Documenti**. Per esempio un CSV con le colonne `Zona`, `Tecnico`, `Telefono`, `Priorità`, con la zona come colonna chiave.
   </Accordion>
 
   <Accordion title="L'agente a cui passo la chiamata deve avere una connessione?">
@@ -209,7 +209,7 @@ Premi **\+ Aggiungi** e compila la riga:
   </Accordion>
 
   <Accordion title="Dopo un passaggio tra agenti non mi arriva il riassunto.">
-    Il riassunto lo manda l'ultimo agente della chiamata, con le sue impostazioni di **Post-chiamata**. Accendi **Riepilogo via email** o **Riepilogo via WhatsApp** anche sull'agente che riceve il passaggio.
+    Il riassunto lo manda l'ultimo agente della chiamata, con le sue impostazioni di **Riassunto e notifiche**. Accendi **Riepilogo via email** o **Riepilogo via WhatsApp** anche sull'agente che riceve il passaggio.
   </Accordion>
 </AccordionGroup>
 
@@ -217,7 +217,7 @@ Premi **\+ Aggiungi** e compila la riga:
 
 <CardGroup cols={2}>
   <Card title="Istruzioni e voce" icon="microphone" href="/agenti-ai/agente/istruzioni-e-voce">
-    Copione, Knowledge Base e Ricerca dati.
+    Copione, documenti ed elenchi da consultare.
   </Card>
 
   <Card title="Dopo la chiamata" icon="envelope" href="/agenti-ai/agente/dopo-la-chiamata">

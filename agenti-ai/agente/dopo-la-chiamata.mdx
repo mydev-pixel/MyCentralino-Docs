@@ -19,9 +19,9 @@ keywords:
   - "invio dati fine chiamata"
 ---
 
-Questa pagina spiega cosa fa l'agente AI con le informazioni di una chiamata: il **riassunto** che ti arriva per email o WhatsApp a chiamata finita, i **dati** che l'agente estrae da ogni conversazione, l'invio automatico al tuo gestionale e i collegamenti con i tuoi sistemi durante la chiamata. Riguarda le sezioni **Post-chiamata**, **Raccolta dati**, **WhatsApp** e **Custom API** della configurazione dell'agente.
+Questa pagina spiega cosa fa l'agente AI con le informazioni di una chiamata: il **riassunto** che ti arriva per email o WhatsApp a chiamata finita, i **dati** che l'agente estrae da ogni conversazione, l'invio automatico al tuo gestionale e i collegamenti con i tuoi sistemi durante la chiamata. Riguarda le sezioni **Riassunto e notifiche**, **Dati da raccogliere**, **WhatsApp** e **Collegamenti ai tuoi programmi** della configurazione dell'agente.
 
-**Dove si trova:** menu degli Agenti AI → Gestione → **Agenti** → **Configura** sull'agente → sezioni **Post-chiamata**, **Raccolta dati**, **WhatsApp**, **Custom API** · `https://cloud.mycentralino.com/wave/agenti`
+**Dove si trova:** menu degli Agenti AI → **I tuoi agenti** → clic sull'agente → scheda **Impostazioni** → sezioni **Riassunto e notifiche**, **Dati da raccogliere**, **WhatsApp**, **Collegamenti ai tuoi programmi** · `https://cloud.mycentralino.com/wave/agenti`
 
 **Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)), quando gli Agenti AI sono attivi.
 
@@ -29,7 +29,7 @@ Questa pagina spiega cosa fa l'agente AI con le informazioni di una chiamata: il
   Queste impostazioni valgono solo dopo **Salva agente**, tranne il **Server email**, che si salva subito dalla sua finestra. Sono impostazioni **del singolo agente**: se hai più agenti, vanno fatte su ognuno.
 </Note>
 
-## Post-chiamata
+## Riassunto e notifiche
 
 «Cosa succede appena la chiamata finisce: riepiloghi e invio dati.» La sezione ha due parti: **Notifiche** (riepilogo via WhatsApp e via email) e **Webhook**.
 
@@ -46,7 +46,7 @@ L'email ha come oggetto il numero di chi ha chiamato (con il nome, se il numero 
 
 - numero e nome di chi ha chiamato, agente, durata, direzione (in entrata o in uscita) ed esito;
 - il **Riassunto** della conversazione, in italiano;
-- i **Dati Estratti**: i campi della **Raccolta dati** con il loro valore, e la riga **Risposta** dopo un trasferimento (vedi sotto);
+- i **Dati Estratti**: i campi dei **Dati da raccogliere** con il loro valore, e la riga **Risposta** dopo un trasferimento (vedi sotto);
 - la **Trascrizione completa**, frase per frase, con il minuto;
 - in fondo il codice della conversazione.
 
@@ -70,13 +70,13 @@ Quando l'agente ha passato la chiamata a un numero e l'esito si può verificare,
 - «Sì» seguito dal numero che ha risposto;
 - «No» seguito dai numeri provati e dal motivo (per esempio occupato o nessuna risposta).
 
-Se l'esito non si può verificare, per esempio quando la chiamata va a una coda, la riga non compare. Se hai già un campo della **Raccolta dati** chiamato «Risposta», resta il tuo.
+Se l'esito non si può verificare, per esempio quando la chiamata va a una coda, la riga non compare. Se hai già un campo dei **Dati da raccogliere** chiamato «Risposta», resta il tuo.
 
 ### Come ricevo il riassunto di ogni chiamata via email
 
 <Steps>
-  <Step title="Apri Post-chiamata">
-    Nella configurazione dell'agente apri la sezione **Post-chiamata**.
+  <Step title="Apri Riassunto e notifiche">
+    Nella configurazione dell'agente apri la sezione **Riassunto e notifiche**.
   </Step>
   <Step title="Accendi il riepilogo">
     Accendi **Riepilogo via email**.
@@ -93,7 +93,7 @@ Se l'esito non si può verificare, per esempio quando la chiamata va a una coda,
 
 <Steps>
   <Step title="Accendi il riepilogo">
-    In **Post-chiamata** accendi **Riepilogo via WhatsApp**.
+    In **Riassunto e notifiche** accendi **Riepilogo via WhatsApp**.
   </Step>
   <Step title="Scrivi i numeri">
     In **Numeri destinatari** scrivi il tuo cellulare, per esempio `+393331234567`. Per più persone separa i numeri con una virgola.
@@ -131,7 +131,7 @@ I dati del server (nome, porta, cifratura, utente, password) li trovi nelle impo
 
 <Steps>
   <Step title="Apri la finestra">
-    In **Post-chiamata**, con **Riepilogo via email** acceso, premi **Usa il tuo server email**.
+    In **Riassunto e notifiche**, con **Riepilogo via email** acceso, premi **Usa il tuo server email**.
   </Step>
   <Step title="Compila i dati">
     Scrivi **Server di posta in uscita**, scegli **Porta** e **Cifratura**, poi **Utente**, **Password**, **Nome del mittente** e **Indirizzo del mittente**.
@@ -184,13 +184,13 @@ Se accendi il webhook ma lasci vuoto **URL del webhook**, al salvataggio non vie
 
 Cose da sapere, scritte anche nella guida **Come funziona**:
 
-- l'invio è uno solo per chiamata e non viene ripetuto se il tuo sistema non risponde entro 15 secondi: i dati restano comunque nello [Storico chiamate](/agenti-ai/storico-chiamate);
+- l'invio è uno solo per chiamata e non viene ripetuto se il tuo sistema non risponde entro 15 secondi: i dati restano comunque in [Conversazioni](/agenti-ai/storico-chiamate);
 - vale per questo agente: per collegare più agenti, accendilo su ognuno (anche verso lo stesso indirizzo);
 - se la chiamata passa da un agente a un altro, l'invio è uno solo e lo fa l'agente che ha chiuso la conversazione.
 
 Se l'indirizzo non va bene, al salvataggio leggi «Webhook dopo la chiamata:» seguito dal motivo, per esempio «L'indirizzo deve iniziare con https://», «Indirizzo non trovato. Controlla di averlo scritto bene.» oppure «Indirizzo non ammesso: deve essere raggiungibile da internet.».
 
-## Raccolta dati
+## Dati da raccogliere
 
 «Campi che l'agente estrae da ogni conversazione (li ritrovi nel dettaglio chiamata).» Servono per avere sempre le stesse informazioni da ogni chiamata, già pronte: il motivo, se va richiamato, se ha fissato un appuntamento.
 
@@ -206,7 +206,7 @@ Premi **\+ Campo** per ogni informazione:
 
 I valori li ritrovi:
 
-- nel dettaglio della chiamata, nello [Storico chiamate](/agenti-ai/storico-chiamate), alla voce **Dati raccolti**, con il valore («Sì», «No», un testo o «Non rilevato») e la motivazione;
+- nel dettaglio della chiamata, in [Conversazioni](/agenti-ai/storico-chiamate), alla voce **Dati raccolti**, con il valore («Sì», «No», un testo o «Non rilevato») e la motivazione;
 - nei **Dati Estratti** dei riepiloghi via email e WhatsApp;
 - nei dati inviati dal **Webhook**.
 
@@ -233,9 +233,9 @@ Il nome del campo compare così com'è nelle email e nei messaggi: sceglilo legg
 - Scegli sempre il profilo: con l'interruttore acceso ma senza profilo, l'invio non viene attivato e alla riapertura risulta spento.
 - Scrivi nel copione quando mandare il messaggio e cosa scriverci, per esempio «Se il cliente chiede dove siamo, mandagli su WhatsApp l'indirizzo e il link della mappa».
 - Se il profilo non è di questo centralino leggi «Scegli un numero WhatsApp di questo centralino.».
-- Ogni messaggio inviato compare nella trascrizione dello Storico chiamate come «Invio messaggio WhatsApp».
+- Ogni messaggio inviato compare nella trascrizione della conversazione come «Ha mandato un messaggio WhatsApp».
 
-## Custom API: collegare i tuoi sistemi durante la chiamata
+## Collegamenti ai tuoi programmi: collegare i tuoi sistemi durante la chiamata
 
 «Collega i tuoi endpoint: l'agente li chiama durante la conversazione.» Serve a chi ha un gestionale o un sito con un'interfaccia di collegamento (API): l'agente può, per esempio, controllare lo stato di un ordine o registrare una richiesta mentre parla con il cliente. Va configurata da un tecnico o da uno sviluppatore.
 
@@ -265,7 +265,7 @@ Errori possibili al salvataggio, preceduti dal nome dello strumento: «L'indiriz
 ## Da sapere
 
 - Dopo un **Passaggio a un altro agente**, riepiloghi e webhook partono solo dall'ultimo agente della chiamata, con le sue impostazioni. Se l'ultimo agente non ha destinatari, non parte niente. Vedi [Trasferimenti](/agenti-ai/agente/trasferimenti).
-- Riepiloghi e dati raccolti restano consultabili nello [Storico chiamate](/agenti-ai/storico-chiamate) per il periodo di **Conservazione delle conversazioni** scelto nell'agente.
+- Riepiloghi e dati raccolti restano consultabili in [Conversazioni](/agenti-ai/storico-chiamate) per il periodo di **Conservazione delle conversazioni** scelto nell'agente.
 - Il riassunto è generato dall'intelligenza artificiale: per le decisioni importanti controlla la trascrizione o riascolta la registrazione.
 
 ## Domande frequenti
@@ -276,7 +276,7 @@ Errori possibili al salvataggio, preceduti dal nome dello strumento: «L'indiriz
   </Accordion>
 
   <Accordion title="Posso far arrivare i riassunti dalla mia email aziendale?">
-    Sì: in **Post-chiamata** premi **Usa il tuo server email**, compila i dati della tua casella, fai **Invia una prova** e **Salva**. Vale per tutti i tuoi agenti.
+    Sì: in **Riassunto e notifiche** premi **Usa il tuo server email**, compila i dati della tua casella, fai **Invia una prova** e **Salva**. Vale per tutti i tuoi agenti.
   </Accordion>
 
   <Accordion title="Nel riquadro Mittente vedo «Ultimo invio non riuscito».">
@@ -296,10 +296,10 @@ Errori possibili al salvataggio, preceduti dal nome dello strumento: «L'indiriz
   </Accordion>
 
   <Accordion title="Il mio gestionale non ha ricevuto i dati di una chiamata.">
-    L'invio del webhook è uno solo e non si ripete. Recupera i dati dal dettaglio della chiamata nello [Storico chiamate](/agenti-ai/storico-chiamate) e fai controllare al tecnico che il sistema risponda entro 15 secondi.
+    L'invio del webhook è uno solo e non si ripete. Recupera i dati dal dettaglio della chiamata in [Conversazioni](/agenti-ai/storico-chiamate) e fai controllare al tecnico che il sistema risponda entro 15 secondi.
   </Accordion>
 
-  <Accordion title="Un campo della Raccolta dati è sempre «Non rilevato».">
+  <Accordion title="Un campo dei Dati da raccogliere è sempre «Non rilevato».">
     L'agente non ha trovato l'informazione nella conversazione. Rendi più chiara la descrizione in **Cosa deve estrarre** e, se serve, scrivi nel copione di chiedere quel dato a chi chiama.
   </Accordion>
 </AccordionGroup>
@@ -307,7 +307,7 @@ Errori possibili al salvataggio, preceduti dal nome dello strumento: «L'indiriz
 ## Pagine collegate
 
 <CardGroup cols={2}>
-  <Card title="Storico chiamate" icon="list" href="/agenti-ai/storico-chiamate">
+  <Card title="Conversazioni" icon="list" href="/agenti-ai/storico-chiamate">
     Riassunti, dati raccolti, registrazioni e trascrizioni.
   </Card>
 
@@ -320,6 +320,6 @@ Errori possibili al salvataggio, preceduti dal nome dello strumento: «L'indiriz
   </Card>
 
   <Card title="Istruzioni e voce" icon="microphone" href="/agenti-ai/agente/istruzioni-e-voce">
-    Copione, documenti e Ricerca dati.
+    Copione, documenti ed elenchi da consultare.
   </Card>
 </CardGroup>

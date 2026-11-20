@@ -23,14 +23,14 @@ keywords:
   - "lingua agente"
 ---
 
-Questa pagina spiega quattro sezioni della configurazione di un agente: **Identità e copione** (chi è e cosa deve fare), **Voce** (come parla), **Knowledge Base** (i documenti da cui prende le informazioni) e **Ricerca dati** (un elenco che consulta durante la chiamata). In fondo trovi i consigli per scrivere un copione che funziona.
+Questa pagina spiega quattro sezioni della configurazione di un agente: **Identità e copione** (chi è e cosa deve fare), **Voce** (come parla), **Documenti** (i documenti da cui prende le informazioni) ed **Elenchi da consultare** (un elenco che consulta durante la chiamata). In fondo trovi i consigli per scrivere un copione che funziona.
 
-**Dove si trova:** menu degli Agenti AI → Gestione → **Agenti** → **Configura** sull'agente (o **\+ Nuovo agente**) → sezioni **Identità e copione**, **Voce**, **Knowledge Base**, **Ricerca dati** · `https://cloud.mycentralino.com/wave/agenti`
+**Dove si trova:** menu degli Agenti AI → **I tuoi agenti** → clic sull'agente (o **Nuovo agente**) → scheda **Impostazioni** → sezioni **Identità e copione**, **Voce**, **Documenti**, **Elenchi da consultare** · `https://cloud.mycentralino.com/wave/agenti`
 
 **Chi la vede:** il titolare dell'account e i collaboratori con la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)), quando gli Agenti AI sono attivi.
 
 <Note>
-  Quello che cambi in **Identità e copione** e in **Voce** vale solo dopo **Salva agente** (o **Crea agente** per un agente nuovo). I documenti della **Knowledge Base** invece si caricano subito. In **Ricerca dati** il file sostituisce subito l'elenco precedente (quando l'agente comincia a usarlo è spiegato più sotto, in **Quando carico un file nuovo**), mentre le righe che correggi, aggiungi o togli con **Vedi e modifica le righe** valgono subito, senza **Salva agente**. Come funziona il salvataggio: [Crea un agente](/agenti-ai/agente/crea-un-agente).
+  Quello che cambi in **Identità e copione** e in **Voce** vale solo dopo **Salva agente** (o **Crea agente** per un agente nuovo). I **Documenti** invece si caricano subito. In **Elenchi da consultare** il file sostituisce subito l'elenco precedente (quando l'agente comincia a usarlo è spiegato più sotto, in **Quando carico un file nuovo**), mentre le righe che correggi, aggiungi o togli con **Vedi e modifica le righe** valgono subito, senza **Salva agente**. Come funziona il salvataggio: [Crea un agente](/agenti-ai/agente/crea-un-agente).
 </Note>
 
 ## Identità e copione
@@ -56,7 +56,7 @@ Ci sono due modelli. **Intelligente** è quello proposto: segue bene i copioni l
 
 Con **Memoria delle chiamate** accesa, quando richiama lo stesso numero l'agente conosce i riassunti delle chiamate precedenti: ricorda il nome, gli argomenti e le richieste, e può riprendere il discorso da lì. Non dà per scontato che la richiesta di oggi sia la stessa di allora. Per gli agenti nuovi la memoria è spenta: accendila solo se ti serve davvero.
 
-Quando elimini una conversazione dallo [Storico chiamate](/agenti-ai/storico-chiamate), l'agente se ne dimentica.
+Quando elimini una conversazione da [Conversazioni](/agenti-ai/storico-chiamate), l'agente se ne dimentica.
 
 ### La conservazione delle conversazioni
 
@@ -80,7 +80,7 @@ Sugli agenti creati prima che esistesse questa scelta può comparire anche **Sen
 
 - Se la scheda delle voci mostra «Voci non disponibili al momento: riprova tra poco.», ricarica la pagina dopo qualche minuto.
 
-## Knowledge Base
+## Documenti
 
 «Documenti, pagine web e testi da cui l'agente attinge per rispondere.» È il posto giusto per listini, orari dettagliati, schede dei servizi, domande frequenti: tutto ciò che sarebbe troppo lungo da mettere nel copione.
 
@@ -103,8 +103,8 @@ Sotto compare l'elenco dei documenti, con nome, tipo, data, dimensione e il bott
 ### Come do all'agente il mio listino
 
 <Steps>
-  <Step title="Apri la Knowledge Base">
-    Nella configurazione dell'agente apri **Knowledge Base**.
+  <Step title="Apri Documenti">
+    Nella configurazione dell'agente apri **Documenti**.
   </Step>
   <Step title="Scegli come caricarlo">
     Se hai il listino in PDF o Word, resta su **File** e trascina il file nel riquadro. Se è una pagina del tuo sito usa **URL**. Se vuoi scriverlo a mano usa **Testo**, dai un **Titolo** e incolla il **Contenuto**, poi premi **Aggiungi**.
@@ -123,9 +123,9 @@ Sotto compare l'elenco dei documenti, con nome, tipo, data, dimensione e il bott
 - Scrivi le informazioni in frasi chiare, come le diresti a voce. Le tabelle complicate e le immagini si capiscono male.
 - Quando un'informazione cambia (prezzi, orari), togli il documento vecchio con **Rimuovi** e carica quello nuovo: due versioni diverse confondono l'agente.
 
-## Ricerca dati
+## Elenchi da consultare
 
-«Carica un elenco (CSV) — zone, servizi, tecnici — che l'agente consulta in chiamata.» Serve quando la risposta dipende da un dato di chi chiama: il costo per CAP, il tecnico di zona, il servizio disponibile in una città. A differenza della Knowledge Base, qui l'agente cerca la riga esatta che corrisponde al dato detto da chi chiama e usa solo quella.
+«Carica un elenco (CSV) — zone, servizi, tecnici — che l'agente consulta in chiamata.» Serve quando la risposta dipende da un dato di chi chiama: il costo per CAP, il tecnico di zona, il servizio disponibile in una città. A differenza dei **Documenti**, qui l'agente cerca la riga esatta che corrisponde al dato detto da chi chiama e usa solo quella.
 
 L'interruttore in alto a destra accende la ricerca (**Attivo** / **Spento**). Spenta, leggi «Attiva la ricerca per caricare un elenco e scegliere le colonne chiave.».
 
@@ -148,7 +148,7 @@ Quando ci sono righe caricate, sotto il titolo leggi «Attualmente N righe caric
     In Excel o in un altro foglio di calcolo metti nella prima riga i nomi delle colonne (es. `CAP`, `Zona`, `Servizio`, `Costo`, `Tecnico`) e sotto una riga per ogni voce. Salva come CSV: va bene sia con la virgola sia con il punto e virgola. Se Excel ti propone **CSV UTF-8**, sceglilo: è il formato più sicuro per le lettere accentate.
   </Step>
   <Step title="Accendi la ricerca">
-    Nella configurazione dell'agente apri **Ricerca dati** e accendi l'interruttore.
+    Nella configurazione dell'agente apri **Elenchi da consultare** e accendi l'interruttore.
   </Step>
   <Step title="Carica il CSV">
     Trascina il file nel riquadro. Leggi «CSV caricato: N righe. Configura le colonne chiave e salva.».
@@ -157,7 +157,7 @@ Quando ci sono righe caricate, sotto il titolo leggi «Attualmente N righe caric
     Scrivi **Nome dell'elenco** e **Cosa contiene (per l'agente)**, scegli **Colonna chiave 1** con la sua **Etichetta** e, se serve, **Colonna chiave 2** e **Colonna priorità**.
   </Step>
   <Step title="Salva">
-    Premi **Salva agente**: da ora l'agente usa l'elenco con le colonne scelte. Se in **Ricerca dati** manca la colonna chiave, il salvataggio si ferma e leggi «In «Ricerca dati» scegli la colonna chiave: senza, l'agente non trova niente nell'elenco.».
+    Premi **Salva agente**: da ora l'agente usa l'elenco con le colonne scelte. Se in **Elenchi da consultare** manca la colonna chiave, il salvataggio si ferma e leggi «In «Elenchi da consultare» scegli la colonna chiave: senza, l'agente non trova niente nell'elenco.».
   </Step>
   <Step title="Controlla">
     Premi **Vedi e modifica le righe**, scrivi in **Prova come cerca l'agente** un valore come lo direbbe un cliente e premi **Prova**: vedi le righe che l'agente riceverebbe. Se c'è il filtro **Da sistemare**, alcune righe l'agente non le troverà mai: correggile.
@@ -208,7 +208,7 @@ Con **Vedi e modifica le righe** si apre la finestra **Righe dell'elenco**: tutt
 
 <Steps>
   <Step title="Apri le righe">
-    In **Ricerca dati** premi **Vedi e modifica le righe**. Trova la riga con **Cerca nelle righe…**, oppure premi **Da sistemare** per vedere solo quelle che l'agente non trova.
+    In **Elenchi da consultare** premi **Vedi e modifica le righe**. Trova la riga con **Cerca nelle righe…**, oppure premi **Da sistemare** per vedere solo quelle che l'agente non trova.
   </Step>
   <Step title="Correggi o aggiungi">
     Premi **Modifica** sulla riga, oppure **Aggiungi riga** per una nuova. Compila i campi: la colonna chiave è obbligatoria («è la colonna in cui l'agente cerca»). Premi **Salva riga**: leggi «Riga salvata. L'agente la usa dalla prossima chiamata.» oppure «Riga aggiunta. L'agente la usa dalla prossima chiamata.».
@@ -238,16 +238,16 @@ Il pannello aggiunge da solo, a ogni chiamata, alcune istruzioni. Non ripeterle 
 - **la data e l'ora di oggi**: l'agente le conosce e calcola da solo «domani» o «martedì prossimo»;
 - **il numero di chi chiama**: l'agente lo conosce, non lo chiede e non lo legge per intero; se chi chiama gli domanda da che numero sta chiamando, conferma solo le prime tre cifre;
 - **lo stile telefonico**: frasi brevi, una informazione per volta, niente elenchi;
-- **come usare gli strumenti** che accendi nelle altre sezioni (calendario, trasferimenti con presentazione, ricerca dati, collegamenti Custom API);
+- **come usare gli strumenti** che accendi nelle altre sezioni (calendario, trasferimenti con presentazione, elenchi da consultare, collegamenti ai tuoi programmi);
 - con **Memoria delle chiamate** accesa, i riassunti delle chiamate precedenti dello stesso numero.
 
 ### Quello che serve scrivere
 
 1. **Chi è l'agente e per chi lavora**: nome, azienda, che tipo di attività è.
 2. **Cosa deve fare, in ordine**: per esempio capire il motivo della chiamata, raccogliere nome e recapito, rispondere alle domande più comuni, fissare un appuntamento o far richiamare.
-3. **Le informazioni essenziali**: orari, indirizzo, servizi principali. Le cose lunghe (listini, schede) vanno nella **Knowledge Base**.
+3. **Le informazioni essenziali**: orari, indirizzo, servizi principali. Le cose lunghe (listini, schede) vanno in **Documenti**.
 4. **Cosa non deve fare**: non dare prezzi che non sono nei documenti, non promettere tempi, non dare consigli tecnici, medici o legali, non prendere impegni a nome tuo.
-5. **Quando passare la chiamata**: con le stesse parole che usi nella sezione **Trasferimento** (vedi [Trasferimenti](/agenti-ai/agente/trasferimenti)).
+5. **Quando passare la chiamata**: con le stesse parole che usi nella sezione **Passaggio a una persona** (vedi [Trasferimenti](/agenti-ai/agente/trasferimenti)).
 6. **Come chiudere**: cosa dire a fine chiamata e quando salutare.
 
 ### Consigli pratici
@@ -258,7 +258,7 @@ Il pannello aggiunge da solo, a ogni chiamata, alcune istruzioni. Non ripeterle 
 - Scrivi cosa fare quando l'agente non sa rispondere: «Se non trovi l'informazione, dillo con semplicità e proponi di far richiamare».
 - Se vuoi che chi chiama sappia subito che parla con un assistente virtuale, dillo nella **Frase di apertura** (es. «Buongiorno, sono Sofia, l'assistente virtuale dello Studio Rossi. Come posso aiutarla?»).
 - Tieni la **Frase di apertura** breve: nome dell'azienda, chi parla, una domanda.
-- Dopo le prime telefonate rileggi le trascrizioni in [Storico chiamate](/agenti-ai/storico-chiamate) e correggi il copione dove l'agente ha esitato o sbagliato. È il modo più rapido per migliorarlo.
+- Dopo le prime telefonate rileggi le trascrizioni in [Conversazioni](/agenti-ai/storico-chiamate) e correggi il copione dove l'agente ha esitato o sbagliato. È il modo più rapido per migliorarlo.
 
 ### Un esempio
 
@@ -292,11 +292,11 @@ Alla fine ripeti in breve cosa è stato deciso e saluta cordialmente.
   </Accordion>
 
   <Accordion title="Devo scrivere nel copione la data di oggi o gli orari di oggi?">
-    La data e l'ora di oggi no: le aggiunge il pannello a ogni chiamata. Gli orari di apertura della tua attività invece sì, nel copione o in un documento della Knowledge Base.
+    La data e l'ora di oggi no: le aggiunge il pannello a ogni chiamata. Gli orari di apertura della tua attività invece sì, nel copione o in un documento della sezione **Documenti**.
   </Accordion>
 
   <Accordion title="L'agente dà risposte sbagliate o inventate.">
-    Le risposte sono generate dall'intelligenza artificiale e possono contenere errori. Per ridurli: metti le informazioni giuste nella **Knowledge Base**, scrivi nel copione di usare solo quelle e cosa dire quando non trova la risposta, e controlla le trascrizioni nello [Storico chiamate](/agenti-ai/storico-chiamate).
+    Le risposte sono generate dall'intelligenza artificiale e possono contenere errori. Per ridurli: metti le informazioni giuste in **Documenti**, scrivi nel copione di usare solo quelle e cosa dire quando non trova la risposta, e controlla le trascrizioni in [Conversazioni](/agenti-ai/storico-chiamate).
   </Accordion>
 
   <Accordion title="L'agente interrompe chi chiama.">
@@ -323,16 +323,16 @@ Alla fine ripeti in breve cosa è stato deciso e saluta cordialmente.
     Con **Salva agente** vengono cancellate registrazioni e trascrizioni più vecchie del nuovo periodo, anche quelle già esistenti. Non si possono recuperare.
   </Accordion>
 
-  <Accordion title="La Ricerca dati non trova il valore che chi chiama ha detto.">
+  <Accordion title="L'elenco da consultare non trova il valore che chi chiama ha detto.">
     Premi **Vedi e modifica le righe** e scrivi quel valore in **Prova come cerca l'agente**: vedi subito se l'agente lo trova. Se non lo trova, cercalo con **Cerca nelle righe…** e controlla come è scritto nella colonna chiave: deve corrispondere a parte maiuscole, accenti e punteggiatura. Correggilo con **Modifica**. Controlla anche di aver scelto la **Colonna chiave 1** giusta e di aver premuto **Salva agente**, e scrivi nel copione quando consultare l'elenco, per esempio «Quando il cliente ti ha detto il CAP, cerca nel listino zone».
   </Accordion>
 
   <Accordion title="Ho aggiornato il listino nel CSV: come lo sostituisco?">
-    Se cambiano poche righe, correggile con **Vedi e modifica le righe**: valgono subito. Se cambia molto, premi **Scarica CSV**, aggiorna il file scaricato e caricalo di nuovo in **Ricerca dati**: il nuovo elenco sostituisce quello precedente. Con gli stessi nomi di colonna l'agente lo usa subito; se leggi «Le colonne sono cambiate: scegli di nuovo la colonna chiave e salva.», scegli **Colonna chiave 1** e premi **Salva agente**.
+    Se cambiano poche righe, correggile con **Vedi e modifica le righe**: valgono subito. Se cambia molto, premi **Scarica CSV**, aggiorna il file scaricato e caricalo di nuovo in **Elenchi da consultare**: il nuovo elenco sostituisce quello precedente. Con gli stessi nomi di colonna l'agente lo usa subito; se leggi «Le colonne sono cambiate: scegli di nuovo la colonna chiave e salva.», scegli **Colonna chiave 1** e premi **Salva agente**.
   </Accordion>
 
   <Accordion title="Ho caricato il file nuovo e l'agente non trova più niente.">
-    Quasi sempre il file nuovo ha nomi di colonna diversi da quello vecchio, per esempio «Codice postale» invece di «CAP». Apri **Ricerca dati**, scegli di nuovo **Colonna chiave 1** e premi **Salva agente**. Poi controlla con **Prova come cerca l'agente**.
+    Quasi sempre il file nuovo ha nomi di colonna diversi da quello vecchio, per esempio «Codice postale» invece di «CAP». Apri **Elenchi da consultare**, scegli di nuovo **Colonna chiave 1** e premi **Salva agente**. Poi controlla con **Prova come cerca l'agente**.
   </Accordion>
 
   <Accordion title="Alcune righe hanno «Riga illeggibile»: cosa faccio?">
@@ -355,7 +355,7 @@ Alla fine ripeti in breve cosa è stato deciso e saluta cordialmente.
     Far prenotare l'agente nel tuo calendario.
   </Card>
 
-  <Card title="Storico chiamate" icon="list" href="/agenti-ai/storico-chiamate">
+  <Card title="Conversazioni" icon="list" href="/agenti-ai/storico-chiamate">
     Rileggere le trascrizioni per migliorare il copione.
   </Card>
 </CardGroup>

@@ -92,7 +92,7 @@ Se non c'è niente: «Ancora nessuna conversazione» oppure, con i filtri, «Nes
 
 ### In alto
 
-Il link **‹ Conversazioni**, il numero di chi ha chiamato come titolo (o «Chiamata» se non è noto), lo stato della chiamata e la riga «agente · data · durata · N crediti». Il titolare vede anche **Elimina conversazione**.
+Il link **‹ Conversazioni**, il numero di chi ha chiamato come titolo (o «Chiamata» se non è noto), lo stato della chiamata e la riga «agente · data · durata». La durata è il tempo scalato dai minuti del piano. Il titolare vede anche **Elimina conversazione**.
 
 Se la chiamata è fallita o è stata annullata compare un riquadro con il motivo:
 
@@ -145,7 +145,7 @@ Se un'azione non è riuscita la frase diventa «Non è riuscito a …», per ese
 ### Riassunto, Dati chiamata e Dati raccolti
 
 - **Riassunto**: il testo che riassume la conversazione (compare solo se c'è).
-- **Dati chiamata**: **Direzione** (In entrata o In uscita), **Agente**, **Messaggi**, **Durata**, **Crediti** e **ID conversazione**, il codice che identifica la conversazione.
+- **Dati chiamata**: **Direzione** (In entrata o In uscita), **Agente**, **Messaggi**, **Durata** e **ID conversazione**, il codice che identifica la conversazione.
 - **Dati raccolti**: compare se nell'agente hai impostato i **Dati da raccogliere**. Per ogni campo il valore («Sì», «No», un testo o un numero, oppure «Non rilevato») e, sotto, la motivazione data dall'agente.
 
 ## Come fare
@@ -203,7 +203,8 @@ Premi **Nessuno ha risposto**: sono le chiamate che l'agente ha provato a passar
 ## Da sapere
 
 - **Aggiornamento.** Una chiamata appena conclusa compare nell'elenco entro un paio di minuti. Umore ed esito arrivano qualche istante dopo la fine della chiamata; l'argomento si assegna durante la notte.
-- **Numero e crediti arrivano poco dopo.** Il numero di chi chiama e i crediti consumati compaiono quando la conversazione è stata conteggiata nei crediti: per una chiamata appena finita possono mancare per poco tempo.
+- **Il numero arriva poco dopo.** Il numero di chi chiama compare quando la conversazione è stata conteggiata: per una chiamata appena finita può mancare per poco tempo.
+- **Quanto ha consumato.** Ogni conversazione scala dai minuti del piano la sua **Durata**, al secondo. Il dettaglio non mostra un costo a parte: conta la durata.
 - **Per quanto tempo restano.** Le conversazioni restano disponibili per il periodo scelto in **Conservazione delle conversazioni** nella configurazione dell'agente (proposto: 12 mesi), poi vengono cancellate. Se l'agente non conserva le conversazioni, in elenco restano solo esito e durata, senza riassunto né umore. Vedi [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce).
 - **Agenti eliminati.** Le conversazioni di un agente eliminato non compaiono più.
 - **Il riassunto via email o WhatsApp** a fine chiamata si imposta nell'agente: vedi [Dopo la chiamata](/agenti-ai/agente/dopo-la-chiamata).
@@ -236,7 +237,7 @@ Premi **Nessuno ha risposto**: sono le chiamate che l'agente ha provato a passar
   </Accordion>
 
   <Accordion title="Posso scaricare l'elenco delle chiamate?">
-    L'elenco non ha un'esportazione. I crediti consumati giorno per giorno si scaricano da **Crediti e piano** → **Movimenti crediti** → **Export CSV** (vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani)); i risultati di una campagna con **Report CSV** (vedi [Campagne in uscita](/agenti-ai/campagne-in-uscita)).
+    L'elenco non ha un'esportazione. I minuti usati giorno per giorno si scaricano da **Piano e minuti** → **Movimenti dei minuti** → **Export CSV** (vedi [Attivazione e piani](/agenti-ai/attivazione-e-piani)); i risultati di una campagna con **Report CSV** (vedi [Campagne in uscita](/agenti-ai/campagne-in-uscita)).
   </Accordion>
 </AccordionGroup>
 

@@ -1,10 +1,16 @@
 ---
-title: "Attivazione, piani e crediti"
+title: "Attivazione, piani e minuti"
 sidebarTitle: "Attivazione e piani"
-description: "Come si attivano gli Agenti AI, cosa si paga all'attivazione, come funzionano crediti e ricarica automatica, come si cambia piano e cosa fare quando il servizio è sospeso."
+description: "Come si attivano gli Agenti AI, quanti minuti di conversazione e quanti agenti include ogni piano, come funzionano i minuti extra e la ricarica automatica, come si cambia piano e cosa fare quando il servizio è sospeso."
 keywords:
   - "attivare agenti ai"
   - "piano agenti ai"
+  - "minuti"
+  - "minuti di conversazione"
+  - "minuti agenti ai"
+  - "minuti extra"
+  - "minuti finiti"
+  - "piano e minuti"
   - "crediti"
   - "crediti agenti ai"
   - "ricarica automatica"
@@ -15,20 +21,47 @@ keywords:
   - "downgrade"
   - "servizio sospeso"
   - "riprova pagamento"
-  - "movimenti crediti"
+  - "movimenti dei minuti"
   - "prova gratuita"
   - "condizioni ai receptionist"
-  - "minuti di conversazione"
+  - "Starter"
+  - "Professional"
+  - "Business"
+  - "Enterprise"
 ---
 
-Gli Agenti AI si attivano scegliendo un **piano**. Ogni piano include un certo numero di **crediti al mese** (che diventano minuti di conversazione) e un numero massimo di **agenti**. I piani, i crediti inclusi e i prezzi sono indicati nella pagina di attivazione e in **Crediti e piano**, prima di ogni conferma.
+Gli Agenti AI si attivano scegliendo un **piano**. Ogni piano include un certo numero di **minuti di conversazione al mese** e un numero massimo di **agenti**. Ogni chiamata scala dai minuti del piano la sua durata, al secondo, a chiamata finita. I prezzi sono indicati nella pagina di attivazione e in **Piano e minuti**, prima di ogni conferma.
 
 **Dove si trova:**
 
 - Attivazione: Menu → **Aggiungi funzionalità** → tessera **Agenti AI** → **Attiva gli Agenti AI** · `https://cloud.mycentralino.com/wave/inizia`
-- Crediti e piano, ad Agenti AI attivi: menu degli Agenti AI → **Crediti e piano** · `https://cloud.mycentralino.com/wave/crediti`
+- Piano e minuti, ad Agenti AI attivi: menu degli Agenti AI → **Piano e minuti** · `https://cloud.mycentralino.com/wave/crediti`
 
-**Chi la vede:** il titolare dell'account. Un collaboratore solo se gli è stata concessa la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)): in questo caso può anche attivare un piano, passare a un piano più grande, accendere o cambiare la ricarica automatica e annullare la prova, e i pagamenti vanno sulla carta salvata nel tuo account. La pagina di attivazione compare solo finché non hai un piano: dopo, lo stesso indirizzo porta alla Panoramica degli Agenti AI. **Crediti e piano** invece compare solo quando hai un piano.
+**Chi la vede:** il titolare dell'account. Un collaboratore solo se gli è stata concessa la sezione **I tuoi moduli** (vedi [Utenti e permessi](/centralino/account/utenti-e-permessi)): in questo caso può anche attivare un piano, passare a un piano più grande, accendere o cambiare la ricarica automatica e annullare la prova, e i pagamenti vanno sulla carta salvata nel tuo account. La pagina di attivazione compare solo finché non hai un piano: dopo, lo stesso indirizzo porta alla Panoramica degli Agenti AI. **Piano e minuti** invece compare solo quando hai un piano.
+
+<Info>
+  **Dal 1° dicembre 2026 gli Agenti AI si pagano a minuti di conversazione, non più a crediti.** Chi attiva gli Agenti AI dal 23 novembre 2026 parte già a minuti. Chi li aveva attivati prima passa ai minuti il 1° dicembre: fino ad allora, nel menu, la pagina si chiama ancora **Crediti e piano** e mostra i crediti. Piani e numero di agenti non cambiano.
+</Info>
+
+## I piani
+
+| Piano | Minuti di conversazione al mese | Agenti |
+| --- | --- | --- |
+| **Starter** | 200 | 2 |
+| **Professional** | 600 | 3 |
+| **Business** | 2.000 | 5 |
+| **Enterprise** | 10.000 | 10 |
+
+Il canone di ogni piano e il prezzo del minuto extra sono scritti nella card del piano, nella pagina di attivazione e in **Piano e minuti**.
+
+## Come si contano i minuti
+
+- **Al secondo.** A chiamata finita, la durata della conversazione viene scalata dai minuti del piano: una chiamata di 1 minuto e 20 secondi scala 1:20.
+- **Si rinnovano il 1° di ogni mese.** Il 1° i minuti ripartono pieni. I minuti non usati non si accumulano: non passano al mese dopo.
+- **Il primo mese in proporzione.** Se attivi a metà mese ricevi subito i minuti in proporzione ai giorni che mancano al 1°; dal 1° ricevi quelli pieni del piano.
+- **Finiti i minuti del piano**, dipende dalla **Ricarica automatica**:
+  - **accesa**: gli agenti continuano a rispondere e paghi i **minuti extra** con la carta salvata (vedi [Ricarica automatica](#ricarica-automatica));
+  - **spenta**: gli agenti si fermano fino al 1° del mese, quando i minuti ripartono.
 
 ## La pagina di attivazione
 
@@ -42,20 +75,20 @@ Dall'alto in basso:
 4. **Serve un metodo di pagamento** (riquadro ambra, solo se non hai una carta salvata): «Per procedere devi prima inserire un metodo di pagamento nel tuo account: è la carta che useremo anche per i rinnovi.» con **Aggiungi un metodo di pagamento →**. Finché manca la carta, i bottoni dei piani appaiono sbiaditi e non si possono premere.
 5. **Scegli il piano adatto a te**, con la frase «Si paga solo la parte proporzionale fino al rinnovo del centralino; da lì il canone entra nell'abbonamento.» Una card per piano.
 
-Se per il tuo account è disponibile una prova gratuita, in cima compare anche un riquadro «Consigliato per iniziare» con il bottone **Attiva la prova gratuita**; in quel caso il titolo dei piani diventa «Oppure scegli un piano». Se non c'è, si sceglie direttamente un piano.
+Se per il tuo account è disponibile una prova gratuita, in cima compare anche un riquadro «Consigliato per iniziare» con i minuti di conversazione da usare entro i giorni della prova, «Nessun pagamento, nessuna carta richiesta.» e il bottone **Attiva la prova gratuita**; in quel caso il titolo dei piani diventa «Oppure scegli un piano». Se non c'è, si sceglie direttamente un piano.
 
 ### La card di un piano
 
 | Riga | Cosa indica |
 | --- | --- |
 | Nome e prezzo | Il nome del piano e il canone mensile, IVA esclusa |
-| **minuti di chiamata/mese** | Una stima dei minuti di conversazione inclusi |
-| **crediti/mese · agenti** | I crediti che ricevi ogni mese e quanti agenti puoi creare |
+| **minuti di conversazione al mese** | I minuti inclusi ogni mese |
+| **agenti · minuto extra** | Quanti agenti puoi creare e il prezzo di ogni minuto in più, IVA esclusa |
 | **Oggi paghi …** | Quanto paghi adesso: solo i giorni che mancano al rinnovo del tuo centralino, «+ IVA» e tra parentesi l'importo IVA inclusa |
 | **Attivi ora senza pagare nulla** | Compare al posto di «Oggi paghi» quando l'importo di oggi è molto basso (di solito perché mancano pochi giorni al rinnovo): oggi non paghi, «il canone parte da lì» |
-| **crediti subito, poi … dal 1° del mese** | I crediti che ricevi adesso, in proporzione ai giorni che mancano al 1° del mese, e quelli che ricevi dal mese successivo |
+| **minuti subito, poi … ogni mese dal 1°** | I minuti che ricevi adesso, in proporzione ai giorni che mancano al 1° del mese, e quelli che ricevi ogni mese dal 1° |
 
-Sotto le card: «I minuti indicati sono una stima: il consumo reale dipende dalla durata e dal tipo di conversazione. Il pagamento è gestito in modo sicuro da Stripe. La carta resta salvata per le ricariche automatiche dei crediti.»
+Sotto le card: «Ogni chiamata scala i secondi di conversazione dai minuti del piano. Finiti quelli, con la ricarica automatica gli agenti continuano a rispondere e paghi i minuti extra. Il pagamento è gestito in modo sicuro da Stripe. La carta resta salvata per i minuti extra.»
 
 ### Le condizioni d'uso di AI Receptionist
 
@@ -78,10 +111,10 @@ Nella finestra trovi il riquadro **In breve**, il testo completo, la sezione **A
     Se compare il riquadro **Serve un metodo di pagamento**, premi **Aggiungi un metodo di pagamento →**, salva la carta nel tuo profilo e torna alla pagina.
   </Step>
   <Step title="Scegli il piano">
-    Scorri a **Scegli il piano adatto a te** e confronta minuti, crediti e numero di agenti. Leggi **Oggi paghi …** per sapere quanto paghi adesso.
+    Scorri a **Scegli il piano adatto a te** e confronta minuti di conversazione e numero di agenti. Leggi **Oggi paghi …** per sapere quanto paghi adesso.
   </Step>
   <Step title="Premi Attiva">
-    Premi **Attiva** seguito dal nome del piano. Se oggi c'è qualcosa da pagare si apre la pagina di pagamento sicura: completa il pagamento e torni in **Crediti e piano** con il piano attivo. Se oggi non paghi nulla, il piano si attiva subito e arrivi alla Panoramica degli Agenti AI.
+    Premi **Attiva** seguito dal nome del piano. Se oggi c'è qualcosa da pagare si apre la pagina di pagamento sicura: completa il pagamento e torni in **Piano e minuti** con il piano attivo. Se oggi non paghi nulla, il piano si attiva subito e arrivi alla Panoramica degli Agenti AI.
   </Step>
 </Steps>
 
@@ -91,21 +124,27 @@ Se annulli il pagamento non viene addebitato nulla e torni alla pagina di attiva
   Se all'abbonamento del tuo centralino mancano più di 365 giorni, l'attivazione non si fa dal pannello: compare «Il tuo abbonamento ha più di 365 giorni residui: in questo caso l'upgrade non si attiva dal pannello e va richiesto tramite il form di richiesta, così concordiamo insieme l'importo.» Scrivi all'assistenza da [Richieste di assistenza](/centralino/assistenza/richieste-di-assistenza).
 </Note>
 
-## La pagina Crediti e piano
+## La pagina Piano e minuti
 
-Titolo **Crediti e piano** e la frase «I crediti si rinnovano il 1° di ogni mese e diventano minuti di conversazione dei tuoi agenti.»
+Titolo **Piano e minuti** e la frase «I minuti si rinnovano il 1° di ogni mese. Ogni chiamata scala i secondi di conversazione dei tuoi agenti.»
+
+{/* SCHERMATA: la pagina Piano e minuti con i piani, Minuti del mese, Abbonamento e Ricarica automatica — https://cloud.mycentralino.com/wave/crediti */}
 
 ### I piani
 
-Una card per piano con nome, canone mensile, «≈ N minuti di conversazione al mese» e «N crediti · N agenti». Il tuo piano è la card blu con «Il tuo piano» e «Attivo sul tuo centralino». Le altre card dicono quanto cambierebbe il canone «rispetto al tuo piano» e hanno il bottone **Passa a** seguito dal nome del piano.
+Una card per piano con nome, canone mensile, «N minuti di conversazione al mese» e «N agenti · minuto extra …». Il tuo piano è la card blu con «Il tuo piano» e «Attivo sul tuo centralino». Le altre card dicono quanto cambierebbe il canone «rispetto al tuo piano» e hanno il bottone **Passa a** seguito dal nome del piano.
 
-### Crediti del mese
+### Minuti del mese
 
-Un anello con i **crediti restanti**, sotto «N usati · X%» e «reset tra N giorni · N/M agenti».
+Un anello con i **minuti restanti** del mese. Sotto:
+
+- «N usati · X%»: i minuti già usati e la percentuale sul piano;
+- «+m:ss minuti extra»: compare solo quando hai finito i minuti del piano e stai usando minuti extra;
+- «rinnovo tra N giorni · N/M agenti»: i giorni che mancano al 1° del mese e gli agenti che hai sul totale del piano.
 
 ### Abbonamento
 
-Il nome del piano, il canone (mensile o annuale, IVA esclusa), i crediti al mese e gli agenti inclusi. In fondo lo stato:
+Il nome del piano, il canone (mensile o annuale, IVA esclusa), i **minuti/mese**, il prezzo **ogni minuto extra** (IVA esclusa) e gli **agenti inclusi**. In fondo lo stato:
 
 | Stato | Cosa significa |
 | --- | --- |
@@ -115,56 +154,73 @@ Il nome del piano, il canone (mensile o annuale, IVA esclusa), i crediti al mese
 
 ### Ricarica automatica
 
-Un interruttore con la frase «A crediti finiti, la carta salvata riporta il saldo a zero da sola; spenta, le chiamate si fermano a saldo zero.»
+Un interruttore con la frase «Finiti i minuti del piano, gli agenti continuano a rispondere e la carta salvata paga i minuti extra; spenta, le chiamate si fermano a minuti finiti.»
 
 **Come funziona** apre la spiegazione:
 
-- «Soglie a scaglioni: 1ª ricarica al 20% del piano, 2ª al 30%, poi 50%. Ogni ricarica riporta il saldo a zero, con fattura», con il costo indicativo della prossima ricarica.
+- «I minuti extra si pagano a blocchi: il primo quando arrivano al 20% dei minuti del piano, il secondo al 30%, poi al 50%. Ogni addebito ha la sua fattura.», con il costo indicativo del prossimo addebito.
 - «Se la carta non funziona usiamo il credito del centralino (senza nuova fattura); se non basta, il servizio va in pausa e ti avvisiamo via email.»
-- «Il 1° del mese i contatori ripartono e l'eventuale saldo negativo residuo viene addebitato a parte, con fattura.»
+- «Il 1° del mese i minuti ripartono pieni e gli eventuali minuti extra non ancora pagati vengono addebitati a parte, con fattura.»
 
-Sotto c'è una barra a segmenti, uno per ricarica, con una riga come «N / M crediti extra · N ricariche · prossima a −N». Con la ricarica accesa compare **Limite mensile**: quanti crediti extra al massimo può ricaricare nel mese.
+In pratica, con un piano da 600 minuti: il primo addebito arriva quando hai usato 120 minuti extra (il 20%), il secondo dopo altri 180 (il 30%), poi uno ogni 300 (il 50%). Se il 1° del mese l'addebito dei minuti extra rimasti non riesce, quei minuti vengono scalati dai minuti del nuovo mese.
+
+Sotto c'è una barra a segmenti, uno per addebito, con una riga come «N / M minuti extra pagati · N addebiti · prossimo a N min». Con la ricarica accesa compare **Limite mensile**: quanti minuti extra al massimo si possono pagare nel mese.
 
 | Limite mensile | Cosa vuol dire |
 | --- | --- |
-| **50% del piano** | Al massimo metà dei crediti mensili del piano, in più |
-| **100% del piano (consigliato)** | Al massimo tanti crediti quanti ne include il piano. È il valore proposto |
-| **200% del piano** · **300% del piano** | Il doppio o il triplo dei crediti del piano |
-| **Illimitato** | Nessun tetto alle ricariche del mese |
+| **50% del piano** | Al massimo metà dei minuti mensili del piano, in più |
+| **100% del piano (consigliato)** | Al massimo tanti minuti extra quanti ne include il piano. È il valore proposto |
+| **200% del piano** · **300% del piano** | Il doppio o il triplo dei minuti del piano |
+| **Illimitato** | Nessun tetto ai minuti extra del mese («nessun tetto») |
+
+Raggiunto il limite, gli agenti si fermano fino al 1° del mese, a meno che tu non alzi il **Limite mensile**.
 
 Durante la prova la ricarica automatica non c'è: «La ricarica automatica non è disponibile durante la prova.»
 
-### Movimenti crediti
+### Movimenti dei minuti
 
-L'elenco di consumi e ricariche, una riga per giorno: **Giorno**, **Chiamate**, **Crediti usati**, **Altre operazioni**, **Saldo fine giornata**. Clicca un giorno per vedere chiamate, durata totale, media per chiamata e per minuto, e le singole operazioni con ora, tipo, descrizione e crediti.
+L'elenco di consumi e addebiti, una riga per giorno: **Giorno**, **Chiamate**, **Minuti usati**, **Altre operazioni**, **Saldo fine giornata**. Le quantità sono scritte come durata (minuti:secondi). Clicca un giorno per vedere chiamate, durata totale, media per chiamata, e le singole operazioni con ora, tipo, descrizione e minuti.
 
-In alto i filtri: il tipo (**Tutti i tipi**, **Consumo**, **Ricarica**, **Extra**, **Auto-ricarica**, **Saldo residuo**, **Reset mensile**, **Upgrade**, **Downgrade**, **Rettifica**, **Rimborso**), le date di inizio e fine, e **Export CSV**, che scarica i movimenti filtrati con le colonne Data, Tipo, Descrizione, Crediti, Saldo dopo. Se non c'è niente: «Nessun movimento» e «Nel periodo selezionato non ci sono transazioni.»
+In alto i filtri: il tipo, le date di inizio e fine, e **Export CSV**, che scarica i movimenti filtrati con le colonne Data, Tipo, Descrizione, Minuti, Minuti rimasti dopo. Se non c'è niente: «Nessun movimento» e «Nel periodo selezionato non ci sono transazioni.»
+
+| Tipo | Cosa indica |
+| --- | --- |
+| **Consumo** | I minuti scalati dalle conversazioni |
+| **Minuti extra** | Un addebito di minuti extra pagato con la ricarica automatica |
+| **Saldo residuo** | I minuti extra rimasti da pagare a fine mese, addebitati a parte |
+| **Rinnovo mensile** | I minuti del piano che ripartono il 1° del mese |
+| **Upgrade** · **Downgrade** | Un cambio di piano |
+| **Rettifica** | Una correzione dei minuti, in più o in meno |
+
+Nel filtro compaiono anche **Ricarica**, **Extra** e **Rimborso**, che riguardano movimenti meno frequenti.
 
 ### Se il servizio è gestito da un rivenditore
 
-Se gli Agenti AI ti sono forniti da un rivenditore, al posto dei piani e della ricarica automatica c'è il riquadro **Gestito dal tuo rivenditore**: «Il piano AI è incluso nel servizio del tuo rivenditore, senza canone da pagare qui. I crediti si rinnovano il 1° di ogni mese; per aumentare il tetto mensile o il numero di agenti contatta direttamente il rivenditore.»
+Se gli Agenti AI ti sono forniti da un rivenditore, al posto dei piani e della ricarica automatica c'è il riquadro **Gestito dal tuo rivenditore**: «Il piano AI è incluso nel servizio del tuo rivenditore, senza canone da pagare qui. I minuti si rinnovano il 1° di ogni mese; per aumentare il tetto mensile o il numero di agenti contatta direttamente il rivenditore.» Il tetto è il numero di minuti al mese che il rivenditore ha scelto per te.
+
+Quando i minuti del mese finiscono compare **Minuti del mese esauriti**: «Gli agenti riprendono al rinnovo del 1° del mese, o prima se il rivenditore aumenta il tetto.»
 
 ## Altri passi
 
-### Come evito che gli agenti si fermino quando finiscono i crediti
+### Come evito che gli agenti si fermino quando finiscono i minuti
 
 <Steps>
-  <Step title="Apri Crediti">
-    Menu degli Agenti AI → **Crediti e piano**.
+  <Step title="Apri Piano e minuti">
+    Menu degli Agenti AI → **Piano e minuti**.
   </Step>
   <Step title="Accendi la ricarica automatica">
     Accendi l'interruttore di **Ricarica automatica**. Compare «Ricarica automatica attivata.»
   </Step>
   <Step title="Scegli il limite mensile">
-    In **Limite mensile** scegli fino a quanto può ricaricare nel mese. Compare «Limite aggiornato.»
+    In **Limite mensile** scegli fino a quanti minuti extra si possono pagare nel mese. Compare «Limite aggiornato.»
   </Step>
 </Steps>
 
 ### Come passo dalla prova a un piano
 
 <Steps>
-  <Step title="Apri Crediti">
-    Nell'avviso ambra in alto premi **Scegli il piano →**, oppure apri **Crediti e piano** dal menu degli Agenti AI.
+  <Step title="Apri Piano e minuti">
+    Nell'avviso ambra in alto premi **Scegli il piano →**, oppure apri **Piano e minuti** dal menu degli Agenti AI.
   </Step>
   <Step title="Scegli il piano">
     Sulla card del piano premi **Passa a** seguito dal nome del piano.
@@ -178,13 +234,13 @@ Se gli Agenti AI ti sono forniti da un rivenditore, al posto dei piani e della r
 
 <Steps>
   <Step title="Scegli il piano">
-    In **Crediti e piano**, sulla card del piano, premi **Passa a** seguito dal nome del piano.
+    In **Piano e minuti**, sulla card del piano, premi **Passa a** seguito dal nome del piano.
   </Step>
   <Step title="Leggi le condizioni del cambio">
-    Si apre **Cambio piano**: «N crediti/mese · N agenti — la differenza crediti viene accreditata subito.» Con abbonamento mensile c'è **Upgrade immediato**: paghi la differenza solo per i giorni che mancano al rinnovo (oppure **Gratis** quando l'importo da pagare adesso è molto basso: la differenza entra dal rinnovo). Con abbonamento annuale scegli tra **Paga la differenza** e **Nessun pagamento aggiuntivo** (i giorni rimanenti vengono ricalcolati).
+    Si apre **Cambio piano**: «N minuti/mese · N agenti — i minuti in più per i giorni che restano li ricevi subito.» Con abbonamento mensile c'è **Upgrade immediato**: paghi la differenza solo per i giorni che mancano al rinnovo (oppure **Gratis** quando l'importo da pagare adesso è molto basso: la differenza entra dal rinnovo). Con abbonamento annuale scegli tra **Paga la differenza** e **Nessun pagamento aggiuntivo** (i giorni rimanenti vengono ricalcolati).
   </Step>
   <Step title="Conferma">
-    Premi **Conferma upgrade**. Se c'è da pagare si apre la pagina di pagamento; al ritorno, in **Crediti e piano**, compare l'esito. Se il cambio è gratuito vale subito: «Piano aggiornato a …: +N crediti subito.» Se annulli il pagamento: «Pagamento annullato. Nessun addebito effettuato.»
+    Premi **Conferma upgrade**. Se c'è da pagare si apre la pagina di pagamento; al ritorno, in **Piano e minuti**, compare l'esito. Se il cambio è gratuito vale subito: «Piano aggiornato a …: +… subito.», con i minuti aggiunti. Se annulli il pagamento: «Pagamento annullato. Nessun addebito effettuato.»
   </Step>
 </Steps>
 
@@ -194,10 +250,10 @@ Senza una carta salvata **Conferma upgrade** è spento e la finestra mostra **Se
 
 <Steps>
   <Step title="Scegli il piano">
-    In **Crediti e piano**, sulla card del piano più piccolo, premi **Passa a** seguito dal nome del piano.
+    In **Piano e minuti**, sulla card del piano più piccolo, premi **Passa a** seguito dal nome del piano.
   </Step>
   <Step title="Leggi e conferma">
-    La finestra dice il nuovo canone, «dal prossimo rinnovo. Nessun rimborso per il mese in corso.» e «Il saldo crediti attuale resta utilizzabile fino al 1° del mese». Premi **Conferma downgrade**.
+    La finestra dice il nuovo canone, «dal prossimo rinnovo. Nessun rimborso per il mese in corso.» e «I minuti rimasti restano utilizzabili fino al 1° del mese; dal rinnovo riceverai N minuti al mese.» Premi **Conferma downgrade**.
   </Step>
 </Steps>
 
@@ -209,19 +265,19 @@ Con l'abbonamento annuale, o quando il tuo caso va verificato, al posto della co
 
 <Steps>
   <Step title="Leggi il motivo">
-    Il motivo è nell'avviso rosso in alto: pagamento non riuscito, metodo di pagamento mancante, limite di ricarica mensile raggiunto o crediti esauriti.
+    Il motivo è nell'avviso rosso in alto: pagamento non riuscito, metodo di pagamento mancante, limite di ricarica mensile raggiunto o minuti del mese esauriti.
   </Step>
   <Step title="Sistema la causa">
-    Pagamento non riuscito o carta mancante: controlla la carta in [Fatture e pagamenti](/centralino/account/fatture-e-pagamenti). Limite raggiunto: alza il **Limite mensile**. Crediti esauriti con ricarica spenta: accendi la **Ricarica automatica**.
+    Pagamento non riuscito o carta mancante: controlla la carta in [Fatture e pagamenti](/centralino/account/fatture-e-pagamenti). Limite raggiunto: alza il **Limite mensile**. Minuti esauriti con ricarica spenta: accendi la **Ricarica automatica**.
   </Step>
   <Step title="Premi Riprova pagamento">
-    In **Ricarica automatica** premi **Riprova pagamento**. Se va a buon fine compare «Ricarica riuscita: +N crediti.» Altrimenti puoi attendere il 1° del mese, quando i crediti ripartono.
+    In **Ricarica automatica**, accanto a **Servizio sospeso**, premi **Riprova pagamento**. Se va a buon fine compare «Pagamento riuscito: … extra saldati, gli agenti rispondono di nuovo.» Altrimenti puoi attendere il 1° del mese, quando i minuti ripartono.
   </Step>
 </Steps>
 
-### Come scarico i movimenti dei crediti
+### Come scarico i movimenti dei minuti
 
-In **Crediti e piano** → **Movimenti crediti** scegli il tipo e le date, poi premi **Export CSV**.
+In **Piano e minuti** → **Movimenti dei minuti** scegli il tipo e le date, poi premi **Export CSV**. Il file ha i minuti, non gli importi in euro: gli addebiti dei minuti extra sono nelle fatture.
 
 ### Come annullo la prova
 
@@ -233,10 +289,11 @@ Si fa dal tuo abbonamento: barra in alto → **Il tuo account** → **Il mio acc
 
 ## Da sapere
 
-- **I crediti si rinnovano il 1° di ogni mese.** Il giorno dell'attivazione ricevi solo la parte proporzionale ai giorni che mancano al 1°.
-- **Quanti minuti sono.** La pagina mostra, accanto ai crediti, una stima dei minuti di conversazione. Il consumo reale dipende dalla durata e dal tipo di conversazione.
+- **Si paga la durata.** Ogni conversazione scala i suoi secondi dai minuti del piano, a chiamata finita.
+- **I minuti si rinnovano il 1° di ogni mese** e quelli non usati non passano al mese dopo. Il giorno dell'attivazione ricevi solo la parte proporzionale ai giorni che mancano al 1°.
 - **Si paga in proporzione.** All'attivazione, e con l'abbonamento mensile anche quando passi a un piano più grande, paghi solo i giorni che mancano al rinnovo del centralino; dal rinnovo il canone del piano entra nell'abbonamento del centralino.
-- **Con la ricarica automatica spenta**, a crediti finiti gli agenti smettono di rispondere fino al 1° del mese o finché non ricarichi.
+- **Con la ricarica automatica spenta**, a minuti finiti gli agenti smettono di rispondere fino al 1° del mese.
+- **Con la ricarica automatica accesa**, i minuti extra si pagano a blocchi, ognuno con la sua fattura, fino al **Limite mensile** che hai scelto.
 - **Un centralino disattivato** non può attivare gli Agenti AI né passare a un piano più grande: prima va riattivato l'abbonamento.
 
 <Warning>
@@ -255,19 +312,31 @@ Si fa dal tuo abbonamento: barra in alto → **Il tuo account** → **Il mio acc
   </Accordion>
 
   <Accordion title="C'è una prova gratuita?">
-    Se per il tuo account è disponibile, la vedi in cima alla pagina di attivazione nel riquadro «Consigliato per iniziare». Se il riquadro non c'è, si sceglie direttamente un piano.
+    Se per il tuo account è disponibile, la vedi in cima alla pagina di attivazione nel riquadro «Consigliato per iniziare», con i minuti inclusi e i giorni per usarli. Se il riquadro non c'è, si sceglie direttamente un piano.
   </Accordion>
 
-  <Accordion title="Quando si rinnovano i crediti?">
-    Il 1° di ogni mese. In **Crediti del mese** leggi tra quanti giorni («reset tra N giorni»).
+  <Accordion title="Dove sono finiti i crediti?">
+    Dal 1° dicembre 2026 non ci sono più: gli Agenti AI si pagano a minuti di conversazione, scalati al secondo. I piani e il numero di agenti restano gli stessi. La pagina **Crediti e piano** ora si chiama **Piano e minuti**.
+  </Accordion>
+
+  <Accordion title="Quando si rinnovano i minuti?">
+    Il 1° di ogni mese. In **Minuti del mese** leggi tra quanti giorni («rinnovo tra N giorni»). I minuti non usati non passano al mese dopo.
+  </Accordion>
+
+  <Accordion title="Cosa succede quando finiscono i minuti del piano?">
+    Con la **Ricarica automatica** accesa gli agenti continuano a rispondere e paghi i minuti extra con la carta salvata, a blocchi, fino al **Limite mensile**. Con la ricarica spenta gli agenti si fermano fino al 1° del mese.
+  </Accordion>
+
+  <Accordion title="Quanto costa un minuto extra?">
+    Il prezzo del minuto extra dipende dal piano ed è scritto nella card del piano e nel riquadro **Abbonamento** di **Piano e minuti**.
   </Accordion>
 
   <Accordion title="Il passaggio a un piano più piccolo mi rimborsa qualcosa?">
-    No. Il nuovo canone parte dal rinnovo successivo e il mese in corso non viene rimborsato. I crediti che hai restano utilizzabili fino al 1° del mese.
+    No. Il nuovo canone parte dal rinnovo successivo e il mese in corso non viene rimborsato. I minuti rimasti restano utilizzabili fino al 1° del mese.
   </Accordion>
 
-  <Accordion title="Le ricariche automatiche hanno una fattura?">
-    Sì, ogni ricarica automatica pagata con la carta ha la sua fattura. Se la carta non funziona e si usa il credito del centralino, non c'è una nuova fattura.
+  <Accordion title="I minuti extra hanno una fattura?">
+    Sì, ogni addebito di minuti extra pagato con la carta ha la sua fattura, e anche i minuti extra rimasti da pagare a fine mese vengono addebitati con fattura. Se la carta non funziona e si usa il credito del centralino, non c'è una nuova fattura.
   </Accordion>
 
   <Accordion title="Ho attivato il piano ma gli agenti non rispondono ancora.">

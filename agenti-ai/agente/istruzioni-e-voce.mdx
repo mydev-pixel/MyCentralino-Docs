@@ -99,6 +99,7 @@ Sugli agenti creati prima che esistesse questa scelta può comparire anche **Sen
 | **Voce dell'agente** | La voce con cui parla | Obbligatoria. Schede con nome e caratteristiche (Maschile o Femminile, Giovane, Adulta o Matura, accento). Campo **Cerca per nome o caratteristica…** e tasto play per l'anteprima |
 | **Velocità** | La velocità con cui parla | Da 0,70× a 1,50×, proposto 1,10× |
 | **Chiusura per silenzio (secondi)** | Dopo quanti secondi di silenzio la chiamata si chiude | Da 0 a 120, proposto 10. «0 = non chiude mai da sola.» |
+| **Parole da riconoscere** | I nomi che l'agente capisce male al telefono, scritti come vanno scritti | Facoltativo. Una per riga, fino a 100 voci, al massimo 50 caratteri ciascuna |
 
 - Se la scheda delle voci mostra «Voci non disponibili al momento: riprova tra poco.», ricarica la pagina dopo qualche minuto.
 
@@ -371,6 +372,14 @@ Alla fine ripeti in breve cosa è stato deciso e saluta cordialmente.
 
   <Accordion title="Posso far parlare l'agente in inglese?">
     Sì: scegli **Inglese** in **Lingua** e scrivi in inglese anche la **Frase di apertura**, che anche in inglese deve dire che risponde un assistente virtuale (per esempio «virtual assistant»). Per un'attività con chiamate in lingue diverse puoi creare un agente per ogni lingua.
+  </Accordion>
+
+  <Accordion title="Salvo l'agente e leggo «Attenzione: la frase di apertura non dice che risponde un assistente virtuale».">
+    La **Frase di apertura** deve dire a chi chiama che parla con un assistente virtuale: aggiungilo (per esempio «Buongiorno, sono Sofia, l'assistente virtuale di …») e premi di nuovo **Salva agente**. Se è solo un agente di prova, spunta **Questo è un agente di test** sotto la frase e salva.
+  </Accordion>
+
+  <Accordion title="L'agente capisce male un nome, una via o un prodotto.">
+    Scrivi quel nome, come va scritto, in **Voce** → **Parole da riconoscere** e premi **Salva agente**. Poi fai una telefonata di prova e rileggi la trascrizione.
   </Accordion>
 
   <Accordion title="L'agente si ricorda di chi ha già chiamato?">

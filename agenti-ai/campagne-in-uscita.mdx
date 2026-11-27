@@ -62,7 +62,7 @@ Se la campagna non ha ancora esecuzioni: «Nessuna esecuzione: premi «+ Esecuzi
 | --- | --- | --- |
 | **Nome** | Il nome della campagna | Obbligatorio, da 2 a 100 caratteri. Esempio: «Richiamo preventivi» |
 | **Agente** | L'agente che fa le chiamate | Obbligatorio, **Scegli…** e i tuoi agenti |
-| **Frase di apertura per la campagna (vuota = quella dell'agente)** | La prima frase che l'agente dice quando la persona risponde | Facoltativo |
+| **Frase di apertura per la campagna (vuota = quella dell'agente)** | La prima frase che l'agente dice quando la persona risponde. Deve dire che chiama un assistente virtuale | Facoltativo. Es. «Buongiorno, sono Sofia, l'assistente virtuale di …. Come posso aiutarla?» |
 | **Istruzioni aggiuntive al copione (facoltative)** | Istruzioni che si aggiungono al copione dell'agente solo per questa campagna, per esempio lo scopo della chiamata | Facoltativo |
 | **Chiamate per lotto** | Impostazione avanzata dell'invio delle chiamate | Da 1 a 10, proposto 1 |
 | **Chiamate simultanee max** | Quante chiamate al massimo l'agente fa nello stesso momento | Da 1 a 10, proposto 1 |
@@ -91,7 +91,7 @@ Se la campagna non ha ancora esecuzioni: «Nessuna esecuzione: premi «+ Esecuzi
 Se la prima riga è un'intestazione con una colonna `numero` (vanno bene anche `telefono`, `cellulare`, `number`, `phone`), puoi passare dati diversi per ogni persona:
 
 - `nome` (o `name`): il nome del contatto. Compare nella tabella **Contatti** e nel **Report CSV**, ma l'agente non lo riceve. Se vuoi che lo usi in chiamata, ripetilo in una colonna con un altro nome, per esempio `cliente`;
-- `first_message` (o `messaggio`): una frase di apertura solo per quel contatto;
+- `first_message` (o `messaggio`): una frase di apertura solo per quel contatto. Anche questa deve dire che chiama un assistente virtuale;
 - **ogni altra colonna** diventa una variabile che puoi usare nelle istruzioni dell'agente scrivendo il nome della colonna tra doppie graffe, per esempio `{{data_appuntamento}}`.
 
 Le colonne del numero, `nome` e `first_message` non sono variabili. Una variabile passa all'agente solo se la sua cella è piena: riempila in ogni riga.
@@ -201,6 +201,7 @@ I filtri **Tutti**, **Da chiamare**, **Completate**, **Fallite**, **Segreteria**
 
 ## Da sapere
 
+- **La frase di apertura deve dire che chiama un assistente virtuale.** Chi riceve la chiamata deve sapere subito che parla con un assistente virtuale: lo chiede la legge europea sull'intelligenza artificiale (AI Act). Vale per la frase della campagna, per quelle scritte nel file dei contatti e, se la campagna non ne ha una sua, per la **Frase di apertura** dell'agente. Se una di queste non lo dice, la campagna non si crea o l'esecuzione non parte, e il pannello ti dice quale correggere. Fa eccezione, per la sua frase, un agente segnato **Questo è un agente di test** (vedi [Istruzioni e voce](/agenti-ai/agente/istruzioni-e-voce)).
 - **Una campagna non si modifica** dopo averla creata: per cambiare agente, frase di apertura o istruzioni crea una nuova campagna.
 - **Lo stop automatico vale una volta.** Se l'esecuzione si ferma per lo stop automatico e la riprendi con **Riprendi**, lo stop non vale più per quell'esecuzione.
 - **Riprova falliti** ripassa solo numero e nome: le altre colonne del CSV (frase di apertura e variabili) non vengono riportate nella nuova esecuzione.
@@ -219,6 +220,10 @@ I filtri **Tutti**, **Da chiamare**, **Completate**, **Fallite**, **Segreteria**
 <AccordionGroup>
   <Accordion title="L'esecuzione resta in Bozza.">
     L'agente della campagna non ha una connessione VoIP. In **Connessioni VoIP** assegna l'agente a una connessione, poi apri l'esecuzione e premi **Avvia**.
+  </Accordion>
+
+  <Accordion title="Leggo che la frase di apertura non dice che chiama un assistente virtuale.">
+    Dipende da quale frase è. Nella finestra della nuova campagna, se la riga di aiuto sotto la frase diventa color ambra, con un simbolo di avviso, la campagna non si crea: correggi il campo e premi di nuovo **Crea campagna**. «La frase di apertura di questa campagna non dice che chiama un assistente virtuale…»: la campagna è nata prima di questa regola e non si modifica, quindi creane una nuova con la frase corretta. «La frase di apertura dell'agente non dice che chiama un assistente virtuale…»: apri l'agente, correggi la **Frase di apertura** e salva, poi avvia l'esecuzione. «Nel file dei contatti ci sono frasi di apertura che non dicono che chiama un assistente virtuale…»: correggi la colonna `first_message` del file e caricalo di nuovo.
   </Accordion>
 
   <Accordion title="Ho caricato 100 numeri ma nel totale ne vedo meno.">

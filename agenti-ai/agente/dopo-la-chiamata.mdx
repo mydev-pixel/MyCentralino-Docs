@@ -16,6 +16,9 @@ keywords:
   - "custom api"
   - "collegare gestionale"
   - "whatsapp durante la chiamata"
+  - "modelli whatsapp"
+  - "template whatsapp"
+  - "myflow"
   - "invio dati fine chiamata"
 ---
 
@@ -224,16 +227,86 @@ Il nome del campo compare così com'è nelle email e nei messaggi: sceglilo legg
 
 ## WhatsApp durante la chiamata
 
-«L'agente può inviare messaggi WhatsApp al chiamante durante la conversazione.» Per esempio l'indirizzo dello studio, un link o un riepilogo di quanto detto. L'interruttore in alto a destra della sezione lo accende; spento leggi «Attiva l'invio per scegliere il profilo WhatsApp da usare.».
+L'agente può mandare un messaggio WhatsApp a chi chiama mentre è al telefono: per esempio l'indirizzo dello studio, un link o la conferma di un appuntamento. La sezione **WhatsApp** dell'agente cambia secondo il WhatsApp che hai sul centralino:
+
+| Cosa hai | Cosa trovi nella sezione | Cosa manda l'agente |
+| --- | --- | --- |
+| **MyFlow WhatsApp per Aziende** con almeno un numero collegato | **Modelli di MyFlow** | Uno dei tuoi modelli approvati da Meta |
+| Il WhatsApp collegato con il QR (vedi [WhatsApp](/centralino/moduli/whatsapp)) | L'invio con il **Profilo WhatsApp Business** | Un testo che l'agente scrive da sé |
+| Tutti e due | **Modelli di MyFlow** e, sotto, **Messaggi liberi** | L'uno, l'altro o tutti e due: ognuno ha il suo interruttore |
+
+Ogni messaggio inviato compare nella trascrizione della conversazione come «Ha mandato un messaggio WhatsApp» (vedi [Conversazioni](/agenti-ai/storico-chiamate)).
+
+### Modelli di MyFlow
+
+«L'agente manda uno dei tuoi modelli approvati da Meta, dal numero collegato a MyFlow. Se la persona risponde, la conversazione arriva nell'Inbox.» I modelli sono quelli della pagina **Template** di MyFlow: qui compaiono solo quelli approvati.
+
+Accendi l'interruttore **Modelli di MyFlow** e compila:
 
 | Campo | Cosa indica | Valori |
 | --- | --- | --- |
-| **Profilo WhatsApp Business** | Da quale numero WhatsApp parte il messaggio | «Scegli il profilo…» e i profili WhatsApp del tuo centralino. «Richiede il modulo WhatsApp attivo sul tuo centralino.» |
+| **Numero da cui scrivere** | Il numero WhatsApp da cui parte il messaggio | «Scegli il numero…» e i numeri collegati a MyFlow |
+| **Modello** | Il messaggio da mandare | «Scegli il modello…» e i modelli approvati di quel numero, con la lingua e il tipo: **Di servizio**, **Promozionale** o **Codice di accesso**. Quelli che l'agente non può mandare hanno accanto «(non usabile: …)» con il motivo, per esempio un file nell'intestazione, e non si possono scegliere |
+| **Quando mandarlo (per l'agente)** | In quale momento della telefonata l'agente propone il messaggio | Una frase, fino a 300 caratteri. Es. «quando il cliente chiede l'indirizzo dello studio» |
+| Le parti variabili del modello | Cosa scrivere al posto di ogni parte variabile. Accanto a ognuna c'è l'esempio del modello («Es. …») | **La compila l'agente**: spieghi cosa ci va, per esempio «data e ora dell'appuntamento», fino a 200 caratteri. **Sempre uguale**: scrivi il valore, fino a 1000 caratteri |
+
+Scelto il modello, sotto compare il suo testo. Per un modello promozionale leggi «È un modello promozionale: chi ha scritto STOP non lo riceve.».
+
+**\+ Aggiungi modello** aggiunge un altro modello, **Togli modello** lo toglie. «Fino a 5 modelli. I messaggi li addebita Meta sul tuo account WhatsApp, come quelli mandati da MyFlow.»
+
+### Come faccio mandare un modello durante la chiamata
+
+<Steps>
+  <Step title="Apri la sezione WhatsApp">
+    Nella configurazione dell'agente apri la sezione **WhatsApp**.
+  </Step>
+  <Step title="Accendi i modelli">
+    Accendi **Modelli di MyFlow** e scegli il **Numero da cui scrivere**.
+  </Step>
+  <Step title="Scegli il modello">
+    Premi **\+ Aggiungi modello** e scegli il **Modello**.
+  </Step>
+  <Step title="Spiega quando e cosa">
+    In **Quando mandarlo (per l'agente)** scrivi in quale momento proporlo. Per ogni parte variabile scegli **La compila l'agente** e spiega cosa ci va, oppure **Sempre uguale** e scrivi il valore.
+  </Step>
+  <Step title="Salva">
+    Premi **Salva agente**.
+  </Step>
+</Steps>
+
+### Come si comporta l'agente con i modelli
+
+- «Prima chiede sempre se la persona vuole riceverlo.» Manda il messaggio solo se la risposta è sì.
+- Il messaggio va al numero da cui la persona sta chiamando: l'agente non lo chiede. Se il numero non è visibile, il messaggio non parte.
+- Ogni modello parte una volta sola per telefonata.
+- Il messaggio compare in MyFlow, nella conversazione con quel numero.
+- Se su quel numero risponde un agente AI di MyFlow, dopo il messaggio si mette da parte per il tempo impostato nell'agente, come quando scrive una persona dall'Inbox.
+- Con l'interruttore acceso ma senza modelli, l'invio non viene attivato e alla riapertura risulta spento.
+- Se MyFlow non è più attivo o non c'è più un numero collegato, la sezione mostra solo l'invio con il profilo e l'agente non manda più i modelli. La configurazione resta salvata: quando MyFlow torna attivo, riapri l'agente e premi **Salva agente**.
+
+### Messaggi al salvataggio dei modelli
+
+| Messaggio | Cosa fare |
+| --- | --- |
+| «WhatsApp con MyFlow: scegli il numero da cui scrivere.» | Scegli il **Numero da cui scrivere**. |
+| «WhatsApp con MyFlow, modello 1: scegli un modello approvato di questo numero.» | In quella riga manca il **Modello**, oppure non è più approvato: scegline uno dall'elenco. |
+| «WhatsApp con MyFlow: il modello «…» è scelto due volte.» | Togli una delle due righe. |
+| «WhatsApp con MyFlow, modello 1: spiega all'agente cosa scrivere per …» oppure «scrivi il valore per …» | Compila il campo di quella parte variabile. |
+| «WhatsApp con MyFlow: creazione del modello «…» non riuscita. Riprova fra poco.» | Premi di nuovo **Salva agente** dopo qualche minuto. |
+
+### Messaggi liberi con il WhatsApp collegato con il QR
+
+Senza MyFlow la sezione dice «L'agente può inviare messaggi WhatsApp al chiamante durante la conversazione.» L'interruttore in alto a destra della sezione lo accende; spento leggi «Attiva l'invio per scegliere il profilo WhatsApp da usare.». Sotto il campo leggi «Richiede il modulo WhatsApp attivo sul tuo centralino.».
+
+Se hai anche MyFlow, lo stesso invio è nel riquadro **Messaggi liberi**, sotto i modelli: «L'agente scrive il testo da sé e lo manda dal vecchio modulo WhatsApp.» Il riquadro compare se hai almeno un profilo WhatsApp collegato con il QR.
+
+| Campo | Cosa indica | Valori |
+| --- | --- | --- |
+| **Profilo WhatsApp Business** | Da quale numero WhatsApp parte il messaggio | «Scegli il profilo…» e i profili WhatsApp del tuo centralino |
 
 - Scegli sempre il profilo: con l'interruttore acceso ma senza profilo, l'invio non viene attivato e alla riapertura risulta spento.
 - Scrivi nel copione quando mandare il messaggio e cosa scriverci, per esempio «Se il cliente chiede dove siamo, mandagli su WhatsApp l'indirizzo e il link della mappa».
 - Se il profilo non è di questo centralino leggi «Scegli un numero WhatsApp di questo centralino.».
-- Ogni messaggio inviato compare nella trascrizione della conversazione come «Ha mandato un messaggio WhatsApp».
 
 ## Collegamenti ai tuoi programmi: collegare i tuoi sistemi durante la chiamata
 
